@@ -55,7 +55,7 @@ jobs:
           CARGO_TARGET_DIR: D:/t
           RUSTFLAGS: -C debuginfo=0
         run: |
-          cargo build --profile release -p warp --bin warp-oss --features gui
+          cargo build --profile release -p warp --bin warp-oss --features oss-default,gui
 
       - name: Package
         shell: pwsh
