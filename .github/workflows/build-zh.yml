@@ -1,0 +1,80 @@
+name: build-warp-zh
+
+on:
+  workflow_dispatch:
+  push:
+    branches:
+      - feature/i18n
+
+permissions:
+  contents: read
+
+jobs:
+  build:
+    name: Build Warp zh-CN (windows)
+    runs-on: windows-latest
+    timeout-minutes: 350
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+        with:
+          lfs: true
+          fetch-depth: 1
+
+      - name: Show environment
+        shell: bash
+        run: |
+          echo "runner: $RUNNER_OS $RUNNER_ARCH"
+          df -h / 2>/dev/null || true
+
+      - name: Free disk space
+        uses: jlumbroso/free-disk-space@main
+        with:
+          tool-cache: true
+          android: true
+          dotnet: true
+          haskell: true
+          swap-storage: false
+
+      - name: Install protoc
+        shell: pwsh
+        run: choco install protoc -y --no-progress
+
+      - name: Install Rust toolchain
+        shell: bash
+        run: |
+          rustup show
+          rustc --version
+          cargo --version
+
+      - name: Build warp-oss
+        shell: bash
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+          CARGO_TARGET_DIR: D:/t
+          RUSTFLAGS: -C debuginfo=0
+        run: |
+          cargo build --profile release -p warp --bin warp-oss --features gui
+
+      - name: Package
+        shell: pwsh
+        run: |
+          New-Item -ItemType Directory dist | Out-Null
+          $rel = 'D:\t\release'
+          Get-ChildItem $rel -File | Where-Object { $_.Extension -in '.exe','.dll' } | Copy-Item -Destination dist\
+          if (Test-Path "$rel\x64") { Copy-Item "$rel\x64" dist\x64 -Recurse }
+          if (Test-Path 'resources\i18n') {
+            New-Item -ItemType Directory dist\resources -Force | Out-Null
+            Copy-Item 'resources\i18n' dist\resources\i18n -Recurse
+          }
+          Write-Host '--- payload ---'
+          Get-ChildItem dist -Recurse -File | Select-Object FullName, Length | Format-Table -AutoSize | Out-String | Write-Host
+          Compress-Archive -Path dist\* -DestinationPath warp-zh-win64.zip -Force
+
+      - name: Upload artifact
+        uses: actions/upload-artifact@v4
+        with:
+          name: warp-zh-win64
+          path: warp-zh-win64.zip
+          if-no-files-found: error
+          retention-days: 14
