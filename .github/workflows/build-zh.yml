@@ -48,12 +48,33 @@ jobs:
           rustc --version
           cargo --version
 
+      # command-signatures-v2/build.rs shells out to `yarn build`. Yarn 4 is not
+      # preinstalled, and if js/build is missing the build script panics.
+      # Pre-build the TypeScript with npm so the script's "stale output" path is
+      # available, and try yarn first in case corepack works.
+      - name: Prepare command-signatures JS
+        shell: bash
+        run: |
+          set -x
+          cd crates/command-signatures-v2/js
+          corepack enable || true
+          if command -v yarn >/dev/null 2>&1; then
+            yarn install || true
+            yarn build || true
+          fi
+          if [ ! -d build ]; then
+            npm install --no-audit --no-fund
+            npx tsc -p tsconfig.json
+          fi
+          ls -la build | head -20
+
       - name: Build warp-oss
         shell: bash
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
           CARGO_TARGET_DIR: D:/t
           RUSTFLAGS: -C debuginfo=0
+          CARGO_NET_RETRY: 5
         run: |
           cargo build --profile release -p warp --bin warp-oss --features oss-default,gui
 
