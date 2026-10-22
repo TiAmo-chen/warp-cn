@@ -72,7 +72,7 @@ jobs:
         shell: bash
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
-          CARGO_TARGET_DIR: D:/t
+          CARGO_FULL_PROFILE: release
           RUSTFLAGS: -C debuginfo=0
           CARGO_NET_RETRY: 5
         run: |
@@ -82,7 +82,7 @@ jobs:
         shell: pwsh
         run: |
           New-Item -ItemType Directory dist | Out-Null
-          $rel = 'D:\t\release'
+          $rel = 'target\release'
           Get-ChildItem $rel -File | Where-Object { $_.Extension -in '.exe','.dll' } | Copy-Item -Destination dist\
           if (Test-Path "$rel\x64") { Copy-Item "$rel\x64" dist\x64 -Recurse }
           if (Test-Path 'resources\i18n') {
