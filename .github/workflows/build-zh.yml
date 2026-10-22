@@ -2,9 +2,6 @@ name: build-warp-zh
 
 on:
   workflow_dispatch:
-  push:
-    branches:
-      - feature/i18n
 
 permissions:
   contents: read
@@ -15,10 +12,14 @@ jobs:
     runs-on: windows-latest
     timeout-minutes: 350
     steps:
+      # NOTE: LFS objects are missing on this fork (git lfs fetch returns 404),
+      # so LFS is disabled. The only LFS payloads are *.pdb and the optional
+      # ONNX models behind the non-default `onnx` feature, neither of which the
+      # GUI build needs.
       - name: Checkout
         uses: actions/checkout@v4
         with:
-          lfs: true
+          lfs: false
           fetch-depth: 1
 
       - name: Show environment
