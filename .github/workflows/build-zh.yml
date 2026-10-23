@@ -6,6 +6,13 @@ on:
 permissions:
   contents: read
 
+env:
+  # Baked into the binary via option_env!("GIT_RELEASE_TAG") in
+  # crates/warp_core/src/channel/state.rs and into the Windows version
+  # resource by app/build.rs. Without it, the UI and the exe both show
+  # "v#.##.###". Format follows the upstream release tags.
+  GIT_RELEASE_TAG: v0.2026.5.13.zh_01
+
 jobs:
   build:
     name: Build Warp zh-CN (windows)
@@ -26,6 +33,7 @@ jobs:
         shell: bash
         run: |
           echo "runner: $RUNNER_OS $RUNNER_ARCH"
+          echo "release tag: $GIT_RELEASE_TAG"
           df -h / 2>/dev/null || true
 
       - name: Free disk space
@@ -81,16 +89,43 @@ jobs:
       - name: Package
         shell: pwsh
         run: |
+          $ErrorActionPreference = 'Stop'
           New-Item -ItemType Directory dist | Out-Null
           $rel = 'target\release'
           Get-ChildItem $rel -File | Where-Object { $_.Extension -in '.exe','.dll' } | Copy-Item -Destination dist\
           if (Test-Path "$rel\x64") { Copy-Item "$rel\x64" dist\x64 -Recurse }
+
+          New-Item -ItemType Directory dist\resources -Force | Out-Null
+
+          # 汉化资源：运行时从 exe 同级的 resources\i18n 加载，必须一起打包
           if (Test-Path 'resources\i18n') {
-            New-Item -ItemType Directory dist\resources -Force | Out-Null
-            Copy-Item 'resources\i18n' dist\resources\i18n -Recurse
+            Copy-Item 'resources\i18n' dist\resources\i18n -Recurse -Force
+          } else {
+            throw 'resources\i18n not found - 汉化资源缺失，拒绝出包'
           }
+
+          # 内置技能等打包资源
+          if (Test-Path 'resources\bundled') {
+            Copy-Item 'resources\bundled' dist\resources\bundled -Recurse -Force
+          }
+
+          # 版本元数据（内置技能与反馈脚本会读取）
+          $metaDir = 'dist\resources\bundled\metadata'
+          New-Item -ItemType Directory $metaDir -Force | Out-Null
+          @{ warp_version = $env:GIT_RELEASE_TAG } |
+            ConvertTo-Json |
+            Set-Content -Path (Join-Path $metaDir 'version.json') -Encoding utf8
+          Write-Host "--- version metadata ---"
+          Get-Content (Join-Path $metaDir 'version.json')
+
           Write-Host '--- payload ---'
-          Get-ChildItem dist -Recurse -File | Select-Object FullName, Length | Format-Table -AutoSize | Out-String | Write-Host
+          Get-ChildItem dist -Recurse -File |
+            Select-Object FullName, Length |
+            Sort-Object FullName |
+            Format-Table -AutoSize |
+            Out-String |
+            Write-Host
+
           Compress-Archive -Path dist\* -DestinationPath warp-zh-win64.zip -Force
 
       - name: Upload artifact
