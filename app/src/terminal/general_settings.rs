@@ -35,7 +35,7 @@ define_settings_group!(GeneralSettings, settings: [
         surface: settings::SettingSurfaces::GUI,
         private: false,
         toml_path: "general.restore_session",
-        description: crate::tr!("terminal", "terminal-setting-description-restore-session"),
+        description: "Whether to restore the previous session when Warp starts up.",
     },
     add_app_as_login_item: LoginItem {
         type: bool,
@@ -48,7 +48,7 @@ define_settings_group!(GeneralSettings, settings: [
         surface: settings::SettingSurfaces::GUI,
         private: false,
         toml_path: "general.login_item",
-        description: crate::tr!("terminal", "terminal-setting-description-login-item"),
+        description: "Whether to launch Warp automatically when you log in.",
     },
     // Records whether the app has been added as a login item.
     // If it has, we don't try to add it again unless the user explicitly
@@ -74,7 +74,7 @@ define_settings_group!(GeneralSettings, settings: [
         surface: settings::SettingSurfaces::GUI,
         private: false,
         toml_path: "general.link_tooltip",
-        description: crate::tr!("terminal", "terminal-setting-description-link-tooltip"),
+        description: "Whether to show a tooltip when hovering over links.",
     },
     welcome_tips_features_used: WelcomeTipsFeaturesUsed {
         type: HashSet<Tip>,
@@ -167,7 +167,7 @@ define_settings_group!(GeneralSettings, settings: [
         surface: settings::SettingSurfaces::GUI,
         private: false,
         toml_path: "code.editor.auto_open_code_review_pane_on_first_agent_change",
-        description: crate::tr!("terminal", "terminal-setting-description-auto-open-code-review-pane"),
+        description: "Whether to automatically open the code review pane when the agent makes its first change.",
     },
     bonus_grants_shown: BonusGrantsShown {
         type: HashSet<String>,

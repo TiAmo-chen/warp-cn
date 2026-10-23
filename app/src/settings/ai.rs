@@ -1254,7 +1254,7 @@ define_settings_group!(AISettings, settings: [
         surface: settings::SettingSurfaces::ALL,
         private: false,
         toml_path: "agents.warp_agent.input.ai_auto_detection_enabled",
-        description: crate::tr!("settings", "settings-ai-autodetect-nl-desc"),
+        description: "Controls whether AI automatically detects natural language input.",
     },
     // This field should not be referenced directly -- use the
     // `is_nld_in_terminal_enabled()` getter.
@@ -1269,7 +1269,7 @@ define_settings_group!(AISettings, settings: [
         surface: settings::SettingSurfaces::GUI,
         private: false,
         toml_path: "agents.warp_agent.input.nld_in_terminal_enabled",
-        description: crate::tr!("settings", "settings-ai-nld-terminal-desc"),
+        description: "Controls whether natural language detection is enabled in the terminal input.",
     },
     autodetection_command_denylist: AICommandDenylist {
         type: String,
@@ -1279,7 +1279,7 @@ define_settings_group!(AISettings, settings: [
         surface: settings::SettingSurfaces::GUI,
         private: false,
         toml_path: "agents.warp_agent.input.ai_command_denylist",
-        description: crate::tr!("settings", "settings-ai-command-denylist-desc"),
+        description: "Commands to exclude from AI natural language autodetection.",
     },
     // This field should not be referenced directly to lookup intelligent autosuggestion enablement
     // -- use the `is_intelligent_autosuggestions_enabled()` getter.
@@ -1291,7 +1291,7 @@ define_settings_group!(AISettings, settings: [
         surface: settings::SettingSurfaces::GUI,
         private: false,
         toml_path: "agents.warp_agent.active_ai.intelligent_autosuggestions_enabled",
-        description: crate::tr!("settings", "settings-ai-intelligent-autosuggestions-desc"),
+        description: "Controls whether AI-powered intelligent autosuggestions are enabled.",
     }
     // This field should not be referenced directly to lookup Prompt Suggestions
     // enablement -- use the `is_prompt_suggestions_enabled()` getter.
@@ -1306,7 +1306,7 @@ define_settings_group!(AISettings, settings: [
         surface: settings::SettingSurfaces::GUI,
         private: false,
         toml_path: "agents.warp_agent.active_ai.agent_mode_query_suggestions_enabled",
-        description: crate::tr!("settings", "settings-ai-prompt-suggestions-desc"),
+        description: "Controls whether prompt suggestions are shown in agent mode.",
     }
 
     // This field should not be referenced directly to lookup Code Suggestions
@@ -1319,7 +1319,7 @@ define_settings_group!(AISettings, settings: [
         surface: settings::SettingSurfaces::GUI,
         private: false,
         toml_path: "agents.warp_agent.active_ai.code_suggestions_enabled",
-        description: crate::tr!("settings", "settings-ai-code-suggestions-desc"),
+        description: "Controls whether AI code suggestions are enabled.",
     }
     // This field should not be referenced directly to lookup natural language autosuggestions
     // enablement -- use the `is_natural_language_autosuggestions_enabled()` getter.
@@ -1332,7 +1332,7 @@ define_settings_group!(AISettings, settings: [
         surface: settings::SettingSurfaces::GUI,
         private: false,
         toml_path: "agents.warp_agent.active_ai.natural_language_autosuggestions_enabled",
-        description: crate::tr!("settings", "settings-ai-nl-autosuggestions-desc"),
+        description: "Controls whether ghosted text autosuggestions are shown for AI input queries.",
         feature_flag: FeatureFlag::PredictAMQueries,
     }
     // This field should not be referenced directly to lookup shared block title generations
@@ -1346,7 +1346,7 @@ define_settings_group!(AISettings, settings: [
         surface: settings::SettingSurfaces::GUI,
         private: false,
         toml_path: "agents.warp_agent.active_ai.shared_block_title_generation_enabled",
-        description: crate::tr!("settings", "settings-ai-shared-block-title-desc"),
+        description: "Controls whether titles are auto-generated when sharing blocks.",
     }
     // This field should not be referenced directly to lookup git operations AI autogen
     // enablement -- use the `is_git_operations_autogen_enabled()` getter.
@@ -1358,7 +1358,7 @@ define_settings_group!(AISettings, settings: [
         surface: settings::SettingSurfaces::GUI,
         private: false,
         toml_path: "agents.warp_agent.active_ai.git_operations_autogen_enabled",
-        description: crate::tr!("settings", "settings-ai-git-autogen-desc"),
+        description: "Controls whether AI auto-generates commit messages and PR title/body in the code review dialogs.",
     }
     // This field should not be referenced directly to lookup Rule Suggestions
     // enablement -- use the `is_rule_suggestions_enabled()` getter.
@@ -1370,7 +1370,7 @@ define_settings_group!(AISettings, settings: [
         surface: settings::SettingSurfaces::GUI,
         private: false,
         toml_path: "agents.warp_agent.active_ai.rule_suggestions_enabled",
-        description: crate::tr!("settings", "settings-ai-rule-suggestions-desc"),
+        description: "Controls whether the agent suggests rules to save after responses.",
         feature_flag: FeatureFlag::SuggestedRules,
     }
     // This field should not be referenced directly to lookup Voice AI enablement -- use the
@@ -1383,7 +1383,7 @@ define_settings_group!(AISettings, settings: [
         surface: settings::SettingSurfaces::GUI,
         private: false,
         toml_path: "agents.voice.voice_input_enabled",
-        description: crate::tr!("settings", "settings-ai-voice-input-desc"),
+        description: "Controls whether voice input is enabled for AI interactions.",
     },
     // The number of times the user has entered Agent Mode.
     // Not a user-visible setting. We model it so we can show the voice input new feature popup
@@ -1446,7 +1446,7 @@ define_settings_group!(AISettings, settings: [
         surface: settings::SettingSurfaces::ALL,
         private: false,
         toml_path: "agents.profiles.agent_mode_command_execution_allowlist",
-        description: crate::tr!("settings", "settings-ai-cmd-allowlist-desc"),
+        description: "Commands that the agent can execute without explicit permission.",
     },
     // Predicates that Agent Mode can use to decide if a command must
     // be executed by the user.
@@ -1461,7 +1461,7 @@ define_settings_group!(AISettings, settings: [
         surface: settings::SettingSurfaces::ALL,
         private: false,
         toml_path: "agents.profiles.agent_mode_command_execution_denylist",
-        description: crate::tr!("settings", "settings-ai-cmd-denylist-desc"),
+        description: "Commands that the agent must always ask before executing.",
     },
     // Enabled iff Agent Mode can execute readonly commands without explicit user consent.
     //
@@ -1475,7 +1475,7 @@ define_settings_group!(AISettings, settings: [
         surface: settings::SettingSurfaces::ALL,
         private: false,
         toml_path: "agents.profiles.agent_mode_execute_readonly_commands",
-        description: crate::tr!("settings", "settings-ai-readonly-cmd-desc"),
+        description: "Whether the agent can auto-execute read-only commands without asking.",
     },
     // Determines coding permissions that Agent Mode has.
     // Note that if Agent Mode has permissions to execute readonly commands,
@@ -1491,7 +1491,7 @@ define_settings_group!(AISettings, settings: [
         surface: settings::SettingSurfaces::ALL,
         private: false,
         toml_path: "agents.profiles.agent_mode_coding_permissions",
-        description: crate::tr!("settings", "settings-ai-coding-perms-desc"),
+        description: "The file read permission level for the agent.",
     }
     // Specific filepaths that Agent Mode can read without asking for additional permissions.
     // These should be persisted as absolute filepaths to avoid ambiguity.
@@ -1508,7 +1508,7 @@ define_settings_group!(AISettings, settings: [
         surface: settings::SettingSurfaces::ALL,
         private: false,
         toml_path: "agents.profiles.agent_mode_coding_file_read_allowlist",
-        description: crate::tr!("settings", "settings-ai-file-read-allowlist-desc"),
+        description: "File paths the agent can read without asking for permission.",
     }
     // The complete execution-profile collection shared by GUI and TUI.
     // GUI cloud synchronization respects the user's settings-sync preference;
@@ -1626,7 +1626,7 @@ define_settings_group!(AISettings, settings: [
         surface: settings::SettingSurfaces::GUI,
         private: false,
         toml_path: "cloud_platform.third_party_api_keys.aws_bedrock_credentials_enabled",
-        description: crate::tr!("settings", "settings-ai-aws-bedrock-creds-desc"),
+        description: "Whether Warp should use your local AWS credentials for Bedrock-enabled requests.",
     }
     // Whether to automatically run the AWS login command when Bedrock credentials are expired.
     //
@@ -1640,7 +1640,7 @@ define_settings_group!(AISettings, settings: [
         surface: settings::SettingSurfaces::GUI,
         private: false,
         toml_path: "cloud_platform.third_party_api_keys.aws_bedrock_auto_login",
-        description: crate::tr!("settings", "settings-ai-aws-bedrock-auto-login-desc"),
+        description: "Whether to automatically run the AWS login command when Bedrock credentials expire.",
     }
     // Command to run to refresh AWS credentials when using Bedrock auto-login.
     aws_bedrock_auth_refresh_command: AwsBedrockAuthRefreshCommand {
@@ -1651,7 +1651,7 @@ define_settings_group!(AISettings, settings: [
         surface: settings::SettingSurfaces::GUI,
         private: false,
         toml_path: "cloud_platform.third_party_api_keys.aws_bedrock_auth_refresh_command",
-        description: crate::tr!("settings", "settings-ai-aws-bedrock-refresh-cmd-desc"),
+        description: "The command to run to refresh AWS credentials for Bedrock.",
     }
     // AWS profile name to use when loading credentials from the local AWS credential/config chain.
     aws_bedrock_profile: AwsBedrockProfile {
@@ -1662,7 +1662,7 @@ define_settings_group!(AISettings, settings: [
         surface: settings::SettingSurfaces::GUI,
         private: false,
         toml_path: "cloud_platform.third_party_api_keys.aws_bedrock_profile",
-        description: crate::tr!("settings", "settings-ai-aws-bedrock-profile-desc"),
+        description: "The AWS profile name to use for Bedrock credentials.",
     }
     // Whether the AWS Bedrock login banner has been permanently dismissed.
     //
@@ -1699,7 +1699,7 @@ define_settings_group!(AISettings, settings: [
         surface: settings::SettingSurfaces::GUI,
         private: false,
         toml_path: "agents.knowledge.rules_enabled",
-        description: crate::tr!("settings", "settings-ai-memory-rules-desc"),
+        description: "Whether the agent uses your saved rules during requests.",
     }
     // Whether warp drive context should be included in AI requests
     warp_drive_context_enabled: WarpDriveContextEnabled {
@@ -1710,7 +1710,7 @@ define_settings_group!(AISettings, settings: [
         surface: settings::SettingSurfaces::GUI,
         private: false,
         toml_path: "agents.knowledge.warp_drive_context_enabled",
-        description: crate::tr!("settings", "settings-ai-warp-drive-context-desc"),
+        description: "Whether Warp Drive context is included in AI requests.",
     }
 
     // Whether the codebase speedbump banner has been permanently dismissed for a given repo path.
@@ -1925,7 +1925,7 @@ define_settings_group!(AISettings, settings: [
         surface: settings::SettingSurfaces::GUI,
         private: false,
         toml_path: "agents.third_party.should_render_cli_agent_toolbar",
-        description: crate::tr!("settings", "settings-ai-cli-agent-footer-desc"),
+        description: "Whether to show the CLI agent footer for coding agent commands.",
     }
     // When enabled and a CLI agent session has a plugin listener, rich input
     // auto-closes when the session enters a Blocked state (the agent requires
@@ -1938,7 +1938,7 @@ define_settings_group!(AISettings, settings: [
         surface: settings::SettingSurfaces::GUI,
         private: false,
         toml_path: "agents.third_party.auto_toggle_composer",
-        description: crate::tr!("settings", "settings-ai-auto-toggle-rich-input-desc"),
+        description: "Whether CLI agent Rich Input automatically closes and reopens based on the agent's blocked state.",
     }
 
     // When enabled and a CLI agent session has a plugin listener, rich input
@@ -1951,7 +1951,7 @@ define_settings_group!(AISettings, settings: [
         surface: settings::SettingSurfaces::GUI,
         private: false,
         toml_path: "agents.third_party.auto_open_composer_on_cli_agent_start",
-        description: crate::tr!("settings", "settings-ai-auto-open-rich-input-desc"),
+        description: "Whether CLI agent Rich Input automatically opens when a CLI agent session starts.",
     }
 
     // When enabled and a CLI agent session does NOT have a plugin listener,
@@ -1966,7 +1966,7 @@ define_settings_group!(AISettings, settings: [
         surface: settings::SettingSurfaces::GUI,
         private: false,
         toml_path: "agents.third_party.auto_dismiss_composer_after_submit",
-        description: crate::tr!("settings", "settings-ai-auto-dismiss-rich-input-desc"),
+        description: "Whether CLI agent Rich Input automatically closes after the user submits a prompt.",
     }
 
     // When enabled, the Rich Input editor submits on Ctrl+Enter instead of Enter.
@@ -1995,7 +1995,7 @@ define_settings_group!(AISettings, settings: [
         private: false,
         toml_path: "agents.third_party.cli_agent_toolbar_enabled_commands",
         max_table_depth: 1,
-        description: crate::tr!("settings", "settings-ai-cli-agent-mapping-desc"),
+        description: "Maps custom toolbar command patterns to specific CLI agents.",
     }
 
     // This is not a user-visible setting - it tracks whether a paid user has dismissed the
@@ -2052,7 +2052,7 @@ define_settings_group!(AISettings, settings: [
         surface: settings::SettingSurfaces::GUI,
         private: false,
         toml_path: "agents.warp_agent.other.cloud_agent_computer_use_enabled",
-        description: crate::tr!("settings", "settings-ai-cloud-computer-use-desc"),
+        description: "Whether computer use is enabled for cloud agent conversations.",
     }
 
 
@@ -2067,7 +2067,7 @@ define_settings_group!(AISettings, settings: [
         surface: settings::SettingSurfaces::GUI,
         private: false,
         toml_path: "agents.mcp_servers.file_based_mcp_enabled",
-        description: crate::tr!("settings", "settings-ai-file-mcp-desc"),
+        description: "Whether third-party file-based MCP servers are automatically detected.",
     }
 
     // Controls how agent thinking/reasoning traces are displayed.
@@ -2097,7 +2097,7 @@ define_settings_group!(AISettings, settings: [
         surface: settings::SettingSurfaces::GUI,
         private: false,
         toml_path: "agents.warp_agent.input.include_agent_commands_in_history",
-        description: crate::tr!("settings", "settings-ai-agent-cmds-history-desc"),
+        description: "Whether agent-executed commands are included in command history.",
     }
 
     // Whether fast forward / auto-approve can run commands that match the command denylist.
@@ -2121,7 +2121,7 @@ define_settings_group!(AISettings, settings: [
         surface: settings::SettingSurfaces::GUI,
         private: false,
         toml_path: "agents.warp_agent.other.show_conversation_history",
-        description: crate::tr!("settings", "settings-ai-conversation-history-desc"),
+        description: "Whether conversation history appears in the tools panel.",
     }
 
 
@@ -2134,7 +2134,7 @@ define_settings_group!(AISettings, settings: [
         surface: settings::SettingSurfaces::GUI,
         private: false,
         toml_path: "agents.warp_agent.other.show_agent_notifications",
-        description: crate::tr!("settings", "settings-ai-agent-notifications-desc"),
+        description: "Whether agent notifications are shown.",
     }
 
     // Per-agent, per-host tracking of whether the user dismissed the plugin install chip.
@@ -2174,7 +2174,7 @@ define_settings_group!(AISettings, settings: [
         surface: settings::SettingSurfaces::GUI,
         private: false,
         toml_path: "agents.warp_agent.other.agent_attribution_enabled",
-        description: crate::tr!("settings", "settings-ai-attribution-desc"),
+        description: "Whether the Warp Agent adds an attribution co-author line to commit messages and pull requests it creates.",
     }
 
     should_force_disable_cloud_handoff: ShouldForceDisableCloudHandoff {

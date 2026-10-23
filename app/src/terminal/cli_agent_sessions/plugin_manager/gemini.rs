@@ -126,7 +126,7 @@ static INSTALL_INSTRUCTIONS: LazyLock<PluginInstructions> = LazyLock::new(|| Plu
     title: crate::tr!("terminal", "terminal-plugin-install-gemini-title"),
     subtitle: crate::tr!("terminal", "terminal-plugin-install-gemini-subtitle"),
     steps: &[PluginInstructionStep {
-        description: crate::tr!("terminal", "terminal-plugin-install-gemini-extension-step"),
+        description: "Install the Warp extension",
         command: "gemini extensions install https://github.com/warpdotdev/gemini-cli-warp --consent",
         executable: true,
         link: None,
@@ -138,7 +138,7 @@ static UPDATE_INSTRUCTIONS: LazyLock<PluginInstructions> = LazyLock::new(|| Plug
     title: crate::tr!("terminal", "terminal-plugin-update-gemini-title"),
     subtitle: crate::tr!("terminal", "terminal-plugin-install-gemini-subtitle"),
     steps: &[PluginInstructionStep {
-        description: crate::tr!("terminal", "terminal-plugin-update-gemini-extension-step"),
+        description: "Update the Warp extension",
         command: "gemini extensions update gemini-warp",
         executable: true,
         link: None,

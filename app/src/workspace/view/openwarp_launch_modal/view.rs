@@ -64,7 +64,7 @@ const FEATURE_ITEMS: &[FeatureItem] = &[
     FeatureItem {
         icon: Icon::MessageChatSquare,
         title: crate::tr!("workspace", "workspace-openwarp-auto-weights-title"),
-        description: crate::tr!("workspace", "workspace-openwarp-auto-weights-desc"),
+        description: "We've added a new auto model that picks the best open weight model for a task, like Kimi or MiniMax.",
         inline_link: None,
     },
 ];

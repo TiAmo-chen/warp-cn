@@ -485,7 +485,7 @@ define_settings_group!(TabSettings, settings: [
         surface: settings::SettingSurfaces::GUI,
         private: false,
         toml_path: "code.editor.show_code_review_diff_stats",
-        description: crate::tr!("settings", "settings-show-code-review-diff-stats-desc"),
+        description: "Whether to show lines added/removed counts on the code review button.",
     },
     preserve_active_tab_color: PreserveActiveTabColor {
         type: bool,
@@ -495,7 +495,7 @@ define_settings_group!(TabSettings, settings: [
         surface: settings::SettingSurfaces::GUI,
         private: false,
         toml_path: "appearance.tabs.preserve_active_tab_color",
-        description: crate::tr!("settings", "settings-preserve-active-tab-color-desc"),
+        description: "Whether to preserve the active tab's color when switching tabs.",
     },
     use_vertical_tabs: UseVerticalTabs {
         type: bool,
@@ -505,7 +505,7 @@ define_settings_group!(TabSettings, settings: [
         surface: settings::SettingSurfaces::GUI,
         private: false,
         toml_path: "appearance.vertical_tabs.enabled",
-        description: crate::tr!("settings", "settings-use-vertical-tabs-desc"),
+        description: "Whether to display tabs vertically instead of horizontally.",
     },
     show_vertical_tab_panel_in_restored_windows: ShowVerticalTabPanelInRestoredWindows {
         type: bool,
@@ -515,7 +515,7 @@ define_settings_group!(TabSettings, settings: [
         surface: settings::SettingSurfaces::GUI,
         private: false,
         toml_path: "appearance.vertical_tabs.show_panel_in_restored_windows",
-        description: crate::tr!("settings", "settings-show-vertical-tab-panel-restored-desc"),
+        description: "When restoring a window, open the vertical tabs panel even if it was closed when the session was saved.",
     },
     hide_title_bar_search_bar_in_vertical_tabs: HideTitleBarSearchBarInVerticalTabs {
         type: bool,
@@ -535,7 +535,7 @@ define_settings_group!(TabSettings, settings: [
         surface: settings::SettingSurfaces::GUI,
         private: false,
         toml_path: "appearance.vertical_tabs.use_latest_prompt_as_title",
-        description: crate::tr!("settings", "settings-use-latest-prompt-conversation-title-desc"),
+        description: "Whether vertical tab names for agent conversations use the latest user prompt.",
     },
     vertical_tabs_display_granularity: VerticalTabsDisplayGranularity,
     vertical_tabs_tab_item_mode: VerticalTabsTabItemMode,
@@ -550,7 +550,7 @@ define_settings_group!(TabSettings, settings: [
         surface: settings::SettingSurfaces::GUI,
         private: false,
         toml_path: "appearance.vertical_tabs.show_pr_link",
-        description: crate::tr!("settings", "settings-vertical-tabs-show-pr-link-desc"),
+        description: "Whether to show PR links on vertical tabs.",
     },
     vertical_tabs_show_diff_stats: VerticalTabsShowDiffStats {
         type: bool,
@@ -560,7 +560,7 @@ define_settings_group!(TabSettings, settings: [
         surface: settings::SettingSurfaces::GUI,
         private: false,
         toml_path: "appearance.vertical_tabs.show_diff_stats",
-        description: crate::tr!("settings", "settings-vertical-tabs-show-diff-stats-desc"),
+        description: "Whether to show diff stats on vertical tabs.",
     },
     vertical_tabs_show_details_on_hover: VerticalTabsShowDetailsOnHover {
         type: bool,
@@ -570,7 +570,7 @@ define_settings_group!(TabSettings, settings: [
         surface: settings::SettingSurfaces::GUI,
         private: false,
         toml_path: "appearance.vertical_tabs.show_details_on_hover",
-        description: crate::tr!("settings", "settings-vertical-tabs-show-details-hover-desc"),
+        description: "Whether to show a details sidecar when hovering over a vertical tab.",
     },
     header_toolbar_chip_selection: HeaderToolbarChipSelection,
     new_tab_placement: NewTabPlacement,

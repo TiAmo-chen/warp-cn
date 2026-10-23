@@ -214,13 +214,13 @@ static INSTALL_INSTRUCTIONS: LazyLock<PluginInstructions> = LazyLock::new(|| Plu
     subtitle: crate::tr!("terminal", "terminal-plugin-install-claude-subtitle"),
     steps: &[
         PluginInstructionStep {
-            description: crate::tr!("terminal", "terminal-plugin-add-repo-step"),
+            description: "Add the Warp plugin marketplace repository",
             command: "claude plugin marketplace add warpdotdev/claude-code-warp",
             executable: true,
             link: None,
         },
         PluginInstructionStep {
-            description: crate::tr!("terminal", "terminal-plugin-install-step"),
+            description: "Install the Warp plugin",
             command: "claude plugin install warp@claude-code-warp",
             executable: true,
             link: None,
@@ -238,19 +238,19 @@ static UPDATE_INSTRUCTIONS: LazyLock<PluginInstructions> = LazyLock::new(|| Plug
     subtitle: crate::tr!("terminal", "terminal-plugin-update-claude-subtitle"),
     steps: &[
         PluginInstructionStep {
-            description: crate::tr!("terminal", "terminal-plugin-remove-marketplace-step"),
+            description: "Remove the existing marketplace (if present)",
             command: "claude plugin marketplace remove claude-code-warp",
             executable: true,
             link: None,
         },
         PluginInstructionStep {
-            description: crate::tr!("terminal", "terminal-plugin-readd-marketplace-step"),
+            description: "Re-add the marketplace",
             command: "claude plugin marketplace add warpdotdev/claude-code-warp",
             executable: true,
             link: None,
         },
         PluginInstructionStep {
-            description: crate::tr!("terminal", "terminal-plugin-update-step"),
+            description: "Install the latest plugin version",
             command: "claude plugin install warp@claude-code-warp",
             executable: true,
             link: None,

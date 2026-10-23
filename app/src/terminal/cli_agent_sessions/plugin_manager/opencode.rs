@@ -36,7 +36,7 @@ static INSTALL_INSTRUCTIONS: LazyLock<PluginInstructions> = LazyLock::new(|| Plu
     subtitle: crate::tr!("terminal", "terminal-plugin-opencode-install-subtitle"),
     steps: &[
         PluginInstructionStep {
-            description: crate::tr!("terminal", "terminal-plugin-opencode-open-config-step"),
+            description: "Open or create your opencode.json. This can be in your project root, or the global config path:",
             command: "~/.config/opencode/opencode.json",
             executable: false,
             link: None,
@@ -56,7 +56,7 @@ static UPDATE_INSTRUCTIONS: LazyLock<PluginInstructions> = LazyLock::new(|| Plug
     subtitle: "Pin the plugin to the latest version in your opencode.json. OpenCode caches plugins per version spec, so changing the pin forces it to re-fetch on restart.",
     steps: &[
         PluginInstructionStep {
-            description: crate::tr!("terminal", "terminal-plugin-opencode-open-config-step"),
+            description: "Open or create your opencode.json. This can be in your project root, or the global config path:",
             command: "~/.config/opencode/opencode.json",
             executable: false,
             link: None,

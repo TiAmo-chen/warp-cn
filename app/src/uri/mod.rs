@@ -1239,7 +1239,7 @@ impl Action {
             | Self::AutoHandoffToCloud { .. } => W::default(),
             Self::NewTab => W::ShowPrimaryWindow(WindowActivationFallbackBehavior::Notify {
                 title: crate::tr!("common", "common-uri-new-tab-created").to_owned(),
-                description: crate::tr!("common", "common-uri-new-tab-description").to_owned(),
+                description: "Go to Warp to see your new tab.".to_owned(),
             }),
             Self::NewWindow => W::Nothing,
         }

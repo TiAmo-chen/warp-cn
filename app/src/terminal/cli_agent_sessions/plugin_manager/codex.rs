@@ -277,13 +277,13 @@ static PLUGIN_INSTALL_INSTRUCTIONS: LazyLock<PluginInstructions> =
         subtitle: "Run the following commands, then restart Codex.",
         steps: &[
             PluginInstructionStep {
-                description: crate::tr!("terminal", "terminal-plugin-add-repo-step"),
+                description: "Add the Warp plugin marketplace repository",
                 command: "codex plugin marketplace add warpdotdev/codex-warp",
                 executable: true,
                 link: None,
             },
             PluginInstructionStep {
-                description: crate::tr!("terminal", "terminal-plugin-install-step"),
+                description: "Install the Warp plugin",
                 command: "codex plugin add warp@codex-warp",
                 executable: true,
                 link: None,
@@ -298,7 +298,7 @@ static NATIVE_INSTALL_INSTRUCTIONS: LazyLock<PluginInstructions> = LazyLock::new
         subtitle: crate::tr!("terminal", "terminal-plugin-install-codex-subtitle"),
         steps: &[
             PluginInstructionStep {
-                description: crate::tr!("terminal", "terminal-plugin-codex-update-step"),
+                description: "Update Codex to the latest version.",
                 command: "",
                 executable: false,
                 link: Some("https://developers.openai.com/codex/cli#upgrade"),

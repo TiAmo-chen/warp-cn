@@ -22513,7 +22513,7 @@ impl Workspace {
             banner_type: WorkspaceBanner::Reauth,
             severity: BannerSeverity::Warning,
             heading: Some(crate::tr!("workspace", "workspace-login-expired").into()),
-            description: crate::tr!("workspace", "workspace-sign-in-again").into(),
+            description: "Please sign in again to restore access to cloud-based features.".into(),
             secondary_button: None,
             button: Some(WorkspaceBannerButtonDetails {
                 text: crate::tr!("workspace", "workspace-sign-in").into(),

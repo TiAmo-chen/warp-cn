@@ -304,7 +304,7 @@ define_settings_group!(SessionSettings, settings: [
         surface: settings::SettingSurfaces::GUI,
         private: false,
         toml_path: "terminal.input.honor_ps1",
-        description: crate::tr!("settings", "settings-honor-ps1-desc"),
+        description: "Whether to use your shell's PS1 prompt instead of the Warp prompt.",
     },
     saved_prompt: SavedPrompt {
         type: PromptSelection,
@@ -330,7 +330,7 @@ define_settings_group!(SessionSettings, settings: [
         surface: settings::SettingSurfaces::GUI,
         private: false,
         toml_path: "general.should_confirm_close_session",
-        description: crate::tr!("settings", "settings-confirm-close-session-desc"),
+        description: "Whether to show a confirmation dialog when closing a session.",
     },
     // Value is saved here but not shown in ui (can't be toggled in settings)
     should_confirm_shared_session_edit_access: ShouldConfirmSharedSessionEditAccess {
@@ -350,7 +350,7 @@ define_settings_group!(SessionSettings, settings: [
         private: false,
         toml_path: "notifications.preferences",
         max_table_depth: 1,
-        description: crate::tr!("settings", "settings-notifications-desc"),
+        description: "Notification preferences for terminal events.",
     }
     // This is a legacy setting that we no longer allow users to toggle after
     // context chips were introduced. We keep it only to respect users who
@@ -375,7 +375,7 @@ define_settings_group!(SessionSettings, settings: [
         surface: settings::SettingSurfaces::GUI,
         private: false,
         toml_path: "agents.warp_agent.input.show_model_selectors_in_prompt",
-        description: crate::tr!("settings", "settings-show-model-selectors-in-prompt-desc"),
+        description: "Whether to show AI model selectors in the input prompt.",
     },
     agent_footer_chip_selection: AgentToolbarChipSelectionSetting {
         type: AgentToolbarChipSelection,
@@ -385,7 +385,7 @@ define_settings_group!(SessionSettings, settings: [
         surface: settings::SettingSurfaces::GUI,
         private: false,
         toml_path: "agents.warp_agent.input.agent_toolbar_chip_selection_setting",
-        description: crate::tr!("settings", "settings-agent-toolbar-chips-desc"),
+        description: "Controls the layout of context chips in the Agent Mode toolbar.",
     },
     cli_agent_footer_chip_selection: CLIAgentToolbarChipSelectionSetting {
         type: CLIAgentToolbarChipSelection,
@@ -395,7 +395,7 @@ define_settings_group!(SessionSettings, settings: [
         surface: settings::SettingSurfaces::GUI,
         private: false,
         toml_path: "agents.third_party.cli_agent_toolbar_chip_selection_setting",
-        description: crate::tr!("settings", "settings-cli-agent-toolbar-chips-desc"),
+        description: "Controls the layout of context chips in the CLI Agent toolbar.",
     },
     notification_toast_duration_secs: NotificationToastDurationSecs {
         type: u64,
@@ -405,7 +405,7 @@ define_settings_group!(SessionSettings, settings: [
         surface: settings::SettingSurfaces::GUI,
         private: false,
         toml_path: "notifications.toast_duration_secs",
-        description: crate::tr!("settings", "settings-notification-toast-duration-desc"),
+        description: "How long notification toasts are displayed, in seconds.",
     },
     // Tracks whether the `gh` CLI is installed and authenticated on this machine.
     // Not synced because `gh` CLI availability is machine-specific.

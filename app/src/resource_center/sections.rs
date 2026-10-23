@@ -62,19 +62,19 @@ pub fn sections(ctx: &mut ViewContext<ResourceCenterMainView>) -> Vec<Section> {
         items: vec![
             ContentItem {
                 title: crate::tr!("resource_center", "resource-center-rc-use-custom-prompt"),
-                description: crate::tr!("resource_center", "resource-center-rc-use-custom-prompt-desc"),
+                description: "Set up Warp to honor your PS1 setting",
                 url: "https://docs.warp.dev/terminal/appearance/prompt",
                 button_label: crate::tr!("resource_center", "resource-center-rc-view-documentation"),
             },
             ContentItem {
                 title: crate::tr!("resource_center", "resource-center-rc-integrate-ide"),
-                description: crate::tr!("resource_center", "resource-center-rc-integrate-ide-desc"),
+                description: "Configure Warp to launch from your most used development tools",
                 url: "https://docs.warp.dev/terminal/integrations-and-plugins",
                 button_label: crate::tr!("resource_center", "resource-center-rc-view-documentation"),
             },
             ContentItem {
                 title: crate::tr!("resource_center", "resource-center-rc-how-warp-uses-warp"),
-                description: crate::tr!("resource_center", "resource-center-rc-how-warp-uses-warp-desc"),
+                description: "Learn how Warp's engineering team uses their favorite features",
                 url: "https://www.warp.dev/blog/how-warp-uses-warp",
                 button_label: crate::tr!("resource_center", "resource-center-rc-read-article"),
             },

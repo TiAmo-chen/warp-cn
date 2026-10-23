@@ -73,13 +73,13 @@ const FEATURE_ITEMS: &[FeatureItem] = &[
     FeatureItem {
         icon: Icon::Atom,
         title: crate::tr!("workspace", "workspace-multi-agent-orchestration"),
-        description: crate::tr!("workspace", "workspace-multi-agent-orchestration-desc"),
+        description: "Warp Agents will now orchestrate swarms of subagents, allowing you to parallelize tasks.",
         badge: None,
     },
     FeatureItem {
         icon: Icon::Cognition,
         title: crate::tr!("workspace", "workspace-agent-memory"),
-        description: crate::tr!("workspace", "workspace-agent-memory-desc"),
+        description: "Agents will now store and access long-term memories, enabling self-improvement over time.",
         badge: Some(crate::tr!("workspace", "workspace-research-preview")),
     },
 ];
