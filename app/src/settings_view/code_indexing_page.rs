@@ -1504,7 +1504,7 @@ impl CodePageWidget {
                 )
             } else if index_state.has_synced_version() {
                 (
-                    crate::tr!("settings", "stale"),
+                    "Stale",
                     theme.nonactive_ui_detail().into_solid(),
                     Icon::ClockRefresh,
                 )
@@ -2150,7 +2150,7 @@ impl CodePageWidget {
                         AnsiColorIdentifier::Green
                             .to_ansi_color(&theme.terminal_colors().normal)
                             .into(),
-                        &crate::tr!("settings", "available"),
+                        "Available",
                     ),
                     LspState::Starting | LspState::Available { .. } => (
                         AnsiColorIdentifier::Yellow

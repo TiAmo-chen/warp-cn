@@ -1449,7 +1449,7 @@ impl EnvironmentsPageWidget {
             appearance,
             EmptyStateRowConfig {
                 icon: Icon::Github,
-                title: &crate::tr!("settings", "quick-setup"),
+                title: "Quick setup",
                 badge: Some("Suggested"),
                 subtitle: "Select the GitHub repositories you’d like to work with and we’ll suggest a base image and config",
                 action_button: github_button,
@@ -1462,7 +1462,7 @@ impl EnvironmentsPageWidget {
             appearance,
             EmptyStateRowConfig {
                 icon: Icon::Terminal,
-                title: &crate::tr!("settings", "use-the-agent"),
+                title: "Use the agent",
                 badge: None,
                 subtitle: "Choose a locally set up project and we’ll help you set up an environment based on it",
                 action_button: local_repos_button,

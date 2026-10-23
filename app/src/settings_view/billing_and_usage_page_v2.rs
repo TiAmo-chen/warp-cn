@@ -1226,7 +1226,7 @@ impl BillingAndUsagePageV2View {
             } else if can_upgrade {
                 return AddonCreditsPanelState::IneligiblePlan(
                     AddonCreditsRestriction::UpgradeToBuild {
-                        link_text: &crate::tr!("settings", "upgrade-to-build"),
+                        link_text: "Upgrade to Build",
                         url: upgrade_url,
                     },
                 );

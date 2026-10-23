@@ -318,10 +318,10 @@ impl From<&TeamsPageAction> for LoginGatedFeature {
             DeleteDomainRestriction { .. } => "Delete Domain Restriction",
             SendEmailInvites { .. } => "Send Email Invites",
             GenerateUpgradeLink { .. } => "Generate Upgrade Link",
-            GenerateStripeBillingPortalLink { .. } => crate::tr!("settings", "generate-stripe-billing-portal-link"),
+            GenerateStripeBillingPortalLink { .. } => "Generate Stripe Billing Portal Link",
             OpenAdminPanel { .. } | OpenWorkspaceAdminPanel => "Open Admin Panel",
             ContactSupport => "Contact Support",
-            ContactSales => crate::tr!("settings", "contact-sales"),
+            ContactSales => "Contact Sales",
             ToggleTeamDiscoverability { .. } | ToggleTeamDiscoverabilityBeforeCreation => {
                 "Toggle Team Discoverability"
             }
@@ -3349,7 +3349,7 @@ impl TeamsWidget {
             // If the team is upgradeable to self-serve tier, show them the upgrade link.
             if team.billing_metadata.can_upgrade_to_higher_tier_plan() {
                 let description = if team.billing_metadata.can_upgrade_to_build_plan() {
-                    crate::tr!("settings", "upgrade-to-build")
+                    "Upgrade to Build"
                 } else {
                     match team.billing_metadata.customer_type {
                         CustomerType::Prosumer => "Upgrade to Turbo",

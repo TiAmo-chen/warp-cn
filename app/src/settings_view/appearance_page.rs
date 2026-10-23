@@ -1678,7 +1678,7 @@ impl AppearanceSettingsPageView {
             AppIcon::Neon => "Neon",
             AppIcon::Original => "Original",
             AppIcon::Starburst => "Starburst",
-            AppIcon::Sticker => crate::tr!("settings", "sticker"),
+            AppIcon::Sticker => "Sticker",
             AppIcon::WarpOne => "Warp 1",
         }
     }
