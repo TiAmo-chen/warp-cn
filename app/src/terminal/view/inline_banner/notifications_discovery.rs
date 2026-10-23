@@ -118,7 +118,7 @@ pub fn render_inline_notifications_discovery_banner(
                     ),
                 },
                 None => (
-                    crate::tr!("terminal", "terminal-notifications-pending"),
+                    "Don't forget to 'Allow' the permissions request to finish setting up notifications.",
                     learn_more_button,
                 ),
             };

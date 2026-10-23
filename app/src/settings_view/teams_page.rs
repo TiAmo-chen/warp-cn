@@ -2706,7 +2706,7 @@ impl TeamsWidget {
             if is_delinquency {
                 crate::tr!("settings", "settings-contact-a-team-admin-to-restore-access")
             } else {
-                crate::tr!("settings", "settings-contact-a-team-admin-to-grow-the-team")
+                "Contact a team admin to grow the team."
             }
         } else {
             match cta {
