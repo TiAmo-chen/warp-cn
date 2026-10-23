@@ -25,7 +25,7 @@ define_settings_group!(GeneralSettings, settings: [
         surface: settings::SettingSurfaces::GUI,
         private: false,
         toml_path: "general.quit_on_last_window_closed",
-        description: crate::tr!("terminal", "terminal-setting-description-quit-on-last-window-closed"),
+        description: "Whether to quit Warp when the last window is closed.",
     },
     restore_session: RestoreSession {
         type: bool,

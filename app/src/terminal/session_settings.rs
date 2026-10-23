@@ -294,7 +294,7 @@ define_settings_group!(SessionSettings, settings: [
         surface: settings::SettingSurfaces::GUI,
         private: false,
         toml_path: "session.new_session_shell_override",
-        description: crate::tr!("settings", "settings-new-session-shell-override-desc"),
+        description: "The shell to use when opening a new session.",
     }
     honor_ps1: HonorPS1 {
         type: bool,

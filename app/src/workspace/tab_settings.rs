@@ -475,7 +475,7 @@ define_settings_group!(TabSettings, settings: [
         surface: settings::SettingSurfaces::GUI,
         private: false,
         toml_path: "code.editor.show_code_review_button",
-        description: crate::tr!("settings", "settings-show-code-review-button-desc"),
+        description: "Whether to show the code review button on tabs.",
     },
     show_code_review_diff_stats: ShowCodeReviewDiffStats {
         type: bool,

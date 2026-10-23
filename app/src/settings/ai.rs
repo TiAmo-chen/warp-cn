@@ -1242,7 +1242,7 @@ define_settings_group!(AISettings, settings: [
         surface: settings::SettingSurfaces::GUI,
         private: false,
         toml_path: "agents.warp_agent.active_ai.enabled",
-        description: crate::tr!("settings", "settings-ai-proactive-features-desc"),
+        description: "Controls whether proactive AI features like suggestions are enabled.",
     },
     // This field should not be referenced directly to lookup autodetection enablement -- use the
     // `is_ai_autodetection_enabled()` getter.
