@@ -451,14 +451,14 @@ impl View for AgentMessageBar {
             Some(FigmaMcpStatus::NotInstalled) => {
                 message.items.push(figma_chip(
                     self.mouse_states.figma_install_button.clone(),
-                    crate::tr!("zz_zh02_supplement", "ai-enable-figma-mcp"),
+                    "Get Figma MCP",
                     Some(InputAction::FigmaAddButtonClicked),
                 ));
             }
             Some(FigmaMcpStatus::Installed) => {
                 message.items.push(figma_chip(
                     self.mouse_states.figma_enable_button.clone(),
-                    crate::tr!("ai_assistant", "ai-assistant-ai-enable-figma-mcp"),
+                    "Enable Figma MCP",
                     Some(InputAction::FigmaEnableButtonClicked),
                 ));
             }

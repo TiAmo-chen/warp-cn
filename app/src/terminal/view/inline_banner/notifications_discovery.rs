@@ -77,7 +77,7 @@ pub fn render_inline_notifications_discovery_banner(
             vec![],
         ),
         NotificationsMode::Disabled => (
-            crate::tr!("terminal", "terminal-notifications-disabled"),
+            "Notifications were turned off, but you can always go to Settings to enable notifications.",
             vec![],
         ),
         NotificationsMode::Unset => (

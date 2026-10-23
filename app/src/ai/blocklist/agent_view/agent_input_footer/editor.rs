@@ -251,7 +251,7 @@ impl View for AgentToolbarInlineEditor {
         render_chip_editor_sections(
             &self.chip_configurator,
             ChipEditorSectionsConfig {
-                available_section_label: crate::tr!("ai_assistant", "ai-assistant-ai-available-chips"),
+                available_section_label: &crate::tr!("ai_assistant", "ai-assistant-ai-available-chips"),
                 is_at_defaults: self.is_at_defaults(),
                 reset_action: AgentToolbarInlineEditorAction::ResetDefault,
                 activate_action: AgentToolbarInlineEditorAction::Activate,
@@ -419,7 +419,7 @@ impl View for AgentToolbarEditorModal {
             &self.chip_configurator,
             ChipEditorModalConfig {
                 title: self.modal_title(),
-                available_section_label: crate::tr!("ai_assistant", "ai-assistant-ai-available-chips"),
+                available_section_label: &crate::tr!("ai_assistant", "ai-assistant-ai-available-chips"),
                 is_at_defaults: self.is_at_defaults(),
                 is_dirty: self.is_dirty,
                 cancel_action: AgentToolbarEditorAction::Cancel,

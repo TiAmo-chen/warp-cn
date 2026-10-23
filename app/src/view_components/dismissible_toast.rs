@@ -297,7 +297,7 @@ impl<A: Action + Clone> TypedActionView for DismissibleToastStack<A> {
                     "Show more",
                     |toast| {
                         if toast.message_expanded {
-                            crate::tr!("workspace", "workspace-show-less")
+                            &crate::tr!("workspace", "workspace-show-less")
                         } else {
                             "Show more"
                         }
@@ -529,7 +529,7 @@ impl<A: Action + Clone> DismissibleToast<A> {
 
         if toast_message_is_truncated(&self.main_text) {
             let label = if message_expanded {
-                crate::tr!("workspace", "workspace-show-less")
+                "Show less"
             } else {
                 "Show more"
             };

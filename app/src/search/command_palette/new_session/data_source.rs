@@ -202,7 +202,7 @@ impl Entity for NewSessionDataSource {
 type SearcherAction = <NewSessionDataSource as SyncDataSource>::Action;
 
 const SEARCHER_BASE_STRINGS: [&str; 6] = [
-    crate::tr!("search", "search-new-tab"),
+    &crate::tr!("search", "search-new-tab"),
     crate::tr!("search", "search-new-window"),
     crate::tr!("search", "search-split-down"),
     crate::tr!("search", "search-split-right"),

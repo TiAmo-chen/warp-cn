@@ -126,7 +126,7 @@ impl ExternalEditorView {
 
         let mut items = vec![default_app];
         items.push(DropdownItem::new(
-            crate::tr!("menus", "menus-file-new-tab"),
+            "New Tab",
             ExternalEditorAction::SetLayout(EditorLayout::NewTab),
         ));
 

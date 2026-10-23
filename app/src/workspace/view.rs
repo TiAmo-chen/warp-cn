@@ -8194,13 +8194,13 @@ impl Workspace {
         let pane_name_target = match target {
             VerticalTabsPaneContextMenuTarget::ClickedPane(locator) => PaneNameMenuTarget {
                 locator,
-                rename_label: crate::tr!("workspace", "workspace-rename-pane"),
-                reset_label: crate::tr!("workspace", "workspace-reset-pane-name"),
+                rename_label: &crate::tr!("workspace", "workspace-rename-pane"),
+                reset_label: &crate::tr!("workspace", "workspace-reset-pane-name"),
             },
             VerticalTabsPaneContextMenuTarget::ActivePane(locator) => PaneNameMenuTarget {
                 locator,
-                rename_label: crate::tr!("workspace", "workspace-rename-active-pane"),
-                reset_label: crate::tr!("workspace", "workspace-reset-active-pane-name"),
+                rename_label: &crate::tr!("workspace", "workspace-rename-active-pane"),
+                reset_label: &crate::tr!("workspace", "workspace-reset-active-pane-name"),
             },
         };
         let can_move_left = self.can_move_tab(tab_index, TabMovement::Left);
@@ -10324,7 +10324,7 @@ impl Workspace {
                 let label = if is_vertical {
                     "Close tabs below"
                 } else {
-                    crate::tr!("workspace", "workspace-close-tabs-to-right")
+                    &crate::tr!("workspace", "workspace-close-tabs-to-right")
                 };
                 items.push(
                     MenuItemFields::new(label)
@@ -19171,7 +19171,7 @@ impl Workspace {
                 reporting
                     .mouse_reporting_enabled
                     .set_value(!prev_mouse_reporting_enabled, ctx)
-                    .expect(crate::tr!("settings", "settings-mousereportingenabled-failed-to-serialize"));
+                    .expect(&crate::tr!("settings", "settings-mousereportingenabled-failed-to-serialize"));
                 prev_mouse_reporting_enabled
             });
 
@@ -19198,7 +19198,7 @@ impl Workspace {
             reporting
                 .scroll_reporting_enabled
                 .toggle_and_save_value(ctx)
-                .expect(crate::tr!("settings", "settings-scrollreportingenabled-failed-to-serialize"));
+                .expect(&crate::tr!("settings", "settings-scrollreportingenabled-failed-to-serialize"));
         });
     }
 
@@ -19207,7 +19207,7 @@ impl Workspace {
             reporting
                 .focus_reporting_enabled
                 .toggle_and_save_value(ctx)
-                .expect(crate::tr!("settings", "settings-focusreportingenabled-failed-to-serialize"));
+                .expect(&crate::tr!("settings", "settings-focusreportingenabled-failed-to-serialize"));
         });
     }
 
@@ -20823,7 +20823,7 @@ impl Workspace {
                         ToolPanelView::ConversationListView => "Agent conversations",
                     }
                 } else {
-                    crate::tr!("settings", "settings-tools-panel")
+                    &crate::tr!("settings", "settings-tools-panel")
                 };
                 (
                     self.active_tab_pane_group().as_ref(ctx).left_panel_open,
@@ -20877,7 +20877,7 @@ impl Workspace {
                 ToolPanelView::ConversationListView => "Agent conversations",
             }
         } else {
-            crate::tr!("settings", "settings-tools-panel")
+            &crate::tr!("settings", "settings-tools-panel")
         };
 
         SavePosition::new(
@@ -25637,7 +25637,7 @@ impl TypedActionView for Workspace {
             AttemptLoginGatedAIUpgrade => {
                 AuthManager::handle(ctx).update(ctx, |auth_manager, ctx| {
                     auth_manager.attempt_login_gated_feature(
-                        crate::tr!("search", "search-upgrade-ai-usage"),
+                        &crate::tr!("search", "search-upgrade-ai-usage"),
                         AuthViewVariant::RequireLoginCloseable,
                         ctx,
                     )

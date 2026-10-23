@@ -440,7 +440,7 @@ impl<'a> WarpDriveRow<'a> {
             Owner::Team { team_uid, .. } => owner_label.push_str(
                 UserWorkspaces::as_ref(app)
                     .team_from_uid(team_uid)
-                    .map_or(crate::tr!("drive", "drive-unknown-team"), |team| &team.name),
+                    .map_or(&crate::tr!("drive", "drive-unknown-team"), |team| &team.name),
             ),
         }
 

@@ -2245,7 +2245,7 @@ impl View for ConversationDetailsPanel {
                 if let Some(id) = conversation_id {
                     content.add_child(
                         Container::new(self.render_field_with_copy(
-                            crate::tr!("ai_assistant", "ai-assistant-ai-conversation-id-label"),
+                            &crate::tr!("ai_assistant", "ai-assistant-ai-conversation-id-label"),
                             id,
                             ConversationDetailsPanelAction::CopyConversationId,
                             CopyButtonKind::ConversationId,
@@ -2277,7 +2277,7 @@ impl View for ConversationDetailsPanel {
                 if let Some(task_id) = task_id {
                     content.add_child(
                         Container::new(self.render_field_with_copy(
-                            crate::tr!("ai_assistant", "ai-assistant-ai-run-id-label"),
+                            &crate::tr!("ai_assistant", "ai-assistant-ai-run-id-label"),
                             &task_id.to_string(),
                             ConversationDetailsPanelAction::CopyRunId,
                             CopyButtonKind::RunId,
@@ -2310,7 +2310,7 @@ impl View for ConversationDetailsPanel {
         if let Some(duration) = self.data.run_time {
             let formatted = human_readable_precise_duration(duration);
             content.add_child(
-                Container::new(self.render_simple_field(crate::tr!("ai_assistant", "ai-assistant-ai-run-time"), &formatted, appearance))
+                Container::new(self.render_simple_field(&crate::tr!("ai_assistant", "ai-assistant-ai-run-time"), &formatted, appearance))
                     .with_margin_bottom(FIELD_SPACING)
                     .finish(),
             );
@@ -2319,7 +2319,7 @@ impl View for ConversationDetailsPanel {
         if let Some(created_at) = self.data.created_at {
             let formatted = created_at.format("%I:%M %p on %-m/%-d/%Y").to_string();
             content.add_child(
-                Container::new(self.render_simple_field(crate::tr!("ai_assistant", "ai-assistant-ai-filter-created-on-label"), &formatted, appearance))
+                Container::new(self.render_simple_field(&crate::tr!("ai_assistant", "ai-assistant-ai-filter-created-on-label"), &formatted, appearance))
                     .with_margin_bottom(FIELD_SPACING)
                     .finish(),
             );

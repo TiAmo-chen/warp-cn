@@ -200,7 +200,7 @@ impl OrchestrationConfigState {
                 if self.harness_type.eq_ignore_ascii_case("opencode") =>
             {
                 Some(
-                    crate::tr!("ai_assistant", "ai-assistant-ai-opencode-cloud-disabled-reason"),
+                    &crate::tr!("ai_assistant", "ai-assistant-ai-opencode-cloud-disabled-reason"),
                 )
             }
             RunAgentsExecutionMode::Remote { .. } => None,

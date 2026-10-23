@@ -460,7 +460,7 @@ impl CloudSetupGuideView {
 
         let sub_description = Container::new(Self::render_description_with_link(
             "Use Warp's environment setup command to have an agent help you through it. ",
-            crate::tr!("agent_cloud", "agent-cloud-visit-docs"),
+            "Visit docs",
             self.env_docs_link_mouse_state.clone(),
             SetupGuideDocs::Environment,
             appearance,
@@ -533,7 +533,7 @@ impl CloudSetupGuideView {
 
         let sub_description = Container::new(Self::render_description_with_link(
             "Integrate Slack or Linear to assign Warp's Agent tasks with @Warp. ",
-            crate::tr!("agent_cloud", "agent-cloud-visit-docs"),
+            "Visit docs",
             self.integration_docs_link_mouse_state.clone(),
             SetupGuideDocs::Integration,
             appearance,

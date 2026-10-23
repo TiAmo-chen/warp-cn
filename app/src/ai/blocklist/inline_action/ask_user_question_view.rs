@@ -931,7 +931,7 @@ impl AskUserQuestionView {
         let theme = appearance.theme();
         let dropdown = self.speedbump_dropdown.as_ref()?;
         let row = render_autonomy_dropdown_setting_speedbump_footer(
-            crate::tr!("ai_assistant", "ai-assistant-ai-allow-agent-questions"),
+            "Allow the agent to ask questions:",
             dropdown,
             settings_link_handle,
             app,

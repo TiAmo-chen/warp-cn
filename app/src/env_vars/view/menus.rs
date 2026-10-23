@@ -59,7 +59,7 @@ impl EnvVarCollectionView {
         );
 
         let clear_secret_item = Self::item(
-            crate::tr!("env_vars", "env-vars-clear-secret"),
+            &crate::tr!("env_vars", "env-vars-clear-secret"),
             EnvVarCollectionAction::ClearSecret,
             None,
             Some(Icon::Trash),
@@ -128,28 +128,28 @@ impl EnvVarCollectionView {
         ctx: &mut ViewContext<Self>,
     ) -> ViewHandle<Menu<EnvVarCollectionAction>> {
         let split_pane_right = Self::item(
-            crate::tr!("code", "code-split-pane-right"),
+            &crate::tr!("code", "code-split-pane-right"),
             EnvVarCollectionAction::EmitPaneEvent(PaneEvent::SplitRight(None)),
             keybinding_name_to_display_string("pane_group:add_right", ctx),
             None,
         );
 
         let split_pane_left = Self::item(
-            crate::tr!("code", "code-split-pane-left"),
+            &crate::tr!("code", "code-split-pane-left"),
             EnvVarCollectionAction::EmitPaneEvent(PaneEvent::SplitLeft(None)),
             keybinding_name_to_display_string("pane_group:add_left", ctx),
             None,
         );
 
         let split_pane_down = Self::item(
-            crate::tr!("code", "code-split-pane-down"),
+            &crate::tr!("code", "code-split-pane-down"),
             EnvVarCollectionAction::EmitPaneEvent(PaneEvent::SplitDown(None)),
             keybinding_name_to_display_string("pane_group:add_down", ctx),
             None,
         );
 
         let split_pane_up = Self::item(
-            crate::tr!("code", "code-split-pane-up"),
+            &crate::tr!("code", "code-split-pane-up"),
             EnvVarCollectionAction::EmitPaneEvent(PaneEvent::SplitUp(None)),
             keybinding_name_to_display_string("pane_group:add_up", ctx),
             None,
@@ -161,9 +161,9 @@ impl EnvVarCollectionView {
             .is_some_and(|handle| handle.split_pane_state(ctx).is_maximized());
         let toggle_maximize_pane = Self::item(
             if is_maximized {
-                crate::tr!("common", "common-minimize-pane")
+                &crate::tr!("common", "common-minimize-pane")
             } else {
-                crate::tr!("common", "common-maximize-pane")
+                &crate::tr!("common", "common-maximize-pane")
             },
             EnvVarCollectionAction::EmitPaneEvent(PaneEvent::ToggleMaximized),
             keybinding_name_to_display_string("pane_group:toggle_maximize_pane", ctx),
@@ -171,7 +171,7 @@ impl EnvVarCollectionView {
         );
 
         let close_pane = Self::item(
-            crate::tr!("code", "code-close-pane"),
+            &crate::tr!("code", "code-close-pane"),
             EnvVarCollectionAction::EmitPaneEvent(PaneEvent::Close),
             trigger_to_keystroke(&Trigger::Custom(CustomAction::CloseCurrentSession.into()))
                 .map(|keystroke| keystroke.displayed()),

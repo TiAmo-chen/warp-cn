@@ -1245,7 +1245,7 @@ impl View for CategoriesView {
 
 impl VoltronFeatureViewMeta for CategoriesView {
     fn editor_placeholder_text(&self) -> &'static str {
-        crate::tr!("search", "search-placeholder-workflows")
+        "Search workflows"
     }
 
     fn custom_action() -> Option<CustomAction> {

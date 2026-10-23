@@ -75,11 +75,11 @@ impl AgentProgress {
 
     pub fn setup_status_text(&self) -> &'static str {
         if self.harness_started_at.is_some() {
-            crate::tr!("ai_assistant", "ai-assistant-ai-starting-env-step-3")
+            "Starting Environment (Step 3/3)"
         } else if self.claimed_at.is_some() {
-            crate::tr!("ai_assistant", "ai-assistant-ai-creating-env-step-2")
+            "Creating Environment (Step 2/3)"
         } else {
-            crate::tr!("ai_assistant", "ai-assistant-ai-connecting-host-step-1")
+            "Connecting to Host (Step 1/3)"
         }
     }
 }

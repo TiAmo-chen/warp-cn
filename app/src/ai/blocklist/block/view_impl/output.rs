@@ -1606,7 +1606,7 @@ fn render_search_codebase(
                                 renderable_action(
                                     props,
                                     id,
-                                    crate::tr!("ai_assistant", "ai-assistant-ai-no-relevant-files"),
+                                    &crate::tr!("ai_assistant", "ai-assistant-ai-no-relevant-files"),
                                     app,
                                     footer,
                                     appearance,
@@ -1888,7 +1888,7 @@ fn render_read_skill(
 
         let skill_icon_override = icon_override_for_skill_name(&skill.name);
         let open_button = render_skill_button(
-            crate::tr!("ai_assistant", "ai-assistant-ai-open-skill"),
+            &crate::tr!("ai_assistant", "ai-assistant-ai-open-skill"),
             button_handle,
             appearance,
             skill.provider,
@@ -2088,7 +2088,7 @@ fn render_read_files(
             *shown.lock() = true;
             renderable_action =
                 renderable_action.with_footer(render_autonomy_checkbox_setting_speedbump_footer(
-                    crate::tr!("ai_assistant", "ai-assistant-ai-always-allow-file-access-coding"),
+                    "Always allow file access for coding tasks",
                     *checked,
                     AIBlockAction::ToggleAutoreadFilesSpeedbumpCheckbox,
                     props
@@ -2361,7 +2361,7 @@ fn render_requested_edits_output_message(
             .view
             .as_ref(app)
             .title()
-            .unwrap_or(crate::tr!("ai_assistant", "ai-assistant-ai-could-not-apply-changes"));
+            .unwrap_or(&crate::tr!("ai_assistant", "ai-assistant-ai-could-not-apply-changes"));
         RenderableAction::new(title, app)
             .with_icon(inline_action_icons::cancelled_icon(appearance).finish())
             .render(app)
@@ -2817,7 +2817,7 @@ fn render_file_retrieval_tool(
         } if show_for_action_id == action_id => {
             *shown.lock() = true;
             config = config.with_footer(render_autonomy_checkbox_setting_speedbump_footer(
-                crate::tr!("ai_assistant", "ai-assistant-ai-always-allow-file-access-coding"),
+                "Always allow file access for coding tasks",
                 *checked,
                 AIBlockAction::ToggleAutoreadFilesSpeedbumpCheckbox,
                 props
@@ -2903,7 +2903,7 @@ fn render_read_mcp_resource(
         renderable_action = renderable_action
             .with_header(blocked_action_header(
                 action_id.clone(),
-                crate::tr!("ai_assistant", "ai-assistant-ai-ok-read-mcp-resource"),
+                &crate::tr!("ai_assistant", "ai-assistant-ai-ok-read-mcp-resource"),
                 buttons.run_button.clone(),
                 buttons.cancel_button.clone(),
                 props.action_model,
@@ -3262,7 +3262,7 @@ fn render_use_computer(
             render_inline_action_secondary_button(
                 appearance,
                 btn,
-                crate::tr!("ai_assistant", "ai-assistant-ai-view-screenshot"),
+                "View screenshot",
                 Box::new(move |ctx, _, _| {
                     ctx.dispatch_typed_action(AIBlockAction::ViewScreenshot {
                         action_id: action_id_clone.clone(),
@@ -3299,7 +3299,7 @@ fn render_request_computer_use(
         renderable_action = renderable_action
             .with_header(blocked_action_header(
                 action_id.clone(),
-                crate::tr!("ai_assistant", "ai-assistant-ai-ok-computer-control"),
+                &crate::tr!("ai_assistant", "ai-assistant-ai-ok-computer-control"),
                 buttons.run_button.clone(),
                 buttons.cancel_button.clone(),
                 props.action_model,

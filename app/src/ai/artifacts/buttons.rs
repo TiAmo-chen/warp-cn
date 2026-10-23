@@ -246,7 +246,7 @@ fn make_pr_button(
     make_artifact_button(
         display_text,
         Icon::Github,
-        crate::tr!("ai_assistant", "ai-assistant-ai-open-pull-request"),
+        &crate::tr!("ai_assistant", "ai-assistant-ai-open-pull-request"),
         None,
         ArtifactButtonAction::OpenPullRequest { url },
         theme,
@@ -261,7 +261,7 @@ fn make_screenshot_button(
     make_artifact_button(
         label,
         Icon::Image,
-        crate::tr!("ai_assistant", "ai-assistant-ai-view-screenshots"),
+        &crate::tr!("ai_assistant", "ai-assistant-ai-view-screenshots"),
         None,
         ArtifactButtonAction::ViewScreenshots { artifact_uids },
         theme,
@@ -276,7 +276,7 @@ fn make_file_button(
     make_artifact_button(
         label,
         Icon::File,
-        crate::tr!("ai_assistant", "ai-assistant-ai-download-file"),
+        &crate::tr!("ai_assistant", "ai-assistant-ai-download-file"),
         None,
         ArtifactButtonAction::DownloadFile { artifact_uid },
         theme,

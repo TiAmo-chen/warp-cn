@@ -445,7 +445,7 @@ impl HoaOnboardingFlow {
         };
 
         self.render_callout_content(
-            crate::tr!("workspace", "workspace-onboarding-vertical-tabs-title"),
+            "Introducing vertical tabs - the new default",
             "Vertical tabs show all open agent and terminal panes, grouped by tab. Customize what information you want to see to support your workflow.",
             Some(checkbox_row),
             button,

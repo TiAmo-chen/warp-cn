@@ -18,31 +18,31 @@ pub fn sections(ctx: &mut ViewContext<ResourceCenterMainView>) -> Vec<Section> {
         section_name: FeatureSection::GettingStarted,
         items: vec![
             FeatureItem::new(
-                crate::tr!("resource_center", "resource-center-rc-create-first-block"),
+                "Create your first block",
                 crate::tr!("resource_center", "resource-center-rc-create-first-block-desc"),
                 Tip::Hint(TipHint::CreateBlock),
                 ctx,
             ),
             FeatureItem::new(
-                crate::tr!("resource_center", "resource-center-rc-navigate-blocks"),
+                "Navigate blocks",
                 crate::tr!("resource_center", "resource-center-rc-navigate-blocks-desc"),
                 Tip::Hint(TipHint::BlockSelect),
                 ctx,
             ),
             FeatureItem::new(
-                crate::tr!("resource_center", "resource-center-rc-take-action-on-block"),
+                "Take an action on block",
                 crate::tr!("resource_center", "resource-center-rc-take-action-on-block-desc"),
                 Tip::Hint(TipHint::BlockAction),
                 ctx,
             ),
             FeatureItem::new(
-                crate::tr!("resource_center", "resource-center-rc-open-command-palette"),
+                "Open command palette",
                 crate::tr!("resource_center", "resource-center-rc-open-command-palette-desc"),
                 Tip::Action(TipAction::CommandPalette),
                 ctx,
             ),
             FeatureItem::new(
-                crate::tr!("resource_center", "resource-center-rc-set-your-theme"),
+                "Set your theme",
                 crate::tr!("resource_center", "resource-center-rc-set-your-theme-desc"),
                 Tip::Action(TipAction::ThemePicker),
                 ctx,
@@ -61,22 +61,22 @@ pub fn sections(ctx: &mut ViewContext<ResourceCenterMainView>) -> Vec<Section> {
         section_name: FeatureSection::AdvancedSetup,
         items: vec![
             ContentItem {
-                title: crate::tr!("resource_center", "resource-center-rc-use-custom-prompt"),
+                title: &crate::tr!("resource_center", "resource-center-rc-use-custom-prompt"),
                 description: "Set up Warp to honor your PS1 setting",
                 url: "https://docs.warp.dev/terminal/appearance/prompt",
-                button_label: crate::tr!("resource_center", "resource-center-rc-view-documentation"),
+                button_label: &crate::tr!("resource_center", "resource-center-rc-view-documentation"),
             },
             ContentItem {
-                title: crate::tr!("resource_center", "resource-center-rc-integrate-ide"),
+                title: &crate::tr!("resource_center", "resource-center-rc-integrate-ide"),
                 description: "Configure Warp to launch from your most used development tools",
                 url: "https://docs.warp.dev/terminal/integrations-and-plugins",
-                button_label: crate::tr!("resource_center", "resource-center-rc-view-documentation"),
+                button_label: &crate::tr!("resource_center", "resource-center-rc-view-documentation"),
             },
             ContentItem {
-                title: crate::tr!("resource_center", "resource-center-rc-how-warp-uses-warp"),
+                title: &crate::tr!("resource_center", "resource-center-rc-how-warp-uses-warp"),
                 description: "Learn how Warp's engineering team uses their favorite features",
                 url: "https://www.warp.dev/blog/how-warp-uses-warp",
-                button_label: crate::tr!("resource_center", "resource-center-rc-read-article"),
+                button_label: &crate::tr!("resource_center", "resource-center-rc-read-article"),
             },
         ],
     };
@@ -89,14 +89,14 @@ fn maximize_warp_items(ctx: &mut ViewContext<ResourceCenterMainView>) -> Vec<Fea
     let mut maximize_warp_items = vec![];
 
     maximize_warp_items.push(FeatureItem::new(
-        crate::tr!("resource_center", "resource-center-rc-command-search"),
+        "Command search",
         crate::tr!("resource_center", "resource-center-rc-command-search-desc"),
         Tip::Action(TipAction::CommandSearch),
         ctx,
     ));
 
     maximize_warp_items.push(FeatureItem::new(
-        crate::tr!("resource_center", "resource-center-rc-ai-command-search"),
+        "AI command search",
         crate::tr!("resource_center", "resource-center-rc-ai-command-search-desc"),
         Tip::Action(TipAction::AiCommandSearch),
         ctx,
@@ -104,7 +104,7 @@ fn maximize_warp_items(ctx: &mut ViewContext<ResourceCenterMainView>) -> Vec<Fea
 
     if ContextFlag::CreateNewSession.is_enabled() {
         maximize_warp_items.push(FeatureItem::new(
-            crate::tr!("resource_center", "resource-center-rc-split-panes"),
+            "Split panes",
             crate::tr!("resource_center", "resource-center-rc-split-panes-desc"),
             Tip::Action(TipAction::SplitPane),
             ctx,
@@ -113,7 +113,7 @@ fn maximize_warp_items(ctx: &mut ViewContext<ResourceCenterMainView>) -> Vec<Fea
 
     if ContextFlag::LaunchConfigurations.is_enabled() {
         maximize_warp_items.push(FeatureItem::new(
-            crate::tr!("resource_center", "resource-center-rc-launch-configuration"),
+            "Launch configuration",
             crate::tr!("resource_center", "resource-center-rc-launch-configuration-desc"),
             Tip::Action(TipAction::SaveNewLaunchConfig),
             ctx,

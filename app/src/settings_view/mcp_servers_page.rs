@@ -150,11 +150,11 @@ impl MCPServersSettingsPageView {
     ) {
         let message = match server_name {
             Some(name) => format!("Successfully logged out of {name} MCP server"),
-            None => crate::tr!("settings", "successfully-logged-out-of-mcp-server").to_string(),
+            None => "Successfully logged out of MCP server".to_string(),
         };
         match item_id {
             ServerCardItemId::TemplatableMCP(_) => {
-                report_error!(crate::tr!("settings", "settings-logging-out-is-not-supported-for-template-mcp-servers"));
+                report_error!("Logging out is not supported for template MCP servers.");
             }
             ServerCardItemId::TemplatableMCPInstallation(uuid) => {
                 TemplatableMCPServerManager::handle(ctx).update(ctx, |manager, ctx| {
@@ -164,7 +164,7 @@ impl MCPServersSettingsPageView {
                 self.add_toast(&message, ctx);
             }
             ServerCardItemId::GalleryMCP(_) => {
-                report_error!(crate::tr!("settings", "settings-logging-out-is-not-supported-for-gallery-mcp-servers"));
+                report_error!("Logging out is not supported for gallery MCP servers.");
             }
             ServerCardItemId::FileBasedMCP(uuid) => {
                 if let Some(installation) =

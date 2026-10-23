@@ -123,7 +123,7 @@ pub const LOAD_OUTPUT_MESSAGE_FOR_GENERATING_PLAN: &str = "Generating plan...";
 pub const LOAD_OUTPUT_MESSAGE_FOR_UPDATING_PLAN: &str = "Updating plan...";
 pub const LOAD_OUTPUT_MESSAGE_FOR_SUMMARIZING_CONVERSATION: &str = "Summarizing conversation...";
 pub const LOAD_OUTPUT_MESSAGE_FOR_SUMMARIZING_TOOL_CALL_RESULT: &str =
-    crate::tr!("ai_assistant", "ai-assistant-ai-summarizing-command-output");
+    &crate::tr!("ai_assistant", "ai-assistant-ai-summarizing-command-output");
 pub const LOAD_OUTPUT_MESSAGE_FOR_SEARCH_CODEBASE: &str = "Searching codebase...";
 pub const LOAD_OUTPUT_MESSAGE_FOR_READING_FILES: &str = "Reading files...";
 pub const LOAD_OUTPUT_MESSAGE_FOR_GREP: &str = "Grepping...";
@@ -131,19 +131,19 @@ pub const LOAD_OUTPUT_MESSAGE_FOR_FILE_GLOB: &str = "Finding files...";
 pub const LOAD_OUTPUT_MESSAGE_FOR_RUNNING_COMMAND: &str = "Executing command...";
 pub const LOAD_OUTPUT_MESSAGE_FOR_WRITING_TO_COMMAND: &str = "Writing command input...";
 pub const LOAD_OUTPUT_MESSAGE_FOR_WAITING_FOR_COMMAND_COMPLETION: &str =
-    crate::tr!("ai_assistant", "ai-assistant-ai-waiting-for-command-exit");
+    &crate::tr!("ai_assistant", "ai-assistant-ai-waiting-for-command-exit");
 pub const LOAD_OUTPUT_MESSAGE_FOR_WEB_SEARCH: &str = "Searching the web...";
 
 #[cfg(feature = "local_fs")]
 pub(crate) type ResolvedBlocklistImageSources = HashMap<String, Option<AssetSource>>;
 
 pub const BLOCKED_ACTION_MESSAGE_FOR_WRITE_TO_LONG_RUNNING_SHELL_COMMAND: &str =
-    crate::tr!("ai_assistant", "ai-assistant-ai-blocked-write-to-command");
+    &crate::tr!("ai_assistant", "ai-assistant-ai-blocked-write-to-command");
 pub const BLOCKED_ACTION_MESSAGE_FOR_READING_FILES: &str = "Grant access to the following files?";
 pub const BLOCKED_ACTION_MESSAGE_FOR_SEARCHING_CODEBASE: &str =
-    crate::tr!("ai_assistant", "ai-assistant-ai-blocked-searching-codebase");
+    &crate::tr!("ai_assistant", "ai-assistant-ai-blocked-searching-codebase");
 pub const BLOCKED_ACTION_MESSAGE_FOR_GREP_OR_FILE_GLOB: &str =
-    crate::tr!("ai_assistant", "ai-assistant-ai-blocked-grep-file-glob");
+    &crate::tr!("ai_assistant", "ai-assistant-ai-blocked-grep-file-glob");
 
 const BLOCKLIST_VISUAL_SECTION_HEIGHT_LINE_MULTIPLIER: f32 = 10.0;
 const BLOCKLIST_MERMAID_MAX_HEIGHT_LINE_MULTIPLIER: f32 = 40.0;
@@ -465,7 +465,7 @@ pub fn render_warping_indicator<V: View>(
     if let Some(take_over_button_props) = props.take_over_lrc_control_button {
         has_buttons = true;
         buttons_row.add_child(render_switch_control_to_user_button(
-            crate::tr!("ai_assistant", "ai-assistant-ai-take-over"),
+            "Take over",
             crate::tr!("ai_assistant", "ai-assistant-ai-take-over-tooltip"),
             take_over_button_props,
             appearance,
@@ -946,7 +946,7 @@ fn render_auto_approve_button(
     let tooltip_text = if props.is_locked {
         "Fast forward is always enabled for cloud agent conversations"
     } else if is_active {
-        crate::tr!("ai_assistant", "ai-assistant-ai-fast-forward-on-tooltip")
+        &crate::tr!("ai_assistant", "ai-assistant-ai-fast-forward-on-tooltip")
     } else {
         crate::tr!("ai_assistant", "ai-assistant-ai-fast-forward-off-tooltip")
     };

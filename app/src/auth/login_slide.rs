@@ -93,19 +93,19 @@ impl LoginPurpose {
     fn copy(self) -> (&'static str, &'static str) {
         match self {
             LoginPurpose::WarpDrive => (
-                crate::tr!("auth", "auth-get-started-with-warp-drive"),
-                crate::tr!("auth", "auth-connect-drive-description"),
+                &crate::tr!("auth", "auth-get-started-with-warp-drive"),
+                &crate::tr!("auth", "auth-connect-drive-description"),
             ),
             LoginPurpose::WarpAgent => (
-                crate::tr!("auth", "auth-get-started-with-ai"),
-                crate::tr!("auth", "auth-connect-ai-description"),
+                &crate::tr!("auth", "auth-get-started-with-ai"),
+                &crate::tr!("auth", "auth-connect-ai-description"),
             ),
             LoginPurpose::ThirdParty => (
-                crate::tr!("settings", "settings-create-an-account"),
+                &crate::tr!("settings", "settings-create-an-account"),
                 "Create a Warp account to enable AI-powered planning, coding, and automations.",
             ),
             LoginPurpose::AccountFirst => (
-                crate::tr!("settings", "settings-create-an-account"),
+                &crate::tr!("settings", "settings-create-an-account"),
                 "Access AI, run cloud agents, collaborate with teammates, and sync settings across devices.",
             ),
         }
@@ -1107,16 +1107,16 @@ impl LoginSlideView {
             &'static str,
         ) = match self.login_purpose() {
             LoginPurpose::WarpDrive => (
-                crate::tr!("auth", "auth-sure-disable-warp-drive"),
+                &crate::tr!("auth", "auth-sure-disable-warp-drive"),
                 "Warp Drive lets you save workflows and knowledge across devices and share them with your team. By continuing, you won't have access to the following features:",
                 WARP_DRIVE_FEATURES,
-                crate::tr!("auth", "auth-enable-warp-drive"),
+                &crate::tr!("auth", "auth-enable-warp-drive"),
             ),
             LoginPurpose::WarpAgent | LoginPurpose::ThirdParty | LoginPurpose::AccountFirst => (
                 "Continue without signing in?",
                 "Without an account, you won't have access to Warp's AI features. Sign in anytime to unlock agents and other AI features.",
                 &[],
-                crate::tr!("workspace", "workspace-sign-in"),
+                &crate::tr!("workspace", "workspace-sign-in"),
             ),
         };
 

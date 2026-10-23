@@ -589,7 +589,7 @@ impl TabData {
         let mut menu_items = vec![];
         let tab_title = Self::copyable_metadata_value(Some(pane_group.display_title(ctx)));
         if !uses_vertical_tabs(ctx) {
-            Self::push_copy_metadata_menu_item(&mut menu_items, crate::tr!("terminal", "terminal-copy-tab-title"), tab_title);
+            Self::push_copy_metadata_menu_item(&mut menu_items, "Copy tab title", tab_title);
             return menu_items;
         }
 
@@ -627,13 +627,13 @@ impl TabData {
             let terminal_view = terminal_view.as_ref(ctx);
             Self::push_copy_metadata_menu_item(
                 &mut menu_items,
-                crate::tr!("terminal", "terminal-copy-branch"),
+                "Copy branch",
                 Self::copyable_metadata_value(terminal_view.current_git_branch(ctx)),
             );
             Self::push_copy_metadata_menu_item(&mut menu_items, title_label, title);
             Self::push_copy_metadata_menu_item(
                 &mut menu_items,
-                crate::tr!("terminal", "terminal-copy-working-directory"),
+                "Copy working directory",
                 Self::copyable_metadata_value(
                     terminal_view
                         .pwd()
@@ -642,7 +642,7 @@ impl TabData {
             );
             Self::push_copy_metadata_menu_item(
                 &mut menu_items,
-                crate::tr!("terminal", "terminal-copy-pull-request-link"),
+                "Copy pull request link",
                 Self::copyable_metadata_value(terminal_view.current_pull_request_url(ctx)),
             );
         } else {

@@ -292,7 +292,7 @@ impl View for AgentViewEntryBlock {
         let is_open_elsewhere = is_active && !is_active_in_this_pane;
 
         let subtext = if is_open_elsewhere {
-            Some(crate::tr!("ai_assistant", "ai-assistant-ai-open-in-different-pane"))
+            Some("Open in different pane")
         } else if self.is_restored {
             Some("Restored")
         } else if !self.is_new

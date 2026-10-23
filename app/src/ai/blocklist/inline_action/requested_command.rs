@@ -829,7 +829,7 @@ impl RequestedCommandView {
                 citations_padding,
                 app,
             )
-            .map(|citation| (crate::tr!("ai_assistant", "ai-assistant-ai-copied-from"), citation))
+            .map(|citation| ("Copied from", citation))
         } else {
             // Otherwise, we render all the citations (if any) and mention that the command was derived from them.
             render_citation_chips(

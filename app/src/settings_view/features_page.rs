@@ -3092,8 +3092,8 @@ impl FeaturesPageView {
             Category::new("General", general_widgets),
             Category::new("Session", session_widgets),
             Category::new("Keys", keys_widgets),
-            Category::new(crate::tr!("settings", "settings-text-editing"), text_editing_widgets),
-            Category::new(crate::tr!("settings", "settings-section-terminal-input"), editor_widgets),
+            Category::new("Text Editing", text_editing_widgets),
+            Category::new("Terminal Input", editor_widgets),
             Category::new("Terminal", terminal_widgets),
             Category::new("Notifications", notifications_widgets),
             Category::new(
@@ -3124,7 +3124,7 @@ impl FeaturesPageView {
                 .position(|val| *val == current_value)
                 .unwrap_or_else(|| {
                     report_error!(
-                        crate::tr!("settings", "settings-could-not-find-current-ctrl-tab-behavior-value-in-dropdown-option-list")
+                        "Could not find current Ctrl-Tab behavior value in dropdown option list"
                     );
                     0
                 });
@@ -3159,7 +3159,7 @@ impl FeaturesPageView {
                 .position(|val| *val == current_value)
                 .unwrap_or_else(|| {
                     report_error!(
-                        crate::tr!("settings", "settings-could-not-find-current-right-click-behavior-value-in-dropdown-option-list")
+                        "Could not find current right-click behavior value in dropdown option list"
                     );
                     0
                 });
@@ -3196,7 +3196,7 @@ impl FeaturesPageView {
                 .position(|val| *val == current_value)
                 .unwrap_or_else(|| {
                     report_error!(
-                        crate::tr!("settings", "settings-could-not-find-current-newtabplacement-value-in-dropdown-option-list")
+                        "Could not find current NewTabPlacement value in dropdown option list"
                     );
                     0
                 });
@@ -7389,7 +7389,7 @@ impl SettingsWidget for Osc52ClipboardAccessWidget {
             appearance,
             &crate::tr!("settings", "clipboard-access-(osc-52)"),
             Some(
-                crate::tr!("settings", "settings-controls-whether-programs-running-in-the-terminal-can-read-or-write-your-system-clipboard"),
+                &crate::tr!("settings", "settings-controls-whether-programs-running-in-the-terminal-can-read-or-write-your-system-clipboard"),
             ),
             None,
             LocalOnlyIconState::for_setting(

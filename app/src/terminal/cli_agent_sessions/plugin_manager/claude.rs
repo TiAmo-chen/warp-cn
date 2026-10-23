@@ -145,11 +145,11 @@ impl CliAgentPluginManager for ClaudeCodePluginManager {
     }
 
     fn install_success_message(&self) -> &'static str {
-        crate::tr!("terminal", "terminal-plugin-restart-claude-activate")
+        "Warp plugin installed. Please run /reload-plugins to activate."
     }
 
     fn update_success_message(&self) -> &'static str {
-        crate::tr!("terminal", "terminal-plugin-restart-claude-update")
+        "Warp plugin updated. Please run /reload-plugins to activate."
     }
 
     fn install_instructions(&self) -> &'static PluginInstructions {
@@ -210,8 +210,8 @@ impl CliAgentPluginManager for ClaudeCodePluginManager {
 }
 
 static INSTALL_INSTRUCTIONS: LazyLock<PluginInstructions> = LazyLock::new(|| PluginInstructions {
-    title: crate::tr!("terminal", "terminal-plugin-install-claude-title"),
-    subtitle: crate::tr!("terminal", "terminal-plugin-install-claude-subtitle"),
+    title: &crate::tr!("terminal", "terminal-plugin-install-claude-title"),
+    subtitle: &crate::tr!("terminal", "terminal-plugin-install-claude-subtitle"),
     steps: &[
         PluginInstructionStep {
             description: "Add the Warp plugin marketplace repository",
@@ -227,15 +227,15 @@ static INSTALL_INSTRUCTIONS: LazyLock<PluginInstructions> = LazyLock::new(|| Plu
         },
     ],
     post_install_notes: &[
-        crate::tr!("terminal", "terminal-plugin-restart-activate"),
+        &crate::tr!("terminal", "terminal-plugin-restart-activate"),
         "There are some known issues with Claude Code's plugin system. \
              If the plugin is not found after step 1, you can try manually adding an \"extraKnownMarketplaces\" entry to ~/.claude/settings.json.",
     ],
 });
 
 static UPDATE_INSTRUCTIONS: LazyLock<PluginInstructions> = LazyLock::new(|| PluginInstructions {
-    title: crate::tr!("terminal", "terminal-plugin-update-claude-title"),
-    subtitle: crate::tr!("terminal", "terminal-plugin-update-claude-subtitle"),
+    title: &crate::tr!("terminal", "terminal-plugin-update-claude-title"),
+    subtitle: &crate::tr!("terminal", "terminal-plugin-update-claude-subtitle"),
     steps: &[
         PluginInstructionStep {
             description: "Remove the existing marketplace (if present)",
@@ -256,7 +256,7 @@ static UPDATE_INSTRUCTIONS: LazyLock<PluginInstructions> = LazyLock::new(|| Plug
             link: None,
         },
     ],
-    post_install_notes: &[crate::tr!("terminal", "terminal-plugin-restart-update")],
+    post_install_notes: &[&crate::tr!("terminal", "terminal-plugin-restart-update")],
 });
 
 fn check_installed(claude_dir: &Path) -> bool {

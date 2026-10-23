@@ -38,7 +38,7 @@ impl LoginFailureReason {
         let fragments = match self {
             LoginFailureReason::InvalidRedirectUrl { was_pasted } => {
                 let text = if *was_pasted {
-                    crate::tr!("auth", "auth-invalid-token-entered")
+                    "An invalid auth token was entered into the modal."
                 } else {
                     "Failed to log in. Try manually copying the auth token from the \
                         authentication web page and pasting into the modal."

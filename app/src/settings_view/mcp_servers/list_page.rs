@@ -1301,7 +1301,7 @@ impl MCPServersListPageView {
                     ));
                 } else if !filtered_gallery_cards.is_empty() {
                     page.add_child(self.render_server_cards_section(
-                        crate::tr!("zz_zh02_supplement", "settings-mcp-shared-from-warp"),
+                        &crate::tr!("zz_zh02_supplement", "settings-mcp-shared-from-warp"),
                         &filtered_gallery_cards,
                         appearance,
                         app,

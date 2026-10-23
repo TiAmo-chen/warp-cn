@@ -966,20 +966,20 @@ impl CommentListView {
     ) -> Cow<'static, str> {
         if let ReviewDestination::Cli(agent) = destination {
             if !has_sendable_comments {
-                Cow::Borrowed(crate::tr!("code_review", "code-review-no-non-outdated-comments"))
+                Cow::Borrowed(&crate::tr!("code_review", "code-review-no-non-outdated-comments"))
             } else {
                 Cow::Owned(format!("Send diff comments to {}", agent.display_name()))
             }
         } else if !ai_enabled {
-            Cow::Borrowed(crate::tr!("code_review", "code-review-ai-must-be-enabled"))
+            Cow::Borrowed(&crate::tr!("code_review", "code-review-ai-must-be-enabled"))
         } else if !ai_available {
-            Cow::Borrowed(crate::tr!("code_review", "code-review-agent-requires-credits"))
+            Cow::Borrowed(&crate::tr!("code_review", "code-review-agent-requires-credits"))
         } else if matches!(destination, ReviewDestination::None) {
-            Cow::Borrowed(crate::tr!("code_review", "code-review-all-terminals-busy"))
+            Cow::Borrowed(&crate::tr!("code_review", "code-review-all-terminals-busy"))
         } else if !has_sendable_comments {
-            Cow::Borrowed(crate::tr!("code_review", "code-review-no-non-outdated-comments"))
+            Cow::Borrowed(&crate::tr!("code_review", "code-review-no-non-outdated-comments"))
         } else {
-            Cow::Borrowed(crate::tr!("code_review", "code-review-send-comments-to-agent"))
+            Cow::Borrowed(&crate::tr!("code_review", "code-review-send-comments-to-agent"))
         }
     }
 

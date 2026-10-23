@@ -2066,7 +2066,7 @@ fn render_search_action_input(
             ref path,
         } => {
             let display_path = if path == "." {
-                crate::tr!("ai_assistant", "ai-assistant-ai-the-current-directory")
+                "the current directory"
             } else {
                 path.as_str()
             };
@@ -2086,7 +2086,7 @@ fn render_search_action_input(
             ref patterns,
             ref search_dir,
         } => {
-            let display_path = search_dir.as_deref().unwrap_or(crate::tr!("ai_assistant", "ai-assistant-ai-the-current-directory"));
+            let display_path = search_dir.as_deref().unwrap_or(&crate::tr!("ai_assistant", "ai-assistant-ai-the-current-directory"));
 
             if patterns.len() == 1 {
                 format!(

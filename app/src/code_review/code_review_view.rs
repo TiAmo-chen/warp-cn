@@ -6592,7 +6592,7 @@ impl CodeReviewView {
                     button.set_disabled(disabled, ctx);
                     button.set_tooltip(
                         Some(if disabled {
-                            crate::tr!("code_review", "code-review-no-changes-to-commit")
+                            "No changes to commit"
                         } else {
                             "Commit changes locally"
                         }),
@@ -6651,7 +6651,7 @@ impl CodeReviewView {
                         button.set_disabled(is_pr_info_refreshing, ctx);
                         button.set_tooltip(
                             Some(if is_pr_info_refreshing {
-                                crate::tr!("code_review", "code-review-refreshing-pr-info")
+                                "Refreshing PR info"
                             } else {
                                 "View pull request on GitHub"
                             }),

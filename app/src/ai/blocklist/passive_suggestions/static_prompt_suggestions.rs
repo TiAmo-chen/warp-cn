@@ -89,34 +89,34 @@ static STATIC_RULES: &[StaticPromptSuggestion] = &[
         name: "GIT_PUSH",
         pattern: r"^git\s+push\s*$",
         label_template: None,
-        query_template: crate::tr!("ai_assistant", "ai-assistant-ai-help-create-pull-request"),
+        query_template: &crate::tr!("ai_assistant", "ai-assistant-ai-help-create-pull-request"),
     },
     // git init: Initializes a new, empty Git repository.
     StaticPromptSuggestion {
         name: "GIT_INIT",
         pattern: r"^git\s+init\s*$",
-        label_template: Some(crate::tr!("ai_assistant", "ai-assistant-ai-help-start-new-project")),
-        query_template: crate::tr!("ai_assistant", "ai-assistant-ai-help-start-new-project-ask-details"),
+        label_template: Some(&crate::tr!("ai_assistant", "ai-assistant-ai-help-start-new-project")),
+        query_template: &crate::tr!("ai_assistant", "ai-assistant-ai-help-start-new-project-ask-details"),
     },
     // npm init / yarn init / pnpm init: Initializes a Node.js project.
     StaticPromptSuggestion {
         name: "NODE_PACKAGE_INIT",
         pattern: r"^(npm|yarn|pnpm)\s+init\s*$",
-        label_template: Some(crate::tr!("ai_assistant", "ai-assistant-ai-help-start-nodejs-project")),
-        query_template: crate::tr!("ai_assistant", "ai-assistant-ai-help-start-nodejs-project-ask-details"),
+        label_template: Some(&crate::tr!("ai_assistant", "ai-assistant-ai-help-start-nodejs-project")),
+        query_template: &crate::tr!("ai_assistant", "ai-assistant-ai-help-start-nodejs-project-ask-details"),
     },
     // npx create-react-app <project>: Creates a new React app called <project>.
     StaticPromptSuggestion {
         name: "NPX_CREATE_REACT_APP",
         pattern: r"^npx\s+create-react-app\s+(\S+)\s*$",
-        label_template: Some(crate::tr!("ai_assistant", "ai-assistant-ai-help-create-new-react-app")),
+        label_template: Some(&crate::tr!("ai_assistant", "ai-assistant-ai-help-create-new-react-app")),
         query_template: "Help me create a new React app called {1}. Ask me for all the details you need.",
     },
     // npx create-next-app <project>: Creates a new Next.js app called <project>.
     StaticPromptSuggestion {
         name: "NPX_CREATE_NEXT_APP",
         pattern: r"^npx\s+create-next-app\s+(\S+)\s*$",
-        label_template: Some(crate::tr!("ai_assistant", "ai-assistant-ai-help-create-new-nextjs-app")),
+        label_template: Some(&crate::tr!("ai_assistant", "ai-assistant-ai-help-create-new-nextjs-app")),
         query_template: "Help me create a new Next.js app called {1}. Ask me for all the details you need.",
     },
     // cargo new <project>: Creates a new Rust package named <project>.
@@ -151,8 +151,8 @@ static STATIC_RULES: &[StaticPromptSuggestion] = &[
     StaticPromptSuggestion {
         name: "JAVA_PROJECT_INIT",
         pattern: r"^(gradle\s+init|mvn\s+archetype:generate)\s*$",
-        label_template: Some(crate::tr!("ai_assistant", "ai-assistant-ai-help-start-gradle-maven-project")),
-        query_template: crate::tr!("ai_assistant", "ai-assistant-ai-help-start-gradle-maven-project-ask-details"),
+        label_template: Some(&crate::tr!("ai_assistant", "ai-assistant-ai-help-start-gradle-maven-project")),
+        query_template: &crate::tr!("ai_assistant", "ai-assistant-ai-help-start-gradle-maven-project-ask-details"),
     },
     // go mod init <module>: Initializes a new Go module named <module>.
     StaticPromptSuggestion {
@@ -165,22 +165,22 @@ static STATIC_RULES: &[StaticPromptSuggestion] = &[
     StaticPromptSuggestion {
         name: "SWIFT_PACKAGE_INIT",
         pattern: r"^swift\s+package\s+init\s*$",
-        label_template: Some(crate::tr!("ai_assistant", "ai-assistant-ai-help-start-swift-project")),
-        query_template: crate::tr!("ai_assistant", "ai-assistant-ai-help-start-swift-project-ask-details"),
+        label_template: Some(&crate::tr!("ai_assistant", "ai-assistant-ai-help-start-swift-project")),
+        query_template: &crate::tr!("ai_assistant", "ai-assistant-ai-help-start-swift-project-ask-details"),
     },
     // terraform init: Initializes Terraform in the current directory.
     StaticPromptSuggestion {
         name: "TERRAFORM_INIT",
         pattern: r"^terraform\s+init\s*$",
-        label_template: Some(crate::tr!("ai_assistant", "ai-assistant-ai-help-start-terraform-configuration")),
-        query_template: crate::tr!("ai_assistant", "ai-assistant-ai-help-start-terraform-configuration-ask-details"),
+        label_template: Some(&crate::tr!("ai_assistant", "ai-assistant-ai-help-start-terraform-configuration")),
+        query_template: &crate::tr!("ai_assistant", "ai-assistant-ai-help-start-terraform-configuration-ask-details"),
     },
     // prisma init: Initializes Prisma in the current project.
     StaticPromptSuggestion {
         name: "PRISMA_INIT",
         pattern: r"^prisma\s+init\s*$",
-        label_template: Some(crate::tr!("ai_assistant", "ai-assistant-ai-help-set-up-prisma-in-this-project")),
-        query_template: crate::tr!("ai_assistant", "ai-assistant-ai-help-set-up-prisma-in-this-project-query"),
+        label_template: Some(&crate::tr!("ai_assistant", "ai-assistant-ai-help-set-up-prisma-in-this-project")),
+        query_template: &crate::tr!("ai_assistant", "ai-assistant-ai-help-set-up-prisma-in-this-project-query"),
     },
     // python -m venv <env_name>: Creates a new Python virtual environment named <env_name>.
     StaticPromptSuggestion {
@@ -193,8 +193,8 @@ static STATIC_RULES: &[StaticPromptSuggestion] = &[
     StaticPromptSuggestion {
         name: "BUNDLE_INIT",
         pattern: r"^bundle\s+init\s*$",
-        label_template: Some(crate::tr!("ai_assistant", "ai-assistant-ai-help-set-up-new-ruby-project")),
-        query_template: crate::tr!("ai_assistant", "ai-assistant-ai-help-set-up-new-ruby-project-ask-details"),
+        label_template: Some(&crate::tr!("ai_assistant", "ai-assistant-ai-help-set-up-new-ruby-project")),
+        query_template: &crate::tr!("ai_assistant", "ai-assistant-ai-help-set-up-new-ruby-project-ask-details"),
     },
     // ollama pull <model>: Pulls an Ollama model named <model>.
     StaticPromptSuggestion {
@@ -208,35 +208,35 @@ static STATIC_RULES: &[StaticPromptSuggestion] = &[
         name: "KUBECTL_TOP_NODES",
         pattern: r"^kubectl\s+top\s+(nodes|node|no)\s*$",
         label_template: None,
-        query_template: crate::tr!("ai_assistant", "ai-assistant-ai-help-understand-resource-utilization-in-cluster"),
+        query_template: &crate::tr!("ai_assistant", "ai-assistant-ai-help-understand-resource-utilization-in-cluster"),
     },
     // kubectl top pods: Shows pod resource usage in Kubernetes.
     StaticPromptSuggestion {
         name: "KUBECTL_TOP_PODS",
         pattern: r"^kubectl\s+top\s+(pods|po|pod)\s*$",
         label_template: None,
-        query_template: crate::tr!("ai_assistant", "ai-assistant-ai-help-understand-resource-utilization-in-cluster"),
+        query_template: &crate::tr!("ai_assistant", "ai-assistant-ai-help-understand-resource-utilization-in-cluster"),
     },
     // kubectl get...: Gets Kubernetes resources (any).
     StaticPromptSuggestion {
         name: "KUBECTL_GET_RESOURCES",
         pattern: r"^kubectl\s+get.*$",
         label_template: None,
-        query_template: crate::tr!("ai_assistant", "ai-assistant-ai-help-inspect-kubernetes-resources"),
+        query_template: &crate::tr!("ai_assistant", "ai-assistant-ai-help-inspect-kubernetes-resources"),
     },
     // docker ps: Lists Docker containers.
     StaticPromptSuggestion {
         name: "DOCKER_LIST_CONTAINERS",
         pattern: r"^docker\s+ps\s*$",
         label_template: None,
-        query_template: crate::tr!("ai_assistant", "ai-assistant-ai-help-manage-running-containers"),
+        query_template: &crate::tr!("ai_assistant", "ai-assistant-ai-help-manage-running-containers"),
     },
     // docker image ls: Lists Docker images.
     StaticPromptSuggestion {
         name: "DOCKER_LIST_IMAGES",
         pattern: r"^docker\s+image\s+ls\s*$",
         label_template: None,
-        query_template: crate::tr!("ai_assistant", "ai-assistant-ai-help-manage-docker-images"),
+        query_template: &crate::tr!("ai_assistant", "ai-assistant-ai-help-manage-docker-images"),
     },
     // docker-compose up -d <service>: Spins up a service <service> in Docker Compose.
     StaticPromptSuggestion {
@@ -264,7 +264,7 @@ static STATIC_RULES: &[StaticPromptSuggestion] = &[
         name: "VAGRANT_UP",
         pattern: r"^vagrant\s+up\s*$",
         label_template: None,
-        query_template: crate::tr!("ai_assistant", "ai-assistant-ai-help-provision-environment-troubleshoot-vagrant"),
+        query_template: &crate::tr!("ai_assistant", "ai-assistant-ai-help-provision-environment-troubleshoot-vagrant"),
     },
     // grep -r <pattern>: Searches recursively for <pattern> in files.
     StaticPromptSuggestion {
@@ -291,7 +291,7 @@ static STATIC_RULES: &[StaticPromptSuggestion] = &[
         // We’ll keep the label/query generic so it applies whether or not the user passed extra flags.
         // Not using the capture group here, but it's there if we need it for the future.
         label_template: None,
-        query_template: crate::tr!("ai_assistant", "ai-assistant-ai-walk-me-through-generating-ssh-key"),
+        query_template: &crate::tr!("ai_assistant", "ai-assistant-ai-walk-me-through-generating-ssh-key"),
     },
 ];
 

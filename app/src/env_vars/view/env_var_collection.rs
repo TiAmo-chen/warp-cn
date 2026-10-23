@@ -95,7 +95,7 @@ pub(super) const ERROR_ALERT_MARGIN_TOP: f32 = 8.;
 
 pub fn init(app: &mut AppContext) {
     app.register_editable_bindings([EditableBinding::new(
-        crate::tr!("env_vars", "env-vars-close-env-var-collection"),
+        "Close Env Var Collection",
         crate::tr!("common", "close-label"),
         EnvVarCollectionAction::Close,
     )

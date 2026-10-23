@@ -1212,7 +1212,7 @@ pub fn render_picker_row_with_layout<A: OrchestrationControlAction>(
         // from the "Primary model…" subtext that follows the picker row.
         add(
             &mut column,
-            crate::tr!("agent_cloud", "agent-cloud-agent-harness-tooltip"),
+            &crate::tr!("agent_cloud", "agent-cloud-agent-harness-tooltip"),
             handles
                 .harness_picker
                 .as_ref()
@@ -1258,7 +1258,7 @@ pub fn render_picker_row_with_layout<A: OrchestrationControlAction>(
         }
         add(
             &mut column,
-            crate::tr!("ai_assistant", "ai-assistant-ai-base-model"),
+            "Base model",
             handles
                 .model_picker
                 .as_ref()
@@ -1279,7 +1279,7 @@ pub fn render_picker_row_with_layout<A: OrchestrationControlAction>(
 
         add_picker(
             &mut row,
-            crate::tr!("agent_cloud", "agent-cloud-agent-harness-tooltip"),
+            &crate::tr!("agent_cloud", "agent-cloud-agent-harness-tooltip"),
             handles
                 .harness_picker
                 .as_ref()
@@ -1315,7 +1315,7 @@ pub fn render_picker_row_with_layout<A: OrchestrationControlAction>(
         }
         add_picker(
             &mut row,
-            crate::tr!("ai_assistant", "ai-assistant-ai-base-model"),
+            "Base model",
             handles
                 .model_picker
                 .as_ref()

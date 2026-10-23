@@ -2625,7 +2625,7 @@ impl PaneGroup {
         {
             AuthManager::handle(ctx).update(ctx, |auth_manager, ctx| {
                 auth_manager.attempt_login_gated_feature(
-                    crate::tr!("pane_group", "pane-group-share-session"),
+                    &crate::tr!("pane_group", "pane-group-share-session"),
                     AuthViewVariant::ShareRequirementCloseable,
                     ctx,
                 )

@@ -131,7 +131,7 @@ impl FirstTimeCloudAgentSetupView {
                 };
 
                 let Some(owner) = owner else {
-                    report_error!(crate::tr!("settings", "settings-unable-to-create-environment-not-logged-in"));
+                    report_error!("Unable to create environment: not logged in");
                     // Reset form before emitting cancelled event
                     self.reset_form(ctx);
                     ctx.emit(FirstTimeCloudAgentSetupViewEvent::Cancelled);
@@ -242,7 +242,7 @@ impl FirstTimeCloudAgentSetupView {
         let badge_text = if credits.usage_cents.is_some() {
             "Free usage"
         } else {
-            crate::tr!("terminal", "terminal-free-credits")
+            &crate::tr!("terminal", "terminal-free-credits")
         };
         // Badge with blue border
         let badge = Container::new(

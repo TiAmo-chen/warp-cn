@@ -65,7 +65,7 @@ impl GeneratedCommandMetadataError {
     pub fn user_facing_message(&self) -> String {
         match self {
             Self::BadCommand => {
-                crate::tr!("drive", "drive-workflow-bad-command")
+                "Failed to generate metadata. Please try again with a different command."
             }
             Self::AiProviderError => "Something went wrong. Please try again.",
             Self::RateLimited => "Looks like you're out of AI credits. Please try again later.",

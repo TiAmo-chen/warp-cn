@@ -79,7 +79,7 @@ const NEW_BUTTON_HORIZONTAL_PADDING: f32 = 10.;
 const NEW_COPY_BUTTON_WIDTH: f32 = 80.;
 
 const COMMAND_AND_OUTPUT_OPTION: (&str, DisplaySetting) =
-    (crate::tr!("terminal", "terminal-command-and-output"), DisplaySetting::CommandAndOutput);
+    (&crate::tr!("terminal", "terminal-command-and-output"), DisplaySetting::CommandAndOutput);
 const COMMAND_OPTION: (&str, DisplaySetting) = ("Command", DisplaySetting::Command);
 const OUTPUT_OPTION: (&str, DisplaySetting) = ("Output", DisplaySetting::Output);
 
@@ -626,7 +626,7 @@ impl ShareBlockModal {
     fn render_create_block_buttons_row(&self, appearance: &Appearance) -> Box<dyn Element> {
         let create_link_button = self.render_create_block_button(
             appearance,
-            crate::tr!("terminal", "terminal-share-create-link"),
+            &crate::tr!("terminal", "terminal-share-create-link"),
             Icon::Link,
             ButtonVariant::Accent,
             self.mouse_state_handles
@@ -636,7 +636,7 @@ impl ShareBlockModal {
         );
         let get_embed_button = self.render_create_block_button(
             appearance,
-            crate::tr!("terminal", "terminal-share-get-embed"),
+            &crate::tr!("terminal", "terminal-share-get-embed"),
             Icon::Code1,
             ButtonVariant::Basic,
             self.mouse_state_handles

@@ -27,22 +27,22 @@ struct FeatureItem {
 const FEATURE_ITEMS: &[FeatureItem] = &[
     FeatureItem {
         icon: Icon::LayoutAlt01,
-        title: crate::tr!("workspace", "workspace-banner-vertical-tabs"),
+        title: &crate::tr!("workspace", "workspace-banner-vertical-tabs"),
         description: "Rich tab titles and metadata like git branch, worktree, and PR. Fully customizable.",
     },
     FeatureItem {
         icon: Icon::Sliders,
-        title: crate::tr!("workspace", "workspace-tab-configs"),
+        title: &crate::tr!("workspace", "workspace-tab-configs"),
         description: "Tab-level schema to set your directory, startup commands, theme, and worktree with one click",
     },
     FeatureItem {
         icon: Icon::Inbox,
-        title: crate::tr!("workspace", "workspace-banner-agent-inbox"),
+        title: &crate::tr!("workspace", "workspace-banner-agent-inbox"),
         description: "Notifications when any agent needs your attention, also accessible in a central inbox",
     },
     FeatureItem {
         icon: Icon::MessageCheckSquare,
-        title: crate::tr!("workspace", "workspace-banner-native-review"),
+        title: &crate::tr!("workspace", "workspace-banner-native-review"),
         description: "Send inline comments from Warp's code review directly to Claude Code, Codex, or OpenCode",
     },
 ];

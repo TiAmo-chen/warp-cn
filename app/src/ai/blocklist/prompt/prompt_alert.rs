@@ -487,7 +487,7 @@ impl PromptAlertView {
                         let upgrade_text = if !has_admin_permissions {
                             COMPARE_PLANS_TEXT
                         } else if team.billing_metadata.can_upgrade_to_build_plan() {
-                            crate::tr!("ai_assistant", "ai-assistant-ai-upgrade-to-build-text")
+                            "Upgrade to Build"
                         } else {
                             UPGRADE_TEXT
                         };
@@ -507,7 +507,7 @@ impl PromptAlertView {
                     let label =
                         if let Some(workspace) = UserWorkspaces::as_ref(app).current_workspace() {
                             if workspace.billing_metadata.can_upgrade_to_build_plan() {
-                                crate::tr!("ai_assistant", "ai-assistant-ai-upgrade-to-build-text")
+                                "Upgrade to Build"
                             } else {
                                 UPGRADE_TEXT
                             }

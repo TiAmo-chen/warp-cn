@@ -1241,7 +1241,7 @@ impl RunAgentsCardView {
     fn toggle_accept_menu(&mut self, ctx: &mut ViewContext<Self>) {
         self.is_accept_menu_open = !self.is_accept_menu_open;
         if self.is_accept_menu_open {
-            let item = MenuItemFields::new_with_label(crate::tr!("common", "common-accept-without-orchestration"), "")
+            let item = MenuItemFields::new_with_label("Accept w/o orchestration", "")
                 .with_on_select_action(RunAgentsCardViewAction::AcceptWithoutOrchestration)
                 .into_item();
             self.accept_menu.update(ctx, |menu, ctx| {

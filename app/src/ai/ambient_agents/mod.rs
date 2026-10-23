@@ -16,9 +16,9 @@ pub use task::{
     cancel_task_with_toast,
 };
 pub const OUT_OF_CREDITS_TASK_FAILURE_MESSAGE: &str =
-    crate::tr!("ai_assistant", "ai-assistant-ai-out-of-credits-upgrade");
+    &crate::tr!("ai_assistant", "ai-assistant-ai-out-of-credits-upgrade");
 pub const SERVER_OVERLOADED_TASK_FAILURE_MESSAGE: &str =
-    crate::tr!("ai_assistant", "ai-assistant-ai-server-overloaded-short");
+    &crate::tr!("ai_assistant", "ai-assistant-ai-server-overloaded-short");
 
 pub use ai_types::AmbientAgentTaskId;
 

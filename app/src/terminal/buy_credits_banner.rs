@@ -713,7 +713,7 @@ impl BuyCreditsBanner {
                 crate::tr!("ai_assistant", "ai-assistant-ai-out-of-requests-primary-text"),
                 "Purchasing these credits would take you over your monthly spend limit. ",
                 "Add more credits to your account to continue using the Warp Agent.",
-                crate::tr!("terminal", "terminal-out-of-credits-non-admin"),
+                "Contact a team admin to purchase more credits to continue.",
             ),
             UsageDisplayUnit::Dollars => (
                 "Out of usage",

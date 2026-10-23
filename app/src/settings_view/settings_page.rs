@@ -1160,7 +1160,7 @@ pub(crate) fn render_settings_info_banner(
 }
 
 const WORKSPACE_OVERRIDE_TOOLTIP_TEXT: &str =
-    crate::tr!("ai_assistant", "ai-assistant-ai-workspace-override-tooltip");
+    &crate::tr!("ai_assistant", "ai-assistant-ai-workspace-override-tooltip");
 
 pub struct InputListItem<SettingsPageAction: Action + Clone> {
     pub item: String,

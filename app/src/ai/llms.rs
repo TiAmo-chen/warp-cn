@@ -304,7 +304,7 @@ impl DisableReason {
             DisableReason::AdminDisabled => "This model has been disabled by your team admin.",
             DisableReason::OutOfRequests => "Please upgrade your plan to make more requests.",
             DisableReason::ProviderOutage => {
-                crate::tr!("ai_assistant", "ai-assistant-ai-model-provider-outage")
+                "This model is temporarily unavailable due to a provider outage."
             }
             DisableReason::RequiresUpgrade => "Please upgrade your plan to access this model.",
             DisableReason::Unavailable => "This model is unavailable.",

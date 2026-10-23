@@ -71,13 +71,13 @@ impl ZeroStatePromptSuggestionType {
             Self::Explain => "Explain this to me.",
             Self::Fix => "Help me fix this.",
             Self::Install => {
-                crate::tr!("terminal", "terminal-suggestion-install")
+                "Help me install a binary/dependency. What information do I need to provide to you to do this?"
             }
             Self::Code => {
-                crate::tr!("terminal", "terminal-suggestion-code")
+                "Help me write some code. What information do I need to provide to you to do this?"
             }
             Self::Deploy => {
-                crate::tr!("terminal", "terminal-suggestion-deploy")
+                "Help me deploy my project. What information do I need to provide to you to do this?"
             }
             Self::SomethingElse => "Something else?",
         }

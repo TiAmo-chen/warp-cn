@@ -190,13 +190,13 @@ const SORTING_BUTTON_TOOLTIP_LABEL: &str = "Sort by";
 const RETRY_BUTTON_TOOLTIP_LABEL: &str = "Retry sync";
 
 const SHARED_OBJECT_LIMIT_HIT_BANNER_LINE: &str =
-    crate::tr!("drive", "drive-upgrade-prompt");
+    &crate::tr!("drive", "drive-upgrade-prompt");
 
 const PAYMENT_ISSUE_BANNER_LINE_1: &str =
-    crate::tr!("drive", "drive-restricted-objects");
+    &crate::tr!("drive", "drive-restricted-objects");
 
 const PAYMENT_ISSUE_BANNER_LINE_2_ADMIN: &str =
-    crate::tr!("drive", "drive-update-payment");
+    &crate::tr!("drive", "drive-update-payment");
 
 const PAYMENT_ISSUE_BANNER_LINE_2_ADMIN_ENTERPRISE: &str =
     "Please contact support@warp.dev to restore access.";
@@ -5000,7 +5000,7 @@ impl DriveIndex {
         if self.auth_state.is_anonymous_or_logged_out() {
             AuthManager::handle(ctx).update(ctx, |auth_manager, ctx| {
                 auth_manager.attempt_login_gated_feature(
-                    crate::tr!("drive", "drive-share-object"),
+                    &crate::tr!("drive", "drive-share-object"),
                     AuthViewVariant::ShareRequirementCloseable,
                     ctx,
                 )

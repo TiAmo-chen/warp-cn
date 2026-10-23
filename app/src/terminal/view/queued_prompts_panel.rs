@@ -457,7 +457,7 @@ impl QueuedPromptsPanelView {
             } else if lrc_subagent_in_progress {
                 SEND_NOW_TO_FULL_TERMINAL_USE_AGENT_TOOLTIP
             } else {
-                crate::tr!("ai_assistant", "ai-assistant-ai-send-now")
+                &crate::tr!("ai_assistant", "ai-assistant-ai-send-now")
             };
             send_now_button.update(ctx, |button, ctx| {
                 button.set_disabled(disabled, ctx);

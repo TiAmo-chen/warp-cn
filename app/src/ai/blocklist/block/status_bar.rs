@@ -948,7 +948,7 @@ impl BlocklistAIStatusBar {
         if let Some(auth_url) = ambient_agent_model.github_auth_url() {
             let error_message = ambient_agent_model
                 .github_auth_error_message()
-                .unwrap_or(crate::tr!("ai_assistant", "ai-assistant-ai-missing-github-auth"));
+                .unwrap_or(&crate::tr!("ai_assistant", "ai-assistant-ai-missing-github-auth"));
             return Some(render_wrapping_standard_message_bar(
                 CoreIcon::Triangle,
                 error_color,
@@ -1355,7 +1355,7 @@ impl View for BlocklistAIStatusBar {
                             non_shimmering_suffix: None,
                             buttons: Some(render_switch_control_to_user_button(
                                 "Exit",
-                                crate::tr!("ai_assistant", "ai-assistant-ai-exit-agent-input"),
+                                "Exit agent input",
                                 ButtonProps {
                                     button_handle: &self.state_handles.take_over_button,
                                     keystroke: self.set_terminal_input_keystroke.as_ref(),

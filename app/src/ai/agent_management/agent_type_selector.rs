@@ -334,7 +334,7 @@ impl AgentTypeSelector {
         let cloud_agent_option = self.render_option(
             0,
             Icon::CloudFilled,
-            crate::tr!("ai_assistant", "ai-assistant-ai-cloud-agent"),
+            "Cloud agent",
             crate::tr!("ai_assistant", "ai-assistant-ai-cloud-agent-desc"),
             true,
             self.cloud_agent_mouse_state.clone(),
@@ -345,7 +345,7 @@ impl AgentTypeSelector {
         let local_agent_option = self.render_option(
             1,
             Icon::Agent,
-            crate::tr!("ai_assistant", "ai-assistant-ai-local-agent"),
+            "Local agent",
             crate::tr!("ai_assistant", "ai-assistant-ai-local-agent-desc"),
             false,
             self.local_agent_mouse_state.clone(),

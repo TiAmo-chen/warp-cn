@@ -997,7 +997,7 @@ fn create_environment(arg: &CreateEnvironmentArg, ctx: &mut AppContext) {
                 workspace
                     .active_tab_pane_group()
                     .update(ctx, |pane_group, ctx| {
-                        pane_group.set_title(crate::tr!("ai_assistant", "ai-assistant-ai-wf-create-environment"), ctx);
+                        pane_group.set_title(&crate::tr!("ai_assistant", "ai-assistant-ai-wf-create-environment"), ctx);
 
                         if let Some(terminal_view) = pane_group.active_session_view(ctx) {
                             terminal_view.update(ctx, |_, ctx| {
@@ -1031,7 +1031,7 @@ fn create_environment_and_run(arg: &CreateEnvironmentArg, ctx: &mut AppContext) 
                 workspace
                     .active_tab_pane_group()
                     .update(ctx, |pane_group, ctx| {
-                        pane_group.set_title(crate::tr!("ai_assistant", "ai-assistant-ai-wf-create-environment"), ctx);
+                        pane_group.set_title(&crate::tr!("ai_assistant", "ai-assistant-ai-wf-create-environment"), ctx);
 
                         if let Some(terminal_view) = pane_group.active_session_view(ctx) {
                             terminal_view.update(ctx, |_, ctx| {
@@ -3286,7 +3286,7 @@ impl RootView {
                 workspace
                     .active_tab_pane_group()
                     .update(ctx, |pane_group, ctx| {
-                        pane_group.set_title(crate::tr!("ai_assistant", "ai-assistant-ai-wf-create-environment"), ctx);
+                        pane_group.set_title(&crate::tr!("ai_assistant", "ai-assistant-ai-wf-create-environment"), ctx);
 
                         if let Some(terminal_view) = pane_group.active_session_view(ctx) {
                             terminal_view.update(ctx, |_, ctx| {
@@ -3331,7 +3331,7 @@ impl RootView {
             workspace
                 .active_tab_pane_group()
                 .update(ctx, |pane_group, ctx| {
-                    pane_group.set_title(crate::tr!("ai_assistant", "ai-assistant-ai-wf-create-environment"), ctx);
+                    pane_group.set_title(&crate::tr!("ai_assistant", "ai-assistant-ai-wf-create-environment"), ctx);
 
                     if let Some(terminal_view) = pane_group.active_session_view(ctx) {
                         terminal_view.update(ctx, |_, ctx| {

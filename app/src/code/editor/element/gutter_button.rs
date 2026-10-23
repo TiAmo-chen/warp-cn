@@ -72,9 +72,9 @@ impl GutterButton for AddAsContextButton {
 
     fn tooltip_text(&self) -> Option<&'static str> {
         if self.is_enabled {
-            Some(crate::tr!("code", "code-add-diff-hunk-as-context"))
+            Some(&crate::tr!("code", "code-add-diff-hunk-as-context"))
         } else {
-            Some(crate::tr!("code", "code-save-changes-to-attach-as-context"))
+            Some(&crate::tr!("code", "code-save-changes-to-attach-as-context"))
         }
     }
 
@@ -101,9 +101,9 @@ impl GutterButton for RevertHunkButton {
 
     fn tooltip_text(&self) -> Option<&'static str> {
         if self.is_enabled {
-            Some(crate::tr!("code", "code-revert-diff-hunk"))
+            Some(&crate::tr!("code", "code-revert-diff-hunk"))
         } else {
-            Some(crate::tr!("code", "code-save-changes-to-revert"))
+            Some(&crate::tr!("code", "code-save-changes-to-revert"))
         }
     }
 

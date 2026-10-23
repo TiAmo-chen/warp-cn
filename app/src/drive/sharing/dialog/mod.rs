@@ -2716,7 +2716,7 @@ impl SharingDialog {
                         self.render_footer_icon_button(
                             Icon::Copy,
                             SharingDialogAction::CopyLink,
-                            crate::tr!("ai_assistant", "ai-assistant-ai-doc-copy-link"),
+                            "Copy link",
                             self.ui_state_handles.qr_copy_button.clone(),
                             appearance,
                         ),

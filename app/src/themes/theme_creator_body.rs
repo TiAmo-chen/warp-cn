@@ -37,7 +37,7 @@ const BUTTON_BORDER_RADIUS: f32 = 4.;
 const BORDER_WIDTH: f32 = 1.;
 
 const MODAL_SUBHEADER: &str =
-    crate::tr!("common", "common-theme-creator-subheader");
+    &crate::tr!("common", "common-theme-creator-subheader");
 const IMAGE_PICKER_BUTTON_PRE_SELECT_TEXT: &str = "Select an image";
 const IMAGE_PICKER_BUTTON_SELECTING_TEXT: &str = "Selecting image...";
 const IMAGE_PICKER_BUTTON_POST_SELECT_TEXT: &str = "Select a new image";

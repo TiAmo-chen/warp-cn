@@ -1172,7 +1172,7 @@ impl CodeFooterView {
                     .to_warpui_icon(ThemeFill::Solid(text_color))
                     .finish()
             },
-            crate::tr!("code", "code-footer-open-logs"),
+            "Open logs",
             CodeFooterViewAction::OpenLogs,
         )
     }
@@ -1194,7 +1194,7 @@ impl CodeFooterView {
                     .to_warpui_icon(ThemeFill::Solid(text_color))
                     .finish()
             },
-            crate::tr!("code", "code-footer-restart-server"),
+            "Restart server",
             CodeFooterViewAction::RestartServer,
         )
     }
@@ -1217,7 +1217,7 @@ impl CodeFooterView {
                     .with_uniform_padding(2.)
                     .finish()
             },
-            crate::tr!("code", "code-footer-stop-server"),
+            "Stop server",
             CodeFooterViewAction::StopServer,
         )
     }
@@ -1239,7 +1239,7 @@ impl CodeFooterView {
                     .to_warpui_icon(ThemeFill::Solid(text_color))
                     .finish()
             },
-            crate::tr!("code", "code-footer-start-server"),
+            "Start server",
             CodeFooterViewAction::StartServer,
         )
     }
@@ -1261,7 +1261,7 @@ impl CodeFooterView {
                     .to_warpui_icon(ThemeFill::Solid(text_color))
                     .finish()
             },
-            crate::tr!("code", "code-footer-remove-server"),
+            "Remove server",
             CodeFooterViewAction::RemoveServer,
         )
     }
@@ -1285,9 +1285,9 @@ impl CodeFooterView {
                     .finish()
             },
             if is_plural {
-                crate::tr!("code", "code-footer-restart-all-servers")
+                &crate::tr!("code", "code-footer-restart-all-servers")
             } else {
-                crate::tr!("code", "code-footer-restart-server")
+                &crate::tr!("code", "code-footer-restart-server")
             },
             CodeFooterViewAction::RestartAllServers,
         )
@@ -1313,9 +1313,9 @@ impl CodeFooterView {
                     .finish()
             },
             if is_plural {
-                crate::tr!("code", "code-footer-stop-all-servers")
+                &crate::tr!("code", "code-footer-stop-all-servers")
             } else {
-                crate::tr!("code", "code-footer-stop-server")
+                &crate::tr!("code", "code-footer-stop-server")
             },
             CodeFooterViewAction::StopAllServers,
         )
@@ -1341,11 +1341,11 @@ impl CodeFooterView {
                     .finish()
             },
             if !is_plural {
-                crate::tr!("code", "code-footer-start-server")
+                &crate::tr!("code", "code-footer-start-server")
             } else if has_running {
-                crate::tr!("code", "code-footer-start-all-stopped-servers")
+                &crate::tr!("code", "code-footer-start-all-stopped-servers")
             } else {
-                crate::tr!("code", "code-footer-start-all-servers")
+                &crate::tr!("code", "code-footer-start-all-servers")
             },
             CodeFooterViewAction::StartAllServers,
         )
@@ -1368,7 +1368,7 @@ impl CodeFooterView {
                     .to_warpui_icon(ThemeFill::Solid(text_color))
                     .finish()
             },
-            crate::tr!("code", "code-footer-manage-servers"),
+            "Manage servers",
             CodeFooterViewAction::ManageServers,
         )
     }

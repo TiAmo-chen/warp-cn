@@ -1059,7 +1059,7 @@ impl AmbientAgentRunner {
                     title,
                     ..
                 } => {
-                    let plan_title = title.as_deref().unwrap_or(crate::tr!("ai_assistant", "ai-assistant-ai-untitled-plan"));
+                    let plan_title = title.as_deref().unwrap_or(&crate::tr!("ai_assistant", "ai-assistant-ai-untitled-plan"));
                     lines.push(format!("  Plan: {}", plan_title));
                     if let Some(id) = notebook_uid {
                         lines.push(format!(

@@ -114,7 +114,7 @@ impl ConversationActionButtonsRow {
         let open_button = ctx.add_typed_action_view(|_| {
             Self::make_action_button(
                 Icon::LinkExternal,
-                crate::tr!("ai_assistant", "ai-assistant-ai-open-conversation"),
+                &crate::tr!("ai_assistant", "ai-assistant-ai-open-conversation"),
                 None,
                 AgentDetailsAction::Open,
             )
@@ -123,7 +123,7 @@ impl ConversationActionButtonsRow {
         let cancel_task_button = ctx.add_typed_action_view(|_| {
             Self::make_action_button(
                 Icon::StopFilled,
-                crate::tr!("ai_assistant", "ai-assistant-ai-cancel-task"),
+                &crate::tr!("ai_assistant", "ai-assistant-ai-cancel-task"),
                 Some(AnsiColorIdentifier::Red),
                 AgentDetailsAction::CancelTask,
             )
@@ -132,7 +132,7 @@ impl ConversationActionButtonsRow {
         let fork_conversation_button = ctx.add_typed_action_view(|_| {
             Self::make_action_button(
                 Icon::ArrowSplit,
-                crate::tr!("ai_assistant", "ai-assistant-ai-fork-conversation"),
+                &crate::tr!("ai_assistant", "ai-assistant-ai-fork-conversation"),
                 None,
                 AgentDetailsAction::ForkConversation,
             )
@@ -141,7 +141,7 @@ impl ConversationActionButtonsRow {
         let view_details_button = ctx.add_typed_action_view(|_| {
             Self::make_action_button(
                 Icon::Info,
-                crate::tr!("ai_assistant", "ai-assistant-ai-view-details"),
+                &crate::tr!("ai_assistant", "ai-assistant-ai-view-details"),
                 None,
                 AgentDetailsAction::ViewDetails,
             )
@@ -150,7 +150,7 @@ impl ConversationActionButtonsRow {
         let copy_link_button = ctx.add_typed_action_view(|_| {
             Self::make_action_button(
                 Icon::Link,
-                crate::tr!("ai_assistant", "ai-assistant-ai-copy-link-to-run"),
+                &crate::tr!("ai_assistant", "ai-assistant-ai-copy-link-to-run"),
                 None,
                 AgentDetailsAction::CopyLink,
             )

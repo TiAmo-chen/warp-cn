@@ -74,14 +74,14 @@ impl InheritanceState {
                         .with_children([prefix, folder_link])
                         .with_cross_axis_alignment(CrossAxisAlignment::Center)
                         .finish(),
-                    tooltip_text: crate::tr!("drive", "drive-edit-inherited-tooltip"),
+                    tooltip_text: &crate::tr!("drive", "drive-edit-inherited-tooltip"),
                 }
             }
             None => InheritanceDetails {
                 source_label: style::detail_text(crate::tr!("drive", "drive-inherited-permission"), appearance)
                     .build()
                     .finish(),
-                tooltip_text: crate::tr!("drive", "drive-cannot-edit-inherited"),
+                tooltip_text: &crate::tr!("drive", "drive-cannot-edit-inherited"),
             },
         }
     }

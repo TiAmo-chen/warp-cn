@@ -68,7 +68,7 @@ fn nice_step(raw: f64) -> f64 {
 use crate::settings_view::{InputListItem, render_input_list, render_separator};
 
 pub const WORKSPACE_OVERRIDE_TOOLTIP_MESSAGE: &str =
-    crate::tr!("ai_assistant", "ai-assistant-ai-workspace-override-tooltip");
+    &crate::tr!("ai_assistant", "ai-assistant-ai-workspace-override-tooltip");
 pub fn render_header_section(
     appearance: &Appearance,
     profile_name_editor: &ViewHandle<EditorView>,
@@ -92,7 +92,7 @@ pub fn render_header_section(
 
     if is_default_profile {
         column.add_child(render_info_section(
-            crate::tr!("ai_assistant", "ai-assistant-ai-default-profile-name-cannot-change"),
+            &crate::tr!("ai_assistant", "ai-assistant-ai-default-profile-name-cannot-change"),
             None,
             appearance,
         ));
@@ -266,7 +266,7 @@ pub fn render_models_section(
         .with_child(render_section_label("MODELS", appearance))
         .with_child(render_filterable_dropdown_row(
             appearance,
-            crate::tr!("ai_assistant", "ai-assistant-ai-base-model"),
+            &crate::tr!("ai_assistant", "ai-assistant-ai-base-model"),
             "This model serves as the primary engine behind the agent. It powers most interactions and invokes other models for tasks like planning or code generation when necessary. Warp may automatically switch to alternate models based on model availability or for auxiliary tasks such as conversation summarization.",
             &view.base_model_dropdown,
         ));
@@ -277,7 +277,7 @@ pub fn render_models_section(
 
     column = column.with_child(render_filterable_dropdown_row(
         appearance,
-        crate::tr!("ai_assistant", "ai-assistant-ai-full-terminal-use-model"),
+        &crate::tr!("ai_assistant", "ai-assistant-ai-full-terminal-use-model"),
         "The model used when the agent operates inside interactive terminal applications like database shells, debuggers, REPLs, or dev servers—reading live output and writing commands to the PTY.",
         &view.full_terminal_use_model_dropdown,
     ));
@@ -285,7 +285,7 @@ pub fn render_models_section(
     if FeatureFlag::LocalComputerUse.is_enabled() {
         column.add_child(render_filterable_dropdown_row(
             appearance,
-            crate::tr!("ai_assistant", "ai-assistant-ai-computer-use-model"),
+            &crate::tr!("ai_assistant", "ai-assistant-ai-computer-use-model"),
             "The model used when the agent takes control of your computer to interact with graphical applications through mouse movements, clicks, and keyboard input.",
             &view.computer_use_model_dropdown,
         ));
@@ -455,7 +455,7 @@ pub fn render_permissions_section(
         render_permission_row(
             appearance,
             Icon::Code2,
-            crate::tr!("ai_assistant", "ai-assistant-ai-apply-code-diffs"),
+            &crate::tr!("ai_assistant", "ai-assistant-ai-apply-code-diffs"),
             &view.apply_code_diffs_dropdown,
             profile_data.apply_code_diffs.description(),
             !ai_settings.is_code_diffs_permissions_editable(&scope, app),
@@ -466,7 +466,7 @@ pub fn render_permissions_section(
         render_permission_row(
             appearance,
             Icon::Notebook,
-            crate::tr!("ai_assistant", "ai-assistant-ai-read-files"),
+            &crate::tr!("ai_assistant", "ai-assistant-ai-read-files"),
             &view.read_files_dropdown,
             profile_data.read_files.description(),
             !ai_settings.is_read_files_permissions_editable(&scope, app),
@@ -490,7 +490,7 @@ pub fn render_permissions_section(
     column.add_child(render_permission_row(
         appearance,
         Icon::Terminal,
-        crate::tr!("ai_assistant", "ai-assistant-ai-execute-commands"),
+        &crate::tr!("ai_assistant", "ai-assistant-ai-execute-commands"),
         &view.execute_commands_dropdown,
         profile_data.execute_commands.description(),
         !ai_settings.is_execute_commands_permissions_editable(&scope, app),
@@ -527,7 +527,7 @@ pub fn render_permissions_section(
     column.add_child(render_permission_row(
         appearance,
         Icon::Workflow,
-        crate::tr!("ai_assistant", "ai-assistant-ai-interact-with-running-commands"),
+        &crate::tr!("ai_assistant", "ai-assistant-ai-interact-with-running-commands"),
         &view.write_to_pty_dropdown,
         profile_data.write_to_pty.description(),
         !ai_settings.is_write_to_pty_permissions_editable(&scope, app),
@@ -540,7 +540,7 @@ pub fn render_permissions_section(
         column.add_child(render_permission_row(
             appearance,
             Icon::Laptop,
-            crate::tr!("ai_assistant", "ai-assistant-ai-computer-use"),
+            &crate::tr!("ai_assistant", "ai-assistant-ai-computer-use"),
             &view.computer_use_dropdown,
             profile_data.computer_use.description(),
             !ai_settings.is_computer_use_permissions_editable(&scope, app),
@@ -553,7 +553,7 @@ pub fn render_permissions_section(
     column.add_child(render_permission_row(
         appearance,
         Icon::MessageText,
-        crate::tr!("ai_assistant", "ai-assistant-ai-ask-questions"),
+        &crate::tr!("ai_assistant", "ai-assistant-ai-ask-questions"),
         &view.ask_user_question_dropdown,
         profile_data.ask_user_question.description(),
         !ai_settings.is_ask_user_question_permissions_editable(app),
@@ -576,7 +576,7 @@ pub fn render_permissions_section(
     column.add_child(render_permission_row(
         appearance,
         Icon::Dataflow,
-        crate::tr!("ai_assistant", "ai-assistant-ai-call-mcp-servers"),
+        &crate::tr!("ai_assistant", "ai-assistant-ai-call-mcp-servers"),
         &view.call_mcp_servers_dropdown,
         profile_data.mcp_permissions.description(),
         !ai_settings.is_mcp_permission_editable(app), // Use MCP override for this permission
@@ -724,7 +724,7 @@ fn render_directory_allowlist_section(
     let is_editable = ai_settings.is_directory_allowlist_editable(&scope, app);
 
     render_list_section(
-        crate::tr!("ai_assistant", "ai-assistant-ai-directory-allowlist"),
+        &crate::tr!("ai_assistant", "ai-assistant-ai-directory-allowlist"),
         crate::tr!("ai_assistant", "ai-assistant-ai-directory-allowlist-desc"),
         &profile_data.directory_allowlist,
         &view.directory_allowlist_mouse_state_handles,
@@ -750,7 +750,7 @@ fn render_command_allowlist_section(
     let is_editable = ai_settings.is_command_allowlist_editable(&scope, app);
 
     render_list_section(
-        crate::tr!("ai_assistant", "ai-assistant-ai-command-allowlist"),
+        &crate::tr!("ai_assistant", "ai-assistant-ai-command-allowlist"),
         crate::tr!("ai_assistant", "ai-assistant-ai-command-allowlist-desc"),
         &profile_data.command_allowlist,
         &view.command_allowlist_mouse_state_handles,
@@ -817,7 +817,7 @@ fn render_command_denylist_section(
     );
 
     let mut column = Flex::column().with_child(create_section_header(
-        crate::tr!("ai_assistant", "ai-assistant-ai-command-denylist"),
+        &crate::tr!("ai_assistant", "ai-assistant-ai-command-denylist"),
         crate::tr!("ai_assistant", "ai-assistant-ai-command-denylist-desc"),
         appearance,
     ));
@@ -845,7 +845,7 @@ fn render_mcp_allowlist_section(
     let is_editable = ai_settings.is_mcp_permission_editable(app);
 
     render_list_section(
-        crate::tr!("ai_assistant", "ai-assistant-ai-mcp-allowlist"),
+        &crate::tr!("ai_assistant", "ai-assistant-ai-mcp-allowlist"),
         crate::tr!("ai_assistant", "ai-assistant-ai-mcp-allowlist-desc"),
         &profile_data.mcp_allowlist,
         &view.mcp_allowlist_mouse_state_handles,
@@ -871,7 +871,7 @@ fn render_mcp_denylist_section(
     let is_editable = ai_settings.is_mcp_permission_editable(app);
 
     render_list_section(
-        crate::tr!("ai_assistant", "ai-assistant-ai-mcp-denylist"),
+        &crate::tr!("ai_assistant", "ai-assistant-ai-mcp-denylist"),
         crate::tr!("ai_assistant", "ai-assistant-ai-mcp-denylist-desc"),
         &profile_data.mcp_denylist,
         &view.mcp_denylist_mouse_state_handles,

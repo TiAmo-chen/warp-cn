@@ -859,11 +859,11 @@ impl VersionInfoWidget {
                 match autoupdate::get_update_state(app) {
                     AutoupdateStage::NoUpdateAvailable => (
                         Some(StatusContent {
-                            text: crate::tr!("settings", "settings-up-to-date"),
+                            text: &crate::tr!("settings", "settings-up-to-date"),
                             color: faded_text_color,
                         }),
                         Some(CallToActionContent {
-                            text: crate::tr!("settings", "settings-check-for-updates"),
+                            text: &crate::tr!("settings", "settings-check-for-updates"),
                             action: MainPageAction::CheckForUpdate,
                         }),
                     ),
@@ -883,11 +883,11 @@ impl VersionInfoWidget {
                     ),
                     AutoupdateStage::UpdateReady { .. } => (
                         Some(StatusContent {
-                            text: crate::tr!("settings", "settings-update-available"),
+                            text: &crate::tr!("settings", "settings-update-available"),
                             color: ansi_red,
                         }),
                         Some(CallToActionContent {
-                            text: crate::tr!("settings", "settings-relaunch-warp"),
+                            text: &crate::tr!("settings", "settings-relaunch-warp"),
                             action: MainPageAction::Relaunch,
                         }),
                     ),
@@ -900,32 +900,32 @@ impl VersionInfoWidget {
                     ),
                     AutoupdateStage::UpdatedPendingRestart { .. } => (
                         Some(StatusContent {
-                            text: crate::tr!("settings", "settings-installed-update"),
+                            text: &crate::tr!("settings", "settings-installed-update"),
                             color: faded_text_color,
                         }),
                         Some(CallToActionContent {
-                            text: crate::tr!("settings", "settings-relaunch-warp"),
+                            text: &crate::tr!("settings", "settings-relaunch-warp"),
                             action: MainPageAction::Relaunch,
                         }),
                     ),
                     AutoupdateStage::UnableToUpdateToNewVersion { .. } => (
                         Some(StatusContent {
-                            text: crate::tr!("settings", "settings-a-new-version-of-warp-is-available-but-cant-be-installed"),
+                            text: &crate::tr!("settings", "settings-a-new-version-of-warp-is-available-but-cant-be-installed"),
                             color: ansi_red,
                         }),
                         Some(CallToActionContent {
-                            text: crate::tr!("settings", "settings-update-warp-manually"),
+                            text: &crate::tr!("settings", "settings-update-warp-manually"),
                             // note: the handler for this action is a no-op
                             action: MainPageAction::DownloadUpdate,
                         }),
                     ),
                     AutoupdateStage::UnableToLaunchNewVersion { .. } => (
                         Some(StatusContent {
-                            text: crate::tr!("settings", "settings-a-new-version-of-warp-is-installed-but-cant-be-launched"),
+                            text: &crate::tr!("settings", "settings-a-new-version-of-warp-is-installed-but-cant-be-launched"),
                             color: ansi_red,
                         }),
                         Some(CallToActionContent {
-                            text: crate::tr!("settings", "settings-update-warp-manually"),
+                            text: &crate::tr!("settings", "settings-update-warp-manually"),
                             // note: the handler for this action is a no-op
                             action: MainPageAction::DownloadUpdate,
                         }),

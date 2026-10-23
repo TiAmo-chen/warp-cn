@@ -189,7 +189,7 @@ pub struct CloudAgentStartupPresentation {
 impl CloudAgentStartupPresentation {
     pub fn failure(message: impl Into<String>) -> Self {
         Self {
-            title: crate::tr!("agent_cloud", "agent-cloud-failed-title"),
+            title: &crate::tr!("agent_cloud", "agent-cloud-failed-title"),
             detail: message.into(),
             action_label: None,
             primary_url: None,
@@ -199,16 +199,16 @@ impl CloudAgentStartupPresentation {
     pub fn github_auth(auth_url: impl Into<String>, flow: CloudAgentStartupAuthFlow) -> Self {
         let detail = match flow {
             CloudAgentStartupAuthFlow::RetryRetainedRequest => {
-                crate::tr!("agent_cloud", "agent-cloud-github-auth-message")
+                "Please authenticate with GitHub to continue"
             }
             CloudAgentStartupAuthFlow::RerunOrchestrationRequest => {
                 "Authenticate with GitHub, then run the orchestration request again."
             }
         };
         Self {
-            title: crate::tr!("agent_cloud", "agent-cloud-github-auth-title"),
+            title: &crate::tr!("agent_cloud", "agent-cloud-github-auth-title"),
             detail: detail.to_string(),
-            action_label: Some(crate::tr!("agent_cloud", "agent-cloud-github-auth-button")),
+            action_label: Some(&crate::tr!("agent_cloud", "agent-cloud-github-auth-button")),
             primary_url: Some(auth_url.into()),
         }
     }

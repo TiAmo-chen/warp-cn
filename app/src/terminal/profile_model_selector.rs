@@ -365,7 +365,7 @@ impl ProfileModelSelector {
                         .iter()
                         .map(|name| {
                             if *name == "auto" {
-                                crate::tr!("terminal", "terminal-auto-select-best-model")
+                                "auto-select the best model for the task"
                             } else {
                                 name
                             }
@@ -2195,12 +2195,12 @@ impl ProfileModelSelector {
 
         let (title, description) = match kind {
             ModelSpecSidecarKind::Auto => (
-                crate::tr!("terminal", "terminal-auto-mode"),
+                "Auto mode",
                 "Auto will select the best model for the task. Cost-efficiency optimizes for cost, Responsiveness optimizes for response speed.",
             ),
             ModelSpecSidecarKind::Reasoning => (
-                crate::tr!("terminal", "terminal-reasoning-level"),
-                crate::tr!("terminal", "terminal-reasoning-level-description"),
+                "Reasoning level",
+                "Increased reasoning levels consume more credits and have higher latency, but higher performance for complicated tasks.",
             ),
         };
 

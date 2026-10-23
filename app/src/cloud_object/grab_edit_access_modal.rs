@@ -12,7 +12,7 @@ use crate::ui_components::dialog::{Dialog, dialog_styles};
 const EDIT_ANYWAY_CTA_LABEL: &str = "Edit anyway";
 const CANCEL_CTA_LABEL: &str = "Cancel";
 const EDIT_ANYWAY_TEXT: &str =
-    crate::tr!("common", "common-grab-edit-warning");
+    &crate::tr!("common", "common-grab-edit-warning");
 const CURRENTLY_EDITED_LABEL: &str = "This notebook is currently being edited";
 
 #[derive(Default)]

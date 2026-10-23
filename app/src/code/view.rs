@@ -2172,7 +2172,7 @@ impl CodeView {
                 let reveal_label = if cfg!(target_os = "macos") {
                     crate::tr!("code", "code-reveal-in-finder")
                 } else if cfg!(target_os = "windows") {
-                    crate::tr!("code", "code-reveal-in-explorer")
+                    "Reveal in Explorer"
                 } else {
                     "Reveal in file manager"
                 };

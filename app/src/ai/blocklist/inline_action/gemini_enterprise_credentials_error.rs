@@ -67,7 +67,7 @@ impl GeminiEnterpriseCredentialsErrorView {
                 | GeapCredentialsState::Failed { .. } => {
                     view.refresh_requested = false;
                     view.refresh_succeeded = false;
-                    view.update_refresh_button(crate::tr!("notebooks", "notebooks-try-again"), false, ctx);
+                    view.update_refresh_button("Try again", false, ctx);
                 }
             }
             ctx.notify();

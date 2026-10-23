@@ -842,16 +842,16 @@ impl NotificationsTrigger {
     pub fn discovery_banner_copy(&self) -> &'static str {
         match self {
             NotificationsTrigger::LongRunningCommand(..) => {
-                crate::tr!("terminal", "terminal-notifications-long-running")
+                "Warp can notify you when long-running commands finish."
             }
             NotificationsTrigger::AgentTaskCompleted(..) => {
-                crate::tr!("terminal", "terminal-notifications-agent-task")
+                "Warp can notify you when an agent finishes responding."
             }
             NotificationsTrigger::NeedsAttention => {
-                crate::tr!("terminal", "terminal-notifications-needs-attention")
+                "Warp can notify you when a command or agent needs your attention."
             }
             NotificationsTrigger::PasswordPrompt => {
-                crate::tr!("terminal", "terminal-notifications-password-prompt")
+                "Warp can notify you when you're prompted to enter a password."
             }
         }
     }
@@ -17790,7 +17790,7 @@ impl TerminalView {
                 let share_block_label = if FeatureFlag::CreatingSharedSessions.is_enabled()
                     && ContextFlag::CreateSharedSession.is_enabled()
                 {
-                    crate::tr!("terminal", "terminal-menu-share-block")
+                    "Share block..."
                 } else {
                     "Share..."
                 };
@@ -28472,7 +28472,7 @@ impl TypedActionView for TerminalView {
             AttemptLoginGatedFeature => {
                 AuthManager::handle(ctx).update(ctx, |auth_manager, ctx| {
                     auth_manager.attempt_login_gated_feature(
-                        crate::tr!("search", "search-upgrade-ai-usage"),
+                        &crate::tr!("search", "search-upgrade-ai-usage"),
                         AuthViewVariant::RequireLoginCloseable,
                         ctx,
                     )

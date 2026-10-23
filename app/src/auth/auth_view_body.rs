@@ -608,7 +608,7 @@ impl AuthViewBody {
                 "In order to use Warp’s AI features or collaborate with others, please create an account."
             }
             AuthViewVariant::HitDriveObjectLimitCloseable => {
-                crate::tr!("auth", "auth-hit-drive-limit-closeable")
+                &crate::tr!("auth", "auth-hit-drive-limit-closeable")
             }
             AuthViewVariant::ShareRequirementCloseable => {
                 crate::tr!("auth", "auth-share-requirement-closeable")

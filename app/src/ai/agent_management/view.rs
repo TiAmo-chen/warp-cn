@@ -636,7 +636,7 @@ impl AgentManagementView {
         ctx: &mut ViewContext<Dropdown<AgentManagementViewAction>>,
     ) -> Dropdown<AgentManagementViewAction> {
         let mut dropdown = Dropdown::new(ctx);
-        Self::setup_filter_menu(&mut dropdown, crate::tr!("ai_assistant", "ai-assistant-ai-filter-created-on-label"), ctx);
+        Self::setup_filter_menu(&mut dropdown, "Created on", ctx);
 
         let items = vec![
             MenuItem::Item(MenuItemFields::new("All").with_on_select_action(
@@ -670,7 +670,7 @@ impl AgentManagementView {
         ctx: &mut ViewContext<Dropdown<AgentManagementViewAction>>,
     ) -> Dropdown<AgentManagementViewAction> {
         let mut dropdown = Dropdown::new(ctx);
-        Self::setup_filter_menu(&mut dropdown, crate::tr!("ai_assistant", "ai-assistant-ai-filter-has-artifact-label"), ctx);
+        Self::setup_filter_menu(&mut dropdown, "Has artifact", ctx);
 
         let items = vec![
             MenuItem::Item(MenuItemFields::new("All").with_on_select_action(
@@ -774,7 +774,7 @@ impl AgentManagementView {
         ctx: &mut ViewContext<FilterableDropdown<AgentManagementViewAction>>,
     ) -> FilterableDropdown<AgentManagementViewAction> {
         let mut dropdown = FilterableDropdown::new(ctx);
-        Self::setup_searchable_filter_menu(&mut dropdown, crate::tr!("ai_assistant", "ai-assistant-ai-filter-created-by-label"), ctx);
+        Self::setup_searchable_filter_menu(&mut dropdown, "Created by", ctx);
         dropdown
     }
 

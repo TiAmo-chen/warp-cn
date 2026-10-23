@@ -370,7 +370,7 @@ impl EnvironmentsPageView {
         });
 
         // Create search editor for list page
-        let search_editor = Self::create_single_line_editor(crate::tr!("context_chips", "context-chips-search-environments"), ctx);
+        let search_editor = Self::create_single_line_editor("Search environments...", ctx);
         ctx.subscribe_to_view(&search_editor, |me, _, event, ctx| match event {
             crate::editor::Event::Edited(_) => {
                 me.search_query = me.search_editor.as_ref(ctx).buffer_text(ctx);
@@ -1408,7 +1408,7 @@ impl EnvironmentsPageWidget {
         } else if dropdown_state.auth_url.is_some() {
             ("Authorize", true)
         } else {
-            (crate::tr!("ai_assistant", "ai-assistant-ai-get-started"), true)
+            ("Get started", true)
         };
 
         let github_button = Self::render_empty_state_button(
@@ -1449,7 +1449,7 @@ impl EnvironmentsPageWidget {
             appearance,
             EmptyStateRowConfig {
                 icon: Icon::Github,
-                title: crate::tr!("settings", "settings-quick-setup"),
+                title: &crate::tr!("settings", "settings-quick-setup"),
                 badge: Some("Suggested"),
                 subtitle: "Select the GitHub repositories you’d like to work with and we’ll suggest a base image and config",
                 action_button: github_button,
@@ -1462,7 +1462,7 @@ impl EnvironmentsPageWidget {
             appearance,
             EmptyStateRowConfig {
                 icon: Icon::Terminal,
-                title: crate::tr!("settings", "settings-use-the-agent"),
+                title: &crate::tr!("settings", "settings-use-the-agent"),
                 badge: None,
                 subtitle: "Choose a locally set up project and we’ll help you set up an environment based on it",
                 action_button: local_repos_button,

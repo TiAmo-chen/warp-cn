@@ -1608,7 +1608,7 @@ impl CodeDiffView {
                 fg_overlay_6(appearance.theme())
             };
             let mcp_config_button = render_provider_icon_button(
-                crate::tr!("ai_assistant", "ai-assistant-ai-open-config"),
+                &crate::tr!("ai_assistant", "ai-assistant-ai-open-config"),
                 mcp_button_handle.clone(),
                 appearance,
                 icon,

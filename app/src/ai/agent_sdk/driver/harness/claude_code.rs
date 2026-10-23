@@ -106,7 +106,7 @@ impl ThirdPartyHarness for ClaudeHarness {
             "This organization has been disabled",
             "belongs to a disabled organization",
             // OAuth / login state.
-            crate::tr!("settings", "settings-not-logged-in"),
+            &crate::tr!("settings", "settings-not-logged-in"),
             "OAuth token revoked",
             "OAuth token has expired",
             // Routines disabled by org policy.

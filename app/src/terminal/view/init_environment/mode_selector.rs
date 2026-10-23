@@ -339,7 +339,7 @@ impl EnvironmentSetupModeSelector {
         let remote_github_option = self.render_option(
             0,
             Icon::Github,
-            crate::tr!("settings", "settings-quick-setup"),
+            "Quick setup",
             crate::tr!("terminal", "terminal-quick-setup-desc"),
             true,
             self.remote_github_mouse_state.clone(),
@@ -350,7 +350,7 @@ impl EnvironmentSetupModeSelector {
         let local_repos_option = self.render_option(
             1,
             Icon::Terminal,
-            crate::tr!("settings", "settings-use-the-agent"),
+            "Use the agent",
             crate::tr!("terminal", "terminal-use-agent-desc"),
             false,
             self.local_repos_mouse_state.clone(),

@@ -43,15 +43,15 @@ impl CreateProjectView {
 
         let suggestions = vec![
             BuildSuggestion {
-                prompt: crate::tr!("coding_entrypoints", "coding-entrypoints-suggestion-minesweeper"),
+                prompt: &crate::tr!("coding_entrypoints", "coding-entrypoints-suggestion-minesweeper"),
                 mouse_state: Default::default(),
             },
             BuildSuggestion {
-                prompt: crate::tr!("coding_entrypoints", "coding-entrypoints-suggestion-node-server"),
+                prompt: &crate::tr!("coding_entrypoints", "coding-entrypoints-suggestion-node-server"),
                 mouse_state: Default::default(),
             },
             BuildSuggestion {
-                prompt: crate::tr!("coding_entrypoints", "coding-entrypoints-suggestion-csv-converter"),
+                prompt: &crate::tr!("coding_entrypoints", "coding-entrypoints-suggestion-csv-converter"),
                 mouse_state: Default::default(),
             },
             BuildSuggestion {
@@ -59,7 +59,7 @@ impl CreateProjectView {
                 mouse_state: Default::default(),
             },
             BuildSuggestion {
-                prompt: crate::tr!("coding_entrypoints", "coding-entrypoints-suggestion-game-of-life"),
+                prompt: &crate::tr!("coding_entrypoints", "coding-entrypoints-suggestion-game-of-life"),
                 mouse_state: Default::default(),
             },
         ];

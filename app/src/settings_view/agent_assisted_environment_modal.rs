@@ -428,7 +428,7 @@ impl AgentAssistedEnvironmentModal {
                 if self.available_repos_loading {
                     "Loading locally indexed repos…"
                 } else {
-                    crate::tr!("settings", "settings-no-locally-indexed-repos-found-yet-index-a-repo-then-try-again")
+                    &crate::tr!("settings", "settings-no-locally-indexed-repos-found-yet-index-a-repo-then-try-again")
                 }
             } else {
                 crate::tr!("settings", "settings-local-repo-selection-is-unavailable-in-this-build")

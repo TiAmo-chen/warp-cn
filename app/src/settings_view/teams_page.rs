@@ -98,12 +98,12 @@ const JOIN_TEAM_HEADER: &str = "Join an existing team within your company";
 const BROWSE_TEAMS_BUTTON_LABEL: &str = "Browse teams";
 const SWITCH_TEAM_BUTTON_LABEL: &str = "Switch team";
 const JOIN_WORKSPACE_OR_TEAM_HEADER: &str =
-    crate::tr!("settings", "settings-join-an-existing-workspace-or-team-within-your-company");
+    &crate::tr!("settings", "settings-join-an-existing-workspace-or-team-within-your-company");
 const OR_JOIN_WORKSPACE_OR_TEAM_HEADER: &str =
-    crate::tr!("settings", "settings-or-join-an-existing-workspace-or-team-within-your-company");
+    &crate::tr!("settings", "settings-or-join-an-existing-workspace-or-team-within-your-company");
 const NO_JOINABLE_TEAMS_HEADER: &str = "There are currently no joinable teams.";
 const NO_TEAMS_TO_JOIN_DESCRIPTION: &str =
-    crate::tr!("settings", "settings-contact-an-admin-to-join-a-team-to-gain-access-to-more-features");
+    &crate::tr!("settings", "settings-contact-an-admin-to-join-a-team-to-gain-access-to-more-features");
 const ADMIN_PANEL_CTA_LINK_TEXT: &str = "Visit the admin panel";
 const ADMIN_PANEL_CTA_TRAILING_COPY: &str = "to manage and create new teams.";
 
@@ -129,7 +129,7 @@ const SUBSUBSECTION_HEADER_FONT_SIZE: f32 = 14.;
 const OWNER_STATE_CHIP_ACCENT_OPACITY: u8 = 30;
 
 const INVALID_DOMAINS_INSTRUCTIONS: &str =
-    crate::tr!("settings", "settings-some-of-the-provided-domains-are-invalid-or-have-already-been-added");
+    &crate::tr!("settings", "settings-some-of-the-provided-domains-are-invalid-or-have-already-been-added");
 
 const INVITE_LINK_TOGGLE_INSTRUCTIONS: &str = "As an admin, you can choose whether to enable or disable the ability for team members to invite others by invitation link.";
 const INVITE_LINK_UNAVAILABLE_INSTRUCTIONS: &str =
@@ -138,7 +138,7 @@ const INVITE_LINK_DOMAIN_RESTRICTIONS_INSTRUCTIONS: &str = "Restrict by domain â
 
 const INVITE_BY_EMAIL_EXPIRY_INSTRUCTIONS: &str = "Email invitations are valid for 7 days.";
 const INVALID_EMAILS_INSTRUCTIONS: &str =
-    crate::tr!("settings", "settings-some-of-the-provided-email-addresses-are-invalid-already-invited-or-members-of-the-team");
+    &crate::tr!("settings", "settings-some-of-the-provided-email-addresses-are-invalid-already-invited-or-members-of-the-team");
 
 const OFFLINE_TEXT: &str = "You are offline.";
 
@@ -323,7 +323,7 @@ impl From<&TeamsPageAction> for LoginGatedFeature {
             ContactSupport => "Contact Support",
             ContactSales => "Contact Sales",
             ToggleTeamDiscoverability { .. } | ToggleTeamDiscoverabilityBeforeCreation => {
-                crate::tr!("settings", "settings-toggle-team-discoverability")
+                "Toggle Team Discoverability"
             }
             JoinTeamWithTeamDiscovery { .. } => "Join Team With Team Discovery",
             ShowWorkspaceTeams { .. } => "Show Workspace Teams",
@@ -2694,7 +2694,7 @@ impl TeamsWidget {
                 &crate::tr!("settings", "team-invites-have-been-restricted-due-to-a-past-due-payment.")
             }
             GrowTeamWarning::PaymentUnpaid => {
-                crate::tr!("settings", "settings-team-invites-have-been-restricted-due-to-an-unpaid-subscription")
+                &crate::tr!("settings", "settings-team-invites-have-been-restricted-due-to-an-unpaid-subscription")
             }
         };
 
@@ -2712,14 +2712,14 @@ impl TeamsWidget {
             match cta {
                 GrowTeamWarningCta::Upgrade => "Upgrade to grow your team.",
                 GrowTeamWarningCta::UpdateBilling => {
-                    crate::tr!("settings", "settings-update-your-payment-information-to-restore-access")
+                    &crate::tr!("settings", "settings-update-your-payment-information-to-restore-access")
                 }
                 GrowTeamWarningCta::ContactSupport => "Contact support to restore access.",
                 GrowTeamWarningCta::None => {
                     if is_delinquency {
                         crate::tr!("settings", "settings-contact-support-to-restore-access")
                     } else {
-                        &crate::tr!("settings", "contact-sales-to-grow-your-team.")
+                        "Contact sales to grow your team."
                     }
                 }
             }
@@ -2817,11 +2817,11 @@ impl TeamsWidget {
     ) -> (&'static str, &'static str) {
         if billing_metadata.customer_type == CustomerType::Business {
             (
-                crate::tr!("settings", "settings-upgrade-to-enterprise"),
+                &crate::tr!("settings", "settings-upgrade-to-enterprise"),
                 " for an unlimited team member limit.",
             )
         } else {
-            (crate::tr!("settings", "settings-upgrade-to-business"), " for a higher team member limit.")
+            (&crate::tr!("settings", "settings-upgrade-to-business"), " for a higher team member limit.")
         }
     }
 
@@ -3349,7 +3349,7 @@ impl TeamsWidget {
             // If the team is upgradeable to self-serve tier, show them the upgrade link.
             if team.billing_metadata.can_upgrade_to_higher_tier_plan() {
                 let description = if team.billing_metadata.can_upgrade_to_build_plan() {
-                    crate::tr!("ai_assistant", "ai-assistant-ai-upgrade-to-build-text")
+                    "Upgrade to Build"
                 } else {
                     match team.billing_metadata.customer_type {
                         CustomerType::Prosumer => "Upgrade to Turbo",

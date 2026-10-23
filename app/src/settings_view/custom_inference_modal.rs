@@ -772,7 +772,7 @@ impl View for CustomEndpointModal {
         );
         // Request/response protocol
         column.add_child(
-            Container::new(label(crate::tr!("settings", "settings-api-schema")))
+            Container::new(label("API schema"))
                 .with_margin_bottom(4.)
                 .finish(),
         );
@@ -784,7 +784,7 @@ impl View for CustomEndpointModal {
 
         // Endpoint name
         column.add_child(
-            Container::new(label(crate::tr!("settings", "settings-endpoint-name")))
+            Container::new(label("Endpoint name"))
                 .with_margin_bottom(4.)
                 .finish(),
         );
@@ -807,7 +807,7 @@ impl View for CustomEndpointModal {
 
         // Endpoint URL
         column.add_child(
-            Container::new(label(crate::tr!("settings", "settings-endpoint-url")))
+            Container::new(label("Endpoint URL"))
                 .with_margin_bottom(4.)
                 .finish(),
         );
@@ -837,7 +837,7 @@ impl View for CustomEndpointModal {
 
         // API key
         column.add_child(
-            Container::new(label(crate::tr!("settings", "settings-api-key")))
+            Container::new(label("API key"))
                 .with_margin_bottom(4.)
                 .finish(),
         );
@@ -868,12 +868,12 @@ impl View for CustomEndpointModal {
                 Flex::row()
                     .with_spacing(MODEL_ROW_SPACING)
                     .with_child(
-                        ConstrainedBox::new(label(crate::tr!("settings", "settings-model-name")))
+                        ConstrainedBox::new(label("Model name"))
                             .with_width(MODEL_INPUT_WIDTH)
                             .finish(),
                     )
                     .with_child(
-                        ConstrainedBox::new(label(crate::tr!("settings", "settings-model-alias-optional")))
+                        ConstrainedBox::new(label("Model alias (optional)"))
                             .with_width(MODEL_INPUT_WIDTH)
                             .finish(),
                     )

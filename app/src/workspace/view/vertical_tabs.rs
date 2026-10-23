@@ -5876,24 +5876,24 @@ fn subtitle_options_for_primary(
             (VerticalTabsCompactSubtitle::Branch, "Branch"),
             (
                 VerticalTabsCompactSubtitle::WorkingDirectory,
-                crate::tr!("common", "common-working-directory"),
+                &crate::tr!("common", "common-working-directory"),
             ),
         ],
         VerticalTabsPrimaryInfo::WorkingDirectory => [
             (VerticalTabsCompactSubtitle::Branch, "Branch"),
             (
                 VerticalTabsCompactSubtitle::Command,
-                crate::tr!("workspace", "workspace-command-conversation"),
+                &crate::tr!("workspace", "workspace-command-conversation"),
             ),
         ],
         VerticalTabsPrimaryInfo::Branch => [
             (
                 VerticalTabsCompactSubtitle::Command,
-                crate::tr!("workspace", "workspace-command-conversation"),
+                &crate::tr!("workspace", "workspace-command-conversation"),
             ),
             (
                 VerticalTabsCompactSubtitle::WorkingDirectory,
-                crate::tr!("common", "common-working-directory"),
+                &crate::tr!("common", "common-working-directory"),
             ),
         ],
     }
@@ -6007,7 +6007,7 @@ pub(super) fn render_settings_popup(
     .finish();
 
     let focused_session_option = render_tab_item_mode_option(
-        crate::tr!("workspace", "workspace-focused-session"),
+        &crate::tr!("workspace", "workspace-focused-session"),
         matches!(
             current_tab_item_mode,
             VerticalTabsTabItemMode::FocusedSession
@@ -6122,7 +6122,7 @@ pub(super) fn render_settings_popup(
     .finish();
 
     let command_option = render_primary_info_option(
-        crate::tr!("workspace", "workspace-command-conversation"),
+        &crate::tr!("workspace", "workspace-command-conversation"),
         matches!(current_primary_info, VerticalTabsPrimaryInfo::Command),
         state.command_option_mouse_state.clone(),
         VerticalTabsPrimaryInfo::Command,
@@ -6131,7 +6131,7 @@ pub(super) fn render_settings_popup(
     );
 
     let directory_option = render_primary_info_option(
-        crate::tr!("common", "common-working-directory"),
+        &crate::tr!("common", "common-working-directory"),
         matches!(
             current_primary_info,
             VerticalTabsPrimaryInfo::WorkingDirectory
@@ -6232,14 +6232,14 @@ pub(super) fn render_settings_popup(
             let pr_link_info_tooltip = if show_pr_link && pr_validation_suppressed {
                 Some(ShowToggleInfoTooltip {
                     mouse_state: state.show_pr_link_info_tooltip_mouse_state.clone(),
-                    tooltip_text: crate::tr!("workspace", "workspace-requires-github-cli"),
+                    tooltip_text: &crate::tr!("workspace", "workspace-requires-github-cli"),
                 })
             } else {
                 None
             };
 
             popup_col.add_child(render_show_toggle_option(
-                crate::tr!("workspace", "workspace-pr-link"),
+                &crate::tr!("workspace", "workspace-pr-link"),
                 show_pr_link,
                 state.show_pr_link_mouse_state.clone(),
                 WorkspaceAction::ToggleVerticalTabsShowPrLink,
@@ -6248,7 +6248,7 @@ pub(super) fn render_settings_popup(
                 theme,
             ));
             popup_col.add_child(render_show_toggle_option(
-                crate::tr!("workspace", "workspace-diff-stats"),
+                &crate::tr!("workspace", "workspace-diff-stats"),
                 show_diff_stats,
                 state.show_diff_stats_mouse_state.clone(),
                 WorkspaceAction::ToggleVerticalTabsShowDiffStats,
@@ -6261,7 +6261,7 @@ pub(super) fn render_settings_popup(
     popup_col.add_child(make_divider(theme));
 
     popup_col.add_child(render_show_toggle_option(
-        crate::tr!("workspace", "workspace-show-details-on-hover"),
+        &crate::tr!("workspace", "workspace-show-details-on-hover"),
         show_details_on_hover,
         state.show_details_on_hover_mouse_state.clone(),
         WorkspaceAction::ToggleVerticalTabsShowDetailsOnHover,
