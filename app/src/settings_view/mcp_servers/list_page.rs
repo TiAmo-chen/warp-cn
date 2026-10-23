@@ -207,7 +207,7 @@ impl MCPServersListPageView {
 
         search_editor.update(ctx, |editor, ctx| {
             editor.clear_buffer_and_reset_undo_stack(ctx);
-            editor.set_placeholder_text(crate::tr!("zz_zh02_supplement", "settings-mcp-search-placeholder"), ctx);
+            editor.set_placeholder_text(crate::tr!("settings", "mcp-search-placeholder"), ctx);
         });
         let search_bar = ctx.add_typed_action_view(|_| SearchBar::new(search_editor.clone()));
 
@@ -848,7 +848,7 @@ impl MCPServersListPageView {
                 // Show the toast that the server updated, even though we don't update the cloud template in this case
                 let window_id = ctx.window_id();
                 ToastStack::handle(ctx).update(ctx, |toast_stack, ctx| {
-                    let toast = DismissibleToast::success(String::from(crate::tr!("zz_zh02_supplement", "settings-mcp-updated-toast")));
+                    let toast = DismissibleToast::success(String::from(crate::tr!("settings", "mcp-updated-toast")));
                     toast_stack.add_ephemeral_toast(toast, window_id, ctx);
                 });
             }
@@ -1301,7 +1301,7 @@ impl MCPServersListPageView {
                     ));
                 } else if !filtered_gallery_cards.is_empty() {
                     page.add_child(self.render_server_cards_section(
-                        &crate::tr!("zz_zh02_supplement", "settings-mcp-shared-from-warp"),
+                        &crate::tr!("settings", "mcp-shared-from-warp"),
                         &filtered_gallery_cards,
                         appearance,
                         app,
@@ -1785,7 +1785,7 @@ impl MCPServersListPageView {
                         None => Some(TitleChip::text("Shared by a team member")),
                     }
                 } else if matches!(item_id, ServerCardItemId::TemplatableMCP(_)) {
-                    Some(TitleChip::text(crate::tr!("zz_zh02_supplement", "settings-mcp-from-another-device")))
+                    Some(TitleChip::text(crate::tr!("settings", "mcp-from-another-device")))
                 } else {
                     None
                 }

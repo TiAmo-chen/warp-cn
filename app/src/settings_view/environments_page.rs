@@ -196,7 +196,7 @@ impl EnvironmentDisplayData {
                 "Last used: {}",
                 format_approx_duration_from_now_utc(ts.utc())
             ),
-            None => crate::tr!("settings", "last-used:-never").to_string(),
+            None => crate::tr!("settings", "last-used-never").to_string(),
         };
         match last_edited_part {
             Some(edited) => format!("{} · {}", edited, last_used_part),
@@ -756,7 +756,7 @@ impl EnvironmentsPageView {
 
                 let Some(owner) = owner else {
                     self.show_error_toast(
-                        crate::tr!("settings", "unable-to-create-environment:-not-logged-in.").to_string(),
+                        crate::tr!("settings", "unable-to-create-environment-not-logged-in").to_string(),
                         ctx,
                     );
                     return;
@@ -783,7 +783,7 @@ impl EnvironmentsPageView {
                 let Some(existing_env) = CloudAmbientAgentEnvironment::get_by_id(env_id, ctx)
                 else {
                     self.show_error_toast(
-                        crate::tr!("settings", "unable-to-save:-environment-no-longer-exists.").to_string(),
+                        crate::tr!("settings", "unable-to-save-environment-no-longer-exists").to_string(),
                         ctx,
                     );
                     return;
@@ -955,7 +955,7 @@ impl TypedActionView for EnvironmentsPageView {
                     .map(|team| team.uid)
                 else {
                     self.show_error_toast(
-                        crate::tr!("settings", "unable-to-share-environment:-you-are-not-currently-on-a-team.").to_string(),
+                        crate::tr!("settings", "unable-to-share-environment-you-are-not-currently-on-a-team").to_string(),
                         ctx,
                     );
                     return;
@@ -963,7 +963,7 @@ impl TypedActionView for EnvironmentsPageView {
 
                 let SyncId::ServerId(server_id) = *env_id else {
                     self.show_error_toast(
-                        crate::tr!("settings", "unable-to-share-environment:-environment-is-not-yet-synced.").to_string(),
+                        crate::tr!("settings", "unable-to-share-environment-environment-is-not-yet-synced").to_string(),
                         ctx,
                     );
                     return;
@@ -1287,7 +1287,7 @@ impl EnvironmentsPageWidget {
         let theme = appearance.theme();
         Container::new(
             Text::new(
-                crate::tr!("settings", "no-environments-match-your-search."),
+                crate::tr!("settings", "no-environments-match-your-search"),
                 appearance.ui_font_family(),
                 appearance.ui_font_size(),
             )

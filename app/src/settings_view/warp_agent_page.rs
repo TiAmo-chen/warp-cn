@@ -840,7 +840,7 @@ impl WarpAgentPageView {
             };
             let mut editor = EditorView::new(options, ctx);
 
-            editor.set_placeholder_text(crate::tr!("settings", "commands,-comma-separated"), ctx);
+            editor.set_placeholder_text(crate::tr!("settings", "commands-comma-separated"), ctx);
 
             let current_value = AISettings::as_ref(ctx)
                 .autodetection_command_denylist
@@ -1062,7 +1062,7 @@ impl WarpAgentPageView {
         });
         let set_default_model_modal_view = ctx.add_typed_action_view(|ctx| {
             Modal::new(
-                Some(crate::tr!("settings", "change-your-default-model?").to_string()),
+                Some(crate::tr!("settings", "change-your-default-model").to_string()),
                 set_default_model_modal_body.clone(),
                 ctx,
             )
@@ -1200,7 +1200,7 @@ impl WarpAgentPageView {
                     crate::ToastStack::handle(ctx).update(ctx, |toast_stack, ctx| {
                         toast_stack.add_ephemeral_toast(
                             crate::view_components::DismissibleToast::error(
-                                crate::tr!("settings", "couldn't-disconnect-your-chatgpt-subscription.-please-try-again.")
+                                crate::tr!("settings", "couldnt-disconnect-your-chatgpt-subscription-please-try-again")
                                     .to_string(),
                             ),
                             window_id,
@@ -2114,7 +2114,7 @@ impl WarpAgentPageView {
                  then try again."
             }
             ChatGPTConnectFailure::Unknown => {
-                &crate::tr!("settings", "couldn't-connect-your-chatgpt-subscription.-please-try-again.")
+                &crate::tr!("settings", "couldnt-connect-your-chatgpt-subscription-please-try-again")
             }
         };
         let window_id = ctx.window_id();
@@ -3258,7 +3258,7 @@ fn render_global_ai_toggle(
                 .with_child(
                     Container::new(
                         Text::new_inline(
-                            crate::tr!("settings", "to-use-ai-features,-please-create-an-account."),
+                            crate::tr!("settings", "to-use-ai-features-please-create-an-account"),
                             appearance.ui_font_family(),
                             14.,
                         )
@@ -3862,7 +3862,7 @@ impl SettingsWidget for AutoApproveBypassesCommandDenylistWidget {
                 app,
             ))
             .with_child(render_ai_setting_description(
-                crate::tr!("settings", "when-enabled,-fast-forward-and-auto-approve-run-denylisted-commands-without-asking-for-confirmation."),
+                crate::tr!("settings", "when-enabled-fast-forward-and-auto-approve-run-denylisted-commands-without-asking-for-confirmation"),
                 is_any_ai_enabled,
                 app,
             ))
@@ -3979,7 +3979,7 @@ impl NaturalLanguageDetectionWidget {
             static AUTODETECTION_DESCRIPTION_FRAGMENTS: LazyLock<Vec<FormattedTextFragment>> =
                 LazyLock::new(|| {
                     vec![
-                        FormattedTextFragment::plain_text(crate::tr!("settings", "encountered-an-incorrect-detection?-")),
+                        FormattedTextFragment::plain_text(crate::tr!("settings", "encountered-an-incorrect-detection-")),
                         FormattedTextFragment::hyperlink(
                             crate::tr!("settings", "let-us-know"),
                             "https://warpdotdev.typeform.com/to/offrTIpq",
@@ -4034,7 +4034,7 @@ impl NaturalLanguageDetectionWidget {
             > = LazyLock::new(|| {
                 vec![
                     FormattedTextFragment::plain_text(
-                        crate::tr!("settings", "enabling-natural-language-detection-will-detect-when-natural-language-is-written-in-the-terminal-input,-and-then-automatically-switch-to-agent-mode-for-ai-queries."),
+                        crate::tr!("settings", "enabling-natural-language-detection-will-detect-when-natural-language-is-written-in-the-terminal-input-and-then-automatically-switch-to-agent-mode-for-ai-queries"),
                     ),
                     FormattedTextFragment::plain_text(
                         " Encountered an incorrect input detection? ",
@@ -4088,7 +4088,7 @@ impl NaturalLanguageDetectionWidget {
                 app,
             ))
             .with_child(render_ai_setting_description(
-                crate::tr!("settings", "commands-listed-here-will-never-trigger-natural-language-detection."),
+                crate::tr!("settings", "commands-listed-here-will-never-trigger-natural-language-detection"),
                 is_toggleable,
                 app,
             ))
@@ -4128,7 +4128,7 @@ impl VoiceWidget {
 
         let voice_input_description_text_fragments = vec![
             FormattedTextFragment::plain_text(
-                crate::tr!("settings", "voice-input-allows-you-to-control-warp-by-speaking-directly-to-your-terminal-(powered-by-"),
+                crate::tr!("settings", "voice-input-allows-you-to-control-warp-by-speaking-directly-to-your-terminal-powered-by-"),
             ),
             FormattedTextFragment::hyperlink(crate::tr!("settings", "wispr-flow"), WISPR_FLOW_URL),
             FormattedTextFragment::plain_text(")."),
@@ -4627,7 +4627,7 @@ impl SettingsWidget for AgentAttributionWidget {
                 .switch(self.toggle.clone())
                 .check(state.is_enabled)
                 .with_tooltip(TooltipConfig {
-                    text: crate::tr!("settings", "this-option-is-enforced-by-your-organization's-settings-and-cannot-be-customized.").to_string(),
+                    text: crate::tr!("settings", "this-option-is-enforced-by-your-organizations-settings-and-cannot-be-customized").to_string(),
                     styles: ui_builder.default_tool_tip_styles(),
                 })
                 .disable()
@@ -4723,7 +4723,7 @@ impl SettingsWidget for CloudAgentComputerUseWidget {
                 .switch(self.toggle.clone())
                 .check(is_checked)
                 .with_tooltip(TooltipConfig {
-                    text: crate::tr!("settings", "this-option-is-enforced-by-your-organization's-settings-and-cannot-be-customized.").to_string(),
+                    text: crate::tr!("settings", "this-option-is-enforced-by-your-organizations-settings-and-cannot-be-customized").to_string(),
                     styles: ui_builder.default_tool_tip_styles(),
                 })
                 .disable()
@@ -4766,7 +4766,7 @@ impl SettingsWidget for CloudAgentComputerUseWidget {
         Flex::column()
             .with_child(toggle_row)
             .with_child(render_ai_setting_description(
-                crate::tr!("settings", "enable-computer-use-in-cloud-agent-conversations-started-from-the-warp-app."),
+                crate::tr!("settings", "enable-computer-use-in-cloud-agent-conversations-started-from-the-warp-app"),
                 !is_disabled,
                 app,
             ))
@@ -4854,7 +4854,7 @@ impl SettingsWidget for CloudHandoffWidget {
         Flex::column()
             .with_child(handoff_row)
             .with_child(render_ai_setting_description(
-                crate::tr!("settings", "hand-off-local-agent-conversations-to-a-cloud-agent."),
+                crate::tr!("settings", "hand-off-local-agent-conversations-to-a-cloud-agent"),
                 !is_force_disabled,
                 app,
             ))
@@ -4917,7 +4917,7 @@ impl SettingsWidget for AutoHandoffOnSleepWidget {
         Flex::column()
             .with_child(auto_handoff_on_sleep_row)
             .with_child(render_ai_setting_description(
-                crate::tr!("settings", "when-macos-is-about-to-sleep,-automatically-moves-the-most-recently-focused-running-local-warp-agent-conversation-to-cloud-mode-so-it-can-keep-working."),
+                crate::tr!("settings", "when-macos-is-about-to-sleep-automatically-moves-the-most-recently-focused-running-local-warp-agent-conversation-to-cloud-mode-so-it-can-keep-working"),
                 true,
                 app,
             ))
@@ -5465,19 +5465,19 @@ impl ApiKeysWidget {
 
         if show_provider_keys {
             add_paragraph(vec![FormattedTextFragment::plain_text(
-                crate::tr!("settings", "use-your-own-api-keys-from-model-providers-for-warp-agent.-api-keys-are-used-to-make-requests-to-your-chosen-model-provider.-using-auto-models-or-models-you-do-not-have-available-api-keys-for-will-consume-warp-credits."),
+                crate::tr!("settings", "use-your-own-api-keys-from-model-providers-for-warp-agent-api-keys-are-used-to-make-requests-to-your-chosen-model-provider-using-auto-models-or-models-you-do-not-have-available-api-keys-for-will-consume-warp-credits"),
             )]);
         }
 
         if show_custom_endpoints {
             add_paragraph(vec![FormattedTextFragment::plain_text(
-                crate::tr!("settings", "add-custom-endpoints-to-use-third-party-models.-custom-endpoints-must-support-openai-chat-completions,-openai-responses,-or-anthropic-messages."),
+                crate::tr!("settings", "add-custom-endpoints-to-use-third-party-models-custom-endpoints-must-support-openai-chat-completions-openai-responses-or-anthropic-messages"),
             )]);
         }
 
         if show_provider_keys || show_custom_endpoints {
             add_paragraph(vec![FormattedTextFragment::plain_text(
-                crate::tr!("settings", "api-keys-added-here-are-stored-only-on-this-device,-not-on-warp's-servers."),
+                crate::tr!("settings", "api-keys-added-here-are-stored-only-on-this-device-not-on-warps-servers"),
             )]);
             add_paragraph(vec![FormattedTextFragment::hyperlink(
                 crate::tr!("settings", "learn-more"),
@@ -5621,7 +5621,7 @@ impl ApiKeysWidget {
 
         let description = Container::new(
             Text::new(
-                crate::tr!("settings", "connect-your-supergrok-plan-to-use-grok-models-in-the-warp-agent-through-your-xai-account."),
+                crate::tr!("settings", "connect-your-supergrok-plan-to-use-grok-models-in-the-warp-agent-through-your-xai-account"),
                 appearance.ui_font_family(),
                 CONTENT_FONT_SIZE,
             )
@@ -5644,7 +5644,7 @@ impl ApiKeysWidget {
                     connected_at.format("%m/%d/%Y at %-I:%M%P")
                 ),
                 // Tokens stored before the connection time was tracked.
-                None => crate::tr!("settings", "connected.").to_string(),
+                None => crate::tr!("settings", "connected").to_string(),
             };
             let check = ConstrainedBox::new(
                 Icon::Check
@@ -5733,7 +5733,7 @@ impl ApiKeysWidget {
 
         let description = Container::new(
             Text::new(
-                crate::tr!("settings", "connect-your-chatgpt-plan-to-use-openai-models-in-the-warp-agent-through-your-openai-account."),
+                crate::tr!("settings", "connect-your-chatgpt-plan-to-use-openai-models-in-the-warp-agent-through-your-openai-account"),
                 appearance.ui_font_family(),
                 CONTENT_FONT_SIZE,
             )
@@ -5849,7 +5849,7 @@ impl ApiKeysWidget {
         );
 
         let description = render_ai_setting_description(
-            crate::tr!("settings", "when-enabled,-agent-requests-may-be-routed-to-one-of-warp's-provided-models-in-the-event-of-an-error.-warp-will-prioritize-using-your-api-keys-over-your-warp-credits."),
+            crate::tr!("settings", "when-enabled-agent-requests-may-be-routed-to-one-of-warps-provided-models-in-the-event-of-an-error-warp-will-prioritize-using-your-api-keys-over-your-warp-credits"),
             ai_settings.is_any_ai_enabled(app),
             app,
         );
@@ -5949,7 +5949,7 @@ impl SettingsWidget for ApiKeysWidget {
             ));
         } else if managed_byok_byoe_enabled {
             column.add_child(render_ai_setting_description(
-                crate::tr!("settings", "your-organization-manages-custom-inference.-personal-api-keys-and-custom-endpoints-are-currently-disabled."),
+                crate::tr!("settings", "your-organization-manages-custom-inference-personal-api-keys-and-custom-endpoints-are-currently-disabled"),
                 is_any_ai_enabled,
                 app,
             ));
@@ -6082,7 +6082,7 @@ impl SettingsWidget for ApiKeysWidget {
                         ]
                     } else {
                         vec![FormattedTextFragment::plain_text(
-                            crate::tr!("settings", "ask-your-team's-admin-to-upgrade-to-the-build-plan-to-use-your-own-api-keys."),
+                            crate::tr!("settings", "ask-your-teams-admin-to-upgrade-to-the-build-plan-to-use-your-own-api-keys"),
                         )]
                     }
                 }
@@ -6360,7 +6360,7 @@ impl AwsBedrockWidget {
             user_workspaces.is_aws_bedrock_credentials_enabled(&scope, app);
         let is_usage_enabled = is_section_enabled && are_credentials_enabled;
         let toggle_description = if is_admin_enforced {
-            crate::tr!("settings", "warp-loads-and-sends-local-aws-cli-credentials-for-bedrock-supported-models.-this-setting-is-managed-by-your-organization.").to_string()
+            crate::tr!("settings", "warp-loads-and-sends-local-aws-cli-credentials-for-bedrock-supported-models-this-setting-is-managed-by-your-organization").to_string()
         } else {
             crate::tr!("settings", "ai-aws-bedrock-desc")
                 .to_string()
@@ -6526,7 +6526,7 @@ impl AwsBedrockWidget {
             app,
         );
         let description = render_ai_setting_description(
-            crate::tr!("settings", "when-enabled,-the-login-command-will-run-automatically-when-aws-bedrock-credentials-expire."),
+            crate::tr!("settings", "when-enabled-the-login-command-will-run-automatically-when-aws-bedrock-credentials-expire"),
             is_usage_enabled,
             app,
         );
@@ -6873,7 +6873,7 @@ impl SettingsWidget for CustomModelRoutersWidget {
         let mut column = Flex::column();
 
         column.add_child(render_ai_setting_description(
-            crate::tr!("settings", "automatically-route-tasks-to-specific-models-based-on-task-complexity-or-custom-rules.-custom-routers-will-appear-in-your-model-selector-menu."),
+            crate::tr!("settings", "automatically-route-tasks-to-specific-models-based-on-task-complexity-or-custom-rules-custom-routers-will-appear-in-your-model-selector-menu"),
             is_any_ai_enabled,
             app,
         ));

@@ -2302,7 +2302,7 @@ impl SettingsWidget for AgentsWidget {
                 .finish(),
             );
             agents_header.add_child(render_ai_setting_description(
-                crate::tr!("settings", "set-the-boundaries-for-how-your-agent-operates.-choose-what-it-can-access,-how-much-autonomy-it-has,-and-when-it-must-ask-for-your-approval.-you-can-also-fine-tune-behavior-around-natural-language-input,-codebase-awareness,-and-more."),
+                crate::tr!("settings", "set-the-boundaries-for-how-your-agent-operates-choose-what-it-can-access-how-much-autonomy-it-has-and-when-it-must-ask-for-your-approval-you-can-also-fine-tune-behavior-around-natural-language-input-codebase-awareness-and-more"),
                 ai_settings.is_any_ai_enabled(app),
                 app,
             ));
@@ -2443,7 +2443,7 @@ impl AgentsWidget {
         let max = cw.max;
 
         let label = Container::new(render_body_item_label::<AgentProfilesPageAction>(
-            crate::tr!("settings", "context-window-(tokens)").to_string(),
+            crate::tr!("settings", "context-window-tokens").to_string(),
             None,
             None,
             LocalOnlyIconState::Hidden,
@@ -2666,7 +2666,7 @@ impl AgentsWidget {
         {
             widget_children.push(
                 Container::new(render_settings_info_banner(
-                    &crate::tr!("settings", "some-of-your-permissions-are-managed-by-your-workspace."),
+                    &crate::tr!("settings", "some-of-your-permissions-are-managed-by-your-workspace"),
                     None,
                     appearance,
                 ))
@@ -2990,7 +2990,7 @@ impl AgentsWidget {
 
         let codebase_context_description = vec![
             FormattedTextFragment::plain_text(
-                crate::tr!("settings", "allow-the-warp-agent-to-generate-an-outline-of-your-codebase-that-can-be-used-for-context.-no-code-is-ever-stored-on-our-servers.-"),
+                crate::tr!("settings", "allow-the-warp-agent-to-generate-an-outline-of-your-codebase-that-can-be-used-for-context-no-code-is-ever-stored-on-our-servers-"),
             ),
             FormattedTextFragment::hyperlink(
                 crate::tr!("settings", "learn-more"),
@@ -3063,7 +3063,7 @@ impl AgentsWidget {
         let subtext = {
             let subtext_fragments = vec![
                 FormattedTextFragment::plain_text(
-                    crate::tr!("settings", "you-haven't-added-any-mcp-servers-yet.-once-you-do,-you'll-be-able-to-control-how-much-autonomy-the-warp-agent-has-when-interacting-with-them.-"),
+                    crate::tr!("settings", "you-havent-added-any-mcp-servers-yet-once-you-do-youll-be-able-to-control-how-much-autonomy-the-warp-agent-has-when-interacting-with-them-"),
                 ),
                 FormattedTextFragment::hyperlink_action(
                     crate::tr!("settings", "add-a-server"),

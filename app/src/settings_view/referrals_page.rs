@@ -156,7 +156,7 @@ lazy_static! {
             icon_path: "bundled/svg/referral-keycaps.svg",
             icon_width: 56.,
             icon_height: 56.,
-            label: crate::tr!("zz_zh02_supplement", "settings-reward-keycaps-stickers").to_owned(),
+            label: crate::tr!("settings", "reward-keycaps-stickers").to_owned(),
         },
         Reward {
             required_referral_count: 10,
@@ -456,7 +456,7 @@ impl EmailValidationError {
     /// The user-readable error descriptions.
     fn ui_message(&self) -> String {
         match self {
-            EmailValidationError::Empty => crate::tr!("settings", "please-enter-an-email.").to_owned(),
+            EmailValidationError::Empty => crate::tr!("settings", "please-enter-an-email").to_owned(),
             EmailValidationError::Invalid(invalid_email) => {
                 format!("Please ensure the following email is valid: {invalid_email}")
             }

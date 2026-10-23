@@ -3887,7 +3887,7 @@ impl FeaturesPageView {
                         .with_child(
                             Container::new(
                                 Text::new_inline(
-                                    crate::tr!("zz_zh02_supplement", "settings-width-pct"),
+                                    crate::tr!("settings", "width-pct"),
                                     appearance.ui_font_family(),
                                     appearance.ui_font_size(),
                                 )
@@ -3925,7 +3925,7 @@ impl FeaturesPageView {
                         .with_child(
                             Container::new(
                                 Text::new_inline(
-                                    crate::tr!("zz_zh02_supplement", "settings-height-pct"),
+                                    crate::tr!("settings", "height-pct"),
                                     appearance.ui_font_family(),
                                     appearance.ui_font_size(),
                                 )
@@ -4601,7 +4601,7 @@ impl SettingsWidget for NativeRedirectWidget {
                 on_click_action: None,
                 secondary_text: None,
                 tooltip_override_text: Some(
-                    crate::tr!("settings", "automatically-open-links-in-desktop-app-whenever-possible.").into(),
+                    crate::tr!("settings", "automatically-open-links-in-desktop-app-whenever-possible").into(),
                 ),
             }),
             LocalOnlyIconState::for_setting(
@@ -4665,7 +4665,7 @@ impl SettingsWidget for SessionRestorationWidget {
             .finish();
 
         let labeled_switch = render_body_item::<FeaturesPageAction>(
-            crate::tr!("settings", "restore-windows,-tabs,-and-panes-on-startup").into(),
+            crate::tr!("settings", "restore-windows-tabs-and-panes-on-startup").into(),
             Some(AdditionalInfo {
                 mouse_state: self.additional_info_link.clone(),
                 on_click_action: Some(FeaturesPageAction::OpenUrl(
@@ -4691,7 +4691,7 @@ impl SettingsWidget for SessionRestorationWidget {
 
         if app.is_wayland() {
             let message = Text::new_inline(
-                crate::tr!("settings", "window-positions-won't-be-restored-on-wayland.-"),
+                crate::tr!("settings", "window-positions-wont-be-restored-on-wayland-"),
                 appearance.ui_font_family(),
                 CONTENT_FONT_SIZE,
             )
@@ -4700,7 +4700,7 @@ impl SettingsWidget for SessionRestorationWidget {
 
             let link = ui_builder
                 .link(
-                    crate::tr!("settings", "see-docs.").to_owned(),
+                    crate::tr!("settings", "see-docs").to_owned(),
                     Some("https://docs.warp.dev/terminal/sessions/session-restoration".to_owned()),
                     None,
                     self.docs_link.clone(),
@@ -4850,7 +4850,7 @@ impl SettingsWidget for QuitWarningModalWidget {
         let general_settings = GeneralSettings::as_ref(app);
         let ui_builder = appearance.ui_builder();
         render_body_item::<FeaturesPageAction>(
-            crate::tr!("settings", "show-warning-before-quitting/logging-out").into(),
+            crate::tr!("settings", "show-warning-before-quittinglogging-out").into(),
             None,
             LocalOnlyIconState::for_setting(
                 ShowWarningBeforeQuitting::storage_key(),
@@ -5068,7 +5068,7 @@ impl SettingsWidget for MouseScrollMultiplierWidget {
                 } else {
                     appearance
                         .ui_builder()
-                        .wrappable_text(crate::tr!("settings", "allowed-values:-1-20"), true)
+                        .wrappable_text(crate::tr!("settings", "allowed-values-1-20"), true)
                         .with_style(UiComponentStyles {
                             font_color: Some(themes::theme::Fill::error().into_solid()),
                             ..Default::default()
@@ -5087,7 +5087,7 @@ impl SettingsWidget for MouseScrollMultiplierWidget {
                 on_click_action: None,
                 secondary_text: None,
                 tooltip_override_text: Some(
-                    crate::tr!("settings", "supports-floating-point-values-between-1-and-20.").to_string(),
+                    crate::tr!("settings", "supports-floating-point-values-between-1-and-20").to_string(),
                 ),
             }),
             LocalOnlyIconState::for_setting(
@@ -5642,7 +5642,7 @@ impl SettingsWidget for GlobalHotkeyWidget {
         let ui_builder = appearance.ui_builder();
         if app.is_wayland() {
             column.add_child(render_body_item::<FeaturesPageAction>(
-                crate::tr!("settings", "global-hotkey:").to_owned(),
+                crate::tr!("settings", "global-hotkey").to_owned(),
                 None,
                 // Fine not to show local only icon state for this, as it's not a supported setting.
                 LocalOnlyIconState::Hidden,
@@ -5651,12 +5651,12 @@ impl SettingsWidget for GlobalHotkeyWidget {
                 Flex::row()
                     .with_children([
                         ui_builder
-                            .span(crate::tr!("settings", "not-supported-on-wayland.-"))
+                            .span(crate::tr!("settings", "not-supported-on-wayland-"))
                             .build()
                             .finish(),
                         ui_builder
                             .link(
-                                crate::tr!("settings", "see-docs.").to_owned(),
+                                crate::tr!("settings", "see-docs").to_owned(),
                                 Some(
                                     "https://docs.warp.dev/terminal/windows/global-hotkey"
                                         .to_owned(),
@@ -5678,7 +5678,7 @@ impl SettingsWidget for GlobalHotkeyWidget {
                 || {
                     render_dropdown_item(
                         appearance,
-                        &crate::tr!("settings", "global-hotkey:"),
+                        &crate::tr!("settings", "global-hotkey"),
                         None,
                         None,
                         LocalOnlyIconState::for_setting(
@@ -5785,7 +5785,7 @@ impl SettingsWidget for AutocompleteSymbolsWidget {
     ) -> Box<dyn Element> {
         let ui_builder = appearance.ui_builder();
         render_body_item::<FeaturesPageAction>(
-            crate::tr!("settings", "autocomplete-quotes,-parentheses,-and-brackets").into(),
+            crate::tr!("settings", "autocomplete-quotes-parentheses-and-brackets").into(),
             None,
             LocalOnlyIconState::for_setting(
                 AutocompleteSymbols::storage_key(),
@@ -6259,7 +6259,7 @@ impl SettingsWidget for RightClickBehaviorWidget {
             || {
                 render_dropdown_item(
                     appearance,
-                    &crate::tr!("settings", "right-click:"),
+                    &crate::tr!("settings", "right-click"),
                     selection_settings
                         .right_click_pastes()
                         .then_some("Shift+right-click to open the context menu."),
@@ -6413,7 +6413,7 @@ impl SettingsWidget for AtContextMenuInTerminalModeWidget {
     ) -> Box<dyn Element> {
         let ui_builder = appearance.ui_builder();
         render_body_item::<FeaturesPageAction>(
-            crate::tr!("settings", "enable-'@'-context-menu-in-terminal-mode").into(),
+            crate::tr!("settings", "enable--context-menu-in-terminal-mode").into(),
             None,
             LocalOnlyIconState::for_setting(
                 AtContextMenuInTerminalMode::storage_key(),
@@ -6521,7 +6521,7 @@ impl SettingsWidget for OutlineCodebaseSymbolsForAtContextMenuWidget {
     ) -> Box<dyn Element> {
         let ui_builder = appearance.ui_builder();
         render_body_item::<FeaturesPageAction>(
-            crate::tr!("settings", "outline-codebase-symbols-for-'@'-context-menu").into(),
+            crate::tr!("settings", "outline-codebase-symbols-for--context-menu").into(),
             None,
             LocalOnlyIconState::for_setting(
                 OutlineCodebaseSymbolsForAtContextMenu::storage_key(),
@@ -6785,7 +6785,7 @@ impl TabKeyBehaviorWidget {
                 if *input_settings.completions_open_while_typing.value() =>
             {
                 if view.completions_keystroke.is_empty() {
-                    Some(crate::tr!("settings", "completions-open-as-you-type.").into())
+                    Some(crate::tr!("settings", "completions-open-as-you-type").into())
                 } else {
                     Some(format!(
                         "Completions open as you type (or {}).",
@@ -6794,7 +6794,7 @@ impl TabKeyBehaviorWidget {
                 }
             }
             TabBehavior::Autosuggestions if view.completions_keystroke.is_empty() => {
-                Some(crate::tr!("settings", "opening-the-completion-menu-is-unbound.").into())
+                Some(crate::tr!("settings", "opening-the-completion-menu-is-unbound").into())
             }
             TabBehavior::Autosuggestions => Some(format!(
                 "{} opens completion menu.",
@@ -7387,7 +7387,7 @@ impl SettingsWidget for Osc52ClipboardAccessWidget {
     ) -> Box<dyn Element> {
         render_dropdown_item(
             appearance,
-            &crate::tr!("settings", "clipboard-access-(osc-52)"),
+            &crate::tr!("settings", "clipboard-access-osc-52"),
             Some(
                 &crate::tr!("settings", "controls-whether-programs-running-in-the-terminal-can-read-or-write-your-system-clipboard"),
             ),
@@ -7514,7 +7514,7 @@ impl SettingsWidget for WorkflowsInCommandSearch {
         let ui_builder = appearance.ui_builder();
         let workflow_settings = CommandSearchSettings::as_ref(app);
         render_body_item::<FeaturesPageAction>(
-            crate::tr!("settings", "show-global-workflows-in-command-search-(ctrl-r)").into(),
+            crate::tr!("settings", "show-global-workflows-in-command-search-ctrl-r").into(),
             Some(AdditionalInfo {
                 mouse_state: self.additional_info_link.clone(),
                 on_click_action: Some(FeaturesPageAction::OpenUrl(
@@ -7575,7 +7575,7 @@ impl SettingsWidget for LinuxSelectionClipboardWidget {
                 on_click_action: None,
                 secondary_text: None,
                 tooltip_override_text: Some(
-                    crate::tr!("settings", "whether-the-linux-primary-clipboard-should-be-supported.").into(),
+                    crate::tr!("settings", "whether-the-linux-primary-clipboard-should-be-supported").into(),
                 ),
             }),
             LocalOnlyIconState::for_setting(
@@ -7623,7 +7623,7 @@ impl SettingsWidget for GPUWidget {
     ) -> Box<dyn Element> {
         let gpu_settings = GPUSettings::as_ref(app);
         let mut col = Flex::column().with_child(render_body_item::<FeaturesPageAction>(
-            crate::tr!("settings", "prefer-rendering-new-windows-with-integrated-gpu-(low-power)").into(),
+            crate::tr!("settings", "prefer-rendering-new-windows-with-integrated-gpu-low-power").into(),
             None,
             LocalOnlyIconState::for_setting(
                 PreferLowPowerGPU::storage_key(),
@@ -7653,7 +7653,7 @@ impl SettingsWidget for GPUWidget {
                 Container::new(
                     appearance
                         .ui_builder()
-                        .wrappable_text(crate::tr!("settings", "changes-will-apply-to-new-windows."), true)
+                        .wrappable_text(crate::tr!("settings", "changes-will-apply-to-new-windows"), true)
                         .with_style(UiComponentStyles {
                             font_color: Some(theme.sub_text_color(theme.background()).into_solid()),
                             ..Default::default()
@@ -7804,7 +7804,7 @@ impl SettingsWidget for GraphicsBackendWidget {
                 Container::new(
                     appearance
                         .ui_builder()
-                        .wrappable_text(crate::tr!("settings", "changes-will-apply-to-new-windows."), true)
+                        .wrappable_text(crate::tr!("settings", "changes-will-apply-to-new-windows"), true)
                         .with_style(UiComponentStyles {
                             font_color: Some(theme.sub_text_color(theme.background()).into_solid()),
                             ..Default::default()
@@ -7883,7 +7883,7 @@ impl SettingsWidget for AsyncFindWidget {
             switch,
             appearance,
             Some(
-                crate::tr!("settings", "use-an-improved-implementation-of-find-to-keep-the-ui-responsive-while-searching-for-matches-on-large-outputs.")
+                crate::tr!("settings", "use-an-improved-implementation-of-find-to-keep-the-ui-responsive-while-searching-for-matches-on-large-outputs")
                     .into(),
             ),
         )

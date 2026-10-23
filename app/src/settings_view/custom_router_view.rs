@@ -257,7 +257,7 @@ fn render_targets_row(
     match routing {
         CustomModelRouting::Complexity(c) => {
             flex.add_child(render_model_line(
-                crate::tr!("settings", "default:"),
+                crate::tr!("settings", "default"),
                 model_display_name(&c.default, app),
                 appearance,
                 sub_color,
@@ -265,7 +265,7 @@ fn render_targets_row(
             if let Some(easy) = &c.easy {
                 flex.add_child(
                     Container::new(render_model_line(
-                        crate::tr!("settings", "easy:"),
+                        crate::tr!("settings", "easy"),
                         model_display_name(easy, app),
                         appearance,
                         sub_color,
@@ -277,7 +277,7 @@ fn render_targets_row(
             if let Some(medium) = &c.medium {
                 flex.add_child(
                     Container::new(render_model_line(
-                        crate::tr!("settings", "medium:"),
+                        crate::tr!("settings", "medium"),
                         model_display_name(medium, app),
                         appearance,
                         sub_color,
@@ -289,7 +289,7 @@ fn render_targets_row(
             if let Some(hard) = &c.hard {
                 flex.add_child(
                     Container::new(render_model_line(
-                        crate::tr!("settings", "hard:"),
+                        crate::tr!("settings", "hard"),
                         model_display_name(hard, app),
                         appearance,
                         sub_color,
@@ -301,7 +301,7 @@ fn render_targets_row(
         }
         CustomModelRouting::Prompt(p) => {
             flex.add_child(render_model_line(
-                crate::tr!("settings", "default:"),
+                crate::tr!("settings", "default"),
                 model_display_name(&p.default_model, app),
                 appearance,
                 sub_color,

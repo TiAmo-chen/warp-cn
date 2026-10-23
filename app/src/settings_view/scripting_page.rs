@@ -265,7 +265,7 @@ impl SettingsWidget for WarpControlCliInstallWidget {
             ToggleState::Enabled,
             appearance,
             button,
-            Some(crate::tr!("settings", "install-the-warpctrl-command-for-scripting-warp-from-your-terminal.").to_owned()),
+            Some(crate::tr!("settings", "install-the-warpctrl-command-for-scripting-warp-from-your-terminal").to_owned()),
         )
     }
 }

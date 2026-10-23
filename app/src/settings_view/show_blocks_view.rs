@@ -164,7 +164,7 @@ impl UserOwnedBlock {
         if self.unshare_request_status == UnshareBlockRequestState::InFlight {
             appearance
                 .ui_builder()
-                .label(crate::tr!("settings", "deleting..."))
+                .label(crate::tr!("settings", "deleting"))
                 .with_style(
                     UiComponentStyles::default()
                         .set_font_family_id(appearance.monospace_font_family())
@@ -302,11 +302,11 @@ impl GetBlocksForUserRequestState {
         let ui_builder = appearance.ui_builder();
         match self {
             GetBlocksForUserRequestState::NotStarted => pad(ui_builder
-                .label(crate::tr!("settings", "you-don't-have-any-shared-blocks-yet."))
+                .label(crate::tr!("settings", "you-dont-have-any-shared-blocks-yet"))
                 .build()
                 .finish()),
             GetBlocksForUserRequestState::InFlight => {
-                pad(ui_builder.label(crate::tr!("settings", "getting-blocks...")).build().finish())
+                pad(ui_builder.label(crate::tr!("settings", "getting-blocks")).build().finish())
             }
             GetBlocksForUserRequestState::Failed => pad(ui_builder
                 .label(crate::tr!("settings", "failed-to-load-blocks-please-try-again"))
@@ -362,7 +362,7 @@ impl GetBlocksForUserRequestState {
                     .finish()
                 } else {
                     pad(ui_builder
-                        .label(crate::tr!("settings", "you-don't-have-any-shared-blocks-yet."))
+                        .label(crate::tr!("settings", "you-dont-have-any-shared-blocks-yet"))
                         .build()
                         .finish())
                 }
@@ -490,7 +490,7 @@ impl ShowBlocksView {
         ctx.clipboard()
             .write(ClipboardContent::plain_text(block_url.to_string()));
         ctx.emit(ShowBlocksEvent::ShowToast {
-            message: crate::tr!("settings", "link-copied.").to_string(),
+            message: crate::tr!("settings", "link-copied").to_string(),
             flavor: ToastFlavor::Default,
         })
     }
@@ -548,14 +548,14 @@ impl ShowBlocksView {
             match request_result {
                 Ok(_) => {
                     ctx.emit(ShowBlocksEvent::ShowToast {
-                        message: crate::tr!("settings", "block-was-successfully-unshared.").to_string(),
+                        message: crate::tr!("settings", "block-was-successfully-unshared").to_string(),
                         flavor: ToastFlavor::Success,
                     });
                     user_block.unshare_request_status = UnshareBlockRequestState::Done;
                 }
                 Err(_) => {
                     ctx.emit(ShowBlocksEvent::ShowToast {
-                        message: crate::tr!("settings", "failed-to-unshare-block.-please-try-again.").to_string(),
+                        message: crate::tr!("settings", "failed-to-unshare-block-please-try-again").to_string(),
                         flavor: ToastFlavor::Error,
                     });
                     user_block.unshare_request_status = UnshareBlockRequestState::Failed;

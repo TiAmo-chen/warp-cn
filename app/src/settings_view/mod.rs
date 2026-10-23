@@ -2418,7 +2418,7 @@ impl SettingsView {
                 .with_cross_axis_alignment(CrossAxisAlignment::Center)
                     .with_children([
                         Text::new(
-                            crate::tr!("settings", "no-settings-match-your-search."),
+                            crate::tr!("settings", "no-settings-match-your-search"),
                             appearance.ui_font_family(),
                             appearance.ui_font_size(),
                         )
@@ -2426,7 +2426,7 @@ impl SettingsView {
                         .with_color(theme.sub_text_color(theme.background()).into_solid())
                         .finish(),
                         Text::new(
-                            crate::tr!("settings", "you-may-want-to-try-using-different-keywords-or-checking-for-any-possible-typos."),
+                            crate::tr!("settings", "you-may-want-to-try-using-different-keywords-or-checking-for-any-possible-typos"),
                             appearance.ui_font_family(),
                             appearance.ui_font_size(),
                         )

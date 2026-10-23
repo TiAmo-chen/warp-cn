@@ -336,7 +336,7 @@ impl View for NewWorktreeModal {
             let esc_badge = {
                 let badge_bg = internal_colors::neutral_2(theme);
                 let badge_text = Text::new_inline(
-                    crate::tr!("zz_zh02_supplement", "settings-esc-key").to_string(),
+                    crate::tr!("settings", "esc-key").to_string(),
                     appearance.ui_font_family(),
                     ESC_BADGE_FONT_SIZE,
                 )

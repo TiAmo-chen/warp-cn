@@ -163,7 +163,7 @@ impl CreateApiKeyModal {
                 ..Default::default()
             };
             let mut editor = EditorView::single_line(options, ctx);
-            editor.set_placeholder_text(crate::tr!("zz_zh02_supplement", "settings-warp-api-key"), ctx);
+            editor.set_placeholder_text(crate::tr!("settings", "warp-api-key"), ctx);
             editor
         });
 
@@ -356,7 +356,7 @@ impl CreateApiKeyModal {
         let name = self.name_editor.as_ref(ctx).buffer_text(ctx);
 
         let final_name = if name.trim().is_empty() {
-            crate::tr!("zz_zh02_supplement", "settings-warp-api-key").to_string()
+            crate::tr!("settings", "warp-api-key").to_string()
         } else {
             name.trim().to_string()
         };
@@ -380,7 +380,7 @@ impl CreateApiKeyModal {
                 None => {
                     self.request_state = RequestState::Idle;
                     ctx.emit(CreateApiKeyModalEvent::Error {
-                        message: crate::tr!("zz_zh02_supplement", "settings-please-select-agent").to_string(),
+                        message: crate::tr!("settings", "please-select-agent").to_string(),
                     });
                     ctx.notify();
                     return;
@@ -773,7 +773,7 @@ impl View for CreateApiKeyModal {
                                 ButtonVariant::Secondary,
                                 self.create_agent_button_mouse_state.clone(),
                             )
-                            .with_text_label(crate::tr!("zz_zh02_supplement", "settings-create-agent").to_string())
+                            .with_text_label(crate::tr!("settings", "create-agent").to_string())
                             .with_style(button_style)
                             .build()
                             .on_click(|ctx, _, _| {
@@ -899,7 +899,7 @@ impl TypedActionView for CreateApiKeyModal {
                 let window_id = ctx.window_id();
                 crate::ToastStack::handle(ctx).update(ctx, |toast_stack, ctx| {
                     let toast = crate::view_components::DismissibleToast::success(
-                        crate::tr!("zz_zh02_supplement", "settings-secret-key-copied").to_string(),
+                        crate::tr!("settings", "secret-key-copied").to_string(),
                     );
                     toast_stack.add_ephemeral_toast(toast, window_id, ctx);
                 });

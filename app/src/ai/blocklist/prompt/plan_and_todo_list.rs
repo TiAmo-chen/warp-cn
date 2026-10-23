@@ -255,9 +255,9 @@ impl PlanAndTodoListView {
                 chip_content.finish(),
                 self.plan_button_mouse_state.clone(),
                 if is_agent_unaware_of_plan_edits {
-                    crate::tr!("zz_zh02_supplement", "ai-agent-unaware-plan-edits").to_string()
+                    crate::tr!("ai", "agent-unaware-plan-edits").to_string()
                 } else {
-                    crate::tr!("zz_zh02_supplement", "ai-view-plan").to_string()
+                    crate::tr!("ai", "view-plan").to_string()
                 },
                 corner_radius,
                 appearance,

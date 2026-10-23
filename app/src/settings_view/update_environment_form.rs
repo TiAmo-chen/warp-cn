@@ -1364,7 +1364,7 @@ impl UpdateEnvironmentForm {
                     }
                     Ok(UserGithubInfoResult::Unknown) => {
                         me.github_dropdown_state.load_error_message = Some(
-                            crate::tr!("settings", "couldn't-load-github-repos.-you-can-paste-repo-url(s),-or-retry.")
+                            crate::tr!("settings", "couldnt-load-github-repos-you-can-paste-repo-urls-or-retry")
                                 .to_string(),
                         );
                         me.update_repos_input_placeholder(ctx);
@@ -1372,7 +1372,7 @@ impl UpdateEnvironmentForm {
                     Err(e) => {
                         debug!("Failed to load GitHub repos: {e}");
                         me.github_dropdown_state.load_error_message = Some(
-                            crate::tr!("settings", "couldn't-load-github-repos.-you-can-paste-repo-url(s),-or-retry.")
+                            crate::tr!("settings", "couldnt-load-github-repos-you-can-paste-repo-urls-or-retry")
                                 .to_string(),
                         );
                         me.update_repos_input_placeholder(ctx);
@@ -1698,7 +1698,7 @@ impl UpdateEnvironmentForm {
 
         Some(render_warning_box(
             WarningBoxConfig::new(
-                crate::tr!("settings", "personal-environments-cannot-be-used-with-external-integrations-or-team-api-keys.-for-the-best-experience,-use-shared-environments."),
+                crate::tr!("settings", "personal-environments-cannot-be-used-with-external-integrations-or-team-api-keys-for-the-best-experience-use-shared-environments"),
             )
             .with_width(self.field_max_width),
             appearance,
@@ -2004,7 +2004,7 @@ impl UpdateEnvironmentForm {
     fn render_repos_field_label(&self, appearance: &Appearance) -> Box<dyn Element> {
         let theme = appearance.theme();
         Text::new(
-            crate::tr!("settings", "repo(s)"),
+            crate::tr!("settings", "repos"),
             appearance.ui_font_family(),
             appearance.ui_font_size(),
         )
@@ -2034,7 +2034,7 @@ impl UpdateEnvironmentForm {
                     .with_child(
                         Container::new(
                             Text::new(
-                                crate::tr!("settings", "loading..."),
+                                crate::tr!("settings", "loading"),
                                 appearance.ui_font_family(),
                                 appearance.ui_font_size(),
                             )
@@ -2480,7 +2480,7 @@ impl UpdateEnvironmentForm {
     fn render_repo_helper_text_row(&self, appearance: &Appearance) -> Box<dyn Element> {
         let theme = appearance.theme();
         let helper = Text::new(
-            crate::tr!("settings", "type-owner/repo-and-press-enter-to-add,-or-select-from-dropdown."),
+            crate::tr!("settings", "type-ownerrepo-and-press-enter-to-add-or-select-from-dropdown"),
             appearance.ui_font_family(),
             appearance.ui_font_size() * 0.85,
         )
@@ -2494,7 +2494,7 @@ impl UpdateEnvironmentForm {
                 return helper;
             };
 
-            // crate::tr!("settings", "missing-a-repo?-configure-access-on-github") text with link
+            // crate::tr!("settings", "missing-a-repo-configure-access-on-github") text with link
             let install_link = app_install_link.clone();
 
             // Build as a row with plain text + link
@@ -2506,7 +2506,7 @@ impl UpdateEnvironmentForm {
             // Plain text part
             text_row.add_child(
                 Text::new(
-                    crate::tr!("settings", "missing-a-repo?"),
+                    crate::tr!("settings", "missing-a-repo"),
                     appearance.ui_font_family(),
                     appearance.ui_font_size() * 0.85,
                 )
@@ -3271,7 +3271,7 @@ impl UpdateEnvironmentForm {
 
         render_warning_box(
             WarningBoxConfig::new(
-                crate::tr!("settings", "we-couldn't-find-a-good-match.-we-recommend-using-a-custom-docker-image-for-these-repos."),
+                crate::tr!("settings", "we-couldnt-find-a-good-match-we-recommend-using-a-custom-docker-image-for-these-repos"),
             )
             .with_description(reason)
             .with_icon(Icon::AlertTriangle)

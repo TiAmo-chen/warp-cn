@@ -151,7 +151,7 @@ pub fn init_actions_from_parent_view<T: Action + Clone>(
 
     toggle_binding_pairs.push(
         ToggleSettingActionPair::new(
-            &crate::tr!("zz_zh02_supplement", "settings-cursor-blink"),
+            &crate::tr!("settings", "cursor-blink"),
             builder(SettingsAction::AppearancePageToggle(
                 AppearancePageAction::ToggleCursorBlink,
             )),
@@ -167,7 +167,7 @@ pub fn init_actions_from_parent_view<T: Action + Clone>(
 
     toggle_binding_pairs.push(
         ToggleSettingActionPair::new(
-            &crate::tr!("zz_zh02_supplement", "settings-jump-bottom-block"),
+            &crate::tr!("settings", "jump-bottom-block"),
             builder(SettingsAction::AppearancePageToggle(
                 AppearancePageAction::ToggleJumpToBottomOfBlockButton,
             )),
@@ -183,7 +183,7 @@ pub fn init_actions_from_parent_view<T: Action + Clone>(
 
     toggle_binding_pairs.push(
         ToggleSettingActionPair::new(
-            &crate::tr!("zz_zh02_supplement", "settings-block-dividers"),
+            &crate::tr!("settings", "block-dividers"),
             builder(SettingsAction::AppearancePageToggle(
                 AppearancePageAction::ToggleShowBlockDividers,
             )),
@@ -248,7 +248,7 @@ pub fn init_actions_from_parent_view<T: Action + Clone>(
     // Add command palette entry for toggling between Warp and Classic input modes
     app.register_fixed_bindings(vec![
         FixedBinding::empty(
-            crate::tr!("settings", "toggle-input-mode-(warp/classic)").to_string(),
+            crate::tr!("settings", "toggle-input-mode-warpclassic").to_string(),
             builder(SettingsAction::AppearancePageToggle(
                 AppearancePageAction::ToggleInputMode,
             )),
@@ -294,7 +294,7 @@ pub fn init_actions_from_parent_view<T: Action + Clone>(
 
     toggle_binding_pairs.push(
         ToggleSettingActionPair::new(
-            &crate::tr!("zz_zh02_supplement", "settings-tab-indicators"),
+            &crate::tr!("settings", "tab-indicators"),
             builder(SettingsAction::AppearancePageToggle(
                 AppearancePageAction::ToggleTabIndicators,
             )),
@@ -362,7 +362,7 @@ pub fn init_actions_from_parent_view<T: Action + Clone>(
         // Add a toggle alias for crate::tr!("settings", "zen-mode").
         toggle_binding_pairs.push(
             ToggleSettingActionPair::new(
-                &crate::tr!("zz_zh02_supplement", "settings-zen-mode"),
+                &crate::tr!("settings", "zen-mode"),
                 builder(SettingsAction::AppearancePageToggle(
                     AppearancePageAction::ToggleWorkspaceDecorationVisibility,
                 )),
@@ -379,7 +379,7 @@ pub fn init_actions_from_parent_view<T: Action + Clone>(
 
     if FeatureFlag::VerticalTabs.is_enabled() {
         toggle_binding_pairs.push(ToggleSettingActionPair::new(
-            &crate::tr!("zz_zh02_supplement", "settings-vertical-tab-layout"),
+            &crate::tr!("settings", "vertical-tab-layout"),
             builder(SettingsAction::AppearancePageToggle(
                 AppearancePageAction::ToggleVerticalTabs,
             )),
@@ -406,7 +406,7 @@ pub fn init_actions_from_parent_view<T: Action + Clone>(
 
     if FeatureFlag::Ligatures.is_enabled() {
         toggle_binding_pairs.push(ToggleSettingActionPair::new(
-            &crate::tr!("zz_zh02_supplement", "settings-ligature-rendering"),
+            &crate::tr!("settings", "ligature-rendering"),
             builder(SettingsAction::AppearancePageToggle(
                 AppearancePageAction::ToggleLigatureRendering,
             )),
@@ -3014,7 +3014,7 @@ impl SettingsWidget for ThemeSelectWidget {
                 appearance
                     .ui_builder()
                     .span(
-                        crate::tr!("settings", "automatically-switch-between-light-and-dark-themes-when-your-system-does.")
+                        crate::tr!("settings", "automatically-switch-between-light-and-dark-themes-when-your-system-does")
                             .to_string(),
                     )
                     .with_style(
@@ -3116,7 +3116,7 @@ impl SettingsWidget for CustomAppIconWidget {
                     appearance
                         .ui_builder()
                         .wrappable_text(
-                            crate::tr!("settings", "you-may-need-to-restart-warp-for-macos-to-apply-the-preferred-icon-style."),
+                            crate::tr!("settings", "you-may-need-to-restart-warp-for-macos-to-apply-the-preferred-icon-style"),
                             true,
                         )
                         .with_style(UiComponentStyles {
@@ -3297,7 +3297,7 @@ impl SettingsWidget for WindowOpacityWidget {
             return Flex::column()
                 .with_child(
                     Container::new(render_body_item_label::<AppearancePageAction>(
-                        crate::tr!("settings", "window-opacity:").to_owned(),
+                        crate::tr!("settings", "window-opacity").to_owned(),
                         None,
                         None,
                         LocalOnlyIconState::Hidden,
@@ -3309,7 +3309,7 @@ impl SettingsWidget for WindowOpacityWidget {
                 .with_child(
                     Container::new(
                         FormattedTextElement::from_str(
-                            crate::tr!("settings", "transparency-is-not-supported-with-your-graphics-drivers."),
+                            crate::tr!("settings", "transparency-is-not-supported-with-your-graphics-drivers"),
                             appearance.ui_font_family(),
                             appearance.ui_font_size(),
                         )
@@ -3502,7 +3502,7 @@ impl SettingsWidget for WindowBackdropWidget {
             col.add_child(
                 Container::new(
                     FormattedTextElement::from_str(
-                        crate::tr!("settings", "the-selected-hardware-may-not-support-rendering-transparent-windows."),
+                        crate::tr!("settings", "the-selected-hardware-may-not-support-rendering-transparent-windows"),
                         appearance.ui_font_family(),
                         appearance.ui_font_size(),
                     )
@@ -3602,7 +3602,7 @@ impl SettingsWidget for ToolsPanelProjectExplorerWidget {
                     );
                 })
                 .finish(),
-            Some(crate::tr!("settings", "show-the-project-explorer-/-file-tree-tab-in-the-tools-panel.").to_string()),
+            Some(crate::tr!("settings", "show-the-project-explorer--file-tree-tab-in-the-tools-panel").to_string()),
         )
     }
 }
@@ -3642,7 +3642,7 @@ impl SettingsWidget for ToolsPanelConversationHistoryWidget {
                     );
                 })
                 .finish(),
-            Some(crate::tr!("settings", "show-the-agent-conversation-history-tab-in-the-tools-panel.").to_string()),
+            Some(crate::tr!("settings", "show-the-agent-conversation-history-tab-in-the-tools-panel").to_string()),
         )
     }
 }
@@ -3681,7 +3681,7 @@ impl SettingsWidget for ToolsPanelGlobalSearchWidget {
                         .dispatch_typed_action(AppearancePageAction::ToggleToolsPanelGlobalSearch);
                 })
                 .finish(),
-            Some(crate::tr!("settings", "show-the-global-file-search-tab-in-the-tools-panel.").to_string()),
+            Some(crate::tr!("settings", "show-the-global-file-search-tab-in-the-tools-panel").to_string()),
         )
     }
 }
@@ -3719,7 +3719,7 @@ impl SettingsWidget for ToolsPanelWarpDriveWidget {
                     evt_ctx.dispatch_typed_action(AppearancePageAction::ToggleToolsPanelWarpDrive);
                 })
                 .finish(),
-            Some(crate::tr!("settings", "show-the-warp-drive-tab-in-the-tools-panel.").to_string()),
+            Some(crate::tr!("settings", "show-the-warp-drive-tab-in-the-tools-panel").to_string()),
         )
     }
 }
@@ -3756,7 +3756,7 @@ impl SettingsWidget for InputTypeWidget {
                 self.radio_buttons_states.clone(),
                 vec![
                     RadioButtonItem::text("Warp"),
-                    RadioButtonItem::text(crate::tr!("settings", "shell-(ps1)")),
+                    RadioButtonItem::text(crate::tr!("settings", "shell-ps1")),
                 ],
                 view.input_type_radio_state.clone(),
                 Some(input_type as usize),
@@ -4407,7 +4407,7 @@ impl SettingsWidget for TerminalFontWidget {
         font_size.add_child(
             appearance
                 .ui_builder()
-                .label(crate::tr!("settings", "font-size-(px)").to_string())
+                .label(crate::tr!("settings", "font-size-px").to_string())
                 .with_style(UiComponentStyles {
                     margin: Some(Coords {
                         left: 2.,
@@ -5015,7 +5015,7 @@ impl SettingsWidget for ShowVerticalTabPanelInRestoredWindowsWidget {
                 })
                 .finish(),
             Some(
-                crate::tr!("settings", "when-enabled,-reopening-or-restoring-a-window-opens-the-vertical-tabs-panel-even-if-it-was-closed-when-the-window-was-last-saved.")
+                crate::tr!("settings", "when-enabled-reopening-or-restoring-a-window-opens-the-vertical-tabs-panel-even-if-it-was-closed-when-the-window-was-last-saved")
                     .to_string(),
             ),
         )
@@ -5065,7 +5065,7 @@ impl SettingsWidget for HideTitleBarSearchBarInVerticalTabsWidget {
                 })
                 .finish(),
             Some(
-                crate::tr!("settings", "when-using-the-vertical-tab-layout,-hide-the-search-bar-in-the-title-bar.-search-stays-available-via-the-command-palette-and-keyboard-shortcuts.")
+                crate::tr!("settings", "when-using-the-vertical-tab-layout-hide-the-search-bar-in-the-title-bar-search-stays-available-via-the-command-palette-and-keyboard-shortcuts")
                     .to_string(),
             ),
         )
@@ -5118,7 +5118,7 @@ impl SettingsWidget for UseLatestUserPromptAsConversationTitleInTabNamesWidget {
                 })
                 .finish(),
             Some(
-                crate::tr!("settings", "show-the-latest-user-prompt-instead-of-the-generated-conversation-title-for-oz-and-third-party-agent-sessions-in-vertical-tabs.")
+                crate::tr!("settings", "show-the-latest-user-prompt-instead-of-the-generated-conversation-title-for-oz-and-third-party-agent-sessions-in-vertical-tabs")
                     .to_string(),
             ),
         )
@@ -5258,7 +5258,7 @@ impl SettingsWidget for DirectoryTabColorsWidget {
             )
             .with_child(
                 Text::new(
-                    crate::tr!("settings", "automatically-color-tabs-based-on-the-directory-or-repo-you're-working-in."),
+                    crate::tr!("settings", "automatically-color-tabs-based-on-the-directory-or-repo-youre-working-in"),
                     appearance.ui_font_family(),
                     appearance.ui_font_size(),
                 )
@@ -5317,7 +5317,7 @@ impl SettingsWidget for DirectoryTabColorsWidget {
                 };
                 let is_selected = current_color == tab_color;
                 let tooltip_text = match ansi_id {
-                    None => crate::tr!("settings", "default-(no-color)").to_string(),
+                    None => crate::tr!("settings", "default-no-color").to_string(),
                     Some(id) => id.to_string(),
                 };
                 let dir_path_clone = PathBuf::from(&dir_path);
@@ -5496,7 +5496,7 @@ impl SettingsWidget for AltScreenPaddingWidget {
                     Container::new(
                         Align::new(
                             Text::new(
-                                crate::tr!("settings", "uniform-padding-(px)"),
+                                crate::tr!("settings", "uniform-padding-px"),
                                 appearance.ui_font_family(),
                                 appearance.ui_font_size(),
                             )

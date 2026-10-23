@@ -176,7 +176,7 @@ impl View for ExecutionProfileView {
                     model_flex.add_child(with_standard_vertical_margin(
                         render_model_line_with_icon(
                             Icon::Lightning,
-                            crate::tr!("settings", "base-model:"),
+                            crate::tr!("settings", "base-model"),
                             base_model,
                             appearance,
                             is_any_ai_enabled,
@@ -185,7 +185,7 @@ impl View for ExecutionProfileView {
                     model_flex.add_child(with_standard_vertical_margin(
                         render_model_line_with_icon(
                             Icon::Terminal,
-                            crate::tr!("settings", "full-terminal-use:"),
+                            crate::tr!("settings", "full-terminal-use"),
                             cli_agent_model,
                             appearance,
                             is_any_ai_enabled,
@@ -195,7 +195,7 @@ impl View for ExecutionProfileView {
                         model_flex.add_child(with_standard_vertical_margin(
                             render_model_line_with_icon(
                                 Icon::Laptop,
-                                crate::tr!("settings", "computer-use:"),
+                                crate::tr!("settings", "computer-use"),
                                 computer_use_model,
                                 appearance,
                                 is_any_ai_enabled,
@@ -224,7 +224,7 @@ impl View for ExecutionProfileView {
                             .with_child(with_standard_vertical_margin(
                                 render_action_permission_line_with_icon(
                                     Icon::Code2,
-                                    crate::tr!("settings", "apply-code-diffs:"),
+                                    crate::tr!("settings", "apply-code-diffs"),
                                     &profile.apply_code_diffs,
                                     appearance,
                                     is_any_ai_enabled,
@@ -233,7 +233,7 @@ impl View for ExecutionProfileView {
                             .with_child(with_standard_vertical_margin(
                                 render_action_permission_line_with_icon(
                                     Icon::Notebook,
-                                    crate::tr!("settings", "read-files:"),
+                                    crate::tr!("settings", "read-files"),
                                     &profile.read_files,
                                     appearance,
                                     is_any_ai_enabled,
@@ -253,7 +253,7 @@ impl View for ExecutionProfileView {
                         permissions_column.add_child(with_standard_vertical_margin(
                             render_action_permission_line_with_icon(
                                 Icon::Terminal,
-                                crate::tr!("settings", "execute-commands:"),
+                                crate::tr!("settings", "execute-commands"),
                                 &profile.execute_commands,
                                 appearance,
                                 is_any_ai_enabled,
@@ -292,7 +292,7 @@ impl View for ExecutionProfileView {
                         permissions_column.add_child(with_standard_vertical_margin(
                             render_write_to_pty_permission_line_with_icon(
                                 Icon::Workflow,
-                                crate::tr!("settings", "interact-with-running-commands:"),
+                                crate::tr!("settings", "interact-with-running-commands"),
                                 &profile.write_to_pty,
                                 appearance,
                                 is_any_ai_enabled,
@@ -303,7 +303,7 @@ impl View for ExecutionProfileView {
                             permissions_column.add_child(with_standard_vertical_margin(
                                 render_computer_use_permission_line_with_icon(
                                     Icon::Laptop,
-                                    crate::tr!("settings", "computer-use:"),
+                                    crate::tr!("settings", "computer-use"),
                                     &profile.computer_use,
                                     appearance,
                                     is_any_ai_enabled,
@@ -314,7 +314,7 @@ impl View for ExecutionProfileView {
                         permissions_column.add_child(with_standard_vertical_margin(
                             render_ask_user_question_permission_line_with_icon(
                                 Icon::MessageText,
-                                crate::tr!("settings", "ask-questions:"),
+                                crate::tr!("settings", "ask-questions"),
                                 &profile.ask_user_question,
                                 appearance,
                                 is_any_ai_enabled,
@@ -323,7 +323,7 @@ impl View for ExecutionProfileView {
                         permissions_column.add_child(with_standard_vertical_margin(
                             render_run_agents_permission_line_with_icon(
                                 Icon::Workflow,
-                                crate::tr!("settings", "run-agents:"),
+                                crate::tr!("settings", "run-agents"),
                                 &profile.run_agents,
                                 appearance,
                                 is_any_ai_enabled,
@@ -333,7 +333,7 @@ impl View for ExecutionProfileView {
                         permissions_column.add_child(with_standard_vertical_margin(
                             render_action_permission_line_with_icon(
                                 Icon::Dataflow,
-                                crate::tr!("settings", "call-mcp-servers:"),
+                                crate::tr!("settings", "call-mcp-servers"),
                                 &profile.mcp_permissions,
                                 appearance,
                                 is_any_ai_enabled,
@@ -377,7 +377,7 @@ impl View for ExecutionProfileView {
                             permissions_column.add_child(with_standard_vertical_margin(
                                 render_bool_permission_line_with_icon(
                                     Icon::Globe,
-                                    crate::tr!("settings", "call-web-tools:"),
+                                    crate::tr!("settings", "call-web-tools"),
                                     profile.web_search_enabled,
                                     appearance,
                                     is_any_ai_enabled,
@@ -388,7 +388,7 @@ impl View for ExecutionProfileView {
                         permissions_column.add_child(with_standard_vertical_margin(
                             render_bool_permission_line_with_icon(
                                 Icon::Compass,
-                                crate::tr!("settings", "auto-sync-plans-to-warp-drive:"),
+                                crate::tr!("settings", "auto-sync-plans-to-warp-drive"),
                                 profile.autosync_plans_to_warp_drive,
                                 appearance,
                                 is_any_ai_enabled,
@@ -801,7 +801,7 @@ fn render_directory_allowlist(
 ) -> Box<dyn Element> {
     with_standard_vertical_margin(render_pathbuf_allowlist_row(
         Icon::Check,
-        crate::tr!("settings", "directory-allowlist:").to_string(),
+        crate::tr!("settings", "directory-allowlist").to_string(),
         &profile.directory_allowlist,
         appearance,
         is_ai_enabled,
@@ -815,7 +815,7 @@ fn render_command_allowlist(
 ) -> Box<dyn Element> {
     with_standard_vertical_margin(render_command_predicate_row(
         Icon::Check,
-        crate::tr!("settings", "command-allowlist:").to_string(),
+        crate::tr!("settings", "command-allowlist").to_string(),
         &profile.command_allowlist,
         appearance,
         is_ai_enabled,
@@ -829,7 +829,7 @@ fn render_command_denylist(
 ) -> Box<dyn Element> {
     with_standard_vertical_margin(render_command_predicate_row(
         Icon::SlashCircle,
-        crate::tr!("settings", "command-denylist:").to_string(),
+        crate::tr!("settings", "command-denylist").to_string(),
         &profile.command_denylist,
         appearance,
         is_ai_enabled,
@@ -844,7 +844,7 @@ fn render_mcp_allowlist(
 ) -> Box<dyn Element> {
     with_standard_vertical_margin(render_mcp_uuid_row(
         Icon::Check,
-        crate::tr!("settings", "mcp-allowlist:").to_string(),
+        crate::tr!("settings", "mcp-allowlist").to_string(),
         &profile.mcp_allowlist,
         appearance,
         app,
@@ -860,7 +860,7 @@ fn render_mcp_denylist(
 ) -> Box<dyn Element> {
     with_standard_vertical_margin(render_mcp_uuid_row(
         Icon::SlashCircle,
-        crate::tr!("settings", "mcp-denylist:").to_string(),
+        crate::tr!("settings", "mcp-denylist").to_string(),
         &profile.mcp_denylist,
         appearance,
         app,

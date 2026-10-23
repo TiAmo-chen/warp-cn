@@ -88,7 +88,7 @@ impl View for DeleteEnvironmentConfirmationDialog {
         );
 
         let dialog = Dialog::new(
-            crate::tr!("settings", "delete-environment?").to_string(),
+            crate::tr!("settings", "delete-environment").to_string(),
             Some(description),
             dialog_styles(appearance),
         )

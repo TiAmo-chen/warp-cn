@@ -1366,7 +1366,7 @@ impl BillingAndUsagePageV2View {
                     )
                 }
                 (UsageDisplayUnit::Credits, None) => {
-                    crate::tr!("settings", "your-admin-has-enabled-auto-reload-for-add-on-credits.-when-your-team's-add-on-credit-balance-runs-low,-warp-will-automatically-purchase-add-on-credits-and-add-them-to-your-team's-shared-pool.").to_string()
+                    crate::tr!("settings", "your-admin-has-enabled-auto-reload-for-add-on-credits-when-your-teams-add-on-credit-balance-runs-low-warp-will-automatically-purchase-add-on-credits-and-add-them-to-your-teams-shared-pool").to_string()
                 }
                 (UsageDisplayUnit::Dollars, Some(option)) => {
                     let amount = PackAmount::of(option, unit).label();
@@ -1379,7 +1379,7 @@ impl BillingAndUsagePageV2View {
                     )
                 }
                 (UsageDisplayUnit::Dollars, None) => {
-                    crate::tr!("settings", "your-admin-has-enabled-auto-reload.-when-your-team's-purchased-usage-runs-low,-warp-will-automatically-purchase-more-and-add-it-to-your-team's-shared-pool.").to_string()
+                    crate::tr!("settings", "your-admin-has-enabled-auto-reload-when-your-teams-purchased-usage-runs-low-warp-will-automatically-purchase-more-and-add-it-to-your-teams-shared-pool").to_string()
                 }
             };
             return AddonCreditsPanelState::AutoreloadNonAdmin {
@@ -1414,12 +1414,12 @@ impl BillingAndUsagePageV2View {
         let (upgrade_suffix, contact_account_executive_text, contact_team_admin_text) = match unit {
             UsageDisplayUnit::Credits => (
                 " to purchase add-on credits.",
-                crate::tr!("settings", "contact-your-account-executive-for-more-add-on-credits."),
+                crate::tr!("settings", "contact-your-account-executive-for-more-add-on-credits"),
                 crate::tr!("settings", "contact-a-team-admin-to-enable-add-on-credits"),
             ),
             UsageDisplayUnit::Dollars => (
                 " to purchase usage.",
-                crate::tr!("settings", "contact-your-account-executive-for-more-usage."),
+                crate::tr!("settings", "contact-your-account-executive-for-more-usage"),
                 crate::tr!("settings", "contact-a-team-admin-to-enable-usage-purchases"),
             ),
         };
@@ -2109,7 +2109,7 @@ impl BillingAndUsagePageV2View {
                 )
                 .with_child(
                     Text::new(
-                        crate::tr!("settings", "kick-off-an-agent-task-to-view-usage-history-here."),
+                        crate::tr!("settings", "kick-off-an-agent-task-to-view-usage-history-here"),
                         appearance.ui_font_family(),
                         14.,
                     )
@@ -2349,7 +2349,7 @@ impl TypedActionView for BillingAndUsagePageV2View {
                         .get(self.addon_credits.selected_denomination)
                     else {
                         self.show_toast(
-                            &crate::tr!("settings", "unable-to-enable-auto-reload-until-pricing-options-load."),
+                            &crate::tr!("settings", "unable-to-enable-auto-reload-until-pricing-options-load"),
                             ToastFlavor::Error,
                             ctx,
                         );
@@ -2381,7 +2381,7 @@ impl TypedActionView for BillingAndUsagePageV2View {
                         "Auto-reload enabled. We'll refill with {amount} when your balance runs low."
                     )
                 } else {
-                    crate::tr!("settings", "auto-reload-disabled.").to_string()
+                    crate::tr!("settings", "auto-reload-disabled").to_string()
                 });
                 UserWorkspaces::handle(ctx).update(ctx, |ws, ctx| {
                     ws.update_addon_credits_settings(

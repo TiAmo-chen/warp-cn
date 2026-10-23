@@ -346,7 +346,7 @@ impl TryFrom<&TeamsPageAction> for TelemetryEvent {
             // them from the client as well. For more details see:
             // https://docs.google.com/document/d/1va3_qfkHtDFKZqYaMgNUn5nwU4f8NByzyhg1uolHlck/edit
             _ => Err(anyhow::anyhow!(
-                crate::tr!("settings", "we-do-not-log-this-telemetry-event-from-the-client.")
+                crate::tr!("settings", "we-do-not-log-this-telemetry-event-from-the-client")
             )),
         }
     }
@@ -1045,7 +1045,7 @@ impl TeamsPageView {
         });
         let transfer_ownership_modal = ctx.add_typed_action_view(|ctx| {
             Modal::new(
-                Some(crate::tr!("settings", "transfer-team-ownership?").to_string()),
+                Some(crate::tr!("settings", "transfer-team-ownership").to_string()),
                 transfer_ownership_modal_body,
                 ctx,
             )
@@ -1277,7 +1277,7 @@ impl TeamsPageView {
                 ctx.open_url(upgrade_link);
             }
             UserWorkspacesEvent::GenerateUpgradeLinkRejected(err) => self.show_error(
-                crate::tr!("settings", "failed-to-generate-upgrade-link.-please-contact-us-at-feedback@warp.dev"),
+                crate::tr!("settings", "failed-to-generate-upgrade-link-please-contact-us-at-feedbackwarpdev"),
                 Some(err),
                 ctx,
             ),
@@ -1285,7 +1285,7 @@ impl TeamsPageView {
                 ctx.open_url(billing_session_link);
             }
             UserWorkspacesEvent::GenerateStripeBillingPortalLinkRejected(err) => self.show_error(
-                crate::tr!("settings", "failed-to-generate-billing-link.-please-contact-us-at-feedback@warp.dev"),
+                crate::tr!("settings", "failed-to-generate-billing-link-please-contact-us-at-feedbackwarpdev"),
                 Some(err),
                 ctx,
             ),
@@ -1994,7 +1994,7 @@ impl TeamsPageView {
     fn copy_invite_link(&mut self, link: &str, ctx: &mut ViewContext<Self>) {
         ctx.clipboard()
             .write(ClipboardContent::plain_text(link.to_string()));
-        self.show_toast(crate::tr!("settings", "link-copied-to-clipboard!"), ToastFlavor::Default, ctx);
+        self.show_toast(crate::tr!("settings", "link-copied-to-clipboard"), ToastFlavor::Default, ctx);
     }
 
     fn remove_user_from_team(
@@ -2147,7 +2147,7 @@ impl TeamsPageView {
             .collect();
 
         let message = if unique_emails.len() == 1 {
-            crate::tr!("settings", "your-invite-is-on-the-way!").to_string()
+            crate::tr!("settings", "your-invite-is-on-the-way").to_string()
         } else {
             format!("Your {} invites are on the way!", unique_emails.len())
         };
@@ -2691,7 +2691,7 @@ impl TeamsWidget {
                 "You've exceeded your plan's member limit. Existing team members keep their access, but you won't be able to add new members."
             }
             GrowTeamWarning::PaymentPastDue => {
-                &crate::tr!("settings", "team-invites-have-been-restricted-due-to-a-past-due-payment.")
+                &crate::tr!("settings", "team-invites-have-been-restricted-due-to-a-past-due-payment")
             }
             GrowTeamWarning::PaymentUnpaid => {
                 "Team invites have been restricted due to an unpaid subscription."
@@ -3916,7 +3916,7 @@ impl TeamsWidget {
 
         let team_uid = team.uid;
         let (link_text, suffix) = Self::outgrow_upgrade_line_copy(&team.billing_metadata);
-        let prefix = self.render_sub_text(crate::tr!("settings", "need-more-seats?-").to_string(), appearance, None);
+        let prefix = self.render_sub_text(crate::tr!("settings", "need-more-seats-").to_string(), appearance, None);
         let link = appearance
             .ui_builder()
             .link(
@@ -4603,7 +4603,7 @@ impl TeamsWidget {
 
         let (link_text, button_enabled) = match &team_metadata.invite_link {
             Some(invite_link) => (invite_link.clone(), true),
-            None => (crate::tr!("settings", "failed-to-load-invite-link.").into(), false),
+            None => (crate::tr!("settings", "failed-to-load-invite-link").into(), false),
         };
         let theme = appearance.theme();
 
@@ -5077,7 +5077,7 @@ impl TeamsWidget {
             ))
             .with_child(
                 Container::new(self.render_sub_text(
-                    crate::tr!("settings", "join-this-workspace-and-start-collaborating-on-workflows,-notebooks,-and-more.")
+                    crate::tr!("settings", "join-this-workspace-and-start-collaborating-on-workflows-notebooks-and-more")
                         .to_string(),
                     appearance,
                     None,
@@ -5116,7 +5116,7 @@ impl TeamsWidget {
             .with_child(self.render_workspace_open_teams_header(view, workspace_state, appearance))
             .with_child(
                 Container::new(self.render_description(
-                    crate::tr!("settings", "teams-are-groups-in-your-workspace-that-share-context-around-specific-projects-and-workflows.")
+                    crate::tr!("settings", "teams-are-groups-in-your-workspace-that-share-context-around-specific-projects-and-workflows")
                         .to_string(),
                     appearance,
                 ))
@@ -5251,7 +5251,7 @@ impl TeamsWidget {
             let checkbox_row_text = if let Some(domain) = view.auth_state.user_email_domain() {
                 format!("Allow Warp users with an @{domain} email to find and join the team.")
             } else {
-                crate::tr!("settings", "allow-warp-users-with-the-same-email-domain-as-you-to-find-and-join-the-team.")
+                crate::tr!("settings", "allow-warp-users-with-the-same-email-domain-as-you-to-find-and-join-the-team")
                     .to_string()
             };
             let checkbox_row = Container::new(
@@ -5369,7 +5369,7 @@ impl TeamsWidget {
         single_team.add_child(
             Container::new(
                 self.render_sub_text(
-                    crate::tr!("settings", "join-this-team-and-start-collaborating-on-workflows,-notebooks,-and-more.")
+                    crate::tr!("settings", "join-this-team-and-start-collaborating-on-workflows-notebooks-and-more")
                         .to_string(),
                     appearance,
                     None,

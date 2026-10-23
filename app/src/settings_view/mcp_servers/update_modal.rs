@@ -195,7 +195,7 @@ impl UpdateModalBody {
         // Renders 'ESC' text for closing the modal
         let escape_button = Container::new(
             Text::new_inline(
-                crate::tr!("zz_zh02_supplement", "settings-esc-key").to_string(),
+                crate::tr!("settings", "esc-key").to_string(),
                 appearance.ui_font_family(),
                 appearance.ui_font_size() * 0.8,
             )

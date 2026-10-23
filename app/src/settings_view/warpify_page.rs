@@ -111,7 +111,7 @@ impl WarpifyPageView {
         let add_added_commands_editor = ctx.add_typed_action_view(|ctx| {
             let mut input =
                 SubmittableTextInput::new(ctx).validate_on_edit(|regex| Regex::new(regex).is_ok());
-            input.set_placeholder_text(crate::tr!("zz_zh02_supplement", "settings-cli-agent-footer-command-placeholder"), ctx);
+            input.set_placeholder_text(crate::tr!("settings", "cli-agent-footer-command-placeholder"), ctx);
             input
         });
 
@@ -122,7 +122,7 @@ impl WarpifyPageView {
 
         let add_denylisted_commands_editor = ctx.add_typed_action_view(|ctx| {
             let mut input = SubmittableTextInput::new(ctx);
-            input.set_placeholder_text(crate::tr!("zz_zh02_supplement", "settings-cli-agent-footer-command-placeholder"), ctx);
+            input.set_placeholder_text(crate::tr!("settings", "cli-agent-footer-command-placeholder"), ctx);
             input
         });
 

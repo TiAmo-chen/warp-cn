@@ -301,7 +301,7 @@ impl InstallationModalBody {
         // Renders 'ESC' text for closing the modal
         let escape_button = Container::new(
             Text::new_inline(
-                crate::tr!("zz_zh02_supplement", "settings-esc-key").to_string(),
+                crate::tr!("settings", "esc-key").to_string(),
                 appearance.ui_font_family(),
                 appearance.ui_font_size() * 0.8,
             )
@@ -423,9 +423,9 @@ impl InstallationModalBody {
         .finish();
 
         let source_text = if is_shared {
-            crate::tr!("zz_zh02_supplement", "settings-mcp-shared-from-team")
+            crate::tr!("settings", "mcp-shared-from-team")
         } else {
-            crate::tr!("zz_zh02_supplement", "settings-mcp-from-another-device")
+            crate::tr!("settings", "mcp-from-another-device")
         };
 
         let label_text = Text::new_inline(
@@ -548,7 +548,7 @@ impl View for InstallationModalBody {
                 .finish()
         } else {
             Text::new(
-                crate::tr!("zz_zh02_supplement", "settings-mcp-no-server-selected"),
+                crate::tr!("settings", "mcp-no-server-selected"),
                 appearance.ui_font_family(),
                 appearance.ui_font_size(),
             )

@@ -501,7 +501,7 @@ impl PlatformPageWidget {
             FormattedTextFragment::plain_text(
                 "Create and manage API keys to allow cloud agents to access your Warp account.\nFor more information, visit the ",
             ),
-            FormattedTextFragment::hyperlink(crate::tr!("settings", "documentation."), API_KEY_DOCS_URL),
+            FormattedTextFragment::hyperlink(crate::tr!("settings", "documentation"), API_KEY_DOCS_URL),
         ];
 
         let text_element = FormattedTextElement::new(
@@ -548,7 +548,7 @@ impl PlatformPageWidget {
                             ButtonVariant::Outlined,
                             self.create_api_key_button_mouse_state.clone(),
                         )
-                        .with_text_label(crate::tr!("zz_zh02_supplement", "settings-create-key").to_string())
+                        .with_text_label(crate::tr!("settings", "create-key").to_string())
                         .build()
                         .on_click(|ctx, _, _| {
                             ctx.dispatch_typed_action(PlatformPageAction::ShowCreateApiKeyModal);

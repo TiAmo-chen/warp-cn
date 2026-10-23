@@ -792,7 +792,7 @@ impl SecretRedactionWidget {
         if is_enterprise_tab_active {
             row.add_child(Shrinkable::new(1., Empty::new().finish()).finish());
             row.add_child(self.render_info(
-                crate::tr!("settings", "enterprise-secret-redaction-cannot-be-modified.").to_string(),
+                crate::tr!("settings", "enterprise-secret-redaction-cannot-be-modified").to_string(),
                 appearance,
             ));
         }
@@ -911,7 +911,7 @@ impl SecretRedactionWidget {
 
         if enterprise_regex_list.is_empty() {
             return ui_builder
-                .paragraph(crate::tr!("settings", "no-enterprise-regexes-have-been-configured-by-your-organization."))
+                .paragraph(crate::tr!("settings", "no-enterprise-regexes-have-been-configured-by-your-organization"))
                 .with_style(UiComponentStyles {
                     font_color: Some(description_text_color),
                     ..Default::default()
@@ -1187,7 +1187,7 @@ impl SettingsWidget for SecretRedactionWidget {
                     Container::new({
                         if is_enterprise_enabled {
                             self.render_info(
-                                crate::tr!("settings", "enabled-by-your-organization.").to_string(),
+                                crate::tr!("settings", "enabled-by-your-organization").to_string(),
                                 appearance,
                             )
                         } else {
@@ -1254,7 +1254,7 @@ impl SettingsWidget for SecretRedactionWidget {
                     Container::new(
                         ui_builder
                             .paragraph(
-                                crate::tr!("settings", "choose-how-secrets-are-visually-presented-in-the-block-list-while-keeping-them-searchable.-this-setting-only-affects-what-you-see-in-the-block-list."),
+                                crate::tr!("settings", "choose-how-secrets-are-visually-presented-in-the-block-list-while-keeping-them-searchable-this-setting-only-affects-what-you-see-in-the-block-list"),
                             )
                             .with_style(UiComponentStyles {
                                 font_color: Some(description_text_color),
@@ -1401,7 +1401,7 @@ impl AppAnalyticsWidget {
             let mut stack = Stack::new().with_child(badge);
             if is_hovered {
                 let tooltip = ui_builder.tool_tip(
-                    crate::tr!("settings", "your-administrator-has-enabled-zero-data-retention-for-your-team.-user-generated-content-will-never-be-collected.")
+                    crate::tr!("settings", "your-administrator-has-enabled-zero-data-retention-for-your-team-user-generated-content-will-never-be-collected")
                         .to_string(),
                 );
                 stack.add_positioned_child(
@@ -1512,7 +1512,7 @@ impl SettingsWidget for AppAnalyticsWidget {
         } else {
             switch
                 .with_tooltip(TooltipConfig {
-                    text: crate::tr!("settings", "this-setting-is-managed-by-your-organization.").to_string(),
+                    text: crate::tr!("settings", "this-setting-is-managed-by-your-organization").to_string(),
                     styles: ui_builder.default_tool_tip_styles(),
                 })
                 .disable()
@@ -1547,7 +1547,7 @@ impl SettingsWidget for AppAnalyticsWidget {
             Align::new(
                 ui_builder
                     .link(
-                        crate::tr!("settings", "read-more-about-warp's-use-of-data").into(),
+                        crate::tr!("settings", "read-more-about-warps-use-of-data").into(),
                         Some(TELEMETRY_DOCS_URL.into()),
                         None,
                         self.docs_link_mouse_state.clone(),
@@ -1616,7 +1616,7 @@ impl SettingsWidget for CrashReportsWidget {
             .with_child(
                 ui_builder
                     .paragraph(
-                        crate::tr!("settings", "crash-reports-assist-with-debugging-and-stability-improvements.")
+                        crate::tr!("settings", "crash-reports-assist-with-debugging-and-stability-improvements")
                             .to_owned(),
                     )
                     .with_style(UiComponentStyles {
@@ -1701,7 +1701,7 @@ impl SettingsWidget for CloudConversationStorageWidget {
         } else {
             switch
                 .with_tooltip(TooltipConfig {
-                    text: crate::tr!("settings", "this-setting-is-managed-by-your-organization.").to_string(),
+                    text: crate::tr!("settings", "this-setting-is-managed-by-your-organization").to_string(),
                     styles: ui_builder.default_tool_tip_styles(),
                 })
                 .disable()

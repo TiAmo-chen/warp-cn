@@ -67,7 +67,7 @@ impl CLIAgentsPageView {
         let cli_agent_footer_command_editor = ctx.add_typed_action_view(|ctx| {
             let mut input =
                 SubmittableTextInput::new(ctx).validate_on_edit(|s| Regex::new(s).is_ok());
-            input.set_placeholder_text(crate::tr!("zz_zh02_supplement", "settings-cli-agent-footer-command-placeholder"), ctx);
+            input.set_placeholder_text(crate::tr!("settings", "cli-agent-footer-command-placeholder"), ctx);
             input
         });
         update_editor_interaction_state(
@@ -508,7 +508,7 @@ impl SettingsWidget for CLIAgentAutoToggleRichInputWidget {
         }
 
         let label = render_body_item_label::<CLIAgentsPageAction>(
-            crate::tr!("settings", "auto-show/hide-rich-input-based-on-agent-status").into(),
+            crate::tr!("settings", "auto-showhide-rich-input-based-on-agent-status").into(),
             Some(styles::header_font_color(true, app)),
             Some(AdditionalInfo {
                 mouse_state: self.info_tooltip.clone(),
@@ -767,7 +767,7 @@ impl SettingsWidget for CLIAgentCommandsWidget {
 
         let description = appearance
             .ui_builder()
-            .paragraph(crate::tr!("settings", "add-regex-patterns-to-show-the-coding-agent-toolbar-for-matching-commands."))
+            .paragraph(crate::tr!("settings", "add-regex-patterns-to-show-the-coding-agent-toolbar-for-matching-commands"))
             .with_style(UiComponentStyles {
                 font_size: Some(appearance.ui_font_size()),
                 font_color: Some(styles::description_font_color(true, app).into()),

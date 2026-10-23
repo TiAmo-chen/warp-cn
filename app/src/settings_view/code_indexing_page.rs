@@ -1033,7 +1033,7 @@ impl CodePageWidget {
         .finish()
     }
 
-    /// Renders the crate::tr!("settings", "initialized-/-indexed-folders") section.
+    /// Renders the crate::tr!("settings", "initialized--indexed-folders") section.
     fn render_initialized_folders(
         &self,
         mouse_states: InitializedFoldersMouseStates,
@@ -1066,7 +1066,7 @@ impl CodePageWidget {
                     .with_cross_axis_alignment(CrossAxisAlignment::Center)
                     .with_child(
                         ui_builder
-                            .span(crate::tr!("settings", "initialized-/-indexed-folders"))
+                            .span(crate::tr!("settings", "initialized--indexed-folders"))
                             .with_style(UiComponentStyles {
                                 font_size: Some(16.0),
                                 font_weight: Some(Weight::Semibold),
@@ -1190,7 +1190,7 @@ impl CodePageWidget {
                 Container::new(
                     appearance
                         .ui_builder()
-                        .paragraph(crate::tr!("settings", "no-folders-have-been-initialized-yet."))
+                        .paragraph(crate::tr!("settings", "no-folders-have-been-initialized-yet"))
                         .build()
                         .finish(),
                 )
@@ -1477,7 +1477,7 @@ impl CodePageWidget {
                     completed_nodes,
                     total_nodes,
                 }) => Cow::from(format!("Syncing - {completed_nodes} / {total_nodes}")),
-                None => Cow::from(crate::tr!("settings", "syncing...")),
+                None => Cow::from(crate::tr!("settings", "syncing")),
             };
 
             return IndexingStatusPresentation {
@@ -1590,7 +1590,7 @@ impl CodePageWidget {
                     }
                     (Some(completed), None) => Cow::from(format!("Indexing - {completed}")),
                     (None, Some(total)) => Cow::from(format!("Indexing - 0 / {total}")),
-                    (None, None) => Cow::from(crate::tr!("settings", "indexing...")),
+                    (None, None) => Cow::from(crate::tr!("settings", "indexing")),
                 };
 
                 IndexingStatusPresentation {

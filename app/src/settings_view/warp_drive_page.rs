@@ -173,7 +173,7 @@ impl SettingsWidget for WarpDriveHeaderWidget {
 
         let message = Container::new(
             Text::new_inline(
-                crate::tr!("settings", "to-use-warp-drive,-please-create-an-account.").to_string(),
+                crate::tr!("settings", "to-use-warp-drive-please-create-an-account").to_string(),
                 appearance.ui_font_family(),
                 14.,
             )
@@ -273,7 +273,7 @@ impl SettingsWidget for WarpDriveToggleWidget {
                     ctx.dispatch_typed_action(WarpDriveSettingsPageAction::ToggleShowWarpDrive);
                 })
                 .finish(),
-            Some(crate::tr!("settings", "warp-drive-is-a-workspace-in-your-terminal-where-you-can-save-workflows,-notebooks,-prompts,-and-environment-variables-for-personal-use-or-to-share-with-a-team.").into()),
+            Some(crate::tr!("settings", "warp-drive-is-a-workspace-in-your-terminal-where-you-can-save-workflows-notebooks-prompts-and-environment-variables-for-personal-use-or-to-share-with-a-team").into()),
         )
     }
 }

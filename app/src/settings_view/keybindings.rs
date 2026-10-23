@@ -971,7 +971,7 @@ impl KeybindingsWidget {
     ) -> Box<dyn Element> {
         let font_size = appearance.ui_font_size() + FONT_DELTA;
         let mut description = Flex::column().with_child(render_text(
-            &crate::tr!("settings", "add-your-own-custom-keybindings-to-existing-actions-below."),
+            &crate::tr!("settings", "add-your-own-custom-keybindings-to-existing-actions-below"),
             Some(UiComponentStyles {
                 font_size: Some(font_size),
                 font_color: Some(

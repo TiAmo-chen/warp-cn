@@ -1569,7 +1569,7 @@ fn add_open_setting_pages_as_editable_binding(app: &mut AppContext) {
         .with_custom_action(CustomAction::ShowAppearance),
         EditableBinding::new(
             "workspace:show_settings_features_page",
-            crate::tr!("zz_zh02_supplement", "workspace-open-settings-features"),
+            crate::tr!("workspace", "open-settings-features"),
             WorkspaceAction::ShowSettingsPage(SettingsSection::Features),
         )
         .with_group(bindings::BindingGroup::Settings.as_str())

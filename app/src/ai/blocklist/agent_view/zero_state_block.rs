@@ -776,7 +776,7 @@ fn render_body(props: ZeroStateBodyProps<'_>, app: &AppContext) -> Vec<Box<dyn E
                                 key: "/model".to_owned(),
                                 ..Default::default()
                             }),
-                            MessageItem::text(crate::tr!("zz_zh02_supplement", "ai-switch-model")),
+                            MessageItem::text(crate::tr!("ai", "switch-model")),
                         ],
                         |ctx| {
                             ctx.dispatch_typed_action(TerminalAction::OpenModelSelector);

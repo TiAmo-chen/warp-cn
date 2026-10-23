@@ -501,7 +501,7 @@ impl AgentAssistedEnvironmentModal {
         if !has_any_available {
             col.add_child(
                 Text::new(
-                    crate::tr!("settings", "all-locally-indexed-repos-are-already-selected."),
+                    crate::tr!("settings", "all-locally-indexed-repos-are-already-selected"),
                     appearance.ui_font_family(),
                     appearance.ui_font_size() * 0.95,
                 )

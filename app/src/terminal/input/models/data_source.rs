@@ -732,7 +732,7 @@ impl SearchItem for ModelSearchItem {
             if byok_available {
                 text_fragments.push(FormattedTextFragment::plain_text(" or ".to_string()));
                 text_fragments.push(FormattedTextFragment::hyperlink_action(
-                    crate::tr!("zz_zh02_supplement", "settings-bring-your-own-key"),
+                    crate::tr!("settings", "bring-your-own-key"),
                     WorkspaceAction::ShowSettingsPageWithSearch {
                         search_query: "api".to_string(),
                         section: Some(SettingsSection::WarpAgent),

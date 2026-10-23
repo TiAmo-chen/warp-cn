@@ -2372,7 +2372,7 @@ impl BillingAndUsagePageView {
             } else if would_exceed_limit {
                 let warning_fragments = vec![
                     FormattedTextFragment::plain_text(
-                        crate::tr!("settings", "reloading-would-exceed-your-monthly-limit.-"),
+                        crate::tr!("settings", "reloading-would-exceed-your-monthly-limit-"),
                     ),
                     FormattedTextFragment::hyperlink_action(
                         crate::tr!("settings", "increase-your-limit"),
@@ -2534,7 +2534,7 @@ impl BillingAndUsagePageView {
                     on_click_action: None,
                     secondary_text: None,
                     tooltip_override_text: match info.is_current_user {
-                        true => Some(crate::tr!("settings", "your-credit-limit-is-prorated-because-you-joined-midway-through-the-billing-cycle.").to_string()),
+                        true => Some(crate::tr!("settings", "your-credit-limit-is-prorated-because-you-joined-midway-through-the-billing-cycle").to_string()),
                         false => Some("This credit limit is prorated because this user joined midway through the billing cycle.".to_string()),
                     },
                 },
@@ -2906,7 +2906,7 @@ impl BillingAndUsagePageView {
                 )
                 .with_child(
                     Text::new(
-                        crate::tr!("settings", "kick-off-an-agent-task-to-view-usage-history-here."),
+                        crate::tr!("settings", "kick-off-an-agent-task-to-view-usage-history-here"),
                         appearance.ui_font_family(),
                         14.,
                     )
@@ -3394,7 +3394,7 @@ impl BillingAndUsagePageView {
                 } else {
                     // Non-admin team member - show message to contact admin
                     vec![FormattedTextFragment::plain_text(
-                        crate::tr!("settings", "contact-your-team-admin-to-resolve-billing-issues."),
+                        crate::tr!("settings", "contact-your-team-admin-to-resolve-billing-issues"),
                     )]
                 }
             } else if billing_metadata.can_upgrade_to_higher_tier_plan() {
@@ -3419,7 +3419,7 @@ impl BillingAndUsagePageView {
                             if billing_metadata.is_byo_api_key_enabled() {
                                 fragments.push(FormattedTextFragment::plain_text(" or "));
                                 fragments.push(FormattedTextFragment::hyperlink_action(
-                                    crate::tr!("zz_zh02_supplement", "settings-bring-your-own-key"),
+                                    crate::tr!("settings", "bring-your-own-key"),
                                     BillingAndUsagePageAction::NavigateToByokSettings,
                                 ));
                             }
@@ -3488,7 +3488,7 @@ impl BillingAndUsagePageView {
             if UserWorkspaces::as_ref(app).is_byo_api_key_enabled(app) {
                 fragments.push(FormattedTextFragment::plain_text(" or "));
                 fragments.push(FormattedTextFragment::hyperlink_action(
-                    crate::tr!("zz_zh02_supplement", "settings-bring-your-own-key"),
+                    crate::tr!("settings", "bring-your-own-key"),
                     BillingAndUsagePageAction::NavigateToByokSettings,
                 ));
             }

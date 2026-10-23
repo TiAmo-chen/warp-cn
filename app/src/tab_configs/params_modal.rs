@@ -496,7 +496,7 @@ impl View for TabConfigParamsModal {
 
             let esc_badge = Container::new(
                 ConstrainedBox::new(
-                    Text::new_inline(crate::tr!("zz_zh02_supplement", "settings-esc-key").to_string(), appearance.ui_font_family(), 10.)
+                    Text::new_inline(crate::tr!("settings", "esc-key").to_string(), appearance.ui_font_family(), 10.)
                         .with_color(theme.foreground().into())
                         .finish(),
                 )

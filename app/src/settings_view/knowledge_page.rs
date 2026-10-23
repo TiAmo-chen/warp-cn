@@ -226,7 +226,7 @@ impl SettingsWidget for RulesWidget {
 
         let rules_description = vec![
             FormattedTextFragment::plain_text(
-                crate::tr!("settings", "rules-help-the-warp-agent-follow-your-conventions,-whether-for-codebases-or-specific-workflows.-"),
+                crate::tr!("settings", "rules-help-the-warp-agent-follow-your-conventions-whether-for-codebases-or-specific-workflows-"),
             ),
             FormattedTextFragment::hyperlink(crate::tr!("settings", "learn-more"), RULES_DOCS_URL),
         ];
@@ -287,7 +287,7 @@ impl SettingsWidget for SuggestedRulesWidget {
         );
 
         let description = render_ai_setting_description(
-            crate::tr!("settings", "let-ai-suggest-rules-to-save-based-on-your-interactions."),
+            crate::tr!("settings", "let-ai-suggest-rules-to-save-based-on-your-interactions"),
             ai_settings.is_any_ai_enabled(app),
             app,
         );
@@ -357,7 +357,7 @@ impl SettingsWidget for WarpDriveContextWidget {
         );
 
         let description = render_ai_setting_description(
-            crate::tr!("settings", "the-warp-agent-can-leverage-your-warp-drive-contents-to-tailor-responses-to-your-personal-and-team-developer-workflows-and-environments.-this-includes-any-workflows,-notebooks,-and-environment-variables."),
+            crate::tr!("settings", "the-warp-agent-can-leverage-your-warp-drive-contents-to-tailor-responses-to-your-personal-and-team-developer-workflows-and-environments-this-includes-any-workflows-notebooks-and-environment-variables"),
             ai_settings.is_any_ai_enabled(app),
             app,
         );

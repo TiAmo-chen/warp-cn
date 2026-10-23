@@ -400,7 +400,7 @@ impl SettingsWidget for AutoOpenCodeReviewPaneCodeWidget {
                     );
                 })
                 .finish(),
-            Some(crate::tr!("settings", "when-this-setting-is-on,-the-code-review-panel-will-open-on-the-first-accepted-diff-of-a-conversation").into()),
+            Some(crate::tr!("settings", "when-this-setting-is-on-the-code-review-panel-will-open-on-the-first-accepted-diff-of-a-conversation").into()),
         )
     }
 }
@@ -441,7 +441,7 @@ impl SettingsWidget for CodeReviewPanelToggleWidget {
                 })
                 .finish(),
             Some(
-                crate::tr!("settings", "show-a-button-in-the-top-right-of-the-window-to-toggle-the-code-review-panel.")
+                crate::tr!("settings", "show-a-button-in-the-top-right-of-the-window-to-toggle-the-code-review-panel")
                     .into(),
             ),
         )
@@ -485,7 +485,7 @@ impl SettingsWidget for CodeReviewDiffStatsToggleWidget {
                     );
                 })
                 .finish(),
-            Some(crate::tr!("settings", "show-lines-added-and-removed-counts-on-the-code-review-button.").into()),
+            Some(crate::tr!("settings", "show-lines-added-and-removed-counts-on-the-code-review-button").into()),
         )
     }
 }
@@ -526,7 +526,7 @@ impl SettingsWidget for ProjectExplorerToggleWidget {
                 })
                 .finish(),
             Some(
-                crate::tr!("settings", "adds-an-ide-style-project-explorer-/-file-tree-to-the-left-side-tools-panel.")
+                crate::tr!("settings", "adds-an-ide-style-project-explorer--file-tree-to-the-left-side-tools-panel")
                     .into(),
             ),
         )
@@ -568,7 +568,7 @@ impl SettingsWidget for GlobalSearchToggleWidget {
                     ctx.dispatch_typed_action(EditorAndCodeReviewPageAction::ToggleGlobalSearch);
                 })
                 .finish(),
-            Some(crate::tr!("settings", "adds-global-file-search-to-the-left-side-tools-panel.").into()),
+            Some(crate::tr!("settings", "adds-global-file-search-to-the-left-side-tools-panel").into()),
         )
     }
 }
@@ -609,7 +609,7 @@ impl SettingsWidget for ShowHiddenFilesToggleWidget {
                 })
                 .finish(),
             Some(
-                crate::tr!("settings", "show-dotfiles-and-hidden-files-(starting-with-.)-in-the-project-explorer.").into(),
+                crate::tr!("settings", "show-dotfiles-and-hidden-files-starting-with--in-the-project-explorer").into(),
             ),
         )
     }
@@ -636,7 +636,7 @@ impl SettingsWidget for FormatOnSaveToggleWidget {
         let code_settings = CodeSettings::as_ref(app);
 
         render_body_item::<EditorAndCodeReviewPageAction>(
-            crate::tr!("settings", "format-on-save-(requires-an-active-language-server)").into(),
+            crate::tr!("settings", "format-on-save-requires-an-active-language-server").into(),
             None,
             LocalOnlyIconState::Hidden,
             ToggleState::Enabled,
@@ -694,7 +694,7 @@ impl SettingsWidget for AutoSaveToggleWidget {
                 })
                 .finish(),
             Some(
-                crate::tr!("settings", "automatically-saves-changes-in-the-warp-text-editor-as-you-type-and-when-the-editor-loses-focus.")
+                crate::tr!("settings", "automatically-saves-changes-in-the-warp-text-editor-as-you-type-and-when-the-editor-loses-focus")
                     .into(),
             ),
         )
@@ -719,7 +719,7 @@ impl SettingsWidget for CodeEditorLineNumberModeWidget {
     ) -> Box<dyn Element> {
         render_dropdown_item(
             appearance,
-            &crate::tr!("settings", "code-editor-line-numbers:"),
+            &crate::tr!("settings", "code-editor-line-numbers"),
             None,
             None,
             LocalOnlyIconState::Hidden,

@@ -99,7 +99,7 @@ impl View for RemoveCustomEndpointConfirmationDialog {
         let appearance = Appearance::as_ref(app);
         let theme = appearance.theme();
 
-        let description = crate::tr!("settings", "are-you-sure-you-want-to-remove-this-endpoint?-you-won't-be-able-to-use-its-models-in-your-agent-sessions-moving-forward.").to_string();
+        let description = crate::tr!("settings", "are-you-sure-you-want-to-remove-this-endpoint-you-wont-be-able-to-use-its-models-in-your-agent-sessions-moving-forward").to_string();
 
         let endpoint_title = Text::new_inline(
             self.endpoint_name.clone(),
@@ -130,7 +130,7 @@ impl View for RemoveCustomEndpointConfirmationDialog {
         .finish();
 
         let dialog = Dialog::new(
-            crate::tr!("settings", "remove-endpoint?").to_string(),
+            crate::tr!("settings", "remove-endpoint").to_string(),
             Some(description),
             dialog_styles(appearance),
         )

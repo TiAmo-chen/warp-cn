@@ -870,7 +870,7 @@ impl ShareBlockModal {
             if link_generated {
                 self.block_title_editor.as_ref(app).buffer_text(app)
             } else {
-                crate::tr!("zz_zh02_supplement", "terminal-share-title").to_string()
+                crate::tr!("terminal", "share-title").to_string()
             },
             appearance.ui_font_family(),
             24.,

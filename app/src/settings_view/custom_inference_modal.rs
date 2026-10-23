@@ -151,7 +151,7 @@ impl CustomEndpointModal {
                 ..Default::default()
             };
             let mut editor = EditorView::single_line(options, ctx);
-            editor.set_placeholder_text(crate::tr!("settings", "please-include-'https://'"), ctx);
+            editor.set_placeholder_text(crate::tr!("settings", "please-include-https"), ctx);
             if let Some(ep) = endpoint {
                 editor.set_buffer_text(&ep.url, ctx);
             }
@@ -759,7 +759,7 @@ impl View for CustomEndpointModal {
         column.add_child(
             Container::new(
                 Text::new(
-                    crate::tr!("settings", "provide-your-endpoint-details-below.-you-can-add-as-many-models-from-the-endpoint-as-you'd-like-and-can-also-provide-aliases-for-the-model-picker-in-your-input."),
+                    crate::tr!("settings", "provide-your-endpoint-details-below-you-can-add-as-many-models-from-the-endpoint-as-youd-like-and-can-also-provide-aliases-for-the-model-picker-in-your-input"),
                     appearance.ui_font_family(),
                     LABEL_FONT_SIZE,
                 )
