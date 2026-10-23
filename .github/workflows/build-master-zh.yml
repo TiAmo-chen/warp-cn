@@ -1,0 +1,90 @@
+name: build-master-zh
+
+on:
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+jobs:
+  build:
+    name: Build master-zh
+    runs-on: windows-latest
+    timeout-minutes: 350
+    env:
+      GIT_RELEASE_TAG: v0.2026.10.22.zh_01
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+        with:
+          lfs: false
+          fetch-depth: 1
+          ref: master-zh
+
+      - name: Free disk space
+        uses: jlumbroso/free-disk-space@main
+        with:
+          tool-cache: true
+          android: true
+          dotnet: true
+          haskell: true
+          swap-storage: false
+
+      - name: Install protoc
+        shell: pwsh
+        run: choco install protoc -y --no-progress
+
+      - name: Install Rust toolchain
+        shell: bash
+        run: |
+          rustup show
+          rustc --version
+
+      - name: Build warp-oss
+        shell: bash
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+          CARGO_FULL_PROFILE: release
+          RUSTFLAGS: -C debuginfo=0
+          CARGO_NET_RETRY: 5
+        run: |
+          cargo build --profile release -p warp --bin warp-oss \
+            --features gui,release_bundle
+
+      - name: Package
+        shell: pwsh
+        run: |
+          $ErrorActionPreference = 'Stop'
+          New-Item -ItemType Directory dist | Out-Null
+          $rel = 'target\release'
+          Get-ChildItem $rel -File | Where-Object { $_.Extension -in '.exe','.dll' } | Copy-Item -Destination dist\
+          if (Test-Path "$rel\x64") { Copy-Item "$rel\x64" dist\x64 -Recurse }
+
+          New-Item -ItemType Directory dist\resources -Force | Out-Null
+          if (Test-Path 'resources\i18n') {
+            Copy-Item 'resources\i18n' dist\resources\i18n -Recurse -Force
+          }
+          if (Test-Path 'resources\bundled') {
+            Copy-Item 'resources\bundled' dist\resources\bundled -Recurse -Force
+          }
+          if (Test-Path 'resources\channel-gated-skills') {
+            Copy-Item 'resources\channel-gated-skills' dist\resources\channel-gated-skills -Recurse -Force
+          }
+          $metaDir = 'dist\resources\bundled\metadata'
+          New-Item -ItemType Directory $metaDir -Force | Out-Null
+          @{ warp_version = $env:GIT_RELEASE_TAG } | ConvertTo-Json |
+            Set-Content -Path (Join-Path $metaDir 'version.json') -Encoding utf8
+
+          $exe = Get-Item 'dist\warp-oss.exe'
+          Write-Host ('exe version: ' + $exe.VersionInfo.FileVersion)
+          Write-Host ('exe size   : {0:N2} MB' -f ($exe.Length / 1MB))
+          Compress-Archive -Path dist\* -DestinationPath warp-zh-master.zip -Force
+          Write-Host ('zip size   : {0:N2} MB' -f ((Get-Item 'warp-zh-master.zip').Length / 1MB))
+
+      - name: Upload artifact
+        uses: actions/upload-artifact@v4
+        with:
+          name: warp-zh-master
+          path: warp-zh-master.zip
+          if-no-files-found: error
+          retention-days: 14
