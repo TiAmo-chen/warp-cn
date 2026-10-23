@@ -62,28 +62,28 @@ use crate::workspaces::workspace::{
 
 const FONT_SIZE: f32 = 12.;
 
-const SAFE_MODE_TITLE: &str = crate::tr!("settings", "secret-redaction");
+const SAFE_MODE_TITLE: &str = &crate::tr!("settings", "secret-redaction");
 static SAFE_MODE_DESCRIPTION: LazyLock<&'static str> = LazyLock::new(|| {
     "When this setting is enabled, Warp will scan blocks, the contents of \
         Warp Drive objects, and Oz prompts for potential sensitive \
         information and prevent saving or sending this data to any \
         servers. You can customize this list via regexes."
 });
-const USER_SECRET_REGEX_TITLE: &str = crate::tr!("settings", "custom-secret-redaction");
+const USER_SECRET_REGEX_TITLE: &str = &crate::tr!("settings", "custom-secret-redaction");
 const USER_SECRET_REGEX_DESCRIPTION: &str = "Use regex to define additional secrets or data you'd like to redact. This will take effect \
     when the next command runs. You can use the inline (?i) flag as a prefix to your regex \
     to make it case-insensitive.";
 const TELEMETRY_DESCRIPTION_OLD: &str = "App analytics help us make the product better for you. We only collect \
     app usage metadata, never console input or output.";
-const TELEMETRY_TITLE: &str = crate::tr!("settings", "help-improve-warp");
+const TELEMETRY_TITLE: &str = &crate::tr!("settings", "help-improve-warp");
 const TELEMETRY_DESCRIPTION: &str = "App analytics help us make the product better for you. We may collect \
     certain console interactions to improve Warp's AI capabilities.";
 const TELEMETRY_DOCS_URL: &str = "https://docs.warp.dev/support-and-community/privacy-and-security/privacy#what-telemetry-data-does-warp-collect-and-why";
 
-const DATA_MANAGEMENT_TITLE: &str = crate::tr!("settings", "manage-your-data");
+const DATA_MANAGEMENT_TITLE: &str = &crate::tr!("settings", "manage-your-data");
 const DATA_MANAGEMENT_DESCRIPTION: &str = "At any time, you may choose to delete your Warp account permanently. \
     You will no longer be able to use Warp.";
-const DATA_MANAGEMENT_LINK_TEXT: &str = crate::tr!("settings", "visit-the-data-management-page");
+const DATA_MANAGEMENT_LINK_TEXT: &str = &crate::tr!("settings", "visit-the-data-management-page");
 
 const PRIVACY_POLICY_TITLE: &str = "Privacy policy";
 const PRIVACY_POLICY_LINK_TEXT: &str = "Read Warp's privacy policy";
@@ -230,7 +230,7 @@ impl PrivacyPageView {
         }
         widgets.push(Box::new(DataManagementWidget::default()));
         widgets.push(Box::new(PrivacyPolicyWidget::default()));
-        PageType::new_uncategorized(widgets, Some(PageTitle::new(crate::tr!("settings", "privacy"))))
+        PageType::new_uncategorized(widgets, Some(PageTitle::new("Privacy")))
     }
 
     fn update_button_states(
@@ -452,7 +452,7 @@ impl PrivacyPageView {
                         .set_value(new_user_secret_regex_list, ctx)
                         .is_err()
                     {
-                        report_error!(crate::tr!("settings", "failed-to-add-custom-regex-to-secret-regex-list"));
+                        report_error!("Failed to add custom regex to secret regex list");
                     }
                     ctx.notify();
                 }
@@ -477,7 +477,7 @@ impl PrivacyPageView {
 
 impl View for PrivacyPageView {
     fn ui_name() -> &'static str {
-        crate::tr!("settings", "privacypageview")
+        "PrivacyPageView"
     }
 
     fn render(&self, app: &AppContext) -> Box<dyn Element> {

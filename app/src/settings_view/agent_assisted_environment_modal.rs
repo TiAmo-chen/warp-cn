@@ -325,7 +325,7 @@ impl AgentAssistedEnvironmentModal {
             .with_cross_axis_alignment(CrossAxisAlignment::Stretch)
             .with_spacing(8.);
 
-        col.add_child(self.render_section_title(crate::tr!("settings", "selected-repos"), appearance));
+        col.add_child(self.render_section_title(&crate::tr!("settings", "selected-repos"), appearance));
 
         if self.selected_repo_paths.is_empty() {
             col.add_child(
@@ -406,7 +406,7 @@ impl AgentAssistedEnvironmentModal {
             .with_child(
                 Expanded::new(
                     1.,
-                    self.render_section_title(crate::tr!("settings", "available-indexed-repos"), appearance),
+                    self.render_section_title(&crate::tr!("settings", "available-indexed-repos"), appearance),
                 )
                 .finish(),
             )
@@ -428,7 +428,7 @@ impl AgentAssistedEnvironmentModal {
                 if self.available_repos_loading {
                     "Loading locally indexed repos…"
                 } else {
-                    crate::tr!("settings", "no-locally-indexed-repos-found-yet.-index-a-repo,-then-try-again.")
+                    &crate::tr!("settings", "no-locally-indexed-repos-found-yet.-index-a-repo,-then-try-again.")
                 }
             } else {
                 "Local repo selection is unavailable in this build."

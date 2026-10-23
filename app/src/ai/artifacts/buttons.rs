@@ -213,7 +213,7 @@ fn make_plan_button(
     make_artifact_button(
         title,
         Icon::Compass,
-        crate::tr!("ai_assistant", "ai-assistant-ai-open-plan"),
+        &crate::tr!("ai_assistant", "ai-assistant-ai-open-plan"),
         None,
         ArtifactButtonAction::OpenPlan { notebook_uid },
         theme,
@@ -224,7 +224,7 @@ fn make_branch_button(branch: String, theme: Arc<dyn ActionButtonTheme>) -> Acti
     make_artifact_button(
         branch.clone(),
         Icon::GitBranch,
-        crate::tr!("ai_assistant", "ai-assistant-ai-copy-branch-name"),
+        &crate::tr!("ai_assistant", "ai-assistant-ai-copy-branch-name"),
         Some(AnsiColorIdentifier::Green),
         ArtifactButtonAction::CopyBranch { branch },
         theme,

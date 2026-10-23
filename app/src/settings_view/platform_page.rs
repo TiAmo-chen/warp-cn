@@ -369,7 +369,7 @@ impl TypedActionView for PlatformPageView {
 
 impl View for PlatformPageView {
     fn ui_name() -> &'static str {
-        crate::tr!("settings", "platformpage")
+        "PlatformPage"
     }
 
     fn render(&self, app: &AppContext) -> Box<dyn Element> {
@@ -458,7 +458,7 @@ impl ApiKeyTableColumnWidths {
     fn width(state_handle: &ResizableStateHandle) -> f32 {
         state_handle
             .lock()
-            .expect(crate::tr!("settings", "api-key-table-column-width-handle-should-lock"))
+            .expect(&crate::tr!("settings", "api-key-table-column-width-handle-should-lock"))
             .size()
     }
 
@@ -627,13 +627,13 @@ impl PlatformPageWidget {
         );
         if show_scope_column {
             header_row.add_child(
-                Expanded::new(1., self.render_header_cell(appearance, crate::tr!("settings", "scope"))).finish(),
+                Expanded::new(1., self.render_header_cell(appearance, &crate::tr!("settings", "scope"))).finish(),
             );
         }
         header_row
             .add_child(Expanded::new(1., self.render_header_cell(appearance, "Created")).finish());
         header_row.add_child(
-            Expanded::new(1., self.render_header_cell(appearance, crate::tr!("settings", "last-used"))).finish(),
+            Expanded::new(1., self.render_header_cell(appearance, &crate::tr!("settings", "last-used"))).finish(),
         );
         header_row.add_child(
             Expanded::new(1., self.render_header_cell(appearance, "Expires at")).finish(),
@@ -658,7 +658,7 @@ impl PlatformPageWidget {
     ) -> Box<dyn Element> {
         let width = width_handle
             .lock()
-            .expect(crate::tr!("settings", "api-key-header-width-handle-should-lock"))
+            .expect(&crate::tr!("settings", "api-key-header-width-handle-should-lock"))
             .size();
         let header_cell = ConstrainedBox::new(
             Flex::row()

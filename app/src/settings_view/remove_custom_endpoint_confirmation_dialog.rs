@@ -88,7 +88,7 @@ impl Entity for RemoveCustomEndpointConfirmationDialog {
 
 impl View for RemoveCustomEndpointConfirmationDialog {
     fn ui_name() -> &'static str {
-        crate::tr!("settings", "removecustomendpointconfirmationdialog")
+        "RemoveCustomEndpointConfirmationDialog"
     }
 
     fn render(&self, app: &AppContext) -> Box<dyn Element> {

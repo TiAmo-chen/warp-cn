@@ -119,7 +119,7 @@ cfg_if::cfg_if! {
         static EXTRA_META_KEYS_RIGHT_TEXT: &str = "Right Option key is Meta";
     } else {
         static EXTRA_META_KEYS_LEFT_TEXT: &str = "Left Alt key is Meta";
-        static EXTRA_META_KEYS_RIGHT_TEXT: &str = crate::tr!("settings", "right-alt-key-is-meta");
+        static EXTRA_META_KEYS_RIGHT_TEXT: &str = &crate::tr!("settings", "right-alt-key-is-meta");
     }
 }
 
@@ -133,7 +133,7 @@ pub fn init_actions_from_parent_view<T: Action + Clone>(
     // Add all of the toggle settings from the Features Page that you want to show up on the Command Palette here.
     let mut toggle_binding_pairs = vec![
         ToggleSettingActionPair::new(
-            crate::tr!("common", "menu-copy-on-select"),
+            &crate::tr!("common", "menu-copy-on-select"),
             builder(SettingsAction::FeaturesPageToggle(
                 FeaturesPageAction::ToggleCopyOnSelect,
             )),
@@ -154,7 +154,7 @@ pub fn init_actions_from_parent_view<T: Action + Clone>(
                 .is_supported_on_current_platform(),
         ),
         ToggleSettingActionPair::new(
-            crate::tr!("settings", "features-autocomplete-pairs"),
+            &crate::tr!("settings", "features-autocomplete-pairs"),
             builder(SettingsAction::FeaturesPageToggle(
                 FeaturesPageAction::ToggleAutocompleteSymbols,
             )),
@@ -167,7 +167,7 @@ pub fn init_actions_from_parent_view<T: Action + Clone>(
                 .is_supported_on_current_platform(),
         ),
         ToggleSettingActionPair::new(
-            crate::tr!("settings", "features-restore-on-startup"),
+            &crate::tr!("settings", "features-restore-on-startup"),
             builder(SettingsAction::FeaturesPageToggle(
                 FeaturesPageAction::ToggleRestoreSession,
             )),
@@ -333,7 +333,7 @@ pub fn init_actions_from_parent_view<T: Action + Clone>(
     ));
 
     toggle_binding_pairs.push(ToggleSettingActionPair::new(
-        crate::tr!("settings", "features-show-tooltip-links"),
+        &crate::tr!("settings", "features-show-tooltip-links"),
         builder(SettingsAction::FeaturesPageToggle(
             FeaturesPageAction::ToggleLinkTooltip,
         )),
@@ -526,7 +526,7 @@ pub fn init_actions_from_parent_view<T: Action + Clone>(
 
     toggle_binding_pairs.push(
         ToggleSettingActionPair::new(
-            crate::tr!("settings", "vim-unnamed-register-as-system-clipboard"),
+            &crate::tr!("settings", "vim-unnamed-register-as-system-clipboard"),
             builder(SettingsAction::FeaturesPageToggle(
                 FeaturesPageAction::ToggleVimUnnamedSystemClipboard,
             )),
@@ -542,7 +542,7 @@ pub fn init_actions_from_parent_view<T: Action + Clone>(
 
     toggle_binding_pairs.push(
         ToggleSettingActionPair::new(
-            crate::tr!("settings", "vim-status-bar"),
+            &crate::tr!("settings", "vim-status-bar"),
             builder(SettingsAction::FeaturesPageToggle(
                 FeaturesPageAction::ToggleVimStatusBar,
             )),
@@ -730,7 +730,7 @@ pub fn init_actions_from_parent_view<T: Action + Clone>(
             page: SettingsSection::Features,
             widget_id: GlobalHotkeyWidget::static_widget_id(),
         },
-        id!(crate::tr!("settings", "workspace")),
+        id!("Workspace"),
     )]);
 
     if DefaultTerminal::can_warp_become_default() {
@@ -1730,7 +1730,7 @@ impl TypedActionView for FeaturesPageView {
                     reporting
                         .mouse_reporting_enabled
                         .toggle_and_save_value(ctx)
-                        .expect(crate::tr!("settings", "mousereportingenabled-failed-to-serialize"));
+                        .expect(&crate::tr!("settings", "mousereportingenabled-failed-to-serialize"));
                 });
                 ctx.notify();
             }
@@ -1739,7 +1739,7 @@ impl TypedActionView for FeaturesPageView {
                     reporting
                         .scroll_reporting_enabled
                         .toggle_and_save_value(ctx)
-                        .expect(crate::tr!("settings", "scrollreportingenabled-failed-to-serialize"));
+                        .expect(&crate::tr!("settings", "scrollreportingenabled-failed-to-serialize"));
                 });
                 ctx.notify();
             }
@@ -1748,7 +1748,7 @@ impl TypedActionView for FeaturesPageView {
                     reporting
                         .focus_reporting_enabled
                         .toggle_and_save_value(ctx)
-                        .expect(crate::tr!("settings", "focusreportingenabled-failed-to-serialize"));
+                        .expect(&crate::tr!("settings", "focusreportingenabled-failed-to-serialize"));
                 });
                 ctx.notify();
             }
@@ -3089,18 +3089,18 @@ impl FeaturesPageView {
         }
 
         let categories = vec![
-            Category::new(crate::tr!("settings", "general"), general_widgets),
+            Category::new("General", general_widgets),
             Category::new("Session", session_widgets),
-            Category::new(crate::tr!("settings", "section-keys"), keys_widgets),
-            Category::new(crate::tr!("settings", "text-editing"), text_editing_widgets),
-            Category::new(crate::tr!("settings", "terminal-input"), editor_widgets),
+            Category::new("Keys", keys_widgets),
+            Category::new("Text Editing", text_editing_widgets),
+            Category::new("Terminal Input", editor_widgets),
             Category::new("Terminal", terminal_widgets),
-            Category::new(crate::tr!("settings", "section-notifications"), notifications_widgets),
+            Category::new("Notifications", notifications_widgets),
             Category::new(
-                crate::tr!("settings", "workflows"),
+                "Workflows",
                 vec![Box::new(WorkflowsInCommandSearch::default())],
             ),
-            Category::new(crate::tr!("settings", "system"), system_widgets),
+            Category::new("System", system_widgets),
         ];
 
         PageType::new_categorized(categories, None)
@@ -3452,7 +3452,7 @@ impl FeaturesPageView {
                     .value()
                     .active_pin_position,
             )
-            .expect(crate::tr!("settings", "pin-position-should-exist-in-default-size-percentages"));
+            .expect(&crate::tr!("settings", "pin-position-should-exist-in-default-size-percentages"));
 
         self.quake_mode_height_editor.update(ctx, |editor, ctx| {
             editor.set_buffer_text(&format!("{}", default_size_percentage.height), ctx);
@@ -3573,7 +3573,7 @@ impl FeaturesPageView {
                 gpu_settings
                     .preferred_backend
                     .map(|backend| backend.to_label())
-                    .unwrap_or(crate::tr!("settings", "default")),
+                    .unwrap_or(&crate::tr!("settings", "default")),
                 ctx,
             );
         });
@@ -3669,7 +3669,7 @@ impl FeaturesPageView {
 
     fn new_tab_placement_dropdown_item_label(val: NewTabPlacement) -> &'static str {
         match val {
-            NewTabPlacement::AfterAllTabs => crate::tr!("settings", "after-all-tabs"),
+            NewTabPlacement::AfterAllTabs => "After all tabs",
             NewTabPlacement::AfterCurrentTab => "After current tab",
         }
     }
@@ -5276,7 +5276,7 @@ impl SettingsWidget for DesktopNotificationsWidget {
                     session_settings
                         .notifications
                         .is_agent_task_completed_enabled,
-                    crate::tr!("settings", "notify-when-an-agent-completes-a-task"),
+                    &crate::tr!("settings", "notify-when-an-agent-completes-a-task"),
                     FeaturesPageAction::ToggleAgentTaskCompletedNotifications,
                     view.button_mouse_states
                         .agent_task_completed_notifications_checkbox
@@ -5289,7 +5289,7 @@ impl SettingsWidget for DesktopNotificationsWidget {
                 ),
                 view.render_notification_toggle(
                     session_settings.notifications.is_needs_attention_enabled,
-                    crate::tr!("settings", "notify-when-a-command-or-agent-needs-your-attention-to-continue"),
+                    &crate::tr!("settings", "notify-when-a-command-or-agent-needs-your-attention-to-continue"),
                     FeaturesPageAction::ToggleNeedsAttentionNotifications,
                     view.button_mouse_states
                         .agent_needs_attention_notifications_checkbox
@@ -5678,7 +5678,7 @@ impl SettingsWidget for GlobalHotkeyWidget {
                 || {
                     render_dropdown_item(
                         appearance,
-                        crate::tr!("settings", "global-hotkey:"),
+                        &crate::tr!("settings", "global-hotkey:"),
                         None,
                         None,
                         LocalOnlyIconState::for_setting(
@@ -6259,7 +6259,7 @@ impl SettingsWidget for RightClickBehaviorWidget {
             || {
                 render_dropdown_item(
                     appearance,
-                    crate::tr!("settings", "right-click:"),
+                    &crate::tr!("settings", "right-click:"),
                     selection_settings
                         .right_click_pastes()
                         .then_some("Shift+right-click to open the context menu."),
@@ -6917,7 +6917,7 @@ impl SettingsWidget for CtrlTabBehaviorWidget {
             || {
                 render_dropdown_item(
                     appearance,
-                    crate::tr!("settings", "features-ctrl-tab-behavior"),
+                    &crate::tr!("settings", "features-ctrl-tab-behavior"),
                     None,
                     None,
                     LocalOnlyIconState::for_setting(
@@ -7387,7 +7387,7 @@ impl SettingsWidget for Osc52ClipboardAccessWidget {
     ) -> Box<dyn Element> {
         render_dropdown_item(
             appearance,
-            crate::tr!("settings", "clipboard-access-(osc-52)"),
+            &crate::tr!("settings", "clipboard-access-(osc-52)"),
             Some(
                 "Controls whether programs running in the terminal can read or write your system clipboard.",
             ),
@@ -7425,7 +7425,7 @@ impl SettingsWidget for NewTabPlacementWidget {
     ) -> Box<dyn Element> {
         render_dropdown_item(
             appearance,
-            crate::tr!("settings", "new-tab-placement"),
+            &crate::tr!("settings", "new-tab-placement"),
             None,
             None,
             LocalOnlyIconState::for_setting(
@@ -7769,7 +7769,7 @@ impl SettingsWidget for GraphicsBackendWidget {
         let theme = appearance.theme();
         let dropdown = render_dropdown_item(
             appearance,
-            crate::tr!("settings", "preferred-graphics-backend"),
+            &crate::tr!("settings", "preferred-graphics-backend"),
             None,
             None,
             LocalOnlyIconState::for_setting(

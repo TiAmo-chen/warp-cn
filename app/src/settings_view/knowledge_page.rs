@@ -26,7 +26,7 @@ use crate::appearance::Appearance;
 use crate::settings::{AISettings, MemoryEnabled, RuleSuggestionsEnabled, WarpDriveContextEnabled};
 use crate::util::bindings;
 
-const PAGE_TITLE: &str = crate::tr!("settings", "knowledge");
+const PAGE_TITLE: &str = &crate::tr!("settings", "knowledge");
 
 const RULES_DOCS_URL: &str = "https://docs.warp.dev/agents/capabilities/rules";
 
@@ -65,7 +65,7 @@ impl Entity for KnowledgePageView {
 
 impl View for KnowledgePageView {
     fn ui_name() -> &'static str {
-        crate::tr!("settings", "knowledgepage")
+        "KnowledgePage"
     }
 
     fn render(&self, app: &AppContext) -> Box<dyn Element> {
@@ -160,7 +160,7 @@ pub fn init_actions_from_parent_view<T: Action + Clone>(
     ToggleSettingActionPair::add_toggle_setting_action_pairs_as_bindings(
         vec![
             ToggleSettingActionPair::new(
-                crate::tr!("settings", "rules"),
+                &crate::tr!("settings", "rules"),
                 builder(SettingsAction::Knowledge(KnowledgePageAction::ToggleRules)),
                 &(context.clone() & id!(flags::IS_ANY_AI_ENABLED)),
                 flags::AI_RULES_FLAG,
@@ -168,7 +168,7 @@ pub fn init_actions_from_parent_view<T: Action + Clone>(
             .with_group(bindings::BindingGroup::WarpAi)
             .with_enabled(|| FeatureFlag::AIRules.is_enabled()),
             ToggleSettingActionPair::new(
-                crate::tr!("settings", "suggested-rules"),
+                &crate::tr!("settings", "suggested-rules"),
                 builder(SettingsAction::Knowledge(
                     KnowledgePageAction::ToggleRuleSuggestions,
                 )),
@@ -180,7 +180,7 @@ pub fn init_actions_from_parent_view<T: Action + Clone>(
                 FeatureFlag::AIRules.is_enabled() && FeatureFlag::SuggestedRules.is_enabled()
             }),
             ToggleSettingActionPair::new(
-                crate::tr!("settings", "warp-drive-as-agent-context"),
+                &crate::tr!("settings", "warp-drive-as-agent-context"),
                 builder(SettingsAction::Knowledge(
                     KnowledgePageAction::ToggleWarpDriveContext,
                 )),
@@ -318,7 +318,7 @@ impl SettingsWidget for ManageRulesWidget {
         app: &AppContext,
     ) -> Box<dyn Element> {
         render_full_pane_width_ai_button(
-            crate::tr!("settings", "manage-rules"),
+            &crate::tr!("settings", "manage-rules"),
             AISettings::as_ref(app).is_any_ai_enabled(app),
             self.manage_rules_button.clone(),
             KnowledgePageAction::OpenAIFactCollection,

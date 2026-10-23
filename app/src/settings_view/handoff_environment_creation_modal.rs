@@ -236,7 +236,7 @@ impl TypedActionView for HandoffEnvironmentCreationModal {
 
 impl View for HandoffEnvironmentCreationModal {
     fn ui_name() -> &'static str {
-        crate::tr!("settings", "handoffenvironmentcreationmodal")
+        "HandoffEnvironmentCreationModal"
     }
 
     fn render(&self, app: &AppContext) -> Box<dyn Element> {

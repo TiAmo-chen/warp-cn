@@ -702,7 +702,7 @@ impl AgentProfilesPageView {
             let mut dropdown = FilterableDropdown::new(ctx);
             dropdown.set_top_bar_max_width(AI_SETTINGS_DROPDOWN_WIDTH);
             dropdown.set_menu_width(AI_SETTINGS_DROPDOWN_WIDTH, ctx);
-            dropdown.set_menu_header_to_static(crate::tr!("settings", "select-mcp-servers"));
+            dropdown.set_menu_header_to_static("Select MCP servers");
             dropdown
         });
         Self::refresh_mcp_allowlist_dropdown(&mcp_allowlist_dropdown, ctx);
@@ -716,7 +716,7 @@ impl AgentProfilesPageView {
             let mut dropdown = FilterableDropdown::new(ctx);
             dropdown.set_top_bar_max_width(AI_SETTINGS_DROPDOWN_WIDTH);
             dropdown.set_menu_width(AI_SETTINGS_DROPDOWN_WIDTH, ctx);
-            dropdown.set_menu_header_to_static(crate::tr!("settings", "select-mcp-servers"));
+            dropdown.set_menu_header_to_static("Select MCP servers");
             dropdown
         });
         Self::refresh_mcp_denylist_dropdown(&mcp_denylist_dropdown, ctx);
@@ -1469,7 +1469,7 @@ impl AgentProfilesPageView {
 
 impl View for AgentProfilesPageView {
     fn ui_name() -> &'static str {
-        crate::tr!("settings", "agentprofilespage")
+        "AgentProfilesPage"
     }
 
     fn render(&self, app: &AppContext) -> Box<dyn Element> {
@@ -1527,7 +1527,7 @@ impl From<&AgentProfilesPageAction> for LoginGatedFeature {
     fn from(val: &AgentProfilesPageAction) -> LoginGatedFeature {
         use AgentProfilesPageAction::*;
         match val {
-            AttemptLoginGatedUpgrade => crate::tr!("settings", "upgrade-ai-usage"),
+            AttemptLoginGatedUpgrade => "Upgrade AI Usage",
             _ => "Unknown reason",
         }
     }
@@ -2573,7 +2573,7 @@ impl AgentsWidget {
         let code_diff_setting =
             BlocklistAIPermissions::as_ref(app).get_apply_code_diffs_setting(None, &scope, app);
         let code_diffs = self.render_execution_profile_dropdown(
-            crate::tr!("settings", "apply-code-diffs"),
+            &crate::tr!("settings", "apply-code-diffs"),
             Icon::Code2,
             code_diff_setting.description(),
             &view.apply_code_diffs_dropdown_menu,
@@ -2586,7 +2586,7 @@ impl AgentsWidget {
             BlocklistAIPermissions::as_ref(app).get_read_files_setting(None, &scope, app);
         let mut read_files_flex = Flex::column().with_main_axis_size(MainAxisSize::Min);
         read_files_flex.add_child(self.render_execution_profile_dropdown(
-            crate::tr!("settings", "read-files"),
+            &crate::tr!("settings", "read-files"),
             Icon::Notebook,
             read_files_setting.description(),
             &view.read_files_dropdown_menu,
@@ -2616,7 +2616,7 @@ impl AgentsWidget {
             BlocklistAIPermissions::as_ref(app).get_execute_commands_setting(None, &scope, app);
         let mut execute_commands_flex = Flex::column().with_main_axis_size(MainAxisSize::Min);
         execute_commands_flex.add_child(self.render_execution_profile_dropdown(
-            crate::tr!("settings", "execute-commands"),
+            &crate::tr!("settings", "execute-commands"),
             Icon::Terminal,
             execute_commands_setting.description(),
             &view.execute_commands_dropdown_menu,
@@ -2666,7 +2666,7 @@ impl AgentsWidget {
         {
             widget_children.push(
                 Container::new(render_settings_info_banner(
-                    crate::tr!("settings", "some-of-your-permissions-are-managed-by-your-workspace."),
+                    &crate::tr!("settings", "some-of-your-permissions-are-managed-by-your-workspace."),
                     None,
                     appearance,
                 ))
@@ -2680,7 +2680,7 @@ impl AgentsWidget {
         let write_to_pty_setting =
             BlocklistAIPermissions::as_ref(app).get_write_to_pty_setting(None, &scope, app);
         let write_to_pty = self.render_execution_profile_dropdown(
-            crate::tr!("settings", "interact-with-running-commands"),
+            &crate::tr!("settings", "interact-with-running-commands"),
             Icon::Workflow,
             write_to_pty_setting.description(),
             &view.write_to_pty_autonomy_dropdown_menu,
@@ -2817,7 +2817,7 @@ impl AgentsWidget {
             appearance,
         );
         render_ai_list(
-            crate::tr!("settings", "command-denylist"),
+            &crate::tr!("settings", "command-denylist"),
             "Regular expressions to match commands that the Warp Agent should always ask permission to execute.",
             list,
             view,
@@ -2855,7 +2855,7 @@ impl AgentsWidget {
         );
 
         render_ai_list(
-            crate::tr!("settings", "command-allowlist"),
+            &crate::tr!("settings", "command-allowlist"),
             "Regular expressions to match commands that can be automatically executed by the Warp Agent.",
             list,
             view,
@@ -2894,7 +2894,7 @@ impl AgentsWidget {
         );
 
         render_ai_list(
-            crate::tr!("settings", "directory-allowlist"),
+            &crate::tr!("settings", "directory-allowlist"),
             "Give the agent file access to certain directories.",
             list,
             view,
@@ -2957,7 +2957,7 @@ impl AgentsWidget {
 
         render_dropdown_item(
             appearance,
-            crate::tr!("settings", "base-model"),
+            &crate::tr!("settings", "base-model"),
             Some(
                 "This model serves as the primary engine behind the Warp Agent. It powers most interactions and invokes other models for tasks like planning or code generation when necessary. Warp may automatically switch to alternate models based on model availability or for auxiliary tasks such as conversation summarization.",
             ),
@@ -3130,7 +3130,7 @@ impl AgentsWidget {
             BlocklistAIPermissions::as_ref(app).get_mcp_permissions_setting(app, None);
 
         let permission_setting = self.render_execution_profile_dropdown(
-            crate::tr!("settings", "call-mcp-servers"),
+            &crate::tr!("settings", "call-mcp-servers"),
             Icon::Dataflow,
             current_mcp_setting.description(),
             &view.mcp_permissions_dropdown_menu,
@@ -3144,7 +3144,7 @@ impl AgentsWidget {
             || current_mcp_setting == ActionPermission::AgentDecides
         {
             let allowlist = self.render_mcp_list(
-                crate::tr!("settings", "mcp-allowlist"),
+                &crate::tr!("settings", "mcp-allowlist"),
                 "Allow the Warp Agent to call these MCP servers.",
                 &view.mcp_allowlist_dropdown,
                 BlocklistAIPermissions::as_ref(app).get_mcp_allowlist(app, None),
@@ -3161,7 +3161,7 @@ impl AgentsWidget {
             || current_mcp_setting == ActionPermission::AgentDecides
         {
             let denylist = self.render_mcp_list(
-                crate::tr!("settings", "mcp-denylist"),
+                &crate::tr!("settings", "mcp-denylist"),
                 "The Warp Agent will always ask for permission before calling any MCP servers on this list.",
                 &view.mcp_denylist_dropdown,
                 BlocklistAIPermissions::as_ref(app).get_mcp_denylist(app, None),

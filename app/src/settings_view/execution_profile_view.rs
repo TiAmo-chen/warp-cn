@@ -93,7 +93,7 @@ impl Entity for ExecutionProfileView {
 
 impl View for ExecutionProfileView {
     fn ui_name() -> &'static str {
-        crate::tr!("settings", "executionprofileview")
+        "ExecutionProfileView"
     }
 
     fn render(&self, app: &AppContext) -> Box<dyn Element> {
@@ -729,7 +729,7 @@ fn render_write_to_pty_permission_line_with_icon(
     let permission_text = match permission {
         WriteToPtyPermission::AlwaysAllow => "Always allow",
         WriteToPtyPermission::AlwaysAsk => "Always ask",
-        WriteToPtyPermission::AskOnFirstWrite => crate::tr!("settings", "ask-on-first-write"),
+        WriteToPtyPermission::AskOnFirstWrite => &crate::tr!("settings", "ask-on-first-write"),
         WriteToPtyPermission::Unknown => "Unknown",
     };
     render_permission_line_with_icon(icon, label, permission_text, appearance, is_ai_enabled)

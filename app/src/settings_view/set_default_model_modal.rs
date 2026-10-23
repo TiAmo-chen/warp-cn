@@ -128,7 +128,7 @@ impl Entity for SetDefaultModelModalBody {
 
 impl View for SetDefaultModelModalBody {
     fn ui_name() -> &'static str {
-        crate::tr!("settings", "setdefaultmodelmodalbody")
+        "SetDefaultModelModalBody"
     }
 
     fn render(&self, app: &AppContext) -> Box<dyn Element> {

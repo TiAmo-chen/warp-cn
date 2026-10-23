@@ -89,30 +89,30 @@ use crate::workspaces::workspace::{
 
 const TEAM_MEMBERS_HEADER_POSITION_ID: &str = "team_settings:team_members_header";
 // Styling for team create page
-const TEAM_NAME_EDITOR_PLACEHOLDER_TEXT: &str = crate::tr!("settings", "team-name");
+const TEAM_NAME_EDITOR_PLACEHOLDER_TEXT: &str = &crate::tr!("settings", "team-name");
 const CREATE_TEAM_BUTTON_LEFT_PADDING: f32 = 10.;
 const CREATE_TEAM_DESCRIPTION: &str = "When you create a team, you can collaborate on agent-driven development by sharing cloud agent runs, environments, automations, and artifacts. You can also create a shared knowledge store for teammates and agents alike.";
 
-const OR_JOIN_TEAM_HEADER: &str = crate::tr!("settings", "or,-join-an-existing-team-within-your-company");
+const OR_JOIN_TEAM_HEADER: &str = &crate::tr!("settings", "or,-join-an-existing-team-within-your-company");
 const JOIN_TEAM_HEADER: &str = "Join an existing team within your company";
 const BROWSE_TEAMS_BUTTON_LABEL: &str = "Browse teams";
-const SWITCH_TEAM_BUTTON_LABEL: &str = crate::tr!("settings", "switch-team");
+const SWITCH_TEAM_BUTTON_LABEL: &str = &crate::tr!("settings", "switch-team");
 const JOIN_WORKSPACE_OR_TEAM_HEADER: &str =
     "Join an existing workspace or team within your company";
 const OR_JOIN_WORKSPACE_OR_TEAM_HEADER: &str =
     "Or, join an existing workspace or team within your company";
-const NO_JOINABLE_TEAMS_HEADER: &str = crate::tr!("settings", "there-are-currently-no-joinable-teams.");
+const NO_JOINABLE_TEAMS_HEADER: &str = &crate::tr!("settings", "there-are-currently-no-joinable-teams.");
 const NO_TEAMS_TO_JOIN_DESCRIPTION: &str =
     "Contact an admin to join a team to gain access to more features.";
-const ADMIN_PANEL_CTA_LINK_TEXT: &str = crate::tr!("settings", "visit-the-admin-panel");
+const ADMIN_PANEL_CTA_LINK_TEXT: &str = &crate::tr!("settings", "visit-the-admin-panel");
 const ADMIN_PANEL_CTA_TRAILING_COPY: &str = "to manage and create new teams.";
 
 // Styling for team management page
-const LEAVE_TEAM_BUTTON_LABEL: &str = crate::tr!("settings", "leave-team");
+const LEAVE_TEAM_BUTTON_LABEL: &str = &crate::tr!("settings", "leave-team");
 const DELETE_TEAM_BUTTON_LABEL: &str = "Delete team";
 const CREATE_TEAM_BUTTON_LABEL: &str = "Create";
 const APPROVE_DOMAINS_PLACEHOLDER: &str = "Domains, comma separated";
-const EMAILS_PLACEHOLDER: &str = crate::tr!("settings", "emails,-comma-separated");
+const EMAILS_PLACEHOLDER: &str = &crate::tr!("settings", "emails,-comma-separated");
 const APPROVE_DOMAINS_BUTTON_LABEL: &str = "Set";
 const SEND_EMAIL_INVITES_BUTTON_LABEL: &str = "Invite";
 const BUTTON_WIDTH: f32 = 82.;
@@ -129,18 +129,18 @@ const SUBSUBSECTION_HEADER_FONT_SIZE: f32 = 14.;
 const OWNER_STATE_CHIP_ACCENT_OPACITY: u8 = 30;
 
 const INVALID_DOMAINS_INSTRUCTIONS: &str =
-    crate::tr!("settings", "some-of-the-provided-domains-are-invalid,-or-have-already-been-added.");
+    &crate::tr!("settings", "some-of-the-provided-domains-are-invalid,-or-have-already-been-added.");
 
 const INVITE_LINK_TOGGLE_INSTRUCTIONS: &str = "As an admin, you can choose whether to enable or disable the ability for team members to invite others by invitation link.";
 const INVITE_LINK_UNAVAILABLE_INSTRUCTIONS: &str =
     "Your team’s visibility settings prevent you from creating invite links.";
 const INVITE_LINK_DOMAIN_RESTRICTIONS_INSTRUCTIONS: &str = "Restrict by domain — only allow users with emails at specific domains to join your team through the invite link.";
 
-const INVITE_BY_EMAIL_EXPIRY_INSTRUCTIONS: &str = crate::tr!("settings", "email-invitations-are-valid-for-7-days.");
+const INVITE_BY_EMAIL_EXPIRY_INSTRUCTIONS: &str = &crate::tr!("settings", "email-invitations-are-valid-for-7-days.");
 const INVALID_EMAILS_INSTRUCTIONS: &str =
     "Some of the provided email addresses are invalid, already invited, or members of the team.";
 
-const OFFLINE_TEXT: &str = crate::tr!("settings", "you-are-offline.");
+const OFFLINE_TEXT: &str = &crate::tr!("settings", "you-are-offline.");
 
 const DISABLED_MEMBER_TOOLTIP_TEXT: &str = "This user's account is disabled";
 
@@ -308,7 +308,7 @@ impl From<&TeamsPageAction> for LoginGatedFeature {
     fn from(val: &TeamsPageAction) -> LoginGatedFeature {
         use TeamsPageAction::*;
         match val {
-            LeaveTeam => crate::tr!("settings", "leave-team"),
+            LeaveTeam => "Leave Team",
             ShowDeleteTeamConfirmationDialog => "Delete Team",
             CreateTeam => "Create Team",
             DeletePendingEmailInvitation { .. } => "Delete Pending Email Invitation",
@@ -405,7 +405,7 @@ impl std::fmt::Display for TeamsInviteOption {
             "{}",
             match self {
                 TeamsInviteOption::Link => "Link",
-                TeamsInviteOption::Email => crate::tr!("settings", "email"),
+                TeamsInviteOption::Email => &crate::tr!("settings", "email"),
             },
         )
     }
@@ -592,7 +592,7 @@ impl WorkspaceDiscoveryAction {
 
     fn label(self) -> &'static str {
         match self {
-            Self::Continue => crate::tr!("settings", "continue"),
+            Self::Continue => "Continue",
             Self::Join => crate::tr!("settings", "join"),
         }
     }
@@ -881,7 +881,7 @@ impl TypedActionView for TeamsPageView {
 
 impl View for TeamsPageView {
     fn ui_name() -> &'static str {
-        crate::tr!("settings", "teamspageview")
+        "TeamsPageView"
     }
 
     fn render(&self, app: &AppContext) -> Box<dyn Element> {
@@ -2719,7 +2719,7 @@ impl TeamsWidget {
                     if is_delinquency {
                         "Contact support to restore access."
                     } else {
-                        crate::tr!("settings", "contact-sales-to-grow-your-team.")
+                        &crate::tr!("settings", "contact-sales-to-grow-your-team.")
                     }
                 }
             }
@@ -2817,7 +2817,7 @@ impl TeamsWidget {
     ) -> (&'static str, &'static str) {
         if billing_metadata.customer_type == CustomerType::Business {
             (
-                crate::tr!("settings", "upgrade-to-enterprise"),
+                &crate::tr!("settings", "upgrade-to-enterprise"),
                 " for an unlimited team member limit.",
             )
         } else {

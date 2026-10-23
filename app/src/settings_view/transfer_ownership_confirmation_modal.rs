@@ -42,7 +42,7 @@ impl Entity for TransferOwnershipConfirmationModal {
 
 impl View for TransferOwnershipConfirmationModal {
     fn ui_name() -> &'static str {
-        crate::tr!("settings", "transferownershipconfirmationmodal")
+        "TransferOwnershipConfirmationModal"
     }
 
     fn render(&self, app: &AppContext) -> Box<dyn Element> {

@@ -40,12 +40,12 @@ pub fn init_actions_from_parent_view<T: Action + Clone>(
 ) {
     ToggleSettingActionPair::add_toggle_setting_action_pairs_as_bindings(
         vec![ToggleSettingActionPair::custom(
-            SettingActionPairDescriptions::new(crate::tr!("settings", "enable-warp-drive"), "Disable Warp Drive"),
+            SettingActionPairDescriptions::new(&crate::tr!("settings", "enable-warp-drive"), "Disable Warp Drive"),
             builder(SettingsAction::WarpDrive(
                 WarpDriveSettingsPageAction::ToggleShowWarpDrive,
             )),
             SettingActionPairContexts::new(
-                context.clone() & !id!(flags::ENABLE_WARP_DRIVE) & !id!(crate::tr!("settings", "isanonymoususer")),
+                context.clone() & !id!(flags::ENABLE_WARP_DRIVE) & !id!("IsAnonymousUser"),
                 context.clone() & id!(flags::ENABLE_WARP_DRIVE) & !id!("IsAnonymousUser"),
             ),
             None,
@@ -108,7 +108,7 @@ impl TypedActionView for WarpDriveSettingsPageView {
 
 impl View for WarpDriveSettingsPageView {
     fn ui_name() -> &'static str {
-        crate::tr!("settings", "warpdrivepage")
+        "WarpDrivePage"
     }
 
     fn render(&self, app: &AppContext) -> Box<dyn Element> {

@@ -51,7 +51,7 @@ use crate::view_components::{
 };
 use crate::workspaces::user_workspaces::UserWorkspaces;
 
-const SUBMIT_BUTTON_FOCUSED: &str = crate::tr!("settings", "submitbuttonfocused");
+const SUBMIT_BUTTON_FOCUSED: &str = &crate::tr!("settings", "submitbuttonfocused");
 
 pub fn init(app: &mut AppContext) {
     use warpui::keymap::macros::*;
@@ -265,13 +265,13 @@ impl EnvironmentFormCopy {
     pub fn orchestration_modal() -> Self {
         Self {
             name_placeholder: "e.g., dev-env",
-            repos_placeholder_authed: crate::tr!("settings", "browse-github-repos..."),
+            repos_placeholder_authed: &crate::tr!("settings", "browse-github-repos..."),
             repos_placeholder_unauthed: REPOS_PLACEHOLDER_UNAUTHED,
             docker_image_label: "Docker image",
             docker_image_placeholder: "e.g., node:20-alpine",
             description_placeholder: DESCRIPTION_PLACEHOLDER,
             setup_commands_placeholder: "e.g., node start",
-            setup_commands_helper: crate::tr!("settings", "press-enter-or-click-the-submit-button-to-add-each-command."),
+            setup_commands_helper: &crate::tr!("settings", "press-enter-or-click-the-submit-button-to-add-each-command."),
             show_description_character_count: false,
         }
     }
@@ -280,10 +280,10 @@ impl EnvironmentFormCopy {
 impl Default for EnvironmentFormCopy {
     fn default() -> Self {
         Self {
-            name_placeholder: crate::tr!("settings", "environment-name"),
+            name_placeholder: &crate::tr!("settings", "environment-name"),
             repos_placeholder_authed: REPOS_PLACEHOLDER_AUTHED,
             repos_placeholder_unauthed: REPOS_PLACEHOLDER_UNAUTHED,
-            docker_image_label: crate::tr!("settings", "docker-image-reference"),
+            docker_image_label: &crate::tr!("settings", "docker-image-reference"),
             docker_image_placeholder: "e.g. python:3.11, node:20-alpine",
             description_placeholder: DESCRIPTION_PLACEHOLDER,
             setup_commands_placeholder: "e.g. cd my-repo && pip install -r requirements.txt",
@@ -371,7 +371,7 @@ pub struct UpdateEnvironmentForm {
 
 const DESCRIPTION_MAX_CHARS: usize = 240;
 const DESCRIPTION_PLACEHOLDER: &str = "e.g., this environment is for all front end focused agents";
-const REPOS_PLACEHOLDER_AUTHED: &str = crate::tr!("settings", "enter-repos-(owner/repo-format)");
+const REPOS_PLACEHOLDER_AUTHED: &str = &crate::tr!("settings", "enter-repos-(owner/repo-format)");
 const REPOS_PLACEHOLDER_UNAUTHED: &str = "Paste repo URL(s)";
 const FORM_FIELD_SPACING: f32 = 20.;
 const FORM_LABEL_SPACING: f32 = 6.;
@@ -3106,7 +3106,7 @@ impl UpdateEnvironmentForm {
         let button_text = if is_loading {
             "Generating…"
         } else {
-            crate::tr!("settings", "suggest-image")
+            &crate::tr!("settings", "suggest-image")
         };
 
         let tooltip_text = "Warp will suggest a Docker image based on your selected repositories.";
@@ -3506,7 +3506,7 @@ impl TypedActionView for UpdateEnvironmentForm {
 
 impl View for UpdateEnvironmentForm {
     fn ui_name() -> &'static str {
-        crate::tr!("settings", "updateenvironmentform")
+        "UpdateEnvironmentForm"
     }
 
     fn keymap_context(&self, app: &AppContext) -> warpui::keymap::Context {

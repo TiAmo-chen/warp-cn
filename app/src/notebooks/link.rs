@@ -428,8 +428,8 @@ impl fmt::Display for ResolveError {
     fn fmt(&self, f: &mut fmt::Formatter) -> fmt::Result {
         match self {
             ResolveError::FileNotFound => f.write_str("File not found"),
-            ResolveError::MissingContext => f.write_str(crate::tr!("notebooks", "notebooks-no-base-directory")),
-            ResolveError::Unknown => f.write_str(crate::tr!("notebooks", "notebooks-broken-file-link")),
+            ResolveError::MissingContext => f.write_str(&crate::tr!("notebooks", "notebooks-no-base-directory")),
+            ResolveError::Unknown => f.write_str(&crate::tr!("notebooks", "notebooks-broken-file-link")),
         }
     }
 }

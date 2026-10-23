@@ -103,7 +103,7 @@ pub fn init(app: &mut AppContext) {
     header_toolbar_editor::init(app);
     view::conversation_list::view::register_conversation_list_view_bindings(app);
 
-    settings_view::init_actions_from_parent_view(app, &id!(crate::tr!("settings", "workspace")), |settings_action| {
+    settings_view::init_actions_from_parent_view(app, &id!("Workspace"), |settings_action| {
         WorkspaceAction::DispatchToSettingsTab(settings_action)
     });
     global_actions::init_global_actions(app);
@@ -115,7 +115,7 @@ pub fn init(app: &mut AppContext) {
     app.register_fixed_bindings([FixedBinding::empty(
         "Dump debug info",
         WorkspaceAction::DumpDebugInfo,
-        id!(crate::tr!("settings", "workspace")),
+        id!("Workspace"),
     )]);
     app.register_fixed_bindings([
         FixedBinding::new(

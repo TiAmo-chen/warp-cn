@@ -100,7 +100,7 @@ impl BillingAndUsageDispatchView {
             }
         });
 
-        let page = PageType::new_monolith(BillingAndUsageWidget, Some(crate::tr!("settings", "billing-and-usage")), true);
+        let page = PageType::new_monolith(BillingAndUsageWidget, Some(&crate::tr!("settings", "billing-and-usage")), true);
 
         Self {
             page,
@@ -167,7 +167,7 @@ impl TypedActionView for BillingAndUsageDispatchView {
 
 impl View for BillingAndUsageDispatchView {
     fn ui_name() -> &'static str {
-        crate::tr!("settings", "billing-and-usage")
+        "Billing and usage"
     }
 
     fn render(&self, app: &AppContext) -> Box<dyn Element> {
@@ -250,7 +250,7 @@ impl SettingsWidget for BillingAndUsageWidget {
             page.add_child(
                 Container::new(render_dropdown_item(
                     appearance,
-                    crate::tr!("settings", "usage-display-unit"),
+                    &crate::tr!("settings", "usage-display-unit"),
                     Some("Select the unit for usage and spend amounts."),
                     None,
                     LocalOnlyIconState::for_setting(

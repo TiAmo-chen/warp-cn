@@ -72,7 +72,7 @@ impl Entity for DeleteEnvironmentConfirmationDialog {
 
 impl View for DeleteEnvironmentConfirmationDialog {
     fn ui_name() -> &'static str {
-        crate::tr!("settings", "deleteenvironmentconfirmationdialog")
+        "DeleteEnvironmentConfirmationDialog"
     }
 
     fn render(&self, app: &AppContext) -> Box<dyn Element> {

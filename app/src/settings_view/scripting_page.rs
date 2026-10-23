@@ -71,7 +71,7 @@ impl ScriptingSettingsPageView {
             vec![Box::new(LocalControlModeWidget)];
 
         Self {
-            page: PageType::new_uncategorized(widgets, Some(PageTitle::new(crate::tr!("settings", "scripting")))),
+            page: PageType::new_uncategorized(widgets, Some(PageTitle::new("Scripting"))),
             local_only_icon_tooltip_states: RefCell::new(HashMap::new()),
             local_control_mode_dropdown,
             #[cfg(target_os = "macos")]
@@ -172,7 +172,7 @@ impl TypedActionView for ScriptingSettingsPageView {
 
 impl View for ScriptingSettingsPageView {
     fn ui_name() -> &'static str {
-        crate::tr!("settings", "scriptingsettingspage")
+        "ScriptingSettingsPage"
     }
 
     fn render(&self, app: &AppContext) -> Box<dyn Element> {

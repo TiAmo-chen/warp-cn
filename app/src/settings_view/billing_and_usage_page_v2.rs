@@ -67,19 +67,19 @@ use crate::workspaces::workspace::{CustomerType, Workspace, WorkspaceUid};
 use crate::{WorkspaceAction, send_telemetry_from_ctx};
 
 const ADDITIONAL_ADDON_CREDITS_DESCRIPTION_FOR_TEAM: &str =
-    crate::tr!("settings", "purchased-add-on-credits-are-added-to-your-team's-shared-credit-pool.");
-const ADDON_USAGE_DESCRIPTION: &str = crate::tr!("settings", "usage-rolls-over-each-billing-cycle-and-expires-after-one-year.-once-your-base-plan-usage-is-depleted,-any-additional-purchased-usage-will-be-consumed.");
+    &crate::tr!("settings", "purchased-add-on-credits-are-added-to-your-team's-shared-credit-pool.");
+const ADDON_USAGE_DESCRIPTION: &str = &crate::tr!("settings", "usage-rolls-over-each-billing-cycle-and-expires-after-one-year.-once-your-base-plan-usage-is-depleted,-any-additional-purchased-usage-will-be-consumed.");
 const ADDITIONAL_ADDON_USAGE_DESCRIPTION_FOR_TEAM: &str =
-    crate::tr!("settings", "purchased-usage-is-added-to-your-team's-shared-pool.");
+    &crate::tr!("settings", "purchased-usage-is-added-to-your-team's-shared-pool.");
 const MANAGED_AUTO_RELOAD_HEADER: &str = "Auto-reload is enabled";
 
 const ADDON_CREDITS_DELINQUENT_WARNING_STRING: &str =
-    crate::tr!("settings", "restricted-due-to-billing-issue.-update-your-payment-method-to-purchase-add-on-credits.");
+    &crate::tr!("settings", "restricted-due-to-billing-issue.-update-your-payment-method-to-purchase-add-on-credits.");
 const ADDON_USAGE_DELINQUENT_WARNING_STRING: &str =
     "Restricted due to billing issue. Update your payment method to purchase usage.";
 const ADDON_CREDITS_NON_ADMIN_DELINQUENT_WARNING_STRING: &str =
-    crate::tr!("settings", "restricted-due-to-billing-issue.-contact-your-team-admin-to-update-their-payment-method.");
-const RESTRICTED_BILLING_USAGE_WARNING_STRING: &str = crate::tr!("settings", "auto-reload-is-disabled-due-to-recent-failed-reload.-please-update-your-payment-method-and-try-again.");
+    &crate::tr!("settings", "restricted-due-to-billing-issue.-contact-your-team-admin-to-update-their-payment-method.");
+const RESTRICTED_BILLING_USAGE_WARNING_STRING: &str = &crate::tr!("settings", "auto-reload-is-disabled-due-to-recent-failed-reload.-please-update-your-payment-method-and-try-again.");
 const RESTRICTED_BILLING_USAGE_NON_ADMIN_WARNING_STRING: &str = "Auto reload is disabled due to recent failed reload. Contact your team admin to update their payment method.";
 
 const HEADER_FONT_SIZE: f32 = 16.;
@@ -115,7 +115,7 @@ pub(super) const AGGREGATE_CREDITS_DOT_COLOR: ColorU = ColorU {
     a: 255,
 };
 const DEFAULT_MAX_MONTHLY_SPEND_CENTS: i32 = 20_000;
-const AMBIENT_AGENT_TRIAL_TITLE: &str = crate::tr!("settings", "cloud-agent-trial");
+const AMBIENT_AGENT_TRIAL_TITLE: &str = &crate::tr!("settings", "cloud-agent-trial");
 
 #[derive(Default)]
 struct PlanSectionMouseStates {
@@ -157,7 +157,7 @@ struct AddonCreditsState {
 
 fn buy_header(unit: UsageDisplayUnit) -> &'static str {
     match unit {
-        UsageDisplayUnit::Credits => crate::tr!("settings", "buy-credits"),
+        UsageDisplayUnit::Credits => "Buy credits",
         UsageDisplayUnit::Dollars => "Buy usage",
     }
 }
@@ -512,7 +512,7 @@ impl BillingAndUsagePageV2View {
             UserWorkspacesEvent::UpdateWorkspaceSettingsRejected(_err) => {
                 self.pending_auto_reload_toast = None;
                 self.show_toast(
-                    crate::tr!("settings", "failed-to-update-workspace-settings"),
+                    &crate::tr!("settings", "failed-to-update-workspace-settings"),
                     ToastFlavor::Error,
                     ctx,
                 );
@@ -1226,7 +1226,7 @@ impl BillingAndUsagePageV2View {
             } else if can_upgrade {
                 return AddonCreditsPanelState::IneligiblePlan(
                     AddonCreditsRestriction::UpgradeToBuild {
-                        link_text: crate::tr!("settings", "upgrade-to-build"),
+                        link_text: &crate::tr!("settings", "upgrade-to-build"),
                         url: upgrade_url,
                     },
                 );
@@ -1743,7 +1743,7 @@ impl BillingAndUsagePageV2View {
         let purchase_button_label = if self.addon_credits.purchase_loading {
             "Buying\u{2026}"
         } else {
-            crate::tr!("settings", "one-time-purchase")
+            &crate::tr!("settings", "one-time-purchase")
         };
         let purchase_button_font_color = state
             .purchase_disabled
@@ -2155,7 +2155,7 @@ impl Entity for BillingAndUsagePageV2View {
 
 impl View for BillingAndUsagePageV2View {
     fn ui_name() -> &'static str {
-        crate::tr!("settings", "billing-and-usage-v2")
+        "Billing and usage v2"
     }
 
     fn render(&self, app: &AppContext) -> Box<dyn Element> {
@@ -2349,7 +2349,7 @@ impl TypedActionView for BillingAndUsagePageV2View {
                         .get(self.addon_credits.selected_denomination)
                     else {
                         self.show_toast(
-                            crate::tr!("settings", "unable-to-enable-auto-reload-until-pricing-options-load."),
+                            &crate::tr!("settings", "unable-to-enable-auto-reload-until-pricing-options-load."),
                             ToastFlavor::Error,
                             ctx,
                         );

@@ -48,7 +48,7 @@ impl TelemetryEventDesc for SettingsTelemetryEventDiscriminants {
     fn description(&self) -> &'static str {
         match self {
             SettingsTelemetryEventDiscriminants::EnvironmentsPageOpened => {
-                crate::tr!("settings", "user-opened-the-environments-settings-page")
+                "User opened the Environments settings page"
             }
         }
     }

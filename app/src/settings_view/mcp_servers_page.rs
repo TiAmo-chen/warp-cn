@@ -51,7 +51,7 @@ pub enum InstallOrigin {
     Deeplink,
 }
 
-const PAGE_TITLE_TEXT: &str = crate::tr!("settings", "mcp-servers");
+const PAGE_TITLE_TEXT: &str = &crate::tr!("settings", "mcp-servers");
 #[derive(Debug, Default, Copy, Clone)]
 pub enum MCPServersSettingsPage {
     #[default]
@@ -516,7 +516,7 @@ impl Entity for MCPServersSettingsPageView {
 
 impl View for MCPServersSettingsPageView {
     fn ui_name() -> &'static str {
-        crate::tr!("settings", "mcpserverssettingspageview")
+        "MCPServersSettingsPageView"
     }
 
     fn render(&self, _app: &AppContext) -> Box<dyn Element> {

@@ -29,7 +29,7 @@ use crate::view_components::{Dropdown, DropdownItem};
 use crate::workspace::tab_settings::TabSettings;
 use crate::{TelemetryEvent, send_telemetry_from_ctx};
 
-const PAGE_TITLE: &str = crate::tr!("settings", "editor-and-code-review");
+const PAGE_TITLE: &str = &crate::tr!("settings", "editor-and-code-review");
 
 pub struct EditorAndCodeReviewPageView {
     page: PageType<Self>,
@@ -136,7 +136,7 @@ impl Entity for EditorAndCodeReviewPageView {
 
 impl View for EditorAndCodeReviewPageView {
     fn ui_name() -> &'static str {
-        crate::tr!("settings", "editorandcodereviewpage")
+        "EditorAndCodeReviewPage"
     }
 
     fn render(&self, app: &AppContext) -> Box<dyn Element> {
@@ -287,7 +287,7 @@ pub fn init_actions_from_parent_view<T: Action + Clone>(
     ToggleSettingActionPair::add_toggle_setting_action_pairs_as_bindings(
         vec![
             ToggleSettingActionPair::new(
-                crate::tr!("settings", "features-auto-code-review"),
+                &crate::tr!("settings", "features-auto-code-review"),
                 builder(SettingsAction::EditorAndCodeReview(
                     EditorAndCodeReviewPageAction::ToggleAutoOpenCodeReviewPane,
                 )),
@@ -719,7 +719,7 @@ impl SettingsWidget for CodeEditorLineNumberModeWidget {
     ) -> Box<dyn Element> {
         render_dropdown_item(
             appearance,
-            crate::tr!("settings", "code-editor-line-numbers:"),
+            &crate::tr!("settings", "code-editor-line-numbers:"),
             None,
             None,
             LocalOnlyIconState::Hidden,

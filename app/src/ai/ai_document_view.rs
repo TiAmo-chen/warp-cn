@@ -69,7 +69,7 @@ pub fn init(app: &mut AppContext) {
         SAVE_FILE_BINDING_DESCRIPTION,
         AIDocumentAction::SendUpdatedPlan,
     )
-    .with_context_predicate(id!("AIDocumentView") & !id!(crate::tr!("settings", "imeopen")))
+    .with_context_predicate(id!("AIDocumentView") & !id!("IMEOpen"))
     .with_key_binding("cmdorctrl-s")]);
 
     // Allow closing the AI document pane with the same toggle keybinding used in Terminal

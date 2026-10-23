@@ -72,22 +72,22 @@ const SUB_SECTION_MARGIN: f32 = 8.;
 const STATUS_ICON_SIZE: f32 = 16.;
 const LSP_STATUS_INDICATOR_SIZE: f32 = 8.;
 const CODE_FEATURE_NAME: &str = "Code";
-const INITIALIZATION_SETTINGS_HEADER: &str = crate::tr!("settings", "initialization-settings");
+const INITIALIZATION_SETTINGS_HEADER: &str = &crate::tr!("settings", "initialization-settings");
 const CODEBASE_INDEXING_LABEL: &str = "Codebase indexing";
 const CODEBASE_INDEX_DESCRIPTION: &str = "Warp can automatically index code repositories as you navigate them, helping agents quickly understand context and provide solutions. Code is never stored on the server. If a codebase is unable to be indexed, Warp can still navigate your codebase and gain insights via grep and find tool calling.";
-const WARP_INDEXING_IGNORE_DESCRIPTION: &str = crate::tr!("settings", "to-exclude-specific-files-or-directories-from-indexing,-add-them-to-the-.warpindexingignore-file-in-your-repository-directory.-these-files-will-still-be-accessible-to-ai-features,-but-they-won't-be-included-in-codebase-embeddings.");
-const AUTO_INDEX_FEATURE_NAME: &str = crate::tr!("settings", "index-new-folders-by-default");
+const WARP_INDEXING_IGNORE_DESCRIPTION: &str = &crate::tr!("settings", "to-exclude-specific-files-or-directories-from-indexing,-add-them-to-the-.warpindexingignore-file-in-your-repository-directory.-these-files-will-still-be-accessible-to-ai-features,-but-they-won't-be-included-in-codebase-embeddings.");
+const AUTO_INDEX_FEATURE_NAME: &str = &crate::tr!("settings", "index-new-folders-by-default");
 const AUTO_INDEX_DESCRIPTION: &str = "When set to true, Warp will automatically index code repositories as you navigate them - helping agents quickly understand context and provide targeted solutions.";
-const INDEXING_DISABLED_ADMIN_TEXT: &str = crate::tr!("settings", "team-admins-have-disabled-codebase-indexing.");
+const INDEXING_DISABLED_ADMIN_TEXT: &str = &crate::tr!("settings", "team-admins-have-disabled-codebase-indexing.");
 const INDEXING_WORKSPACE_ENABLED_ADMIN_TEXT: &str = "Team admins have enabled codebase indexing.";
 const INDEXING_DISABLED_GLOBAL_AI_TEXT: &str =
-    crate::tr!("settings", "ai-features-must-be-enabled-to-use-codebase-indexing.");
+    &crate::tr!("settings", "ai-features-must-be-enabled-to-use-codebase-indexing.");
 const CODEBASE_INDEX_LIMIT_REACHED: &str = "You have reached the maximum number of codebase indices for your plan. Delete existing indices to auto-index new codebases.";
 #[cfg(not(target_family = "wasm"))]
 const REMOTE_CODEBASE_INDEX_LIMIT_REACHED_FAILURE: &str =
     "maximum number of codebase indexes has been reached";
 
-const PAGE_TITLE: &str = crate::tr!("settings", "codebase-indexing");
+const PAGE_TITLE: &str = &crate::tr!("settings", "codebase-indexing");
 
 #[cfg(not(target_family = "wasm"))]
 fn remote_codebase_index_limit_reached(status: &RemoteCodebaseIndexStatus) -> bool {
@@ -425,7 +425,7 @@ impl Entity for CodeIndexingPageView {
 
 impl View for CodeIndexingPageView {
     fn ui_name() -> &'static str {
-        crate::tr!("settings", "codeindexingpage")
+        "CodeIndexingPage"
     }
 
     fn render(&self, app: &AppContext) -> Box<dyn Element> {
@@ -1521,7 +1521,7 @@ impl CodePageWidget {
             };
         }
 
-        log::warn!(crate::tr!("settings", "no-index-state-for-codebase"));
+        log::warn!("No index state for codebase");
         IndexingStatusPresentation {
             text: Cow::from("No index built"),
             color: theme.nonactive_ui_text_color().into_solid(),
@@ -2150,7 +2150,7 @@ impl CodePageWidget {
                         AnsiColorIdentifier::Green
                             .to_ansi_color(&theme.terminal_colors().normal)
                             .into(),
-                        crate::tr!("settings", "available"),
+                        &crate::tr!("settings", "available"),
                     ),
                     LspState::Starting | LspState::Available { .. } => (
                         AnsiColorIdentifier::Yellow
@@ -2165,7 +2165,7 @@ impl CodePageWidget {
                         "Failed",
                     ),
                     LspState::Stopped { .. } | LspState::Stopping { .. } => {
-                        (theme.disabled_ui_text_color().into_solid(), crate::tr!("settings", "stopped"))
+                        (theme.disabled_ui_text_color().into_solid(), &crate::tr!("settings", "stopped"))
                     }
                 }
             }

@@ -132,7 +132,7 @@ pub fn init_actions_from_parent_view<T: Action + Clone>(
     // Add all the toggle settings from the Appearance Page that you want to show up on the Command Palette here.
     let mut toggle_binding_pairs = vec![
         ToggleSettingActionPair::new(
-            crate::tr!("common", "menu-compact-mode"),
+            &crate::tr!("common", "menu-compact-mode"),
             builder(SettingsAction::AppearancePageToggle(
                 AppearancePageAction::ToggleCompactMode,
             )),
@@ -151,7 +151,7 @@ pub fn init_actions_from_parent_view<T: Action + Clone>(
 
     toggle_binding_pairs.push(
         ToggleSettingActionPair::new(
-            crate::tr!("zz_zh02_supplement", "settings-cursor-blink"),
+            &crate::tr!("zz_zh02_supplement", "settings-cursor-blink"),
             builder(SettingsAction::AppearancePageToggle(
                 AppearancePageAction::ToggleCursorBlink,
             )),
@@ -167,7 +167,7 @@ pub fn init_actions_from_parent_view<T: Action + Clone>(
 
     toggle_binding_pairs.push(
         ToggleSettingActionPair::new(
-            crate::tr!("zz_zh02_supplement", "settings-jump-bottom-block"),
+            &crate::tr!("zz_zh02_supplement", "settings-jump-bottom-block"),
             builder(SettingsAction::AppearancePageToggle(
                 AppearancePageAction::ToggleJumpToBottomOfBlockButton,
             )),
@@ -183,7 +183,7 @@ pub fn init_actions_from_parent_view<T: Action + Clone>(
 
     toggle_binding_pairs.push(
         ToggleSettingActionPair::new(
-            crate::tr!("zz_zh02_supplement", "settings-block-dividers"),
+            &crate::tr!("zz_zh02_supplement", "settings-block-dividers"),
             builder(SettingsAction::AppearancePageToggle(
                 AppearancePageAction::ToggleShowBlockDividers,
             )),
@@ -198,7 +198,7 @@ pub fn init_actions_from_parent_view<T: Action + Clone>(
     );
 
     toggle_binding_pairs.push(ToggleSettingActionPair::new(
-        crate::tr!("settings", "appearance-dim-inactive-panes"),
+        &crate::tr!("settings", "appearance-dim-inactive-panes"),
         builder(SettingsAction::AppearancePageToggle(
             AppearancePageAction::ToggleDimInactivePanes,
         )),
@@ -257,7 +257,7 @@ pub fn init_actions_from_parent_view<T: Action + Clone>(
         .with_group(bindings::BindingGroup::Settings.as_str()),
     ]);
     toggle_binding_pairs.push(ToggleSettingActionPair::new(
-        crate::tr!("settings", "appearance-open-custom-size"),
+        &crate::tr!("settings", "appearance-open-custom-size"),
         builder(SettingsAction::AppearancePageToggle(
             AppearancePageAction::ToggleOpenWindowsAtCustomSize,
         )),
@@ -294,7 +294,7 @@ pub fn init_actions_from_parent_view<T: Action + Clone>(
 
     toggle_binding_pairs.push(
         ToggleSettingActionPair::new(
-            crate::tr!("zz_zh02_supplement", "settings-tab-indicators"),
+            &crate::tr!("zz_zh02_supplement", "settings-tab-indicators"),
             builder(SettingsAction::AppearancePageToggle(
                 AppearancePageAction::ToggleTabIndicators,
             )),
@@ -310,7 +310,7 @@ pub fn init_actions_from_parent_view<T: Action + Clone>(
 
     toggle_binding_pairs.push(
         ToggleSettingActionPair::new(
-            crate::tr!("settings", "appearance-focus-follows-mouse"),
+            &crate::tr!("settings", "appearance-focus-follows-mouse"),
             builder(SettingsAction::AppearancePageToggle(
                 AppearancePageAction::ToggleFocusPaneOnHover,
             )),
@@ -379,7 +379,7 @@ pub fn init_actions_from_parent_view<T: Action + Clone>(
 
     if FeatureFlag::VerticalTabs.is_enabled() {
         toggle_binding_pairs.push(ToggleSettingActionPair::new(
-            crate::tr!("zz_zh02_supplement", "settings-vertical-tab-layout"),
+            &crate::tr!("zz_zh02_supplement", "settings-vertical-tab-layout"),
             builder(SettingsAction::AppearancePageToggle(
                 AppearancePageAction::ToggleVerticalTabs,
             )),
@@ -387,7 +387,7 @@ pub fn init_actions_from_parent_view<T: Action + Clone>(
             flags::USE_VERTICAL_TABS_FLAG,
         ));
         toggle_binding_pairs.push(ToggleSettingActionPair::new(
-            crate::tr!("settings", "appearance-vertical-tabs-restored"),
+            &crate::tr!("settings", "appearance-vertical-tabs-restored"),
             builder(SettingsAction::AppearancePageToggle(
                 AppearancePageAction::ToggleShowVerticalTabPanelInRestoredWindows,
             )),
@@ -406,7 +406,7 @@ pub fn init_actions_from_parent_view<T: Action + Clone>(
 
     if FeatureFlag::Ligatures.is_enabled() {
         toggle_binding_pairs.push(ToggleSettingActionPair::new(
-            crate::tr!("zz_zh02_supplement", "settings-ligature-rendering"),
+            &crate::tr!("zz_zh02_supplement", "settings-ligature-rendering"),
             builder(SettingsAction::AppearancePageToggle(
                 AppearancePageAction::ToggleLigatureRendering,
             )),
@@ -416,7 +416,7 @@ pub fn init_actions_from_parent_view<T: Action + Clone>(
     }
 
     toggle_binding_pairs.push(ToggleSettingActionPair::new(
-        crate::tr!("settings", "appearance-preserve-tab-color"),
+        &crate::tr!("settings", "appearance-preserve-tab-color"),
         builder(SettingsAction::AppearancePageToggle(
             AppearancePageAction::TogglePreserveActiveTabColor,
         )),
@@ -1192,7 +1192,7 @@ impl AppearanceSettingsPageView {
                 .iter()
                 .position(|val| *val == current_value)
                 .unwrap_or_else(|| {
-                    report_error!(crate::tr!("settings", "could-not-find-current-inputmode-value-in-dropdown-option-list"));
+                    report_error!("Could not find current InputMode value in dropdown option list");
                     0
                 });
 
@@ -1227,7 +1227,7 @@ impl AppearanceSettingsPageView {
                 .iter()
                 .position(|val| *val == current_value)
                 .unwrap_or_else(|| {
-                    report_error!(crate::tr!("settings", "could-not-find-current-appicon-value-in-dropdown-option-list"));
+                    report_error!("Could not find current AppIcon value in dropdown option list");
                     0
                 });
 
@@ -1259,7 +1259,7 @@ impl AppearanceSettingsPageView {
             let current_value = *FontSettings::as_ref(ctx)
                 .enforce_minimum_contrast;
             let selected_index = values.iter().position(|val| *val == current_value).unwrap_or_else(|| {
-                report_error!(crate::tr!("settings", "could-not-find-current-enforceminimumcontrast-value-in-dropdown-option-list"));
+                report_error!("Could not find current EnforceMinimumContrast value in dropdown option list");
                 0
             });
 
@@ -1354,7 +1354,7 @@ impl AppearanceSettingsPageView {
 
     fn build_page(ctx: &mut ViewContext<Self>) -> PageType<Self> {
         let mut categories = vec![Category::new(
-            crate::tr!("settings", "themes"),
+            "Themes",
             vec![
                 Box::new(CreateCustomThemeWidget::default()),
                 Box::new(ThemeSelectWidget::default()),
@@ -1363,7 +1363,7 @@ impl AppearanceSettingsPageView {
 
         if AppIconSettings::as_ref(ctx).is_supported_on_current_platform() {
             categories.push(Category::new(
-                crate::tr!("settings", "appearance-icon"),
+                "Icon",
                 vec![Box::new(CustomAppIconWidget::default())],
             ));
         }
@@ -1407,7 +1407,7 @@ impl AppearanceSettingsPageView {
         }
 
         if !window_settings_widgets.is_empty() {
-            categories.push(Category::new(crate::tr!("settings", "window"), window_settings_widgets));
+            categories.push(Category::new("Window", window_settings_widgets));
         }
 
         // Tools panel tab visibility toggles. These control which of the four
@@ -1431,7 +1431,7 @@ impl AppearanceSettingsPageView {
         }
         tools_panel_widgets.push(Box::new(ToolsPanelWarpDriveWidget::default()));
         if !tools_panel_widgets.is_empty() {
-            categories.push(Category::new(crate::tr!("settings", "tools-panel"), tools_panel_widgets));
+            categories.push(Category::new("Tools panel", tools_panel_widgets));
         }
 
         // Create the Input category with all widgets
@@ -1443,7 +1443,7 @@ impl AppearanceSettingsPageView {
             Box::new(InputModeWidget::default()),
         ];
 
-        categories.push(Category::new(crate::tr!("settings", "input"), category_widgets));
+        categories.push(Category::new("Input", category_widgets));
 
         categories.push(Category::new(
             "Panes",
@@ -1460,7 +1460,7 @@ impl AppearanceSettingsPageView {
         if FeatureFlag::MinimalistUI.is_enabled() {
             block_settings_widgets.push(Box::new(ShowBlockDividersWidget::default()));
         }
-        categories.push(Category::new(crate::tr!("settings", "blocks"), block_settings_widgets));
+        categories.push(Category::new("Blocks", block_settings_widgets));
 
         let font_settings = FontSettings::as_ref(ctx);
         let mut text_settings_widgets: Vec<Box<dyn SettingsWidget<View = Self>>> = vec![
@@ -1492,7 +1492,7 @@ impl AppearanceSettingsPageView {
         categories.push(Category::new(crate::tr!("notebooks", "notebooks-block-text"), text_settings_widgets));
 
         categories.push(Category::new(
-            crate::tr!("settings", "cursor"),
+            "Cursor",
             vec![
                 Box::new(CursorTypeWidget::default()),
                 Box::new(BlinkingCursorWidget::default()),
@@ -1538,10 +1538,10 @@ impl AppearanceSettingsPageView {
             tab_settings_widgets.push(Box::new(DirectoryTabColorsWidget { add_picker }));
         }
 
-        categories.push(Category::new(crate::tr!("keybindings", "section-tabs"), tab_settings_widgets));
+        categories.push(Category::new("Tabs", tab_settings_widgets));
 
         categories.push(Category::new(
-            crate::tr!("settings", "full-screen-apps"),
+            "Full-screen Apps",
             vec![Box::new(AltScreenPaddingWidget::default())],
         ));
 
@@ -1663,7 +1663,7 @@ impl AppearanceSettingsPageView {
 
     fn app_icon_dropdown_item_label(val: AppIcon) -> &'static str {
         match val {
-            AppIcon::Aurora => crate::tr!("settings", "aurora"),
+            AppIcon::Aurora => "Aurora",
             AppIcon::Default => "Default",
             AppIcon::Classic1 => "Classic 1",
             AppIcon::Classic2 => "Classic 2",
@@ -1685,7 +1685,7 @@ impl AppearanceSettingsPageView {
 
     fn thin_strokes_dropdown_item_label(val: ThinStrokes) -> &'static str {
         match val {
-            ThinStrokes::Never => crate::tr!("settings", "never"),
+            ThinStrokes::Never => "Never",
             ThinStrokes::OnLowDpiDisplays => "On low-DPI displays",
             ThinStrokes::OnHighDpiDisplays => "On high-DPI displays",
             ThinStrokes::Always => crate::tr!("settings", "always"),
@@ -1694,7 +1694,7 @@ impl AppearanceSettingsPageView {
 
     fn enforce_minimum_contrast_dropdown_item_label(val: EnforceMinimumContrast) -> &'static str {
         match val {
-            EnforceMinimumContrast::Always => crate::tr!("settings", "always"),
+            EnforceMinimumContrast::Always => "Always",
             EnforceMinimumContrast::OnlyNamedColors => "Only for named colors",
             EnforceMinimumContrast::Never => crate::tr!("settings", "never"),
         }
@@ -1704,7 +1704,7 @@ impl AppearanceSettingsPageView {
         value: WorkspaceDecorationVisibility,
     ) -> &'static str {
         match value {
-            WorkspaceDecorationVisibility::AlwaysShow => crate::tr!("settings", "always"),
+            WorkspaceDecorationVisibility::AlwaysShow => "Always",
             WorkspaceDecorationVisibility::HideFullscreen => "When windowed",
             WorkspaceDecorationVisibility::OnHover => "Only on hover",
         }
@@ -1714,7 +1714,7 @@ impl AppearanceSettingsPageView {
         value: TabCloseButtonPosition,
     ) -> &'static str {
         match value {
-            TabCloseButtonPosition::Right => crate::tr!("settings", "right"),
+            TabCloseButtonPosition::Right => "Right",
             TabCloseButtonPosition::Left => "Left",
         }
     }
@@ -2600,7 +2600,7 @@ impl AppearanceSettingsPageView {
 
     fn window_backdrop_dropdown_item_label(backdrop: WindowBackdrop) -> &'static str {
         match backdrop {
-            WindowBackdrop::None => crate::tr!("settings", "no-material"),
+            WindowBackdrop::None => "No material",
             WindowBackdrop::Mica => "Mica",
             WindowBackdrop::Acrylic => "Acrylic",
             WindowBackdrop::MicaAlt => "Mica Alt",
@@ -2620,7 +2620,7 @@ impl AppearanceSettingsPageView {
 
             let current_value = TabSettings::as_ref(ctx).workspace_decoration_visibility;
             let selected_index = values.iter().position(|val| *val == current_value).unwrap_or_else(|| {
-                report_error!(crate::tr!("settings", "could-not-find-current-workspacedecorationvisibility-value-in-dropdown-option-list"));
+                report_error!("Could not find current WorkspaceDecorationVisibility value in dropdown option list");
                 0
             });
 
@@ -2646,7 +2646,7 @@ impl AppearanceSettingsPageView {
 
             let current_value = TabSettings::as_ref(ctx).close_button_position;
             let selected_index = values.iter().position(|val| *val == current_value).unwrap_or_else(|| {
-                report_error!(crate::tr!("settings", "could-not-find-current-tabclosebuttonposition-value-in-dropdown-option-list"));
+                report_error!("Could not find current TabCloseButtonPosition value in dropdown option list");
                 0
             });
 
@@ -3067,7 +3067,7 @@ impl SettingsWidget for CustomAppIconWidget {
 
         let dropdown = render_dropdown_item(
             appearance,
-            crate::tr!("settings", "customize-your-app-icon"),
+            &crate::tr!("settings", "customize-your-app-icon"),
             show_bundle_warning.then_some("Changing the app icon requires the app to be bundled."),
             None,
             LocalOnlyIconState::Hidden,
@@ -3482,7 +3482,7 @@ impl SettingsWidget for WindowBackdropWidget {
     ) -> Box<dyn Element> {
         let mut col = Flex::column().with_child(render_dropdown_item(
             appearance,
-            crate::tr!("settings", "window-backdrop"),
+            &crate::tr!("settings", "window-backdrop"),
             (*WindowSettings::as_ref(app).background_opacity == BackgroundOpacity::MAX)
                 .then_some("Backdrop is not visible at opacity 100%"),
             None,
@@ -3805,7 +3805,7 @@ impl SettingsWidget for InputModeWidget {
     ) -> Box<dyn Element> {
         render_dropdown_item(
             appearance,
-            crate::tr!("settings", "input-position"),
+            &crate::tr!("settings", "input-position"),
             None,
             None,
             LocalOnlyIconState::for_setting(
@@ -4575,7 +4575,7 @@ impl SettingsWidget for ThinStrokesWidget {
     ) -> Box<dyn Element> {
         render_dropdown_item(
             appearance,
-            crate::tr!("settings", "use-thin-strokes"),
+            &crate::tr!("settings", "use-thin-strokes"),
             None,
             None,
             LocalOnlyIconState::for_setting(
@@ -4608,7 +4608,7 @@ impl SettingsWidget for MinimumContrastWidget {
     ) -> Box<dyn Element> {
         render_dropdown_item(
             appearance,
-            crate::tr!("settings", "enforce-minimum-contrast"),
+            &crate::tr!("settings", "enforce-minimum-contrast"),
             None,
             None,
             LocalOnlyIconState::for_setting(
@@ -4747,7 +4747,7 @@ impl SettingsWidget for CursorTypeWidget {
                     .on_change(Rc::new(move |ctx, _, index| {
                         if let Some(index) = index {
                             ctx.dispatch_typed_action(AppearancePageAction::SetCursorType(
-                                CursorDisplayType::nth(index).expect(crate::tr!("settings", "cursor-does-not-exist")),
+                                CursorDisplayType::nth(index).expect(&crate::tr!("settings", "cursor-does-not-exist")),
                             ));
                         }
                     }))
@@ -4822,7 +4822,7 @@ impl SettingsWidget for TabCloseButtonPositionWidget {
     ) -> Box<dyn Element> {
         render_dropdown_item(
             appearance,
-            crate::tr!("settings", "tab-close-button-position"),
+            &crate::tr!("settings", "tab-close-button-position"),
             None,
             None,
             LocalOnlyIconState::for_setting(
@@ -5398,7 +5398,7 @@ impl SettingsWidget for ZenModeWidget {
     ) -> Box<dyn Element> {
         render_dropdown_item(
             appearance,
-            crate::tr!("settings", "show-the-tab-bar"),
+            &crate::tr!("settings", "show-the-tab-bar"),
             None,
             None,
             LocalOnlyIconState::for_setting(
@@ -5554,8 +5554,8 @@ impl SettingsWidget for ZoomLevelWidget {
 
         render_dropdown_item(
             appearance,
-            crate::tr!("menus", "window-zoom"),
-            Some(crate::tr!("settings", "adjusts-the-default-zoom-level-across-all-windows")),
+            &crate::tr!("menus", "window-zoom"),
+            Some(&crate::tr!("settings", "adjusts-the-default-zoom-level-across-all-windows")),
             Some(reset_button),
             LocalOnlyIconState::for_setting(
                 crate::window_settings::ZoomLevel::storage_key(),

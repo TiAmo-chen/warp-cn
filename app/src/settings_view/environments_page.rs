@@ -79,7 +79,7 @@ use {
     warp_graphql::queries::user_github_info::UserGithubInfoResult,
 };
 
-const PAGE_TITLE_TEXT: &str = crate::tr!("settings", "environments");
+const PAGE_TITLE_TEXT: &str = &crate::tr!("settings", "environments");
 const PAGE_DESCRIPTION_TEXT: &str = "Environments define where your ambient agents run. Set one up in minutes via GitHub (recommended), Warp-assisted setup, or manual configuration.";
 const CARD_BORDER_WIDTH: f32 = 1.;
 const CARD_PADDING: f32 = 16.;
@@ -1000,7 +1000,7 @@ impl TypedActionView for EnvironmentsPageView {
 
 impl View for EnvironmentsPageView {
     fn ui_name() -> &'static str {
-        crate::tr!("settings", "environmentspage")
+        "EnvironmentsPage"
     }
 
     fn render(&self, app: &AppContext) -> Box<dyn Element> {
@@ -1314,7 +1314,7 @@ impl EnvironmentsPageWidget {
         const HEADER_TO_LIST_SPACING: f32 = 8.;
 
         let header = match list_scope {
-            EnvironmentListScope::Personal => Self::render_overline_header(crate::tr!("settings", "personal"), appearance),
+            EnvironmentListScope::Personal => Self::render_overline_header(&crate::tr!("settings", "personal"), appearance),
             EnvironmentListScope::Team => {
                 let shared_by_text = team_name
                     .map(|team_name| format!("Shared by Warp and {team_name}"))
@@ -1430,7 +1430,7 @@ impl EnvironmentsPageWidget {
 
         let local_repos_button = Self::render_empty_state_button(
             appearance,
-            crate::tr!("settings", "launch-agent"),
+            &crate::tr!("settings", "launch-agent"),
             ButtonVariant::Secondary,
             view.empty_state_local_repos_button_mouse_state.clone(),
             true,
@@ -1438,7 +1438,7 @@ impl EnvironmentsPageWidget {
         );
         let local_repos_button_compact = Self::render_empty_state_button(
             appearance,
-            crate::tr!("settings", "launch-agent"),
+            &crate::tr!("settings", "launch-agent"),
             ButtonVariant::Secondary,
             view.empty_state_local_repos_button_mouse_state.clone(),
             true,
@@ -1449,7 +1449,7 @@ impl EnvironmentsPageWidget {
             appearance,
             EmptyStateRowConfig {
                 icon: Icon::Github,
-                title: crate::tr!("settings", "quick-setup"),
+                title: &crate::tr!("settings", "quick-setup"),
                 badge: Some("Suggested"),
                 subtitle: "Select the GitHub repositories you’d like to work with and we’ll suggest a base image and config",
                 action_button: github_button,
@@ -1462,7 +1462,7 @@ impl EnvironmentsPageWidget {
             appearance,
             EmptyStateRowConfig {
                 icon: Icon::Terminal,
-                title: crate::tr!("settings", "use-the-agent"),
+                title: &crate::tr!("settings", "use-the-agent"),
                 badge: None,
                 subtitle: "Choose a locally set up project and we’ll help you set up an environment based on it",
                 action_button: local_repos_button,

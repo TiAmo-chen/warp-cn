@@ -54,7 +54,7 @@ const PHOTO_SIZE: f32 = 40.;
 const REFERRAL_CTA: &str = "Earn rewards by sharing Warp with friends & colleagues";
 const REGULAR_TEXT_FONT_SIZE: f32 = 12.;
 const VERTICAL_MARGIN: f32 = 24.;
-const LOG_OUT_TEXT: &str = crate::tr!("settings", "log-out");
+const LOG_OUT_TEXT: &str = &crate::tr!("settings", "log-out");
 lazy_static! {
     static ref SETTINGS_SYNC_BINDINGS_ADDED: Arc<Mutex<bool>> = Default::default();
 }
@@ -85,7 +85,7 @@ fn maybe_add_settings_sync_toggle_binding<T: Action + Clone>(
         *lock = true;
         toggle_binding_pairs.push(
             ToggleSettingActionPair::new(
-                crate::tr!("settings", "sync"),
+                &crate::tr!("settings", "sync"),
                 builder(SettingsAction::MainPageToggle(
                     MainPageAction::ToggleSettingsSync,
                 )),
@@ -105,7 +105,7 @@ pub fn handle_experiment_change(app: &mut AppContext) {
     let mut toggle_binding_pairs: Vec<ToggleSettingActionPair<WorkspaceAction>> = Vec::new();
     maybe_add_settings_sync_toggle_binding(
         app,
-        &id!(crate::tr!("settings", "workspace")),
+        &id!("Workspace"),
         WorkspaceAction::DispatchToSettingsTab,
         &mut toggle_binding_pairs,
     );
@@ -145,7 +145,7 @@ impl From<&MainPageAction> for LoginGatedFeature {
     fn from(val: &MainPageAction) -> LoginGatedFeature {
         use MainPageAction::*;
         match val {
-            Upgrade { .. } => crate::tr!("settings", "upgrade-plan"),
+            Upgrade { .. } => "Upgrade Plan",
             GenerateStripeBillingPortalLink { .. } => "Generate Stripe Billing Portal Link",
             ToggleSettingsSync => "Toggle Settings Sync",
             _ => crate::tr!("settings", "unknown-reason"),
@@ -250,7 +250,7 @@ impl TypedActionView for MainSettingsPageView {
 
 impl View for MainSettingsPageView {
     fn ui_name() -> &'static str {
-        crate::tr!("settings", "mainsettingspage")
+        "MainSettingsPage"
     }
 
     fn render(&self, app: &AppContext) -> Box<dyn Element> {
@@ -303,7 +303,7 @@ impl MainSettingsPageView {
 
         widgets.push(Box::new(LogoutWidget::default()));
 
-        let page = PageType::new_uncategorized(widgets, Some(PageTitle::new(crate::tr!("settings", "account"))));
+        let page = PageType::new_uncategorized(widgets, Some(PageTitle::new("Account")));
 
         MainSettingsPageView {
             self_handle: ctx.handle(),
@@ -859,11 +859,11 @@ impl VersionInfoWidget {
                 match autoupdate::get_update_state(app) {
                     AutoupdateStage::NoUpdateAvailable => (
                         Some(StatusContent {
-                            text: crate::tr!("settings", "up-to-date"),
+                            text: &crate::tr!("settings", "up-to-date"),
                             color: faded_text_color,
                         }),
                         Some(CallToActionContent {
-                            text: crate::tr!("settings", "check-for-updates"),
+                            text: &crate::tr!("settings", "check-for-updates"),
                             action: MainPageAction::CheckForUpdate,
                         }),
                     ),
@@ -883,49 +883,49 @@ impl VersionInfoWidget {
                     ),
                     AutoupdateStage::UpdateReady { .. } => (
                         Some(StatusContent {
-                            text: crate::tr!("settings", "update-available"),
+                            text: &crate::tr!("settings", "update-available"),
                             color: ansi_red,
                         }),
                         Some(CallToActionContent {
-                            text: crate::tr!("settings", "relaunch-warp"),
+                            text: &crate::tr!("settings", "relaunch-warp"),
                             action: MainPageAction::Relaunch,
                         }),
                     ),
                     AutoupdateStage::Updating { .. } => (
                         Some(StatusContent {
-                            text: crate::tr!("settings", "updating..."),
+                            text: &crate::tr!("settings", "updating..."),
                             color: faded_text_color,
                         }),
                         None,
                     ),
                     AutoupdateStage::UpdatedPendingRestart { .. } => (
                         Some(StatusContent {
-                            text: crate::tr!("settings", "installed-update"),
+                            text: &crate::tr!("settings", "installed-update"),
                             color: faded_text_color,
                         }),
                         Some(CallToActionContent {
-                            text: crate::tr!("settings", "relaunch-warp"),
+                            text: &crate::tr!("settings", "relaunch-warp"),
                             action: MainPageAction::Relaunch,
                         }),
                     ),
                     AutoupdateStage::UnableToUpdateToNewVersion { .. } => (
                         Some(StatusContent {
-                            text: crate::tr!("settings", "a-new-version-of-warp-is-available-but-can't-be-installed"),
+                            text: &crate::tr!("settings", "a-new-version-of-warp-is-available-but-can't-be-installed"),
                             color: ansi_red,
                         }),
                         Some(CallToActionContent {
-                            text: crate::tr!("settings", "update-warp-manually"),
+                            text: &crate::tr!("settings", "update-warp-manually"),
                             // note: the handler for this action is a no-op
                             action: MainPageAction::DownloadUpdate,
                         }),
                     ),
                     AutoupdateStage::UnableToLaunchNewVersion { .. } => (
                         Some(StatusContent {
-                            text: crate::tr!("settings", "a-new-version-of-warp-is-installed-but-can't-be-launched."),
+                            text: &crate::tr!("settings", "a-new-version-of-warp-is-installed-but-can't-be-launched."),
                             color: ansi_red,
                         }),
                         Some(CallToActionContent {
-                            text: crate::tr!("settings", "update-warp-manually"),
+                            text: &crate::tr!("settings", "update-warp-manually"),
                             // note: the handler for this action is a no-op
                             action: MainPageAction::DownloadUpdate,
                         }),

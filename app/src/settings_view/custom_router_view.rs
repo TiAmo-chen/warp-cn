@@ -123,7 +123,7 @@ impl Entity for CustomRouterView {
 
 impl View for CustomRouterView {
     fn ui_name() -> &'static str {
-        crate::tr!("settings", "customrouterview")
+        "CustomRouterView"
     }
 
     fn render(&self, app: &AppContext) -> Box<dyn Element> {

@@ -193,22 +193,22 @@ pub fn init(ctx: &mut AppContext) {
         FixedBinding::new(
             "escape",
             EditorAction::Escape,
-            id!("EditorView") & !id!(crate::tr!("settings", "imeopen")),
+            id!("EditorView") & !id!("IMEOpen"),
         ),
         FixedBinding::new(
             crate::tr!("code", "code-backspace"),
             EditorAction::Backspace,
-            id!("EditorView") & !id!(crate::tr!("settings", "imeopen")) & !id!("Vim"),
+            id!("EditorView") & !id!("IMEOpen") & !id!("Vim"),
         ),
         FixedBinding::new(
             crate::tr!("code", "code-backspace"),
             EditorAction::VimBackspace,
-            id!("EditorView") & !id!(crate::tr!("settings", "imeopen")) & id!("Vim"),
+            id!("EditorView") & !id!("IMEOpen") & id!("Vim"),
         ),
         FixedBinding::new(
             "enter",
             EditorAction::Enter,
-            id!("EditorView") & !id!(crate::tr!("settings", "imeopen")),
+            id!("EditorView") & !id!("IMEOpen"),
         ),
         FixedBinding::new_per_platform(
             PerPlatformKeystroke {
@@ -216,28 +216,28 @@ pub fn init(ctx: &mut AppContext) {
                 linux_and_windows: "ctrl-shift-enter",
             },
             EditorAction::CmdEnter,
-            id!("EditorView") & !id!(crate::tr!("settings", "imeopen")),
+            id!("EditorView") & !id!("IMEOpen"),
         ),
         FixedBinding::new(
             "numpadenter",
             EditorAction::Enter,
-            id!("EditorView") & !id!(crate::tr!("settings", "imeopen")),
+            id!("EditorView") & !id!("IMEOpen"),
         ),
         FixedBinding::new(
             crate::tr!("common", "delete-label"),
             EditorAction::Delete,
-            id!("EditorView") & !id!(crate::tr!("settings", "imeopen")),
+            id!("EditorView") & !id!("IMEOpen"),
         ),
         FixedBinding::new(
             "shift-enter",
             EditorAction::ShiftEnter,
-            id!("EditorView") & !id!(crate::tr!("settings", "imeopen")),
+            id!("EditorView") & !id!("IMEOpen"),
         ),
         FixedBinding::custom(
             CustomAction::Copy,
             EditorAction::Copy,
             "Copy",
-            id!("EditorView") & !id!(crate::tr!("settings", "imeopen")),
+            id!("EditorView") & !id!("IMEOpen"),
         ),
         FixedBinding::custom(
             CustomAction::Cut,

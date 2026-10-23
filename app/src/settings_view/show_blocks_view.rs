@@ -479,7 +479,7 @@ impl ShowBlocksView {
                 self.get_blocks_for_user_status = GetBlocksForUserRequestState::Done(blocks)
             }
             Err(_) => {
-                log::info!(crate::tr!("settings", "failed-to-fetch-blocks-owned-by-user-from-server"));
+                log::info!("Failed to fetch blocks owned by user from server");
                 self.get_blocks_for_user_status = GetBlocksForUserRequestState::Failed;
             }
         }
@@ -595,7 +595,7 @@ impl TypedActionView for ShowBlocksView {
 
 impl View for ShowBlocksView {
     fn ui_name() -> &'static str {
-        crate::tr!("settings", "showblockview")
+        "ShowBlockView"
     }
 
     fn render(&self, app: &AppContext) -> Box<dyn Element> {
@@ -797,7 +797,7 @@ impl SettingsWidget for ShowBlocksWidget {
             );
         }
 
-        let header = render_page_title(crate::tr!("settings", "shared-blocks"), HEADER_FONT_SIZE, appearance);
+        let header = render_page_title(&crate::tr!("settings", "shared-blocks"), HEADER_FONT_SIZE, appearance);
         let col = Flex::column()
             .with_child(header)
             .with_child(Expanded::new(1., stack.finish()).finish());

@@ -51,7 +51,7 @@ use crate::view_components::dropdown::DropdownAction;
 use crate::view_components::{Dropdown, SubmittableTextInput, SubmittableTextInputEvent};
 use crate::{TelemetryEvent, send_telemetry_from_ctx};
 
-const PAGE_TITLE: &str = crate::tr!("settings", "third-party-cli-agents");
+const PAGE_TITLE: &str = &crate::tr!("settings", "third-party-cli-agents");
 
 pub struct CLIAgentsPageView {
     page: PageType<Self>,
@@ -219,7 +219,7 @@ impl Entity for CLIAgentsPageView {
 
 impl View for CLIAgentsPageView {
     fn ui_name() -> &'static str {
-        crate::tr!("settings", "cliagentspage")
+        "CLIAgentsPage"
     }
 
     fn render(&self, app: &AppContext) -> Box<dyn Element> {
@@ -376,7 +376,7 @@ pub fn init_actions_from_parent_view<T: Action + Clone>(
             .with_group(bindings::BindingGroup::WarpAi)
             .with_enabled(|| FeatureFlag::CLIAgentRichInput.is_enabled()),
             ToggleSettingActionPair::new(
-                crate::tr!("settings", "ai-auto-open-rich-input"),
+                &crate::tr!("settings", "ai-auto-open-rich-input"),
                 builder(SettingsAction::CLIAgents(
                     CLIAgentsPageAction::ToggleAutoOpenRichInputOnCLIAgentStart,
                 )),
@@ -386,7 +386,7 @@ pub fn init_actions_from_parent_view<T: Action + Clone>(
             .with_group(bindings::BindingGroup::WarpAi)
             .with_enabled(|| FeatureFlag::CLIAgentRichInput.is_enabled()),
             ToggleSettingActionPair::new(
-                crate::tr!("settings", "ai-auto-dismiss-rich-input"),
+                &crate::tr!("settings", "ai-auto-dismiss-rich-input"),
                 builder(SettingsAction::CLIAgents(
                     CLIAgentsPageAction::ToggleAutoDismissRichInputAfterSubmit,
                 )),
