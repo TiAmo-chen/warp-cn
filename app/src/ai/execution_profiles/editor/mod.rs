@@ -75,7 +75,7 @@ fn render_upgrade_footer(
     .with_height(16.)
     .finish();
 
-    let label = crate::tr!("ai_assistant", "ai-assistant-ai-upgrade-footer");
+    let label = "Frontier models are unavailable on free plans. Upgrade";
     let upgrade_start = label.len() - "Upgrade".len();
     let info_text = Text::new(
         label,

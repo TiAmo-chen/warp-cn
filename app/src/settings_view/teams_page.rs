@@ -2694,7 +2694,7 @@ impl TeamsWidget {
                 &crate::tr!("settings", "team-invites-have-been-restricted-due-to-a-past-due-payment.")
             }
             GrowTeamWarning::PaymentUnpaid => {
-                &crate::tr!("settings", "settings-team-invites-have-been-restricted-due-to-an-unpaid-subscription")
+                "Team invites have been restricted due to an unpaid subscription."
             }
         };
 
@@ -2704,7 +2704,7 @@ impl TeamsWidget {
         );
         let cta_sentence = if !has_admin_permissions {
             if is_delinquency {
-                crate::tr!("settings", "settings-contact-a-team-admin-to-restore-access")
+                "Contact a team admin to restore access."
             } else {
                 "Contact a team admin to grow the team."
             }

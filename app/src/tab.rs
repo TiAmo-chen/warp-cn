@@ -620,7 +620,7 @@ impl TabData {
                     pane_group.terminal_view_from_pane_id(target.locator.pane_id, ctx)
                 })
                 .or_else(|| pane_group.focused_session_view(ctx));
-            (crate::tr!("terminal", "terminal-copy-tab-title"), tab_title, terminal_view)
+            ("Copy tab title", tab_title, terminal_view)
         };
 
         if let Some(terminal_view) = terminal_view {

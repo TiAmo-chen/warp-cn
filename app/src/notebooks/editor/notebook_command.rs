@@ -79,7 +79,7 @@ lazy_static! {
         "C#",
         "JavaScript",
         "Python",
-        &crate::tr!("notebooks", "notebooks-ruby-lang"),
+        "Ruby on Rails",
         "Rust",
         "SQL",
         "YAML",

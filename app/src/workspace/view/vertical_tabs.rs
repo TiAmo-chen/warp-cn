@@ -5893,7 +5893,7 @@ fn subtitle_options_for_primary(
             ),
             (
                 VerticalTabsCompactSubtitle::WorkingDirectory,
-                &crate::tr!("common", "common-working-directory"),
+                "Working Directory",
             ),
         ],
     }

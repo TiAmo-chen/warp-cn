@@ -105,15 +105,15 @@ pub fn render_inline_notifications_discovery_banner(
             let (title, docs_button) = match request_outcome {
                 Some(request_outcome) => match request_outcome {
                     RequestPermissionsOutcome::Accepted => (
-                        crate::tr!("terminal", "terminal-notifications-success"),
+                        "Success! You are now ready to receive desktop notifications.",
                         learn_more_button,
                     ),
                     RequestPermissionsOutcome::PermissionsDenied => (
-                        crate::tr!("terminal", "terminal-notifications-denied"),
+                        "Warp was denied permissions to send you notifications.",
                         troubleshoot_button,
                     ),
                     RequestPermissionsOutcome::OtherError { .. } => (
-                        crate::tr!("terminal", "terminal-notifications-error"),
+                        "Something went wrong while requesting permissions.",
                         troubleshoot_button,
                     ),
                 },

@@ -118,7 +118,7 @@ impl ExternalEditorView {
         dropdown: &mut Dropdown<ExternalEditorAction>,
         ctx: &mut ViewContext<Dropdown<ExternalEditorAction>>,
     ) {
-        let default_option_text = crate::tr!("common", "common-split-pane");
+        let default_option_text = "Split Pane";
         let default_app = DropdownItem::new(
             default_option_text,
             ExternalEditorAction::SetLayout(EditorLayout::SplitPane),
