@@ -187,7 +187,7 @@ impl FindBar {
         if searcher.has_query() {
             let match_count = searcher.match_count();
             let text = if match_count == 0 {
-                "No matches".to_string()
+                crate::tr!("code_editor", "code-editor-no-matches").to_string()
             } else {
                 let mut text = String::new();
                 match searcher.selected_match() {
@@ -542,9 +542,9 @@ impl TypedActionView for FindBar {
             }
             FindBarAction::ToggleCaseSensitive => {
                 if self.searcher.as_ref(ctx).is_case_sensitive() {
-                    "Enable case-sensitive search"
+                    crate::tr!("notebooks", "notebooks-enable-case-sensitive-search")
                 } else {
-                    "Disable case-sensitive search"
+                    crate::tr!("notebooks", "notebooks-disable-case-sensitive-search")
                 }
             }
             FindBarAction::FocusNextMatch => "Focus next match",

@@ -892,7 +892,7 @@ impl CloudModeV2SlashCommandView {
         let label = if self.mixer.as_ref(app).is_loading() {
             "Loading..."
         } else {
-            "No results"
+            crate::tr!("agent_cloud", "agent-cloud-no-results")
         };
         Container::new(
             Text::new(

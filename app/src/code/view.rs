@@ -957,7 +957,7 @@ impl CodeView {
 
     fn display_load_failure(window_id: WindowId, ctx: &mut ViewContext<Self>) {
         ToastStack::handle(ctx).update(ctx, |toast_stack, ctx| {
-            let toast = DismissibleToast::error(String::from("Failed to load file."))
+            let toast = DismissibleToast::error(String::from(crate::tr!("code", "code-failed-to-load-file")))
                 .with_object_id("failed_to_load_file".to_string());
             toast_stack.add_ephemeral_toast(toast, window_id, ctx);
         });
@@ -965,7 +965,7 @@ impl CodeView {
 
     fn display_save_failure(window_id: WindowId, ctx: &mut ViewContext<Self>) {
         ToastStack::handle(ctx).update(ctx, |toast_stack, ctx| {
-            let toast = DismissibleToast::error(String::from("Failed to save file."))
+            let toast = DismissibleToast::error(String::from(crate::tr!("code", "code-failed-to-save-file")))
                 .with_object_id("failed_to_save_file".to_string());
             toast_stack.add_ephemeral_toast(toast, window_id, ctx);
         });
@@ -982,7 +982,7 @@ impl CodeView {
 
     fn display_save_success(window_id: WindowId, ctx: &mut ViewContext<Self>) {
         ToastStack::handle(ctx).update(ctx, |toast_stack, ctx| {
-            let toast = DismissibleToast::success(String::from("File saved."))
+            let toast = DismissibleToast::success(String::from(crate::tr!("code", "code-file-saved-toast")))
                 .with_object_id("file_saved".to_string());
             toast_stack.add_ephemeral_toast(toast, window_id, ctx);
         });
@@ -2162,7 +2162,7 @@ impl CodeView {
             if active_location.is_some() {
                 items.push(MenuItem::Separator);
                 items.push(
-                    MenuItemFields::new("Copy file path")
+                    MenuItemFields::new(crate::tr!("code_review", "code-review-copy-file-path"))
                         .with_on_select_action(CodeViewAction::CopyFilePath)
                         .into_item(),
                 );
@@ -2170,9 +2170,9 @@ impl CodeView {
 
             if local_path.is_some() {
                 let reveal_label = if cfg!(target_os = "macos") {
-                    "Reveal in Finder"
+                    crate::tr!("code", "code-reveal-in-finder")
                 } else if cfg!(target_os = "windows") {
-                    "Reveal in Explorer"
+                    crate::tr!("code", "code-reveal-in-explorer")
                 } else {
                     "Reveal in file manager"
                 };

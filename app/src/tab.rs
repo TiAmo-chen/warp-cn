@@ -553,7 +553,7 @@ impl TabData {
                     Manager::as_ref(ctx).has_session_link(&view.id(), status)
                 });
             menu_items.push(
-                MenuItemFields::new("Copy link")
+                MenuItemFields::new(crate::tr!("ai_assistant", "ai-assistant-ai-doc-copy-link"))
                     .with_on_select_action(WorkspaceAction::CopySharedSessionLinkFromTab {
                         tab_index: index,
                     })
@@ -589,7 +589,7 @@ impl TabData {
         let mut menu_items = vec![];
         let tab_title = Self::copyable_metadata_value(Some(pane_group.display_title(ctx)));
         if !uses_vertical_tabs(ctx) {
-            Self::push_copy_metadata_menu_item(&mut menu_items, "Copy tab title", tab_title);
+            Self::push_copy_metadata_menu_item(&mut menu_items, crate::tr!("terminal", "terminal-copy-tab-title"), tab_title);
             return menu_items;
         }
 
@@ -609,7 +609,7 @@ impl TabData {
                 })
                 .unwrap_or_else(|| pane_group.focused_pane_id(ctx));
             (
-                "Copy pane title",
+                crate::tr!("terminal", "terminal-copy-pane-title"),
                 Self::copyable_pane_title(pane_group, pane_id, ctx),
                 pane_group.terminal_view_from_pane_id(pane_id, ctx),
             )
@@ -620,20 +620,20 @@ impl TabData {
                     pane_group.terminal_view_from_pane_id(target.locator.pane_id, ctx)
                 })
                 .or_else(|| pane_group.focused_session_view(ctx));
-            ("Copy tab title", tab_title, terminal_view)
+            (crate::tr!("terminal", "terminal-copy-tab-title"), tab_title, terminal_view)
         };
 
         if let Some(terminal_view) = terminal_view {
             let terminal_view = terminal_view.as_ref(ctx);
             Self::push_copy_metadata_menu_item(
                 &mut menu_items,
-                "Copy branch",
+                crate::tr!("terminal", "terminal-copy-branch"),
                 Self::copyable_metadata_value(terminal_view.current_git_branch(ctx)),
             );
             Self::push_copy_metadata_menu_item(&mut menu_items, title_label, title);
             Self::push_copy_metadata_menu_item(
                 &mut menu_items,
-                "Copy working directory",
+                crate::tr!("terminal", "terminal-copy-working-directory"),
                 Self::copyable_metadata_value(
                     terminal_view
                         .pwd()
@@ -642,7 +642,7 @@ impl TabData {
             );
             Self::push_copy_metadata_menu_item(
                 &mut menu_items,
-                "Copy pull request link",
+                crate::tr!("terminal", "terminal-copy-pull-request-link"),
                 Self::copyable_metadata_value(terminal_view.current_pull_request_url(ctx)),
             );
         } else {
@@ -712,9 +712,9 @@ impl TabData {
         if can_move_right {
             menu_items.push(
                 MenuItemFields::new(if uses_vertical_tabs {
-                    "Move Tab Down"
+                    crate::tr!("terminal", "terminal-move-tab-down")
                 } else {
-                    "Move Tab Right"
+                    crate::tr!("terminal", "terminal-move-tab-right")
                 })
                 .with_on_select_action(WorkspaceAction::MoveTabRight(index))
                 .into_item(),
@@ -723,9 +723,9 @@ impl TabData {
         if can_move_left {
             menu_items.push(
                 MenuItemFields::new(if uses_vertical_tabs {
-                    "Move Tab Up"
+                    crate::tr!("terminal", "terminal-move-tab-up")
                 } else {
-                    "Move Tab Left"
+                    crate::tr!("terminal", "terminal-move-tab-left")
                 })
                 .with_on_select_action(WorkspaceAction::MoveTabLeft(index))
                 .into_item(),
@@ -794,9 +794,9 @@ impl TabData {
         if not_last_tab {
             menu_items.push(
                 MenuItemFields::new(if uses_vertical_tabs {
-                    "Close Tabs Below"
+                    crate::tr!("terminal", "terminal-close-tabs-below")
                 } else {
-                    "Close Tabs to the Right"
+                    crate::tr!("terminal", "terminal-close-tabs-to-the-right")
                 })
                 .with_on_select_action(WorkspaceAction::CloseTabsRight(index))
                 .into_item(),
@@ -1720,7 +1720,7 @@ impl<'a> TabComponent<'a> {
 
                         if state.is_hovered() {
                             let tooltip = ui_builder
-                                .tool_tip("Cloud agent run".to_string())
+                                .tool_tip(crate::tr!("ai_assistant", "ai-assistant-ai-cloud-agent-run").to_string())
                                 .build()
                                 .finish();
                             stack.add_positioned_overlay_child(

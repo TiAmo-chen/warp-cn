@@ -98,12 +98,12 @@ const JOIN_TEAM_HEADER: &str = "Join an existing team within your company";
 const BROWSE_TEAMS_BUTTON_LABEL: &str = "Browse teams";
 const SWITCH_TEAM_BUTTON_LABEL: &str = "Switch team";
 const JOIN_WORKSPACE_OR_TEAM_HEADER: &str =
-    "Join an existing workspace or team within your company";
+    crate::tr!("settings", "settings-join-an-existing-workspace-or-team-within-your-company");
 const OR_JOIN_WORKSPACE_OR_TEAM_HEADER: &str =
-    "Or, join an existing workspace or team within your company";
+    crate::tr!("settings", "settings-or-join-an-existing-workspace-or-team-within-your-company");
 const NO_JOINABLE_TEAMS_HEADER: &str = "There are currently no joinable teams.";
 const NO_TEAMS_TO_JOIN_DESCRIPTION: &str =
-    "Contact an admin to join a team to gain access to more features.";
+    crate::tr!("settings", "settings-contact-an-admin-to-join-a-team-to-gain-access-to-more-features");
 const ADMIN_PANEL_CTA_LINK_TEXT: &str = "Visit the admin panel";
 const ADMIN_PANEL_CTA_TRAILING_COPY: &str = "to manage and create new teams.";
 
@@ -129,7 +129,7 @@ const SUBSUBSECTION_HEADER_FONT_SIZE: f32 = 14.;
 const OWNER_STATE_CHIP_ACCENT_OPACITY: u8 = 30;
 
 const INVALID_DOMAINS_INSTRUCTIONS: &str =
-    "Some of the provided domains are invalid, or have already been added.";
+    crate::tr!("settings", "settings-some-of-the-provided-domains-are-invalid-or-have-already-been-added");
 
 const INVITE_LINK_TOGGLE_INSTRUCTIONS: &str = "As an admin, you can choose whether to enable or disable the ability for team members to invite others by invitation link.";
 const INVITE_LINK_UNAVAILABLE_INSTRUCTIONS: &str =
@@ -138,7 +138,7 @@ const INVITE_LINK_DOMAIN_RESTRICTIONS_INSTRUCTIONS: &str = "Restrict by domain â
 
 const INVITE_BY_EMAIL_EXPIRY_INSTRUCTIONS: &str = "Email invitations are valid for 7 days.";
 const INVALID_EMAILS_INSTRUCTIONS: &str =
-    "Some of the provided email addresses are invalid, already invited, or members of the team.";
+    crate::tr!("settings", "settings-some-of-the-provided-email-addresses-are-invalid-already-invited-or-members-of-the-team");
 
 const OFFLINE_TEXT: &str = "You are offline.";
 
@@ -323,7 +323,7 @@ impl From<&TeamsPageAction> for LoginGatedFeature {
             ContactSupport => "Contact Support",
             ContactSales => "Contact Sales",
             ToggleTeamDiscoverability { .. } | ToggleTeamDiscoverabilityBeforeCreation => {
-                "Toggle Team Discoverability"
+                crate::tr!("settings", "settings-toggle-team-discoverability")
             }
             JoinTeamWithTeamDiscovery { .. } => "Join Team With Team Discovery",
             ShowWorkspaceTeams { .. } => "Show Workspace Teams",
@@ -1244,7 +1244,7 @@ impl TeamsPageView {
                 self.show_error(crate::tr!("settings", "failed-to-toggle-invite-links"), Some(err), ctx);
             }
             UserWorkspacesEvent::ResetInviteLinks => {
-                self.show_success("Reset invite links", ctx);
+                self.show_success(crate::tr!("settings", "settings-reset-invite-links"), ctx);
                 ctx.notify();
             }
             UserWorkspacesEvent::ResetInviteLinksRejected(err) => {
@@ -1255,7 +1255,7 @@ impl TeamsPageView {
                 self.show_success(crate::tr!("settings", "deleted-invite"), ctx);
             }
             UserWorkspacesEvent::DeleteTeamInviteRejected(err) => {
-                self.show_error("Failed to delete invite", Some(err), ctx);
+                self.show_error(crate::tr!("settings", "settings-failed-delete-invite"), Some(err), ctx);
             }
             UserWorkspacesEvent::AddDomainRestrictionsSuccess => {
                 self.approve_domains_block_editor
@@ -1394,7 +1394,7 @@ impl TeamsPageView {
                 self.show_success(crate::tr!("settings", "successfully-updated-team-member-role"), ctx);
             }
             UserWorkspacesEvent::SetTeamMemberRoleRejected(err) => {
-                self.show_error("Failed to update team member role", Some(err), ctx);
+                self.show_error(crate::tr!("settings", "settings-failed-update-team-member-role"), Some(err), ctx);
             }
             UserWorkspacesEvent::RemoveUserFromTeamSuccess => {
                 self.update_team_members_state(ctx);
@@ -1603,7 +1603,7 @@ impl TeamsPageView {
                 ctx.notify();
             }
             TeamUpdateManagerEvent::RenameTeamSuccess => {
-                self.show_success("Successfully renamed team", ctx)
+                self.show_success(crate::tr!("settings", "settings-successfully-renamed-team"), ctx)
             }
             TeamUpdateManagerEvent::RenameTeamError => {
                 self.show_error(crate::tr!("settings", "failed-to-rename-team"), None, ctx)
@@ -2694,7 +2694,7 @@ impl TeamsWidget {
                 &crate::tr!("settings", "team-invites-have-been-restricted-due-to-a-past-due-payment.")
             }
             GrowTeamWarning::PaymentUnpaid => {
-                "Team invites have been restricted due to an unpaid subscription."
+                crate::tr!("settings", "settings-team-invites-have-been-restricted-due-to-an-unpaid-subscription")
             }
         };
 
@@ -2704,20 +2704,20 @@ impl TeamsWidget {
         );
         let cta_sentence = if !has_admin_permissions {
             if is_delinquency {
-                "Contact a team admin to restore access."
+                crate::tr!("settings", "settings-contact-a-team-admin-to-restore-access")
             } else {
-                "Contact a team admin to grow the team."
+                crate::tr!("settings", "settings-contact-a-team-admin-to-grow-the-team")
             }
         } else {
             match cta {
                 GrowTeamWarningCta::Upgrade => "Upgrade to grow your team.",
                 GrowTeamWarningCta::UpdateBilling => {
-                    "Update your payment information to restore access."
+                    crate::tr!("settings", "settings-update-your-payment-information-to-restore-access")
                 }
                 GrowTeamWarningCta::ContactSupport => "Contact support to restore access.",
                 GrowTeamWarningCta::None => {
                     if is_delinquency {
-                        "Contact support to restore access."
+                        crate::tr!("settings", "settings-contact-support-to-restore-access")
                     } else {
                         &crate::tr!("settings", "contact-sales-to-grow-your-team.")
                     }
@@ -2817,11 +2817,11 @@ impl TeamsWidget {
     ) -> (&'static str, &'static str) {
         if billing_metadata.customer_type == CustomerType::Business {
             (
-                "Upgrade to Enterprise",
+                crate::tr!("settings", "settings-upgrade-to-enterprise"),
                 " for an unlimited team member limit.",
             )
         } else {
-            ("Upgrade to Business", " for a higher team member limit.")
+            (crate::tr!("settings", "settings-upgrade-to-business"), " for a higher team member limit.")
         }
     }
 
@@ -2833,9 +2833,9 @@ impl TeamsWidget {
         has_admin_permissions: bool,
     ) -> Box<dyn Element> {
         let prorated_message = if has_admin_permissions {
-            "You'll be charged for a portion of the team member's usage of Warp."
+            crate::tr!("settings", "settings-youll-be-charged-for-a-portion-of-the-team-members-usage-of-warp")
         } else {
-            "Your admin will be charged for a portion of the team member's usage of Warp."
+            crate::tr!("settings", "settings-your-admin-will-be-charged-for-a-portion-of-the-team-members-usage-of-warp")
         };
 
         let additional_members_cost_money_msg = if let Some((monthly_cost, yearly_cost)) =
@@ -3349,7 +3349,7 @@ impl TeamsWidget {
             // If the team is upgradeable to self-serve tier, show them the upgrade link.
             if team.billing_metadata.can_upgrade_to_higher_tier_plan() {
                 let description = if team.billing_metadata.can_upgrade_to_build_plan() {
-                    "Upgrade to Build"
+                    crate::tr!("ai_assistant", "ai-assistant-ai-upgrade-to-build-text")
                 } else {
                     match team.billing_metadata.customer_type {
                         CustomerType::Prosumer => "Upgrade to Turbo",
@@ -3716,7 +3716,7 @@ impl TeamsWidget {
 
         // crate::tr!("settings", "by-email") subsection header
         section.add_child(
-            Container::new(self.render_subsubsection_header("By email".to_owned(), appearance))
+            Container::new(self.render_subsubsection_header(crate::tr!("settings", "settings-by-email").to_owned(), appearance))
                 .with_padding_top(CONTENT_SEPARATION_PADDING)
                 .with_padding_bottom(8.)
                 .finish(),
@@ -4126,7 +4126,7 @@ impl TeamsWidget {
     ) -> Box<dyn Element> {
         // Same layout as the crate::tr!("settings", "by-link") header row: text column on the left,
         // toggle on the right.
-        let header = self.render_subsubsection_header("By discovery".to_owned(), appearance);
+        let header = self.render_subsubsection_header(crate::tr!("settings", "settings-by-discovery").to_owned(), appearance);
 
         let domain = current_user_email.split('@').nth(1).unwrap_or("");
         let team_discoverability_instructions =

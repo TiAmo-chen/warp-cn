@@ -123,7 +123,7 @@ pub const LOAD_OUTPUT_MESSAGE_FOR_GENERATING_PLAN: &str = "Generating plan...";
 pub const LOAD_OUTPUT_MESSAGE_FOR_UPDATING_PLAN: &str = "Updating plan...";
 pub const LOAD_OUTPUT_MESSAGE_FOR_SUMMARIZING_CONVERSATION: &str = "Summarizing conversation...";
 pub const LOAD_OUTPUT_MESSAGE_FOR_SUMMARIZING_TOOL_CALL_RESULT: &str =
-    "Summarizing command output...";
+    crate::tr!("ai_assistant", "ai-assistant-ai-summarizing-command-output");
 pub const LOAD_OUTPUT_MESSAGE_FOR_SEARCH_CODEBASE: &str = "Searching codebase...";
 pub const LOAD_OUTPUT_MESSAGE_FOR_READING_FILES: &str = "Reading files...";
 pub const LOAD_OUTPUT_MESSAGE_FOR_GREP: &str = "Grepping...";
@@ -131,19 +131,19 @@ pub const LOAD_OUTPUT_MESSAGE_FOR_FILE_GLOB: &str = "Finding files...";
 pub const LOAD_OUTPUT_MESSAGE_FOR_RUNNING_COMMAND: &str = "Executing command...";
 pub const LOAD_OUTPUT_MESSAGE_FOR_WRITING_TO_COMMAND: &str = "Writing command input...";
 pub const LOAD_OUTPUT_MESSAGE_FOR_WAITING_FOR_COMMAND_COMPLETION: &str =
-    "Waiting for command to exit...";
+    crate::tr!("ai_assistant", "ai-assistant-ai-waiting-for-command-exit");
 pub const LOAD_OUTPUT_MESSAGE_FOR_WEB_SEARCH: &str = "Searching the web...";
 
 #[cfg(feature = "local_fs")]
 pub(crate) type ResolvedBlocklistImageSources = HashMap<String, Option<AssetSource>>;
 
 pub const BLOCKED_ACTION_MESSAGE_FOR_WRITE_TO_LONG_RUNNING_SHELL_COMMAND: &str =
-    "Can I write the following to this running command?";
+    crate::tr!("ai_assistant", "ai-assistant-ai-blocked-write-to-command");
 pub const BLOCKED_ACTION_MESSAGE_FOR_READING_FILES: &str = "Grant access to the following files?";
 pub const BLOCKED_ACTION_MESSAGE_FOR_SEARCHING_CODEBASE: &str =
-    "Grant access to the following repository?";
+    crate::tr!("ai_assistant", "ai-assistant-ai-blocked-searching-codebase");
 pub const BLOCKED_ACTION_MESSAGE_FOR_GREP_OR_FILE_GLOB: &str =
-    "OK if I search the files in this directory?";
+    crate::tr!("ai_assistant", "ai-assistant-ai-blocked-grep-file-glob");
 
 const BLOCKLIST_VISUAL_SECTION_HEIGHT_LINE_MULTIPLIER: f32 = 10.0;
 const BLOCKLIST_MERMAID_MAX_HEIGHT_LINE_MULTIPLIER: f32 = 40.0;
@@ -465,8 +465,8 @@ pub fn render_warping_indicator<V: View>(
     if let Some(take_over_button_props) = props.take_over_lrc_control_button {
         has_buttons = true;
         buttons_row.add_child(render_switch_control_to_user_button(
-            "Take over",
-            "Take over control of the command",
+            crate::tr!("ai_assistant", "ai-assistant-ai-take-over"),
+            crate::tr!("ai_assistant", "ai-assistant-ai-take-over-tooltip"),
             take_over_button_props,
             appearance,
         ));
@@ -790,9 +790,9 @@ fn render_hide_responses_button(
 ) -> Box<dyn Element> {
     let theme = appearance.theme();
     let button_text = if should_hide_responses {
-        "Show responses"
+        crate::tr!("ai_assistant", "ai-assistant-ai-show-responses")
     } else {
-        "Hide responses"
+        crate::tr!("ai_assistant", "ai-assistant-ai-hide-responses")
     };
     let text = Container::new(
         Text::new(
@@ -806,9 +806,9 @@ fn render_hide_responses_button(
     .finish();
 
     let tooltip_text = if should_hide_responses {
-        "Show agent responses"
+        crate::tr!("ai_assistant", "ai-assistant-ai-show-agent-responses")
     } else {
-        "Hide agent responses"
+        crate::tr!("ai_assistant", "ai-assistant-ai-hide-agent-responses")
     };
 
     render_warping_indicator_button(
@@ -872,7 +872,7 @@ fn render_stop_button(props: ButtonProps, appearance: &Appearance) -> Box<dyn El
         appearance,
         stop_icon,
         props.keystroke,
-        "Stop agent task".to_string(),
+        crate::tr!("ai_assistant", "ai-assistant-ai-stop-agent-task").to_string(),
         props.is_active,
         false,
         |ctx: &mut EventContext<'_>| {
@@ -900,9 +900,9 @@ fn render_queue_next_prompt_button(
     .finish();
 
     let tooltip_text = if props.is_active {
-        "Auto-queue is on: your next prompt will be queued"
+        crate::tr!("ai_assistant", "ai-assistant-ai-auto-queue-on")
     } else {
-        "Auto-queue next prompt while agent is responding"
+        crate::tr!("ai_assistant", "ai-assistant-ai-auto-queue-off")
     };
 
     render_warping_indicator_button(
@@ -946,9 +946,9 @@ fn render_auto_approve_button(
     let tooltip_text = if props.is_locked {
         "Fast forward is always enabled for cloud agent conversations"
     } else if is_active {
-        "Turn off auto-approve all agent actions"
+        crate::tr!("ai_assistant", "ai-assistant-ai-fast-forward-on-tooltip")
     } else {
-        "Auto-approve all agent actions for this task"
+        crate::tr!("ai_assistant", "ai-assistant-ai-fast-forward-off-tooltip")
     };
 
     render_warping_indicator_button(
@@ -1016,7 +1016,7 @@ fn render_force_refresh_inline(
         let mut stack = Stack::new().with_child(text_with_margin);
         if state.is_hovered() {
             let tool_tip = ui_builder
-                .tool_tip("Ask the agent to check this command now, skipping its timer.".to_owned())
+                .tool_tip(crate::tr!("ai_assistant", "ai-assistant-ai-check-now-tooltip").to_owned())
                 .build()
                 .finish();
             stack.add_positioned_overlay_child(
@@ -2218,7 +2218,7 @@ fn render_mermaid_diagram_section<A: Action>(
         .finish();
 
     render_visual_card(
-        "Mermaid diagram".to_string(),
+        crate::tr!("ai_assistant", "ai-assistant-ai-mermaid-diagram").to_string(),
         Icon::Dataflow,
         Container::new(mermaid_canvas)
             .with_background(theme.background())
@@ -3381,7 +3381,7 @@ fn render_invalid_api_key_error(
             background: Some(internal_colors::fg_overlay_3(theme).into()),
             ..Default::default()
         })
-        .with_text_label("Edit API Keys".to_string())
+        .with_text_label(crate::tr!("ai_assistant", "ai-assistant-ai-edit-api-keys").to_string())
         .with_cursor(Some(Cursor::PointingHand))
         .build()
         .on_click(move |ctx, _, _| {
@@ -3609,7 +3609,7 @@ pub(crate) fn render_debug_footer<V: View>(
                     warpui::ui_components::button::ButtonVariant::Text,
                     props.submit_issue_button_handle,
                 )
-                .with_centered_text_label("Send Feedback".to_string())
+                .with_centered_text_label(crate::tr!("ai_assistant", "ai-assistant-ai-send-feedback").to_string())
                 .with_style(submit_button_style)
                 .with_hovered_styles(submit_button_hover_style)
                 .with_clicked_styles(submit_button_hover_style)
@@ -3669,7 +3669,7 @@ pub(crate) fn render_debug_footer<V: View>(
     })
     .finish();
     let copy_button_with_tooltip = appearance.ui_builder().tool_tip_on_element(
-        "Copy debug ID".to_string(),
+        crate::tr!("ai_assistant", "ai-assistant-ai-copy-debug-id").to_string(),
         props.debug_copy_button_handle,
         copy_button,
         warpui::elements::ParentAnchor::TopRight,

@@ -244,7 +244,7 @@ impl ConversationSearchItem {
 
             let fork_button_tool_tip = appearance
                 .ui_builder()
-                .tool_tip("Fork conversation".to_string())
+                .tool_tip(crate::tr!("ai_assistant", "ai-assistant-ai-fork-conversation").to_string())
                 .build();
 
             let fork_button_inner = icon_button(
@@ -435,7 +435,7 @@ impl SearchItem for ConversationSearchItem {
                 matched_conversation.as_ref().conversation.title()
             )),
             ConversationAction::Fork { .. } => {
-                Some("Press enter to fork the current conversation into a new conversation.".into())
+                Some(crate::tr!("search", "search-a11y-fork-conversation").into())
             }
             ConversationAction::New => Some("Press enter to create a new conversation.".into()),
         }

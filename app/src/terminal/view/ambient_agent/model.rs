@@ -75,11 +75,11 @@ impl AgentProgress {
 
     pub fn setup_status_text(&self) -> &'static str {
         if self.harness_started_at.is_some() {
-            "Starting Environment (Step 3/3)"
+            crate::tr!("ai_assistant", "ai-assistant-ai-starting-env-step-3")
         } else if self.claimed_at.is_some() {
-            "Creating Environment (Step 2/3)"
+            crate::tr!("ai_assistant", "ai-assistant-ai-creating-env-step-2")
         } else {
-            "Connecting to Host (Step 1/3)"
+            crate::tr!("ai_assistant", "ai-assistant-ai-connecting-host-step-1")
         }
     }
 }
@@ -1343,7 +1343,7 @@ impl AmbientAgentViewModel {
                         | AmbientAgentTaskState::Unknown => {
                             let error = status_message
                                 .map(|msg| msg.message)
-                                .unwrap_or_else(|| "Cloud agent failed".to_string());
+                                .unwrap_or_else(|| crate::tr!("ai_assistant", "ai-assistant-ai-cloud-agent-failed").to_string());
                             self.handle_spawn_error(error, ctx);
                         }
                     }

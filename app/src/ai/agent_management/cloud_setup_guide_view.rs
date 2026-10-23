@@ -179,7 +179,7 @@ impl CloudSetupGuideView {
                 appearance
                     .ui_builder()
                     .link(
-                        "Oz documentation".to_string(),
+                        crate::tr!("ai_assistant", "ai-assistant-ai-oz-documentation").to_string(),
                         None,
                         Some(Box::new(|ctx| {
                             ctx.dispatch_typed_action(CloudSetupGuideAction::OpenDocs {
@@ -347,7 +347,7 @@ impl CloudSetupGuideView {
         let Some((workflow, setup_step)) = (match code {
             CREATE_ENV_SLASH_CMD => Some((
                 WorkflowType::Local(
-                    Workflow::new("Create Environment", CREATE_ENV_SLASH_CMD).with_arguments(vec![
+                    Workflow::new(crate::tr!("ai_assistant", "ai-assistant-ai-wf-create-environment"), CREATE_ENV_SLASH_CMD).with_arguments(vec![
                         Argument::new("github link or local filepath", ArgumentType::Text)
                             .with_description("GitHub link or local filepath to the repository"),
                     ]),
@@ -356,7 +356,7 @@ impl CloudSetupGuideView {
             )),
             CREATE_ENV_CLI_CMD => Some((
                 WorkflowType::Local(
-                    Workflow::new("Create Environment (CLI)", CREATE_ENV_CLI_CMD).with_arguments(
+                    Workflow::new(crate::tr!("ai_assistant", "ai-assistant-ai-wf-create-environment-cli"), CREATE_ENV_CLI_CMD).with_arguments(
                         vec![
                             Argument::new("NAME", ArgumentType::Text)
                                 .with_description("Name for the environment"),
@@ -369,7 +369,7 @@ impl CloudSetupGuideView {
             )),
             CREATE_SLACK_INTEGRATION_CMD => Some((
                 WorkflowType::Local(
-                    Workflow::new("Create Slack Integration", CREATE_SLACK_INTEGRATION_CMD)
+                    Workflow::new(crate::tr!("ai_assistant", "ai-assistant-ai-wf-create-slack-integration"), CREATE_SLACK_INTEGRATION_CMD)
                         .with_arguments(vec![
                             Argument::new("environment_id", ArgumentType::Text)
                                 .with_description("ID of the environment to integrate with"),
@@ -379,7 +379,7 @@ impl CloudSetupGuideView {
             )),
             CREATE_LINEAR_INTEGRATION_CMD => Some((
                 WorkflowType::Local(
-                    Workflow::new("Create Linear Integration", CREATE_LINEAR_INTEGRATION_CMD)
+                    Workflow::new(crate::tr!("ai_assistant", "ai-assistant-ai-wf-create-linear-integration"), CREATE_LINEAR_INTEGRATION_CMD)
                         .with_arguments(vec![
                             Argument::new("environment_id", ArgumentType::Text)
                                 .with_description("ID of the environment to integrate with"),
@@ -460,7 +460,7 @@ impl CloudSetupGuideView {
 
         let sub_description = Container::new(Self::render_description_with_link(
             "Use Warp's environment setup command to have an agent help you through it. ",
-            "Visit docs",
+            crate::tr!("agent_cloud", "agent-cloud-visit-docs"),
             self.env_docs_link_mouse_state.clone(),
             SetupGuideDocs::Environment,
             appearance,
@@ -533,7 +533,7 @@ impl CloudSetupGuideView {
 
         let sub_description = Container::new(Self::render_description_with_link(
             "Integrate Slack or Linear to assign Warp's Agent tasks with @Warp. ",
-            "Visit docs",
+            crate::tr!("agent_cloud", "agent-cloud-visit-docs"),
             self.integration_docs_link_mouse_state.clone(),
             SetupGuideDocs::Integration,
             appearance,

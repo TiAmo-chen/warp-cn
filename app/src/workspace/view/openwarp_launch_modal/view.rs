@@ -54,7 +54,7 @@ const FEATURE_ITEMS: &[FeatureItem] = &[
     },
     FeatureItem {
         icon: Icon::Oz,
-        title: "Open Automated Development",
+        title: crate::tr!("workspace", "workspace-openwarp-automated-title"),
         description: "The Warp repo is managed by an agent-first workflow powered by Oz, our cloud agent orchestration platform.",
         inline_link: Some(InlineLink {
             text: "Oz",
@@ -63,8 +63,8 @@ const FEATURE_ITEMS: &[FeatureItem] = &[
     },
     FeatureItem {
         icon: Icon::MessageChatSquare,
-        title: "Introducing 'auto (open-weights)'",
-        description: "We've added a new auto model that picks the best open weight model for a task, like Kimi or MiniMax.",
+        title: crate::tr!("workspace", "workspace-openwarp-auto-weights-title"),
+        description: crate::tr!("workspace", "workspace-openwarp-auto-weights-desc"),
         inline_link: None,
     },
 ];
@@ -143,7 +143,7 @@ impl OpenWarpLaunchModal {
         });
 
         let cta_button = ctx.add_view(|_ctx| {
-            ActionButton::new("Visit the repo", CtaButtonTheme)
+            ActionButton::new(crate::tr!("workspace", "workspace-openwarp-visit-repo"), CtaButtonTheme)
                 .with_full_width(true)
                 .on_click(|ctx| ctx.dispatch_typed_action(OpenWarpLaunchModalAction::VisitRepo))
         });
@@ -212,7 +212,7 @@ impl OpenWarpLaunchModal {
     }
 
     fn render_title(appearance: &Appearance) -> Box<dyn Element> {
-        Text::new("Warp is now open-source", appearance.ui_font_family(), 20.)
+        Text::new(crate::tr!("workspace", "workspace-openwarp-title"), appearance.ui_font_family(), 20.)
             .with_color(PhenomenonStyle::modal_title_text())
             .with_style(Properties::default().weight(Weight::Semibold))
             .finish()
@@ -220,7 +220,7 @@ impl OpenWarpLaunchModal {
 
     fn render_description(appearance: &Appearance) -> Box<dyn Element> {
         Text::new(
-            "You, our community, can participate in building Warp using an agent-first workflow.",
+            crate::tr!("workspace", "workspace-openwarp-description"),
             appearance.ui_font_family(),
             14.,
         )

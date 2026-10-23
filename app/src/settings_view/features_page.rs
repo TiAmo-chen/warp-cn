@@ -735,7 +735,7 @@ pub fn init_actions_from_parent_view<T: Action + Clone>(
 
     if DefaultTerminal::can_warp_become_default() {
         app.register_fixed_bindings([FixedBinding::empty(
-            "Make Warp the default terminal",
+            crate::tr!("settings", "settings-make-warp-the-default-terminal"),
             builder(SettingsAction::FeaturesPageToggle(
                 FeaturesPageAction::MakeWarpDefaultTerminal,
             )),
@@ -1084,7 +1084,7 @@ impl FeaturesPageAction {
                 action: crate::tr!("settings", "quakeeditorsetpinscreen").to_string(),
                 value: screen
                     .map(|idx| format!("{idx}"))
-                    .unwrap_or_else(|| "Active Screen".into()),
+                    .unwrap_or_else(|| crate::tr!("settings", "settings-features-active-screen").into()),
             },
             Self::QuakeEditorResetWidthHeight => TelemetryEvent::FeaturesPageAction {
                 action: crate::tr!("settings", "quakeeditorresetwidthheight").to_string(),
@@ -3092,8 +3092,8 @@ impl FeaturesPageView {
             Category::new("General", general_widgets),
             Category::new("Session", session_widgets),
             Category::new("Keys", keys_widgets),
-            Category::new("Text Editing", text_editing_widgets),
-            Category::new("Terminal Input", editor_widgets),
+            Category::new(crate::tr!("settings", "settings-text-editing"), text_editing_widgets),
+            Category::new(crate::tr!("settings", "settings-section-terminal-input"), editor_widgets),
             Category::new("Terminal", terminal_widgets),
             Category::new("Notifications", notifications_widgets),
             Category::new(
@@ -3124,7 +3124,7 @@ impl FeaturesPageView {
                 .position(|val| *val == current_value)
                 .unwrap_or_else(|| {
                     report_error!(
-                        "Could not find current Ctrl-Tab behavior value in dropdown option list"
+                        crate::tr!("settings", "settings-could-not-find-current-ctrl-tab-behavior-value-in-dropdown-option-list")
                     );
                     0
                 });
@@ -3159,7 +3159,7 @@ impl FeaturesPageView {
                 .position(|val| *val == current_value)
                 .unwrap_or_else(|| {
                     report_error!(
-                        "Could not find current right-click behavior value in dropdown option list"
+                        crate::tr!("settings", "settings-could-not-find-current-right-click-behavior-value-in-dropdown-option-list")
                     );
                     0
                 });
@@ -3196,7 +3196,7 @@ impl FeaturesPageView {
                 .position(|val| *val == current_value)
                 .unwrap_or_else(|| {
                     report_error!(
-                        "Could not find current NewTabPlacement value in dropdown option list"
+                        crate::tr!("settings", "settings-could-not-find-current-newtabplacement-value-in-dropdown-option-list")
                     );
                     0
                 });
@@ -4546,7 +4546,7 @@ fn init_display_count_dropdown(
     ctx: &mut ViewContext<Dropdown<FeaturesPageAction>>,
 ) {
     let no_preference = DropdownItem::new(
-        "Active Screen",
+        crate::tr!("settings", "settings-features-active-screen"),
         //|| {
         FeaturesPageAction::QuakeEditorSetPinScreen(None), //}
     );
@@ -5140,7 +5140,7 @@ impl SettingsWidget for DefaultTerminalWidget {
         } else {
             ui_builder
                 .link(
-                    "Make Warp the default terminal".to_string(),
+                    crate::tr!("settings", "settings-make-warp-the-default-terminal").to_string(),
                     None,
                     Some(Box::new(|ctx| {
                         ctx.dispatch_typed_action(FeaturesPageAction::MakeWarpDefaultTerminal);
@@ -7389,7 +7389,7 @@ impl SettingsWidget for Osc52ClipboardAccessWidget {
             appearance,
             &crate::tr!("settings", "clipboard-access-(osc-52)"),
             Some(
-                "Controls whether programs running in the terminal can read or write your system clipboard.",
+                crate::tr!("settings", "settings-controls-whether-programs-running-in-the-terminal-can-read-or-write-your-system-clipboard"),
             ),
             None,
             LocalOnlyIconState::for_setting(

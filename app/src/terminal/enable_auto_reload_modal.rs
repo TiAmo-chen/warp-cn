@@ -109,7 +109,7 @@ impl EnableAutoReloadModalBody {
                             );
 
                             ctx.emit(EnableAutoReloadModalBodyEvent::ShowToast {
-                                message: "Auto-reload settings updated".to_string(),
+                                message: crate::tr!("terminal", "terminal-auto-reload-settings-updated").to_string(),
                                 flavor: ToastFlavor::Success,
                             });
                             ctx.emit(EnableAutoReloadModalBodyEvent::Close);
@@ -119,7 +119,7 @@ impl EnableAutoReloadModalBody {
                         if me.update_workspace_settings_loading {
                             me.update_workspace_settings_loading = false;
                             ctx.emit(EnableAutoReloadModalBodyEvent::ShowToast {
-                                message: "Failed to enable auto-reload. Please try updating your settings in Billing & usage.".to_string(),
+                                message: crate::tr!("workspace", "workspace-failed-auto-reload").to_string(),
                                 flavor: ToastFlavor::Error,
                             });
                             ctx.notify();
@@ -234,7 +234,7 @@ impl EnableAutoReloadModalBody {
                 " will automatically purchase your selected package when you run out. ",
             ),
             FormattedTextFragment::hyperlink(
-                "Learn more",
+                crate::tr!("common", "common-learn-more-label"),
                 "https://docs.warp.dev/support-and-community/plans-and-billing/add-on-credits#id-2.-enable-auto-reload",
             ),
         ];
@@ -435,7 +435,7 @@ impl EnableAutoReloadModal {
         let body = ctx.add_typed_action_view(EnableAutoReloadModalBody::new);
 
         let modal = ctx.add_typed_action_view(|ctx| {
-            Modal::new(Some("Enable auto reload?".to_string()), body.clone(), ctx).with_body_style(
+            Modal::new(Some(crate::tr!("terminal", "terminal-enable-auto-reload-title").to_string()), body.clone(), ctx).with_body_style(
                 UiComponentStyles {
                     // Padding of 0 here since we add a horizontal bar that needs to span the full width in the body
                     // So we handle padding in the body itself

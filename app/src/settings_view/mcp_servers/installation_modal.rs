@@ -423,9 +423,9 @@ impl InstallationModalBody {
         .finish();
 
         let source_text = if is_shared {
-            "Shared from team"
+            crate::tr!("zz_zh02_supplement", "settings-mcp-shared-from-team")
         } else {
-            "From another device"
+            crate::tr!("zz_zh02_supplement", "settings-mcp-from-another-device")
         };
 
         let label_text = Text::new_inline(

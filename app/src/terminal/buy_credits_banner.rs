@@ -503,16 +503,16 @@ impl BuyCreditsBanner {
 
         // Banner text with title and description based on admin status
         let banner_description = if has_admin_permissions {
-            "Your monthly spend limit has been reached. Increase it to continue."
+            crate::tr!("terminal", "terminal-monthly-limit-reached-admin")
         } else {
-            "Contact a team admin to increase monthly limit."
+            crate::tr!("terminal", "terminal-monthly-limit-reached-non-admin")
         };
 
         let banner_text = Flex::column()
             .with_children([
                 appearance
                     .ui_builder()
-                    .paragraph("Monthly limit reached")
+                    .paragraph(crate::tr!("terminal", "terminal-monthly-limit-reached-title"))
                     .with_style(UiComponentStyles {
                         font_size: Some(14.),
                         ..Default::default()
@@ -710,10 +710,10 @@ impl BuyCreditsBanner {
         let unit = usage_display_unit(app);
         let (title, exceeds_limit_text, admin_description, member_description) = match unit {
             UsageDisplayUnit::Credits => (
-                "Out of credits",
+                crate::tr!("ai_assistant", "ai-assistant-ai-out-of-requests-primary-text"),
                 "Purchasing these credits would take you over your monthly spend limit. ",
                 "Add more credits to your account to continue using the Warp Agent.",
-                "Contact a team admin to purchase more credits to continue.",
+                crate::tr!("terminal", "terminal-out-of-credits-non-admin"),
             ),
             UsageDisplayUnit::Dollars => (
                 "Out of usage",
@@ -763,7 +763,7 @@ impl BuyCreditsBanner {
                 // Create formatted text with clickable hyperlink
                 let warning_text_fragments = vec![
                     FormattedTextFragment::plain_text(exceeds_limit_text),
-                    FormattedTextFragment::hyperlink_action("Increase it", Action::ManageBilling),
+                    FormattedTextFragment::hyperlink_action(crate::tr!("terminal", "terminal-increase-limit"), Action::ManageBilling),
                     FormattedTextFragment::plain_text(" to continue."),
                 ];
 

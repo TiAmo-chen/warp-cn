@@ -516,21 +516,21 @@ pub fn init(ctx: &mut AppContext) {
         // Selections
         EditableBinding::new(
             "editor_view:select_left_by_word",
-            "Select one word to the left",
+            crate::tr!("code", "code-select-one-word-to-the-left"),
             EditorAction::SelectLeftByWord,
         )
         .with_context_predicate(id!("EditorView") & !id!("IMEOpen"))
         .with_key_binding("shift-meta-B"),
         EditableBinding::new(
             "editor_view:select_right_by_word",
-            "Select one word to the right",
+            crate::tr!("code", "code-select-one-word-to-the-right"),
             EditorAction::SelectRightByWord,
         )
         .with_context_predicate(id!("EditorView") & !id!("IMEOpen"))
         .with_key_binding("shift-meta-F"),
         EditableBinding::new(
             "editor_view:select_left",
-            "Select one character to the left",
+            crate::tr!("code", "code-select-one-character-to-the-left"),
             EditorAction::SelectLeft,
         )
         .with_context_predicate(id!("EditorView") & !id!("IMEOpen"))
@@ -541,54 +541,54 @@ pub fn init(ctx: &mut AppContext) {
         // NOTE "shift-right" exists a cross-platform keybinding for this action.
         EditableBinding::new(
             "editor_view:select_right",
-            "Select one character to the right",
+            crate::tr!("code", "code-select-one-character-to-the-right"),
             EditorAction::SelectRight,
         )
         .with_context_predicate(id!("EditorView") & !id!("IMEOpen"))
         .with_mac_key_binding("shift-ctrl-F"),
-        EditableBinding::new(SELECT_UP_ACTION_NAME, "Select up", EditorAction::SelectUp)
+        EditableBinding::new(SELECT_UP_ACTION_NAME, crate::tr!("code", "code-select-up"), EditorAction::SelectUp)
             .with_context_predicate(id!("EditorView") & !id!("IMEOpen"))
             // Set this to Mac only since otherwise it could conflict with opening the command
             // palette. NOTE `shift-up` still exists as a cross platform keybinding for this action.
             .with_mac_key_binding("shift-ctrl-P"),
         EditableBinding::new(
             SELECT_DOWN_ACTION_NAME,
-            "Select down",
+            crate::tr!("code", "code-select-down"),
             EditorAction::SelectDown,
         )
         .with_context_predicate(id!("EditorView") & !id!("IMEOpen"))
         .with_mac_key_binding("shift-ctrl-N"),
         EditableBinding::new(
             "editor_view:select_all",
-            "Select all",
+            crate::tr!("editor", "editor-select-all"),
             EditorAction::SelectAll,
         )
         .with_context_predicate(id!("EditorView") & !id!("IMEOpen"))
         .with_custom_action(CustomAction::SelectAll),
         EditableBinding::new(
             "editor:select_to_line_start",
-            "Select to start of line",
+            crate::tr!("code", "code-select-to-start-of-line"),
             EditorAction::SelectToLineStart,
         )
         .with_context_predicate(id!("EditorView") & !id!("IMEOpen"))
         .with_mac_key_binding("shift-ctrl-A"),
         EditableBinding::new(
             "editor:select_to_line_end",
-            "Select to end of line",
+            crate::tr!("code", "code-select-to-end-of-line"),
             EditorAction::SelectToLineEnd,
         )
         .with_context_predicate(id!("EditorView") & !id!("IMEOpen"))
         .with_mac_key_binding("shift-ctrl-E"),
         EditableBinding::new(
             "editor_view:clear_and_copy_lines",
-            "Copy and clear selected lines",
+            crate::tr!("editor", "editor-copy-and-clear-lines"),
             EditorAction::ClearAndCopyLines,
         )
         .with_context_predicate(id!("EditorView") & !id!("IMEOpen"))
         .with_key_binding("ctrl-u"),
         EditableBinding::new(
             "editor_view:add_next_occurrence",
-            "Add selection for next occurrence",
+            crate::tr!("editor", "editor-add-selection-next-occurrence"),
             EditorAction::AddNextOccurrence,
         )
         .with_custom_action(CustomAction::AddNextOccurrence)
@@ -598,7 +598,7 @@ pub fn init(ctx: &mut AppContext) {
         // `shift-end` is registered on all platforms for this action.
         EditableBinding::new(
             "editor_view:select_to_line_end",
-            "Select To Line End",
+            crate::tr!("code", "code-select-to-line-end"),
             EditorAction::SelectToLineEnd,
         )
         .with_context_predicate(id!("EditorView") & !id!("IMEOpen"))
@@ -606,7 +606,7 @@ pub fn init(ctx: &mut AppContext) {
         // `end` is registered on all platforms for this action.
         EditableBinding::new(
             "editor_view:select_to_line_start",
-            "Select To Line Start",
+            crate::tr!("code", "code-select-to-line-start"),
             EditorAction::SelectToLineStart,
         )
         .with_context_predicate(id!("EditorView") & !id!("IMEOpen"))
@@ -1704,7 +1704,7 @@ impl ImageContextOptions {
         } = self
         {
             if *unsupported_model {
-                return "Image attachment isn't supported by this model".into();
+                return crate::tr!("editor", "editor-image-unsupported-model").into();
             }
 
             if *is_processing_attached_images {
@@ -1725,7 +1725,7 @@ impl ImageContextOptions {
             }
         }
 
-        "Attach images".into()
+        crate::tr!("editor", "editor-attach-images").into()
     }
 
     pub fn num_images_attached(&self) -> usize {
@@ -5075,7 +5075,7 @@ impl EditorView {
                             ToastStack::handle(ctx).update(ctx, |toast_stack, ctx| {
                                 toast_stack.add_ephemeral_toast(
                                     DismissibleToast::error(
-                                        "The selected model does not support images as context."
+                                        crate::tr!("ai_assistant", "ai-assistant-no-image-support")
                                             .to_string(),
                                     ),
                                     window_id,
@@ -5239,7 +5239,7 @@ impl EditorView {
             move |this, (images, num_unsupported_images, num_read_errors), ctx| {
                 if num_unsupported_images > 0 {
                     let message = if num_unsupported_images == 1 && num_images_user_attached == 1 {
-                        "Image cannot be attached - supported types are PNG, JPG, GIF, WEBP.".into()
+                        crate::tr!("editor", "editor-image-unsupported-single").into()
                     } else if num_unsupported_images == 1 {
                         "1 image wasn't attached - supported types are PNG, JPG, GIF, WEBP.".into()
                     } else {
@@ -5257,7 +5257,7 @@ impl EditorView {
 
                 if num_read_errors > 0 {
                     let message = if num_read_errors == 1 && num_images_user_attached == 1 {
-                        "Image cannot be attached - failed to read file.".into()
+                        crate::tr!("editor", "editor-image-read-error-single").into()
                     } else if num_read_errors == 1 {
                         "1 image wasn't attached - failed to read file.".into()
                     } else {
@@ -5365,7 +5365,7 @@ impl EditorView {
 
                 if num_oversized_images > 0 {
                     let message = if num_oversized_images == 1 && num_images_user_attached == 1 {
-                        "Image cannot be attached - file is too large.".into()
+                        crate::tr!("editor", "editor-image-too-large-single").into()
                     } else if num_oversized_images == 1 {
                         "1 image wasn't attached — file is too large.".into()
                     } else {
@@ -5385,7 +5385,7 @@ impl EditorView {
 
                 if num_unprocessed_images > 0 {
                     let message = if num_unprocessed_images == 1 && num_images_user_attached == 1 {
-                        "Image cannot be attached - error processing.".into()
+                        crate::tr!("editor", "editor-image-processing-error-single").into()
                     } else if num_unprocessed_images == 1 {
                         "1 image wasn't attached - error processing.".into()
                     } else {
@@ -8197,7 +8197,7 @@ impl EditorView {
             button
                 .with_tooltip_position(ButtonTooltipPosition::Above)
                 .with_tooltip(self.render_menu_button_tooltip(
-                    "Search files and directories".to_string(),
+                    crate::tr!("editor", "editor-search-files-directories").to_string(),
                     appearance,
                 ))
                 .build()

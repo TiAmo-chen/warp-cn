@@ -188,7 +188,7 @@ impl MCPServersEditPageView {
 
         let editing_disabled_banner = ctx.add_typed_action_view(|_| {
             Banner::new_without_close(BannerTextContent::plain_text(
-                "Only team admins and the creator of the MCP server can edit the MCP server.",
+                crate::tr!("zz_zh02_supplement", "settings-mcp-editing-disabled"),
             ))
             .with_icon(Icon::Warning)
         });
@@ -314,11 +314,11 @@ impl MCPServersEditPageView {
     fn render_header(&self, app: &AppContext) -> Box<dyn Element> {
         let appearance = Appearance::as_ref(app);
         let title = if self.server_card_item_id.is_none() {
-            "Add New MCP Server".to_string()
+            crate::tr!("zz_zh02_supplement", "settings-add-new-mcp").to_string()
         } else if let Some(name) = self.server_model.name() {
             format!("Edit {name} MCP Server")
         } else {
-            "Edit MCP Server".to_string()
+            crate::tr!("zz_zh02_supplement", "settings-edit-mcp").to_string()
         };
 
         let ui_builder = appearance.ui_builder().clone();

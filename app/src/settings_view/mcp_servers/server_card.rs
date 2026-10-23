@@ -243,7 +243,7 @@ impl From<ServerCardStatus> for ServerCardOptions {
                     indicator_type: StatusElementTypes::Circle,
                     color: StatusColor::Yellow,
                 }),
-                status_line: Some("Starting server...".to_string()),
+                status_line: Some(crate::tr!("settings", "settings-mcp-starting").to_string()),
                 background: Background::Filled,
                 full_card_clickable: false,
             },
@@ -303,7 +303,7 @@ impl From<ServerCardStatus> for ServerCardOptions {
                     indicator_type: StatusElementTypes::Circle,
                     color: StatusColor::Neutral,
                 }),
-                status_line: Some("Shutting down...".to_string()),
+                status_line: Some(crate::tr!("settings", "settings-mcp-shutting-down").to_string()),
                 background: Background::Filled,
                 full_card_clickable: false,
             },
@@ -745,7 +745,7 @@ impl ServerCardView {
                     self.build_icon_button(
                         appearance,
                         Icon::Code1,
-                        "Show logs".to_string(),
+                        crate::tr!("settings", "settings-mcp-show-logs").to_string(),
                         self.mouse_handles.show_logs_icon_button.clone(),
                     )
                     .on_click(move |ctx, _, _| {
@@ -760,7 +760,7 @@ impl ServerCardView {
                     self.build_icon_button(
                         appearance,
                         Icon::LogOut,
-                        "Log out".to_string(),
+                        crate::tr!("app_menus", "app-menus-log-out").to_string(),
                         self.mouse_handles.logout_icon_button.clone(),
                     )
                     .on_click(move |ctx, _, _| {
@@ -775,7 +775,7 @@ impl ServerCardView {
                     self.build_icon_button(
                         appearance,
                         Icon::Share,
-                        "Share server".to_string(),
+                        crate::tr!("settings", "settings-mcp-share-server").to_string(),
                         self.mouse_handles.share_icon_button.clone(),
                     )
                     .on_click(move |ctx, _, _| {
@@ -812,7 +812,7 @@ impl ServerCardView {
                     ButtonVariant::Secondary,
                     self.mouse_handles.view_logs_button.clone(),
                 )
-                .with_centered_text_label("View logs".to_string())
+                .with_centered_text_label(crate::tr!("settings", "settings-mcp-view-logs").to_string())
                 .build()
                 .on_click(move |ctx, _, _| {
                     ctx.dispatch_typed_action(ServerCardAction::ViewLogs(item_id))
@@ -828,7 +828,7 @@ impl ServerCardView {
                     ButtonVariant::Accent,
                     self.mouse_handles.edit_config_button.clone(),
                 )
-                .with_centered_text_label("Edit config".to_string())
+                .with_centered_text_label(crate::tr!("menus", "menus-edit-config").to_string())
                 .build()
                 .on_click(move |ctx, _, _| {
                     ctx.dispatch_typed_action(ServerCardAction::Edit(item_id));
@@ -844,7 +844,7 @@ impl ServerCardView {
                     ButtonVariant::Accent,
                     self.mouse_handles.setup_button.clone(),
                 )
-                .with_centered_text_label("Set up".to_string())
+                .with_centered_text_label(crate::tr!("settings", "settings-mcp-set-up").to_string())
                 .build()
                 .on_click(move |ctx, _, _| {
                     ctx.dispatch_typed_action(ServerCardAction::Install(item_id));
@@ -892,7 +892,7 @@ impl ServerCardView {
             .build_icon_button(
                 appearance,
                 Icon::Refresh,
-                "Server update available".to_string(),
+                crate::tr!("settings", "settings-mcp-update-available").to_string(),
                 self.mouse_handles.update_icon_button.clone(),
             )
             .on_click(move |ctx, _, _| {

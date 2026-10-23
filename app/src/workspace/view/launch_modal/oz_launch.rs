@@ -23,7 +23,7 @@ pub enum OzLaunchSlide {
 
 impl Slide for OzLaunchSlide {
     fn modal_title(&self) -> String {
-        "Introducing Oz".to_string()
+        crate::tr!("workspace", "workspace-introducing-oz").to_string()
     }
 
     fn modal_subtext_paragraphs(&self) -> Vec<FormattedTextLine> {
@@ -78,7 +78,7 @@ impl Slide for OzLaunchSlide {
         match self {
             OzLaunchSlide::CloudAgents => "Break out of your laptop with cloud agents",
             OzLaunchSlide::AgentAutomations => {
-                "Orchestrate agents, turning Skills into automations"
+                crate::tr!("workspace", "workspace-orchestrate-agents")
             }
             OzLaunchSlide::AgentManagement => "Track local and cloud agents seamlessly",
             OzLaunchSlide::LaunchCredits => {
@@ -172,7 +172,7 @@ impl Slide for OzLaunchSlide {
 
     fn checkbox_config(&self) -> Option<CheckboxConfig> {
         Some(CheckboxConfig {
-            label: "Sync conversations to cloud",
+            label: crate::tr!("workspace", "workspace-sync-conversations-to-cloud"),
             description: "Agent conversations stored in the cloud can be shared with anyone with one click, and allow conversations to be continued across devices and on logout.",
         })
     }

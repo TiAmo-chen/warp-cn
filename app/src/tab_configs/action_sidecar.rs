@@ -135,7 +135,7 @@ pub(crate) fn render_action_sidecar(
                 let ui_builder = appearance.ui_builder().clone();
                 move || {
                     ui_builder
-                        .tool_tip("Already the default".into())
+                        .tool_tip(crate::tr!("menus", "menus-already-the-default").into())
                         .build()
                         .finish()
                 }
@@ -148,7 +148,7 @@ pub(crate) fn render_action_sidecar(
         appearance
             .ui_builder()
             .button(ButtonVariant::Outlined, mouse_states.make_default.clone())
-            .with_centered_text_label("Make default".into())
+            .with_centered_text_label(crate::tr!("menus", "menus-make-default").into())
             .with_style(button_style)
             .build()
             .with_cursor(Cursor::PointingHand)
@@ -171,7 +171,7 @@ pub(crate) fn render_action_sidecar(
         let edit_button = appearance
             .ui_builder()
             .button(ButtonVariant::Outlined, mouse_states.edit_config.clone())
-            .with_centered_text_label("Edit config".into())
+            .with_centered_text_label(crate::tr!("menus", "menus-edit-config").into())
             .with_style(button_style)
             .build()
             .with_cursor(Cursor::PointingHand)

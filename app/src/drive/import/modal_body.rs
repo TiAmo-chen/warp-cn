@@ -135,7 +135,7 @@ impl ImportModalBody {
                     let result = match server_id {
                         Some(id) => UploadResult::Success(id.clone()),
                         None => {
-                            UploadResult::Error("Failed to upload folder to server".to_string())
+                            UploadResult::Error(crate::tr!("drive", "drive-failed-upload-folder").to_string())
                         }
                     };
 
@@ -387,7 +387,7 @@ impl ImportModalBody {
             base_button.with_text_and_icon_label(
                 TextAndIcon::new(
                     TextAndIconAlignment::TextFirst,
-                    "Choose files...".to_string(),
+                    crate::tr!("drive", "drive-import-choose-files").to_string(),
                     Icon::Import.to_warpui_icon(
                         appearance
                             .theme()
@@ -427,7 +427,7 @@ impl ImportModalBody {
         let link_to_document = appearance
             .ui_builder()
             .link(
-                "Learn about file support and formatting".to_string(),
+                crate::tr!("drive", "drive-learn-file-support").to_string(),
                 Some(FILE_TYPE_DOCS_URL.to_string()),
                 None,
                 self.link_mouse_state.clone(),

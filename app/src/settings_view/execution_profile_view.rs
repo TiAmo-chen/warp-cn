@@ -761,7 +761,7 @@ fn render_ask_user_question_permission_line_with_icon(
     let permission_text = match permission {
         AskUserQuestionPermission::Never => "Never ask",
         AskUserQuestionPermission::AskExceptInAutoApprove | AskUserQuestionPermission::Unknown => {
-            "Ask unless auto-approve"
+            crate::tr!("ai_assistant", "ai-assistant-ai-profile-ask-unless-autoapprove")
         }
         AskUserQuestionPermission::AlwaysAsk => "Always ask",
     };

@@ -238,10 +238,10 @@ mod package_manager {
 
             lines.push(FormattedTextLine::Line(vec![
                 FormattedTextFragment::plain_text("\nReview the command below, then "),
-                FormattedTextFragment::bold("press enter"),
+                FormattedTextFragment::bold(crate::tr!("autoupdate", "autoupdate-press-enter")),
                 FormattedTextFragment::plain_text(" to install the update and re-launch Warp.  "),
                 FormattedTextFragment::hyperlink(
-                    "Please report any issues",
+                    crate::tr!("autoupdate", "autoupdate-report-issues"),
                     "https://github.com/warpdotdev/Warp/issues/new/choose",
                 ),
             ]));

@@ -299,14 +299,14 @@ pub fn init(app: &mut AppContext) {
     app.register_editable_bindings([
         EditableBinding::new(
             "editor_view:deselect_command",
-            "De-select shell commands",
+            crate::tr!("notebooks", "notebooks-de-select-shell-commands"),
             EditorViewAction::ExitCommandSelection,
         )
         .with_context_predicate(id!("RichTextEditorView") & id!("HasCommandSelection"))
         .with_key_binding("escape"),
         EditableBinding::new(
             "editor_view:select_command",
-            "Select shell command at cursor",
+            crate::tr!("notebooks", "notebooks-select-shell-command-at-cursor"),
             EditorViewAction::SelectCommandAtCursor,
         )
         .with_context_predicate(
@@ -317,21 +317,21 @@ pub fn init(app: &mut AppContext) {
         .with_key_binding("escape"),
         EditableBinding::new(
             "editor_view:select_previous_command",
-            "Select previous command",
+            crate::tr!("notebooks", "notebooks-select-previous-command"),
             EditorViewAction::CommandUp,
         )
         .with_context_predicate(id!("RichTextEditorView"))
         .with_key_binding("cmdorctrl-up"),
         EditableBinding::new(
             "editor_view:select_next_command",
-            "Select next command",
+            crate::tr!("notebooks", "notebooks-select-next-command"),
             EditorViewAction::CommandDown,
         )
         .with_context_predicate(id!("RichTextEditorView"))
         .with_key_binding("cmdorctrl-down"),
         EditableBinding::new(
             "editor_view:run_commands",
-            "Run selected commands",
+            crate::tr!("notebooks", "notebooks-run-selected-commands"),
             EditorViewAction::RunSelectedCommands,
         )
         .with_context_predicate(id!("RichTextEditorView") & id!("CanExecuteShellCommands"))
@@ -364,28 +364,28 @@ pub fn init(app: &mut AppContext) {
     app.register_editable_bindings([
         EditableBinding::new(
             "editor_view:toggle_debug_mode",
-            "Toggle rich-text debug mode",
+            crate::tr!("notebooks", "notebooks-toggle-debug-mode"),
             EditorViewAction::ToggleDebugMode,
         )
         .with_context_predicate(id!("RichTextEditorView"))
         .with_enabled(debug_notebooks_enabled),
         EditableBinding::new(
             "editor_view:debug_copy_buffer",
-            "Copy rich-text buffer",
+            crate::tr!("notebooks", "notebooks-copy-rich-text-buffer"),
             EditorViewAction::DebugCopyBuffer,
         )
         .with_context_predicate(id!("RichTextEditorView"))
         .with_enabled(debug_notebooks_enabled),
         EditableBinding::new(
             "editor_view:debug_copy_selection",
-            "Copy rich-text selection",
+            crate::tr!("notebooks", "notebooks-copy-rich-text-selection"),
             EditorViewAction::DebugCopySelection,
         )
         .with_context_predicate(id!("RichTextEditorView"))
         .with_enabled(debug_notebooks_enabled),
         EditableBinding::new(
             "editor_view:log_state",
-            "Log editor state",
+            crate::tr!("notebooks", "notebooks-log-editor-state"),
             EditorViewAction::DebugLogState,
         )
         .with_context_predicate(id!("RichTextEditorView"))
@@ -396,7 +396,7 @@ pub fn init(app: &mut AppContext) {
     app.register_editable_bindings([
         EditableBinding::new(
             "editor_view:move_backward_one_word",
-            "Move Backward One Word",
+            crate::tr!("code", "code-move-backward-one-word"),
             EditorViewAction::MoveBackwardsByWord,
         )
         .with_context_predicate(text_entry.clone())
@@ -404,7 +404,7 @@ pub fn init(app: &mut AppContext) {
         .with_linux_or_windows_key_binding("ctrl-left"),
         EditableBinding::new(
             "editor_view:move_forward_one_word",
-            "Move Forward One Word",
+            crate::tr!("code", "code-move-forward-one-word"),
             EditorViewAction::MoveForwardsByWord,
         )
         .with_context_predicate(text_entry.clone())
@@ -412,14 +412,14 @@ pub fn init(app: &mut AppContext) {
         .with_linux_or_windows_key_binding("ctrl-right"),
         EditableBinding::new(
             "editor_view:move_forward_one_word",
-            "Move forward one word",
+            crate::tr!("editor", "editor-move-forward-one-word"),
             EditorViewAction::MoveForwardsByWord,
         )
         .with_context_predicate(text_entry.clone())
         .with_key_binding("meta-f"),
         EditableBinding::new(
             "editor_view:move_backward_one_word",
-            "Move backward one word",
+            crate::tr!("editor", "editor-move-backward-one-word"),
             EditorViewAction::MoveBackwardsByWord,
         )
         .with_context_predicate(text_entry.clone())
@@ -452,7 +452,7 @@ pub fn init(app: &mut AppContext) {
             // This doesn't reuse the move_to_line_start naming from the terminal input editor to
             // distinguish between soft-wrapped line and hard-wrapped line (paragraph) movement.
             "editor_view:move_to_paragraph_start",
-            "Move to start of paragraph",
+            crate::tr!("notebooks", "notebooks-move-to-paragraph-start"),
             EditorViewAction::MoveToParagraphStart,
         )
         .with_context_predicate(text_entry.clone())
@@ -703,25 +703,25 @@ pub fn init(app: &mut AppContext) {
         .with_context_predicate(id!("RichTextEditorView")),
         EditableBinding::new(
             "editor:next_find_match",
-            "Focus next match",
+            crate::tr!("notebooks", "notebooks-focus-next-match"),
             FindBarAction::FocusNextMatch,
         )
         .with_context_predicate(id!("FindBar")),
         EditableBinding::new(
             "editor:previous_find_match",
-            "Focus previous match",
+            crate::tr!("notebooks", "notebooks-focus-previous-match"),
             FindBarAction::FocusPreviousMatch,
         )
         .with_context_predicate(id!("FindBar")),
         EditableBinding::new(
             "editor:toggle_regex_find",
-            "Toggle regular expression search",
+            crate::tr!("notebooks", "notebooks-toggle-regular-expression-search"),
             FindBarAction::ToggleRegex,
         )
         .with_context_predicate(id!("FindBar")),
         EditableBinding::new(
             "editor:toggle_case_sensitive_find",
-            "Toggle case-sensitive search",
+            crate::tr!("notebooks", "notebooks-toggle-case-sensitive-search"),
             FindBarAction::ToggleCaseSensitive,
         )
         .with_context_predicate(id!("FindBar")),
@@ -2400,7 +2400,7 @@ impl RichTextEditorView {
                     .ui_builder()
                     .copy_button(12., self.mouse_states.copy_link_mouse_handle.clone())
                     .with_tooltip(move || {
-                        ui_builder.tool_tip("Copy link".to_owned()).build().finish()
+                        ui_builder.tool_tip(crate::tr!("ai_assistant", "ai-assistant-ai-doc-copy-link").to_owned()).build().finish()
                     })
                     .build()
                     .on_click(|ctx, _, _| ctx.dispatch_typed_action(EditorViewAction::CopyLink))
@@ -2520,9 +2520,9 @@ impl RichTextEditorView {
         let path = selected_file_path.path.clone();
         let line_and_column_num = selected_file_path.line_and_column_num;
         let primary_text = if path.is_dir() {
-            "Open folder"
+            crate::tr!("notebooks", "notebooks-open-folder")
         } else {
-            "Open file"
+            crate::tr!("ai_assistant", "ai-assistant-ai-open-file")
         }
         .to_string();
         let show_open_in_warp = should_show_open_in_warp_link(&path, ctx);
@@ -2545,7 +2545,7 @@ impl RichTextEditorView {
         if show_open_in_warp {
             let path_for_warp = path.clone();
             links.push(TooltipLink {
-                text: "Open in Warp".to_string(),
+                text: crate::tr!("ai_assistant", "ai-assistant-ai-open-in-warp").to_string(),
                 on_click: Box::new(move |ctx: &mut EventContext| {
                     ctx.dispatch_typed_action(EditorViewAction::OpenFile {
                         path: path_for_warp.clone(),
@@ -2851,7 +2851,7 @@ impl TypedActionView for RichTextEditorView {
                 }
                 let window_id = ctx.window_id();
                 crate::workspace::ToastStack::handle(ctx).update(ctx, |toast_stack, ctx| {
-                    let toast = DismissibleToast::default(String::from("Link copied"));
+                    let toast = DismissibleToast::default(String::from(crate::tr!("notebooks", "notebooks-link-copied-toast")));
                     toast_stack.add_ephemeral_toast(toast, window_id, ctx);
                 });
                 ctx.notify();
@@ -3160,12 +3160,12 @@ impl TypedActionView for RichTextEditorView {
             ),
             EditorViewAction::EditLink | EditorViewAction::CreateOrEditLink => {
                 ActionAccessibilityContent::Custom(AccessibilityContent::new_without_help(
-                    "Edit Link",
+                    crate::tr!("notebooks", "notebooks-edit-link-a11y"),
                     WarpA11yRole::UserAction,
                 ))
             }
             EditorViewAction::CopyLink => ActionAccessibilityContent::Custom(
-                AccessibilityContent::new_without_help("Copy Link", WarpA11yRole::UserAction),
+                AccessibilityContent::new_without_help(crate::tr!("notebooks", "notebooks-copy-link-a11y"), WarpA11yRole::UserAction),
             ),
             EditorViewAction::OpenTooltipLink(link) => {
                 ActionAccessibilityContent::Custom(AccessibilityContent::new_without_help(
@@ -3185,60 +3185,60 @@ impl TypedActionView for RichTextEditorView {
             }
             EditorViewAction::DeleteLineLeft => {
                 ActionAccessibilityContent::Custom(AccessibilityContent::new_without_help(
-                    "Delete line left",
+                    crate::tr!("notebooks", "notebooks-delete-line-left-a11y"),
                     WarpA11yRole::UserAction,
                 ))
             }
             EditorViewAction::DeleteLineRight => {
                 ActionAccessibilityContent::Custom(AccessibilityContent::new_without_help(
-                    "Delete line right",
+                    crate::tr!("notebooks", "notebooks-delete-line-right-a11y"),
                     WarpA11yRole::UserAction,
                 ))
             }
             EditorViewAction::DeleteWordLeft => {
                 ActionAccessibilityContent::Custom(AccessibilityContent::new_without_help(
-                    "Delete word left",
+                    crate::tr!("code", "code-delete-word-left"),
                     WarpA11yRole::UserAction,
                 ))
             }
             EditorViewAction::DeleteWordRight => {
                 ActionAccessibilityContent::Custom(AccessibilityContent::new_without_help(
-                    "Delete word right",
+                    crate::tr!("code", "code-delete-word-right"),
                     WarpA11yRole::UserAction,
                 ))
             }
 
             EditorViewAction::CutLineLeft => ActionAccessibilityContent::Custom(
-                AccessibilityContent::new_without_help("Cut line left", WarpA11yRole::UserAction),
+                AccessibilityContent::new_without_help(crate::tr!("notebooks", "notebooks-cut-line-left-a11y"), WarpA11yRole::UserAction),
             ),
             EditorViewAction::CutLineRight => ActionAccessibilityContent::Custom(
-                AccessibilityContent::new_without_help("Cut line right", WarpA11yRole::UserAction),
+                AccessibilityContent::new_without_help(crate::tr!("notebooks", "notebooks-cut-line-right-a11y"), WarpA11yRole::UserAction),
             ),
             EditorViewAction::CutWordLeft => ActionAccessibilityContent::Custom(
-                AccessibilityContent::new_without_help("Cut word left", WarpA11yRole::UserAction),
+                AccessibilityContent::new_without_help(crate::tr!("code", "code-cut-word-left"), WarpA11yRole::UserAction),
             ),
             EditorViewAction::CutWordRight => ActionAccessibilityContent::Custom(
-                AccessibilityContent::new_without_help("Cut word right", WarpA11yRole::UserAction),
+                AccessibilityContent::new_without_help(crate::tr!("code", "code-cut-word-right"), WarpA11yRole::UserAction),
             ),
 
             EditorViewAction::ShowCharacterPalette => {
                 ActionAccessibilityContent::Custom(AccessibilityContent::new_without_help(
-                    "Show character palette",
+                    crate::tr!("notebooks", "notebooks-show-character-palette-a11y"),
                     WarpA11yRole::UserAction,
                 ))
             }
             EditorViewAction::ShowFindBar => ActionAccessibilityContent::Custom(
-                AccessibilityContent::new_without_help("Show find bar", WarpA11yRole::UserAction),
+                AccessibilityContent::new_without_help(crate::tr!("notebooks", "notebooks-show-find-bar-a11y"), WarpA11yRole::UserAction),
             ),
             EditorViewAction::OpenBlockInsertionMenu => {
                 ActionAccessibilityContent::Custom(AccessibilityContent::new_without_help(
-                    "Open block-insertion menu",
+                    crate::tr!("notebooks", "notebooks-open-block-insertion-menu-a11y"),
                     WarpA11yRole::UserAction,
                 ))
             }
             EditorViewAction::OpenEmbeddedObjectSearch => {
                 ActionAccessibilityContent::Custom(AccessibilityContent::new_without_help(
-                    "Open embedded object search menu",
+                    crate::tr!("notebooks", "notebooks-open-embedded-object-search-a11y"),
                     WarpA11yRole::UserAction,
                 ))
             }
@@ -3270,8 +3270,8 @@ impl TypedActionView for RichTextEditorView {
                 .style_toggle_a11y(BufferTextStyle::StrikeThrough),
             EditorViewAction::ExitCommandSelection => {
                 ActionAccessibilityContent::Custom(AccessibilityContent::new(
-                    "De-select command",
-                    "Switch from selecting commands to selecting text",
+                    crate::tr!("notebooks", "notebooks-de-select-command-a11y"),
+                    crate::tr!("notebooks", "notebooks-switch-selecting-commands-to-text-a11y"),
                     WarpA11yRole::UserAction,
                 ))
             }
@@ -3282,12 +3282,12 @@ impl TypedActionView for RichTextEditorView {
                 WarpA11yRole::UserAction,
             )),
             EditorViewAction::CopyTextToClipboard { .. } => ActionAccessibilityContent::Custom(
-                AccessibilityContent::new_without_help("Copy code block", WarpA11yRole::UserAction),
+                AccessibilityContent::new_without_help(crate::tr!("notebooks", "notebooks-copy-code-block-a11y"), WarpA11yRole::UserAction),
             ),
             EditorViewAction::ToggleTaskList(_) => {
                 // TODO(ben): Is it useful to include the text and/or on/off state here?
                 ActionAccessibilityContent::Custom(AccessibilityContent::new_without_help(
-                    "Toggle task list",
+                    crate::tr!("notebooks", "notebooks-toggle-task-list-a11y"),
                     WarpA11yRole::UserAction,
                 ))
             }

@@ -113,6 +113,6 @@ impl crate::search::item::SearchItem for SearchItem {
     }
 
     fn accessibility_help_message(&self) -> Option<String> {
-        Some("Press enter to navigate to this session.".into())
+        Some(crate::tr!("search", "search-a11y-session-help").into())
     }
 }

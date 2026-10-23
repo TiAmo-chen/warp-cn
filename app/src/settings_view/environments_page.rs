@@ -370,7 +370,7 @@ impl EnvironmentsPageView {
         });
 
         // Create search editor for list page
-        let search_editor = Self::create_single_line_editor("Search environments...", ctx);
+        let search_editor = Self::create_single_line_editor(crate::tr!("context_chips", "context-chips-search-environments"), ctx);
         ctx.subscribe_to_view(&search_editor, |me, _, event, ctx| match event {
             crate::editor::Event::Edited(_) => {
                 me.search_query = me.search_editor.as_ref(ctx).buffer_text(ctx);
@@ -686,7 +686,7 @@ impl EnvironmentsPageView {
             if matches!(result.success_type, OperationSuccessType::Success) {
                 self.show_success_toast(crate::tr!("settings", "successfully-shared-environment").to_string(), ctx);
             } else {
-                self.show_error_toast("Failed to share environment with team".to_string(), ctx);
+                self.show_error_toast(crate::tr!("settings", "settings-env-share-failed").to_string(), ctx);
             }
 
             ctx.notify();
@@ -1408,7 +1408,7 @@ impl EnvironmentsPageWidget {
         } else if dropdown_state.auth_url.is_some() {
             ("Authorize", true)
         } else {
-            ("Get started", true)
+            (crate::tr!("ai_assistant", "ai-assistant-ai-get-started"), true)
         };
 
         let github_button = Self::render_empty_state_button(
@@ -1449,7 +1449,7 @@ impl EnvironmentsPageWidget {
             appearance,
             EmptyStateRowConfig {
                 icon: Icon::Github,
-                title: "Quick setup",
+                title: crate::tr!("settings", "settings-quick-setup"),
                 badge: Some("Suggested"),
                 subtitle: "Select the GitHub repositories you’d like to work with and we’ll suggest a base image and config",
                 action_button: github_button,
@@ -1462,7 +1462,7 @@ impl EnvironmentsPageWidget {
             appearance,
             EmptyStateRowConfig {
                 icon: Icon::Terminal,
-                title: "Use the agent",
+                title: crate::tr!("settings", "settings-use-the-agent"),
                 badge: None,
                 subtitle: "Choose a locally set up project and we’ll help you set up an environment based on it",
                 action_button: local_repos_button,
@@ -1857,7 +1857,7 @@ impl EnvironmentsPageWidget {
             let view_runs_link = appearance
                 .ui_builder()
                 .link(
-                    "View my runs".to_string(),
+                    crate::tr!("settings", "settings-view-my-runs").to_string(),
                     None,
                     Some(Box::new(move |ctx| {
                         ctx.dispatch_typed_action(WorkspaceAction::ViewAgentRunsForEnvironment {

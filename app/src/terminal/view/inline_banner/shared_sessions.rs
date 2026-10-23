@@ -99,11 +99,11 @@ pub fn render_inline_shared_session_started_banner(
     appearance: &Appearance,
 ) -> Box<dyn Element> {
     let label = if is_shared_ambient_agent_session {
-        "Environment started"
+        crate::tr!("terminal", "terminal-environment-started")
     } else if is_remote_control {
-        "Remote control active"
+        crate::tr!("terminal", "terminal-remote-control-active")
     } else {
-        "Sharing started"
+        crate::tr!("terminal", "terminal-sharing-started")
     };
     render_inline_shared_session_banner(is_active, label.to_string(), started_at, appearance)
 }
@@ -115,11 +115,11 @@ pub fn render_inline_shared_session_ended_banner(
     appearance: &Appearance,
 ) -> Box<dyn Element> {
     let label = if is_shared_ambient_agent_session {
-        "Environment ended"
+        crate::tr!("terminal", "terminal-environment-ended")
     } else if is_remote_control {
-        "Remote control stopped"
+        crate::tr!("terminal", "terminal-remote-control-stopped")
     } else {
-        "Sharing ended"
+        crate::tr!("terminal", "terminal-sharing-ended")
     };
     render_inline_shared_session_banner(false, label.to_string(), ended_at, appearance)
 }

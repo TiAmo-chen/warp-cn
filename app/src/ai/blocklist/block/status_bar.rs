@@ -948,14 +948,14 @@ impl BlocklistAIStatusBar {
         if let Some(auth_url) = ambient_agent_model.github_auth_url() {
             let error_message = ambient_agent_model
                 .github_auth_error_message()
-                .unwrap_or("Missing GitHub authentication.");
+                .unwrap_or(crate::tr!("ai_assistant", "ai-assistant-ai-missing-github-auth"));
             return Some(render_wrapping_standard_message_bar(
                 CoreIcon::Triangle,
                 error_color,
                 error_color,
                 vec![
                     FormattedTextFragment::plain_text(format!("{error_message} ")),
-                    FormattedTextFragment::hyperlink("Authenticate GitHub", auth_url.to_owned()),
+                    FormattedTextFragment::hyperlink(crate::tr!("ai_assistant", "ai-assistant-ai-authenticate-github"), auth_url.to_owned()),
                 ],
                 app,
             ));
@@ -968,7 +968,7 @@ impl BlocklistAIStatusBar {
                 color,
                 color,
                 vec![FormattedTextFragment::plain_text(
-                    "Cloud agent run cancelled",
+                    crate::tr!("ai_assistant", "ai-assistant-ai-cloud-agent-cancelled"),
                 )],
                 app,
             ));
@@ -1047,7 +1047,7 @@ fn render_agent_tip(tip: &AgentTip, app: &AppContext) -> Box<dyn Element> {
         _ => {
             if let Some(link_target) = tip.link.clone() {
                 fragments.push(FormattedTextFragment::plain_text(" "));
-                fragments.push(FormattedTextFragment::hyperlink("Learn more", link_target));
+                fragments.push(FormattedTextFragment::hyperlink(crate::tr!("common", "common-learn-more-label"), link_target));
             }
         }
     }
@@ -1322,7 +1322,7 @@ impl View for BlocklistAIStatusBar {
                         WarpingIndicatorProps {
                             icon: None,
                             warping_indicator_text: MaybeShimmeringText::Shimmering {
-                                text: "Setting up environment".into(),
+                                text: crate::tr!("ai_assistant", "ai-assistant-ai-setting-up-env").into(),
                                 shimmering_text_handle: self.shimmering_text_handle.clone(),
                             },
                             non_shimmering_text: None,
@@ -1355,7 +1355,7 @@ impl View for BlocklistAIStatusBar {
                             non_shimmering_suffix: None,
                             buttons: Some(render_switch_control_to_user_button(
                                 "Exit",
-                                "Exit agent input",
+                                crate::tr!("ai_assistant", "ai-assistant-ai-exit-agent-input"),
                                 ButtonProps {
                                     button_handle: &self.state_handles.take_over_button,
                                     keystroke: self.set_terminal_input_keystroke.as_ref(),

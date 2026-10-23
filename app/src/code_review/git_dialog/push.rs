@@ -124,9 +124,9 @@ pub(super) fn finish_push(
     match result {
         Ok(_) => {
             let toast_msg = if publish {
-                "Branch successfully published."
+                crate::tr!("code_editor", "code-editor-code-review-branch-published")
             } else {
-                "Changes successfully pushed."
+                crate::tr!("code_editor", "code-editor-code-review-changes-pushed")
             };
             show_toast(toast_msg, ctx);
         }

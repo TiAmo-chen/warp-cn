@@ -129,7 +129,7 @@ impl EnvironmentSetupModeSelector {
         let theme = appearance.theme();
 
         let title = Text::new(
-            "Choose how you'd like to set up your environment".to_string(),
+            crate::tr!("terminal", "terminal-choose-setup-env").to_string(),
             appearance.ui_font_family(),
             TITLE_FONT_SIZE,
         )
@@ -339,8 +339,8 @@ impl EnvironmentSetupModeSelector {
         let remote_github_option = self.render_option(
             0,
             Icon::Github,
-            "Quick setup",
-            "Select the GitHub repositories you'd like to work with and we'll suggest a base image and config",
+            crate::tr!("settings", "settings-quick-setup"),
+            crate::tr!("terminal", "terminal-quick-setup-desc"),
             true,
             self.remote_github_mouse_state.clone(),
             EnvironmentSetupModeSelectorAction::SelectRemoteGitHub,
@@ -350,8 +350,8 @@ impl EnvironmentSetupModeSelector {
         let local_repos_option = self.render_option(
             1,
             Icon::Terminal,
-            "Use the agent",
-            "Choose a locally set up project and we'll help you set up an environment based on it",
+            crate::tr!("settings", "settings-use-the-agent"),
+            crate::tr!("terminal", "terminal-use-agent-desc"),
             false,
             self.local_repos_mouse_state.clone(),
             EnvironmentSetupModeSelectorAction::SelectLocalRepositories,

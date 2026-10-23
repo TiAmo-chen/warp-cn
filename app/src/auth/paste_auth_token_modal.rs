@@ -244,7 +244,7 @@ impl View for PasteAuthTokenModalView {
         let ui_builder = appearance.ui_builder();
 
         let title = FormattedTextElement::from_str(
-            "Paste your auth token below",
+            crate::tr!("auth", "auth-paste-token-modal-title"),
             appearance.ui_font_family(),
             16.,
         )
@@ -271,7 +271,7 @@ impl View for PasteAuthTokenModalView {
 
         let subtitle_color = internal_colors::text_sub(theme, dialog_surface_solid);
         let subtitle = FormattedTextElement::from_str(
-            "Paste your auth token from the browser to get complete login.",
+            crate::tr!("auth", "auth-paste-token-modal-subtitle"),
             appearance.ui_font_family(),
             14.,
         )

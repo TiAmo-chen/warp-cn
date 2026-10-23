@@ -103,12 +103,12 @@ impl View for DeleteConversationConfirmationDialog {
             .source
             .as_ref()
             .map(|s| format!("Delete '{}'?", s.conversation_title))
-            .unwrap_or_else(|| "Delete conversation?".into());
+            .unwrap_or_else(|| crate::tr!("workspace", "workspace-delete-conversation").into());
 
         let dialog = Dialog::new(
             title,
             Some(
-                "This conversation will be permanently deleted. This action cannot be undone."
+                crate::tr!("workspace", "workspace-delete-conversation-warning")
                     .into(),
             ),
             UiComponentStyles {

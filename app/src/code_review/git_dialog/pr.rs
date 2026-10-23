@@ -39,7 +39,7 @@ pub struct PrState {
 }
 
 pub(super) fn confirm_label_for() -> &'static str {
-    "Create PR"
+    crate::tr!("code_editor", "code-editor-code-review-create-pr")
 }
 
 pub(super) fn confirm_icon_for() -> Icon {
@@ -166,9 +166,9 @@ pub(super) fn show_pr_created_toast(pr_info: &PrInfo, ctx: &mut ViewContext<GitD
     let window_id = ctx.window_id();
     let url = pr_info.url.clone();
     ToastStack::handle(ctx).update(ctx, |toast_stack, ctx| {
-        let link = ToastLink::new("Open PR".to_string()).with_href(url);
+        let link = ToastLink::new(crate::tr!("code_editor", "code-editor-code-review-open-pr").to_string()).with_href(url);
         let toast =
-            DismissibleToast::default("PR successfully created.".to_string()).with_link(link);
+            DismissibleToast::default(crate::tr!("code_editor", "code-editor-code-review-pr-created").to_string()).with_link(link);
         toast_stack.add_ephemeral_toast(toast, window_id, ctx);
     });
 }

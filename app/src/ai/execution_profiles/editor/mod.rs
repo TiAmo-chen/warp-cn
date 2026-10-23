@@ -75,7 +75,7 @@ fn render_upgrade_footer(
     .with_height(16.)
     .finish();
 
-    let label = "Frontier models are unavailable on free plans. Upgrade";
+    let label = crate::tr!("ai_assistant", "ai-assistant-ai-upgrade-footer");
     let upgrade_start = label.len() - "Upgrade".len();
     let info_text = Text::new(
         label,
@@ -291,19 +291,19 @@ impl ExecutionProfileEditorView {
             dropdown.set_items(
                 vec![
                     DropdownItem::new(
-                        "Agent decides",
+                        crate::tr!("ai_assistant", "ai-assistant-ai-profile-agent-decides"),
                         ExecutionProfileEditorViewAction::SetApplyCodeDiffs {
                             permission: ActionPermission::AgentDecides,
                         },
                     ),
                     DropdownItem::new(
-                        "Always allow",
+                        crate::tr!("ai_assistant", "ai-assistant-ai-profile-always-allow"),
                         ExecutionProfileEditorViewAction::SetApplyCodeDiffs {
                             permission: ActionPermission::AlwaysAllow,
                         },
                     ),
                     DropdownItem::new(
-                        "Always ask",
+                        crate::tr!("ai_assistant", "ai-assistant-ai-profile-always-ask"),
                         ExecutionProfileEditorViewAction::SetApplyCodeDiffs {
                             permission: ActionPermission::AlwaysAsk,
                         },
@@ -319,19 +319,19 @@ impl ExecutionProfileEditorView {
             dropdown.set_items(
                 vec![
                     DropdownItem::new(
-                        "Agent decides",
+                        crate::tr!("ai_assistant", "ai-assistant-ai-profile-agent-decides"),
                         ExecutionProfileEditorViewAction::SetReadFiles {
                             permission: ActionPermission::AgentDecides,
                         },
                     ),
                     DropdownItem::new(
-                        "Always allow",
+                        crate::tr!("ai_assistant", "ai-assistant-ai-profile-always-allow"),
                         ExecutionProfileEditorViewAction::SetReadFiles {
                             permission: ActionPermission::AlwaysAllow,
                         },
                     ),
                     DropdownItem::new(
-                        "Always ask",
+                        crate::tr!("ai_assistant", "ai-assistant-ai-profile-always-ask"),
                         ExecutionProfileEditorViewAction::SetReadFiles {
                             permission: ActionPermission::AlwaysAsk,
                         },
@@ -347,19 +347,19 @@ impl ExecutionProfileEditorView {
             dropdown.set_items(
                 vec![
                     DropdownItem::new(
-                        "Agent decides",
+                        crate::tr!("ai_assistant", "ai-assistant-ai-profile-agent-decides"),
                         ExecutionProfileEditorViewAction::SetExecuteCommands {
                             permission: ActionPermission::AgentDecides,
                         },
                     ),
                     DropdownItem::new(
-                        "Always allow",
+                        crate::tr!("ai_assistant", "ai-assistant-ai-profile-always-allow"),
                         ExecutionProfileEditorViewAction::SetExecuteCommands {
                             permission: ActionPermission::AlwaysAllow,
                         },
                     ),
                     DropdownItem::new(
-                        "Always ask",
+                        crate::tr!("ai_assistant", "ai-assistant-ai-profile-always-ask"),
                         ExecutionProfileEditorViewAction::SetExecuteCommands {
                             permission: ActionPermission::AlwaysAsk,
                         },
@@ -375,19 +375,19 @@ impl ExecutionProfileEditorView {
             dropdown.set_items(
                 vec![
                     DropdownItem::new(
-                        "Always allow",
+                        crate::tr!("ai_assistant", "ai-assistant-ai-profile-always-allow"),
                         ExecutionProfileEditorViewAction::SetWriteToPty {
                             permission: WriteToPtyPermission::AlwaysAllow,
                         },
                     ),
                     DropdownItem::new(
-                        "Always ask",
+                        crate::tr!("ai_assistant", "ai-assistant-ai-profile-always-ask"),
                         ExecutionProfileEditorViewAction::SetWriteToPty {
                             permission: WriteToPtyPermission::AlwaysAsk,
                         },
                     ),
                     DropdownItem::new(
-                        "Ask on first write",
+                        crate::tr!("ai_assistant", "ai-assistant-ai-profile-ask-on-first-write"),
                         ExecutionProfileEditorViewAction::SetWriteToPty {
                             permission: WriteToPtyPermission::AskOnFirstWrite,
                         },
@@ -403,19 +403,19 @@ impl ExecutionProfileEditorView {
             dropdown.set_items(
                 vec![
                     DropdownItem::new(
-                        "Agent decides",
+                        crate::tr!("ai_assistant", "ai-assistant-ai-profile-agent-decides"),
                         ExecutionProfileEditorViewAction::SetCallMcpServers {
                             permission: ActionPermission::AgentDecides,
                         },
                     ),
                     DropdownItem::new(
-                        "Always allow",
+                        crate::tr!("ai_assistant", "ai-assistant-ai-profile-always-allow"),
                         ExecutionProfileEditorViewAction::SetCallMcpServers {
                             permission: ActionPermission::AlwaysAllow,
                         },
                     ),
                     DropdownItem::new(
-                        "Always ask",
+                        crate::tr!("ai_assistant", "ai-assistant-ai-profile-always-ask"),
                         ExecutionProfileEditorViewAction::SetCallMcpServers {
                             permission: ActionPermission::AlwaysAsk,
                         },
@@ -437,13 +437,13 @@ impl ExecutionProfileEditorView {
                         },
                     ),
                     DropdownItem::new(
-                        "Always ask",
+                        crate::tr!("ai_assistant", "ai-assistant-ai-profile-always-ask"),
                         ExecutionProfileEditorViewAction::SetComputerUse {
                             permission: super::ComputerUsePermission::AlwaysAsk,
                         },
                     ),
                     DropdownItem::new(
-                        "Always allow",
+                        crate::tr!("ai_assistant", "ai-assistant-ai-profile-always-allow"),
                         ExecutionProfileEditorViewAction::SetComputerUse {
                             permission: super::ComputerUsePermission::AlwaysAllow,
                         },
@@ -459,19 +459,19 @@ impl ExecutionProfileEditorView {
             dropdown.set_items(
                 vec![
                     DropdownItem::new(
-                        "Never ask",
+                        crate::tr!("ai_assistant", "ai-assistant-ai-profile-never-ask"),
                         ExecutionProfileEditorViewAction::SetAskUserQuestion {
                             permission: super::AskUserQuestionPermission::Never,
                         },
                     ),
                     DropdownItem::new(
-                        "Ask unless auto-approve",
+                        crate::tr!("ai_assistant", "ai-assistant-ai-profile-ask-unless-autoapprove"),
                         ExecutionProfileEditorViewAction::SetAskUserQuestion {
                             permission: super::AskUserQuestionPermission::AskExceptInAutoApprove,
                         },
                     ),
                     DropdownItem::new(
-                        "Always ask",
+                        crate::tr!("ai_assistant", "ai-assistant-ai-profile-always-ask"),
                         ExecutionProfileEditorViewAction::SetAskUserQuestion {
                             permission: super::AskUserQuestionPermission::AlwaysAsk,
                         },
@@ -493,13 +493,13 @@ impl ExecutionProfileEditorView {
                         },
                     ),
                     DropdownItem::new(
-                        "Always allow",
+                        crate::tr!("ai_assistant", "ai-assistant-ai-profile-always-allow"),
                         ExecutionProfileEditorViewAction::SetRunAgents {
                             permission: RunAgentsPermission::AlwaysAllow,
                         },
                     ),
                     DropdownItem::new(
-                        "Always ask",
+                        crate::tr!("ai_assistant", "ai-assistant-ai-profile-always-ask"),
                         ExecutionProfileEditorViewAction::SetRunAgents {
                             permission: RunAgentsPermission::AlwaysAsk,
                         },
@@ -512,13 +512,13 @@ impl ExecutionProfileEditorView {
 
         let mcp_allowlist_dropdown = ctx.add_typed_action_view(|ctx| {
             let mut dropdown = FilterableDropdown::new(ctx);
-            dropdown.set_menu_header_to_static("Select MCP servers");
+            dropdown.set_menu_header_to_static(crate::tr!("ai_assistant", "ai-assistant-ai-select-mcp-servers"));
             dropdown
         });
 
         let mcp_denylist_dropdown = ctx.add_typed_action_view(|ctx| {
             let mut dropdown = FilterableDropdown::new(ctx);
-            dropdown.set_menu_header_to_static("Select MCP servers");
+            dropdown.set_menu_header_to_static(crate::tr!("ai_assistant", "ai-assistant-ai-select-mcp-servers"));
             dropdown
         });
 
@@ -642,7 +642,7 @@ impl ExecutionProfileEditorView {
         Self::update_profile_name_editor(&profile_name_editor, &profile_data, ctx);
 
         let delete_button = ctx.add_typed_action_view(|_| {
-            ActionButton::new("Delete profile", DangerSecondaryTheme)
+            ActionButton::new(crate::tr!("ai_assistant", "ai-assistant-ai-delete-profile"), DangerSecondaryTheme)
                 .with_icon(Icon::Trash)
                 .on_click(|ctx| {
                     ctx.dispatch_typed_action(ExecutionProfileEditorViewAction::DeleteProfile);

@@ -264,9 +264,9 @@ impl View for SharerResponseBody {
 
     fn render(&self, app: &AppContext) -> Box<dyn Element> {
         let appearance = Appearance::as_ref(app);
-        let header = "Edit Requests";
-        let text1 = "This grants the ability to execute commands on your";
-        let text2 = "behalf. Use with caution.";
+        let header = crate::tr!("terminal", "terminal-edit-requests");
+        let text1 = crate::tr!("terminal", "terminal-grants-ability-part1");
+        let text2 = crate::tr!("terminal", "terminal-use-with-caution");
 
         let text_body = Container::new(
             Flex::column()

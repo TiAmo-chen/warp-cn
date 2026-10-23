@@ -252,9 +252,9 @@ impl WorkflowsMoreInfoView {
         appearance: &Appearance,
     ) -> Box<dyn Element> {
         let label = if cloud_workflow.model().data.is_agent_mode_workflow() {
-            "Edit prompt"
+            crate::tr!("terminal", "terminal-menu-edit-prompt")
         } else {
-            "Edit workflow"
+            crate::tr!("workflows", "workflows-edit-workflow")
         };
         let workflow = cloud_workflow.clone();
         render_hoverable_card_button(
@@ -537,7 +537,7 @@ impl WorkflowsMoreInfoView {
         let workflow = self.workflow.as_workflow().to_owned();
         render_hoverable_card_button(
             icons::Icon::Workflow,
-            Some("Save as workflow".to_string()),
+            Some(crate::tr!("terminal", "terminal-menu-save-as-workflow").to_string()),
             self.button_mouse_states.save_as_workflow.clone(),
             move |ctx, _, _| {
                 ctx.dispatch_typed_action(TerminalAction::OpenWorkflowModalForAIWorkflow(
@@ -1007,7 +1007,7 @@ impl WorkflowsMoreInfoView {
             appearance
                 .ui_builder()
                 .link(
-                    "View Context".into(),
+                    crate::tr!("workflows", "workflows-view-context").into(),
                     Some(workflow_source),
                     None,
                     self.button_mouse_states.view_context.clone(),

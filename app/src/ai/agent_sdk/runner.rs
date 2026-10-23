@@ -658,7 +658,7 @@ impl TableFormat for RunnerInfo {
             Cell::new("Arch"),
             Cell::new("OS Settings"),
             Cell::new("Scope"),
-            Cell::new("Last updated"),
+            Cell::new(crate::tr!("drive", "drive-sort-last-updated")),
         ]
     }
 

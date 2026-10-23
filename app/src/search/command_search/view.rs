@@ -485,13 +485,13 @@ impl CommandSearchView {
 
             let (a11y_content, a11y_help_content) = if was_immediately_executed {
                 (
-                    "Result executed".to_owned(),
-                    "Press Cmd-Up to navigate to the command's output.".to_owned(),
+                    crate::tr!("search", "search-result-executed").to_owned(),
+                    crate::tr!("search", "search-navigate-output").to_owned(),
                 )
             } else {
                 (
-                    "Result accepted.".to_owned(),
-                    "You can edit the command here before pressing Enter to execute it.".to_owned(),
+                    crate::tr!("search", "search-result-accepted").to_owned(),
+                    crate::tr!("search", "search-edit-command-hint").to_owned(),
                 )
             };
             ctx.emit_a11y_content(AccessibilityContent::new(
@@ -587,7 +587,7 @@ impl CommandSearchView {
                             current_user_id,
                         )
                     } else {
-                        self.render_error_header_text("Looks like you're out of credits. Contact a team admin to upgrade for more credits.".to_string(), appearance)
+                        self.render_error_header_text(crate::tr!("search", "search-out-of-credits").to_string(), appearance)
                     }
                 } else {
                     self.render_error_header_text(message, appearance)
@@ -728,7 +728,7 @@ impl CommandSearchView {
                 // There are no results to display, so notify the user of that fact.
                 let text = appearance
                     .ui_builder()
-                    .span("No results found.")
+                    .span(crate::tr!("common", "common-no-results"))
                     .with_style(UiComponentStyles {
                         font_size: Some(appearance.monospace_font_size()),
                         font_family_id: Some(appearance.ui_font_family()),
@@ -948,7 +948,7 @@ impl TypedActionView for CommandSearchView {
             AttemptLoginGatedUpgrade => {
                 AuthManager::handle(ctx).update(ctx, |auth_manager, ctx| {
                     auth_manager.attempt_login_gated_feature(
-                        "Upgrade AI Usage",
+                        crate::tr!("search", "search-upgrade-ai-usage"),
                         AuthViewVariant::RequireLoginCloseable,
                         ctx,
                     )
@@ -971,7 +971,7 @@ impl View for CommandSearchView {
 
     fn accessibility_contents(&self, _ctx: &AppContext) -> Option<AccessibilityContent> {
         Some(AccessibilityContent::new(
-            "Command Search".to_owned(),
+            crate::tr!("search", "search-command-search-title").to_owned(),
             "Search your history, workflows, and more.  Use the Up and Down arrows to browse search results after typing.  Press Enter to accept a selected result, inserting it into the terminal input.  Press Escape to close.".to_owned(),
             WarpA11yRole::MenuRole,
         ))

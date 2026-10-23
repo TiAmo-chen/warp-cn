@@ -351,7 +351,7 @@ impl MCPServersListPageView {
             template
                 .description
                 .clone()
-                .or_else(|| Some("Available to install".to_string())),
+                .or_else(|| Some(crate::tr!("settings", "settings-mcp-available-install").to_string())),
             None, // Templates can never have tools
             None, // Templates cannot have an error
             title_chip_text.into_iter().collect(),
@@ -848,7 +848,7 @@ impl MCPServersListPageView {
                 // Show the toast that the server updated, even though we don't update the cloud template in this case
                 let window_id = ctx.window_id();
                 ToastStack::handle(ctx).update(ctx, |toast_stack, ctx| {
-                    let toast = DismissibleToast::success(String::from("MCP server updated"));
+                    let toast = DismissibleToast::success(String::from(crate::tr!("zz_zh02_supplement", "settings-mcp-updated-toast")));
                     toast_stack.add_ephemeral_toast(toast, window_id, ctx);
                 });
             }
@@ -1118,7 +1118,7 @@ impl MCPServersListPageView {
         let is_any_ai_enabled = ai_settings.is_any_ai_enabled(app);
 
         let label = render_body_item_label::<MCPServersListPageViewAction>(
-            "Auto-spawn servers from third-party agents".to_string(),
+            crate::tr!("settings", "settings-mcp-auto-spawn-servers").to_string(),
             None,
             None,
             LocalOnlyIconState::Hidden,
@@ -1301,7 +1301,7 @@ impl MCPServersListPageView {
                     ));
                 } else if !filtered_gallery_cards.is_empty() {
                     page.add_child(self.render_server_cards_section(
-                        "Shared from Warp",
+                        crate::tr!("zz_zh02_supplement", "settings-mcp-shared-from-warp"),
                         &filtered_gallery_cards,
                         appearance,
                         app,
@@ -1647,7 +1647,7 @@ impl MCPServersListPageView {
                     .templatable_mcp_server()
                     .description
                     .clone()
-                    .or_else(|| Some("Detected from config file".to_string())),
+                    .or_else(|| Some(crate::tr!("settings", "settings-mcp-detected-config").to_string())),
                 None, // tools only available when running
                 None, // no error when not yet started
                 title_chips,
@@ -1785,7 +1785,7 @@ impl MCPServersListPageView {
                         None => Some(TitleChip::text("Shared by a team member")),
                     }
                 } else if matches!(item_id, ServerCardItemId::TemplatableMCP(_)) {
-                    Some(TitleChip::text("From another device"))
+                    Some(TitleChip::text(crate::tr!("zz_zh02_supplement", "settings-mcp-from-another-device")))
                 } else {
                     None
                 }

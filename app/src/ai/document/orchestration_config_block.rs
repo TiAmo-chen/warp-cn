@@ -72,7 +72,7 @@ fn host_presence(execution_mode: &RunAgentsExecutionMode) -> bool {
 
 const CONFIG_BLOCK_HEADER: &str = "Use orchestration";
 const CONFIG_BLOCK_DESCRIPTION: &str =
-    "Break this work into coordinated streams with multiple agents.";
+    crate::tr!("ai_assistant", "ai-assistant-ai-orchestration-description");
 const BASE_MODEL_HELPER: &str = "The primary model all agents will use.";
 
 // ── Action type ─────────────────────────────────────────────────────
@@ -879,7 +879,7 @@ impl View for OrchestrationConfigBlockView {
             };
             let disabled_text_color = blended_colors::text_disabled(theme, theme.background());
             let details_text = Text::new(
-                "View details".to_string(),
+                crate::tr!("ai_assistant", "ai-assistant-ai-view-details").to_string(),
                 appearance.ui_font_family(),
                 appearance.monospace_font_size() + 1.,
             )

@@ -76,7 +76,7 @@ pub const FEATURE_INTROS: &[FeatureIntro] = &[FeatureIntro {
     title: "Build a custom model router for the Warp Agent.",
     description: "Custom routers can be complexity-based, where tasks are routed based on how difficult they are, or rule-based, where they are routed based on a set of natural language prompts.",
     description_icon: Some(Icon::Compass),
-    cta_label: "Get started",
+    cta_label: crate::tr!("ai_assistant", "ai-assistant-ai-get-started"),
     cta_target: Some(FeatureIntroCtaTarget::SettingsWidget {
         page: SettingsSection::WarpAgent,
         widget_id: custom_model_routers_widget_id,
@@ -164,7 +164,7 @@ impl FeatureIntroModal {
         });
 
         let cta_button = ctx.add_view(|_ctx| {
-            ActionButton::new("Get started", PrimaryTheme)
+            ActionButton::new(crate::tr!("ai_assistant", "ai-assistant-ai-get-started"), PrimaryTheme)
                 .on_click(|ctx| ctx.dispatch_typed_action(FeatureIntroModalAction::GetStarted))
         });
 

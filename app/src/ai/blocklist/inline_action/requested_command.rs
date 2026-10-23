@@ -173,7 +173,7 @@ pub fn init(app: &mut AppContext) {
 
     app.register_editable_bindings([EditableBinding::new(
         EDIT_COMMAND_ACTION_NAME,
-        "Edit requested command",
+        crate::tr!("ai_assistant", "ai-assistant-ai-edit-requested-command"),
         RequestedCommandViewAction::OpenEditMode,
     )
     .with_key_binding(cmd_or_ctrl_shift("e"))
@@ -829,7 +829,7 @@ impl RequestedCommandView {
                 citations_padding,
                 app,
             )
-            .map(|citation| ("Copied from", citation))
+            .map(|citation| (crate::tr!("ai_assistant", "ai-assistant-ai-copied-from"), citation))
         } else {
             // Otherwise, we render all the citations (if any) and mention that the command was derived from them.
             render_citation_chips(
@@ -937,7 +937,7 @@ impl RequestedCommandView {
                 )
                 .with_child(
                     Text::new(
-                        "Your profile is set to always ask for permission to execute commands.",
+                        crate::tr!("ai_assistant", "ai-assistant-ai-always-ask-permission"),
                         appearance.ui_font_family(),
                         font_size,
                     )
@@ -952,7 +952,7 @@ impl RequestedCommandView {
                             appearance
                                 .ui_builder()
                                 .link(
-                                    "Manage command execution setting".into(),
+                                    crate::tr!("ai_assistant", "ai-assistant-ai-manage-command-execution").into(),
                                     None,
                                     Some(Box::new(move |ctx| {
                                         ctx.dispatch_typed_action(
@@ -1909,7 +1909,7 @@ impl View for RequestedCommandView {
                     let result_text = match result {
                         CallMCPToolResult::Success { result } => {
                             serde_json::to_string_pretty(result)
-                                .unwrap_or_else(|_| "Error formatting JSON".to_string())
+                                .unwrap_or_else(|_| crate::tr!("ai_assistant", "ai-assistant-ai-error-formatting-json").to_string())
                         }
                         CallMCPToolResult::Error(error) => format!("Error: {error}"),
                         CallMCPToolResult::Cancelled => "Tool call was cancelled".to_string(),

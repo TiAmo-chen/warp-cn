@@ -187,7 +187,7 @@ impl BuildPlanMigrationModal {
             UserWorkspacesEvent::UpdateWorkspaceSettingsRejected(_err) => {
                 self.is_updating = false;
                 ctx.emit(BuildPlanMigrationModalEvent::ShowToast {
-                    message: "Failed to enable auto-reload. Please try updating your settings in Billing & usage.".to_string(),
+                    message: crate::tr!("workspace", "workspace-failed-auto-reload").to_string(),
                     flavor: ToastFlavor::Error,
                 });
                 ctx.notify();
@@ -300,7 +300,7 @@ impl BuildPlanMigrationModal {
         let button_text = if self.is_updating {
             "Saving...".to_string()
         } else {
-            "Get Started".to_string()
+            crate::tr!("settings", "settings-get-started").to_string()
         };
 
         let button_font_color = self.is_updating.then_some(
@@ -348,7 +348,7 @@ impl BuildPlanMigrationModal {
         let theme = appearance.theme();
 
         let title = Self::create_text(
-            "Use auto-reload to never miss a beat.".to_string(),
+            crate::tr!("workspace", "workspace-auto-reload-title").to_string(),
             appearance.ui_font_family(),
             16.,
             blended_colors::text_main(theme, blended_colors::neutral_2(theme)),
@@ -508,9 +508,9 @@ impl BuildPlanMigrationModal {
             .unwrap_or((2000, 1800));
 
         let title_text = if is_business {
-            "Welcome to the New Business Plan"
+            crate::tr!("workspace", "workspace-welcome-new-business-plan")
         } else {
-            "Welcome to Warp Build"
+            crate::tr!("workspace", "workspace-welcome-warp-build")
         };
 
         let title = Self::create_text(
@@ -522,18 +522,18 @@ impl BuildPlanMigrationModal {
         );
 
         let intro_text = if is_business {
-            "Your workspace has been updated to the new Warp Business Plan as the legacy Business plan is sunset."
+            crate::tr!("workspace", "workspace-intro-business-plan")
         } else {
-            "Your workspace has been updated to the Warp Build Plan as the legacy Pro, Turbo, and Lightspeed plans are sunset."
+            crate::tr!("workspace", "workspace-intro-build-plan")
         };
 
         let intro = Self::create_text(intro_text.to_string(), font_family, 14., text_color, None);
 
         let pricing_header = Self::create_text(
             if is_business {
-                "The new Business plan is a primarily usage-based plan, starting at:"
+                crate::tr!("workspace", "workspace-pricing-header-business-plan")
             } else {
-                "Warp Build is a primarily usage-based plan, starting at:"
+                crate::tr!("workspace", "workspace-pricing-header-build-plan")
             }
             .to_string(),
             font_family,
@@ -561,9 +561,9 @@ impl BuildPlanMigrationModal {
 
         let features_header = Self::create_text(
             if is_business {
-                "The new Business plan comes with:"
+                crate::tr!("workspace", "workspace-features-header-business-plan")
             } else {
-                "Build comes with:"
+                crate::tr!("workspace", "workspace-features-header-build-plan")
             }
             .to_string(),
             font_family,
@@ -583,14 +583,14 @@ impl BuildPlanMigrationModal {
         );
 
         let reload_credits = Self::create_bullet_item(
-            "Access to Reload credits and volume-based discounts".to_string(),
+            crate::tr!("workspace", "workspace-access-reload-credits").to_string(),
             font_family,
             14.,
             text_color,
         );
 
         let byok = Self::create_bullet_item(
-            "Bring your own API key".to_string(),
+            crate::tr!("workspace", "workspace-bring-your-own-api-key").to_string(),
             font_family,
             14.,
             text_color,
@@ -604,7 +604,7 @@ impl BuildPlanMigrationModal {
 
         if is_business {
             let sso = Self::create_bullet_item(
-                "SAML-based SSO".to_string(),
+                crate::tr!("workspace", "workspace-saml-based-sso").to_string(),
                 font_family,
                 14.,
                 text_color,
@@ -612,7 +612,7 @@ impl BuildPlanMigrationModal {
             features_list.add_child(sso);
 
             let zdr = Self::create_bullet_item(
-                "Automatically enforced team-wide Zero Data Retention".to_string(),
+                crate::tr!("workspace", "workspace-team-wide-zero-data-retention").to_string(),
                 font_family,
                 14.,
                 text_color,
@@ -621,7 +621,7 @@ impl BuildPlanMigrationModal {
         }
 
         let and_more =
-            Self::create_bullet_item("And more...".to_string(), font_family, 14., text_color);
+            Self::create_bullet_item(crate::tr!("workspace", "workspace-and-more").to_string(), font_family, 14., text_color);
         features_list.add_child(and_more);
 
         let learn_more_fragments = vec![

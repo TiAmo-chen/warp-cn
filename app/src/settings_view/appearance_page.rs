@@ -362,7 +362,7 @@ pub fn init_actions_from_parent_view<T: Action + Clone>(
         // Add a toggle alias for crate::tr!("settings", "zen-mode").
         toggle_binding_pairs.push(
             ToggleSettingActionPair::new(
-                "zen mode",
+                crate::tr!("zz_zh02_supplement", "settings-zen-mode"),
                 builder(SettingsAction::AppearancePageToggle(
                     AppearancePageAction::ToggleWorkspaceDecorationVisibility,
                 )),
@@ -1155,7 +1155,7 @@ impl AppearanceSettingsPageView {
                 .position(|val| *val == current_value)
                 .unwrap_or_else(|| {
                     report_error!(
-                        "Could not find current ThinStrokes value in dropdown option list"
+                        crate::tr!("settings", "settings-could-not-find-current-thinstrokes-value-in-dropdown-option-list")
                     );
                     0
                 });
@@ -1192,7 +1192,7 @@ impl AppearanceSettingsPageView {
                 .iter()
                 .position(|val| *val == current_value)
                 .unwrap_or_else(|| {
-                    report_error!("Could not find current InputMode value in dropdown option list");
+                    report_error!(crate::tr!("settings", "settings-could-not-find-current-inputmode-value-in-dropdown-option-list"));
                     0
                 });
 
@@ -1227,7 +1227,7 @@ impl AppearanceSettingsPageView {
                 .iter()
                 .position(|val| *val == current_value)
                 .unwrap_or_else(|| {
-                    report_error!("Could not find current AppIcon value in dropdown option list");
+                    report_error!(crate::tr!("settings", "settings-could-not-find-current-appicon-value-in-dropdown-option-list"));
                     0
                 });
 
@@ -1259,7 +1259,7 @@ impl AppearanceSettingsPageView {
             let current_value = *FontSettings::as_ref(ctx)
                 .enforce_minimum_contrast;
             let selected_index = values.iter().position(|val| *val == current_value).unwrap_or_else(|| {
-                report_error!("Could not find current EnforceMinimumContrast value in dropdown option list");
+                report_error!(crate::tr!("settings", "settings-could-not-find-current-enforceminimumcontrast-value-in-dropdown-option-list"));
                 0
             });
 
@@ -1431,7 +1431,7 @@ impl AppearanceSettingsPageView {
         }
         tools_panel_widgets.push(Box::new(ToolsPanelWarpDriveWidget::default()));
         if !tools_panel_widgets.is_empty() {
-            categories.push(Category::new("Tools panel", tools_panel_widgets));
+            categories.push(Category::new(crate::tr!("settings", "settings-tools-panel"), tools_panel_widgets));
         }
 
         // Create the Input category with all widgets
@@ -1541,7 +1541,7 @@ impl AppearanceSettingsPageView {
         categories.push(Category::new("Tabs", tab_settings_widgets));
 
         categories.push(Category::new(
-            "Full-screen Apps",
+            crate::tr!("settings", "settings-appearance-fullscreen-apps"),
             vec![Box::new(AltScreenPaddingWidget::default())],
         ));
 
@@ -2620,7 +2620,7 @@ impl AppearanceSettingsPageView {
 
             let current_value = TabSettings::as_ref(ctx).workspace_decoration_visibility;
             let selected_index = values.iter().position(|val| *val == current_value).unwrap_or_else(|| {
-                report_error!("Could not find current WorkspaceDecorationVisibility value in dropdown option list");
+                report_error!(crate::tr!("settings", "settings-could-not-find-current-workspacedecorationvisibility-value-in-dropdown-option-list"));
                 0
             });
 
@@ -2646,7 +2646,7 @@ impl AppearanceSettingsPageView {
 
             let current_value = TabSettings::as_ref(ctx).close_button_position;
             let selected_index = values.iter().position(|val| *val == current_value).unwrap_or_else(|| {
-                report_error!("Could not find current TabCloseButtonPosition value in dropdown option list");
+                report_error!(crate::tr!("settings", "settings-could-not-find-current-tabclosebuttonposition-value-in-dropdown-option-list"));
                 0
             });
 
@@ -3068,7 +3068,7 @@ impl SettingsWidget for CustomAppIconWidget {
         let dropdown = render_dropdown_item(
             appearance,
             &crate::tr!("settings", "customize-your-app-icon"),
-            show_bundle_warning.then_some("Changing the app icon requires the app to be bundled."),
+            show_bundle_warning.then_some(crate::tr!("settings", "settings-changing-the-app-icon-requires-the-app-to-be-bundled")),
             None,
             LocalOnlyIconState::Hidden,
             None,
@@ -3361,7 +3361,7 @@ impl SettingsWidget for WindowOpacityWidget {
             // supporting alpha.
             if !window.supports_transparency() && window.graphics_backend() != GraphicsBackend::Gl {
                 let mut message = Cow::Borrowed(
-                    "The selected graphics settings may not support rendering transparent windows.",
+                    crate::tr!("settings", "settings-the-selected-graphics-settings-may-not-support-rendering-transparent-windows"),
                 );
                 let gpu_settings = GPUSettings::as_ref(app);
                 if (gpu_settings
@@ -3917,7 +3917,7 @@ impl SettingsWidget for DimInactivePanesWidget {
     type View = AppearanceSettingsPageView;
 
     fn search_terms(&self) -> &str {
-        "dim inactive panes"
+        crate::tr!("zz_zh02_supplement", "settings-dim-inactive-panes")
     }
 
     fn render(
@@ -3960,7 +3960,7 @@ impl SettingsWidget for FocusFollowsMouseWidget {
     type View = AppearanceSettingsPageView;
 
     fn search_terms(&self) -> &str {
-        "focus follows mouse"
+        crate::tr!("zz_zh02_supplement", "settings-focus-follows-mouse")
     }
 
     fn render(
@@ -4051,7 +4051,7 @@ impl SettingsWidget for JumpToBottomOfBlockWidget {
     type View = AppearanceSettingsPageView;
 
     fn search_terms(&self) -> &str {
-        "jump to bottom of block button"
+        crate::tr!("zz_zh02_supplement", "settings-jump-bottom-block")
     }
 
     fn render(
@@ -5281,7 +5281,7 @@ impl SettingsWidget for DirectoryTabColorsWidget {
         for (idx, (dir_path, current_color)) in directory_tab_colors(app).into_iter().enumerate() {
             let Some(dot_mouse_states) = view.color_picker_dot_states.get(idx).cloned() else {
                 report_error!(
-                    "Missing color picker dot states for directory",
+                    crate::tr!("settings", "settings-missing-color-picker-dot-states-for-directory"),
                     extra: { "index" => %idx }
                 );
                 continue;

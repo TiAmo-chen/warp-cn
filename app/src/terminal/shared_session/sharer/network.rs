@@ -2013,7 +2013,7 @@ impl Network {
 }
 
 const NO_QUOTA_REMAINING_MESSAGE: &str =
-    "Session sharing usage exceeded for the day. Please try again later.";
+    crate::tr!("terminal", "terminal-sharing-usage-exceeded");
 fn session_terminated_reason_diagnostic_label(reason: &SessionTerminatedReason) -> &'static str {
     match reason {
         SessionTerminatedReason::NoUserQuotaRemaining {} => "no_user_quota_remaining",
@@ -2037,7 +2037,7 @@ pub fn session_terminated_reason_string(
             format!("Session limit ({max_bytes}) exceeded. Please reshare to continue.")
         }
         SessionTerminatedReason::InternalServerError { .. } => {
-            "Session ended due to an internal error. Please try sharing again.".to_string()
+            crate::tr!("terminal", "terminal-session-internal-error").to_string()
         }
     }
 }

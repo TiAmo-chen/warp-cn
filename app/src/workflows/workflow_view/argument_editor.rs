@@ -596,7 +596,7 @@ impl WorkflowView {
                     Container::new(
                         appearance
                         .ui_builder()
-                        .span("Fill out the arguments in this workflow and copy it to run in your terminal session")
+                        .span(crate::tr!("drive", "drive-workflow-fill-arguments"))
                         .with_soft_wrap()
                         .with_style(UiComponentStyles {
                             font_size: Some(EDITOR_FONT_SIZE),
@@ -832,7 +832,7 @@ impl WorkflowView {
             .with_children([
                 appearance
                     .ui_builder()
-                    .span("Environment variables")
+                    .span(crate::tr!("drive", "drive-type-env-vars"))
                     .with_style(UiComponentStyles {
                         font_size: Some(13.),
                         ..Default::default()

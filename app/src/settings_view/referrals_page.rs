@@ -156,7 +156,7 @@ lazy_static! {
             icon_path: "bundled/svg/referral-keycaps.svg",
             icon_width: 56.,
             icon_height: 56.,
-            label: "Keycaps + stickers".to_owned(),
+            label: crate::tr!("zz_zh02_supplement", "settings-reward-keycaps-stickers").to_owned(),
         },
         Reward {
             required_referral_count: 10,

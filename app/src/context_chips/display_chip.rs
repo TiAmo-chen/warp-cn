@@ -1081,10 +1081,10 @@ impl DisplayChip {
                             // nvm-windows has documented issues when installed alongside an existing Node.js installation.
                             // https://github.com/coreybutler/nvm-windows?tab=readme-ov-file#star-star-uninstall-any-pre-existing-node-installations-star-star
                             // Prompt the agent to remove this first.
-                            "Uninstall existing Node.js installation and install nvm for me"
+                            crate::tr!("context_chips", "context-chips-uninstall-node-install-nvm")
                                 .to_string()
                         } else {
-                            "Install nvm for me".to_string()
+                            crate::tr!("common", "common-install-nvm-for-me").to_string()
                         }));
                         me.close_node_version_popup(ctx);
                     }
@@ -1106,7 +1106,7 @@ impl DisplayChip {
 
         let quota_reset_popup = ctx.add_typed_action_view(|_| {
             FeaturePopup::alert_icon(NewFeaturePopupLabel::FromString(
-                "Monthly AI credits reset!".to_string(),
+                crate::tr!("context_chips", "context-chips-monthly-ai-credits-reset").to_string(),
             ))
         });
 
@@ -1403,7 +1403,7 @@ impl DisplayChip {
             if state.is_hovered() && is_interactive && !menu_open {
                 let tool_tip = appearance
                     .ui_builder()
-                    .tool_tip("Change git branch".to_string())
+                    .tool_tip(crate::tr!("common", "common-change-git-branch").to_string())
                     .build()
                     .finish();
                 stack.add_positioned_overlay_child(tool_tip, udi_tooltip_positioning());
@@ -1470,7 +1470,7 @@ impl DisplayChip {
             if state.is_hovered() {
                 let tool_tip = appearance
                     .ui_builder()
-                    .tool_tip("View pull request".to_string())
+                    .tool_tip(crate::tr!("common", "common-view-pull-request").to_string())
                     .build()
                     .finish();
                 stack.add_positioned_overlay_child(tool_tip, udi_tooltip_positioning());
@@ -1811,7 +1811,7 @@ impl DisplayChip {
                 if state.is_hovered() {
                     let tool_tip = appearance
                         .ui_builder()
-                        .tool_tip("Change working directory".to_string())
+                        .tool_tip(crate::tr!("common", "common-change-working-directory").to_string())
                         .build()
                         .finish();
 
@@ -1858,7 +1858,7 @@ impl DisplayChip {
                 if state.is_hovered() && !is_cli_agent_active {
                     let tool_tip = appearance
                         .ui_builder()
-                        .tool_tip("Working directory".to_string())
+                        .tool_tip(crate::tr!("settings", "settings-working-directory-label").to_string())
                         .build()
                         .finish();
 

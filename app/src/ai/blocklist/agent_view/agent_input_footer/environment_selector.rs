@@ -182,7 +182,7 @@ impl GenericMenuItem for NewEnvironmentMenuItem {
     }
 
     fn name(&self) -> String {
-        "New environment".to_string()
+        crate::tr!("settings", "settings-new-environment").to_string()
     }
 
     fn icon(&self, _app: &AppContext) -> Option<Icon> {
@@ -203,7 +203,7 @@ impl EnvironmentSelector {
         let button = ctx.add_typed_action_view(|_ctx| {
             ActionButton::new("", AgentInputButtonTheme)
                 .with_icon(Icon::Globe4)
-                .with_tooltip("Choose an environment")
+                .with_tooltip(crate::tr!("ai_assistant", "ai-assistant-ai-choose-environment-tooltip"))
                 .with_size(ButtonSize::AgentInputButton)
                 .with_disabled_theme(DisabledTheme)
                 .on_click(|ctx| {
@@ -481,9 +481,9 @@ impl EnvironmentSelector {
                 .as_ref(ctx)
                 .environment(id)
                 .map(|environment| environment.name.clone())
-                .unwrap_or_else(|| "New environment".to_string())
+                .unwrap_or_else(|| crate::tr!("settings", "settings-new-environment").to_string())
         } else if is_configuring {
-            "New environment".to_string()
+            crate::tr!("settings", "settings-new-environment").to_string()
         } else {
             "Empty environment".to_string()
         };
@@ -492,9 +492,9 @@ impl EnvironmentSelector {
             button.set_label(label, ctx);
             button.set_tooltip(
                 if is_configuring {
-                    Some("Choose an environment")
+                    Some(crate::tr!("ai_assistant", "ai-assistant-ai-choose-environment-tooltip"))
                 } else {
-                    Some("Agent environment")
+                    Some(crate::tr!("ai_assistant", "ai-assistant-ai-agent-environment-label"))
                 },
                 ctx,
             );

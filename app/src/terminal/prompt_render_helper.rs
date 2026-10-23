@@ -268,7 +268,7 @@ impl PromptRenderHelper {
         }
 
         if !sessions.is_empty() {
-            "Starting shell...".to_string()
+            crate::tr!("ai_assistant", "ai-assistant-ai-starting-shell").to_string()
         } else {
             format!("Starting {}...", model.shell_launch_state().display_name())
         }

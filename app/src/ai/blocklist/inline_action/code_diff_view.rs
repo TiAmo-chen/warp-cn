@@ -789,7 +789,7 @@ impl CodeDiffView {
         let code_review_button = ctx.add_typed_action_view(|ctx| {
             ActionButton::new("", NakedTheme)
                 .with_icon(Icon::Diff)
-                .with_tooltip("Review changes")
+                .with_tooltip(crate::tr!("ai_assistant", "ai-assistant-ai-review-changes"))
                 .with_width(icon_size(ctx))
                 .with_height(icon_size(ctx))
                 .on_click(|ctx| {
@@ -1608,7 +1608,7 @@ impl CodeDiffView {
                 fg_overlay_6(appearance.theme())
             };
             let mcp_config_button = render_provider_icon_button(
-                "Open config",
+                crate::tr!("ai_assistant", "ai-assistant-ai-open-config"),
                 mcp_button_handle.clone(),
                 appearance,
                 icon,
@@ -1944,7 +1944,7 @@ impl CodeDiffView {
         if Self::is_rename_without_changes(diff_type) {
             let placeholder = Container::new(
                 Text::new(
-                    "File renamed without changes",
+                    crate::tr!("code_review", "code-review-file-renamed-without-changes"),
                     appearance.monospace_font_family(),
                     appearance.monospace_font_size(),
                 )
@@ -2372,7 +2372,7 @@ impl CodeDiffView {
 
         let checkbox_text = appearance
             .ui_builder()
-            .span("Don't show me suggested code banners again")
+            .span(crate::tr!("ai_assistant", "ai-assistant-ai-dont-show-suggested-code-banners"))
             .with_style(UiComponentStyles {
                 font_color: Some(font_color),
                 font_size: Some(font_size),
@@ -2385,7 +2385,7 @@ impl CodeDiffView {
         let formatted_text = FormattedTextElement::new(
             FormattedText::new([FormattedTextLine::Line(vec![
                 FormattedTextFragment::hyperlink(
-                    "Manage suggested code banner settings",
+                    crate::tr!("ai_assistant", "ai-assistant-ai-manage-banner-settings"),
                     "Settings > AI",
                 ),
             ])]),
@@ -3058,7 +3058,7 @@ impl BackingView for CodeDiffView {
         // Code diffs should show "Requested Edit" as the title and hide the close button
         // since they are closed via accept/reject actions.
         view::HeaderContent::Standard(view::StandardHeader {
-            title: "Requested Edit".to_string(),
+            title: crate::tr!("pane_group", "pane-group-pane-code-diff-title").to_string(),
             title_secondary: None,
             title_style: None,
             title_clip_config: warpui::text_layout::ClipConfig::start(),

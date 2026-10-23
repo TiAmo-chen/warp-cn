@@ -93,19 +93,19 @@ impl LoginPurpose {
     fn copy(self) -> (&'static str, &'static str) {
         match self {
             LoginPurpose::WarpDrive => (
-                "Get started with Warp Drive",
-                "Connect your account to save and share notebooks, workflows, and more across devices.",
+                crate::tr!("auth", "auth-get-started-with-warp-drive"),
+                crate::tr!("auth", "auth-connect-drive-description"),
             ),
             LoginPurpose::WarpAgent => (
-                "Get started with AI",
-                "Connect your account to enable AI-powered planning, coding, and automation.",
+                crate::tr!("auth", "auth-get-started-with-ai"),
+                crate::tr!("auth", "auth-connect-ai-description"),
             ),
             LoginPurpose::ThirdParty => (
-                "Create an account",
+                crate::tr!("settings", "settings-create-an-account"),
                 "Create a Warp account to enable AI-powered planning, coding, and automations.",
             ),
             LoginPurpose::AccountFirst => (
-                "Create an account",
+                crate::tr!("settings", "settings-create-an-account"),
                 "Access AI, run cloud agents, collaborate with teammates, and sync settings across devices.",
             ),
         }
@@ -649,7 +649,7 @@ impl LoginSlideView {
             .with_child(
                 ui_builder
                     .link(
-                        "Terms of Service".into(),
+                        crate::tr!("auth", "auth-terms-of-service").into(),
                         Some(TOS_URL.into()),
                         None,
                         self.tos_mouse_state.clone(),
@@ -675,7 +675,7 @@ impl LoginSlideView {
             .with_child(
                 ui_builder
                     .link(
-                        "Privacy Settings".into(),
+                        crate::tr!("auth", "auth-privacy-settings").into(),
                         None,
                         Some(Box::new(|ctx| {
                             ctx.dispatch_typed_action(LoginSlideAction::ShowPrivacySettings);
@@ -875,7 +875,7 @@ impl LoginSlideView {
         };
 
         let title = FormattedTextElement::from_str(
-            "Sign in on your browser to continue",
+            crate::tr!("auth", "auth-browser-sign-in-header"),
             appearance.ui_font_family(),
             36.,
         )
@@ -900,7 +900,7 @@ impl LoginSlideView {
                     .with_child(
                         ui_builder
                             .link(
-                                "copy the URL".into(),
+                                crate::tr!("auth", "auth-copy-url").into(),
                                 None,
                                 Some(Box::new(|ctx| {
                                     ctx.dispatch_typed_action(LoginSlideAction::CopyLoginUrl);
@@ -922,7 +922,7 @@ impl LoginSlideView {
             )
             .with_child(
                 ui_builder
-                    .span("the page manually.")
+                    .span(crate::tr!("auth", "auth-the-page-manually"))
                     .with_style(sub_text_styles)
                     .build()
                     .finish(),
@@ -976,7 +976,7 @@ impl LoginSlideView {
                 .with_child(
                     ui_builder
                         .link(
-                            "Click here to paste your token from the browser".into(),
+                            crate::tr!("auth", "auth-click-here-paste-token").into(),
                             None,
                             Some(Box::new(|ctx| {
                                 ctx.dispatch_typed_action(LoginSlideAction::EnterToken);
@@ -1038,7 +1038,7 @@ impl LoginSlideView {
         let theme = appearance.theme();
 
         let title =
-            FormattedTextElement::from_str("Privacy Settings", appearance.ui_font_family(), 36.)
+            FormattedTextElement::from_str(crate::tr!("auth", "auth-privacy-settings"), appearance.ui_font_family(), 36.)
                 .with_color(internal_colors::text_main(
                     theme,
                     theme.background().into_solid(),
@@ -1107,16 +1107,16 @@ impl LoginSlideView {
             &'static str,
         ) = match self.login_purpose() {
             LoginPurpose::WarpDrive => (
-                "Are you sure you want to disable Warp Drive?",
+                crate::tr!("auth", "auth-sure-disable-warp-drive"),
                 "Warp Drive lets you save workflows and knowledge across devices and share them with your team. By continuing, you won't have access to the following features:",
                 WARP_DRIVE_FEATURES,
-                "Enable Warp Drive",
+                crate::tr!("auth", "auth-enable-warp-drive"),
             ),
             LoginPurpose::WarpAgent | LoginPurpose::ThirdParty | LoginPurpose::AccountFirst => (
                 "Continue without signing in?",
                 "Without an account, you won't have access to Warp's AI features. Sign in anytime to unlock agents and other AI features.",
                 &[],
-                "Sign in",
+                crate::tr!("workspace", "workspace-sign-in"),
             ),
         };
 
@@ -1155,7 +1155,7 @@ impl LoginSlideView {
         let confirm_button = self.dialog_skip_button.render(
             appearance,
             button::Params {
-                content: button::Content::Label("Skip for now".into()),
+                content: button::Content::Label(crate::tr!("auth", "auth-skip-button").into()),
                 theme: &button::themes::Primary,
                 options: button::Options {
                     keystroke: Some(dialog_enter),

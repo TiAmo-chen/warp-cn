@@ -493,19 +493,19 @@ impl OrchestrationPillBar {
 
         let mut items = if is_open_elsewhere {
             vec![item(
-                "Focus pane",
+                crate::tr!("ai_assistant", "ai-assistant-ai-focus-pane"),
                 Icon::ArrowSplit,
                 OrchestrationPillBarAction::FocusOpenedConversation(conversation_id),
             )]
         } else {
             vec![
                 item(
-                    "Open in new pane",
+                    crate::tr!("ai_assistant", "ai-assistant-ai-open-in-new-pane"),
                     Icon::ArrowSplit,
                     OrchestrationPillBarAction::OpenInNewPane(conversation_id),
                 ),
                 item(
-                    "Open in new tab",
+                    crate::tr!("ai_assistant", "ai-assistant-ai-open-in-new-tab"),
                     Icon::Plus,
                     OrchestrationPillBarAction::OpenInNewTab(conversation_id),
                 ),
@@ -513,7 +513,7 @@ impl OrchestrationPillBar {
         };
         if Self::oz_run_url_for_conversation(conversation_id, ctx).is_some() {
             items.push(item(
-                "View in Oz",
+                crate::tr!("ai_assistant", "ai-assistant-ai-view-in-oz"),
                 Icon::Oz,
                 OrchestrationPillBarAction::ViewInOz(conversation_id),
             ));
@@ -534,7 +534,7 @@ impl OrchestrationPillBar {
         items.push(MenuItem::Separator);
         if is_in_progress {
             items.push(destructive_item(
-                "Stop agent",
+                crate::tr!("ai_assistant", "ai-assistant-ai-stop-agent"),
                 Icon::StopFilled,
                 OrchestrationPillBarAction::Stop(conversation_id),
             ));
@@ -542,7 +542,7 @@ impl OrchestrationPillBar {
         let (kill_label, kill_icon) = if is_in_finished_state {
             ("Delete agent", Icon::Trash)
         } else {
-            ("Kill agent", Icon::X)
+            (crate::tr!("ai_assistant", "ai-assistant-ai-kill-agent"), Icon::X)
         };
         items.push(destructive_item(
             kill_label,

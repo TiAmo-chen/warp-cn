@@ -205,7 +205,7 @@ pub fn render_chip_editor_sections<A: Action + Clone + Copy + 'static>(
     );
 
     let left_section = Flex::column()
-        .with_child(render_section_label("Left side", appearance))
+        .with_child(render_section_label(crate::tr!("chip_configurator", "chip-configurator-left-side"), appearance))
         .with_child(
             Container::new(chip_configurator.render_left_drop_zone(
                 config.activate_action,
@@ -218,7 +218,7 @@ pub fn render_chip_editor_sections<A: Action + Clone + Copy + 'static>(
         .finish();
 
     let right_section = Flex::column()
-        .with_child(render_section_label("Right side", appearance))
+        .with_child(render_section_label(crate::tr!("chip_configurator", "chip-configurator-right-side"), appearance))
         .with_child(
             Container::new(chip_configurator.render_right_drop_zone(
                 config.activate_action,
@@ -302,7 +302,7 @@ fn render_buttons<A: Action + Clone + Copy + 'static>(
     );
 
     let save_button = render_primary_button(
-        "Save changes".to_string(),
+        crate::tr!("common", "common-save-changes-label").to_string(),
         ButtonVariant::Accent,
         !config.is_dirty,
         &config.mouse_handles.save,

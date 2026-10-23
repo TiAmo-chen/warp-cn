@@ -636,7 +636,7 @@ impl PlatformPageWidget {
             Expanded::new(1., self.render_header_cell(appearance, &crate::tr!("settings", "last-used"))).finish(),
         );
         header_row.add_child(
-            Expanded::new(1., self.render_header_cell(appearance, "Expires at")).finish(),
+            Expanded::new(1., self.render_header_cell(appearance, crate::tr!("settings", "settings-expires-at"))).finish(),
         );
         header_row.add_child(Expanded::new(0.5, self.render_header_cell(appearance, "")).finish());
 

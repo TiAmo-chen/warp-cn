@@ -277,13 +277,13 @@ static PLUGIN_INSTALL_INSTRUCTIONS: LazyLock<PluginInstructions> =
         subtitle: "Run the following commands, then restart Codex.",
         steps: &[
             PluginInstructionStep {
-                description: "Add the Warp plugin marketplace repository",
+                description: crate::tr!("terminal", "terminal-plugin-add-repo-step"),
                 command: "codex plugin marketplace add warpdotdev/codex-warp",
                 executable: true,
                 link: None,
             },
             PluginInstructionStep {
-                description: "Install the Warp plugin",
+                description: crate::tr!("terminal", "terminal-plugin-install-step"),
                 command: "codex plugin add warp@codex-warp",
                 executable: true,
                 link: None,
@@ -294,11 +294,11 @@ static PLUGIN_INSTALL_INSTRUCTIONS: LazyLock<PluginInstructions> =
 
 static NATIVE_INSTALL_INSTRUCTIONS: LazyLock<PluginInstructions> = LazyLock::new(|| {
     PluginInstructions {
-        title: "Enable Warp Notifications for Codex",
-        subtitle: "Update Codex to the latest version, then enable in-focus notifications so Warp can display them while you work.",
+        title: crate::tr!("terminal", "terminal-plugin-install-codex-title"),
+        subtitle: crate::tr!("terminal", "terminal-plugin-install-codex-subtitle"),
         steps: &[
             PluginInstructionStep {
-                description: "Update Codex to the latest version.",
+                description: crate::tr!("terminal", "terminal-plugin-codex-update-step"),
                 command: "",
                 executable: false,
                 link: Some("https://developers.openai.com/codex/cli#upgrade"),
@@ -310,7 +310,7 @@ static NATIVE_INSTALL_INSTRUCTIONS: LazyLock<PluginInstructions> = LazyLock::new
                 link: None,
             },
         ],
-        post_install_notes: &["Restart Codex to apply the changes."],
+        post_install_notes: &[crate::tr!("terminal", "terminal-plugin-restart-codex")],
     }
 });
 

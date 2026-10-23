@@ -164,12 +164,12 @@ impl View for WasmNUXDialog {
 
         let dialog = if self.requested_download {
             Dialog::new(
-                "Open in Warp Desktop?".to_string(),
-                Some("Future links will automatically open on desktop.".to_string()),
+                crate::tr!("workspace", "workspace-open-desktop-question").to_string(),
+                Some(crate::tr!("workspace", "workspace-future-links-desktop").to_string()),
                 dialog_styles,
             )
             .with_bottom_row_child(Self::render_dialog_button(
-                "Open in Warp",
+                crate::tr!("ai_assistant", "ai-assistant-ai-open-in-warp"),
                 WasmNUXDialogAction::OpenNativeAndClose,
                 &self.confirm_mouse_state,
                 appearance,
@@ -183,7 +183,7 @@ impl View for WasmNUXDialog {
                         .with_child(
                             appearance
                                 .ui_builder()
-                                .span("Warp is the intelligent terminal with AI and your dev team's knowledge built-in.")
+                                .span(crate::tr!("workspace", "workspace-intelligent-terminal-promo"))
                                 .with_style(UiComponentStyles {
                                     font_weight: Some(Weight::Thin),
                                     font_color: Some(
@@ -203,7 +203,7 @@ impl View for WasmNUXDialog {
                                 appearance
                                     .ui_builder()
                                     .link(
-                                        "Learn more".to_string(),
+                                        crate::tr!("common", "common-learn-more-label").to_string(),
                                         None,
                                         Some(Box::new(|ctx| {
                                             ctx.dispatch_typed_action(
@@ -235,7 +235,7 @@ impl View for WasmNUXDialog {
 
             Dialog::new(
                 format!("Always open {object_kind} on the web?"),
-                Some("You can change this at any time in settings.".to_string()),
+                Some(crate::tr!("workspace", "workspace-change-in-settings").to_string()),
                 dialog_styles,
             )
             .with_bottom_row_child(Self::render_dialog_button(

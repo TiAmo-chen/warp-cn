@@ -138,7 +138,7 @@ impl TypedActionView for TransferOwnershipConfirmationModal {
                 let (Some(new_owner_uid), Some(team_uid)) = (self.new_owner_uid, self.team_uid)
                 else {
                     report_error!(
-                        "Transfer ownership confirm button pressed with no new owner set"
+                        crate::tr!("settings", "settings-transfer-ownership-confirm-button-pressed-with-no-new-owner-set")
                     );
                     return;
                 };

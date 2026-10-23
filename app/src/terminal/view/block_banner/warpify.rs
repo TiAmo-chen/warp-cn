@@ -46,7 +46,7 @@ impl WarpifyBannerState {
     }
 
     pub fn title(&self) -> &str {
-        "Warpify subshell"
+        crate::tr!("terminal", "terminal-warpify-subshell")
     }
 
     pub fn action(&self) -> TerminalAction {

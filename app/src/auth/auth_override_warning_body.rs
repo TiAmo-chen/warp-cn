@@ -32,7 +32,7 @@ const AUTH_OVERRIDE_DESCRIPTION: &str = "It looks like you logged into a Warp ac
 const AUTH_OVERRIDE_CONFIRMATION_WARNING: &str = "This cannot be undone.";
 const AUTH_OVERRIDE_INITIAL_STEP_HEADER: &str = "New login detected";
 const AUTH_OVERRIDE_CONFIRM_CONFIRMATION_STEP_HEADER: &str =
-    "Delete personal Warp Drive objects and preferences?";
+    crate::tr!("auth", "auth-override-confirm-delete-header");
 const AUTH_OVERRIDE_BULK_EXPORT_BUTTON_LABEL: &str = "Export your data";
 const AUTH_OVERRIDE_BULK_EXPORT_DESCRIPTION: &str = " to import later.";
 const AUTH_OVERRIDE_CANCEL_BUTTON_LABEL: &str = "Cancel";
@@ -376,7 +376,7 @@ impl View for AuthOverrideWarningBody {
 
     fn accessibility_contents(&self, _: &AppContext) -> Option<AccessibilityContent> {
         Some(AccessibilityContent::new(
-            "New login detected",
+            crate::tr!("auth", "auth-override-new-login-header"),
             "Warp has detected a new login from a web browser. Press escape to cancel and continue using Warp without login.",
             WarpA11yRole::HelpRole,
         ))

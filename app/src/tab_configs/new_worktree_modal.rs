@@ -324,7 +324,7 @@ impl View for NewWorktreeModal {
         // ── Header (custom — Modal wrapper has no title) ────────────────
         let header = {
             let title = Text::new_inline(
-                "New worktree".to_string(),
+                crate::tr!("workspace", "workspace-new-worktree").to_string(),
                 appearance.ui_font_family(),
                 HEADER_TITLE_FONT_SIZE,
             )

@@ -109,7 +109,7 @@ impl ThemeDeletionBody {
             }
         }
         if errored {
-            self.send_error_toast("Something went wrong", ctx);
+            self.send_error_toast(crate::tr!("errors", "errors-generic-title"), ctx);
         }
     }
 

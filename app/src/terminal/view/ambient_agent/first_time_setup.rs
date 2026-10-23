@@ -51,7 +51,7 @@ impl TrialCredits {
                 format_dollars(cents as f32)
             ),
             None if self.credits == 1 => {
-                "You have 1 free credit to use on Oz cloud agents.".to_string()
+                crate::tr!("agent_cloud", "agent-cloud-credits-single").to_string()
             }
             None => format!(
                 "You have {} free credits to use on Oz cloud agents.",
@@ -131,7 +131,7 @@ impl FirstTimeCloudAgentSetupView {
                 };
 
                 let Some(owner) = owner else {
-                    report_error!("Unable to create environment: not logged in");
+                    report_error!(crate::tr!("settings", "settings-unable-to-create-environment-not-logged-in"));
                     // Reset form before emitting cancelled event
                     self.reset_form(ctx);
                     ctx.emit(FirstTimeCloudAgentSetupViewEvent::Cancelled);
@@ -194,7 +194,7 @@ impl FirstTimeCloudAgentSetupView {
             FormattedTextFragment::plain_text(
                 "Use Oz cloud agents to run parallel agents, build agents that run autonomously, and check in on your agents from anywhere. ",
             ),
-            FormattedTextFragment::hyperlink("Visit docs", "https://docs.warp.dev/platform/"),
+            FormattedTextFragment::hyperlink(crate::tr!("agent_cloud", "agent-cloud-visit-docs"), "https://docs.warp.dev/platform/"),
         ];
         column.add_child(
             FormattedTextElement::new(
@@ -242,7 +242,7 @@ impl FirstTimeCloudAgentSetupView {
         let badge_text = if credits.usage_cents.is_some() {
             "Free usage"
         } else {
-            "Free credits"
+            crate::tr!("terminal", "terminal-free-credits")
         };
         // Badge with blue border
         let badge = Container::new(

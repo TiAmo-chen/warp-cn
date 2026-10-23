@@ -51,7 +51,7 @@ pub fn render_cloud_mode_loading_screen<T: Entity>(
         // Add link at the end if it exists
         if let Some(link_target) = tip.link() {
             fragments.push(FormattedTextFragment::plain_text(" "));
-            fragments.push(FormattedTextFragment::hyperlink("Learn more", link_target));
+            fragments.push(FormattedTextFragment::hyperlink(crate::tr!("common", "common-learn-more-label"), link_target));
         }
 
         let formatted_text = FormattedText::new(vec![FormattedTextLine::Line(fragments)]);
@@ -418,7 +418,7 @@ pub fn render_cloud_mode_cancelled_screen(appearance: &Appearance) -> Box<dyn El
 
     // Title text - "Cloud Agent Run Cancelled"
     let title_text = Text::new(
-        "Cloud Agent Run Cancelled",
+        crate::tr!("agent_cloud", "agent-cloud-cancelled-title"),
         appearance.ui_font_family(),
         appearance.monospace_font_size() + 2.,
     )
@@ -428,7 +428,7 @@ pub fn render_cloud_mode_cancelled_screen(appearance: &Appearance) -> Box<dyn El
 
     // Subtitle text - "No cloud environment was started"
     let subtitle_text = Text::new(
-        "No cloud environment was started",
+        crate::tr!("agent_cloud", "agent-cloud-cancelled-subtitle"),
         appearance.ui_font_family(),
         appearance.monospace_font_size(),
     )

@@ -127,7 +127,7 @@ impl AgentTypeSelector {
         let theme = appearance.theme();
 
         let title = Text::new(
-            "Choose your agent".to_string(),
+            crate::tr!("ai_assistant", "ai-assistant-ai-choose-your-agent").to_string(),
             appearance.ui_font_family(),
             TITLE_FONT_SIZE,
         )
@@ -334,8 +334,8 @@ impl AgentTypeSelector {
         let cloud_agent_option = self.render_option(
             0,
             Icon::CloudFilled,
-            "Cloud agent",
-            "Runs autonomously in a cloud environment you choose. Best for parallel or long-running work.",
+            crate::tr!("ai_assistant", "ai-assistant-ai-cloud-agent"),
+            crate::tr!("ai_assistant", "ai-assistant-ai-cloud-agent-desc"),
             true,
             self.cloud_agent_mouse_state.clone(),
             AgentTypeSelectorAction::SelectCloudAgent,
@@ -345,8 +345,8 @@ impl AgentTypeSelector {
         let local_agent_option = self.render_option(
             1,
             Icon::Agent,
-            "Local agent",
-            "Runs on your machine and requires supervision. Best for quick, interactive tasks.",
+            crate::tr!("ai_assistant", "ai-assistant-ai-local-agent"),
+            crate::tr!("ai_assistant", "ai-assistant-ai-local-agent-desc"),
             false,
             self.local_agent_mouse_state.clone(),
             AgentTypeSelectorAction::SelectLocalAgent,

@@ -38,7 +38,7 @@ pub const CHATGPT_CONTINUED_WITH_WARP_CREDITS_TEXT: &str = "Continued with Warp 
 /// Text to use as a label throughout the app for user interactions that will attach selected
 /// block(s) or text selections to a new AI query.
 pub static ATTACH_AS_AGENT_MODE_CONTEXT_TEXT: LazyLock<&'static str> =
-    LazyLock::new(|| "Attach as agent context");
+    LazyLock::new(|| crate::tr!("ai_assistant", "ai-assistant-ai-attach-as-agent-context"));
 
 /// Label we use for the the command palette action to create a new local Warp Agent pane.
 pub static NEW_AGENT_PANE_LABEL: LazyLock<&'static str> = LazyLock::new(|| "New Agent Pane");
@@ -140,7 +140,7 @@ pub fn failed_output_presentation(
             }
         }
         RenderableAIError::ServerOverloaded => FailedOutputPresentation::Message(
-            "Warp is currently overloaded. Please try again later.".to_string(),
+            crate::tr!("ai_assistant", "ai-assistant-ai-server-overloaded").to_string(),
         ),
         RenderableAIError::InternalWarpError => FailedOutputPresentation::Message(format!(
             "{ERROR_APOLOGY_TEXT}\n\n{INTERNAL_WARP_ERROR}"
@@ -154,7 +154,7 @@ pub fn failed_output_presentation(
             provider,
             model_name,
         } => FailedOutputPresentation::InvalidApiKey {
-            title: "Provided API key is not valid",
+            title: crate::tr!("ai_assistant", "ai-assistant-ai-invalid-api-key"),
             detail: format!(
                 "Failed to authenticate with {provider} when using {model_name}. \
                  Double-check that your API key is correct."
@@ -278,7 +278,7 @@ pub fn render_ai_follow_up_icon(
             let tooltip_background = appearance.theme().tooltip_background();
             let tool_tip = appearance
                 .ui_builder()
-                .tool_tip("Follow up with existing conversation".to_owned())
+                .tool_tip(crate::tr!("ai_assistant", "ai-assistant-ai-follow-up-with-existing-conversation").to_owned())
                 .with_style(UiComponentStyles {
                     font_size: Some(12.),
                     background: Some(warpui::elements::Fill::Solid(tooltip_background)),

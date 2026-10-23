@@ -256,7 +256,7 @@ impl AuthViewBody {
             .with_child(
                 ui_builder
                     .link(
-                        "Click here to paste your token from the browser".into(),
+                        crate::tr!("auth", "auth-click-here-paste-token").into(),
                         None,
                         Some(Box::new(|ctx| {
                             ctx.dispatch_typed_action(AuthViewBodyAction::EnterToken);
@@ -337,7 +337,7 @@ impl AuthViewBody {
                 .with_child(
                     ui_builder
                         .link(
-                            "Terms of Service".into(),
+                            crate::tr!("auth", "auth-terms-of-service").into(),
                             Some(TOS_URL.into()),
                             None,
                             self.mouse_state_handles.tos_mouse_state_handle.clone(),
@@ -357,7 +357,7 @@ impl AuthViewBody {
             Align::new(
                 ui_builder
                     .link(
-                        "Privacy Settings".into(),
+                        crate::tr!("auth", "auth-privacy-settings").into(),
                         None,
                         Some(Box::new(|ctx| {
                             ctx.dispatch_typed_action(AuthViewBodyAction::ShowOverlay(
@@ -378,7 +378,7 @@ impl AuthViewBody {
             Flex::column()
                 .with_child(
                     ui_builder
-                        .paragraph("If you'd like to opt out of analytics and AI features,")
+                        .paragraph(crate::tr!("auth", "auth-opt-out-analytics-1"))
                         .with_style(disclaimer_styles)
                         .build()
                         .finish(),
@@ -395,7 +395,7 @@ impl AuthViewBody {
                         .with_child(
                             ui_builder
                                 .link(
-                                    "Privacy Settings".into(),
+                                    crate::tr!("auth", "auth-privacy-settings").into(),
                                     None,
                                     Some(Box::new(|ctx| {
                                         ctx.dispatch_typed_action(AuthViewBodyAction::ShowOverlay(
@@ -494,7 +494,7 @@ impl AuthViewBody {
             .with_child(
                 ui_builder
                     .link(
-                        "Sign in".into(),
+                        crate::tr!("workspace", "workspace-sign-in").into(),
                         None,
                         Some(Box::new(|ctx| {
                             ctx.dispatch_typed_action(AuthViewBodyAction::Login);
@@ -522,7 +522,7 @@ impl AuthViewBody {
                 .with_child(
                     ui_builder
                         .link(
-                            "Skip for now".into(),
+                            crate::tr!("auth", "auth-skip-button").into(),
                             None,
                             Some(Box::new(|ctx| {
                                 ctx.dispatch_typed_action(AuthViewBodyAction::InitiateLoginLater);
@@ -546,13 +546,13 @@ impl AuthViewBody {
             Flex::column()
                 .with_child(
                     ui_builder
-                        .paragraph("Are you sure you want to skip login?")
+                        .paragraph(crate::tr!("auth", "auth-skip-login-confirm"))
                         .build()
                         .finish(),
                 )
                 .with_child(
                     ui_builder
-                        .paragraph("You can sign up later, but some features, such as AI,")
+                        .paragraph(crate::tr!("auth", "auth-skip-login-warning-1"))
                         .build()
                         .finish(),
                 )
@@ -567,7 +567,7 @@ impl AuthViewBody {
                         .with_child(
                             ui_builder
                                 .link(
-                                    "Yes, skip login".into(),
+                                    crate::tr!("auth", "auth-skip-login-yes").into(),
                                     None,
                                     Some(Box::new(|ctx| {
                                         ctx.dispatch_typed_action(AuthViewBodyAction::LoginLater);
@@ -608,10 +608,10 @@ impl AuthViewBody {
                 "In order to use Warp’s AI features or collaborate with others, please create an account."
             }
             AuthViewVariant::HitDriveObjectLimitCloseable => {
-                "In order to create more objects in Warp Drive, please create an account."
+                crate::tr!("auth", "auth-hit-drive-limit-closeable")
             }
             AuthViewVariant::ShareRequirementCloseable => {
-                "In order to share, please create an account."
+                crate::tr!("auth", "auth-share-requirement-closeable")
             }
             _ => "",
         };
@@ -777,7 +777,7 @@ impl AuthViewBody {
                         .with_child(
                             ui_builder
                                 .link(
-                                    "copy the URL".into(),
+                                    crate::tr!("auth", "auth-copy-url").into(),
                                     None,
                                     Some(Box::new(|event_ctx| {
                                         event_ctx.dispatch_typed_action(
@@ -796,7 +796,7 @@ impl AuthViewBody {
                 )
                 .with_child(
                     ui_builder
-                        .span("and open the page manually.")
+                        .span(crate::tr!("auth", "auth-open-manually"))
                         .build()
                         .finish(),
                 )
@@ -992,8 +992,8 @@ impl View for AuthViewBody {
 
     fn accessibility_contents(&self, _: &AppContext) -> Option<AccessibilityContent> {
         Some(AccessibilityContent::new(
-            "Welcome to Warp!",
-            "Press enter to open your browser to Sign Up or Sign In.",
+            crate::tr!("auth", "auth-welcome-to-warp"),
+            crate::tr!("auth", "auth-press-enter-to-open-browser"),
             WarpA11yRole::HelpRole,
         ))
     }

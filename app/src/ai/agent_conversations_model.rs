@@ -469,7 +469,7 @@ impl AgentRunDisplayStatus {
                     .status_message
                     .as_ref()
                     .map(|m| m.message.clone())
-                    .unwrap_or_else(|| "Task blocked".to_string()),
+                    .unwrap_or_else(|| crate::tr!("ai_assistant", "ai-assistant-ai-task-blocked").to_string()),
             },
             AmbientAgentTaskState::Cancelled => Self::TaskCancelled,
             AmbientAgentTaskState::Unknown => Self::TaskUnknown,

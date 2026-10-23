@@ -145,7 +145,7 @@ async fn read_remote_file(
                     .error
                     .map(|e| e.message)
                     .unwrap_or_else(|| "Unknown error".to_string());
-                if message.contains("not found") || message.contains("Not found") {
+                if message.contains("not found") || message.contains(crate::tr!("errors", "errors-not-found-title")) {
                     FileReadResult::NotFound
                 } else {
                     FileReadResult::ReadError(message)

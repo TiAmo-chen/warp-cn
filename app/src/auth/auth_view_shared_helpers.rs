@@ -54,7 +54,7 @@ where
         ..Default::default()
     };
 
-    let text = "You are currently offline. An internet connection is required to use Warp for the first time.";
+    let text = crate::tr!("auth", "auth-offline-message");
 
     let (button_color, button_variant) = action_button_color_and_variant(appearance);
     let button_styles = UiComponentStyles {
@@ -184,7 +184,7 @@ where
                 Container::new(
                     appearance
                         .ui_builder()
-                        .span("Using Warp Offline")
+                        .span(crate::tr!("auth", "auth-using-warp-offline"))
                         .with_style(header_styles)
                         .build()
                         .finish(),
@@ -362,7 +362,7 @@ pub fn render_privacy_settings_overlay_body<A: Action + Clone + 'static>(
             .with_child(
                 Container::new(
                     ui_builder
-                        .span("Privacy Settings")
+                        .span(crate::tr!("auth", "auth-privacy-settings"))
                         .with_style(header_styles)
                         .build()
                         .finish(),
@@ -449,7 +449,7 @@ pub fn render_privacy_settings_toggles<A: Action + Clone + 'static>(
         .with_child(
             Shrinkable::new(
                 1.,
-                render_privacy_settings_section_header("Help improve Warp", appearance).finish(),
+                render_privacy_settings_section_header(crate::tr!("auth", "auth-help-improve-warp"), appearance).finish(),
             )
             .finish(),
         )
@@ -468,7 +468,7 @@ pub fn render_privacy_settings_toggles<A: Action + Clone + 'static>(
 
     let telemetry_description = render_description(
         appearance,
-        "High-level feature usage data helps Warp's product team prioritize the roadmap.".into(),
+        crate::tr!("auth", "auth-telemetry-description").into(),
     );
 
     let telemetry_link = Flex::row()
@@ -476,7 +476,7 @@ pub fn render_privacy_settings_toggles<A: Action + Clone + 'static>(
             appearance
                 .ui_builder()
                 .link(
-                    "Learn more".into(),
+                    crate::tr!("common", "common-learn-more-label").into(),
                     Some(PRIVACY_URL.into()),
                     None,
                     handles.telemetry_docs_mouse.clone(),
@@ -494,7 +494,7 @@ pub fn render_privacy_settings_toggles<A: Action + Clone + 'static>(
         .with_child(
             Shrinkable::new(
                 1.,
-                render_privacy_settings_section_header("Send crash reports", appearance).finish(),
+                render_privacy_settings_section_header(crate::tr!("auth", "auth-send-crash-reports"), appearance).finish(),
             )
             .finish(),
         )
@@ -513,7 +513,7 @@ pub fn render_privacy_settings_toggles<A: Action + Clone + 'static>(
 
     let crash_reporting_description = render_description(
         appearance,
-        "Crash reporting helps Warp's engineering team understand stability and improve performance.".into(),
+        crate::tr!("auth", "auth-crash-reporting-description").into(),
     );
 
     let toggle_cloud = actions.toggle_cloud_conversation_storage.clone();
@@ -524,7 +524,7 @@ pub fn render_privacy_settings_toggles<A: Action + Clone + 'static>(
             Shrinkable::new(
                 1.,
                 render_privacy_settings_section_header(
-                    "Store AI conversations in the cloud",
+                    crate::tr!("auth", "auth-store-ai-conversations"),
                     appearance,
                 )
                 .finish(),

@@ -966,20 +966,20 @@ impl CommentListView {
     ) -> Cow<'static, str> {
         if let ReviewDestination::Cli(agent) = destination {
             if !has_sendable_comments {
-                Cow::Borrowed("No non-outdated comments to send")
+                Cow::Borrowed(crate::tr!("code_review", "code-review-no-non-outdated-comments"))
             } else {
                 Cow::Owned(format!("Send diff comments to {}", agent.display_name()))
             }
         } else if !ai_enabled {
-            Cow::Borrowed("AI must be enabled to send comments to Agent")
+            Cow::Borrowed(crate::tr!("code_review", "code-review-ai-must-be-enabled"))
         } else if !ai_available {
-            Cow::Borrowed("Agent code review requires AI credits")
+            Cow::Borrowed(crate::tr!("code_review", "code-review-agent-requires-credits"))
         } else if matches!(destination, ReviewDestination::None) {
-            Cow::Borrowed("All terminals are busy")
+            Cow::Borrowed(crate::tr!("code_review", "code-review-all-terminals-busy"))
         } else if !has_sendable_comments {
-            Cow::Borrowed("No non-outdated comments to send")
+            Cow::Borrowed(crate::tr!("code_review", "code-review-no-non-outdated-comments"))
         } else {
-            Cow::Borrowed("Send diff comments to Agent")
+            Cow::Borrowed(crate::tr!("code_review", "code-review-send-comments-to-agent"))
         }
     }
 
@@ -1062,7 +1062,7 @@ impl CommentListView {
         appearance: &Appearance,
     ) -> Vec<MenuItem<CommentListAction>> {
         let mut items = vec![
-            MenuItemFields::new("Copy text")
+            MenuItemFields::new(crate::tr!("code_editor", "code-editor-code-review-copy-text"))
                 .with_icon(Icon::Copy)
                 .with_on_select_action(CommentListAction::CopyCommentText)
                 .into_item(),
@@ -1073,9 +1073,9 @@ impl CommentListView {
             .with_on_select_action(CommentListAction::EditComment);
         if is_file_level || is_outdated {
             let tooltip_text = if is_file_level {
-                "File-level comments currently can't be edited."
+                crate::tr!("code_review", "code-review-file-level-cannot-edit")
             } else {
-                "Outdated comments can't be edited."
+                crate::tr!("code_review", "code-review-outdated-cannot-edit")
             };
             edit_item = edit_item.with_disabled(true).with_tooltip(tooltip_text);
         }
@@ -1083,7 +1083,7 @@ impl CommentListView {
 
         if let Some(url) = html_url {
             items.push(
-                MenuItemFields::new("View in GitHub")
+                MenuItemFields::new(crate::tr!("code_editor", "code-editor-code-review-view-in-github"))
                     .with_icon(Icon::Github)
                     .with_on_select_action(CommentListAction::ViewInGitHub {
                         url: url.to_string(),

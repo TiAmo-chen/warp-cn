@@ -891,7 +891,7 @@ impl AuthSecretFtuxView {
         let theme = appearance.theme();
         let label_color = internal_colors::text_sub(theme, theme.surface_1());
         let label = Text::new_inline(
-            "Share with team".to_string(),
+            crate::tr!("settings", "settings-share-with-team").to_string(),
             appearance.ui_font_family(),
             TYPE_DESCRIPTION_FONT_SIZE,
         )

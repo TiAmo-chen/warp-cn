@@ -1499,7 +1499,7 @@ impl TypedActionView for CLISubagentView {
                 let window_id = ctx.window_id();
                 ToastStack::handle(ctx).update(ctx, |toast_stack, ctx| {
                     toast_stack.add_ephemeral_toast(
-                        DismissibleToast::success(String::from("Copied to clipboard")),
+                        DismissibleToast::success(String::from(crate::tr!("ai_assistant", "ai-assistant-ai-copied-to-clipboard"))),
                         window_id,
                         ctx,
                     );
@@ -1882,7 +1882,7 @@ fn render_permissions_speedbump(
 
     let checkbox_text = appearance
         .ui_builder()
-        .span("Always allow")
+        .span(crate::tr!("ai_assistant", "ai-assistant-ai-profile-always-allow"))
         .with_style(UiComponentStyles {
             font_color: Some(font_color),
             font_size: Some(font_size),
@@ -2066,7 +2066,7 @@ fn render_search_action_input(
             ref path,
         } => {
             let display_path = if path == "." {
-                "the current directory"
+                crate::tr!("ai_assistant", "ai-assistant-ai-the-current-directory")
             } else {
                 path.as_str()
             };
@@ -2086,7 +2086,7 @@ fn render_search_action_input(
             ref patterns,
             ref search_dir,
         } => {
-            let display_path = search_dir.as_deref().unwrap_or("the current directory");
+            let display_path = search_dir.as_deref().unwrap_or(crate::tr!("ai_assistant", "ai-assistant-ai-the-current-directory"));
 
             if patterns.len() == 1 {
                 format!(

@@ -133,9 +133,9 @@ pub fn empty_env_recommendation_message(
         return None;
     }
     Some(if has_visible_environment {
-        "We recommend selecting an environment for cloud agents.".to_string()
+        crate::tr!("ai_assistant", "ai-assistant-ai-recommend-select-env").to_string()
     } else {
-        "We recommend creating an environment for cloud agents.".to_string()
+        crate::tr!("ai_assistant", "ai-assistant-ai-recommend-create-env").to_string()
     })
 }
 

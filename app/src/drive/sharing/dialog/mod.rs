@@ -1832,7 +1832,7 @@ impl SharingDialog {
     fn render_access_header(&self, appearance: &Appearance) -> Box<dyn Element> {
         appearance
             .ui_builder()
-            .span("Who has access")
+            .span(crate::tr!("drive", "drive-sharing-who-has-access"))
             .with_style(UiComponentStyles {
                 font_color: Some(style::label_text(appearance)),
                 font_size: Some(style::PRIMARY_TEXT_SIZE),
@@ -2070,13 +2070,13 @@ impl SharingDialog {
         let is_ai_conversation = matches!(self.target, Some(ShareableObject::AIConversation(_)));
 
         let mut items = vec![
-            MenuItemFields::new("Only people invited")
+            MenuItemFields::new(crate::tr!("drive", "drive-sharing-only-invited"))
                 .with_on_select_action(SharingDialogAction::SetLinkPermissions(None))
                 .with_icon(Icon::Lock)
                 .with_disabled(inherited_access)
                 .into_item(),
             MenuItem::Separator,
-            MenuItemFields::new("Anyone with the link")
+            MenuItemFields::new(crate::tr!("drive", "drive-sharing-anyone-link"))
                 .with_no_interaction_on_hover()
                 .with_icon(Icon::Globe)
                 .into_item(),
@@ -2251,13 +2251,13 @@ impl SharingDialog {
         let inherited_access = self.team_sharing_state.inheritance.is_some();
         let current_access_level = self.team_sharing_state.access_level;
         let items = [
-            MenuItemFields::new("Only invited teammates")
+            MenuItemFields::new(crate::tr!("drive", "drive-sharing-only-invited-teammates"))
                 .with_on_select_action(SharingDialogAction::SetTeamPermissions(None))
                 .with_icon(Icon::Lock)
                 .with_disabled(inherited_access)
                 .into_item(),
             MenuItem::Separator,
-            MenuItemFields::new("Teammates with the link")
+            MenuItemFields::new(crate::tr!("drive", "drive-sharing-teammates-link"))
                 .with_no_interaction_on_hover()
                 .with_icon(Icon::Users)
                 .into_item(),
@@ -2716,7 +2716,7 @@ impl SharingDialog {
                         self.render_footer_icon_button(
                             Icon::Copy,
                             SharingDialogAction::CopyLink,
-                            "Copy link",
+                            crate::tr!("ai_assistant", "ai-assistant-ai-doc-copy-link"),
                             self.ui_state_handles.qr_copy_button.clone(),
                             appearance,
                         ),
@@ -2800,7 +2800,7 @@ impl SharingDialog {
             .with_text_and_icon_label(
                 TextAndIcon::new(
                     TextAndIconAlignment::IconFirst,
-                    "Copy link",
+                    crate::tr!("ai_assistant", "ai-assistant-ai-doc-copy-link"),
                     Icon::Link.to_warpui_icon(copy_button_foreground),
                     MainAxisSize::Min,
                     MainAxisAlignment::SpaceBetween,

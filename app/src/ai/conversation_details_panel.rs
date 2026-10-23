@@ -573,7 +573,7 @@ impl ConversationDetailsData {
                 runner_id: None,
                 conversation_id: None,
             },
-            title: "Cloud agent run".to_string(),
+            title: crate::tr!("ai_assistant", "ai-assistant-ai-cloud-agent-run").to_string(),
             creator: None,
             executor: None,
             created_at: None,
@@ -949,7 +949,7 @@ impl ConversationDetailsPanel {
 
                 let window_id = ctx.window_id();
                 ToastStack::handle(ctx).update(ctx, |toast_stack, ctx| {
-                    let toast = DismissibleToast::default("Copied branch name".to_string());
+                    let toast = DismissibleToast::default(crate::tr!("ai_assistant", "ai-assistant-ai-copied-branch-name").to_string());
                     toast_stack.add_ephemeral_toast(toast, window_id, ctx);
                 });
             }
@@ -1592,7 +1592,7 @@ impl ConversationDetailsPanel {
         let oz_link = appearance
             .ui_builder()
             .link(
-                "Open in Oz".to_string(),
+                crate::tr!("ai_assistant", "ai-assistant-ai-open-in-oz").to_string(),
                 Some(skill_url),
                 None,
                 self.mouse_states.skill_link.clone(),
@@ -1629,7 +1629,7 @@ impl ConversationDetailsPanel {
             let source_link = appearance
                 .ui_builder()
                 .link(
-                    "Open in GitHub".to_string(),
+                    crate::tr!("ai_assistant", "ai-assistant-ai-open-in-github-tooltip").to_string(),
                     Some(github_url),
                     None,
                     self.mouse_states.skill_source_link.clone(),
@@ -1653,7 +1653,7 @@ impl ConversationDetailsPanel {
         let ui_font_size = appearance.ui_font_size();
 
         let label_text = Text::new(
-            "Initial query".to_string(),
+            crate::tr!("ai_assistant", "ai-assistant-ai-initial-query").to_string(),
             appearance.ui_font_family(),
             ui_font_size,
         )
@@ -1734,7 +1734,7 @@ impl ConversationDetailsPanel {
         let ui_font_size = appearance.ui_font_size();
 
         let header_text = Text::new(
-            "Environment setup commands".to_string(),
+            crate::tr!("ai_assistant", "ai-assistant-ai-env-setup-commands").to_string(),
             appearance.ui_font_family(),
             ui_font_size,
         )
@@ -1799,7 +1799,7 @@ impl ConversationDetailsPanel {
 
         // Section header
         let header = Text::new(
-            "Environment details".to_string(),
+            crate::tr!("ai_assistant", "ai-assistant-ai-env-details").to_string(),
             appearance.ui_font_family(),
             ui_font_size,
         )
@@ -2245,7 +2245,7 @@ impl View for ConversationDetailsPanel {
                 if let Some(id) = conversation_id {
                     content.add_child(
                         Container::new(self.render_field_with_copy(
-                            "Conversation ID",
+                            crate::tr!("ai_assistant", "ai-assistant-ai-conversation-id-label"),
                             id,
                             ConversationDetailsPanelAction::CopyConversationId,
                             CopyButtonKind::ConversationId,
@@ -2277,7 +2277,7 @@ impl View for ConversationDetailsPanel {
                 if let Some(task_id) = task_id {
                     content.add_child(
                         Container::new(self.render_field_with_copy(
-                            "Run ID",
+                            crate::tr!("ai_assistant", "ai-assistant-ai-run-id-label"),
                             &task_id.to_string(),
                             ConversationDetailsPanelAction::CopyRunId,
                             CopyButtonKind::RunId,
@@ -2310,7 +2310,7 @@ impl View for ConversationDetailsPanel {
         if let Some(duration) = self.data.run_time {
             let formatted = human_readable_precise_duration(duration);
             content.add_child(
-                Container::new(self.render_simple_field("Run time", &formatted, appearance))
+                Container::new(self.render_simple_field(crate::tr!("ai_assistant", "ai-assistant-ai-run-time"), &formatted, appearance))
                     .with_margin_bottom(FIELD_SPACING)
                     .finish(),
             );
@@ -2319,7 +2319,7 @@ impl View for ConversationDetailsPanel {
         if let Some(created_at) = self.data.created_at {
             let formatted = created_at.format("%I:%M %p on %-m/%-d/%Y").to_string();
             content.add_child(
-                Container::new(self.render_simple_field("Created on", &formatted, appearance))
+                Container::new(self.render_simple_field(crate::tr!("ai_assistant", "ai-assistant-ai-filter-created-on-label"), &formatted, appearance))
                     .with_margin_bottom(FIELD_SPACING)
                     .finish(),
             );

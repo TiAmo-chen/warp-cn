@@ -12,7 +12,7 @@ use crate::ui_components::color_dot;
 
 pub static AGENT: LazyLock<StaticCommand> = LazyLock::new(|| StaticCommand {
     name: "/agent",
-    description: "Start a new conversation",
+    description: crate::tr!("ai_assistant", "ai-assistant-ai-start-a-new-conversation"),
     kind: SlashCommandKind::Agent,
     supported_surfaces: SlashCommandSurfaces::GuiAndTui {
         icon_path: "bundled/svg/warp-3.svg",
@@ -24,7 +24,7 @@ pub static AGENT: LazyLock<StaticCommand> = LazyLock::new(|| StaticCommand {
 
 pub static CLOUD_AGENT: LazyLock<StaticCommand> = LazyLock::new(|| StaticCommand {
     name: "/cloud-agent",
-    description: "Start a new cloud agent conversation",
+    description: crate::tr!("search", "search-slash-cloud-agent"),
     kind: SlashCommandKind::CloudAgent,
     supported_surfaces: SlashCommandSurfaces::GuiOnly {
         icon_path: "bundled/svg/warp-3.svg",
@@ -36,7 +36,7 @@ pub static CLOUD_AGENT: LazyLock<StaticCommand> = LazyLock::new(|| StaticCommand
 
 pub const ADD_MCP: StaticCommand = StaticCommand {
     name: "/add-mcp",
-    description: "Add a new MCP server via the MCP settings page",
+    description: crate::tr!("search", "search-slash-mcp"),
     kind: SlashCommandKind::AddMcp,
     supported_surfaces: SlashCommandSurfaces::GuiOnly {
         icon_path: "bundled/svg/dataflow.svg",
@@ -202,7 +202,7 @@ pub const LOGOUT: StaticCommand = StaticCommand {
 
 pub static CREATE_ENVIRONMENT: LazyLock<StaticCommand> = LazyLock::new(|| StaticCommand {
     name: "/create-environment",
-    description: "Create an Oz environment (Docker image + repos) via guided setup",
+    description: crate::tr!("search", "search-slash-env"),
     kind: SlashCommandKind::CreateEnvironment,
     supported_surfaces: SlashCommandSurfaces::GuiOnly {
         icon_path: "bundled/svg/dataflow.svg",
@@ -218,7 +218,7 @@ pub static CREATE_ENVIRONMENT: LazyLock<StaticCommand> = LazyLock::new(|| Static
 
 pub const CREATE_DOCKER_SANDBOX: StaticCommand = StaticCommand {
     name: "/docker-sandbox",
-    description: "Create a new docker sandbox terminal session",
+    description: crate::tr!("search", "search-slash-docker"),
     kind: SlashCommandKind::CreateDockerSandbox,
     supported_surfaces: SlashCommandSurfaces::GuiOnly {
         icon_path: "bundled/svg/docker.svg",
@@ -230,7 +230,7 @@ pub const CREATE_DOCKER_SANDBOX: StaticCommand = StaticCommand {
 
 pub static CREATE_NEW_PROJECT: LazyLock<StaticCommand> = LazyLock::new(|| StaticCommand {
     name: "/create-new-project",
-    description: "Have Oz walk you through creating a new coding project",
+    description: crate::tr!("search", "search-slash-create-project"),
     kind: SlashCommandKind::CreateNewProject,
     supported_surfaces: SlashCommandSurfaces::GuiAndTui {
         icon_path: "bundled/svg/plus.svg",
@@ -242,7 +242,7 @@ pub static CREATE_NEW_PROJECT: LazyLock<StaticCommand> = LazyLock::new(|| Static
 
 pub static EDIT_SKILL: LazyLock<StaticCommand> = LazyLock::new(|| StaticCommand {
     name: "/open-skill",
-    description: "Open a skill's markdown file in Warp's built-in editor",
+    description: crate::tr!("search", "search-slash-skill"),
     kind: SlashCommandKind::EditSkill,
     supported_surfaces: SlashCommandSurfaces::GuiOnly {
         icon_path: "bundled/svg/file-code-02.svg",
@@ -254,7 +254,7 @@ pub static EDIT_SKILL: LazyLock<StaticCommand> = LazyLock::new(|| StaticCommand 
 
 pub static INVOKE_SKILL: LazyLock<StaticCommand> = LazyLock::new(|| StaticCommand {
     name: "/skills",
-    description: "Invoke a skill",
+    description: crate::tr!("search", "search-slash-invoke-skill"),
     kind: SlashCommandKind::InvokeSkill,
     supported_surfaces: SlashCommandSurfaces::GuiAndTui {
         icon_path: "bundled/svg/stars-01.svg",
@@ -266,7 +266,7 @@ pub static INVOKE_SKILL: LazyLock<StaticCommand> = LazyLock::new(|| StaticComman
 
 pub static ADD_PROMPT: LazyLock<StaticCommand> = LazyLock::new(|| StaticCommand {
     name: "/add-prompt",
-    description: "Add new Agent prompt",
+    description: crate::tr!("search", "search-slash-add-prompt"),
     kind: SlashCommandKind::AddPrompt,
     supported_surfaces: SlashCommandSurfaces::GuiOnly {
         icon_path: if FeatureFlag::AgentView.is_enabled() {
@@ -282,7 +282,7 @@ pub static ADD_PROMPT: LazyLock<StaticCommand> = LazyLock::new(|| StaticCommand 
 
 pub const ADD_RULE: StaticCommand = StaticCommand {
     name: "/add-rule",
-    description: "Add a new global rule for the agent",
+    description: crate::tr!("search", "search-slash-add-rule"),
     kind: SlashCommandKind::AddRule,
     supported_surfaces: SlashCommandSurfaces::GuiOnly {
         icon_path: "bundled/svg/book-open.svg",
@@ -294,7 +294,7 @@ pub const ADD_RULE: StaticCommand = StaticCommand {
 
 pub static EDIT: LazyLock<StaticCommand> = LazyLock::new(|| StaticCommand {
     name: "/open-file",
-    description: "Open a file in Warp's code editor",
+    description: crate::tr!("search", "search-slash-edit"),
     kind: SlashCommandKind::Edit,
     supported_surfaces: SlashCommandSurfaces::GuiOnly {
         icon_path: "bundled/svg/file-code-02.svg",
@@ -308,7 +308,7 @@ pub static EDIT: LazyLock<StaticCommand> = LazyLock::new(|| StaticCommand {
 
 pub static RENAME_TAB: LazyLock<StaticCommand> = LazyLock::new(|| StaticCommand {
     name: "/rename-tab",
-    description: "Rename the current tab",
+    description: crate::tr!("search", "search-slash-rename-tab"),
     kind: SlashCommandKind::RenameTab,
     supported_surfaces: SlashCommandSurfaces::GuiOnly {
         icon_path: "bundled/svg/pencil-line.svg",
@@ -344,7 +344,7 @@ static SET_TAB_COLOR_HINT: LazyLock<String> = LazyLock::new(|| {
 
 pub static SET_TAB_COLOR: LazyLock<StaticCommand> = LazyLock::new(|| StaticCommand {
     name: "/set-tab-color",
-    description: "Set the color of the current tab",
+    description: crate::tr!("search", "search-slash-color-tab"),
     kind: SlashCommandKind::SetTabColor,
     supported_surfaces: SlashCommandSurfaces::GuiOnly {
         icon_path: "bundled/svg/ellipse.svg",
@@ -374,7 +374,7 @@ pub static FORK: LazyLock<StaticCommand> = LazyLock::new(|| {
 
 pub static MOVE_TO_CLOUD: LazyLock<StaticCommand> = LazyLock::new(|| StaticCommand {
     name: "/handoff",
-    description: "Hand off this conversation to a cloud agent",
+    description: crate::tr!("search", "search-slash-handoff"),
     kind: SlashCommandKind::MoveToCloud,
     supported_surfaces: SlashCommandSurfaces::GuiAndTui {
         icon_path: "bundled/svg/upload-cloud-01.svg",
@@ -393,7 +393,7 @@ pub static MOVE_TO_CLOUD: LazyLock<StaticCommand> = LazyLock::new(|| StaticComma
 
 pub const OPEN_CODE_REVIEW: StaticCommand = StaticCommand {
     name: "/open-code-review",
-    description: "Open code review",
+    description: crate::tr!("search", "search-slash-review"),
     kind: SlashCommandKind::OpenCodeReview,
     supported_surfaces: SlashCommandSurfaces::GuiOnly {
         icon_path: "bundled/svg/diff.svg",
@@ -405,7 +405,7 @@ pub const OPEN_CODE_REVIEW: StaticCommand = StaticCommand {
 
 pub const INDEX: StaticCommand = StaticCommand {
     name: "/index",
-    description: "Index this codebase",
+    description: crate::tr!("search", "search-slash-index"),
     kind: SlashCommandKind::Index,
     supported_surfaces: SlashCommandSurfaces::GuiOnly {
         icon_path: "bundled/svg/find-all.svg",
@@ -419,7 +419,7 @@ pub const INDEX: StaticCommand = StaticCommand {
 
 pub const INIT: StaticCommand = StaticCommand {
     name: "/init",
-    description: "Index this codebase and generate an AGENTS.md file",
+    description: crate::tr!("search", "search-slash-agents-md"),
     kind: SlashCommandKind::Init,
     supported_surfaces: SlashCommandSurfaces::GuiOnly {
         icon_path: "bundled/svg/warp-2.svg",
@@ -433,7 +433,7 @@ pub const INIT: StaticCommand = StaticCommand {
 
 pub const OPEN_PROJECT_RULES: StaticCommand = StaticCommand {
     name: "/open-project-rules",
-    description: "Open the project rules file (AGENTS.md)",
+    description: crate::tr!("search", "search-slash-rules"),
     kind: SlashCommandKind::OpenProjectRules,
     supported_surfaces: SlashCommandSurfaces::GuiOnly {
         icon_path: "bundled/svg/file-code-02.svg",
@@ -445,7 +445,7 @@ pub const OPEN_PROJECT_RULES: StaticCommand = StaticCommand {
 
 pub const OPEN_MCP_SERVERS: StaticCommand = StaticCommand {
     name: "/open-mcp-servers",
-    description: "Open MCP servers",
+    description: crate::tr!("search", "search-slash-mcp-servers"),
     kind: SlashCommandKind::OpenMcpServers,
     supported_surfaces: SlashCommandSurfaces::GuiOnly {
         icon_path: "bundled/svg/dataflow.svg",
@@ -457,7 +457,7 @@ pub const OPEN_MCP_SERVERS: StaticCommand = StaticCommand {
 
 pub const OPEN_SETTINGS_FILE: StaticCommand = StaticCommand {
     name: "/open-settings-file",
-    description: "Open settings file (TOML)",
+    description: crate::tr!("search", "search-slash-settings"),
     kind: SlashCommandKind::OpenSettingsFile,
     supported_surfaces: SlashCommandSurfaces::GuiOnly {
         icon_path: "bundled/svg/file-code-02.svg",
@@ -469,7 +469,7 @@ pub const OPEN_SETTINGS_FILE: StaticCommand = StaticCommand {
 
 pub const CHANGELOG: StaticCommand = StaticCommand {
     name: "/changelog",
-    description: "Open the latest changelog",
+    description: crate::tr!("search", "search-slash-changelog"),
     kind: SlashCommandKind::Changelog,
     supported_surfaces: SlashCommandSurfaces::GuiOnly {
         icon_path: "bundled/svg/book-open.svg",
@@ -484,7 +484,7 @@ pub const CHANGELOG: StaticCommand = StaticCommand {
 // argument after `/feedback` would fall through and be treated as plain input.
 pub static FEEDBACK: LazyLock<StaticCommand> = LazyLock::new(|| StaticCommand {
     name: "/feedback",
-    description: "Send feedback",
+    description: crate::tr!("search", "search-slash-feedback"),
     kind: SlashCommandKind::Feedback,
     supported_surfaces: SlashCommandSurfaces::GuiOnly {
         icon_path: "bundled/svg/feedback.svg",
@@ -496,7 +496,7 @@ pub static FEEDBACK: LazyLock<StaticCommand> = LazyLock::new(|| StaticCommand {
 
 pub const OPEN_REPO: StaticCommand = StaticCommand {
     name: "/open-repo",
-    description: "Switch to another indexed repository",
+    description: crate::tr!("search", "search-slash-switch-repo"),
     kind: SlashCommandKind::OpenRepo,
     supported_surfaces: SlashCommandSurfaces::GuiOnly {
         icon_path: "bundled/svg/folder.svg",
@@ -508,7 +508,7 @@ pub const OPEN_REPO: StaticCommand = StaticCommand {
 
 pub const OPEN_RULES: StaticCommand = StaticCommand {
     name: "/open-rules",
-    description: "View all of your global and project rules",
+    description: crate::tr!("search", "search-slash-view-rules"),
     kind: SlashCommandKind::OpenRules,
     supported_surfaces: SlashCommandSurfaces::GuiOnly {
         icon_path: "bundled/svg/book-open.svg",
@@ -520,7 +520,7 @@ pub const OPEN_RULES: StaticCommand = StaticCommand {
 
 pub static NEW: LazyLock<StaticCommand> = LazyLock::new(|| StaticCommand {
     name: "/new",
-    description: "Start a new conversation (alias for /agent)",
+    description: crate::tr!("search", "search-slash-new-conv"),
     kind: SlashCommandKind::New,
     supported_surfaces: SlashCommandSurfaces::GuiAndTui {
         icon_path: "bundled/svg/new-conversation.svg",
@@ -550,7 +550,7 @@ pub const CLEAR: StaticCommand = StaticCommand {
 
 pub static MODEL: LazyLock<StaticCommand> = LazyLock::new(|| StaticCommand {
     name: "/model",
-    description: "Switch the base agent model",
+    description: crate::tr!("search", "search-slash-base-model"),
     kind: SlashCommandKind::Model,
     supported_surfaces: SlashCommandSurfaces::GuiAndTui {
         icon_path: "bundled/svg/warp-3.svg",
@@ -575,7 +575,7 @@ pub const TEAM: StaticCommand = StaticCommand {
 
 pub static HOST: LazyLock<StaticCommand> = LazyLock::new(|| StaticCommand {
     name: "/host",
-    description: "Switch the cloud agent execution host",
+    description: crate::tr!("search", "search-slash-host"),
     kind: SlashCommandKind::Host,
     supported_surfaces: SlashCommandSurfaces::GuiOnly {
         icon_path: "bundled/svg/warp-3.svg",
@@ -589,7 +589,7 @@ pub static HOST: LazyLock<StaticCommand> = LazyLock::new(|| StaticCommand {
 
 pub static HARNESS: LazyLock<StaticCommand> = LazyLock::new(|| StaticCommand {
     name: "/harness",
-    description: "Switch the cloud agent harness",
+    description: crate::tr!("search", "search-slash-harness"),
     kind: SlashCommandKind::Harness,
     supported_surfaces: SlashCommandSurfaces::GuiOnly {
         icon_path: "bundled/svg/warp-3.svg",
@@ -603,7 +603,7 @@ pub static HARNESS: LazyLock<StaticCommand> = LazyLock::new(|| StaticCommand {
 
 pub static ENVIRONMENT: LazyLock<StaticCommand> = LazyLock::new(|| StaticCommand {
     name: "/environment",
-    description: "Switch the cloud agent environment",
+    description: crate::tr!("search", "search-slash-environment"),
     kind: SlashCommandKind::Environment,
     supported_surfaces: SlashCommandSurfaces::GuiOnly {
         icon_path: "bundled/svg/globe-04.svg",
@@ -617,7 +617,7 @@ pub static ENVIRONMENT: LazyLock<StaticCommand> = LazyLock::new(|| StaticCommand
 
 pub static PROFILE: LazyLock<StaticCommand> = LazyLock::new(|| StaticCommand {
     name: "/profile",
-    description: "Switch the active execution profile",
+    description: crate::tr!("search", "search-slash-profile"),
     kind: SlashCommandKind::Profile,
     supported_surfaces: SlashCommandSurfaces::GuiOnly {
         icon_path: "bundled/svg/psychology.svg",
@@ -633,7 +633,7 @@ pub const PLAN_NAME: &str = "/plan";
 
 pub static PLAN: LazyLock<StaticCommand> = LazyLock::new(|| StaticCommand {
     name: PLAN_NAME,
-    description: "Prompt the agent to do some research and create a plan for a task",
+    description: crate::tr!("search", "search-slash-plan"),
     kind: SlashCommandKind::Plan,
     supported_surfaces: SlashCommandSurfaces::GuiAndTui {
         icon_path: "bundled/svg/file-06.svg",
@@ -647,7 +647,7 @@ pub const ORCHESTRATE_NAME: &str = "/orchestrate";
 
 pub static ORCHESTRATE: LazyLock<StaticCommand> = LazyLock::new(|| StaticCommand {
     name: ORCHESTRATE_NAME,
-    description: "Break a task into subtasks and run them in parallel with multiple agents",
+    description: crate::tr!("search", "search-slash-multi-agent"),
     kind: SlashCommandKind::Orchestrate,
     supported_surfaces: SlashCommandSurfaces::GuiAndTui {
         icon_path: "bundled/svg/warp-3.svg",
@@ -668,7 +668,7 @@ pub fn strip_command_prefix(query: &str, name: &str) -> Option<String> {
 
 pub static COMPACT: LazyLock<StaticCommand> = LazyLock::new(|| StaticCommand {
     name: "/compact",
-    description: "Free up context by summarizing convo history",
+    description: crate::tr!("search", "search-slash-compact"),
     kind: SlashCommandKind::Compact,
     supported_surfaces: SlashCommandSurfaces::GuiAndTui {
         icon_path: "bundled/svg/collapse_content.svg",
@@ -686,7 +686,7 @@ pub static COMPACT: LazyLock<StaticCommand> = LazyLock::new(|| StaticCommand {
 
 pub static COMPACT_AND: LazyLock<StaticCommand> = LazyLock::new(|| StaticCommand {
     name: "/compact-and",
-    description: "Compact conversation and then send a follow-up prompt",
+    description: crate::tr!("search", "search-slash-compact-send"),
     kind: SlashCommandKind::CompactAnd,
     supported_surfaces: SlashCommandSurfaces::GuiOnly {
         icon_path: "bundled/svg/collapse_content.svg",
@@ -702,7 +702,7 @@ pub static COMPACT_AND: LazyLock<StaticCommand> = LazyLock::new(|| StaticCommand
 
 pub static QUEUE: LazyLock<StaticCommand> = LazyLock::new(|| StaticCommand {
     name: "/queue",
-    description: "Queue a prompt to send after the agent finishes responding",
+    description: crate::tr!("search", "search-slash-queue"),
     kind: SlashCommandKind::Queue,
     supported_surfaces: SlashCommandSurfaces::GuiOnly {
         icon_path: "bundled/svg/clock-plus.svg",
@@ -719,7 +719,7 @@ pub static FORK_AND_COMPACT: LazyLock<StaticCommand> = LazyLock::new(|| {
     let hint_text = "<optional prompt to send after compaction>";
     StaticCommand {
         name: "/fork-and-compact",
-        description: "Fork current conversation and compact it in the forked copy",
+        description: crate::tr!("search", "search-slash-fork-compact"),
         kind: SlashCommandKind::ForkAndCompact,
         supported_surfaces: SlashCommandSurfaces::GuiOnly {
             icon_path: "bundled/svg/fork_and_compact.svg",
@@ -736,7 +736,7 @@ pub static FORK_AND_COMPACT: LazyLock<StaticCommand> = LazyLock::new(|| {
 
 pub const FORK_FROM: StaticCommand = StaticCommand {
     name: "/fork-from",
-    description: "Fork conversation from a specific query",
+    description: crate::tr!("search", "search-slash-fork-from"),
     kind: SlashCommandKind::ForkFrom,
     supported_surfaces: SlashCommandSurfaces::GuiOnly {
         icon_path: "bundled/svg/arrow-split.svg",
@@ -753,7 +753,7 @@ pub static CONTINUE_LOCALLY: LazyLock<StaticCommand> = LazyLock::new(|| {
     let hint_text = "<optional prompt to send in local conversation>";
     StaticCommand {
         name: "/continue-locally",
-        description: "Continue this cloud conversation locally",
+        description: crate::tr!("search", "search-slash-continue-local"),
         kind: SlashCommandKind::ContinueLocally,
         supported_surfaces: SlashCommandSurfaces::GuiOnly {
             icon_path: "bundled/svg/arrow-split.svg",
@@ -781,7 +781,7 @@ pub const USAGE: StaticCommand = StaticCommand {
 
 pub const REMOTE_CONTROL: StaticCommand = StaticCommand {
     name: "/remote-control",
-    description: "Start remote control for this session",
+    description: crate::tr!("search", "search-slash-remote-control"),
     kind: SlashCommandKind::RemoteControl,
     supported_surfaces: SlashCommandSurfaces::GuiOnly {
         icon_path: "bundled/svg/phone-01.svg",
@@ -793,7 +793,7 @@ pub const REMOTE_CONTROL: StaticCommand = StaticCommand {
 
 pub const COST: StaticCommand = StaticCommand {
     name: "/cost",
-    description: "Toggle credit usage details",
+    description: crate::tr!("search", "search-slash-credits"),
     kind: SlashCommandKind::Cost,
     supported_surfaces: SlashCommandSurfaces::GuiAndTui {
         icon_path: "bundled/svg/bar-chart-04.svg",
@@ -807,7 +807,7 @@ pub const COST: StaticCommand = StaticCommand {
 
 pub const CONVERSATIONS: StaticCommand = StaticCommand {
     name: "/conversations",
-    description: "Open conversation history",
+    description: crate::tr!("search", "search-slash-history"),
     kind: SlashCommandKind::Conversations,
     supported_surfaces: SlashCommandSurfaces::GuiAndTui {
         icon_path: "bundled/svg/conversation.svg",
@@ -819,7 +819,7 @@ pub const CONVERSATIONS: StaticCommand = StaticCommand {
 
 pub static PROMPTS: LazyLock<StaticCommand> = LazyLock::new(|| StaticCommand {
     name: "/prompts",
-    description: "Search saved prompts",
+    description: crate::tr!("search", "search-slash-saved-prompts"),
     kind: SlashCommandKind::Prompts,
     supported_surfaces: SlashCommandSurfaces::GuiOnly {
         icon_path: "bundled/svg/prompt.svg",
@@ -831,7 +831,7 @@ pub static PROMPTS: LazyLock<StaticCommand> = LazyLock::new(|| StaticCommand {
 
 pub const REWIND: StaticCommand = StaticCommand {
     name: "/rewind",
-    description: "Rewind to a previous point in the conversation",
+    description: crate::tr!("search", "search-slash-rewind"),
     kind: SlashCommandKind::Rewind,
     supported_surfaces: SlashCommandSurfaces::GuiOnly {
         icon_path: "bundled/svg/clock-rewind.svg",
@@ -845,7 +845,7 @@ pub const REWIND: StaticCommand = StaticCommand {
 
 pub const EXPORT_TO_CLIPBOARD: StaticCommand = StaticCommand {
     name: "/export-to-clipboard",
-    description: "Export current conversation to clipboard in markdown format",
+    description: crate::tr!("search", "search-slash-export-clipboard"),
     kind: SlashCommandKind::ExportToClipboard,
     supported_surfaces: SlashCommandSurfaces::GuiAndTui {
         icon_path: "bundled/svg/copy.svg",
@@ -859,7 +859,7 @@ pub const EXPORT_TO_CLIPBOARD: StaticCommand = StaticCommand {
 
 pub static EXPORT_TO_FILE: LazyLock<StaticCommand> = LazyLock::new(|| StaticCommand {
     name: "/export-to-file",
-    description: "Export current conversation to a markdown file",
+    description: crate::tr!("search", "search-slash-export-file"),
     kind: SlashCommandKind::ExportToFile,
     supported_surfaces: SlashCommandSurfaces::GuiAndTui {
         icon_path: "bundled/svg/download-01.svg",

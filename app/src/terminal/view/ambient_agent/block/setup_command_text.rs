@@ -183,9 +183,9 @@ impl View for CloudModeSetupTextBlock {
                             .setup_command_state()
                             .is_running(self.group_id)
                         {
-                            "Running setup commands..."
+                            crate::tr!("terminal", "terminal-running-setup")
                         } else {
-                            "Ran setup commands"
+                            crate::tr!("terminal", "terminal-ran-setup")
                         },
                         appearance.ai_font_family(),
                         appearance.monospace_font_size(),

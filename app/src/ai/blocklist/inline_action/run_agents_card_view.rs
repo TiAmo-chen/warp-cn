@@ -1241,7 +1241,7 @@ impl RunAgentsCardView {
     fn toggle_accept_menu(&mut self, ctx: &mut ViewContext<Self>) {
         self.is_accept_menu_open = !self.is_accept_menu_open;
         if self.is_accept_menu_open {
-            let item = MenuItemFields::new_with_label("Accept w/o orchestration", "")
+            let item = MenuItemFields::new_with_label(crate::tr!("common", "common-accept-without-orchestration"), "")
                 .with_on_select_action(RunAgentsCardViewAction::AcceptWithoutOrchestration)
                 .into_item();
             self.accept_menu.update(ctx, |menu, ctx| {
@@ -1665,7 +1665,7 @@ pub(crate) fn format_terminal_state(result: &RunAgentsResult) -> (String, Status
                 .count();
             if launched == total {
                 let label = if total == 1 {
-                    "Spawned 1 agent".to_string()
+                    crate::tr!("ai_assistant", "ai-assistant-ai-spawned-one-agent").to_string()
                 } else {
                     format!("Spawned {total} agents")
                 };
@@ -1688,7 +1688,7 @@ pub(crate) fn format_terminal_state(result: &RunAgentsResult) -> (String, Status
         }
         RunAgentsResult::Denied { reason } => {
             let body = if reason.is_empty() {
-                "Orchestration is currently disabled. Re-enable on the plan card to launch."
+                crate::tr!("ai_assistant", "ai-assistant-ai-orchestration-disabled-message")
                     .to_string()
             } else {
                 format!(
@@ -1699,7 +1699,7 @@ pub(crate) fn format_terminal_state(result: &RunAgentsResult) -> (String, Status
         }
         RunAgentsResult::Failure { error } => {
             let label = if error.is_empty() {
-                "Failed to start orchestration".to_string()
+                crate::tr!("ai_assistant", "ai-assistant-ai-failed-to-start-orchestration").to_string()
             } else {
                 format!("Failed to start orchestration: {error}")
             };

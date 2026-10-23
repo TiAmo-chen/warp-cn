@@ -416,7 +416,7 @@ impl View for AgentViewZeroStateBlock {
             }
         } else {
             let mut local_description =
-                "Send a prompt below to start a new conversation".to_owned();
+                crate::tr!("ai_assistant", "ai-assistant-ai-new-cloud-agent-body").to_owned();
             let active_session = self.active_session(app);
             let location_label = active_session.as_deref().and_then(|session| {
                 format_session_location(session, self.current_working_directory.as_deref())
@@ -668,7 +668,7 @@ fn render_title_and_description(props: HeaderProps, app: &AppContext) -> Vec<Box
                 FormattedTextFragment::plain_text(
                     "Use cloud agents to run parallel agents, build agents that run autonomously, and check in on your agents from anywhere. ",
                 ),
-                FormattedTextFragment::hyperlink("Visit docs", CLOUD_AGENT_DOCS_URL),
+                FormattedTextFragment::hyperlink(crate::tr!("agent_cloud", "agent-cloud-visit-docs"), CLOUD_AGENT_DOCS_URL),
             ])]);
 
             items.push(
@@ -741,7 +741,7 @@ fn render_body(props: ZeroStateBodyProps<'_>, app: &AppContext) -> Vec<Box<dyn E
                             MessageItem::keystroke(
                                 ENTER_AGENT_VIEW_NEW_CONVERSATION_KEYSTROKE.clone(),
                             ),
-                            MessageItem::text("start a new agent conversation"),
+                            MessageItem::text(crate::tr!("terminal", "terminal-zero-state-new-agent-conversation")),
                         ],
                         |ctx| {
                             ctx.dispatch_typed_action(TerminalAction::StartNewAgentConversation {
@@ -760,7 +760,7 @@ fn render_body(props: ZeroStateBodyProps<'_>, app: &AppContext) -> Vec<Box<dyn E
                             MessageItem::keystroke(
                                 ENTER_CLOUD_AGENT_VIEW_NEW_CONVERSATION_KEYSTROKE.clone(),
                             ),
-                            MessageItem::text("start a new cloud agent conversation"),
+                            MessageItem::text(crate::tr!("terminal", "terminal-zero-state-new-cloud-agent-conversation")),
                         ],
                         |ctx| {
                             ctx.dispatch_typed_action(TerminalAction::EnterCloudAgentView);
@@ -776,7 +776,7 @@ fn render_body(props: ZeroStateBodyProps<'_>, app: &AppContext) -> Vec<Box<dyn E
                                 key: "/model".to_owned(),
                                 ..Default::default()
                             }),
-                            MessageItem::text("switch model"),
+                            MessageItem::text(crate::tr!("zz_zh02_supplement", "ai-switch-model")),
                         ],
                         |ctx| {
                             ctx.dispatch_typed_action(TerminalAction::OpenModelSelector);

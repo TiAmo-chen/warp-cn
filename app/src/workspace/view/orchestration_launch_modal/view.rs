@@ -66,21 +66,21 @@ struct FeatureItem {
 const FEATURE_ITEMS: &[FeatureItem] = &[
     FeatureItem {
         icon: Icon::Cloud,
-        title: "Run any agent harness in the cloud",
+        title: crate::tr!("workspace", "workspace-run-any-agent-harness"),
         description: "Use Oz to spin up Claude Code or Codex agents in the cloud; Oz will help you track and steer the agents.",
         badge: None,
     },
     FeatureItem {
         icon: Icon::Atom,
-        title: "Multi-agent orchestration",
-        description: "Warp Agents will now orchestrate swarms of subagents, allowing you to parallelize tasks.",
+        title: crate::tr!("workspace", "workspace-multi-agent-orchestration"),
+        description: crate::tr!("workspace", "workspace-multi-agent-orchestration-desc"),
         badge: None,
     },
     FeatureItem {
         icon: Icon::Cognition,
-        title: "Agent Memory",
-        description: "Agents will now store and access long-term memories, enabling self-improvement over time.",
-        badge: Some("Research preview"),
+        title: crate::tr!("workspace", "workspace-agent-memory"),
+        description: crate::tr!("workspace", "workspace-agent-memory-desc"),
+        badge: Some(crate::tr!("workspace", "workspace-research-preview")),
     },
 ];
 
@@ -184,7 +184,7 @@ impl OrchestrationLaunchModal {
         });
 
         let learn_more_button = ctx.add_view(|_ctx| {
-            ActionButton::new("Learn more", LearnMoreButtonTheme)
+            ActionButton::new(crate::tr!("common", "common-learn-more-label"), LearnMoreButtonTheme)
                 .with_icon(Icon::LinkExternal)
                 .with_full_width(true)
                 .on_click(|ctx| {
@@ -269,7 +269,7 @@ impl OrchestrationLaunchModal {
 
     fn render_title(appearance: &Appearance) -> Box<dyn Element> {
         Text::new(
-            "Orchestrate any agent, anywhere",
+            crate::tr!("workspace", "workspace-orchestrate-any-agent"),
             appearance.ui_font_family(),
             20.,
         )
@@ -280,7 +280,7 @@ impl OrchestrationLaunchModal {
 
     fn render_description(appearance: &Appearance) -> Box<dyn Element> {
         Text::new(
-            "We've made major improvements to Warp's cloud agent orchestration platform, Oz.",
+            crate::tr!("workspace", "workspace-orchestration-improvements"),
             appearance.ui_font_family(),
             14.,
         )

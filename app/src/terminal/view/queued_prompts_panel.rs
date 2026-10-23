@@ -93,7 +93,7 @@ fn build_row_state(
     let send_now_button = ctx.add_typed_action_view(move |_| {
         ActionButton::new("", NakedTheme)
             .with_icon(TerminalIcon::ArrowUp)
-            .with_tooltip("Send now")
+            .with_tooltip(crate::tr!("ai_assistant", "ai-assistant-ai-send-now"))
             .with_size(ButtonSize::XSmall)
             .with_disabled_theme(NakedTheme)
             .on_click(move |ctx| {
@@ -457,7 +457,7 @@ impl QueuedPromptsPanelView {
             } else if lrc_subagent_in_progress {
                 SEND_NOW_TO_FULL_TERMINAL_USE_AGENT_TOOLTIP
             } else {
-                "Send now"
+                crate::tr!("ai_assistant", "ai-assistant-ai-send-now")
             };
             send_now_button.update(ctx, |button, ctx| {
                 button.set_disabled(disabled, ctx);

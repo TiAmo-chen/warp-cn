@@ -321,7 +321,7 @@ impl LeftPanelView {
                     ButtonVariant::Accent,
                     self.mouse_state_handles.sign_in_button.clone(),
                 )
-                .with_text_label("Sign in".to_string())
+                .with_text_label(crate::tr!("workspace", "workspace-sign-in").to_string())
                 .build()
                 .on_click(|ctx, _, _| {
                     ctx.dispatch_typed_action(LeftPanelAction::SignIn);
@@ -553,7 +553,7 @@ impl LeftPanelView {
                 ToolbeltButtonConfig {
                     icon: Icon::FileCopy,
                     active_icon: None,
-                    tooltip_text: "Project explorer".to_string(),
+                    tooltip_text: crate::tr!("settings", "settings-project-explorer").to_string(),
                     action: LeftPanelAction::ProjectExplorer,
                     render_with_active_state: false,
                     tooltip_keybinding: toolbelt_tooltip_keybinding(&tooltip_keybinding_names, ctx),
@@ -569,7 +569,7 @@ impl LeftPanelView {
                 ToolbeltButtonConfig {
                     icon: Icon::Search,
                     active_icon: None,
-                    tooltip_text: "Global search".to_string(),
+                    tooltip_text: crate::tr!("settings", "settings-global-search").to_string(),
                     action: LeftPanelAction::GlobalSearch {
                         entry_focus: GlobalSearchEntryFocus::QueryEditor,
                     },
@@ -587,7 +587,7 @@ impl LeftPanelView {
                 ToolbeltButtonConfig {
                     icon: Icon::WarpDrive,
                     active_icon: None,
-                    tooltip_text: "Warp Drive".to_string(),
+                    tooltip_text: crate::tr!("drive", "drive-warp-drive").to_string(),
                     action: LeftPanelAction::WarpDrive,
                     render_with_active_state: false,
                     tooltip_keybinding: toolbelt_tooltip_keybinding(&tooltip_keybinding_names, ctx),
@@ -603,7 +603,7 @@ impl LeftPanelView {
                 ToolbeltButtonConfig {
                     icon: Icon::Conversation,
                     active_icon: Some(Icon::Conversation),
-                    tooltip_text: "Agent conversations".to_string(),
+                    tooltip_text: crate::tr!("settings", "settings-agent-conversations").to_string(),
                     action: LeftPanelAction::ConversationListView,
                     render_with_active_state: false,
                     tooltip_keybinding: toolbelt_tooltip_keybinding(&tooltip_keybinding_names, ctx),
@@ -998,12 +998,12 @@ impl LeftPanelView {
 
         let tooltip = if let Some(keybinding) = tooltip_keybinding {
             ui_builder
-                .tool_tip_with_sublabel("Close panel".to_string(), keybinding)
+                .tool_tip_with_sublabel(crate::tr!("workspace", "workspace-close-panel").to_string(), keybinding)
                 .build()
                 .finish()
         } else {
             ui_builder
-                .tool_tip("Close panel".to_string())
+                .tool_tip(crate::tr!("workspace", "workspace-close-panel").to_string())
                 .build()
                 .finish()
         };

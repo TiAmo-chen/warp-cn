@@ -428,10 +428,10 @@ impl AgentAssistedEnvironmentModal {
                 if self.available_repos_loading {
                     "Loading locally indexed repos…"
                 } else {
-                    "No locally indexed repos found yet. Index a repo, then try again."
+                    crate::tr!("settings", "settings-no-locally-indexed-repos-found-yet-index-a-repo-then-try-again")
                 }
             } else {
-                "Local repo selection is unavailable in this build."
+                crate::tr!("settings", "settings-local-repo-selection-is-unavailable-in-this-build")
             };
 
             col.add_child(
@@ -606,9 +606,9 @@ impl AgentAssistedEnvironmentModal {
 
     fn render_dialog(&self, appearance: &Appearance, app: &AppContext) -> Box<dyn Element> {
         let description = if FeatureFlag::FullSourceCodeEmbedding.is_enabled() {
-            "Select locally indexed repos to provide context for the environment creation agent."
+            crate::tr!("settings", "settings-select-locally-indexed-repos-to-provide-context-for-the-environment-creation-agent")
         } else {
-            "Select repos to provide context for the environment creation agent."
+            crate::tr!("settings", "settings-select-repos-to-provide-context-for-the-environment-creation-agent")
         }
         .to_string();
 

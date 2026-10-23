@@ -207,7 +207,7 @@ impl HoaOnboardingFlow {
         });
 
         let cta_button = ctx.add_view(|_ctx| {
-            ActionButton::new("See what's new", HoaWelcomeModalButtonTheme)
+            ActionButton::new(crate::tr!("workspace", "workspace-onboarding-see-whats-new"), HoaWelcomeModalButtonTheme)
                 .with_full_width(true)
                 .on_click(|ctx| ctx.dispatch_typed_action(HoaOnboardingAction::AdvanceFromWelcome))
         });
@@ -424,7 +424,7 @@ impl HoaOnboardingFlow {
             .finish();
 
         let checkbox_label = Text::new_inline(
-            "Switch back to horizontal tabs".to_string(),
+            crate::tr!("workspace", "workspace-onboarding-switch-horizontal").to_string(),
             appearance.ui_font_family(),
             12.,
         )
@@ -445,7 +445,7 @@ impl HoaOnboardingFlow {
         };
 
         self.render_callout_content(
-            "Introducing vertical tabs - the new default",
+            crate::tr!("workspace", "workspace-onboarding-vertical-tabs-title"),
             "Vertical tabs show all open agent and terminal panes, grouped by tab. Customize what information you want to see to support your workflow.",
             Some(checkbox_row),
             button,
@@ -455,7 +455,7 @@ impl HoaOnboardingFlow {
 
     fn render_inbox_callout(&self, appearance: &Appearance) -> Box<dyn Element> {
         let title = Text::new(
-            "Meet your new agent inbox",
+            crate::tr!("workspace", "workspace-onboarding-inbox-title"),
             appearance.ui_font_family(),
             16.,
         )
@@ -465,7 +465,7 @@ impl HoaOnboardingFlow {
 
         // Build the description with an inline "Learn more" hyperlink.
         let learn_more_fragment = FormattedTextFragment {
-            text: "Learn more".into(),
+            text: crate::tr!("common", "common-learn-more-label").into(),
             styles: FormattedTextStyles {
                 underline: true,
                 hyperlink: Some(Hyperlink::Url(

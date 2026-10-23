@@ -45,7 +45,7 @@ pub fn render_inline_notifications_discovery_banner(
     let active_ui_text_color = appearance.theme().active_ui_text_color().into_solid();
 
     let learn_more_button = InlineBannerTextButton {
-        text: "Learn more".to_string(),
+        text: crate::tr!("common", "common-learn-more-label").to_string(),
         text_color: active_ui_text_color,
         button_state: InlineBannerButtonState {
             on_click_event: TerminalAction::NotificationsDiscoveryBanner(
@@ -73,11 +73,11 @@ pub fn render_inline_notifications_discovery_banner(
 
     let (title, buttons) = match notifications_mode {
         NotificationsMode::Dismissed => (
-            "We won't show this banner again, but you can always go to Settings to enable notifications.",
+            crate::tr!("terminal", "terminal-notifications-dismissed"),
             vec![],
         ),
         NotificationsMode::Disabled => (
-            "Notifications were turned off, but you can always go to Settings to enable notifications.",
+            crate::tr!("terminal", "terminal-notifications-disabled"),
             vec![],
         ),
         NotificationsMode::Unset => (
@@ -105,20 +105,20 @@ pub fn render_inline_notifications_discovery_banner(
             let (title, docs_button) = match request_outcome {
                 Some(request_outcome) => match request_outcome {
                     RequestPermissionsOutcome::Accepted => (
-                        "Success! You are now ready to receive desktop notifications.",
+                        crate::tr!("terminal", "terminal-notifications-success"),
                         learn_more_button,
                     ),
                     RequestPermissionsOutcome::PermissionsDenied => (
-                        "Warp was denied permissions to send you notifications.",
+                        crate::tr!("terminal", "terminal-notifications-denied"),
                         troubleshoot_button,
                     ),
                     RequestPermissionsOutcome::OtherError { .. } => (
-                        "Something went wrong while requesting permissions.",
+                        crate::tr!("terminal", "terminal-notifications-error"),
                         troubleshoot_button,
                     ),
                 },
                 None => (
-                    "Don't forget to 'Allow' the permissions request to finish setting up notifications.",
+                    crate::tr!("terminal", "terminal-notifications-pending"),
                     learn_more_button,
                 ),
             };
@@ -128,7 +128,7 @@ pub fn render_inline_notifications_discovery_banner(
                 vec![
                     docs_button,
                     InlineBannerTextButton {
-                        text: "Configure notifications".to_string(),
+                        text: crate::tr!("terminal", "terminal-configure-notifications").to_string(),
                         text_color: active_ui_text_color,
                         button_state: InlineBannerButtonState {
                             on_click_event: TerminalAction::NotificationsDiscoveryBanner(

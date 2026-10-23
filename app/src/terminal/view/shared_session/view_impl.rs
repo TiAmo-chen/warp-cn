@@ -993,12 +993,12 @@ impl TerminalView {
         }
 
         let Some(ambient_agent_view_model) = self.ambient_agent_view_model.as_ref() else {
-            self.show_error_toast("Couldn't continue this cloud task.".to_string(), ctx);
+            self.show_error_toast(crate::tr!("terminal", "terminal-couldnt-continue-cloud-task").to_string(), ctx);
             return;
         };
 
         if ambient_agent_view_model.as_ref(ctx).task_id() != Some(task_id) {
-            self.show_error_toast("Couldn't continue this cloud task.".to_string(), ctx);
+            self.show_error_toast(crate::tr!("terminal", "terminal-couldnt-continue-cloud-task").to_string(), ctx);
             return;
         }
         self.enable_cloud_followup_input_after_conversation_end(task_id, ctx);
@@ -1033,7 +1033,7 @@ impl TerminalView {
             ctx,
         );
         self.show_persistent_toast(
-            "Sharing ended due to inactivity".to_owned(),
+            crate::tr!("terminal", "terminal-sharing-ended-inactivity").to_owned(),
             ToastFlavor::Error,
             ctx,
         );
@@ -1084,7 +1084,7 @@ impl TerminalView {
                 ctx,
             );
             self.show_persistent_toast(
-                "Shared editing permissions were revoked due to inactivity".to_owned(),
+                crate::tr!("terminal", "terminal-sharing-edit-revoked-inactivity").to_owned(),
                 ToastFlavor::Error,
                 ctx,
             );
@@ -1719,7 +1719,7 @@ impl TerminalView {
             && matches!(reason, RoleUpdatedReason::InactivityLimitReached)
         {
             self.show_persistent_toast(
-                "Editing permissions were revoked because the sharer is idle".to_owned(),
+                crate::tr!("terminal", "terminal-editing-revoked-sharer-idle").to_owned(),
                 ToastFlavor::Error,
                 ctx,
             );

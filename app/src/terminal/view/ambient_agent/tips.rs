@@ -41,11 +41,11 @@ impl AITip for CloudModeTip {
 pub fn get_cloud_mode_tips() -> Vec<CloudModeTip> {
     vec![
         CloudModeTip::new(
-            "Install the Oz Slack integration to trigger agents from any channel or DM.",
+            crate::tr!("agent_tips", "agent-tips-install-slack-integration"),
             Some("https://docs.warp.dev/platform/integrations/slack"),
         ),
         CloudModeTip::new(
-            "Build programmatic agents using Oz's TypeScript and Python SDKs.",
+            crate::tr!("agent_tips", "agent-tips-build-programmatic-agents"),
             Some("https://docs.warp.dev/reference/api-and-sdk"),
         ),
         CloudModeTip::new(
@@ -53,23 +53,23 @@ pub fn get_cloud_mode_tips() -> Vec<CloudModeTip> {
             Some("https://docs.warp.dev/platform/secrets"),
         ),
         CloudModeTip::new(
-            "View all your agent runs and their status in the Oz web app.",
+            crate::tr!("agent_tips", "agent-tips-view-runs-status"),
             Some("https://oz.warp.dev"),
         ),
         CloudModeTip::new(
-            "Join any Oz cloud agent run in real-time using Agent Session Sharing.",
+            crate::tr!("agent_tips", "agent-tips-join-real-time"),
             Some("https://docs.warp.dev/platform/viewing-cloud-agent-runs"),
         ),
         CloudModeTip::new(
-            "Set up recurring agents that run on cron schedules for automated maintenance.",
+            crate::tr!("agent_tips", "agent-tips-recurring-cron-agents"),
             Some("https://docs.warp.dev/platform/triggers/scheduled-agents"),
         ),
         CloudModeTip::new(
-            "Create agents that automatically fix bugs when issues are filed in Linear.",
+            crate::tr!("agent_tips", "agent-tips-fix-bugs-linear"),
             Some("https://docs.warp.dev/platform/integrations/linear"),
         ),
         CloudModeTip::new(
-            "Build agents that respond to CI failures and attempt automatic fixes.",
+            crate::tr!("agent_tips", "agent-tips-respond-ci-failures"),
             Some("https://docs.warp.dev/platform/integrations/github-actions"),
         ),
         CloudModeTip::new(
@@ -77,15 +77,15 @@ pub fn get_cloud_mode_tips() -> Vec<CloudModeTip> {
             Some("https://github.com/warpdotdev/oz-agent-action"),
         ),
         CloudModeTip::new(
-            "Call the Oz REST API to trigger agents from any backend service or internal tool.",
+            crate::tr!("agent_tips", "agent-tips-rest-api-trigger"),
             Some("https://docs.warp.dev/reference/api-and-sdk"),
         ),
         CloudModeTip::new(
-            "Create reusable environments with Docker images for consistent agent execution.",
+            crate::tr!("agent_tips", "agent-tips-docker-images-env"),
             Some("https://docs.warp.dev/platform/environments/"),
         ),
         CloudModeTip::new(
-            "Share agent session links with your team for collaborative debugging.",
+            crate::tr!("agent_tips", "agent-tips-share-session-links"),
             Some("https://docs.warp.dev/platform/viewing-cloud-agent-runs"),
         ),
         CloudModeTip::new(
@@ -93,15 +93,15 @@ pub fn get_cloud_mode_tips() -> Vec<CloudModeTip> {
             Some("https://docs.warp.dev/platform/overview/"),
         ),
         CloudModeTip::new(
-            "Fork a completed Oz cloud agent session into Warp to continue the work locally.",
+            crate::tr!("agent_tips", "agent-tips-fork-locally"),
             Some("https://docs.warp.dev/platform/viewing-cloud-agent-runs"),
         ),
         CloudModeTip::new(
-            "Build internal tools that use agents to answer questions from your databases.",
+            crate::tr!("agent_tips", "agent-tips-internal-tools-databases"),
             Some("https://docs.warp.dev/platform/integrations"),
         ),
         CloudModeTip::new(
-            "Create a scheduled agent to clean up stale feature flags every week.",
+            crate::tr!("agent_tips", "agent-tips-clean-stale-flags"),
             Some("https://docs.warp.dev/platform/triggers/scheduled-agents"),
         ),
         CloudModeTip::new(
@@ -109,11 +109,11 @@ pub fn get_cloud_mode_tips() -> Vec<CloudModeTip> {
             Some("https://docs.warp.dev/platform/integrations/linear"),
         ),
         CloudModeTip::new(
-            "Run agents on remote dev boxes or CI runners using the Oz CLI.",
+            crate::tr!("agent_tips", "agent-tips-remote-dev-boxes"),
             Some("https://docs.warp.dev/platform/overview/"),
         ),
         CloudModeTip::new(
-            "Configure MCP servers to give Oz cloud agents access to GitHub, Linear, and Sentry.",
+            crate::tr!("agent_tips", "agent-tips-mcp-servers-access"),
             Some("https://docs.warp.dev/agents/capabilities/mcp"),
         ),
         CloudModeTip::new(
@@ -121,19 +121,19 @@ pub fn get_cloud_mode_tips() -> Vec<CloudModeTip> {
             Some("https://docs.warp.dev/platform/overview/"),
         ),
         CloudModeTip::new(
-            "View your teammates' agent runs in the Oz web app for shared visibility.",
+            crate::tr!("agent_tips", "agent-tips-teammate-runs-visibility"),
             Some("https://oz.warp.dev"),
         ),
         CloudModeTip::new(
-            "Build agents that automatically triage and label incoming GitHub issues.",
+            crate::tr!("agent_tips", "agent-tips-triage-github-issues"),
             Some("https://docs.warp.dev/platform/integrations/github-actions"),
         ),
         CloudModeTip::new(
-            "Set up an agent to generate daily summaries of newly opened issues.",
+            crate::tr!("agent_tips", "agent-tips-daily-issues-summaries"),
             Some("https://docs.warp.dev/platform/integrations/github-actions"),
         ),
         CloudModeTip::new(
-            "Create an agent that automatically reviews PRs and suggests improvements.",
+            crate::tr!("agent_tips", "agent-tips-review-prs-suggest"),
             Some("https://docs.warp.dev/platform/integrations/github-actions"),
         ),
         CloudModeTip::new(
@@ -141,27 +141,27 @@ pub fn get_cloud_mode_tips() -> Vec<CloudModeTip> {
             Some("https://docs.warp.dev/platform/environments/"),
         ),
         CloudModeTip::new(
-            "Trigger agents from webhooks to respond to production incidents.",
+            crate::tr!("agent_tips", "agent-tips-webhooks-trigger"),
             Some("https://docs.warp.dev/reference/api-and-sdk"),
         ),
         CloudModeTip::new(
-            "Build an agent that restarts services or scales deployments when alerts fire.",
+            crate::tr!("agent_tips", "agent-tips-restart-services-alerts"),
             Some("https://docs.warp.dev/platform/triggers"),
         ),
         CloudModeTip::new(
-            "Use personal secrets for credentials that should only be used by your agents.",
+            crate::tr!("agent_tips", "agent-tips-personal-secrets-credentials"),
             Some("https://docs.warp.dev/platform/secrets"),
         ),
         CloudModeTip::new(
-            "Use team secrets for shared infrastructure credentials across all agents.",
+            crate::tr!("agent_tips", "agent-tips-team-secrets-infrastructure"),
             Some("https://docs.warp.dev/platform/secrets"),
         ),
         CloudModeTip::new(
-            "Create an agent that runs nightly to check for dependency updates.",
+            crate::tr!("agent_tips", "agent-tips-nightly-dependency-checks"),
             Some("https://docs.warp.dev/platform/triggers/scheduled-agents"),
         ),
         CloudModeTip::new(
-            "Build an agent that automatically formats and lints code on a schedule.",
+            crate::tr!("agent_tips", "agent-tips-format-lint-schedule"),
             Some("https://docs.warp.dev/platform/triggers/scheduled-agents"),
         ),
         CloudModeTip::new(
@@ -177,7 +177,7 @@ pub fn get_cloud_mode_tips() -> Vec<CloudModeTip> {
             Some("https://docs.warp.dev/agents/capabilities/mcp"),
         ),
         CloudModeTip::new(
-            "Build an internal Slack bot that delegates coding tasks to Oz agents.",
+            crate::tr!("agent_tips", "agent-tips-slack-bot-delegates"),
             Some("https://docs.warp.dev/platform/integrations/slack"),
         ),
         CloudModeTip::new(
@@ -185,19 +185,19 @@ pub fn get_cloud_mode_tips() -> Vec<CloudModeTip> {
             Some("https://docs.warp.dev/platform/integrations/slack"),
         ),
         CloudModeTip::new(
-            "Use the Oz TypeScript SDK to build custom automation pipelines.",
+            crate::tr!("agent_tips", "agent-tips-typescript-sdk-pipelines"),
             Some("https://docs.warp.dev/reference/api-and-sdk"),
         ),
         CloudModeTip::new(
-            "Use the Oz Python SDK to integrate agents into your data pipelines.",
+            crate::tr!("agent_tips", "agent-tips-python-sdk-pipelines"),
             Some("https://docs.warp.dev/reference/api-and-sdk"),
         ),
         CloudModeTip::new(
-            "Monitor agent success rates and runtimes using the Oz API.",
+            crate::tr!("agent_tips", "agent-tips-monitor-success-rates"),
             Some("https://docs.warp.dev/reference/api-and-sdk"),
         ),
         CloudModeTip::new(
-            "Build a dashboard that tracks all agent activity across your team.",
+            crate::tr!("agent_tips", "agent-tips-dashboard-team-activity"),
             Some("https://docs.warp.dev/reference/api-and-sdk"),
         ),
     ]

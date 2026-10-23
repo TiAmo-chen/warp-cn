@@ -365,7 +365,7 @@ impl ProfileModelSelector {
                         .iter()
                         .map(|name| {
                             if *name == "auto" {
-                                "auto-select the best model for the task"
+                                crate::tr!("terminal", "terminal-auto-select-best-model")
                             } else {
                                 name
                             }
@@ -377,7 +377,7 @@ impl ProfileModelSelector {
                     }
                     label
                 } else {
-                    "New models available".to_string()
+                    crate::tr!("terminal", "terminal-new-models-available").to_string()
                 }
             })))
         });
@@ -562,7 +562,7 @@ impl ProfileModelSelector {
 
         let manage_api_key_button = ctx.add_typed_action_view(|_ctx| {
             ActionButton::new("Manage", SecondaryTheme)
-                .with_tooltip("Manage API keys")
+                .with_tooltip(crate::tr!("terminal", "terminal-manage-api-keys"))
                 .with_size(ButtonSize::XSmall)
                 .on_click(|ctx| {
                     ctx.dispatch_typed_action(WorkspaceAction::ShowSettingsPageWithSearch {
@@ -928,7 +928,7 @@ impl ProfileModelSelector {
 
         menu_items.push(MenuItem::Separator);
         menu_items.push(MenuItem::Item(
-            MenuItemFields::new("Manage profiles")
+            MenuItemFields::new(crate::tr!("terminal", "terminal-manage-profiles"))
                 .with_icon(Icon::Gear)
                 .with_on_select_action(ProfileModelSelectorAction::ManageProfiles),
         ));
@@ -2155,7 +2155,7 @@ impl ProfileModelSelector {
         let appearance = Appearance::as_ref(app);
         let theme = appearance.theme();
         let header = self.render_model_spec_header(
-            "Model Specs".to_string(),
+            crate::tr!("terminal", "terminal-model-specs").to_string(),
             "Warp’s benchmarks for how well a model performs in our harness, the rate at which it consumes credits, and task speed.".to_string(),
             app,
         );
@@ -2195,12 +2195,12 @@ impl ProfileModelSelector {
 
         let (title, description) = match kind {
             ModelSpecSidecarKind::Auto => (
-                "Auto mode",
+                crate::tr!("terminal", "terminal-auto-mode"),
                 "Auto will select the best model for the task. Cost-efficiency optimizes for cost, Responsiveness optimizes for response speed.",
             ),
             ModelSpecSidecarKind::Reasoning => (
-                "Reasoning level",
-                "Increased reasoning levels consume more credits and have higher latency, but higher performance for complicated tasks.",
+                crate::tr!("terminal", "terminal-reasoning-level"),
+                crate::tr!("terminal", "terminal-reasoning-level-description"),
             ),
         };
 

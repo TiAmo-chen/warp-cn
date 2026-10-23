@@ -671,7 +671,7 @@ impl InputSuggestions {
         ctx: &mut ViewContext<Self>,
     ) {
         ctx.emit_a11y_content(AccessibilityContent::new_without_help(
-            "Closed suggestions.",
+            crate::tr!("input_suggestions", "input-suggestions-closed"),
             WarpA11yRole::UserAction,
         ));
         ctx.emit(Event::CloseSuggestion {
@@ -911,7 +911,7 @@ impl InputSuggestions {
 
                                             let tooltip_element = appearance
                                                 .ui_builder()
-                                                .tool_tip("Ignore this suggestion".to_string())
+                                                .tool_tip(crate::tr!("editor", "editor-ignore-suggestion").to_string())
                                                 .build()
                                                 .finish();
 
@@ -1110,7 +1110,7 @@ impl View for InputSuggestions {
 
     fn accessibility_contents(&self, _: &AppContext) -> Option<AccessibilityContent> {
         Some(AccessibilityContent::new(
-            "Command suggestions.",
+            crate::tr!("input_suggestions", "input-suggestions-command-suggestions"),
             // TODO use bindings from user settings
             "Navigate with tab and shift-tab, and confirm with enter. Execute selected command \
                 with command + enter. Esc leaves the suggestions menu.",

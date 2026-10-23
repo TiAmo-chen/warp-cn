@@ -143,7 +143,7 @@ impl ChatGPTPlanModal {
         });
 
         let got_it_button = ctx.add_view(|_ctx| {
-            ActionButton::new("Got it", CtaButtonTheme)
+            ActionButton::new(crate::tr!("onboarding", "onboarding-callout-got-it"), CtaButtonTheme)
                 .with_full_width(true)
                 .on_click(|ctx| ctx.dispatch_typed_action(ChatGPTPlanModalAction::Close))
         });

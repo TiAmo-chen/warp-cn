@@ -52,7 +52,7 @@ const SEARCH_PLACEHOLDER_TEXT: &str = "Search rules";
 const ZERO_STATE_TEXT: &str =
     "Add a rule above, or drop one at ~/.agents/AGENTS.md to apply it across every project.";
 const ZERO_STATE_TEXT_PROJECT: &str =
-    "Once you generate a WARP.md rules file for a project, it will appear here.";
+    crate::tr!("ai_assistant", "ai-assistant-ai-zero-state-project-text");
 
 const DISABLED_BANNER_TEXT: &str =
     "Your rules are disabled and won't be used as context in sessions. You can ";
@@ -513,7 +513,7 @@ impl RuleView {
         .with_padding_right(4.)
         .finish();
         let project_tab = self.render_scope_tab(
-            "Project based",
+            crate::tr!("ai_assistant", "ai-assistant-ai-project-based-scope-tab"),
             RuleScope::ProjectBased,
             appearance,
             self.project_tab_mouse_state.clone(),
@@ -734,7 +734,7 @@ impl RuleView {
             appearance
                 .ui_builder()
                 .button(ButtonVariant::Outlined, project_row.mouse_state.clone())
-                .with_text_label("Open file".to_string())
+                .with_text_label(crate::tr!("ai_assistant", "ai-assistant-ai-open-file").to_string())
                 .build()
                 .on_click(move |ctx, _, _| {
                     ctx.dispatch_typed_action(RuleViewAction::OpenFile(file_path.clone()));

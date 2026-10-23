@@ -65,7 +65,7 @@ impl GeneratedCommandMetadataError {
     pub fn user_facing_message(&self) -> String {
         match self {
             Self::BadCommand => {
-                "Failed to generate metadata. Please try again with a different command."
+                crate::tr!("drive", "drive-workflow-bad-command")
             }
             Self::AiProviderError => "Something went wrong. Please try again.",
             Self::RateLimited => "Looks like you're out of AI credits. Please try again later.",
@@ -146,7 +146,7 @@ impl WorkflowModal {
                                     if has_admin_permissions {
                                         ctx.emit(WorkflowModalEvent::AiAssistUpgradeError(Some(team.uid), current_user_id));
                                     } else {
-                                        ctx.emit(WorkflowModalEvent::AiAssistError("Looks like you're out of AI credits. Contact a team admin to upgrade for more credits.".to_string()));
+                                        ctx.emit(WorkflowModalEvent::AiAssistError(crate::tr!("drive", "drive-workflow-out-of-credits-admin").to_string()));
                                     }
                                 } else {
                                     ctx.emit(WorkflowModalEvent::AiAssistError(message.clone()));

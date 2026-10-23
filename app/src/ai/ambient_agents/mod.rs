@@ -16,9 +16,9 @@ pub use task::{
     cancel_task_with_toast,
 };
 pub const OUT_OF_CREDITS_TASK_FAILURE_MESSAGE: &str =
-    "Out of credits. Upgrade your Warp plan to continue running cloud agents.";
+    crate::tr!("ai_assistant", "ai-assistant-ai-out-of-credits-upgrade");
 pub const SERVER_OVERLOADED_TASK_FAILURE_MESSAGE: &str =
-    "Warp is temporarily overloaded. Please try again shortly.";
+    crate::tr!("ai_assistant", "ai-assistant-ai-server-overloaded-short");
 
 pub use ai_types::AmbientAgentTaskId;
 

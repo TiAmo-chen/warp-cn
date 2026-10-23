@@ -279,7 +279,7 @@ impl CodeReviewDiffMenu {
         let theme = appearance.theme();
         Container::new(
             Text::new(
-                "No matches",
+                crate::tr!("code_editor", "code-editor-no-matches"),
                 appearance.ui_font_family(),
                 appearance.ui_font_size(),
             )

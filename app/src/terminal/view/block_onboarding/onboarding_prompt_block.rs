@@ -389,7 +389,7 @@ impl OnboardingPromptBlock {
                     1.,
                     Align::new(
                         Text::new_inline(
-                            "Customizable in appearance settings.",
+                            crate::tr!("terminal", "terminal-customizable-appearance"),
                             font_family,
                             ui_font_size,
                         )

@@ -57,9 +57,9 @@ impl EnvVarCollectionView {
         let mut stack = Stack::new();
 
         let text = if deleted {
-            "You no longer have access to these environment variables"
+            crate::tr!("env_vars", "env-vars-trash-banner-deleted")
         } else {
-            "Environment variables were moved to trash"
+            crate::tr!("env_vars", "env-vars-trash-banner-moved")
         };
         stack.add_child(
             Align::new(
@@ -113,7 +113,7 @@ impl EnvVarCollectionView {
                             .with_tooltip(move || {
                                 ui_builder
                                     .tool_tip(
-                                        "Restore environment variables from trash".to_string(),
+                                        crate::tr!("env_vars", "env-vars-restore-tooltip").to_string(),
                                     )
                                     .build()
                                     .finish()

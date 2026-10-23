@@ -176,14 +176,14 @@ pub fn init(app: &mut AppContext) {
         FixedBinding::custom(
             CustomAction::IncreaseFontSize,
             NotebookAction::IncreaseFontSize,
-            "Increase font size",
+            crate::tr!("notebooks", "notebooks-increase-font-size"),
             id!("NotebookView") & id!("NotMatchNotebookToMonospaceSize"),
         )
         .with_group(bindings::BindingGroup::Settings.as_str()),
         FixedBinding::custom(
             CustomAction::DecreaseFontSize,
             NotebookAction::DecreaseFontSize,
-            "Decrease font size",
+            crate::tr!("notebooks", "notebooks-decrease-font-size"),
             id!("NotebookView") & id!("NotMatchNotebookToMonospaceSize"),
         )
         .with_group(bindings::BindingGroup::Settings.as_str()),
@@ -799,7 +799,7 @@ impl NotebookView {
                 ToastStack::handle(ctx).update(ctx, |toast_stack, ctx| {
                     toast_stack.add_ephemeral_toast(
                         DismissibleToast::error(
-                            "This notebook cannot be saved because its content contains secrets"
+                            crate::tr!("notebooks", "notebooks-cannot-save-content-secrets")
                                 .to_string(),
                         ),
                         window_id,
@@ -1408,7 +1408,7 @@ impl NotebookView {
 
         if let Some(ai_document_id) = self.active_notebook_data.as_ref(ctx).ai_document_id(ctx) {
             menu_items.push(
-                MenuItemFields::new("Attach to active session")
+                MenuItemFields::new(crate::tr!("ai_assistant", "ai-assistant-ai-doc-attach-to-active-session"))
                     .with_on_select_action(NotebookAction::AttachPlanAsContext(ai_document_id))
                     .with_icon(icons::Icon::Paperclip)
                     .into_item(),
@@ -1418,7 +1418,7 @@ impl NotebookView {
         // Add "Copy Link" to menu
         if let Some(link) = self.notebook_link(ctx) {
             menu_items.push(
-                MenuItemFields::new("Copy link")
+                MenuItemFields::new(crate::tr!("ai_assistant", "ai-assistant-ai-doc-copy-link"))
                     .with_on_select_action(NotebookAction::CopyLink(link))
                     .with_icon(icons::Icon::Link)
                     .into_item(),
@@ -1435,7 +1435,7 @@ impl NotebookView {
             && let Ok(url) = Url::parse(&link)
         {
             menu_items.push(
-                MenuItemFields::new("Open on Desktop")
+                MenuItemFields::new(crate::tr!("drive", "drive-menu-open-desktop"))
                     .with_on_select_action(NotebookAction::OpenLinkOnDesktop(url))
                     .with_icon(icons::Icon::Laptop)
                     .into_item(),
@@ -1731,7 +1731,7 @@ impl NotebookView {
                 ToastStack::handle(ctx).update(ctx, |toast_stack, ctx| {
                     toast_stack.add_ephemeral_toast(
                         DismissibleToast::error(
-                            "This notebook cannot be saved because its title contains secrets"
+                            crate::tr!("notebooks", "notebooks-cannot-save-title-secrets")
                                 .to_string(),
                         ),
                         window_id,
@@ -1915,9 +1915,9 @@ impl NotebookView {
         let mut stack = Stack::new();
 
         let text = if deleted {
-            "You no longer have access to this notebook"
+            crate::tr!("notebooks", "notebooks-you-no-longer-have-access")
         } else {
-            "Notebook was moved to trash"
+            crate::tr!("notebooks", "notebooks-notebook-was-moved-to-trash")
         };
         stack.add_child(
             Align::new(
@@ -1974,7 +1974,7 @@ impl NotebookView {
                             )
                             .with_tooltip(move || {
                                 ui_builder
-                                    .tool_tip("Restore notebook from trash".to_string())
+                                    .tool_tip(crate::tr!("notebooks", "notebooks-restore-notebook-from-trash").to_string())
                                     .build()
                                     .finish()
                             })
@@ -2005,13 +2005,13 @@ impl NotebookView {
                                 .with_tooltip(move || {
                                     ui_builder
                                         .tool_tip(
-                                            "Copy notebook contents into your personal workspace"
+                                            crate::tr!("notebooks", "notebooks-copy-notebook-contents-into-personal-workspace")
                                                 .to_string(),
                                         )
                                         .build()
                                         .finish()
                                 })
-                                .with_text_label("Copy to Personal".to_string())
+                                .with_text_label(crate::tr!("notebooks", "notebooks-copy-to-personal").to_string())
                                 .build()
                                 .on_click(|ctx, _, _| {
                                     ctx.dispatch_typed_action(NotebookAction::CopyToPersonal)
@@ -2089,11 +2089,11 @@ impl NotebookView {
                         )
                         .with_tooltip(move || {
                             ui_builder
-                                .tool_tip("Copy notebook contents to your clipboard".to_string())
+                                .tool_tip(crate::tr!("notebooks", "notebooks-copy-notebook-contents-to-clipboard").to_string())
                                 .build()
                                 .finish()
                         })
-                        .with_text_label("Copy All".to_string())
+                        .with_text_label(crate::tr!("notebooks", "notebooks-copy-all").to_string())
                         .build()
                         .on_click(|ctx, _, _| {
                             ctx.dispatch_typed_action(NotebookAction::CopyToClipboard)
@@ -2123,7 +2123,7 @@ impl NotebookView {
                             )
                             .with_tooltip(move || {
                                 ui_builder
-                                    .tool_tip("Refresh notebook".to_string())
+                                    .tool_tip(crate::tr!("notebooks", "notebooks-refresh-notebook").to_string())
                                     .build()
                                     .finish()
                             })
@@ -2315,7 +2315,7 @@ impl TypedActionView for NotebookView {
                 let window_id = ctx.window_id();
                 ToastStack::handle(ctx).update(ctx, |toast_stack, ctx| {
                     toast_stack.add_ephemeral_toast(
-                        DismissibleToast::success("Link copied to clipboard".to_string()),
+                        DismissibleToast::success(crate::tr!("ai_assistant", "ai-assistant-ai-link-copied-toast").to_string()),
                         window_id,
                         ctx,
                     );

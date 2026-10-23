@@ -96,7 +96,7 @@ impl StringModel for EnvVarCollection {
     type CloudObjectType = CloudEnvVarCollection;
 
     fn model_type_name(&self) -> &'static str {
-        "Environment variables"
+        crate::tr!("drive", "drive-type-env-vars")
     }
 
     fn should_enforce_revisions() -> bool {

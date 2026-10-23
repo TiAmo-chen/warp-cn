@@ -49,13 +49,13 @@ impl ApiKeyType {
     fn description(&self) -> &'static str {
         match self {
             ApiKeyType::Personal => {
-                "This API key is tied to your user and can make requests against your Warp account."
+                crate::tr!("settings", "settings-api-key-personal-desc")
             }
             ApiKeyType::Team => {
-                "This API key is tied to your team and can make requests on behalf of your team."
+                crate::tr!("settings", "settings-api-key-team-desc")
             }
             ApiKeyType::Agent => {
-                "This API key is tied to an agent and can make requests on behalf of the agent."
+                crate::tr!("settings", "settings-api-key-agent-desc")
             }
         }
     }
@@ -299,7 +299,7 @@ impl CreateApiKeyModal {
                     Err(err) => {
                         report_error!(err.context("Failed to load agent identities"));
                         ctx.emit(CreateApiKeyModalEvent::Error {
-                            message: "Failed to load agents. Please close and try again."
+                            message: crate::tr!("settings", "settings-api-key-failed-load-agents")
                                 .to_string(),
                         });
                     }
@@ -356,7 +356,7 @@ impl CreateApiKeyModal {
         let name = self.name_editor.as_ref(ctx).buffer_text(ctx);
 
         let final_name = if name.trim().is_empty() {
-            "Warp API Key".to_string()
+            crate::tr!("zz_zh02_supplement", "settings-warp-api-key").to_string()
         } else {
             name.trim().to_string()
         };
@@ -380,7 +380,7 @@ impl CreateApiKeyModal {
                 None => {
                     self.request_state = RequestState::Idle;
                     ctx.emit(CreateApiKeyModalEvent::Error {
-                        message: "Please select an agent.".to_string(),
+                        message: crate::tr!("zz_zh02_supplement", "settings-please-select-agent").to_string(),
                     });
                     ctx.notify();
                     return;
@@ -513,7 +513,7 @@ impl CreateApiKeyModal {
         };
 
         let info = Text::new(
-            "This secret key is shown only once. Copy and store it securely.",
+            crate::tr!("settings", "settings-api-key-secret-shown-once"),
             appearance.ui_font_family(),
             LABEL_FONT_SIZE,
         )
@@ -646,7 +646,7 @@ impl View for CreateApiKeyModal {
                         FormattedText::new([FormattedTextLine::Line(vec![
                             FormattedTextFragment::plain_text(selected_key_type.description()),
                             FormattedTextFragment::plain_text(" "),
-                            FormattedTextFragment::hyperlink("Learn more", API_KEY_DOCS_URL),
+                            FormattedTextFragment::hyperlink(crate::tr!("common", "common-learn-more-label"), API_KEY_DOCS_URL),
                         ])]),
                         LABEL_FONT_SIZE,
                         appearance.ui_font_family(),
@@ -760,7 +760,7 @@ impl View for CreateApiKeyModal {
 
                     if !self.is_loading_agents && available_agents.is_empty() {
                         let empty_text = Text::new(
-                            "No agents available. Create one first.",
+                            crate::tr!("settings", "settings-api-key-no-agents"),
                             appearance.ui_font_family(),
                             LABEL_FONT_SIZE,
                         )
@@ -773,7 +773,7 @@ impl View for CreateApiKeyModal {
                                 ButtonVariant::Secondary,
                                 self.create_agent_button_mouse_state.clone(),
                             )
-                            .with_text_label("Create agent".to_string())
+                            .with_text_label(crate::tr!("zz_zh02_supplement", "settings-create-agent").to_string())
                             .with_style(button_style)
                             .build()
                             .on_click(|ctx, _, _| {
@@ -899,7 +899,7 @@ impl TypedActionView for CreateApiKeyModal {
                 let window_id = ctx.window_id();
                 crate::ToastStack::handle(ctx).update(ctx, |toast_stack, ctx| {
                     let toast = crate::view_components::DismissibleToast::success(
-                        "Secret key copied.".to_string(),
+                        crate::tr!("zz_zh02_supplement", "settings-secret-key-copied").to_string(),
                     );
                     toast_stack.add_ephemeral_toast(toast, window_id, ctx);
                 });

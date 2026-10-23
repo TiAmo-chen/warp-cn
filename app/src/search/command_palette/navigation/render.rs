@@ -375,7 +375,7 @@ impl CommandRenderInfo {
             },
             CommandContext::None => CommandRenderInfo {
                 command_text: Some(String::new()),
-                hint_text: "Empty Session".to_string(),
+                hint_text: crate::tr!("search", "search-nav-empty-session").to_string(),
                 row_spacing: 0.,
                 hint_margin: 0.,
             },

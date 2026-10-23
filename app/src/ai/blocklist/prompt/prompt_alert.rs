@@ -487,7 +487,7 @@ impl PromptAlertView {
                         let upgrade_text = if !has_admin_permissions {
                             COMPARE_PLANS_TEXT
                         } else if team.billing_metadata.can_upgrade_to_build_plan() {
-                            "Upgrade to Build"
+                            crate::tr!("ai_assistant", "ai-assistant-ai-upgrade-to-build-text")
                         } else {
                             UPGRADE_TEXT
                         };
@@ -507,7 +507,7 @@ impl PromptAlertView {
                     let label =
                         if let Some(workspace) = UserWorkspaces::as_ref(app).current_workspace() {
                             if workspace.billing_metadata.can_upgrade_to_build_plan() {
-                                "Upgrade to Build"
+                                crate::tr!("ai_assistant", "ai-assistant-ai-upgrade-to-build-text")
                             } else {
                                 UPGRADE_TEXT
                             }
@@ -519,7 +519,7 @@ impl PromptAlertView {
                 if UserWorkspaces::as_ref(app).is_byo_api_key_enabled(app) {
                     text_fragments.push(FormattedTextFragment::plain_text(" or "));
                     text_fragments.push(FormattedTextFragment::hyperlink_action(
-                        "use your own API keys",
+                        crate::tr!("ai_assistant", "ai-assistant-ai-use-your-own-api-keys-text"),
                         WorkspaceAction::ShowSettingsPageWithSearch {
                             search_query: "api".to_string(),
                             section: Some(SettingsSection::WarpAgent),
@@ -591,7 +591,7 @@ impl View for PromptAlertView {
         if suggest_buy_credits {
             text_fragments.push(FormattedTextFragment::plain_text("  "));
             text_fragments.push(FormattedTextFragment::hyperlink_action(
-                "Add credits",
+                crate::tr!("ai_assistant", "ai-assistant-ai-add-credits-text"),
                 WorkspaceAction::ShowSettingsPage(SettingsSection::BillingAndUsage),
             ));
         } else {

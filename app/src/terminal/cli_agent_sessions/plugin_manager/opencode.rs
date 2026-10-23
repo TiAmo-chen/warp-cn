@@ -32,11 +32,11 @@ impl CliAgentPluginManager for OpenCodePluginManager {
 }
 
 static INSTALL_INSTRUCTIONS: LazyLock<PluginInstructions> = LazyLock::new(|| PluginInstructions {
-    title: "Install Warp Plugin for OpenCode",
-    subtitle: "Add the Warp plugin to your OpenCode configuration, then restart OpenCode.",
+    title: crate::tr!("terminal", "terminal-plugin-install-opencode-title"),
+    subtitle: crate::tr!("terminal", "terminal-plugin-opencode-install-subtitle"),
     steps: &[
         PluginInstructionStep {
-            description: "Open or create your opencode.json. This can be in your project root, or the global config path:",
+            description: crate::tr!("terminal", "terminal-plugin-opencode-open-config-step"),
             command: "~/.config/opencode/opencode.json",
             executable: false,
             link: None,
@@ -48,15 +48,15 @@ static INSTALL_INSTRUCTIONS: LazyLock<PluginInstructions> = LazyLock::new(|| Plu
             link: None,
         },
     ],
-    post_install_notes: &["Restart OpenCode to activate the plugin."],
+    post_install_notes: &[crate::tr!("terminal", "terminal-plugin-opencode-restart-activate")],
 });
 
 static UPDATE_INSTRUCTIONS: LazyLock<PluginInstructions> = LazyLock::new(|| PluginInstructions {
-    title: "Update Warp Plugin for OpenCode",
+    title: crate::tr!("terminal", "terminal-plugin-update-opencode-title"),
     subtitle: "Pin the plugin to the latest version in your opencode.json. OpenCode caches plugins per version spec, so changing the pin forces it to re-fetch on restart.",
     steps: &[
         PluginInstructionStep {
-            description: "Open or create your opencode.json. This can be in your project root, or the global config path:",
+            description: crate::tr!("terminal", "terminal-plugin-opencode-open-config-step"),
             command: "~/.config/opencode/opencode.json",
             executable: false,
             link: None,
@@ -68,7 +68,7 @@ static UPDATE_INSTRUCTIONS: LazyLock<PluginInstructions> = LazyLock::new(|| Plug
             link: None,
         },
     ],
-    post_install_notes: &["Restart OpenCode to load the updated plugin."],
+    post_install_notes: &[crate::tr!("terminal", "terminal-plugin-opencode-restart-update")],
 });
 
 #[cfg(test)]

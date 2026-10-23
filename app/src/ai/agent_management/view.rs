@@ -265,7 +265,7 @@ impl AgentManagementView {
         let all_filter_button = ctx.add_typed_action_view(|_ctx| {
             ActionButton::new("All", NakedTheme)
                 .with_size(ButtonSize::Small)
-                .with_tooltip("View your agent tasks plus all shared team tasks")
+                .with_tooltip(crate::tr!("ai_assistant", "ai-assistant-ai-all-tooltip"))
                 .on_click(|ctx| {
                     ctx.dispatch_typed_action(AgentManagementViewAction::SetOwnerFilter(
                         OwnerFilter::All,
@@ -276,7 +276,7 @@ impl AgentManagementView {
         let personal_filter_button = ctx.add_typed_action_view(|_ctx| {
             ActionButton::new("Personal", NakedTheme)
                 .with_size(ButtonSize::Small)
-                .with_tooltip("View agent tasks you created")
+                .with_tooltip(crate::tr!("ai_assistant", "ai-assistant-ai-personal-tooltip"))
                 .on_click(|ctx| {
                     ctx.dispatch_typed_action(AgentManagementViewAction::SetOwnerFilter(
                         OwnerFilter::PersonalOnly,
@@ -285,7 +285,7 @@ impl AgentManagementView {
         });
 
         let setup_guide_button = CompactibleActionButton::new(
-            "Get started".to_string(),
+            crate::tr!("ai_assistant", "ai-assistant-ai-get-started").to_string(),
             None,
             ButtonSize::Small,
             AgentManagementViewAction::ToggleSetupGuide,
@@ -295,7 +295,7 @@ impl AgentManagementView {
         );
 
         let view_agents_button = ctx.add_typed_action_view(|_ctx| {
-            ActionButton::new("View Agents", NakedTheme)
+            ActionButton::new(crate::tr!("ai_assistant", "ai-assistant-ai-view-agents"), NakedTheme)
                 .with_size(ButtonSize::Small)
                 .with_icon(Icon::ArrowLeft)
                 .on_click(|ctx| {
@@ -313,7 +313,7 @@ impl AgentManagementView {
         let creator_dropdown = ctx.add_typed_action_view(Self::create_creator_dropdown);
 
         let no_filter_results_button = ctx.add_typed_action_view(move |_ctx| {
-            ActionButton::new("Clear filters", SecondaryTheme)
+            ActionButton::new(crate::tr!("ai_assistant", "ai-assistant-ai-filter-clear-filters"), SecondaryTheme)
                 .with_size(ButtonSize::Small)
                 .on_click(move |ctx| {
                     ctx.dispatch_typed_action(AgentManagementViewAction::ClearFilters)
@@ -321,7 +321,7 @@ impl AgentManagementView {
         });
 
         let clear_all_filters_button = ctx.add_typed_action_view(move |_ctx| {
-            ActionButton::new("Clear all", NakedTheme)
+            ActionButton::new(crate::tr!("ai_assistant", "ai-assistant-ai-context-clear-all"), NakedTheme)
                 .with_icon(Icon::X)
                 .with_size(ButtonSize::Small)
                 .on_click(move |ctx| {
@@ -360,7 +360,7 @@ impl AgentManagementView {
         });
 
         let new_agent_button = CompactibleActionButton::new(
-            "New agent".to_string(),
+            crate::tr!("ai_assistant", "ai-assistant-ai-new-agent").to_string(),
             None,
             ButtonSize::Small,
             AgentManagementViewAction::ShowAgentTypeSelector,
@@ -636,7 +636,7 @@ impl AgentManagementView {
         ctx: &mut ViewContext<Dropdown<AgentManagementViewAction>>,
     ) -> Dropdown<AgentManagementViewAction> {
         let mut dropdown = Dropdown::new(ctx);
-        Self::setup_filter_menu(&mut dropdown, "Created on", ctx);
+        Self::setup_filter_menu(&mut dropdown, crate::tr!("ai_assistant", "ai-assistant-ai-filter-created-on-label"), ctx);
 
         let items = vec![
             MenuItem::Item(MenuItemFields::new("All").with_on_select_action(
@@ -644,17 +644,17 @@ impl AgentManagementView {
                     AgentManagementViewAction::SetCreatedOnFilter(CreatedOnFilter::All),
                 ),
             )),
-            MenuItem::Item(MenuItemFields::new("Last 24 hours").with_on_select_action(
+            MenuItem::Item(MenuItemFields::new(crate::tr!("ai_assistant", "ai-assistant-ai-filter-last-24-hours")).with_on_select_action(
                 DropdownAction::select_action_and_close(
                     AgentManagementViewAction::SetCreatedOnFilter(CreatedOnFilter::Last24Hours),
                 ),
             )),
-            MenuItem::Item(MenuItemFields::new("Past 3 days").with_on_select_action(
+            MenuItem::Item(MenuItemFields::new(crate::tr!("ai_assistant", "ai-assistant-ai-filter-past-3-days")).with_on_select_action(
                 DropdownAction::select_action_and_close(
                     AgentManagementViewAction::SetCreatedOnFilter(CreatedOnFilter::Past3Days),
                 ),
             )),
-            MenuItem::Item(MenuItemFields::new("Last week").with_on_select_action(
+            MenuItem::Item(MenuItemFields::new(crate::tr!("ai_assistant", "ai-assistant-ai-filter-last-week")).with_on_select_action(
                 DropdownAction::select_action_and_close(
                     AgentManagementViewAction::SetCreatedOnFilter(CreatedOnFilter::LastWeek),
                 ),
@@ -670,7 +670,7 @@ impl AgentManagementView {
         ctx: &mut ViewContext<Dropdown<AgentManagementViewAction>>,
     ) -> Dropdown<AgentManagementViewAction> {
         let mut dropdown = Dropdown::new(ctx);
-        Self::setup_filter_menu(&mut dropdown, "Has artifact", ctx);
+        Self::setup_filter_menu(&mut dropdown, crate::tr!("ai_assistant", "ai-assistant-ai-filter-has-artifact-label"), ctx);
 
         let items = vec![
             MenuItem::Item(MenuItemFields::new("All").with_on_select_action(
@@ -678,7 +678,7 @@ impl AgentManagementView {
                     AgentManagementViewAction::SetArtifactFilter(ArtifactFilter::All),
                 ),
             )),
-            MenuItem::Item(MenuItemFields::new("Pull Request").with_on_select_action(
+            MenuItem::Item(MenuItemFields::new(crate::tr!("ai_assistant", "ai-assistant-ai-filter-pull-request")).with_on_select_action(
                 DropdownAction::select_action_and_close(
                     AgentManagementViewAction::SetArtifactFilter(ArtifactFilter::PullRequest),
                 ),
@@ -774,7 +774,7 @@ impl AgentManagementView {
         ctx: &mut ViewContext<FilterableDropdown<AgentManagementViewAction>>,
     ) -> FilterableDropdown<AgentManagementViewAction> {
         let mut dropdown = FilterableDropdown::new(ctx);
-        Self::setup_searchable_filter_menu(&mut dropdown, "Created by", ctx);
+        Self::setup_searchable_filter_menu(&mut dropdown, crate::tr!("ai_assistant", "ai-assistant-ai-filter-created-by-label"), ctx);
         dropdown
     }
 
@@ -1267,7 +1267,7 @@ impl AgentManagementView {
 
                 let window_id = ctx.window_id();
                 ToastStack::handle(ctx).update(ctx, |toast_stack, ctx| {
-                    let toast = DismissibleToast::default("Copied branch name".to_string());
+                    let toast = DismissibleToast::default(crate::tr!("ai_assistant", "ai-assistant-ai-copied-branch-name").to_string());
                     toast_stack.add_ephemeral_toast(toast, window_id, ctx);
                 });
             }
@@ -2067,7 +2067,7 @@ impl AgentManagementView {
             let mut stack = Stack::new().with_child(loading_icon);
             if mouse_state.is_hovered() {
                 let tooltip = ui_builder
-                    .tool_tip(String::from("Loading cloud agent runs"))
+                    .tool_tip(String::from(crate::tr!("agent_cloud", "agent-cloud-loading-cloud-agent-runs")))
                     .build()
                     .finish();
                 stack.add_positioned_overlay_child(
@@ -2112,7 +2112,7 @@ impl AgentManagementView {
             .with_child(Container::new(loading_icon).with_margin_right(10.).finish())
             .with_child(
                 Text::new_inline(
-                    "Loading agents...",
+                    crate::tr!("ai_assistant", "ai-assistant-ai-loading-agents"),
                     appearance.ui_font_family(),
                     appearance.ui_font_size() + 2.,
                 )
@@ -2168,7 +2168,7 @@ impl AgentManagementView {
         .finish();
 
         let text = Text::new_inline(
-            "No results matched your filters",
+            crate::tr!("ai_assistant", "ai-assistant-ai-no-filter-results"),
             appearance.ui_font_family(),
             appearance.ui_font_size(),
         )

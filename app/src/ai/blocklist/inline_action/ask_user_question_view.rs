@@ -747,7 +747,7 @@ impl AskUserQuestionView {
                 .finish(),
         );
         content.add_child(
-            HeaderConfig::new("Agent questions", app)
+            HeaderConfig::new(crate::tr!("ai_assistant", "ai-assistant-ai-agent-questions"), app)
                 .with_icon(yellow_stop_icon(appearance))
                 .with_corner_radius_override(CornerRadius::with_top(Radius::Pixels(8.)))
                 .render_header(app, Some(header_right.finish())),
@@ -801,7 +801,7 @@ impl AskUserQuestionView {
 
     fn render_unavailable(&self, appearance: &Appearance, app: &AppContext) -> Box<dyn Element> {
         wrap_with_agent_output_item_spacing(
-            HeaderConfig::new("Questions unavailable".to_string(), app)
+            HeaderConfig::new(crate::tr!("ai_assistant", "ai-assistant-ai-questions-unavailable").to_string(), app)
                 .with_icon(inline_action_icons::reverted_icon(appearance))
                 .render(app),
             app,
@@ -841,12 +841,12 @@ impl AskUserQuestionView {
             }
             AskUserQuestionResult::Error(_) | AskUserQuestionResult::Cancelled => (
                 None,
-                "Questions skipped".to_string(),
+                crate::tr!("ai_assistant", "ai-assistant-ai-questions-skipped").to_string(),
                 inline_action_icons::reverted_icon(appearance),
             ),
             AskUserQuestionResult::SkippedByAutoApprove { .. } => (
                 None,
-                "Questions skipped due to auto-approve".to_string(),
+                crate::tr!("ai_assistant", "ai-assistant-ai-questions-skipped-autoapprove").to_string(),
                 inline_action_icons::reverted_icon(appearance),
             ),
         };
@@ -931,7 +931,7 @@ impl AskUserQuestionView {
         let theme = appearance.theme();
         let dropdown = self.speedbump_dropdown.as_ref()?;
         let row = render_autonomy_dropdown_setting_speedbump_footer(
-            "Allow the agent to ask questions:",
+            crate::tr!("ai_assistant", "ai-assistant-ai-allow-agent-questions"),
             dropdown,
             settings_link_handle,
             app,
@@ -1299,13 +1299,13 @@ fn ask_user_question_completion_state(
 
     if answered_count == 0 {
         AskUserQuestionCompletionState {
-            label: "Questions skipped".to_string(),
+            label: crate::tr!("ai_assistant", "ai-assistant-ai-questions-skipped").to_string(),
             status_icon: inline_action_icons::reverted_icon(appearance),
         }
     } else {
         let label = if answered_count == total {
             if total == 1 {
-                "Answered question".to_string()
+                crate::tr!("ai_assistant", "ai-assistant-ai-answered-question").to_string()
             } else {
                 format!("Answered all {total} questions")
             }

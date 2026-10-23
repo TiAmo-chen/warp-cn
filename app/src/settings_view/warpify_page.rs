@@ -152,7 +152,7 @@ impl WarpifyPageView {
             Category::new("", vec![Box::new(TitleWidget::default())]),
             Category::with_header(
                 CategoryHeader::new("The tmux ssh wrapper works in many situations where the default one does not, but may require you to hit a button to warpify. Takes effect in new tabs.")
-                    .with_subtitle("Subshells supported: bash, zsh, and fish."),
+                    .with_subtitle(crate::tr!("settings", "settings-subshells-supported-bash-zsh-and-fish")),
                 vec![Box::new(SubshellsWidget::default())],
             ),
         ];

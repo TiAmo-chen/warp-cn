@@ -81,7 +81,7 @@ const AUTO_INDEX_DESCRIPTION: &str = "When set to true, Warp will automatically 
 const INDEXING_DISABLED_ADMIN_TEXT: &str = "Team admins have disabled codebase indexing.";
 const INDEXING_WORKSPACE_ENABLED_ADMIN_TEXT: &str = "Team admins have enabled codebase indexing.";
 const INDEXING_DISABLED_GLOBAL_AI_TEXT: &str =
-    "AI Features must be enabled to use codebase indexing.";
+    crate::tr!("settings", "settings-ai-features-must-be-enabled-to-use-codebase-indexing");
 const CODEBASE_INDEX_LIMIT_REACHED: &str = "You have reached the maximum number of codebase indices for your plan. Delete existing indices to auto-index new codebases.";
 #[cfg(not(target_family = "wasm"))]
 const REMOTE_CODEBASE_INDEX_LIMIT_REACHED_FAILURE: &str =
@@ -1498,7 +1498,7 @@ impl CodePageWidget {
             )) = index_state.last_sync_result()
             {
                 (
-                    "Codebase too large",
+                    crate::tr!("settings", "settings-codebase-too-large"),
                     theme.ui_warning_color(),
                     Icon::AlertTriangle,
                 )
@@ -1523,7 +1523,7 @@ impl CodePageWidget {
 
         log::warn!("No index state for codebase");
         IndexingStatusPresentation {
-            text: Cow::from("No index built"),
+            text: Cow::from(crate::tr!("settings", "settings-no-index-built")),
             color: theme.nonactive_ui_text_color().into_solid(),
             icon: None,
             refresh_action: None,
@@ -1551,7 +1551,7 @@ impl CodePageWidget {
                 let limit_reached = remote_codebase_index_limit_reached(status);
                 IndexingStatusPresentation {
                     text: Cow::from(if limit_reached {
-                        "Index limit reached"
+                        crate::tr!("settings", "settings-index-limit-reached")
                     } else {
                         "Unavailable"
                     }),
@@ -1767,7 +1767,7 @@ impl CodePageWidget {
         // crate::tr!("settings", "lsp-servers") label
         content.add_child(
             ui_builder
-                .span("LSP SERVERS")
+                .span(crate::tr!("settings", "settings-lsp-servers"))
                 .with_style(UiComponentStyles {
                     font_size: Some(11.0),
                     font_weight: Some(Weight::Semibold),

@@ -147,7 +147,7 @@ pub fn init(app: &mut AppContext) {
     app.register_fixed_bindings([FixedBinding::custom(
         CustomAction::CloseCurrentSession,
         AIAssistantAction::ClosePanel,
-        "Close Warp AI",
+        crate::tr!("ai_assistant", "ai-assistant-close-warp-ai"),
         id!("AIAssistantPanel"),
     )]);
 
@@ -161,14 +161,14 @@ pub fn init(app: &mut AppContext) {
         .with_key_binding(cmd_or_ctrl_shift("l")),
         EditableBinding::new(
             "ai_assistant_panel:reset_context",
-            "Restart Warp AI",
+            crate::tr!("ai_assistant", "ai-assistant-restart-warp-ai"),
             AIAssistantAction::ResetContext,
         )
         .with_context_predicate(id!("AIAssistantPanel"))
         .with_key_binding("ctrl-l"),
         EditableBinding::new(
             "ai_assistant_panel:reset_context",
-            "Restart Warp AI",
+            crate::tr!("ai_assistant", "ai-assistant-restart-warp-ai"),
             AIAssistantAction::ResetContext,
         )
         .with_context_predicate(id!("AIAssistantPanel"))
@@ -783,7 +783,7 @@ impl AIAssistantPanelView {
                 ..Default::default()
             };
             ui_builder
-                .tool_tip("Copy transcript to clipboard".to_owned())
+                .tool_tip(crate::tr!("ai_assistant", "ai-assistant-copy-transcript-to-clipboard").to_owned())
                 .with_style(tool_tip_style)
                 .build()
                 .finish()
@@ -841,7 +841,7 @@ impl AIAssistantPanelView {
             .with_children([
                 Container::new(
                     Text::new_inline(
-                        "Character limit exceeded.",
+                        crate::tr!("ai_assistant", "ai-assistant-character-limit-exceeded"),
                         appearance.ui_font_family(),
                         BODY_FONT_SIZE,
                     )

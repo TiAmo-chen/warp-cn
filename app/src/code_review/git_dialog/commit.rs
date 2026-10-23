@@ -85,9 +85,9 @@ pub(super) fn new_state(
     // whether or not the branch already has an upstream — but the label
     // and icon flip to communicate the user-visible difference.
     let (push_label, push_icon) = if has_upstream {
-        ("Commit and push", Icon::ArrowUp)
+        (crate::tr!("code_editor", "code-editor-code-review-commit-and-push"), Icon::ArrowUp)
     } else {
-        ("Commit and publish", Icon::UploadCloud)
+        (crate::tr!("code_editor", "code-editor-code-review-commit-and-publish"), Icon::UploadCloud)
     };
     // If AI autogen is on, the dialog opens with "Generating\u{2026}" and a
     // background request fills the editor when it resolves. Otherwise, we
@@ -231,7 +231,7 @@ pub(super) fn confirm_tooltip(state: &CommitState, app: &AppContext) -> Option<&
     // Only nudge for a missing message; an empty Changes box is self-evident,
     // and gating a tooltip on it would also flash during the open-time load.
     if has_committable_changes(state) && commit_message(state, app).is_none() {
-        return Some("Enter a commit message");
+        return Some(crate::tr!("code_editor", "code-editor-code-review-enter-commit-message"));
     }
     None
 }
@@ -418,9 +418,9 @@ pub(super) fn finish_commit_chain(
         Ok(Some(pr)) => show_pr_created_toast(pr, ctx),
         Ok(None) => {
             let msg = if matches!(intent, CommitChainMode::CommitOnly) {
-                "Changes successfully committed."
+                crate::tr!("code_editor", "code-editor-code-review-changes-successfully-committed")
             } else {
-                "Changes committed and pushed."
+                crate::tr!("code_editor", "code-editor-code-review-changes-committed-and-pushed")
             };
             show_toast(msg, ctx);
         }

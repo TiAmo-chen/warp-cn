@@ -152,7 +152,7 @@ impl SpendingLimitModal {
     fn error_text(&self) -> Option<String> {
         match self.input_error_state {
             Some(SpendingLimitModalInputErrorState::InvalidNumberFormat) => {
-                Some("Please enter a valid currency amount".to_string())
+                Some(crate::tr!("zz_zh02_supplement", "settings-enter-currency").to_string())
             }
             Some(SpendingLimitModalInputErrorState::NumberOutOfRange) => {
                 Some("Please enter a price between $0.01 and $10,000,000".to_string())

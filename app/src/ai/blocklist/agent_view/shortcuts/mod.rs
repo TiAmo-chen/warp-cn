@@ -160,7 +160,7 @@ pub fn render_agent_shortcuts_view(
         shortcuts.push(render_shortcut(
             ShortcutProps {
                 keystroke,
-                text: "open code review".into(),
+                text: crate::tr!("terminal", "terminal-zero-state-open-code-review").into(),
                 ..Default::default()
             },
             app,

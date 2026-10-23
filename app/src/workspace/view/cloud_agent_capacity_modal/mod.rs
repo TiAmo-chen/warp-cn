@@ -135,12 +135,12 @@ impl CloudAgentCapacityModal {
         let neutral_bg = blended_colors::neutral_1(theme);
         let (title_text, mut explanation_text) = match self.variant {
             CloudAgentCapacityModalVariant::ConcurrentLimit => (
-                "Concurrent cloud agent limit reached",
+                crate::tr!("workspace", "workspace-concurrent-limit-reached"),
                 "This cloud run is queued because your team has reached the maximum number of concurrent cloud agents. It will start automatically when another cloud run finishes.".to_string(),
             ),
             CloudAgentCapacityModalVariant::OutOfCredits => (
-                "You're out of AI credits",
-                "This cloud run stopped because your team has used all available AI credits for the current billing period.".to_string(),
+                crate::tr!("workspace", "workspace-you-are-out-of-ai-credits"),
+                crate::tr!("workspace", "workspace-out-of-credits-explanation").to_string(),
             ),
         };
 
@@ -195,7 +195,7 @@ impl CloudAgentCapacityModal {
                         "Paid plans start at ${price}/month and include everything in your free trial plus:"
                     )
                 } else {
-                    "Paid plans include everything in your free trial plus:".to_string()
+                    crate::tr!("workspace", "workspace-paid-plans-include").to_string()
                 }
             } else if let Some(pricing) = plan_pricing {
                 let price = pricing.yearly_plan_price_per_month_usd_cents / 100;
@@ -203,7 +203,7 @@ impl CloudAgentCapacityModal {
                     "The Business plan starts at ${price}/month and includes everything on your current plan plus:"
                 )
             } else {
-                "The Business plan includes everything on your current plan plus:".to_string()
+                crate::tr!("workspace", "workspace-business-plan-include").to_string()
             };
 
             let pricing = FormattedTextElement::new(
@@ -223,14 +223,14 @@ impl CloudAgentCapacityModal {
             {
                 format!("{} AI credits per month", limit.separate_with_commas())
             } else {
-                "Extended AI credits per month".to_string()
+                crate::tr!("workspace", "workspace-extended-ai-credits-per-month").to_string()
             };
 
             // Benefits list based on plan type
             let mut benefits = vec![
                 format!("{} the number of concurrent cloud agents", agent_multiplier),
                 credits_text,
-                "Bring your own API key".to_string(),
+                crate::tr!("workspace", "workspace-bring-your-own-api-key").to_string(),
             ];
             for extra in extra_benefits {
                 benefits.push(extra.to_string());
@@ -285,9 +285,9 @@ impl CloudAgentCapacityModal {
         let content = content.finish();
         let cta_button = if show_cta {
             let cta_button_label = if can_upgrade {
-                "Upgrade plan"
+                crate::tr!("workspace", "workspace-upgrade-plan")
             } else {
-                "Open billing"
+                crate::tr!("workspace", "workspace-open-billing")
             };
             Some(
                 appearance

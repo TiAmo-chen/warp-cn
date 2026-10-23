@@ -134,7 +134,7 @@ pub fn init(app: &mut AppContext) {
     app.register_editable_bindings([
         EditableBinding::new(
             "find:find_next_occurrence",
-            "Find the next occurrence of your search query",
+            crate::tr!("code", "code-find-next-occurrence"),
             FindAction::CmdG,
         )
         .with_context_predicate(id!("Find"))
@@ -144,7 +144,7 @@ pub fn init(app: &mut AppContext) {
         .with_linux_or_windows_key_binding("f3"),
         EditableBinding::new(
             "find:find_prev_occurrence",
-            "Find the previous occurrence of your search query",
+            crate::tr!("code", "code-find-prev-occurrence"),
             FindAction::CmdShiftG,
         )
         .with_context_predicate(id!("Find"))
@@ -261,11 +261,11 @@ impl<T: FindModel + Entity<Event = FindEvent> + 'static> Find<T> {
                     match_index + 1,
                     self.model.as_ref(ctx).match_count()
                 ),
-                "Use enter and shift-enter to navigate between matches. Escape to quit.",
+                crate::tr!("code_editor", "code-editor-code-find-use-enter-navigate"),
                 WarpA11yRole::UserAction,
             )
         } else {
-            AccessibilityContent::new_without_help("No results.", WarpA11yRole::UserAction)
+            AccessibilityContent::new_without_help(crate::tr!("code_editor", "code-editor-code-find-no-results"), WarpA11yRole::UserAction)
         };
         ctx.emit_a11y_content(content);
     }
@@ -520,8 +520,8 @@ impl<T: FindModel + Entity<Event = FindEvent> + 'static> View for Find<T> {
 
     fn accessibility_contents(&self, _: &AppContext) -> Option<AccessibilityContent> {
         Some(AccessibilityContent::new(
-            "Type searched phrase.",
-            "Press escape to quit, use enter and shift-enter to navigate between matches",
+            crate::tr!("terminal", "terminal-type-searched-phrase"),
+            crate::tr!("view_components", "view-components-find-escape-help"),
             WarpA11yRole::TextareaRole,
         ))
     }

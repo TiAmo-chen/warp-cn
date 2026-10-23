@@ -37,7 +37,7 @@ const BUTTON_BORDER_RADIUS: f32 = 4.;
 const BORDER_WIDTH: f32 = 1.;
 
 const MODAL_SUBHEADER: &str =
-    "Automatically generate a theme based on extracted colors from an image (.png, .jpg).";
+    crate::tr!("common", "common-theme-creator-subheader");
 const IMAGE_PICKER_BUTTON_PRE_SELECT_TEXT: &str = "Select an image";
 const IMAGE_PICKER_BUTTON_SELECTING_TEXT: &str = "Selecting image...";
 const IMAGE_PICKER_BUTTON_POST_SELECT_TEXT: &str = "Select a new image";
@@ -212,7 +212,7 @@ impl ThemeCreatorBody {
             #[cfg(not(feature = "local_fs"))]
             log::warn!("Tried to save theme without a local filesystem.");
             if errored {
-                self.send_error_toast("Something went wrong".to_string(), ctx);
+                self.send_error_toast(crate::tr!("errors", "errors-generic-title").to_string(), ctx);
             }
         }
     }

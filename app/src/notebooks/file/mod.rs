@@ -238,7 +238,7 @@ pub fn init(app: &mut AppContext) {
         .with_key_binding(cmd_or_ctrl_shift("l")),
         EditableBinding::new(
             "notebookview:reload_file",
-            "Reload file",
+            crate::tr!("notebooks", "notebooks-reload-file"),
             FileNotebookAction::ReloadFile,
         )
         .with_context_predicate(id!("FileNotebookView")),
@@ -945,7 +945,7 @@ impl FileNotebookView {
                         .with_text_and_icon_label(
                             TextAndIcon::new(
                                 TextAndIconAlignment::TextFirst,
-                                "Try again".to_string(),
+                                crate::tr!("notebooks", "notebooks-try-again").to_string(),
                                 Icon::Refresh.to_warpui_icon(error_text_color),
                                 MainAxisSize::Min,
                                 MainAxisAlignment::Center,
@@ -982,7 +982,7 @@ impl FileNotebookView {
         Align::new(
             appearance
                 .ui_builder()
-                .paragraph("Missing source file".to_string())
+                .paragraph(crate::tr!("notebooks", "notebooks-missing-source-file").to_string())
                 .with_style(self.state_style(appearance))
                 .build()
                 .finish(),
@@ -1209,7 +1209,7 @@ impl BackingView for FileNotebookView {
         if let Some(SourceFile::FileBased { .. }) = self.file_state.source() {
             actions.push(MenuItem::Separator);
             actions.push(
-                MenuItemFields::new("Refresh file")
+                MenuItemFields::new(crate::tr!("notebooks", "notebooks-refresh-file"))
                     .with_on_select_action(FileNotebookAction::ReloadFile)
                     .into_item(),
             );
@@ -1219,13 +1219,13 @@ impl BackingView for FileNotebookView {
                 // The markdown rendered/raw toggle is always visible in the pane header, so it is
                 // not duplicated here. "Open in editor" stays available for local files.
                 actions.push(
-                    MenuItemFields::new("Open in editor")
+                    MenuItemFields::new(crate::tr!("notebooks", "notebooks-open-in-editor"))
                         .with_on_select_action(FileNotebookAction::OpenInEditor)
                         .into_item(),
                 );
                 actions.extend([
                     MenuItem::Separator,
-                    MenuItemFields::new("Copy file path")
+                    MenuItemFields::new(crate::tr!("code_review", "code-review-copy-file-path"))
                         .with_on_select_action(FileNotebookAction::CopyFilePath)
                         .into_item(),
                 ]);

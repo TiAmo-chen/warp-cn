@@ -146,7 +146,7 @@ impl GridHighlightedLink {
                     .map(|path| path.is_dir())
                     .unwrap_or(false) =>
             {
-                "Open folder"
+                crate::tr!("notebooks", "notebooks-open-folder")
             }
             #[cfg(feature = "local_fs")]
             GridHighlightedLink::File(_) => "Open file",
@@ -245,7 +245,7 @@ impl RichContentLink {
         match &self {
             #[cfg(feature = "local_fs")]
             RichContentLink::FilePath { absolute_path, .. } if absolute_path.is_dir() => {
-                "Open folder"
+                crate::tr!("notebooks", "notebooks-open-folder")
             }
             #[cfg(feature = "local_fs")]
             RichContentLink::FilePath { .. } => "Open file",

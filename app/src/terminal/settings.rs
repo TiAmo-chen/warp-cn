@@ -204,7 +204,7 @@ define_settings_group!(TerminalSettings, settings: [
         surface: settings::SettingSurfaces::GUI,
         private: false,
         toml_path: "experimental.async_find_enabled",
-        description: "Use an improved implementation of find to keep the UI responsive while searching for matches on large outputs.",
+        description: crate::tr!("settings", "settings-use-an-improved-implementation-of-find-to-keep-the-ui-responsive-while-searching-for-matches-on-large-outputs"),
     },
 ]);
 

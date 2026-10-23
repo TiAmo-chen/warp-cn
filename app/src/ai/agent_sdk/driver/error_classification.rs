@@ -14,7 +14,7 @@ pub fn classify_driver_error(error: &AgentDriverError) -> (AgentTaskState, TaskS
         AgentDriverError::TerminalUnavailable | AgentDriverError::InvalidRuntimeState => (
             AgentTaskState::Error,
             TaskStatusUpdate::with_error_code(
-                "An internal error occurred. Please try running your task again. If the issue persists, contact support.",
+                crate::tr!("ai_assistant", "ai-assistant-ai-internal-error-retry"),
                 PlatformErrorCode::InternalError,
             ),
         ),
@@ -28,7 +28,7 @@ pub fn classify_driver_error(error: &AgentDriverError) -> (AgentTaskState, TaskS
         AgentDriverError::ShareSessionFailed { error: share_err } => {
             let message = match share_err {
                 ShareSessionError::Internal(_) => {
-                    "Failed to share agent session due to an internal error. Please try running your task again.".to_string()
+                    crate::tr!("ai_assistant", "ai-assistant-ai-share-session-internal-error").to_string()
                 }
                 ShareSessionError::Failed(reason) => {
                     // The reason string comes from the session-sharing layer and is aimed at
@@ -50,7 +50,7 @@ pub fn classify_driver_error(error: &AgentDriverError) -> (AgentTaskState, TaskS
                     .to_string()
                 }
                 ShareSessionError::Interrupted => {
-                    "Session sharing was interrupted before it could complete. Please try running your task again.".to_string()
+                    crate::tr!("ai_assistant", "ai-assistant-ai-share-session-interrupted").to_string()
                 }
             };
             (
@@ -67,7 +67,7 @@ pub fn classify_driver_error(error: &AgentDriverError) -> (AgentTaskState, TaskS
         AgentDriverError::WarpDriveSyncFailed => (
             AgentTaskState::Error,
             TaskStatusUpdate::with_error_code(
-                "Warp Drive failed to sync. Please check your network connection and try again.",
+                crate::tr!("ai_assistant", "ai-assistant-ai-warp-drive-sync-failed"),
                 PlatformErrorCode::InternalError,
             ),
         ),
@@ -134,7 +134,7 @@ pub fn classify_driver_error(error: &AgentDriverError) -> (AgentTaskState, TaskS
         AgentDriverError::MCPMissingVariables => (
             AgentTaskState::Failed,
             TaskStatusUpdate::with_error_code(
-                "MCP server configuration is missing required variables. Provide all required environment variables or template values.",
+                crate::tr!("ai_assistant", "ai-assistant-ai-mcp-missing-variables"),
                 PlatformErrorCode::EnvironmentSetupFailed,
             ),
         ),
@@ -242,7 +242,7 @@ pub fn classify_driver_error(error: &AgentDriverError) -> (AgentTaskState, TaskS
         // --- Cancellation / Blocked (no error code) ---
         AgentDriverError::ConversationCancelled { .. } => (
             AgentTaskState::Cancelled,
-            TaskStatusUpdate::message("Task cancelled."),
+            TaskStatusUpdate::message(crate::tr!("ai_assistant", "ai-assistant-ai-task-cancelled-msg")),
         ),
         AgentDriverError::ConversationBlocked { blocked_action } => (
             AgentTaskState::Blocked,

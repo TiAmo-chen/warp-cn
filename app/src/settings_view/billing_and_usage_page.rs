@@ -79,7 +79,7 @@ const OVERAGE_TOGGLE_USER_HEADER_ENABLED: &str = "Premium model usage overages a
 const OVERAGE_TOGGLE_USER_HEADER_DISABLED: &str = "Premium model usage overages are not enabled";
 const OVERAGE_TOGGLE_DESCRIPTION: &str = "Continue using premium models beyond your plan's limits. Usage is charged in $20 increments up to your spending limit, with any remaining balance charged on your scheduled billing date.";
 const OVERAGE_TOGGLE_USER_DESCRIPTION: &str =
-    "Ask a team admin to enable overages for more AI usage.";
+    crate::tr!("settings", "settings-ask-a-team-admin-to-enable-overages-for-more-ai-usage");
 
 const SORT_MENU_ITEM_DISPLAY_NAME_A_Z_LABEL: &str = "A to Z";
 const SORT_MENU_ITEM_DISPLAY_NAME_Z_A_LABEL: &str = "Z to A";
@@ -88,9 +88,9 @@ const SORT_MENU_ITEM_REQUEST_USAGE_DESCENDING_LABEL: &str = "Usage descending";
 
 const AUTO_RELOAD_EXCEED_LIMIT_WARNING_STRING: &str = "Auto reload is disabled, as the next reload would exceed your monthly spend limit. Increase your limit to use auto reload.";
 const AUTO_RELOAD_DELINQUENT_WARNING_STRING: &str =
-    "Restricted due to billing issue. Update your payment method to purchase add-on credits.";
+    crate::tr!("settings", "settings-restricted-due-to-billing-issue-update-your-payment-method-to-purchase-add-on-credits");
 const AUTO_RELOAD_USAGE_DELINQUENT_WARNING_STRING: &str =
-    "Restricted due to billing issue. Update your payment method to purchase usage.";
+    crate::tr!("settings", "settings-restricted-due-to-billing-issue-update-your-payment-method-to-purchase-usage");
 const RESTRICTED_BILLING_USAGE_WARNING_STRING: &str = "Auto reload is disabled due to recent failed reload. Please update your payment method and try again.";
 
 const OVERVIEW_TAB_TEXT: &str = "Overview";
@@ -103,10 +103,10 @@ const ENTERPRISE_USAGE_CALLOUT_BODY_ADMIN_SUFFIX: &str = ".";
 const ENTERPRISE_USAGE_CALLOUT_BODY_NON_ADMIN: &str = "Enterprise credit usage isn't fully available in this view yet. Contact a team admin for detailed usage reporting.";
 
 const ADDITIONAL_ADDON_CREDITS_DESCRIPTION_FOR_TEAM: &str =
-    "Purchased add-on credits are shared across your team.";
+    crate::tr!("settings", "settings-purchased-add-on-credits-are-shared-across-your-team");
 const ADDON_USAGE_DESCRIPTION: &str = "Usage rolls over each billing cycle and expires after one year. Once your base plan usage is depleted, any additional purchased usage will be consumed.";
 const ADDITIONAL_ADDON_USAGE_DESCRIPTION_FOR_TEAM: &str =
-    "Purchased usage is shared across your team.";
+    crate::tr!("settings", "settings-purchased-usage-is-shared-across-your-team");
 
 // Cloud agent trial widget constants.
 const AMBIENT_AGENT_TRIAL_TITLE: &str = "Cloud agent trial";
@@ -845,7 +845,7 @@ impl Entity for BillingAndUsagePageView {
 
 impl View for BillingAndUsagePageView {
     fn ui_name() -> &'static str {
-        "Billing and usage"
+        crate::tr!("settings", "settings-billing-tab")
     }
 
     fn render(&self, app: &AppContext) -> Box<dyn Element> {
@@ -1338,7 +1338,7 @@ impl BillingAndUsagePageView {
                     ButtonVariant::Secondary,
                     self.ambient_trial_new_agent_button.clone(),
                 )
-                .with_text_label("New agent".to_string())
+                .with_text_label(crate::tr!("ai_assistant", "ai-assistant-ai-new-agent").to_string())
                 .with_style(UiComponentStyles {
                     font_color: Some(bg),
                     background: Some(fg.into()),
@@ -1880,9 +1880,9 @@ impl BillingAndUsagePageView {
                 let is_legacy_paid = workspace
                     .is_some_and(|workspace| workspace.billing_metadata.is_on_legacy_paid_plan());
                 let link_text = if is_legacy_paid {
-                    "Switch to the Build plan"
+                    crate::tr!("settings", "settings-switch-to-the-build-plan")
                 } else {
-                    "Upgrade to the Build plan"
+                    crate::tr!("settings", "settings-upgrade-to-the-build-plan")
                 };
                 let suffix = match unit {
                     UsageDisplayUnit::Credits => " to purchase add-on credits.",
@@ -1928,7 +1928,7 @@ impl BillingAndUsagePageView {
             (false, false, true) => {
                 let paragraph_text = match unit {
                     UsageDisplayUnit::Credits => {
-                        "Contact your Account Executive for more add-on credits."
+                        crate::tr!("settings", "settings-contact-your-account-executive-for-more-add-on-credits")
                     }
                     UsageDisplayUnit::Dollars => "Contact your Account Executive for more usage.",
                 };
@@ -2015,10 +2015,10 @@ impl BillingAndUsagePageView {
                 tooltip_override_text: Some(
                     match unit {
                         UsageDisplayUnit::Credits => {
-                            "Sets the monthly limit spent on add-on credits"
+                            crate::tr!("settings", "settings-sets-the-monthly-limit-spent-on-add-on-credits")
                         }
                         UsageDisplayUnit::Dollars => {
-                            "Sets the monthly limit spent on purchased usage"
+                            crate::tr!("settings", "settings-sets-the-monthly-limit-spent-on-purchased-usage")
                         }
                     }
                     .to_string(),
@@ -3413,13 +3413,13 @@ impl BillingAndUsagePageView {
                             ]
                         } else {
                             let mut fragments = vec![FormattedTextFragment::hyperlink(
-                                "Upgrade to the Build plan",
+                                crate::tr!("settings", "settings-upgrade-to-the-build-plan"),
                                 upgrade_url,
                             )];
                             if billing_metadata.is_byo_api_key_enabled() {
                                 fragments.push(FormattedTextFragment::plain_text(" or "));
                                 fragments.push(FormattedTextFragment::hyperlink_action(
-                                    "bring your own key",
+                                    crate::tr!("zz_zh02_supplement", "settings-bring-your-own-key"),
                                     BillingAndUsagePageAction::NavigateToByokSettings,
                                 ));
                             }
@@ -3482,13 +3482,13 @@ impl BillingAndUsagePageView {
             let user_id = auth_state.user_id().unwrap_or_default();
             let upgrade_url = UserWorkspaces::upgrade_link(user_id);
             let mut fragments = vec![FormattedTextFragment::hyperlink(
-                "Upgrade to the Build plan",
+                crate::tr!("settings", "settings-upgrade-to-the-build-plan"),
                 upgrade_url,
             )];
             if UserWorkspaces::as_ref(app).is_byo_api_key_enabled(app) {
                 fragments.push(FormattedTextFragment::plain_text(" or "));
                 fragments.push(FormattedTextFragment::hyperlink_action(
-                    "bring your own key",
+                    crate::tr!("zz_zh02_supplement", "settings-bring-your-own-key"),
                     BillingAndUsagePageAction::NavigateToByokSettings,
                 ));
             }

@@ -58,7 +58,7 @@ const WHAT_TO_DO_NEXT_PROMPT: &str = "What should I do next?";
 const IN_FLIGHT_REQUEST_TEXT: &str = "Generating answer...";
 const ACCURACY_NOTICE_TEXT: &str = "AI responses can be inaccurate.";
 const MISSING_CONTEXT_NOTICE_TEXT: &str =
-    "Warp AI might forget earlier answers as conversations get long.";
+    crate::tr!("ai_assistant", "ai-assistant-warp-ai-might-forget-earlier-answers");
 
 lazy_static::lazy_static! {
     static ref SCROLL_BUFFER_OFFSET_PX: Pixels = (10.).into_pixels();
@@ -561,7 +561,7 @@ impl Transcript {
                     .finish();
 
                 appearance.ui_builder().tool_tip_on_element(
-                    "Copy answer to clipboard".to_string(),
+                    crate::tr!("ai_assistant", "ai-assistant-copy-answer-to-clipboard").to_string(),
                     tooltip_handle,
                     copy_button,
                     ParentAnchor::TopRight,

@@ -123,7 +123,7 @@ pub fn init(app: &mut AppContext) {
         .with_linux_or_windows_key_binding("f3"),
         EditableBinding::new(
             "find:find_prev_occurrence",
-            "Find the previous occurrence of your search query",
+            crate::tr!("code", "code-find-prev-occurrence"),
             FindAction::CmdShiftG,
         )
         .with_context_predicate(id!("CodeEditorFind"))
@@ -179,7 +179,7 @@ impl CodeEditorFind {
         let editor_height = line_height + (2. * FIND_EDITOR_PADDING) + 5.;
 
         let select_all_button = ctx.add_typed_action_view(|_ctx| {
-            ActionButton::new("Select all", SecondaryTheme)
+            ActionButton::new(crate::tr!("editor", "editor-select-all"), SecondaryTheme)
                 .on_click(|ctx| {
                     ctx.dispatch_typed_action(FindAction::SelectAll);
                 })
@@ -395,11 +395,11 @@ impl CodeEditorFind {
                     match_index + 1,
                     self.searcher.as_ref(ctx).match_count()
                 ),
-                "Use enter and shift-enter to navigate between matches. Escape to quit.",
+                crate::tr!("code_editor", "code-editor-code-find-use-enter-navigate"),
                 WarpA11yRole::UserAction,
             )
         } else {
-            AccessibilityContent::new_without_help("No results.", WarpA11yRole::UserAction)
+            AccessibilityContent::new_without_help(crate::tr!("code_editor", "code-editor-code-find-no-results"), WarpA11yRole::UserAction)
         };
         ctx.emit_a11y_content(content);
     }
@@ -413,12 +413,12 @@ impl CodeEditorFind {
                 format!(
                     "Successfully replaced match. Selected match is {match_index} of {remaining_matches}"
                 ),
-                "Continue pressing Enter to replace more matches, or use up/down arrows to navigate.",
+                crate::tr!("code_editor", "code-editor-code-find-replace-continue"),
                 WarpA11yRole::UserAction,
             )
         } else {
             AccessibilityContent::new_without_help(
-                "Successfully replaced the last match.",
+                crate::tr!("code_editor", "code-editor-code-find-replace-last"),
                 WarpA11yRole::UserAction,
             )
         };
