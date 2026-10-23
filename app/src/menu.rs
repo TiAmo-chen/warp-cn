@@ -715,9 +715,9 @@ impl<A: Action + Clone> MenuItemFields<A> {
 
     pub fn toggle_pane_action(is_maximized: bool) -> Self {
         Self::new(if is_maximized {
-            crate::tr!("common", "common-minimize-pane")
+            crate::tr!("common", "minimize-pane")
         } else {
-            crate::tr!("common", "common-maximize-pane")
+            crate::tr!("common", "maximize-pane")
         })
     }
 
@@ -2574,9 +2574,9 @@ impl<A: Action + Clone> SubMenu<A> {
 
                 let instructions = if matches!(self.selected_item(), Some(MenuItem::Submenu { .. }))
                 {
-                    crate::tr!("menu", "menu-instructions-with-submenu")
+                    crate::tr!("menu", "instructions-with-submenu")
                 } else {
-                    crate::tr!("menu", "menu-instructions")
+                    crate::tr!("menu", "instructions")
                 };
 
                 Custom(AccessibilityContent::new(
@@ -2586,23 +2586,23 @@ impl<A: Action + Clone> SubMenu<A> {
                 ))
             }
             OpenSubmenu => Custom(AccessibilityContent::new(
-                String::from(crate::tr!("menu", "menu-submenu-expanded")),
-                crate::tr!("menu", "menu-open-submenu-help"),
+                String::from(crate::tr!("menu", "submenu-expanded")),
+                crate::tr!("menu", "open-submenu-help"),
                 WarpA11yRole::TextRole,
             )),
             CloseSubmenu(_) => Custom(AccessibilityContent::new(
-                String::from(crate::tr!("menu", "menu-submenu-closed")),
-                crate::tr!("menu", "menu-close-submenu-help"),
+                String::from(crate::tr!("menu", "submenu-closed")),
+                crate::tr!("menu", "close-submenu-help"),
                 WarpA11yRole::TextRole,
             )),
             Close(_) => Custom(AccessibilityContent::new(
-                String::from(crate::tr!("menu", "menu-closed")),
-                crate::tr!("menu", "menu-close-help"),
+                String::from(crate::tr!("menu", "closed")),
+                crate::tr!("menu", "close-help"),
                 WarpA11yRole::TextRole,
             )),
             Enter => Custom(AccessibilityContent::new(
-                String::from(crate::tr!("menu", "menu-action-selected")),
-                crate::tr!("menu", "menu-action-select-help"),
+                String::from(crate::tr!("menu", "action-selected")),
+                crate::tr!("menu", "action-select-help"),
                 WarpA11yRole::TextRole,
             )),
             HoverSubmenuLeafNode { .. }

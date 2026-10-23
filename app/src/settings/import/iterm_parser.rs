@@ -443,7 +443,7 @@ impl ITermProfile {
             strategy @ ("Yes" | "No" | "Recycle") => {
                 ITermWorkingDirectoryStrategy::Simple(ITermWorkingDirectory::from_str(
                     strategy.to_string(),
-                    dict.remove(crate::tr!("common", "common-working-directory"))
+                    dict.remove(crate::tr!("common", "working-directory"))
                         .and_then(|value| value.into_string())
                         .unwrap_or_default(),
                 ))

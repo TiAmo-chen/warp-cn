@@ -453,7 +453,7 @@ impl TableFormat for AgentResponse {
             Cell::new("Description"),
             Cell::new("Secrets"),
             Cell::new("Skills"),
-            Cell::new(crate::tr!("ai_assistant", "ai-assistant-ai-base-model")),
+            Cell::new(crate::tr!("ai_assistant", "ai-base-model")),
             Cell::new("Environment"),
             Cell::new("Prompt"),
         ]

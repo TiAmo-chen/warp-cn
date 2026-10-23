@@ -1645,7 +1645,7 @@ define_settings_group!(AISettings, settings: [
     // Command to run to refresh AWS credentials when using Bedrock auto-login.
     aws_bedrock_auth_refresh_command: AwsBedrockAuthRefreshCommand {
         type: String,
-        default: crate::tr!("settings", "settings-ai-footer-placeholder").to_string(),
+        default: crate::tr!("settings", "ai-footer-placeholder").to_string(),
         supported_platforms: SupportedPlatforms::DESKTOP,
         sync_to_cloud: SyncToCloud::Globally(RespectUserSyncSetting::Yes),
         surface: settings::SettingSurfaces::GUI,

@@ -146,7 +146,7 @@ impl WorkflowModal {
                                     if has_admin_permissions {
                                         ctx.emit(WorkflowModalEvent::AiAssistUpgradeError(Some(team.uid), current_user_id));
                                     } else {
-                                        ctx.emit(WorkflowModalEvent::AiAssistError(crate::tr!("drive", "drive-workflow-out-of-credits-admin").to_string()));
+                                        ctx.emit(WorkflowModalEvent::AiAssistError(crate::tr!("drive", "workflow-out-of-credits-admin").to_string()));
                                     }
                                 } else {
                                     ctx.emit(WorkflowModalEvent::AiAssistError(message.clone()));

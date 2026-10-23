@@ -349,7 +349,7 @@ impl RunAgentsCardView {
         let accept_keystroke = ENTER_KEYSTROKE.clone();
 
         let reject_button = CompactibleActionButton::new(
-            crate::tr!("ai_assistant", "ai-assistant-ai-reject").to_string(),
+            crate::tr!("ai_assistant", "ai-reject").to_string(),
             Some(KeystrokeSource::Fixed(reject_keystroke)),
             ButtonSize::Small,
             RunAgentsCardViewAction::Reject,
@@ -359,7 +359,7 @@ impl RunAgentsCardView {
         );
         let position_id_prefix = format!("{action_id:?}");
         let accept_button = CompactibleSplitActionButton::new(
-            crate::tr!("ai_assistant", "ai-assistant-ai-accept").to_string(),
+            crate::tr!("ai_assistant", "ai-accept").to_string(),
             Some(KeystrokeSource::Fixed(accept_keystroke)),
             ButtonSize::Small,
             RunAgentsCardViewAction::Accept,
@@ -1665,7 +1665,7 @@ pub(crate) fn format_terminal_state(result: &RunAgentsResult) -> (String, Status
                 .count();
             if launched == total {
                 let label = if total == 1 {
-                    crate::tr!("ai_assistant", "ai-assistant-ai-spawned-one-agent").to_string()
+                    crate::tr!("ai_assistant", "ai-spawned-one-agent").to_string()
                 } else {
                     format!("Spawned {total} agents")
                 };
@@ -1688,7 +1688,7 @@ pub(crate) fn format_terminal_state(result: &RunAgentsResult) -> (String, Status
         }
         RunAgentsResult::Denied { reason } => {
             let body = if reason.is_empty() {
-                crate::tr!("ai_assistant", "ai-assistant-ai-orchestration-disabled-message")
+                crate::tr!("ai_assistant", "ai-orchestration-disabled-message")
                     .to_string()
             } else {
                 format!(
@@ -1699,7 +1699,7 @@ pub(crate) fn format_terminal_state(result: &RunAgentsResult) -> (String, Status
         }
         RunAgentsResult::Failure { error } => {
             let label = if error.is_empty() {
-                crate::tr!("ai_assistant", "ai-assistant-ai-failed-to-start-orchestration").to_string()
+                crate::tr!("ai_assistant", "ai-failed-to-start-orchestration").to_string()
             } else {
                 format!("Failed to start orchestration: {error}")
             };

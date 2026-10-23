@@ -129,7 +129,7 @@ impl EnvironmentSetupModeSelector {
         let theme = appearance.theme();
 
         let title = Text::new(
-            crate::tr!("terminal", "terminal-choose-setup-env").to_string(),
+            crate::tr!("terminal", "choose-setup-env").to_string(),
             appearance.ui_font_family(),
             TITLE_FONT_SIZE,
         )

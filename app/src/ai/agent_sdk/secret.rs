@@ -784,7 +784,7 @@ fn read_bedrock_secret_value(
                     "Bedrock secrets require --bedrock-api-key and --region in non-interactive mode"
                 ));
             }
-            let result = inquire::Text::new(&crate::tr!("ai_assistant", "ai-assistant-ai-aws-region-label")).prompt();
+            let result = inquire::Text::new(&crate::tr!("ai_assistant", "ai-aws-region-label")).prompt();
             match result {
                 Ok(value) if !value.is_empty() => value,
                 Ok(_) => return Ok(None),
@@ -822,7 +822,7 @@ fn read_bedrock_access_key_secret_value(
             if !io::stdin().is_terminal() {
                 return Err(anyhow::anyhow!(NON_INTERACTIVE_REQUIRED_MSG));
             }
-            match inquire::Text::new(&crate::tr!("ai_assistant", "ai-assistant-ai-aws-access-key-id-label")).prompt() {
+            match inquire::Text::new(&crate::tr!("ai_assistant", "ai-aws-access-key-id-label")).prompt() {
                 Ok(value) if !value.is_empty() => value,
                 Ok(_) => return Ok(None),
                 Err(InquireError::OperationCanceled | InquireError::OperationInterrupted) => {
@@ -888,7 +888,7 @@ fn read_bedrock_access_key_secret_value(
             if !io::stdin().is_terminal() {
                 return Err(anyhow::anyhow!(NON_INTERACTIVE_REQUIRED_MSG));
             }
-            match inquire::Text::new(&crate::tr!("ai_assistant", "ai-assistant-ai-aws-region-label")).prompt() {
+            match inquire::Text::new(&crate::tr!("ai_assistant", "ai-aws-region-label")).prompt() {
                 Ok(value) if !value.is_empty() => value,
                 Ok(_) => return Ok(None),
                 Err(InquireError::OperationCanceled | InquireError::OperationInterrupted) => {

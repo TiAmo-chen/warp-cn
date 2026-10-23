@@ -216,7 +216,7 @@ impl AgentNotificationsModel {
                         title,
                         message
                             .clone()
-                            .unwrap_or_else(|| crate::tr!("ai_assistant", "ai-assistant-ai-waiting-for-input").to_owned()),
+                            .unwrap_or_else(|| crate::tr!("ai_assistant", "ai-waiting-for-input").to_owned()),
                         NotificationCategory::Request,
                         NotificationSourceAgent::CLI {
                             agent: *agent,
@@ -366,7 +366,7 @@ impl AgentNotificationsModel {
             return;
         }
 
-        let title = latest_query.unwrap_or_else(|| crate::tr!("ai_assistant", "ai-assistant-ai-agent-task").to_owned());
+        let title = latest_query.unwrap_or_else(|| crate::tr!("ai_assistant", "ai-agent-task").to_owned());
         let metadata = TerminalViewMetadata::lookup(terminal_view_id, ctx);
         let oz_agent = NotificationSourceAgent::Oz {
             is_ambient: metadata.is_ambient,
@@ -390,7 +390,7 @@ impl AgentNotificationsModel {
                 let artifacts = self.flush_pending_artifacts(conversation_id);
                 self.add_notification(
                     title,
-                    crate::tr!("ai_assistant", "ai-assistant-ai-task-completed").to_owned(),
+                    crate::tr!("ai_assistant", "ai-task-completed").to_owned(),
                     NotificationCategory::Complete,
                     oz_agent,
                     origin,
@@ -404,7 +404,7 @@ impl AgentNotificationsModel {
                 let artifacts = self.flush_pending_artifacts(conversation_id);
                 self.add_notification(
                     title,
-                    crate::tr!("ai_assistant", "ai-assistant-ai-task-cancelled").to_owned(),
+                    crate::tr!("ai_assistant", "ai-task-cancelled").to_owned(),
                     NotificationCategory::Complete,
                     oz_agent,
                     origin,
@@ -431,7 +431,7 @@ impl AgentNotificationsModel {
                 let artifacts = self.flush_pending_artifacts(conversation_id);
                 self.add_notification(
                     title,
-                    crate::tr!("ai_assistant", "ai-assistant-ai-something-went-wrong").to_owned(),
+                    crate::tr!("ai_assistant", "ai-something-went-wrong").to_owned(),
                     NotificationCategory::Error,
                     oz_agent,
                     origin,

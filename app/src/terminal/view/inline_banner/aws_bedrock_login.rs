@@ -30,7 +30,7 @@ pub fn render_aws_bedrock_login_banner(
     let active_ui_text_color = appearance.theme().active_ui_text_color().into_solid();
     let buttons = vec![
         InlineBannerTextButton {
-            text: crate::tr!("ai_assistant", "ai-assistant-ai-dont-show-again").to_owned(),
+            text: crate::tr!("ai_assistant", "ai-dont-show-again").to_owned(),
             text_color: active_ui_text_color,
             button_state: InlineBannerButtonState {
                 on_click_event: TerminalAction::AwsBedrockLoginBanner(
@@ -43,7 +43,7 @@ pub fn render_aws_bedrock_login_banner(
             variant: InlineBannerTextButtonVariant::Secondary,
         },
         InlineBannerTextButton {
-            text: crate::tr!("terminal", "terminal-log-into-aws").to_owned(),
+            text: crate::tr!("terminal", "log-into-aws").to_owned(),
             text_color: active_ui_text_color,
             button_state: InlineBannerButtonState {
                 on_click_event: TerminalAction::AwsBedrockLoginBanner(
@@ -75,7 +75,7 @@ pub fn render_aws_bedrock_login_banner(
         InlineBannerStyle::Recommendation,
         appearance,
         InlineBannerContent {
-            title: crate::tr!("terminal", "terminal-aws-bedrock-title").to_string(),
+            title: crate::tr!("terminal", "aws-bedrock-title").to_string(),
             content: Some(vec![description_text]),
             buttons,
             close_button: Some(close_button),

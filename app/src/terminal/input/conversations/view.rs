@@ -44,7 +44,7 @@ static TAB_CONFIGS: LazyLock<Vec<InlineMenuTabConfig<InlineConversationMenuTab>>
         if FeatureFlag::InlineMenuHeaders.is_enabled() {
             configs.push(InlineMenuTabConfig {
                 id: InlineConversationMenuTab::CurrentDirectory,
-                label: crate::tr!("terminal", "terminal-conversations-current-directory").to_string(),
+                label: crate::tr!("terminal", "conversations-current-directory").to_string(),
                 filters: HashSet::from([QueryFilter::CurrentDirectoryConversations]),
             });
         }

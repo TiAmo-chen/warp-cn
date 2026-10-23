@@ -128,9 +128,9 @@ impl View for CloseSessionConfirmationDialog {
 
         let dialog = Container::new(
             Dialog::new(
-                crate::tr!("workspace", "workspace-close-session-question").into(),
+                crate::tr!("workspace", "close-session-question").into(),
                 Some(
-                    crate::tr!("workspace", "workspace-close-session-sharing-warning")
+                    crate::tr!("workspace", "close-session-sharing-warning")
                         .into(),
                 ),
                 UiComponentStyles {

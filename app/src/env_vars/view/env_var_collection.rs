@@ -742,7 +742,7 @@ impl EnvVarCollectionView {
                     crate::workspace::ToastStack::handle(ctx).update(ctx, |toast_stack, ctx| {
                         toast_stack.add_ephemeral_toast(
                             DismissibleToast::error(
-                                crate::tr!("env_vars", "env-vars-invoke-error").to_owned(),
+                                crate::tr!("env_vars", "invoke-error").to_owned(),
                             ),
                             window_id,
                             ctx,

@@ -879,7 +879,7 @@ impl View for OrchestrationConfigBlockView {
             };
             let disabled_text_color = blended_colors::text_disabled(theme, theme.background());
             let details_text = Text::new(
-                crate::tr!("ai_assistant", "ai-assistant-ai-view-details").to_string(),
+                crate::tr!("ai_assistant", "ai-view-details").to_string(),
                 appearance.ui_font_family(),
                 appearance.monospace_font_size() + 1.,
             )

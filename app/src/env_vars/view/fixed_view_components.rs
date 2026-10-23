@@ -57,9 +57,9 @@ impl EnvVarCollectionView {
         let mut stack = Stack::new();
 
         let text = if deleted {
-            crate::tr!("env_vars", "env-vars-trash-banner-deleted")
+            crate::tr!("env_vars", "trash-banner-deleted")
         } else {
-            crate::tr!("env_vars", "env-vars-trash-banner-moved")
+            crate::tr!("env_vars", "trash-banner-moved")
         };
         stack.add_child(
             Align::new(
@@ -113,12 +113,12 @@ impl EnvVarCollectionView {
                             .with_tooltip(move || {
                                 ui_builder
                                     .tool_tip(
-                                        crate::tr!("env_vars", "env-vars-restore-tooltip").to_string(),
+                                        crate::tr!("env_vars", "restore-tooltip").to_string(),
                                     )
                                     .build()
                                     .finish()
                             })
-                            .with_text_label(crate::tr!("ai_assistant", "ai-assistant-ai-restore").to_string())
+                            .with_text_label(crate::tr!("ai_assistant", "ai-restore").to_string())
                             .build()
                             .on_click(|ctx, _, _| {
                                 ctx.dispatch_typed_action(EnvVarCollectionAction::Untrash)

@@ -735,7 +735,7 @@ pub fn init_actions_from_parent_view<T: Action + Clone>(
 
     if DefaultTerminal::can_warp_become_default() {
         app.register_fixed_bindings([FixedBinding::empty(
-            crate::tr!("settings", "settings-make-warp-the-default-terminal"),
+            crate::tr!("settings", "make-warp-the-default-terminal"),
             builder(SettingsAction::FeaturesPageToggle(
                 FeaturesPageAction::MakeWarpDefaultTerminal,
             )),
@@ -1084,7 +1084,7 @@ impl FeaturesPageAction {
                 action: crate::tr!("settings", "quakeeditorsetpinscreen").to_string(),
                 value: screen
                     .map(|idx| format!("{idx}"))
-                    .unwrap_or_else(|| crate::tr!("settings", "settings-features-active-screen").into()),
+                    .unwrap_or_else(|| crate::tr!("settings", "features-active-screen").into()),
             },
             Self::QuakeEditorResetWidthHeight => TelemetryEvent::FeaturesPageAction {
                 action: crate::tr!("settings", "quakeeditorresetwidthheight").to_string(),
@@ -4546,7 +4546,7 @@ fn init_display_count_dropdown(
     ctx: &mut ViewContext<Dropdown<FeaturesPageAction>>,
 ) {
     let no_preference = DropdownItem::new(
-        crate::tr!("settings", "settings-features-active-screen"),
+        crate::tr!("settings", "features-active-screen"),
         //|| {
         FeaturesPageAction::QuakeEditorSetPinScreen(None), //}
     );
@@ -5140,7 +5140,7 @@ impl SettingsWidget for DefaultTerminalWidget {
         } else {
             ui_builder
                 .link(
-                    crate::tr!("settings", "settings-make-warp-the-default-terminal").to_string(),
+                    crate::tr!("settings", "make-warp-the-default-terminal").to_string(),
                     None,
                     Some(Box::new(|ctx| {
                         ctx.dispatch_typed_action(FeaturesPageAction::MakeWarpDefaultTerminal);
@@ -7389,7 +7389,7 @@ impl SettingsWidget for Osc52ClipboardAccessWidget {
             appearance,
             &crate::tr!("settings", "clipboard-access-(osc-52)"),
             Some(
-                &crate::tr!("settings", "settings-controls-whether-programs-running-in-the-terminal-can-read-or-write-your-system-clipboard"),
+                &crate::tr!("settings", "controls-whether-programs-running-in-the-terminal-can-read-or-write-your-system-clipboard"),
             ),
             None,
             LocalOnlyIconState::for_setting(

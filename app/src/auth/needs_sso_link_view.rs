@@ -77,8 +77,8 @@ impl View for NeedsSsoLinkView {
         .finish();
 
         LoginErrorModal::new(app)
-            .with_header(crate::tr!("auth", "auth-sso-header"))
-            .with_detail(crate::tr!("auth", "auth-sso-detail"))
+            .with_header(crate::tr!("auth", "sso-header"))
+            .with_detail(crate::tr!("auth", "sso-detail"))
             .with_action(link_sso_button)
             .build()
             .finish()

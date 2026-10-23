@@ -124,9 +124,9 @@ pub(super) fn finish_push(
     match result {
         Ok(_) => {
             let toast_msg = if publish {
-                crate::tr!("code_editor", "code-editor-code-review-branch-published")
+                crate::tr!("code_editor", "code-review-branch-published")
             } else {
-                crate::tr!("code_editor", "code-editor-code-review-changes-pushed")
+                crate::tr!("code_editor", "code-review-changes-pushed")
             };
             show_toast(toast_msg, ctx);
         }
@@ -175,7 +175,7 @@ fn render_commits_section(state: &PushState, appearance: &Appearance) -> Box<dyn
     let sub_color = theme.sub_text_color(theme.surface_1()).into_solid();
 
     let label = Text::new(
-        crate::tr!("code_review", "code-review-included-commits"),
+        crate::tr!("code_review", "included-commits"),
         appearance.ui_font_family(),
         appearance.ui_font_size(),
     )

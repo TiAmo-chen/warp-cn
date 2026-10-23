@@ -122,7 +122,7 @@ impl WebSearchView {
 
         if pages.is_empty() {
             let no_results = Text::new_inline(
-                crate::tr!("ai_assistant", "ai-assistant-ai-no-urls-found").to_string(),
+                crate::tr!("ai_assistant", "ai-no-urls-found").to_string(),
                 appearance.ui_font_family(),
                 appearance.monospace_font_size(),
             )

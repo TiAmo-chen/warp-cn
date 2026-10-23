@@ -351,7 +351,7 @@ impl MCPServersListPageView {
             template
                 .description
                 .clone()
-                .or_else(|| Some(crate::tr!("settings", "settings-mcp-available-install").to_string())),
+                .or_else(|| Some(crate::tr!("settings", "mcp-available-install").to_string())),
             None, // Templates can never have tools
             None, // Templates cannot have an error
             title_chip_text.into_iter().collect(),
@@ -1118,7 +1118,7 @@ impl MCPServersListPageView {
         let is_any_ai_enabled = ai_settings.is_any_ai_enabled(app);
 
         let label = render_body_item_label::<MCPServersListPageViewAction>(
-            crate::tr!("settings", "settings-mcp-auto-spawn-servers").to_string(),
+            crate::tr!("settings", "mcp-auto-spawn-servers").to_string(),
             None,
             None,
             LocalOnlyIconState::Hidden,
@@ -1647,7 +1647,7 @@ impl MCPServersListPageView {
                     .templatable_mcp_server()
                     .description
                     .clone()
-                    .or_else(|| Some(crate::tr!("settings", "settings-mcp-detected-config").to_string())),
+                    .or_else(|| Some(crate::tr!("settings", "mcp-detected-config").to_string())),
                 None, // tools only available when running
                 None, // no error when not yet started
                 title_chips,

@@ -89,7 +89,7 @@ fn config_name(directory: &Path, enable_worktree: bool) -> String {
     let prefix = if enable_worktree {
         "Worktree"
     } else {
-        &crate::tr!("common", "common-new-tab-label")
+        &crate::tr!("common", "new-tab-label")
     };
     format!("{prefix}: {repo}")
 }

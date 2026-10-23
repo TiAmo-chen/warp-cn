@@ -280,14 +280,14 @@ impl TerminalView {
         if ChannelState::channel().is_dogfood() {
             vec![
                 (
-                    crate::tr!("terminal", "terminal-menu-copy-debugging-link").to_string(),
+                    crate::tr!("terminal", "menu-copy-debugging-link").to_string(),
                     ContextMenuAction::CopyAIDebuggingLink {
                         conversation_token: conversation_token.clone(),
                         request_id: server_output_id,
                     },
                 ),
                 (
-                    crate::tr!("terminal", "terminal-menu-copy-conversation-id").to_string(),
+                    crate::tr!("terminal", "menu-copy-conversation-id").to_string(),
                     ContextMenuAction::CopyConversationId {
                         conversation_id: conversation_token,
                     },
@@ -295,7 +295,7 @@ impl TerminalView {
             ]
         } else {
             vec![(
-                crate::tr!("terminal", "terminal-menu-copy-debugging-id").to_string(),
+                crate::tr!("terminal", "menu-copy-debugging-id").to_string(),
                 ContextMenuAction::CopyExternalDebuggingId {
                     request_id: server_output_id,
                     conversation_id: conversation_token,

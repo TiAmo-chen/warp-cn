@@ -396,7 +396,7 @@ impl TeamUpdateManager {
                     team_client
                         .leave_team(user_uid, team_uid, entrypoint)
                         .await
-                        .context(crate::tr!("settings", "settings-error-leaving-team"))
+                        .context(crate::tr!("settings", "error-leaving-team"))
                 },
                 move |me, result, ctx| {
                     me.on_team_left(team_uid, result, ctx);

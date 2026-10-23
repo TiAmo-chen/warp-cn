@@ -543,7 +543,7 @@ pub fn render_revoke_all_button(
                 );
 
             stack.add_positioned_child(
-                render_tooltip(crate::tr!("terminal", "terminal-revoke-all-edit-permissions").to_string(), appearance),
+                render_tooltip(crate::tr!("terminal", "revoke-all-edit-permissions").to_string(), appearance),
                 OffsetPositioning::offset_from_parent(
                     vec2f(0., 3.),
                     ParentOffsetBounds::Unbounded,

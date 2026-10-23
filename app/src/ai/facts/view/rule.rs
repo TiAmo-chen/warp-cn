@@ -299,7 +299,7 @@ impl RuleView {
         });
 
         let initialize_button = ctx.add_typed_action_view(|_| {
-            ActionButton::new(crate::tr!("ai_assistant", "ai-assistant-ai-initialize-project"), NakedTheme)
+            ActionButton::new(crate::tr!("ai_assistant", "ai-initialize-project"), NakedTheme)
                 .with_icon(Icon::Plus)
                 .on_click(|ctx| ctx.dispatch_typed_action(RuleViewAction::InitializeProject))
         });
@@ -513,7 +513,7 @@ impl RuleView {
         .with_padding_right(4.)
         .finish();
         let project_tab = self.render_scope_tab(
-            &crate::tr!("ai_assistant", "ai-assistant-ai-project-based-scope-tab"),
+            &crate::tr!("ai_assistant", "ai-project-based-scope-tab"),
             RuleScope::ProjectBased,
             appearance,
             self.project_tab_mouse_state.clone(),
@@ -734,7 +734,7 @@ impl RuleView {
             appearance
                 .ui_builder()
                 .button(ButtonVariant::Outlined, project_row.mouse_state.clone())
-                .with_text_label(crate::tr!("ai_assistant", "ai-assistant-ai-open-file").to_string())
+                .with_text_label(crate::tr!("ai_assistant", "ai-open-file").to_string())
                 .build()
                 .on_click(move |ctx, _, _| {
                     ctx.dispatch_typed_action(RuleViewAction::OpenFile(file_path.clone()));

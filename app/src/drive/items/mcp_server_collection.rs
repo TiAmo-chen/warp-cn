@@ -26,7 +26,7 @@ impl WarpDriveMCPServerCollection {
 
 impl WarpDriveItem for WarpDriveMCPServerCollection {
     fn display_name(&self) -> Option<String> {
-        Some(crate::tr!("drive", "drive-mcp-servers-type").to_string())
+        Some(crate::tr!("drive", "mcp-servers-type").to_string())
     }
 
     fn metadata(&self) -> Option<&CloudObjectMetadata> {

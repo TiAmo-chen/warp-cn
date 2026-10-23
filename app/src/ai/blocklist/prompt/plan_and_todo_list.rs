@@ -412,7 +412,7 @@ impl PlanAndTodoListView {
             .render_chip_button(
                 content,
                 self.todo_button_mouse_state.clone(),
-                crate::tr!("ai_assistant", "ai-assistant-ai-view-todo-list").to_string(),
+                crate::tr!("ai_assistant", "ai-view-todo-list").to_string(),
                 corner_radius,
                 appearance,
             )

@@ -299,7 +299,7 @@ impl CreateApiKeyModal {
                     Err(err) => {
                         report_error!(err.context("Failed to load agent identities"));
                         ctx.emit(CreateApiKeyModalEvent::Error {
-                            message: crate::tr!("settings", "settings-api-key-failed-load-agents")
+                            message: crate::tr!("settings", "api-key-failed-load-agents")
                                 .to_string(),
                         });
                     }
@@ -513,7 +513,7 @@ impl CreateApiKeyModal {
         };
 
         let info = Text::new(
-            crate::tr!("settings", "settings-api-key-secret-shown-once"),
+            crate::tr!("settings", "api-key-secret-shown-once"),
             appearance.ui_font_family(),
             LABEL_FONT_SIZE,
         )
@@ -646,7 +646,7 @@ impl View for CreateApiKeyModal {
                         FormattedText::new([FormattedTextLine::Line(vec![
                             FormattedTextFragment::plain_text(selected_key_type.description()),
                             FormattedTextFragment::plain_text(" "),
-                            FormattedTextFragment::hyperlink(crate::tr!("common", "common-learn-more-label"), API_KEY_DOCS_URL),
+                            FormattedTextFragment::hyperlink(crate::tr!("common", "learn-more-label"), API_KEY_DOCS_URL),
                         ])]),
                         LABEL_FONT_SIZE,
                         appearance.ui_font_family(),
@@ -760,7 +760,7 @@ impl View for CreateApiKeyModal {
 
                     if !self.is_loading_agents && available_agents.is_empty() {
                         let empty_text = Text::new(
-                            crate::tr!("settings", "settings-api-key-no-agents"),
+                            crate::tr!("settings", "api-key-no-agents"),
                             appearance.ui_font_family(),
                             LABEL_FONT_SIZE,
                         )

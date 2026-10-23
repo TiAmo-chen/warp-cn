@@ -503,16 +503,16 @@ impl BuyCreditsBanner {
 
         // Banner text with title and description based on admin status
         let banner_description = if has_admin_permissions {
-            crate::tr!("terminal", "terminal-monthly-limit-reached-admin")
+            crate::tr!("terminal", "monthly-limit-reached-admin")
         } else {
-            crate::tr!("terminal", "terminal-monthly-limit-reached-non-admin")
+            crate::tr!("terminal", "monthly-limit-reached-non-admin")
         };
 
         let banner_text = Flex::column()
             .with_children([
                 appearance
                     .ui_builder()
-                    .paragraph(crate::tr!("terminal", "terminal-monthly-limit-reached-title"))
+                    .paragraph(crate::tr!("terminal", "monthly-limit-reached-title"))
                     .with_style(UiComponentStyles {
                         font_size: Some(14.),
                         ..Default::default()
@@ -763,7 +763,7 @@ impl BuyCreditsBanner {
                 // Create formatted text with clickable hyperlink
                 let warning_text_fragments = vec![
                     FormattedTextFragment::plain_text(exceeds_limit_text),
-                    FormattedTextFragment::hyperlink_action(crate::tr!("terminal", "terminal-increase-limit"), Action::ManageBilling),
+                    FormattedTextFragment::hyperlink_action(crate::tr!("terminal", "increase-limit"), Action::ManageBilling),
                     FormattedTextFragment::plain_text(" to continue."),
                 ];
 

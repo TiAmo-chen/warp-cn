@@ -184,7 +184,7 @@ pub(crate) trait CliAgentPluginManager: Send + Sync {
     /// Default returns an error — only agents with `can_auto_install() == true` should override.
     async fn install(&self) -> Result<(), PluginInstallError> {
         Err(PluginInstallError {
-            message: crate::tr!("terminal", "terminal-plugin-auto-install-unsupported").to_owned(),
+            message: crate::tr!("terminal", "plugin-auto-install-unsupported").to_owned(),
             log: String::new(),
         })
     }
@@ -193,7 +193,7 @@ pub(crate) trait CliAgentPluginManager: Send + Sync {
     /// Default returns an error — only agents with `can_auto_install() == true` should override.
     async fn update(&self) -> Result<(), PluginInstallError> {
         Err(PluginInstallError {
-            message: crate::tr!("terminal", "terminal-plugin-auto-update-unsupported").to_owned(),
+            message: crate::tr!("terminal", "plugin-auto-update-unsupported").to_owned(),
             log: String::new(),
         })
     }

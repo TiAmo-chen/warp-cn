@@ -110,7 +110,7 @@ impl CodexModal {
 
         // Title
         let title = FormattedTextElement::from_str(
-            crate::tr!("workspace", "workspace-use-codex-models-in-warp"),
+            crate::tr!("workspace", "use-codex-models-in-warp"),
             appearance.ui_font_family(),
             24.,
         )
@@ -123,7 +123,7 @@ impl CodexModal {
 
         // Description - first paragraph
         let description_1 = FormattedTextElement::from_str(
-            crate::tr!("workspace", "workspace-codex-description-1"),
+            crate::tr!("workspace", "codex-description-1"),
             appearance.ui_font_family(),
             14.,
         )

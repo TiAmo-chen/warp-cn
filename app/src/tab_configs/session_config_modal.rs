@@ -86,7 +86,7 @@ impl SessionConfigModal {
         });
 
         let submit_button = ctx.add_view(|ctx| {
-            ActionButton::new(crate::tr!("common", "common-get-warping"), PrimaryTheme)
+            ActionButton::new(crate::tr!("common", "get-warping"), PrimaryTheme)
                 .with_full_width(true)
                 .with_keybinding(
                     KeystrokeSource::Fixed(Keystroke::parse("enter").unwrap_or_default()),
@@ -164,7 +164,7 @@ impl SessionConfigModal {
         let theme = appearance.theme();
 
         let title = FormattedTextElement::from_str(
-            crate::tr!("common", "common-create-first-tab-config"),
+            crate::tr!("common", "create-first-tab-config"),
             appearance.ui_font_family(),
             24.,
         )

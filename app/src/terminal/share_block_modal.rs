@@ -500,7 +500,7 @@ impl ShareBlockModal {
             );
             ctx.clipboard().write(ClipboardContent::plain_text(link));
             ctx.emit(ShareBlockModalEvent::ShowToast {
-                message: crate::tr!("settings", "settings-link-copied").to_string(),
+                message: crate::tr!("settings", "link-copied").to_string(),
                 flavor: ToastFlavor::Default,
             });
         }
@@ -546,7 +546,7 @@ impl ShareBlockModal {
         ctx.clipboard()
             .write(ClipboardContent::plain_text(embed_snippet));
         ctx.emit(ShareBlockModalEvent::ShowToast {
-            message: crate::tr!("terminal", "terminal-share-embed-copied").to_string(),
+            message: crate::tr!("terminal", "share-embed-copied").to_string(),
             flavor: ToastFlavor::Success,
         });
     }
@@ -626,7 +626,7 @@ impl ShareBlockModal {
     fn render_create_block_buttons_row(&self, appearance: &Appearance) -> Box<dyn Element> {
         let create_link_button = self.render_create_block_button(
             appearance,
-            &crate::tr!("terminal", "terminal-share-create-link"),
+            &crate::tr!("terminal", "share-create-link"),
             Icon::Link,
             ButtonVariant::Accent,
             self.mouse_state_handles
@@ -636,7 +636,7 @@ impl ShareBlockModal {
         );
         let get_embed_button = self.render_create_block_button(
             appearance,
-            &crate::tr!("terminal", "terminal-share-get-embed"),
+            &crate::tr!("terminal", "share-get-embed"),
             Icon::Code1,
             ButtonVariant::Basic,
             self.mouse_state_handles
@@ -663,7 +663,7 @@ impl ShareBlockModal {
             TextAndIconAlignment::TextFirst,
             if let ShareRequestState::Pending(pending_share_type) = self.request_state {
                 if pending_share_type == share_type {
-                    crate::tr!("terminal", "terminal-share-creating").to_string()
+                    crate::tr!("terminal", "share-creating").to_string()
                 } else {
                     text_label.to_string()
                 }
@@ -738,7 +738,7 @@ impl ShareBlockModal {
         } else {
             let embed_snippet = self
                 .generate_embed_snippet(app)
-                .unwrap_or(crate::tr!("terminal", "terminal-share-embed-error").to_string());
+                .unwrap_or(crate::tr!("terminal", "share-embed-error").to_string());
             col.add_child(self.render_embed_label(appearance, embed_snippet));
             col.add_child(
                 Align::new(
@@ -958,7 +958,7 @@ impl ShareBlockModal {
                 .finish();
             let show_prompt_description = appearance
                 .ui_builder()
-                .span(crate::tr!("terminal", "terminal-show-prompt").to_string())
+                .span(crate::tr!("terminal", "show-prompt").to_string())
                 .build()
                 .with_margin_left(2.)
                 .finish();
@@ -1059,7 +1059,7 @@ impl ShareBlockModal {
 
             let redact_secrets_description = appearance
                 .ui_builder()
-                .span(crate::tr!("terminal", "terminal-redact-secrets").to_string())
+                .span(crate::tr!("terminal", "redact-secrets").to_string())
                 .build()
                 .with_margin_left(4.)
                 .finish();

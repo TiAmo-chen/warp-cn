@@ -498,7 +498,7 @@ pub(super) fn render(props: Props, app: &AppContext) -> Box<dyn Element> {
                                             // action so the user sees the error instead
                                             // of an empty box.
                                             let formatted_text = render_requested_action_body_text(
-                                                crate::tr!("ai_assistant", "ai-assistant-ai-failed-read-files").into(),
+                                                crate::tr!("ai_assistant", "ai-failed-read-files").into(),
                                                 appearance.ui_font_family(),
                                                 app,
                                             );
@@ -901,7 +901,7 @@ pub(super) fn render(props: Props, app: &AppContext) -> Box<dyn Element> {
                             SummarizationType::ConversationSummary
                         ) && !are_all_text_sections_empty(&text.sections) =>
                         {
-                            let header_text = crate::tr!("ai_assistant", "ai-assistant-ai-conversation-summarized").to_string();
+                            let header_text = crate::tr!("ai_assistant", "ai-conversation-summarized").to_string();
                             if let Some(element) = render_collapsible_block(
                                 output_message,
                                 header_text,
@@ -1066,7 +1066,7 @@ pub(super) fn render(props: Props, app: &AppContext) -> Box<dyn Element> {
                                 }
                                 None => {
                                     fragments.push(FormattedTextFragment::plain_text(
-                                        crate::tr!("ai_assistant", "ai-assistant-ai-this-conversation"),
+                                        crate::tr!("ai_assistant", "ai-this-conversation"),
                                     ));
                                 }
                             };
@@ -1187,7 +1187,7 @@ pub(super) fn render(props: Props, app: &AppContext) -> Box<dyn Element> {
                             output_items.add_child(
                                 render_informational_footer(
                                     app,
-                                    crate::tr!("ai_assistant", "ai-assistant-ai-sorry-bad-experience-single")
+                                    crate::tr!("ai_assistant", "ai-sorry-bad-experience-single")
                                         .to_string(),
                                 )
                                 .with_agent_output_item_spacing(app)
@@ -1438,9 +1438,9 @@ fn render_search_codebase(
                                     .clone(),
                                 vec![
                                     RadioButtonItem::text(
-                                        crate::tr!("ai_assistant", "ai-assistant-ai-always-allow-file-access-coding"),
+                                        crate::tr!("ai_assistant", "ai-always-allow-file-access-coding"),
                                     ),
-                                    RadioButtonItem::text(crate::tr!("ai_assistant", "ai-assistant-ai-always-allow-file-access-repo")),
+                                    RadioButtonItem::text(crate::tr!("ai_assistant", "ai-always-allow-file-access-repo")),
                                 ],
                                 props
                                     .state_handles
@@ -1482,7 +1482,7 @@ fn render_search_codebase(
                                 appearance
                                     .ui_builder()
                                     .link(
-                                        crate::tr!("ai_assistant", "ai-assistant-ai-manage-autonomy-permissions").into(),
+                                        crate::tr!("ai_assistant", "ai-manage-autonomy-permissions").into(),
                                         None,
                                         Some(Box::new(move |ctx| {
                                             ctx.dispatch_typed_action(
@@ -1606,7 +1606,7 @@ fn render_search_codebase(
                                 renderable_action(
                                     props,
                                     id,
-                                    &crate::tr!("ai_assistant", "ai-assistant-ai-no-relevant-files"),
+                                    &crate::tr!("ai_assistant", "ai-no-relevant-files"),
                                     app,
                                     footer,
                                     appearance,
@@ -1888,7 +1888,7 @@ fn render_read_skill(
 
         let skill_icon_override = icon_override_for_skill_name(&skill.name);
         let open_button = render_skill_button(
-            &crate::tr!("ai_assistant", "ai-assistant-ai-open-skill"),
+            &crate::tr!("ai_assistant", "ai-open-skill"),
             button_handle,
             appearance,
             skill.provider,
@@ -2213,7 +2213,7 @@ fn render_stopped_output(props: Props, app: &AppContext) -> Box<dyn Element> {
                 .initial_query()
                 .map(|task_name| format!("Stopped task: \"{task_name}\""))
         })
-        .unwrap_or_else(|| crate::tr!("ai_assistant", "ai-assistant-ai-stopped-task").to_string());
+        .unwrap_or_else(|| crate::tr!("ai_assistant", "ai-stopped-task").to_string());
 
     let stop_icon = Container::new(
         ConstrainedBox::new(gray_stop_icon(appearance).finish())
@@ -2308,7 +2308,7 @@ fn render_stopped_output(props: Props, app: &AppContext) -> Box<dyn Element> {
         .with_custom_label(button_content)
         .with_tooltip(move || {
             ui_builder
-                .tool_tip(crate::tr!("ai_assistant", "ai-assistant-ai-resume-conversation").to_string())
+                .tool_tip(crate::tr!("ai_assistant", "ai-resume-conversation").to_string())
                 .build()
                 .finish()
         })
@@ -2370,7 +2370,7 @@ fn render_requested_edits_output_message(
         match requested_edit.view.as_ref(app).display_mode() {
             DisplayMode::FullPane => Align::new(
                 Text::new_inline(
-                    crate::tr!("ai_assistant", "ai-assistant-ai-suggestion-edited-in-another-tab"),
+                    crate::tr!("ai_assistant", "ai-suggestion-edited-in-another-tab"),
                     appearance.ui_font_family(),
                     appearance.monospace_font_size(),
                 )
@@ -2480,11 +2480,11 @@ fn render_suggest_new_conversation(
         };
         let (label, status_icon) = match result {
             SuggestNewConversationResult::Accepted { .. } => (
-                crate::tr!("ai_assistant", "ai-assistant-ai-new-conversation-started"),
+                crate::tr!("ai_assistant", "ai-new-conversation-started"),
                 inline_action_icons::green_check_icon(appearance).finish(),
             ),
             SuggestNewConversationResult::Rejected => (
-                crate::tr!("ai_assistant", "ai-assistant-ai-continuing-current-conversation"),
+                crate::tr!("ai_assistant", "ai-continuing-current-conversation"),
                 warpui::elements::Icon::new(
                     Icon::FlipForward.into(),
                     internal_colors::neutral_6(theme),
@@ -2492,7 +2492,7 @@ fn render_suggest_new_conversation(
                 .finish(),
             ),
             SuggestNewConversationResult::Cancelled => (
-                crate::tr!("ai_assistant", "ai-assistant-ai-new-conversation-cancelled"),
+                crate::tr!("ai_assistant", "ai-new-conversation-cancelled"),
                 inline_action_icons::cancelled_icon(appearance).finish(),
             ),
         };
@@ -2514,7 +2514,7 @@ fn render_suggest_new_conversation(
     }
 
     if props.shared_session_status.is_viewer() {
-        let header_element = HeaderConfig::new(crate::tr!("ai_assistant", "ai-assistant-ai-start-a-new-conversation"), app)
+        let header_element = HeaderConfig::new(crate::tr!("ai_assistant", "ai-start-a-new-conversation"), app)
             .with_icon(gray_stop_icon(appearance))
             .render(app);
 
@@ -2530,7 +2530,7 @@ fn render_suggest_new_conversation(
     let mut content = Flex::column().with_cross_axis_alignment(CrossAxisAlignment::Stretch);
 
     let new_conversation_header_text =
-        crate::tr!("ai_assistant", "ai-assistant-ai-topic-changed");
+        crate::tr!("ai_assistant", "ai-topic-changed");
     let new_conversation_header_element = HeaderConfig::new(new_conversation_header_text, app)
         .with_icon(yellow_stop_icon(appearance))
         .with_corner_radius_override(CornerRadius::with_top(Radius::Pixels(8.)))
@@ -2577,7 +2577,7 @@ fn create_formatted_text_for_grep(
         .is_some_and(|status| status.is_queued());
 
     let display_path = if path == "." {
-        crate::tr!("ai_assistant", "ai-assistant-ai-the-current-directory").to_string()
+        crate::tr!("ai_assistant", "ai-the-current-directory").to_string()
     } else {
         shell_native_absolute_path(
             path,
@@ -2688,7 +2688,7 @@ fn create_formatted_text_for_file_glob(
                 props.current_working_directory,
             )
         })
-        .unwrap_or_else(|| crate::tr!("ai_assistant", "ai-assistant-ai-the-current-directory").to_string());
+        .unwrap_or_else(|| crate::tr!("ai_assistant", "ai-the-current-directory").to_string());
 
     let formatted_text = if patterns.len() == 1 {
         let pattern = patterns
@@ -2903,7 +2903,7 @@ fn render_read_mcp_resource(
         renderable_action = renderable_action
             .with_header(blocked_action_header(
                 action_id.clone(),
-                &crate::tr!("ai_assistant", "ai-assistant-ai-ok-read-mcp-resource"),
+                &crate::tr!("ai_assistant", "ai-ok-read-mcp-resource"),
                 buttons.run_button.clone(),
                 buttons.cancel_button.clone(),
                 props.action_model,
@@ -3299,7 +3299,7 @@ fn render_request_computer_use(
         renderable_action = renderable_action
             .with_header(blocked_action_header(
                 action_id.clone(),
-                &crate::tr!("ai_assistant", "ai-assistant-ai-ok-computer-control"),
+                &crate::tr!("ai_assistant", "ai-ok-computer-control"),
                 buttons.run_button.clone(),
                 buttons.cancel_button.clone(),
                 props.action_model,
@@ -3549,7 +3549,7 @@ fn render_response_footer(props: Props, app: &AppContext) -> Option<Box<dyn Elem
         )
         .with_tooltip(move || {
             ui_builder
-                .tool_tip(crate::tr!("ai_assistant", "ai-assistant-ai-good-response").to_string())
+                .tool_tip(crate::tr!("ai_assistant", "ai-good-response").to_string())
                 .build()
                 .finish()
         })
@@ -3570,7 +3570,7 @@ fn render_response_footer(props: Props, app: &AppContext) -> Option<Box<dyn Elem
         .with_tooltip(move || {
             ui_builder
                 .clone()
-                .tool_tip(crate::tr!("ai_assistant", "ai-assistant-ai-bad-response").to_string())
+                .tool_tip(crate::tr!("ai_assistant", "ai-bad-response").to_string())
                 .build()
                 .finish()
         })
@@ -3642,7 +3642,7 @@ fn render_response_footer(props: Props, app: &AppContext) -> Option<Box<dyn Elem
         )
         .with_tooltip(move || {
             ui_builder
-                .tool_tip(crate::tr!("ai_assistant", "ai-assistant-ai-continue-conversation").to_string())
+                .tool_tip(crate::tr!("ai_assistant", "ai-continue-conversation").to_string())
                 .build()
                 .finish()
         })
@@ -3909,7 +3909,7 @@ fn render_usage_button(props: Props, app: &AppContext) -> Box<dyn Element> {
                 // Show tooltip on hover or while clicked
                 let mut stack = Stack::new().with_child(content.finish());
                 let tooltip = ui_builder
-                    .tool_tip(crate::tr!("ai_assistant", "ai-assistant-ai-show-credit-usage").to_string())
+                    .tool_tip(crate::tr!("ai_assistant", "ai-show-credit-usage").to_string())
                     .build()
                     .finish();
                 stack.add_positioned_overlay_child(
@@ -4251,7 +4251,7 @@ fn render_collapsible_debug_output(
         // "Debug output" label
         row.add_child(
             Text::new(
-                crate::tr!("ai_assistant", "ai-assistant-ai-debug-output").to_string(),
+                crate::tr!("ai_assistant", "ai-debug-output").to_string(),
                 appearance.ai_font_family(),
                 appearance.monospace_font_size(),
             )
@@ -4397,7 +4397,7 @@ fn format_conversation_search_phase(phase: &ConversationSearchPhase) -> String {
         ConversationSearchPhase::ListingMessages => "Listing messages".to_string(),
         ConversationSearchPhase::Grepping { patterns } => {
             if patterns.is_empty() {
-                return crate::tr!("ai_assistant", "ai-assistant-ai-grepping-for-patterns").to_string();
+                return crate::tr!("ai_assistant", "ai-grepping-for-patterns").to_string();
             }
             let joined = truncate_from_end(&patterns.join(", "), 60);
             format!("Grepping for patterns: {joined}")

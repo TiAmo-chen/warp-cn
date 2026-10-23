@@ -237,14 +237,14 @@ impl TerminalView {
             }
             OpenInWarpBannerAction::Close => {
                 ActionAccessibilityContent::Custom(AccessibilityContent::new_without_help(
-                    crate::tr!("terminal", "terminal-close-warp-banner"),
+                    crate::tr!("terminal", "close-warp-banner"),
                     WarpA11yRole::UserAction,
                 ))
             }
             OpenInWarpBannerAction::LearnMore => {
                 ActionAccessibilityContent::Custom(AccessibilityContent::new(
-                    crate::tr!("common", "common-learn-more-label"),
-                    crate::tr!("terminal", "terminal-learn-more-markdown"),
+                    crate::tr!("common", "learn-more-label"),
+                    crate::tr!("terminal", "learn-more-markdown"),
                     WarpA11yRole::UserAction,
                 ))
             }

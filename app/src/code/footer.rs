@@ -312,9 +312,9 @@ impl CodeFooterView {
             button.set_disabled(!is_ai_enabled, ctx);
             button.set_tooltip(
                 Some(if is_ai_enabled {
-                    crate::tr!("code", "code-open-agent-input-tab-config")
+                    crate::tr!("code", "open-agent-input-tab-config")
                 } else {
-                    crate::tr!("code", "code-enable-ai-tab-config")
+                    crate::tr!("code", "enable-ai-tab-config")
                 }),
                 ctx,
             );
@@ -1587,26 +1587,26 @@ impl CodeFooterView {
                 ..
             } => match PersistedWorkspace::as_ref(app).has_enabled_lsp_server_for_file_path(path) {
                 LSPEnablementResultForFile::UnsupportedLanguage => (
-                    Some(crate::tr!("code", "code-lang-support-unavailable-file").to_string()),
+                    Some(crate::tr!("code", "lang-support-unavailable-file").to_string()),
                     false,
                 ),
                 LSPEnablementResultForFile::LSPNotEnabled { root_name } => match lsp_repo_status {
                     LspRepoStatus::CheckingForInstallation => (
                         Some(format!(
                             "Language support is not currently enabled for {}",
-                            root_name.unwrap_or(crate::tr!("code", "code-this-codebase").to_string())
+                            root_name.unwrap_or(crate::tr!("code", "this-codebase").to_string())
                         )),
                         false,
                     ),
                     LspRepoStatus::Ready | LspRepoStatus::Enabled => (
-                        Some(crate::tr!("code", "code-lang-server-unavailable").to_string()),
+                        Some(crate::tr!("code", "lang-server-unavailable").to_string()),
                         false,
                     ),
                     LspRepoStatus::DisabledAndNotInstalled { .. }
                     | LspRepoStatus::DisabledAndInstalled { .. } => (
                         Some(format!(
                             "Language support is not currently enabled for {}",
-                            root_name.unwrap_or(crate::tr!("code", "code-this-codebase").to_string())
+                            root_name.unwrap_or(crate::tr!("code", "this-codebase").to_string())
                         )),
                         true,
                     ),

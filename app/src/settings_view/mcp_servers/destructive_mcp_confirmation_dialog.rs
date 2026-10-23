@@ -71,7 +71,7 @@ impl From<&DestructiveMCPConfirmationDialogVariant>
             DestructiveMCPConfirmationDialogVariant::Unshare => DestructiveMCPConfirmationDialogDisplayOptions::new(
                 "Remove shared MCP server from team?".to_string(),
                 "This will uninstall and remove this MCP server from Warp and across all of your teammates' devices.".to_string(),
-                crate::tr!("settings", "settings-remove-from-team").to_string(),
+                crate::tr!("settings", "remove-from-team").to_string(),
                 "Cancel".to_string(),
             ),
         }

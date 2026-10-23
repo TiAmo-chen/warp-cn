@@ -242,7 +242,7 @@ impl CLISubagentView {
         ctx: &mut ViewContext<Self>,
     ) -> Self {
         let allow_button = CompactibleSplitActionButton::new(
-            crate::tr!("ai_assistant", "ai-assistant-ai-allow-btn").to_string(),
+            crate::tr!("ai_assistant", "ai-allow-btn").to_string(),
             Some(KeystrokeSource::Fixed(ACCEPT_KEYSTROKE.clone())),
             ButtonSize::Small,
             CLISubagentAction::ExecuteBlockedAction,
@@ -254,7 +254,7 @@ impl CLISubagentView {
         );
 
         let reject_button = CompactibleActionButton::new(
-            crate::tr!("ai_assistant", "ai-assistant-ai-refine").to_string(),
+            crate::tr!("ai_assistant", "ai-refine").to_string(),
             Some(KeystrokeSource::Fixed(REJECT_KEYSTROKE.clone())),
             ButtonSize::Small,
             CLISubagentAction::RejectBlockedAction {
@@ -266,7 +266,7 @@ impl CLISubagentView {
         );
 
         let take_over_button = CompactibleActionButton::new(
-            crate::tr!("ai_assistant", "ai-assistant-ai-take-over").to_string(),
+            crate::tr!("ai_assistant", "ai-take-over").to_string(),
             Some(KeystrokeSource::Binding(
                 SET_INPUT_MODE_TERMINAL_ACTION_NAME,
             )),
@@ -279,7 +279,7 @@ impl CLISubagentView {
             ctx,
         );
         let transfer_control_button = CompactibleActionButton::new(
-            crate::tr!("ai_assistant", "ai-assistant-ai-take-control-btn").to_string(),
+            crate::tr!("ai_assistant", "ai-take-control-btn").to_string(),
             Some(KeystrokeSource::Binding(
                 SET_INPUT_MODE_TERMINAL_ACTION_NAME,
             )),
@@ -301,11 +301,11 @@ impl CLISubagentView {
         allow_menu.update(ctx, |menu, ctx| {
             menu.set_items(
                 vec![
-                    MenuItemFields::new(crate::tr!("ai_assistant", "ai-assistant-ai-accept").to_string())
+                    MenuItemFields::new(crate::tr!("ai_assistant", "ai-accept").to_string())
                         .with_key_shortcut_label(Some(ACCEPT_KEYSTROKE.displayed()))
                         .with_on_select_action(CLISubagentAction::ExecuteBlockedAction)
                         .into_item(),
-                    MenuItemFields::new(crate::tr!("ai_assistant", "ai-assistant-ai-auto-approve").to_string())
+                    MenuItemFields::new(crate::tr!("ai_assistant", "ai-auto-approve").to_string())
                         .with_key_shortcut_label(Some(AUTO_APPROVE_KEYSTROKE.displayed()))
                         .with_on_select_action(CLISubagentAction::ExecuteAndAutoApprove)
                         .into_item(),
@@ -1499,7 +1499,7 @@ impl TypedActionView for CLISubagentView {
                 let window_id = ctx.window_id();
                 ToastStack::handle(ctx).update(ctx, |toast_stack, ctx| {
                     toast_stack.add_ephemeral_toast(
-                        DismissibleToast::success(String::from(crate::tr!("ai_assistant", "ai-assistant-ai-copied-to-clipboard"))),
+                        DismissibleToast::success(String::from(crate::tr!("ai_assistant", "ai-copied-to-clipboard"))),
                         window_id,
                         ctx,
                     );
@@ -1882,7 +1882,7 @@ fn render_permissions_speedbump(
 
     let checkbox_text = appearance
         .ui_builder()
-        .span(crate::tr!("ai_assistant", "ai-assistant-ai-profile-always-allow"))
+        .span(crate::tr!("ai_assistant", "ai-profile-always-allow"))
         .with_style(UiComponentStyles {
             font_color: Some(font_color),
             font_size: Some(font_size),
@@ -1895,7 +1895,7 @@ fn render_permissions_speedbump(
 
     let formatted_text = FormattedTextElement::new(
         FormattedText::new([FormattedTextLine::Line(vec![
-            FormattedTextFragment::hyperlink("Manage Agent permissions", crate::tr!("ai_assistant", "ai-assistant-ai-settings-ai")),
+            FormattedTextFragment::hyperlink("Manage Agent permissions", crate::tr!("ai_assistant", "ai-settings-ai")),
         ])]),
         font_size,
         font_family,

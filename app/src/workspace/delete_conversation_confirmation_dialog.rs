@@ -103,12 +103,12 @@ impl View for DeleteConversationConfirmationDialog {
             .source
             .as_ref()
             .map(|s| format!("Delete '{}'?", s.conversation_title))
-            .unwrap_or_else(|| crate::tr!("workspace", "workspace-delete-conversation").into());
+            .unwrap_or_else(|| crate::tr!("workspace", "delete-conversation").into());
 
         let dialog = Dialog::new(
             title,
             Some(
-                crate::tr!("workspace", "workspace-delete-conversation-warning")
+                crate::tr!("workspace", "delete-conversation-warning")
                     .into(),
             ),
             UiComponentStyles {

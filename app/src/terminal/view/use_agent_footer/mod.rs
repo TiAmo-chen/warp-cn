@@ -1155,13 +1155,13 @@ impl UseAgentToolbar {
 
         let button = ctx.add_typed_action_view(|ctx| {
             ActionButton::new(
-                crate::tr!("terminal", "terminal-use-agent"),
+                crate::tr!("terminal", "use-agent"),
                 AgentFooterButtonTheme::new(Some(terminal_model.clone())),
             )
             .with_icon(Icon::Agent)
             .with_keybinding(KeystrokeSource::Fixed(USE_AGENT_KEYSTROKE.clone()), ctx)
             .with_size(button_size)
-            .with_tooltip(crate::tr!("terminal", "terminal-use-agent-tooltip"))
+            .with_tooltip(crate::tr!("terminal", "use-agent-tooltip"))
             .with_tooltip_alignment(TooltipAlignment::Left)
             .on_click(|ctx| {
                 ctx.dispatch_typed_action(TerminalAction::SetInputModeAgent);
@@ -1169,13 +1169,13 @@ impl UseAgentToolbar {
         });
         let give_control_back_button = ctx.add_typed_action_view(|ctx| {
             ActionButton::new(
-                crate::tr!("terminal", "terminal-give-control-back-btn"),
+                crate::tr!("terminal", "give-control-back-btn"),
                 AgentFooterButtonTheme::new(Some(terminal_model.clone())),
             )
             .with_icon(Icon::Agent)
             .with_keybinding(KeystrokeSource::Fixed(USE_AGENT_KEYSTROKE.clone()), ctx)
             .with_size(button_size)
-            .with_tooltip(crate::tr!("terminal", "terminal-ask-agent-resume-tooltip"))
+            .with_tooltip(crate::tr!("terminal", "ask-agent-resume-tooltip"))
             .with_tooltip_alignment(TooltipAlignment::Left)
             .on_click(|ctx| {
                 ctx.dispatch_typed_action(TerminalAction::SetInputModeAgent);
@@ -1193,7 +1193,7 @@ impl UseAgentToolbar {
         });
         let dont_show_again_button = ctx.add_typed_action_view(|_| {
             ActionButton::new(
-                crate::tr!("ai_assistant", "ai-assistant-ai-dont-show-again"),
+                crate::tr!("ai_assistant", "ai-dont-show-again"),
                 AgentFooterButtonTheme::new(Some(terminal_model.clone())),
             )
             .on_click(|ctx| {

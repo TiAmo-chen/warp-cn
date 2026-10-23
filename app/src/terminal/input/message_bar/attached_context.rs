@@ -120,7 +120,7 @@ impl<Args: AttachedContextArgs + Copy> MessageProvider<Args>
 
         let _ = args.context_model().pending_context_selected_text()?;
 
-        let mut items = vec![MessageItem::text(crate::tr!("terminal", "terminal-selected-text-as-context"))];
+        let mut items = vec![MessageItem::text(crate::tr!("terminal", "selected-text-as-context"))];
 
         // Always show ESC hint in agent view, make it clickable
         if args.agent_view_controller().is_active() {

@@ -78,7 +78,7 @@ impl InheritanceState {
                 }
             }
             None => InheritanceDetails {
-                source_label: style::detail_text(crate::tr!("drive", "drive-inherited-permission"), appearance)
+                source_label: style::detail_text(crate::tr!("drive", "inherited-permission"), appearance)
                     .build()
                     .finish(),
                 tooltip_text: "Cannot edit inherited permissions",

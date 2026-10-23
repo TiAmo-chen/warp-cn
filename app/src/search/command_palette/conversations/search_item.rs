@@ -68,7 +68,7 @@ impl ConversationSearchItem {
         Flex::row()
             .with_child(
                 Text::new_inline(
-                    crate::tr!("ai_assistant", "ai-assistant-ai-chat-new-conversation"),
+                    crate::tr!("ai_assistant", "ai-chat-new-conversation"),
                     appearance.ui_font_family(),
                     appearance.monospace_font_size(),
                 )
@@ -89,7 +89,7 @@ impl ConversationSearchItem {
         let appearance = Appearance::as_ref(app);
 
         let action_title = Text::new_inline(
-            crate::tr!("search", "search-fork-current-conversation"),
+            crate::tr!("search", "fork-current-conversation"),
             appearance.ui_font_family(),
             appearance.monospace_font_size(),
         )
@@ -244,7 +244,7 @@ impl ConversationSearchItem {
 
             let fork_button_tool_tip = appearance
                 .ui_builder()
-                .tool_tip(crate::tr!("ai_assistant", "ai-assistant-ai-fork-conversation").to_string())
+                .tool_tip(crate::tr!("ai_assistant", "ai-fork-conversation").to_string())
                 .build();
 
             let fork_button_inner = icon_button(
@@ -435,7 +435,7 @@ impl SearchItem for ConversationSearchItem {
                 matched_conversation.as_ref().conversation.title()
             )),
             ConversationAction::Fork { .. } => {
-                Some(crate::tr!("search", "search-a11y-fork-conversation").into())
+                Some(crate::tr!("search", "a11y-fork-conversation").into())
             }
             ConversationAction::New => Some("Press enter to create a new conversation.".into()),
         }

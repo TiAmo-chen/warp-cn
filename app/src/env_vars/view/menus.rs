@@ -59,7 +59,7 @@ impl EnvVarCollectionView {
         );
 
         let clear_secret_item = Self::item(
-            &crate::tr!("env_vars", "env-vars-clear-secret"),
+            &crate::tr!("env_vars", "clear-secret"),
             EnvVarCollectionAction::ClearSecret,
             None,
             Some(Icon::Trash),
@@ -128,28 +128,28 @@ impl EnvVarCollectionView {
         ctx: &mut ViewContext<Self>,
     ) -> ViewHandle<Menu<EnvVarCollectionAction>> {
         let split_pane_right = Self::item(
-            &crate::tr!("code", "code-split-pane-right"),
+            &crate::tr!("code", "split-pane-right"),
             EnvVarCollectionAction::EmitPaneEvent(PaneEvent::SplitRight(None)),
             keybinding_name_to_display_string("pane_group:add_right", ctx),
             None,
         );
 
         let split_pane_left = Self::item(
-            &crate::tr!("code", "code-split-pane-left"),
+            &crate::tr!("code", "split-pane-left"),
             EnvVarCollectionAction::EmitPaneEvent(PaneEvent::SplitLeft(None)),
             keybinding_name_to_display_string("pane_group:add_left", ctx),
             None,
         );
 
         let split_pane_down = Self::item(
-            &crate::tr!("code", "code-split-pane-down"),
+            &crate::tr!("code", "split-pane-down"),
             EnvVarCollectionAction::EmitPaneEvent(PaneEvent::SplitDown(None)),
             keybinding_name_to_display_string("pane_group:add_down", ctx),
             None,
         );
 
         let split_pane_up = Self::item(
-            &crate::tr!("code", "code-split-pane-up"),
+            &crate::tr!("code", "split-pane-up"),
             EnvVarCollectionAction::EmitPaneEvent(PaneEvent::SplitUp(None)),
             keybinding_name_to_display_string("pane_group:add_up", ctx),
             None,
@@ -171,7 +171,7 @@ impl EnvVarCollectionView {
         );
 
         let close_pane = Self::item(
-            &crate::tr!("code", "code-close-pane"),
+            &crate::tr!("code", "close-pane"),
             EnvVarCollectionAction::EmitPaneEvent(PaneEvent::Close),
             trigger_to_keystroke(&Trigger::Custom(CustomAction::CloseCurrentSession.into()))
                 .map(|keystroke| keystroke.displayed()),
@@ -379,7 +379,7 @@ impl EnvVarCollectionView {
             );
         }
 
-        // Add crate::tr!("drive", "drive-menu-duplicate") to menu
+        // Add crate::tr!("drive", "menu-duplicate") to menu
         if space != Some(Space::Shared) {
             menu_items.push(
                 MenuItemFields::new("Duplicate")
@@ -389,7 +389,7 @@ impl EnvVarCollectionView {
             );
         }
 
-        // Add crate::tr!("drive", "drive-trash-label") to menu
+        // Add crate::tr!("drive", "trash-label") to menu
         if self.is_online(ctx)
             && (!FeatureFlag::SharedWithMe.is_enabled() || access_level.can_trash())
         {
@@ -403,7 +403,7 @@ impl EnvVarCollectionView {
 
         #[cfg(feature = "local_fs")]
         menu_items.push(
-            MenuItemFields::new(crate::tr!("drive", "drive-menu-export"))
+            MenuItemFields::new(crate::tr!("drive", "menu-export"))
                 .with_on_select_action(EnvVarCollectionAction::Export)
                 .with_icon(Icon::Download)
                 .into_item(),

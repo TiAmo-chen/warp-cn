@@ -135,7 +135,7 @@ impl ImportModalBody {
                     let result = match server_id {
                         Some(id) => UploadResult::Success(id.clone()),
                         None => {
-                            UploadResult::Error(crate::tr!("drive", "drive-failed-upload-folder").to_string())
+                            UploadResult::Error(crate::tr!("drive", "failed-upload-folder").to_string())
                         }
                     };
 
@@ -381,13 +381,13 @@ impl ImportModalBody {
 
         let file_picker_button = if is_loading {
             base_button
-                .with_centered_text_label(crate::tr!("drive", "drive-import-preparing").to_string())
+                .with_centered_text_label(crate::tr!("drive", "import-preparing").to_string())
                 .disabled()
         } else {
             base_button.with_text_and_icon_label(
                 TextAndIcon::new(
                     TextAndIconAlignment::TextFirst,
-                    crate::tr!("drive", "drive-import-choose-files").to_string(),
+                    crate::tr!("drive", "import-choose-files").to_string(),
                     Icon::Import.to_warpui_icon(
                         appearance
                             .theme()
@@ -427,7 +427,7 @@ impl ImportModalBody {
         let link_to_document = appearance
             .ui_builder()
             .link(
-                crate::tr!("drive", "drive-learn-file-support").to_string(),
+                crate::tr!("drive", "learn-file-support").to_string(),
                 Some(FILE_TYPE_DOCS_URL.to_string()),
                 None,
                 self.link_mouse_state.clone(),

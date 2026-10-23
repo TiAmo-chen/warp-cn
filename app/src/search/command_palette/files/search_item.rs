@@ -105,9 +105,9 @@ impl SearchItem for FileSearchItem {
 
     fn accessibility_help_message(&self) -> Option<String> {
         Some(if self.is_directory {
-            crate::tr!("search", "search-file-navigate-directory").to_string()
+            crate::tr!("search", "file-navigate-directory").to_string()
         } else {
-            crate::tr!("search", "search-file-open-file").to_string()
+            crate::tr!("search", "file-open-file").to_string()
         })
     }
 

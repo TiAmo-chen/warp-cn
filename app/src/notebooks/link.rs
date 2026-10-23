@@ -49,16 +49,16 @@ impl LinkTarget {
     pub fn secondary_action(&self) -> Option<SecondaryAction> {
         match self {
             LinkTarget::LocalDirectory { .. } => Some(SecondaryAction {
-                label: crate::tr!("notebooks", "notebooks-new-session").into(),
-                tooltip: Some(crate::tr!("notebooks", "notebooks-open-a-new-terminal-session-in-this-directory").into()),
-                accessibility_content: crate::tr!("notebooks", "notebooks-open-in-terminal-session").into(),
+                label: crate::tr!("notebooks", "new-session").into(),
+                tooltip: Some(crate::tr!("notebooks", "open-a-new-terminal-session-in-this-directory").into()),
+                accessibility_content: crate::tr!("notebooks", "open-in-terminal-session").into(),
             }),
             LinkTarget::LocalFile {
                 is_markdown: true, ..
             } => Some(SecondaryAction {
-                label: crate::tr!("notebooks", "notebooks-open-in-editor").into(),
+                label: crate::tr!("notebooks", "open-in-editor").into(),
                 tooltip: None,
-                accessibility_content: crate::tr!("notebooks", "notebooks-edit-markdown-file").into(),
+                accessibility_content: crate::tr!("notebooks", "edit-markdown-file").into(),
             }),
             LinkTarget::Url(_) | LinkTarget::LocalFile { .. } => None,
         }
@@ -428,8 +428,8 @@ impl fmt::Display for ResolveError {
     fn fmt(&self, f: &mut fmt::Formatter) -> fmt::Result {
         match self {
             ResolveError::FileNotFound => f.write_str("File not found"),
-            ResolveError::MissingContext => f.write_str(&crate::tr!("notebooks", "notebooks-no-base-directory")),
-            ResolveError::Unknown => f.write_str(&crate::tr!("notebooks", "notebooks-broken-file-link")),
+            ResolveError::MissingContext => f.write_str(&crate::tr!("notebooks", "no-base-directory")),
+            ResolveError::Unknown => f.write_str(&crate::tr!("notebooks", "broken-file-link")),
         }
     }
 }

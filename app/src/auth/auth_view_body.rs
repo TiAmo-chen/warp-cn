@@ -256,7 +256,7 @@ impl AuthViewBody {
             .with_child(
                 ui_builder
                     .link(
-                        crate::tr!("auth", "auth-click-here-paste-token").into(),
+                        crate::tr!("auth", "click-here-paste-token").into(),
                         None,
                         Some(Box::new(|ctx| {
                             ctx.dispatch_typed_action(AuthViewBodyAction::EnterToken);
@@ -337,7 +337,7 @@ impl AuthViewBody {
                 .with_child(
                     ui_builder
                         .link(
-                            crate::tr!("auth", "auth-terms-of-service").into(),
+                            crate::tr!("auth", "terms-of-service").into(),
                             Some(TOS_URL.into()),
                             None,
                             self.mouse_state_handles.tos_mouse_state_handle.clone(),
@@ -357,7 +357,7 @@ impl AuthViewBody {
             Align::new(
                 ui_builder
                     .link(
-                        crate::tr!("auth", "auth-privacy-settings").into(),
+                        crate::tr!("auth", "privacy-settings").into(),
                         None,
                         Some(Box::new(|ctx| {
                             ctx.dispatch_typed_action(AuthViewBodyAction::ShowOverlay(
@@ -378,7 +378,7 @@ impl AuthViewBody {
             Flex::column()
                 .with_child(
                     ui_builder
-                        .paragraph(crate::tr!("auth", "auth-opt-out-analytics-1"))
+                        .paragraph(crate::tr!("auth", "opt-out-analytics-1"))
                         .with_style(disclaimer_styles)
                         .build()
                         .finish(),
@@ -395,7 +395,7 @@ impl AuthViewBody {
                         .with_child(
                             ui_builder
                                 .link(
-                                    crate::tr!("auth", "auth-privacy-settings").into(),
+                                    crate::tr!("auth", "privacy-settings").into(),
                                     None,
                                     Some(Box::new(|ctx| {
                                         ctx.dispatch_typed_action(AuthViewBodyAction::ShowOverlay(
@@ -494,7 +494,7 @@ impl AuthViewBody {
             .with_child(
                 ui_builder
                     .link(
-                        crate::tr!("workspace", "workspace-sign-in").into(),
+                        crate::tr!("workspace", "sign-in").into(),
                         None,
                         Some(Box::new(|ctx| {
                             ctx.dispatch_typed_action(AuthViewBodyAction::Login);
@@ -522,7 +522,7 @@ impl AuthViewBody {
                 .with_child(
                     ui_builder
                         .link(
-                            crate::tr!("auth", "auth-skip-button").into(),
+                            crate::tr!("auth", "skip-button").into(),
                             None,
                             Some(Box::new(|ctx| {
                                 ctx.dispatch_typed_action(AuthViewBodyAction::InitiateLoginLater);
@@ -546,13 +546,13 @@ impl AuthViewBody {
             Flex::column()
                 .with_child(
                     ui_builder
-                        .paragraph(crate::tr!("auth", "auth-skip-login-confirm"))
+                        .paragraph(crate::tr!("auth", "skip-login-confirm"))
                         .build()
                         .finish(),
                 )
                 .with_child(
                     ui_builder
-                        .paragraph(crate::tr!("auth", "auth-skip-login-warning-1"))
+                        .paragraph(crate::tr!("auth", "skip-login-warning-1"))
                         .build()
                         .finish(),
                 )
@@ -567,7 +567,7 @@ impl AuthViewBody {
                         .with_child(
                             ui_builder
                                 .link(
-                                    crate::tr!("auth", "auth-skip-login-yes").into(),
+                                    crate::tr!("auth", "skip-login-yes").into(),
                                     None,
                                     Some(Box::new(|ctx| {
                                         ctx.dispatch_typed_action(AuthViewBodyAction::LoginLater);
@@ -777,7 +777,7 @@ impl AuthViewBody {
                         .with_child(
                             ui_builder
                                 .link(
-                                    crate::tr!("auth", "auth-copy-url").into(),
+                                    crate::tr!("auth", "copy-url").into(),
                                     None,
                                     Some(Box::new(|event_ctx| {
                                         event_ctx.dispatch_typed_action(
@@ -796,7 +796,7 @@ impl AuthViewBody {
                 )
                 .with_child(
                     ui_builder
-                        .span(crate::tr!("auth", "auth-open-manually"))
+                        .span(crate::tr!("auth", "open-manually"))
                         .build()
                         .finish(),
                 )
@@ -992,8 +992,8 @@ impl View for AuthViewBody {
 
     fn accessibility_contents(&self, _: &AppContext) -> Option<AccessibilityContent> {
         Some(AccessibilityContent::new(
-            crate::tr!("auth", "auth-welcome-to-warp"),
-            crate::tr!("auth", "auth-press-enter-to-open-browser"),
+            crate::tr!("auth", "welcome-to-warp"),
+            crate::tr!("auth", "press-enter-to-open-browser"),
             WarpA11yRole::HelpRole,
         ))
     }

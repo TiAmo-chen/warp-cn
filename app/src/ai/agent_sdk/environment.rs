@@ -415,7 +415,7 @@ impl EnvironmentCommandRunner {
                     };
 
                     let final_image = if selected_image == CUSTOM_IMAGE_OPTION {
-                        match inquire::Text::new(&crate::tr!("ai_assistant", "ai-assistant-ai-enter-custom-docker-image")).prompt() {
+                        match inquire::Text::new(&crate::tr!("ai_assistant", "ai-enter-custom-docker-image")).prompt() {
                             Ok(custom) => custom,
                             Err(err) => {
                                 if !Self::handle_inquire_error(err, ctx) {

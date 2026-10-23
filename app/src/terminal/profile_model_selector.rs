@@ -377,7 +377,7 @@ impl ProfileModelSelector {
                     }
                     label
                 } else {
-                    crate::tr!("terminal", "terminal-new-models-available").to_string()
+                    crate::tr!("terminal", "new-models-available").to_string()
                 }
             })))
         });
@@ -562,7 +562,7 @@ impl ProfileModelSelector {
 
         let manage_api_key_button = ctx.add_typed_action_view(|_ctx| {
             ActionButton::new("Manage", SecondaryTheme)
-                .with_tooltip(crate::tr!("terminal", "terminal-manage-api-keys"))
+                .with_tooltip(crate::tr!("terminal", "manage-api-keys"))
                 .with_size(ButtonSize::XSmall)
                 .on_click(|ctx| {
                     ctx.dispatch_typed_action(WorkspaceAction::ShowSettingsPageWithSearch {
@@ -928,7 +928,7 @@ impl ProfileModelSelector {
 
         menu_items.push(MenuItem::Separator);
         menu_items.push(MenuItem::Item(
-            MenuItemFields::new(crate::tr!("terminal", "terminal-manage-profiles"))
+            MenuItemFields::new(crate::tr!("terminal", "manage-profiles"))
                 .with_icon(Icon::Gear)
                 .with_on_select_action(ProfileModelSelectorAction::ManageProfiles),
         ));
@@ -2155,7 +2155,7 @@ impl ProfileModelSelector {
         let appearance = Appearance::as_ref(app);
         let theme = appearance.theme();
         let header = self.render_model_spec_header(
-            crate::tr!("terminal", "terminal-model-specs").to_string(),
+            crate::tr!("terminal", "model-specs").to_string(),
             "Warp’s benchmarks for how well a model performs in our harness, the rate at which it consumes credits, and task speed.".to_string(),
             app,
         );

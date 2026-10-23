@@ -386,7 +386,7 @@ impl AIDocumentView {
             ActionButton::new("", NakedTheme)
                 .with_icon(icons::Icon::History)
                 .with_size(ButtonSize::Small)
-                .with_tooltip(crate::tr!("ai_assistant", "ai-assistant-ai-show-version-history-tooltip"))
+                .with_tooltip(crate::tr!("ai_assistant", "ai-show-version-history-tooltip"))
                 .on_click(|ctx| {
                     ctx.dispatch_typed_action(
                         PaneHeaderAction::<AIDocumentAction, AIDocumentAction>::CustomAction(
@@ -414,7 +414,7 @@ impl AIDocumentView {
             "This plan has changes the agent isn't aware of. {save_action} to stop the agent's current task and send the updated plan"
         );
         let update_plan_button = ctx.add_typed_action_view(|_ctx| {
-            ActionButton::new(crate::tr!("ai_assistant", "ai-assistant-ai-update-agent"), PrimaryTheme)
+            ActionButton::new(crate::tr!("ai_assistant", "ai-update-agent"), PrimaryTheme)
                 .with_size(ButtonSize::Small)
                 .with_tooltip(tooltip_text)
                 .with_tooltip_alignment(TooltipAlignment::Right)
@@ -669,7 +669,7 @@ impl AIDocumentView {
                 let appearance = Appearance::as_ref(app);
                 let ui_builder = appearance.ui_builder().clone();
                 let tooltip = ui_builder
-                    .tool_tip(crate::tr!("ai_assistant", "ai-assistant-ai-save-and-sync-tooltip").to_string())
+                    .tool_tip(crate::tr!("ai_assistant", "ai-save-and-sync-tooltip").to_string())
                     .build()
                     .finish();
                 let sync_button_mouse_state = self.sync_button_mouse_state.clone();
@@ -722,7 +722,7 @@ impl AIDocumentView {
                 let color = theme.nonactive_ui_detail().into_solid();
                 let ui_builder = appearance.ui_builder().clone();
                 let tooltip_text =
-                    crate::tr!("ai_assistant", "ai-assistant-ai-plan-synced-message")
+                    crate::tr!("ai_assistant", "ai-plan-synced-message")
                         .to_string();
                 let synced_status_mouse_state = self.synced_status_mouse_state.clone();
                 Container::new(
@@ -1166,7 +1166,7 @@ impl TypedActionView for AIDocumentView {
                 let window_id = ctx.window_id();
                 ToastStack::handle(ctx).update(ctx, |toast_stack, ctx| {
                     toast_stack.add_ephemeral_toast(
-                        DismissibleToast::success(crate::tr!("ai_assistant", "ai-assistant-ai-link-copied-toast").to_string()),
+                        DismissibleToast::success(crate::tr!("ai_assistant", "ai-link-copied-toast").to_string()),
                         window_id,
                         ctx,
                     );
@@ -1179,7 +1179,7 @@ impl TypedActionView for AIDocumentView {
                 let window_id = ctx.window_id();
                 ToastStack::handle(ctx).update(ctx, |toast_stack, ctx| {
                     toast_stack.add_ephemeral_toast(
-                        DismissibleToast::success(crate::tr!("ai_assistant", "ai-assistant-ai-plan-id-copied-toast").to_string()),
+                        DismissibleToast::success(crate::tr!("ai_assistant", "ai-plan-id-copied-toast").to_string()),
                         window_id,
                         ctx,
                     );
@@ -1260,7 +1260,7 @@ impl TypedActionView for AIDocumentView {
                         .ai_controller()
                         .update(ctx, |controller, ctx| {
                             controller.send_user_query_in_conversation(
-                                crate::tr!("ai_assistant", "ai-assistant-ai-updated-plan").to_string(),
+                                crate::tr!("ai_assistant", "ai-updated-plan").to_string(),
                                 conversation_id,
                                 None,
                                 ctx,
@@ -1328,13 +1328,13 @@ impl BackingView for AIDocumentView {
             AIDocumentModel::as_ref(ctx).get_document_warp_drive_object_link(&self.document_id, ctx)
         {
             menu_items.push(
-                MenuItemFields::new(crate::tr!("ai_assistant", "ai-assistant-ai-doc-copy-link"))
+                MenuItemFields::new(crate::tr!("ai_assistant", "ai-doc-copy-link"))
                     .with_on_select_action(AIDocumentAction::CopyLink(link))
                     .with_icon(Icon::Link)
                     .into_item(),
             );
             menu_items.push(
-                MenuItemFields::new(crate::tr!("ai_assistant", "ai-assistant-ai-doc-show-in-warp-drive"))
+                MenuItemFields::new(crate::tr!("ai_assistant", "ai-doc-show-in-warp-drive"))
                     .with_on_select_action(AIDocumentAction::ShowInWarpDrive)
                     .with_icon(Icon::WarpDrive)
                     .into_item(),
@@ -1351,7 +1351,7 @@ impl BackingView for AIDocumentView {
         #[cfg(feature = "local_fs")]
         {
             menu_items.push(
-                crate::menu::MenuItemFields::new(crate::tr!("ai_assistant", "ai-assistant-ai-doc-save-as-markdown"))
+                crate::menu::MenuItemFields::new(crate::tr!("ai_assistant", "ai-doc-save-as-markdown"))
                     .with_on_select_action(AIDocumentAction::Export)
                     .with_icon(Icon::Download)
                     .into_item(),
@@ -1360,7 +1360,7 @@ impl BackingView for AIDocumentView {
 
         // Add "Attach to active session" menu item
         menu_items.push(
-            MenuItemFields::new(crate::tr!("ai_assistant", "ai-assistant-ai-doc-attach-to-active-session"))
+            MenuItemFields::new(crate::tr!("ai_assistant", "ai-doc-attach-to-active-session"))
                 .with_on_select_action(AIDocumentAction::AttachToActiveSession)
                 .with_icon(Icon::Paperclip)
                 .into_item(),
@@ -1368,7 +1368,7 @@ impl BackingView for AIDocumentView {
 
         // Add "Copy plan ID" menu item
         menu_items.push(
-            MenuItemFields::new(crate::tr!("ai_assistant", "ai-assistant-ai-doc-copy-plan-id"))
+            MenuItemFields::new(crate::tr!("ai_assistant", "ai-doc-copy-plan-id"))
                 .with_on_select_action(AIDocumentAction::CopyPlanId)
                 .with_icon(Icon::Copy)
                 .into_item(),

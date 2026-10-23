@@ -101,7 +101,7 @@ impl PluginInstructionsBlock {
         let desc_element: Box<dyn Element> = if let Some(url) = link {
             let fragments = vec![
                 FormattedTextFragment::plain_text(format!("{description} ")),
-                FormattedTextFragment::hyperlink(crate::tr!("common", "common-learn-more-label"), url),
+                FormattedTextFragment::hyperlink(crate::tr!("common", "learn-more-label"), url),
             ];
             let formatted = FormattedText::new(vec![FormattedTextLine::Line(fragments)]);
             FormattedTextElement::new(
@@ -293,7 +293,7 @@ impl TypedActionView for PluginInstructionsBlock {
                     let window_id = ctx.window_id();
                     ToastStack::handle(ctx).update(ctx, |toast_stack, ctx| {
                         toast_stack.add_ephemeral_toast(
-                            DismissibleToast::success(crate::tr!("ai_assistant", "ai-assistant-ai-copied-to-clipboard").to_owned()),
+                            DismissibleToast::success(crate::tr!("ai_assistant", "ai-copied-to-clipboard").to_owned()),
                             window_id,
                             ctx,
                         );

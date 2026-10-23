@@ -2037,7 +2037,7 @@ pub fn session_terminated_reason_string(
             format!("Session limit ({max_bytes}) exceeded. Please reshare to continue.")
         }
         SessionTerminatedReason::InternalServerError { .. } => {
-            crate::tr!("terminal", "terminal-session-internal-error").to_string()
+            crate::tr!("terminal", "session-internal-error").to_string()
         }
     }
 }

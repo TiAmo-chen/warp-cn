@@ -217,7 +217,7 @@ fn render_linked_code_block_internal(
             let insert_button = render_button(
                 appearance,
                 Icon::AtSign,
-                &crate::tr!("ai_assistant", "ai-assistant-ai-add-as-context"),
+                &crate::tr!("ai_assistant", "ai-add-as-context"),
                 mouse_handles.insert_button,
                 insert_text,
                 on_insert,
@@ -339,7 +339,7 @@ fn render_plain_code_block_internal(
             let insert_button = render_button(
                 appearance,
                 Icon::TerminalInput,
-                &crate::tr!("ai_assistant", "ai-assistant-ai-run-in-terminal"),
+                &crate::tr!("ai_assistant", "ai-run-in-terminal"),
                 mouse_handles.insert_button,
                 code_clone.clone(),
                 on_execute,

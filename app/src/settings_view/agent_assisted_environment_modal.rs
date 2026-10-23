@@ -606,9 +606,9 @@ impl AgentAssistedEnvironmentModal {
 
     fn render_dialog(&self, appearance: &Appearance, app: &AppContext) -> Box<dyn Element> {
         let description = if FeatureFlag::FullSourceCodeEmbedding.is_enabled() {
-            crate::tr!("settings", "settings-select-locally-indexed-repos-to-provide-context-for-the-environment-creation-agent")
+            crate::tr!("settings", "select-locally-indexed-repos-to-provide-context-for-the-environment-creation-agent")
         } else {
-            crate::tr!("settings", "settings-select-repos-to-provide-context-for-the-environment-creation-agent")
+            crate::tr!("settings", "select-repos-to-provide-context-for-the-environment-creation-agent")
         }
         .to_string();
 

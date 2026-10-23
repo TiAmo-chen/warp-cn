@@ -221,7 +221,7 @@ impl AskUserQuestionView {
             ctx,
         );
         let skip_button = CompactibleActionButton::new(
-            crate::tr!("ai_assistant", "ai-assistant-ai-skip-all").to_string(),
+            crate::tr!("ai_assistant", "ai-skip-all").to_string(),
             Some(KeystrokeSource::Fixed(CTRL_C_KEYSTROKE.clone())),
             ButtonSize::InlineActionHeader,
             AskUserQuestionViewAction::SkipAll,
@@ -541,7 +541,7 @@ impl AskUserQuestionView {
         let initial_text = initial_text.map(String::from);
         let input = ctx.add_view(move |ctx| {
             let input = compact_agent_input::CompactAgentInput::new(ctx);
-            input.set_placeholder_text(crate::tr!("ai_assistant", "ai-assistant-ai-type-answer"), ctx);
+            input.set_placeholder_text(crate::tr!("ai_assistant", "ai-type-answer"), ctx);
             if let Some(initial_text) = initial_text.as_deref() {
                 input.set_text(initial_text, ctx);
             }
@@ -747,7 +747,7 @@ impl AskUserQuestionView {
                 .finish(),
         );
         content.add_child(
-            HeaderConfig::new(crate::tr!("ai_assistant", "ai-assistant-ai-agent-questions"), app)
+            HeaderConfig::new(crate::tr!("ai_assistant", "ai-agent-questions"), app)
                 .with_icon(yellow_stop_icon(appearance))
                 .with_corner_radius_override(CornerRadius::with_top(Radius::Pixels(8.)))
                 .render_header(app, Some(header_right.finish())),
@@ -801,7 +801,7 @@ impl AskUserQuestionView {
 
     fn render_unavailable(&self, appearance: &Appearance, app: &AppContext) -> Box<dyn Element> {
         wrap_with_agent_output_item_spacing(
-            HeaderConfig::new(crate::tr!("ai_assistant", "ai-assistant-ai-questions-unavailable").to_string(), app)
+            HeaderConfig::new(crate::tr!("ai_assistant", "ai-questions-unavailable").to_string(), app)
                 .with_icon(inline_action_icons::reverted_icon(appearance))
                 .render(app),
             app,
@@ -841,12 +841,12 @@ impl AskUserQuestionView {
             }
             AskUserQuestionResult::Error(_) | AskUserQuestionResult::Cancelled => (
                 None,
-                crate::tr!("ai_assistant", "ai-assistant-ai-questions-skipped").to_string(),
+                crate::tr!("ai_assistant", "ai-questions-skipped").to_string(),
                 inline_action_icons::reverted_icon(appearance),
             ),
             AskUserQuestionResult::SkippedByAutoApprove { .. } => (
                 None,
-                crate::tr!("ai_assistant", "ai-assistant-ai-questions-skipped-autoapprove").to_string(),
+                crate::tr!("ai_assistant", "ai-questions-skipped-autoapprove").to_string(),
                 inline_action_icons::reverted_icon(appearance),
             ),
         };
@@ -1299,13 +1299,13 @@ fn ask_user_question_completion_state(
 
     if answered_count == 0 {
         AskUserQuestionCompletionState {
-            label: crate::tr!("ai_assistant", "ai-assistant-ai-questions-skipped").to_string(),
+            label: crate::tr!("ai_assistant", "ai-questions-skipped").to_string(),
             status_icon: inline_action_icons::reverted_icon(appearance),
         }
     } else {
         let label = if answered_count == total {
             if total == 1 {
-                crate::tr!("ai_assistant", "ai-assistant-ai-answered-question").to_string()
+                crate::tr!("ai_assistant", "ai-answered-question").to_string()
             } else {
                 format!("Answered all {total} questions")
             }

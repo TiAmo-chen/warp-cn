@@ -39,7 +39,7 @@ pub fn init(app: &mut AppContext) {
         .with_custom_action(CustomAction::OpenRepository),
         EditableBinding::new(
             "project_buttons:create_new_project",
-            crate::tr!("coding_entrypoints", "coding-entrypoints-create-new-project"),
+            crate::tr!("coding_entrypoints", "create-new-project"),
             ProjectButtonsAction::CreateProject,
         )
         .with_context_predicate(id!("ProjectButons"))
@@ -224,11 +224,11 @@ impl View for ProjectButtons {
         if FeatureFlag::CreateProjectFlow.is_enabled() {
             row.add_children([
                 Container::new(self.glowing_button(
-                    crate::tr!("coding_entrypoints", "coding-entrypoints-create-new-project"),
+                    crate::tr!("coding_entrypoints", "create-new-project"),
                     Icon::Plus,
                     ProjectButtonsAction::CreateProject,
                     TooltipData {
-                        text: crate::tr!("coding_entrypoints", "coding-entrypoints-create-new-project-desc").to_string(),
+                        text: crate::tr!("coding_entrypoints", "create-new-project-desc").to_string(),
                         keybinding: keybinding_name_to_display_string(
                             "project_buttons:create_new_project",
                             app,
@@ -240,11 +240,11 @@ impl View for ProjectButtons {
                 .with_margin_right(16.)
                 .finish(),
                 Container::new(self.glowing_button(
-                    crate::tr!("code_editor", "code-editor-code-review-open-repository"),
+                    crate::tr!("code_editor", "code-review-open-repository"),
                     Icon::Folder,
                     ProjectButtonsAction::OpenRepository,
                     TooltipData {
-                        text: crate::tr!("coding_entrypoints", "coding-entrypoints-open-repository-desc").to_string(),
+                        text: crate::tr!("coding_entrypoints", "open-repository-desc").to_string(),
                         keybinding: keybinding_name_to_display_string(
                             "project_buttons:open_repository",
                             app,
@@ -256,11 +256,11 @@ impl View for ProjectButtons {
                 .with_margin_right(16.)
                 .finish(),
                 self.glowing_button(
-                    crate::tr!("coding_entrypoints", "coding-entrypoints-clone-repository"),
+                    crate::tr!("coding_entrypoints", "clone-repository"),
                     Icon::Duplicate,
                     ProjectButtonsAction::CloneRepository,
                     TooltipData {
-                        text: crate::tr!("coding_entrypoints", "coding-entrypoints-clone-repository-desc").to_string(),
+                        text: crate::tr!("coding_entrypoints", "clone-repository-desc").to_string(),
                         keybinding: None,
                     },
                     self.state_handles.clone_repo_button.clone(),
@@ -272,11 +272,11 @@ impl View for ProjectButtons {
                 Expanded::new(
                     1.,
                     self.glowing_button(
-                        crate::tr!("code_editor", "code-editor-code-review-open-repository"),
+                        crate::tr!("code_editor", "code-review-open-repository"),
                         Icon::Plus,
                         ProjectButtonsAction::CreateProject,
                         TooltipData {
-                            text: crate::tr!("coding_entrypoints", "coding-entrypoints-open-repository-desc").to_string(),
+                            text: crate::tr!("coding_entrypoints", "open-repository-desc").to_string(),
                             keybinding: keybinding_name_to_display_string(
                                 "project_buttons:open_repository",
                                 app,

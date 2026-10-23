@@ -82,7 +82,7 @@ pub fn render_loading_footer(appearance: &Appearance) -> Box<dyn Element> {
 
     build_centered_footer(
         "Cloud agent starting up…".to_string(),
-        crate::tr!("agent_cloud", "agent-cloud-interact-soon").to_string(),
+        crate::tr!("agent_cloud", "interact-soon").to_string(),
         header_color,
         body_color,
         background,
@@ -104,7 +104,7 @@ pub fn render_error_footer(error_message: &str, appearance: &Appearance) -> Box<
     let border_color = theme.ui_error_color();
 
     build_centered_footer(
-        crate::tr!("agent_cloud", "agent-cloud-agent-failed").to_string(),
+        crate::tr!("agent_cloud", "agent-failed").to_string(),
         error_message.to_string(),
         header_color,
         body_color,

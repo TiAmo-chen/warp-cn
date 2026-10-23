@@ -114,16 +114,16 @@ impl SettingsFileError {
     pub fn heading_and_description(&self) -> (String, String) {
         match self {
             Self::FileParseFailed(_) => (
-                crate::tr!("settings", "settings-file-contains-error").to_owned(),
+                crate::tr!("settings", "file-contains-error").to_owned(),
                 format!("{self}. Open the file to fix it."),
             ),
             Self::InvalidSettings(keys) => match keys.len() {
                 1 => (
-                    crate::tr!("settings", "settings-file-contains-error").to_owned(),
+                    crate::tr!("settings", "file-contains-error").to_owned(),
                     format!("{self}. The default value is being used."),
                 ),
                 _ => (
-                    crate::tr!("settings", "settings-file-contains-errors").to_owned(),
+                    crate::tr!("settings", "file-contains-errors").to_owned(),
                     format!("{self}. Default values are being used."),
                 ),
             },

@@ -75,6 +75,6 @@ impl crate::search::item::SearchItem for SearchItem {
     }
 
     fn accessibility_help_message(&self) -> Option<String> {
-        Some(crate::tr!("search", "search-a11y-launch-config-help").into())
+        Some(crate::tr!("search", "a11y-launch-config-help").into())
     }
 }

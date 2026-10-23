@@ -1523,7 +1523,7 @@ impl CodePageWidget {
 
         log::warn!("No index state for codebase");
         IndexingStatusPresentation {
-            text: Cow::from(crate::tr!("settings", "settings-no-index-built")),
+            text: Cow::from(crate::tr!("settings", "no-index-built")),
             color: theme.nonactive_ui_text_color().into_solid(),
             icon: None,
             refresh_action: None,
@@ -1767,7 +1767,7 @@ impl CodePageWidget {
         // crate::tr!("settings", "lsp-servers") label
         content.add_child(
             ui_builder
-                .span(crate::tr!("settings", "settings-lsp-servers"))
+                .span(crate::tr!("settings", "lsp-servers"))
                 .with_style(UiComponentStyles {
                     font_size: Some(11.0),
                     font_weight: Some(Weight::Semibold),

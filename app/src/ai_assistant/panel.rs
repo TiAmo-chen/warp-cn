@@ -147,28 +147,28 @@ pub fn init(app: &mut AppContext) {
     app.register_fixed_bindings([FixedBinding::custom(
         CustomAction::CloseCurrentSession,
         AIAssistantAction::ClosePanel,
-        crate::tr!("ai_assistant", "ai-assistant-close-warp-ai"),
+        crate::tr!("ai_assistant", "close-warp-ai"),
         id!("AIAssistantPanel"),
     )]);
 
     app.register_editable_bindings([
         EditableBinding::new(
             "ai_assistant_panel:focus_terminal_input",
-            crate::tr!("ai_assistant", "ai-assistant-focus-terminal-input-from-warp-ai"),
+            crate::tr!("ai_assistant", "focus-terminal-input-from-warp-ai"),
             AIAssistantAction::FocusTerminalInput,
         )
         .with_context_predicate(id!("AIAssistantPanel"))
         .with_key_binding(cmd_or_ctrl_shift("l")),
         EditableBinding::new(
             "ai_assistant_panel:reset_context",
-            crate::tr!("ai_assistant", "ai-assistant-restart-warp-ai"),
+            crate::tr!("ai_assistant", "restart-warp-ai"),
             AIAssistantAction::ResetContext,
         )
         .with_context_predicate(id!("AIAssistantPanel"))
         .with_key_binding("ctrl-l"),
         EditableBinding::new(
             "ai_assistant_panel:reset_context",
-            crate::tr!("ai_assistant", "ai-assistant-restart-warp-ai"),
+            crate::tr!("ai_assistant", "restart-warp-ai"),
             AIAssistantAction::ResetContext,
         )
         .with_context_predicate(id!("AIAssistantPanel"))
@@ -783,7 +783,7 @@ impl AIAssistantPanelView {
                 ..Default::default()
             };
             ui_builder
-                .tool_tip(crate::tr!("ai_assistant", "ai-assistant-copy-transcript-to-clipboard").to_owned())
+                .tool_tip(crate::tr!("ai_assistant", "copy-transcript-to-clipboard").to_owned())
                 .with_style(tool_tip_style)
                 .build()
                 .finish()
@@ -841,7 +841,7 @@ impl AIAssistantPanelView {
             .with_children([
                 Container::new(
                     Text::new_inline(
-                        crate::tr!("ai_assistant", "ai-assistant-character-limit-exceeded"),
+                        crate::tr!("ai_assistant", "character-limit-exceeded"),
                         appearance.ui_font_family(),
                         BODY_FONT_SIZE,
                     )

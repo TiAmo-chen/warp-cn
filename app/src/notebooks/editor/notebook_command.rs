@@ -812,7 +812,7 @@ impl RunnableCommandModel for NotebookCommand {
                         appearance,
                         Icon::TerminalInput,
                         self.mouse_state_handles.insert_button_state.clone(),
-                        crate::tr!("ai_assistant", "ai-assistant-ai-run-in-terminal"),
+                        crate::tr!("ai_assistant", "ai-run-in-terminal"),
                         NotebookKeybindings::as_ref(ctx).run_commands_keybinding(),
                     )
                     .on_click(move |ctx, app, _| {

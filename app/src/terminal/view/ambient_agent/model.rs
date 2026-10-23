@@ -1343,7 +1343,7 @@ impl AmbientAgentViewModel {
                         | AmbientAgentTaskState::Unknown => {
                             let error = status_message
                                 .map(|msg| msg.message)
-                                .unwrap_or_else(|| crate::tr!("ai_assistant", "ai-assistant-ai-cloud-agent-failed").to_string());
+                                .unwrap_or_else(|| crate::tr!("ai_assistant", "ai-cloud-agent-failed").to_string());
                             self.handle_spawn_error(error, ctx);
                         }
                     }

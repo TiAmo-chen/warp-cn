@@ -41,9 +41,9 @@ use crate::workspace::sync_inputs::SyncedInputState;
 type CheckmarkStatusGetter = dyn 'static + Fn(&mut AppContext) -> bool;
 
 const ENABLE_SHELL_DEBUG_MODE_MENU_ITEM_NAME: &str =
-    crate::tr!("app_menus", "app-menus-enable-shell-debug-mode");
+    crate::tr!("app_menus", "enable-shell-debug-mode");
 const DISABLE_SHELL_DEBUG_MODE_MENU_ITEM_NAME: &str =
-    crate::tr!("app_menus", "app-menus-disable-shell-debug-mode");
+    crate::tr!("app_menus", "disable-shell-debug-mode");
 const ENABLE_IN_BAND_GENERATORS_MENU_ITEM_NAME: &str = "Enable In-band Generators for New Sessions";
 const DISABLE_IN_BAND_GENERATORS_MENU_ITEM_NAME: &str =
     "Disable in-band generators for new sessions";
@@ -82,9 +82,9 @@ pub fn menu_bar(ctx: &mut AppContext) -> MenuBar {
 // To create submenus, we could use MenuItem::Custom(CustomMenuItem::new_with_submenu(...))
 pub fn dock_menu() -> Menu {
     Menu::new(
-        crate::tr!("app_menus", "app-menus-dock-new-window"),
+        crate::tr!("app_menus", "dock-new-window"),
         vec![MenuItem::Custom(CustomMenuItem::new(
-            crate::tr!("app_menus", "app-menus-dock-new-window"),
+            crate::tr!("app_menus", "dock-new-window"),
             move |ctx| {
                 ctx.dispatch_global_action("root_view:open_new", &());
                 ctx.dispatch_global_action("workspace:save_app", &());
@@ -189,7 +189,7 @@ fn make_new_app_menu(ctx: &AppContext) -> Menu {
 
     menu_items.push(MenuItem::Separator);
     menu_items.push(link_menu_item(
-        crate::tr!("common", "common-menu-privacy-policy"),
+        crate::tr!("common", "menu-privacy-policy"),
         links::PRIVACY_POLICY_URL.into(),
     ));
 
@@ -210,7 +210,7 @@ fn make_new_app_menu(ctx: &AppContext) -> Menu {
     menu_items.push(MenuItem::Standard(StandardAction::ShowAllApps));
     menu_items.push(MenuItem::Separator);
     menu_items.push(MenuItem::Custom(CustomMenuItem::new(
-        crate::tr!("app_menus", "app-menus-set-default-terminal"),
+        crate::tr!("app_menus", "set-default-terminal"),
         move |ctx| {
             DefaultTerminal::handle(ctx).update(ctx, |default_terminal, ctx| {
                 default_terminal.make_warp_default(ctx)
@@ -230,7 +230,7 @@ fn make_new_app_menu(ctx: &AppContext) -> Menu {
     )));
     menu_items.push(MenuItem::Separator);
     menu_items.push(MenuItem::Custom(CustomMenuItem::new(
-        crate::tr!("app_menus", "app-menus-log-out"),
+        crate::tr!("app_menus", "log-out"),
         auth::maybe_log_out,
         move |_, ctx| {
             let is_anonymous = AuthStateProvider::handle(ctx)
@@ -254,7 +254,7 @@ fn make_new_file_menu(ctx: &AppContext) -> Menu {
         MenuItem::Separator,
         updateable_custom_item_without_checkmark(CustomAction::OpenRepository, ctx),
         MenuItem::Custom(CustomMenuItem::new_with_submenu(
-            crate::tr!("app_menus", "app-menus-open-recent"),
+            crate::tr!("app_menus", "open-recent"),
             |_| (),
             |_props, ctx| {
                 let recent_repos = generate_recent_repos_for_menu(ctx);
@@ -301,7 +301,7 @@ fn make_new_edit_menu(ctx: &AppContext) -> Menu {
     ];
     let group_5 = vec![
         MenuItem::Custom(CustomMenuItem::new(
-            crate::tr!("app_menus", "app-menus-use-warps-prompt"),
+            crate::tr!("app_menus", "use-warps-prompt"),
             move |ctx| ctx.dispatch_global_action("app:toggle_user_ps1", &()),
             move |_props, ctx| MenuItemPropertyChanges {
                 checked: Some(
@@ -314,7 +314,7 @@ fn make_new_edit_menu(ctx: &AppContext) -> Menu {
             None,
         )),
         MenuItem::Custom(CustomMenuItem::new(
-            crate::tr!("app_menus", "app-menus-copy-on-select"),
+            crate::tr!("app_menus", "copy-on-select"),
             move |ctx| {
                 ctx.dispatch_global_action("app:toggle_copy_on_select", &());
             },
@@ -340,7 +340,7 @@ fn make_new_edit_menu(ctx: &AppContext) -> Menu {
     edit_menu_items.push(MenuItem::Separator);
 
     edit_menu_items.push(MenuItem::Custom(CustomMenuItem::new_with_submenu(
-        crate::tr!("app_menus", "app-menus-synchronize-inputs"),
+        crate::tr!("app_menus", "synchronize-inputs"),
         |_| (),
         no_updates,
         None,
@@ -390,7 +390,7 @@ fn make_new_view_menu(ctx: &AppContext) -> Menu {
         updateable_custom_item_without_checkmark(CustomAction::Workflows, ctx),
         MenuItem::Separator,
         MenuItem::Custom(CustomMenuItem::new(
-            crate::tr!("app_menus", "app-menus-toggle-mouse-reporting"),
+            crate::tr!("app_menus", "toggle-mouse-reporting"),
             move |ctx| {
                 ctx.dispatch_global_action("workspace:toggle_mouse_reporting", &());
             },
@@ -407,7 +407,7 @@ fn make_new_view_menu(ctx: &AppContext) -> Menu {
             None,
         )),
         MenuItem::Custom(CustomMenuItem::new(
-            crate::tr!("app_menus", "app-menus-toggle-scroll-reporting"),
+            crate::tr!("app_menus", "toggle-scroll-reporting"),
             move |ctx| {
                 ctx.dispatch_global_action("workspace:toggle_scroll_reporting", &());
             },
@@ -422,7 +422,7 @@ fn make_new_view_menu(ctx: &AppContext) -> Menu {
             None,
         )),
         MenuItem::Custom(CustomMenuItem::new(
-            crate::tr!("app_menus", "app-menus-toggle-focus-reporting"),
+            crate::tr!("app_menus", "toggle-focus-reporting"),
             move |ctx| {
                 ctx.dispatch_global_action("workspace:toggle_focus_reporting", &());
             },
@@ -448,7 +448,7 @@ fn make_new_view_menu(ctx: &AppContext) -> Menu {
     items.extend([
         MenuItem::Separator,
         MenuItem::Custom(CustomMenuItem::new(
-            crate::tr!("app_menus", "app-menus-compact-mode"),
+            crate::tr!("app_menus", "compact-mode"),
             move |ctx| {
                 TerminalSettings::handle(ctx).update(ctx, |terminal_settings, ctx| {
                     let current_value = *terminal_settings.spacing_mode;
@@ -852,7 +852,7 @@ fn debug_menu_items() -> Vec<MenuItem> {
         }
 
         debug_menu_items.push(MenuItem::Custom(CustomMenuItem::new(
-            crate::tr!("app_menus", "app-menus-manually-toggle-network-status"),
+            crate::tr!("app_menus", "manually-toggle-network-status"),
             move |ctx| ctx.dispatch_global_action("workspace:toggle_debug_network_status", &()),
             no_updates,
             None,
@@ -886,7 +886,7 @@ fn debug_menu_items() -> Vec<MenuItem> {
         )));
 
         debug_menu_items.push(MenuItem::Custom(CustomMenuItem::new(
-            crate::tr!("common", "common-menu-create-anonymous-user"),
+            crate::tr!("common", "menu-create-anonymous-user"),
             move |ctx| ctx.dispatch_global_action("workspace:debug_create_anonymous_user", &()),
             no_updates,
             None,
@@ -913,7 +913,7 @@ fn link_menu_item(title: &'static str, link: Cow<'static, str>) -> MenuItem {
 
 fn feedback_menu_item() -> MenuItem {
     MenuItem::Custom(CustomMenuItem::new(
-        crate::tr!("common", "common-menu-send-feedback"),
+        crate::tr!("common", "menu-send-feedback"),
         move |ctx| {
             // Route through the root-view action so workspace windows can open the
             // guided AI flow, while non-workspace windows still fall back to the
@@ -930,8 +930,8 @@ fn make_new_help_menu() -> Menu {
         "Help",
         vec![
             feedback_menu_item(),
-            link_menu_item(crate::tr!("common", "common-menu-warp-documentation"), links::USER_DOCS_URL.into()),
-            link_menu_item(crate::tr!("common", "common-menu-github-issues"), links::GITHUB_ISSUES_URL.into()),
+            link_menu_item(crate::tr!("common", "menu-warp-documentation"), links::USER_DOCS_URL.into()),
+            link_menu_item(crate::tr!("common", "menu-github-issues"), links::GITHUB_ISSUES_URL.into()),
             link_menu_item("Join our Slack community...", links::SLACK_URL.into()),
         ],
     )
@@ -966,7 +966,7 @@ fn make_launch_config_menu_items(ctx: &mut AppContext) -> Vec<MenuItem> {
 
     // TODO(vorporeal): use non_updateable_custom_item() here instead
     launch_config_menu_items.push(MenuItem::Custom(CustomMenuItem::new(
-        crate::tr!("common", "common-menu-save-new"),
+        crate::tr!("common", "menu-save-new"),
         custom_action_dispatcher(CustomAction::SaveCurrentConfig),
         no_updates,
         custom_shortcut(CustomAction::SaveCurrentConfig),
@@ -981,7 +981,7 @@ fn make_new_elements_menu_items(ctx: &AppContext) -> Vec<MenuItem> {
     // shows its dedicated keystroke instead.
     let mut new_elements_menu = vec![
         MenuItem::Custom(CustomMenuItem::new(
-            crate::tr!("app_menus", "app-menus-dock-new-window"),
+            crate::tr!("app_menus", "dock-new-window"),
             open_new_window,
             move |_props: &MenuItemProperties, ctx: &mut AppContext| {
                 let mut changes = MenuItemPropertyChanges::default();
@@ -997,7 +997,7 @@ fn make_new_elements_menu_items(ctx: &AppContext) -> Vec<MenuItem> {
             Some(Keystroke::parse("cmd-n").expect("Valid keystroke")),
         )),
         MenuItem::Custom(CustomMenuItem::new(
-            crate::tr!("app_menus", "app-menus-new-terminal-tab"),
+            crate::tr!("app_menus", "new-terminal-tab"),
             open_new_default_tab_or_window,
             move |_props: &MenuItemProperties, ctx: &mut AppContext| {
                 let mut changes = MenuItemPropertyChanges::default();
@@ -1022,7 +1022,7 @@ fn make_new_elements_menu_items(ctx: &AppContext) -> Vec<MenuItem> {
             Some(Keystroke::parse("cmd-t").expect("Valid keystroke")),
         )),
         MenuItem::Custom(CustomMenuItem::new(
-            crate::tr!("app_menus", "app-menus-new-agent-tab"),
+            crate::tr!("app_menus", "new-agent-tab"),
             open_new_agent_tab_or_window,
             move |_props: &MenuItemProperties, ctx: &mut AppContext| {
                 let mut changes = MenuItemPropertyChanges::default();
@@ -1058,7 +1058,7 @@ fn make_new_elements_menu_items(ctx: &AppContext) -> Vec<MenuItem> {
     let reopen_session_action_updater =
         custom_action_updater(CustomAction::ReopenClosedSession, Box::new(|_| false));
     new_elements_menu.push(MenuItem::Custom(CustomMenuItem::new(
-        crate::tr!("common", "common-menu-reopen-closed-session"),
+        crate::tr!("common", "menu-reopen-closed-session"),
         |ctx| {
             UndoCloseStack::handle(ctx).update(ctx, |stack, ctx| {
                 stack.undo_close(ctx);
@@ -1073,7 +1073,7 @@ fn make_new_elements_menu_items(ctx: &AppContext) -> Vec<MenuItem> {
     )));
 
     new_elements_menu.push(MenuItem::Custom(CustomMenuItem::new_with_submenu(
-        crate::tr!("app_menus", "app-menus-launch-configurations"),
+        crate::tr!("app_menus", "launch-configurations"),
         |_| (),
         |_props, ctx| MenuItemPropertyChanges {
             submenu: Some(Some(make_launch_config_menu_items(ctx))),

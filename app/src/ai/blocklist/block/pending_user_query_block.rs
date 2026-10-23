@@ -52,7 +52,7 @@ impl PendingUserQueryBlock {
     ) -> Self {
         let close_button = show_close_button.then(|| {
             ctx.add_typed_action_view(|_| {
-                ActionButton::new(crate::tr!("ai_assistant", "ai-assistant-ai-remove-queued-prompt"), NakedTheme)
+                ActionButton::new(crate::tr!("ai_assistant", "ai-remove-queued-prompt"), NakedTheme)
                     .with_icon(Icon::X)
                     .with_size(ButtonSize::XSmall)
                     .on_click(|ctx| {
@@ -62,7 +62,7 @@ impl PendingUserQueryBlock {
         });
         let send_now_button = show_send_now_button.then(|| {
             ctx.add_typed_action_view(|_| {
-                ActionButton::new(crate::tr!("ai_assistant", "ai-assistant-ai-send-now"), NakedTheme)
+                ActionButton::new(crate::tr!("ai_assistant", "ai-send-now"), NakedTheme)
                     .with_icon(Icon::Play)
                     .with_size(ButtonSize::XSmall)
                     .on_click(|ctx| {

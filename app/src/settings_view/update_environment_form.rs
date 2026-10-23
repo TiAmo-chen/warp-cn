@@ -3109,7 +3109,7 @@ impl UpdateEnvironmentForm {
             "Suggest image"
         };
 
-        let tooltip_text = crate::tr!("settings", "settings-warp-will-suggest-a-docker-image-based-on-your-selected-repositories");
+        let tooltip_text = crate::tr!("settings", "warp-will-suggest-a-docker-image-based-on-your-selected-repositories");
 
         let button = Hoverable::new(
             self.suggest_image_button_mouse_state.clone(),

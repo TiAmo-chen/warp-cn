@@ -118,7 +118,7 @@ impl CloudSetupGuideView {
         );
 
         let visit_oz_button = ctx.add_typed_action_view(|_| {
-            ActionButton::new(crate::tr!("ai_assistant", "ai-assistant-ai-visit-oz"), SecondaryTheme)
+            ActionButton::new(crate::tr!("ai_assistant", "ai-visit-oz"), SecondaryTheme)
                 .on_click(|ctx| ctx.dispatch_typed_action(CloudSetupGuideAction::VisitOz))
         });
 
@@ -146,7 +146,7 @@ impl CloudSetupGuideView {
         let mut header_container = Flex::column().with_spacing(8.);
 
         let title = Text::new(
-            crate::tr!("ai_assistant", "ai-assistant-ai-cloud-agents-getting-started"),
+            crate::tr!("ai_assistant", "ai-cloud-agents-getting-started"),
             appearance.ui_font_family(),
             title_font_size,
         )
@@ -156,7 +156,7 @@ impl CloudSetupGuideView {
         header_container.add_child(title);
 
         let subtitle = Text::new(
-            crate::tr!("ai_assistant", "ai-assistant-ai-cloud-agents-subtitle"),
+            crate::tr!("ai_assistant", "ai-cloud-agents-subtitle"),
             appearance.ui_font_family(),
             subtitle_font_size,
         )
@@ -179,7 +179,7 @@ impl CloudSetupGuideView {
                 appearance
                     .ui_builder()
                     .link(
-                        crate::tr!("ai_assistant", "ai-assistant-ai-oz-documentation").to_string(),
+                        crate::tr!("ai_assistant", "ai-oz-documentation").to_string(),
                         None,
                         Some(Box::new(|ctx| {
                             ctx.dispatch_typed_action(CloudSetupGuideAction::OpenDocs {
@@ -215,7 +215,7 @@ impl CloudSetupGuideView {
         let font_size = 16.;
 
         let text = Text::new_inline(
-            crate::tr!("ai_assistant", "ai-assistant-ai-quick-start-visit"),
+            crate::tr!("ai_assistant", "ai-quick-start-visit"),
             appearance.ui_font_family(),
             font_size,
         )
@@ -249,7 +249,7 @@ impl CloudSetupGuideView {
         let font_size = 16.;
 
         Text::new(
-            crate::tr!("ai_assistant", "ai-assistant-ai-manual-setup-create-integration"),
+            crate::tr!("ai_assistant", "ai-manual-setup-create-integration"),
             appearance.ui_font_family(),
             font_size,
         )
@@ -347,7 +347,7 @@ impl CloudSetupGuideView {
         let Some((workflow, setup_step)) = (match code {
             CREATE_ENV_SLASH_CMD => Some((
                 WorkflowType::Local(
-                    Workflow::new(crate::tr!("ai_assistant", "ai-assistant-ai-wf-create-environment"), CREATE_ENV_SLASH_CMD).with_arguments(vec![
+                    Workflow::new(crate::tr!("ai_assistant", "ai-wf-create-environment"), CREATE_ENV_SLASH_CMD).with_arguments(vec![
                         Argument::new("github link or local filepath", ArgumentType::Text)
                             .with_description("GitHub link or local filepath to the repository"),
                     ]),
@@ -356,12 +356,12 @@ impl CloudSetupGuideView {
             )),
             CREATE_ENV_CLI_CMD => Some((
                 WorkflowType::Local(
-                    Workflow::new(crate::tr!("ai_assistant", "ai-assistant-ai-wf-create-environment-cli"), CREATE_ENV_CLI_CMD).with_arguments(
+                    Workflow::new(crate::tr!("ai_assistant", "ai-wf-create-environment-cli"), CREATE_ENV_CLI_CMD).with_arguments(
                         vec![
                             Argument::new("NAME", ArgumentType::Text)
                                 .with_description("Name for the environment"),
                             Argument::new("DOCKER_IMAGE", ArgumentType::Text)
-                                .with_description(crate::tr!("ai_assistant", "ai-assistant-ai-wf-create-env-cli-arg-image")),
+                                .with_description(crate::tr!("ai_assistant", "ai-wf-create-env-cli-arg-image")),
                         ],
                     ),
                 ),
@@ -369,7 +369,7 @@ impl CloudSetupGuideView {
             )),
             CREATE_SLACK_INTEGRATION_CMD => Some((
                 WorkflowType::Local(
-                    Workflow::new(crate::tr!("ai_assistant", "ai-assistant-ai-wf-create-slack-integration"), CREATE_SLACK_INTEGRATION_CMD)
+                    Workflow::new(crate::tr!("ai_assistant", "ai-wf-create-slack-integration"), CREATE_SLACK_INTEGRATION_CMD)
                         .with_arguments(vec![
                             Argument::new("environment_id", ArgumentType::Text)
                                 .with_description("ID of the environment to integrate with"),
@@ -379,7 +379,7 @@ impl CloudSetupGuideView {
             )),
             CREATE_LINEAR_INTEGRATION_CMD => Some((
                 WorkflowType::Local(
-                    Workflow::new(crate::tr!("ai_assistant", "ai-assistant-ai-wf-create-linear-integration"), CREATE_LINEAR_INTEGRATION_CMD)
+                    Workflow::new(crate::tr!("ai_assistant", "ai-wf-create-linear-integration"), CREATE_LINEAR_INTEGRATION_CMD)
                         .with_arguments(vec![
                             Argument::new("environment_id", ArgumentType::Text)
                                 .with_description("ID of the environment to integrate with"),
@@ -436,7 +436,7 @@ impl CloudSetupGuideView {
             .with_child(Self::render_step_number(1, appearance))
             .with_child(
                 Text::new(
-                    crate::tr!("ai_assistant", "ai-assistant-ai-create-an-environment"),
+                    crate::tr!("ai_assistant", "ai-create-an-environment"),
                     appearance.ui_font_family(),
                     step_title_font_size,
                 )
@@ -448,7 +448,7 @@ impl CloudSetupGuideView {
 
         let description = Container::new(
             Text::new(
-                crate::tr!("ai_assistant", "ai-assistant-ai-first-set-up-environment"),
+                crate::tr!("ai_assistant", "ai-first-set-up-environment"),
                 appearance.ui_font_family(),
                 step_desc_font_size,
             )
@@ -479,7 +479,7 @@ impl CloudSetupGuideView {
 
         let or_text = Container::new(
             Text::new(
-                crate::tr!("ai_assistant", "ai-assistant-ai-or-supply-docker-image"),
+                crate::tr!("ai_assistant", "ai-or-supply-docker-image"),
                 appearance.ui_font_family(),
                 step_desc_font_size,
             )
@@ -521,7 +521,7 @@ impl CloudSetupGuideView {
             .with_child(Self::render_step_number(2, appearance))
             .with_child(
                 Text::new(
-                    crate::tr!("ai_assistant", "ai-assistant-ai-create-an-integration"),
+                    crate::tr!("ai_assistant", "ai-create-an-integration"),
                     appearance.ui_font_family(),
                     step_title_font_size,
                 )

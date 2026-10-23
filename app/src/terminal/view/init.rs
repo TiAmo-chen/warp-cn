@@ -268,7 +268,7 @@ pub fn init(app: &mut AppContext) {
     #[cfg(windows)]
     app.register_editable_bindings([EditableBinding::new(
         "terminal:alternate_terminal_paste",
-        crate::tr!("terminal", "terminal-alternate-terminal-paste"),
+        crate::tr!("terminal", "alternate-terminal-paste"),
         TerminalAction::Paste,
     )
     .with_key_binding("ctrl-v")
@@ -306,7 +306,7 @@ pub fn init(app: &mut AppContext) {
         //    of focus location or active-block state; fix for #9916)
         EditableBinding::new(
             OPEN_CLI_AGENT_RICH_INPUT_KEYBINDING,
-            crate::tr!("terminal", "terminal-toggle-cli-agent-rich-input"),
+            crate::tr!("terminal", "toggle-cli-agent-rich-input"),
             TerminalAction::ToggleCLIAgentRichInput,
         )
         .with_key_binding("ctrl-g")
@@ -326,7 +326,7 @@ pub fn init(app: &mut AppContext) {
         ),
         EditableBinding::new(
             "terminal:warpify_subshell",
-            crate::tr!("terminal", "terminal-warpify-subshell"),
+            crate::tr!("terminal", "warpify-subshell"),
             TerminalAction::TriggerSubshellBootstrap,
         )
         .with_key_binding("ctrl-i")
@@ -335,7 +335,7 @@ pub fn init(app: &mut AppContext) {
         ),
         EditableBinding::new(
             ACCEPT_PROMPT_SUGGESTION_KEYBINDING,
-            crate::tr!("terminal", "terminal-accept-prompt-suggestion"),
+            crate::tr!("terminal", "accept-prompt-suggestion"),
             TerminalAction::ResolvePromptSuggestion(PromptSuggestionResolution::Accept {
                 interaction_source: InteractionSource::Keybinding,
             }),
@@ -356,9 +356,9 @@ pub fn init(app: &mut AppContext) {
         EditableBinding::new(
             CANCEL_COMMAND_KEYBINDING,
             if cfg!(windows) {
-                crate::tr!("terminal", "terminal-copy-text-or-cancel-active-process")
+                crate::tr!("terminal", "copy-text-or-cancel-active-process")
             } else {
-                crate::tr!("terminal", "terminal-cancel-active-process")
+                crate::tr!("terminal", "cancel-active-process")
             },
             TerminalAction::CtrlC,
         )
@@ -366,7 +366,7 @@ pub fn init(app: &mut AppContext) {
         .with_context_predicate(id!("Terminal") & !id!("IMEOpen")),
         EditableBinding::new(
             "terminal:focus_input",
-            crate::tr!("terminal", "terminal-focus-terminal-input"),
+            crate::tr!("terminal", "focus-terminal-input"),
             TerminalAction::FocusInputAndClearSelection,
         )
         .with_custom_action(CustomAction::FocusInput)
@@ -405,14 +405,14 @@ pub fn init(app: &mut AppContext) {
         .with_context_predicate(id!("Terminal")),
         EditableBinding::new(
             "terminal:select_bookmark_up",
-            crate::tr!("terminal", "terminal-select-closest-bookmark-up"),
+            crate::tr!("terminal", "select-closest-bookmark-up"),
             TerminalAction::SelectBookmarkUp,
         )
         .with_key_binding("alt-up")
         .with_context_predicate(id!("Terminal") & !id!("IMEOpen")),
         EditableBinding::new(
             "terminal:select_bookmark_down",
-            crate::tr!("terminal", "terminal-select-closest-bookmark-down"),
+            crate::tr!("terminal", "select-closest-bookmark-down"),
             TerminalAction::SelectBookmarkDown,
         )
         .with_key_binding("alt-down")
@@ -434,7 +434,7 @@ pub fn init(app: &mut AppContext) {
         ),
         EditableBinding::new(
             "terminal:open_block_list_context_menu_via_keybinding",
-            crate::tr!("terminal", "terminal-open-block-context-menu"),
+            crate::tr!("terminal", "open-block-context-menu"),
             TerminalAction::OpenBlockListContextMenu,
         )
         .with_mac_key_binding("ctrl-m")
@@ -754,7 +754,7 @@ pub fn init(app: &mut AppContext) {
             BindingDescription::new(crate::tr!("terminal", "attach-selected-block-as-agent-context"))
                 .with_custom_description(
                     bindings::MAC_MENUS_CONTEXT,
-                    crate::tr!("terminal", "terminal-attach-selection-as-agent-context"),
+                    crate::tr!("terminal", "attach-selection-as-agent-context"),
                 ),
             TerminalAction::ContextMenu(ContextMenuAction::AskAI(AskAISource::SelectedBlocks)),
         )
@@ -775,7 +775,7 @@ pub fn init(app: &mut AppContext) {
             BindingDescription::new(crate::tr!("terminal", "attach-selected-text-as-agent-context"))
                 .with_custom_description(
                     bindings::MAC_MENUS_CONTEXT,
-                    crate::tr!("terminal", "terminal-attach-selection-as-agent-context"),
+                    crate::tr!("terminal", "attach-selection-as-agent-context"),
                 ),
             TerminalAction::ContextMenu(ContextMenuAction::AskAI(
                 AskAISource::SelectedTerminalText,

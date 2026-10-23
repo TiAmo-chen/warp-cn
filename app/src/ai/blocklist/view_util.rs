@@ -140,7 +140,7 @@ pub fn failed_output_presentation(
             }
         }
         RenderableAIError::ServerOverloaded => FailedOutputPresentation::Message(
-            crate::tr!("ai_assistant", "ai-assistant-ai-server-overloaded").to_string(),
+            crate::tr!("ai_assistant", "ai-server-overloaded").to_string(),
         ),
         RenderableAIError::InternalWarpError => FailedOutputPresentation::Message(format!(
             "{ERROR_APOLOGY_TEXT}\n\n{INTERNAL_WARP_ERROR}"
@@ -278,7 +278,7 @@ pub fn render_ai_follow_up_icon(
             let tooltip_background = appearance.theme().tooltip_background();
             let tool_tip = appearance
                 .ui_builder()
-                .tool_tip(crate::tr!("ai_assistant", "ai-assistant-ai-follow-up-with-existing-conversation").to_owned())
+                .tool_tip(crate::tr!("ai_assistant", "ai-follow-up-with-existing-conversation").to_owned())
                 .with_style(UiComponentStyles {
                     font_size: Some(12.),
                     background: Some(warpui::elements::Fill::Solid(tooltip_background)),

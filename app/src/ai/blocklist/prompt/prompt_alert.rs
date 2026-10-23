@@ -519,7 +519,7 @@ impl PromptAlertView {
                 if UserWorkspaces::as_ref(app).is_byo_api_key_enabled(app) {
                     text_fragments.push(FormattedTextFragment::plain_text(" or "));
                     text_fragments.push(FormattedTextFragment::hyperlink_action(
-                        crate::tr!("ai_assistant", "ai-assistant-ai-use-your-own-api-keys-text"),
+                        crate::tr!("ai_assistant", "ai-use-your-own-api-keys-text"),
                         WorkspaceAction::ShowSettingsPageWithSearch {
                             search_query: "api".to_string(),
                             section: Some(SettingsSection::WarpAgent),
@@ -591,7 +591,7 @@ impl View for PromptAlertView {
         if suggest_buy_credits {
             text_fragments.push(FormattedTextFragment::plain_text("  "));
             text_fragments.push(FormattedTextFragment::hyperlink_action(
-                crate::tr!("ai_assistant", "ai-assistant-ai-add-credits-text"),
+                crate::tr!("ai_assistant", "ai-add-credits-text"),
                 WorkspaceAction::ShowSettingsPage(SettingsSection::BillingAndUsage),
             ));
         } else {

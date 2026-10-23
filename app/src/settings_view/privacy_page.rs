@@ -1021,7 +1021,7 @@ impl SecretRedactionWidget {
                                         self.add_all_button_mouse_state.clone(),
                                     )
                                     .with_text_and_icon_label(Self::add_button(
-                                        crate::tr!("settings", "settings-add-all"), appearance,
+                                        crate::tr!("settings", "add-all"), appearance,
                                     ))
                                     .with_style(Self::add_button_style())
                                     .build()

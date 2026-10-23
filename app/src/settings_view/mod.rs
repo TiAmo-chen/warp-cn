@@ -699,7 +699,7 @@ pub fn init_actions_from_parent_view<T: Action + Clone>(
                 ToggleSettingActionPair::custom(
                     SettingActionPairDescriptions::new(
                         &crate::tr!("settings", "show-initialization-block"),
-                        &crate::tr!("settings", "settings-toggle-hide-init-block"),
+                        &crate::tr!("settings", "toggle-hide-init-block"),
                     ),
                     builder(SettingsAction::Debug(
                         DebugSettingsAction::ToggleInitializationBlock,
@@ -713,7 +713,7 @@ pub fn init_actions_from_parent_view<T: Action + Clone>(
                 ToggleSettingActionPair::custom(
                     SettingActionPairDescriptions::new(
                         &crate::tr!("settings", "show-in-band-command-blocks"),
-                        &crate::tr!("settings", "settings-toggle-hide-inband-commands"),
+                        &crate::tr!("settings", "toggle-hide-inband-commands"),
                     ),
                     builder(SettingsAction::Debug(
                         DebugSettingsAction::ToggleInBandCommandBlocks,

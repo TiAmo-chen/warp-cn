@@ -23,7 +23,7 @@ pub enum OzLaunchSlide {
 
 impl Slide for OzLaunchSlide {
     fn modal_title(&self) -> String {
-        crate::tr!("workspace", "workspace-introducing-oz").to_string()
+        crate::tr!("workspace", "introducing-oz").to_string()
     }
 
     fn modal_subtext_paragraphs(&self) -> Vec<FormattedTextLine> {

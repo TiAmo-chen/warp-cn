@@ -309,7 +309,7 @@ impl GetBlocksForUserRequestState {
                 pad(ui_builder.label(crate::tr!("settings", "getting-blocks...")).build().finish())
             }
             GetBlocksForUserRequestState::Failed => pad(ui_builder
-                .label(crate::tr!("settings", "settings-failed-to-load-blocks-please-try-again"))
+                .label(crate::tr!("settings", "failed-to-load-blocks-please-try-again"))
                 .build()
                 .finish()),
             GetBlocksForUserRequestState::Done(user_blocks) => {

@@ -686,7 +686,7 @@ impl EnvironmentsPageView {
             if matches!(result.success_type, OperationSuccessType::Success) {
                 self.show_success_toast(crate::tr!("settings", "successfully-shared-environment").to_string(), ctx);
             } else {
-                self.show_error_toast(crate::tr!("settings", "settings-env-share-failed").to_string(), ctx);
+                self.show_error_toast(crate::tr!("settings", "env-share-failed").to_string(), ctx);
             }
 
             ctx.notify();
@@ -1857,7 +1857,7 @@ impl EnvironmentsPageWidget {
             let view_runs_link = appearance
                 .ui_builder()
                 .link(
-                    crate::tr!("settings", "settings-view-my-runs").to_string(),
+                    crate::tr!("settings", "view-my-runs").to_string(),
                     None,
                     Some(Box::new(move |ctx| {
                         ctx.dispatch_typed_action(WorkspaceAction::ViewAgentRunsForEnvironment {

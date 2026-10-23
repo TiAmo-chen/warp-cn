@@ -60,7 +60,7 @@ pub struct GetStartedView {
 
 impl GetStartedView {
     pub fn new(ctx: &mut ViewContext<Self>) -> Self {
-        let pane_configuration = ctx.add_model(|_ctx| PaneConfiguration::new(crate::tr!("ai_assistant", "ai-assistant-ai-get-started")));
+        let pane_configuration = ctx.add_model(|_ctx| PaneConfiguration::new(crate::tr!("ai_assistant", "ai-get-started")));
         let project_buttons = ctx.add_typed_action_view(ProjectButtons::new);
         ctx.subscribe_to_view(&project_buttons, Self::handle_project_buttons_event);
 
@@ -223,7 +223,7 @@ impl GetStartedView {
                 .finish(),
                 appearance
                     .ui_builder()
-                    .paragraph(crate::tr!("onboarding", "onboarding-welcome-title"))
+                    .paragraph(crate::tr!("onboarding", "welcome-title"))
                     .with_style(UiComponentStyles {
                         font_size: Some(20.),
                         ..Default::default()
@@ -233,7 +233,7 @@ impl GetStartedView {
                 Container::new(
                     appearance
                         .ui_builder()
-                        .paragraph(crate::tr!("workspace", "workspace-agentic-dev-env"))
+                        .paragraph(crate::tr!("workspace", "agentic-dev-env"))
                         .with_style(UiComponentStyles {
                             font_size: Some(14.),
                             font_family_id: Some(appearance.monospace_font_family()),
@@ -361,7 +361,7 @@ impl BackingView for GetStartedView {
         _ctx: &view::HeaderRenderContext<'_>,
         _app: &AppContext,
     ) -> view::HeaderContent {
-        view::HeaderContent::simple(crate::tr!("ai_assistant", "ai-assistant-ai-get-started"))
+        view::HeaderContent::simple(crate::tr!("ai_assistant", "ai-get-started"))
     }
 
     fn set_focus_handle(&mut self, focus_handle: PaneFocusHandle, _ctx: &mut ViewContext<Self>) {

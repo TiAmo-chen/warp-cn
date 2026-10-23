@@ -130,7 +130,7 @@ impl DetailsBar {
             let ui_builder = appearance.ui_builder().clone();
             edit_button = edit_button.with_tooltip(move || {
                 ui_builder
-                    .tool_tip(crate::tr!("notebooks", "notebooks-sign-in-to-edit").to_string())
+                    .tool_tip(crate::tr!("notebooks", "sign-in-to-edit").to_string())
                     .build()
                     .finish()
             });

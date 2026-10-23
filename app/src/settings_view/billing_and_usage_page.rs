@@ -1338,7 +1338,7 @@ impl BillingAndUsagePageView {
                     ButtonVariant::Secondary,
                     self.ambient_trial_new_agent_button.clone(),
                 )
-                .with_text_label(crate::tr!("ai_assistant", "ai-assistant-ai-new-agent").to_string())
+                .with_text_label(crate::tr!("ai_assistant", "ai-new-agent").to_string())
                 .with_style(UiComponentStyles {
                     font_color: Some(bg),
                     background: Some(fg.into()),
@@ -1880,9 +1880,9 @@ impl BillingAndUsagePageView {
                 let is_legacy_paid = workspace
                     .is_some_and(|workspace| workspace.billing_metadata.is_on_legacy_paid_plan());
                 let link_text = if is_legacy_paid {
-                    crate::tr!("settings", "settings-switch-to-the-build-plan")
+                    crate::tr!("settings", "switch-to-the-build-plan")
                 } else {
-                    crate::tr!("settings", "settings-upgrade-to-the-build-plan")
+                    crate::tr!("settings", "upgrade-to-the-build-plan")
                 };
                 let suffix = match unit {
                     UsageDisplayUnit::Credits => " to purchase add-on credits.",
@@ -2015,10 +2015,10 @@ impl BillingAndUsagePageView {
                 tooltip_override_text: Some(
                     match unit {
                         UsageDisplayUnit::Credits => {
-                            crate::tr!("settings", "settings-sets-the-monthly-limit-spent-on-add-on-credits")
+                            crate::tr!("settings", "sets-the-monthly-limit-spent-on-add-on-credits")
                         }
                         UsageDisplayUnit::Dollars => {
-                            crate::tr!("settings", "settings-sets-the-monthly-limit-spent-on-purchased-usage")
+                            crate::tr!("settings", "sets-the-monthly-limit-spent-on-purchased-usage")
                         }
                     }
                     .to_string(),
@@ -3413,7 +3413,7 @@ impl BillingAndUsagePageView {
                             ]
                         } else {
                             let mut fragments = vec![FormattedTextFragment::hyperlink(
-                                crate::tr!("settings", "settings-upgrade-to-the-build-plan"),
+                                crate::tr!("settings", "upgrade-to-the-build-plan"),
                                 upgrade_url,
                             )];
                             if billing_metadata.is_byo_api_key_enabled() {
@@ -3482,7 +3482,7 @@ impl BillingAndUsagePageView {
             let user_id = auth_state.user_id().unwrap_or_default();
             let upgrade_url = UserWorkspaces::upgrade_link(user_id);
             let mut fragments = vec![FormattedTextFragment::hyperlink(
-                crate::tr!("settings", "settings-upgrade-to-the-build-plan"),
+                crate::tr!("settings", "upgrade-to-the-build-plan"),
                 upgrade_url,
             )];
             if UserWorkspaces::as_ref(app).is_byo_api_key_enabled(app) {
@@ -3716,7 +3716,7 @@ impl BillingAndUsagePageView {
     }
 
     fn render_plan_header_text(&self, appearance: &Appearance) -> Box<dyn Element> {
-        Text::new_inline(crate::tr!("ai_assistant", "ai-assistant-ai-filter-plan"), appearance.ui_font_family(), HEADER_FONT_SIZE)
+        Text::new_inline(crate::tr!("ai_assistant", "ai-filter-plan"), appearance.ui_font_family(), HEADER_FONT_SIZE)
             .with_style(Properties::default().weight(Weight::Bold))
             .with_color(appearance.theme().active_ui_text_color().into())
             .finish()

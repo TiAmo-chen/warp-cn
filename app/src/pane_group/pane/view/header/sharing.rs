@@ -215,7 +215,7 @@ impl<P: BackingView> PaneHeader<P> {
                     "Share".to_string(),
                 )
             } else {
-                (Icon::Link, false, crate::tr!("ai_assistant", "ai-assistant-ai-doc-copy-link").to_string())
+                (Icon::Link, false, crate::tr!("ai_assistant", "ai-doc-copy-link").to_string())
             };
 
         let ui_builder = appearance.ui_builder().clone();

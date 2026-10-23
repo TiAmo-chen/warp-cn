@@ -172,9 +172,9 @@ pub fn render_lsp_selector_block(
     let any_needs_download = selected_items.iter().any(|info| !info.is_installed);
 
     let enable_label = if any_needs_download {
-        crate::tr!("terminal", "terminal-install-and-enable")
+        crate::tr!("terminal", "install-and-enable")
     } else {
-        crate::tr!("terminal", "terminal-enable-selected-languages")
+        crate::tr!("terminal", "enable-selected-languages")
     };
 
     // Create keyboard shortcut for Enter

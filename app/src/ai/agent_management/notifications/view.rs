@@ -129,7 +129,7 @@ impl NotificationMailboxView {
         });
 
         let mark_all_read_button = ctx.add_typed_action_view(|_| {
-            ActionButton::new(crate::tr!("ai_assistant", "ai-assistant-ai-mark-all-as-read"), NakedTheme)
+            ActionButton::new(crate::tr!("ai_assistant", "ai-mark-all-as-read"), NakedTheme)
                 .with_size(ButtonSize::Small)
                 .on_click(|ctx| {
                     ctx.dispatch_typed_action(NotificationMailboxViewAction::MarkAllRead);
@@ -550,7 +550,7 @@ impl NotificationMailboxView {
         Container::new(
             appearance
                 .ui_builder()
-                .wrappable_text(crate::tr!("ai_assistant", "ai-assistant-ai-no-notifications").to_string(), false)
+                .wrappable_text(crate::tr!("ai_assistant", "ai-no-notifications").to_string(), false)
                 .with_style(UiComponentStyles {
                     font_size: Some(14.),
                     font_color: Some(theme.sub_text_color(theme.surface_2()).into()),

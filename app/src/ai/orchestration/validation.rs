@@ -133,9 +133,9 @@ pub fn empty_env_recommendation_message(
         return None;
     }
     Some(if has_visible_environment {
-        crate::tr!("ai_assistant", "ai-assistant-ai-recommend-select-env").to_string()
+        crate::tr!("ai_assistant", "ai-recommend-select-env").to_string()
     } else {
-        crate::tr!("ai_assistant", "ai-assistant-ai-recommend-create-env").to_string()
+        crate::tr!("ai_assistant", "ai-recommend-create-env").to_string()
     })
 }
 

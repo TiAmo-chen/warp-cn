@@ -602,7 +602,7 @@ pub(crate) fn classify_renderable_error(
         RenderableAIError::ServerOverloaded => (
             AgentTaskState::Error,
             Some(TaskStatusUpdate::with_error_code(
-                crate::tr!("ai_assistant", "ai-assistant-ai-server-overloaded-short"),
+                crate::tr!("ai_assistant", "ai-server-overloaded-short"),
                 PlatformErrorCode::ResourceUnavailable,
             )),
         ),

@@ -1432,7 +1432,7 @@ impl TerminalManager {
                     }
                     TeamAccessLevelUpdateResponse::Error(_) => {
                         terminal_view.show_persistent_toast(
-                            crate::tr!("ai_assistant", "ai-assistant-ai-chat-error-label").to_owned(),
+                            crate::tr!("ai_assistant", "ai-chat-error-label").to_owned(),
                             ToastFlavor::Error,
                             ctx,
                         );
@@ -1465,7 +1465,7 @@ impl TerminalManager {
                     };
                     view.update(ctx, |terminal_view, ctx| {
                         terminal_view.show_persistent_toast(
-                            crate::tr!("ai_assistant", "ai-assistant-ai-chat-error-label").to_owned(),
+                            crate::tr!("ai_assistant", "ai-chat-error-label").to_owned(),
                             ToastFlavor::Error,
                             ctx,
                         );
@@ -1479,7 +1479,7 @@ impl TerminalManager {
                     };
                     view.update(ctx, |terminal_view, ctx| {
                         terminal_view.show_persistent_toast(
-                            crate::tr!("ai_assistant", "ai-assistant-ai-chat-error-label").to_owned(),
+                            crate::tr!("ai_assistant", "ai-chat-error-label").to_owned(),
                             ToastFlavor::Error,
                             ctx,
                         );

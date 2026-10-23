@@ -143,7 +143,7 @@ impl OpenWarpLaunchModal {
         });
 
         let cta_button = ctx.add_view(|_ctx| {
-            ActionButton::new(crate::tr!("workspace", "workspace-openwarp-visit-repo"), CtaButtonTheme)
+            ActionButton::new(crate::tr!("workspace", "openwarp-visit-repo"), CtaButtonTheme)
                 .with_full_width(true)
                 .on_click(|ctx| ctx.dispatch_typed_action(OpenWarpLaunchModalAction::VisitRepo))
         });
@@ -212,7 +212,7 @@ impl OpenWarpLaunchModal {
     }
 
     fn render_title(appearance: &Appearance) -> Box<dyn Element> {
-        Text::new(crate::tr!("workspace", "workspace-openwarp-title"), appearance.ui_font_family(), 20.)
+        Text::new(crate::tr!("workspace", "openwarp-title"), appearance.ui_font_family(), 20.)
             .with_color(PhenomenonStyle::modal_title_text())
             .with_style(Properties::default().weight(Weight::Semibold))
             .finish()
@@ -220,7 +220,7 @@ impl OpenWarpLaunchModal {
 
     fn render_description(appearance: &Appearance) -> Box<dyn Element> {
         Text::new(
-            crate::tr!("workspace", "workspace-openwarp-description"),
+            crate::tr!("workspace", "openwarp-description"),
             appearance.ui_font_family(),
             14.,
         )

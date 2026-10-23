@@ -2344,12 +2344,12 @@ impl FileTreeView {
                     let path_local = item.path().to_local_path_lossy();
                     if !is_file_content_binary(&path_local) {
                         items.extend([
-                            MenuItemFields::new(crate::tr!("ai_assistant", "ai-assistant-ai-open-in-new-pane"))
+                            MenuItemFields::new(crate::tr!("ai_assistant", "ai-open-in-new-pane"))
                                 .with_on_select_action(FileTreeAction::OpenInNewPane {
                                     id: id.clone(),
                                 })
                                 .into_item(),
-                            MenuItemFields::new(crate::tr!("ai_assistant", "ai-assistant-ai-open-in-new-tab"))
+                            MenuItemFields::new(crate::tr!("ai_assistant", "ai-open-in-new-tab"))
                                 .with_on_select_action(FileTreeAction::OpenInNewTab {
                                     id: id.clone(),
                                 })
@@ -2357,7 +2357,7 @@ impl FileTreeView {
                         ]);
                     } else {
                         items.push(
-                            MenuItemFields::new(crate::tr!("ai_assistant", "ai-assistant-ai-open-file"))
+                            MenuItemFields::new(crate::tr!("ai_assistant", "ai-open-file"))
                                 .with_on_select_action(FileTreeAction::ItemClicked {
                                     id: id.clone(),
                                 })
@@ -2384,7 +2384,7 @@ impl FileTreeView {
                         );
                     }
                     items.push(
-                        MenuItemFields::new(crate::tr!("ai_assistant", "ai-assistant-ai-open-in-new-tab"))
+                        MenuItemFields::new(crate::tr!("ai_assistant", "ai-open-in-new-tab"))
                             .with_on_select_action(FileTreeAction::OpenInNewTab { id: id.clone() })
                             .into_item(),
                     );
@@ -2436,7 +2436,7 @@ impl FileTreeView {
             items.push(MenuItem::Separator);
         }
         items.extend([
-            MenuItemFields::new(crate::tr!("terminal", "terminal-menu-copy-path"))
+            MenuItemFields::new(crate::tr!("terminal", "menu-copy-path"))
                 .with_on_select_action(FileTreeAction::CopyPath { id: id.clone() })
                 .into_item(),
             MenuItemFields::new("Copy relative path")
@@ -2757,7 +2757,7 @@ impl FileTreeView {
             )
             .with_child(
                 Text::new(
-                    crate::tr!("code", "code-project-explorer-unavailable"),
+                    crate::tr!("code", "project-explorer-unavailable"),
                     appearance.ui_font_family(),
                     appearance.ui_font_size() + 2.,
                 )

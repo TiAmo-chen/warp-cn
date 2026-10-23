@@ -170,7 +170,7 @@ impl ChipDisabledReason {
         match self {
             Self::RequiresLocalSession => "Requires a local session".to_string(),
             Self::RequiresExecutable { command } if command == "gh" => {
-                crate::tr!("context_chips", "context-chips-requires-github-cli").to_string()
+                crate::tr!("context_chips", "requires-github-cli").to_string()
             }
             Self::RequiresExecutable { command } => format!("Requires the `{command}` command"),
         }

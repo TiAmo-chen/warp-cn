@@ -207,7 +207,7 @@ impl HoaOnboardingFlow {
         });
 
         let cta_button = ctx.add_view(|_ctx| {
-            ActionButton::new(crate::tr!("workspace", "workspace-onboarding-see-whats-new"), HoaWelcomeModalButtonTheme)
+            ActionButton::new(crate::tr!("workspace", "onboarding-see-whats-new"), HoaWelcomeModalButtonTheme)
                 .with_full_width(true)
                 .on_click(|ctx| ctx.dispatch_typed_action(HoaOnboardingAction::AdvanceFromWelcome))
         });
@@ -424,7 +424,7 @@ impl HoaOnboardingFlow {
             .finish();
 
         let checkbox_label = Text::new_inline(
-            crate::tr!("workspace", "workspace-onboarding-switch-horizontal").to_string(),
+            crate::tr!("workspace", "onboarding-switch-horizontal").to_string(),
             appearance.ui_font_family(),
             12.,
         )
@@ -455,7 +455,7 @@ impl HoaOnboardingFlow {
 
     fn render_inbox_callout(&self, appearance: &Appearance) -> Box<dyn Element> {
         let title = Text::new(
-            crate::tr!("workspace", "workspace-onboarding-inbox-title"),
+            crate::tr!("workspace", "onboarding-inbox-title"),
             appearance.ui_font_family(),
             16.,
         )
@@ -465,7 +465,7 @@ impl HoaOnboardingFlow {
 
         // Build the description with an inline "Learn more" hyperlink.
         let learn_more_fragment = FormattedTextFragment {
-            text: crate::tr!("common", "common-learn-more-label").into(),
+            text: crate::tr!("common", "learn-more-label").into(),
             styles: FormattedTextStyles {
                 underline: true,
                 hyperlink: Some(Hyperlink::Url(

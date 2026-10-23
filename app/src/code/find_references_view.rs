@@ -496,7 +496,7 @@ fn render_header(
 
     // "Showing X references" title
     let title_text = if total_refs == 1 {
-        crate::tr!("code", "code-showing-one-reference").to_string()
+        crate::tr!("code", "showing-one-reference").to_string()
     } else {
         format!("Showing {total_refs} references")
     };

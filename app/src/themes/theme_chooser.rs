@@ -116,13 +116,13 @@ impl ThemeChooserMode {
         let hint_text = match self {
             ThemeChooserMode::SystemAgnostic => appearance
                 .ui_builder()
-                .paragraph(crate::tr!("common", "common-theme-hint-default").to_string()),
+                .paragraph(crate::tr!("common", "theme-hint-default").to_string()),
             ThemeChooserMode::SystemLight => appearance
                 .ui_builder()
-                .paragraph(crate::tr!("common", "common-theme-hint-light").to_string()),
+                .paragraph(crate::tr!("common", "theme-hint-light").to_string()),
             ThemeChooserMode::SystemDark => appearance
                 .ui_builder()
-                .paragraph(crate::tr!("common", "common-theme-hint-dark").to_string()),
+                .paragraph(crate::tr!("common", "theme-hint-dark").to_string()),
         };
         hint_text
             .build()
@@ -745,7 +745,7 @@ impl ThemeChooser {
                 .with_child(
                     appearance
                         .ui_builder()
-                        .span(crate::tr!("common", "common-no-matching-themes").to_string())
+                        .span(crate::tr!("common", "no-matching-themes").to_string())
                         .build()
                         .finish(),
                 )

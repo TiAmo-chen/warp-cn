@@ -753,7 +753,7 @@ impl CategoriesView {
 
     fn render_empty_list_placeholder(&self, appearance: &Appearance) -> Box<dyn Element> {
         let no_workflows_text =
-            CategoriesView::text_label(crate::tr!("workflows", "workflows-no-matching-found"), appearance);
+            CategoriesView::text_label(crate::tr!("workflows", "no-matching-found"), appearance);
 
         let mut workflow_documentation_link_text =
             Flex::row().with_child(CategoriesView::text_label("Try ", appearance));
@@ -762,7 +762,7 @@ impl CategoriesView {
             appearance
                 .ui_builder()
                 .link(
-                    crate::tr!("workflows", "workflows-create-own-workflow").into(),
+                    crate::tr!("workflows", "create-own-workflow").into(),
                     Some(
                         "https://docs.warp.dev/knowledge-and-collaboration/warp-drive/workflows"
                             .into(),

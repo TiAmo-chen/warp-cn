@@ -878,7 +878,7 @@ impl UsagePopoverView {
         }
         let mut column = Flex::column().with_spacing(8.);
         column.add_child(self.render_section_header(
-            &crate::tr!("ai_assistant", "ai-assistant-ai-tool-call-summary-header"),
+            &crate::tr!("ai_assistant", "ai-tool-call-summary-header"),
             self.tool_call_summary_section_expanded,
             CollapsedSummary::new(format_tool_call_count(tool_usage.total_tool_calls())),
             SectionToggle {
@@ -893,12 +893,12 @@ impl UsagePopoverView {
 
         let mut inner = Flex::column().with_spacing(4.);
         inner.add_child(render_label_value_row(
-            &crate::tr!("ai_assistant", "ai-assistant-ai-tool-calls"),
+            &crate::tr!("ai_assistant", "ai-tool-calls"),
             format!("{}", tool_usage.total_tool_calls()),
             appearance,
         ));
         inner.add_child(render_label_value_row(
-            &crate::tr!("ai_assistant", "ai-assistant-ai-files-changed"),
+            &crate::tr!("ai_assistant", "ai-files-changed"),
             format!("{}", tool_usage.apply_file_diff_stats.files_changed),
             appearance,
         ));
@@ -908,7 +908,7 @@ impl UsagePopoverView {
             appearance,
         ));
         inner.add_child(render_label_value_row(
-            &crate::tr!("ai_assistant", "ai-assistant-ai-commands-executed"),
+            &crate::tr!("ai_assistant", "ai-commands-executed"),
             format!("{}", tool_usage.run_command_stats.commands_executed),
             appearance,
         ));
@@ -1785,7 +1785,7 @@ fn render_diffs_row(
     space_between_row()
         .with_child(
             Text::new(
-                crate::tr!("ai_assistant", "ai-assistant-ai-diffs-applied").to_string(),
+                crate::tr!("ai_assistant", "ai-diffs-applied").to_string(),
                 appearance.ui_font_family(),
                 font_size,
             )

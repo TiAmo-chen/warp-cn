@@ -320,7 +320,7 @@ impl CodeReviewHeader {
             .with_text_and_icon_label(
                 TextAndIcon::new(
                     TextAndIconAlignment::IconFirst,
-                    crate::tr!("code_editor", "code-editor-code-review-discard-all").to_string(),
+                    crate::tr!("code_editor", "code-review-discard-all").to_string(),
                     Icon::ReverseLeft.to_warpui_icon(warp_core::ui::theme::Fill::Solid(
                         sub_text_color.into_solid(),
                     )),
@@ -433,7 +433,7 @@ impl CodeReviewHeader {
             }))
             .with_tooltip(move || {
                 ui_builder
-                    .tool_tip(crate::tr!("code_editor", "code-editor-code-review-add-diff-set-context").to_owned())
+                    .tool_tip(crate::tr!("code_editor", "code-review-add-diff-set-context").to_owned())
                     .build()
                     .finish()
             })
@@ -489,6 +489,6 @@ impl CodeReviewHeader {
     fn get_header_text(diff_state_model: &ModelHandle<DiffStateModel>, app: &AppContext) -> String {
         let branch_name =
             diff_state_model.read(app, |model, ctx| model.get_current_branch_name(ctx));
-        branch_name.unwrap_or(crate::tr!("code_review", "code-review-reviewing-open-changes").to_string())
+        branch_name.unwrap_or(crate::tr!("code_review", "reviewing-open-changes").to_string())
     }
 }

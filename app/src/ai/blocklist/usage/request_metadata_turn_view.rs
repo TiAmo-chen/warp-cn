@@ -370,7 +370,7 @@ impl RequestMetadataTurnView {
         let text_color = blended_colors::text_main(theme, theme.surface_2());
 
         let label = Text::new(
-            crate::tr!("ai_assistant", "ai-assistant-ai-context-window-usage-tooltip").to_string(),
+            crate::tr!("ai_assistant", "ai-context-window-usage-tooltip").to_string(),
             appearance.ui_font_family(),
             font_size,
         )
@@ -432,20 +432,20 @@ impl RequestMetadataTurnView {
 
         Some(vec![
             (
-                render_label_text(&crate::tr!("ai_assistant", "ai-assistant-ai-tool-calls"), appearance),
+                render_label_text(&crate::tr!("ai_assistant", "ai-tool-calls"), appearance),
                 render_value_text(tool_calls.to_string(), font_size, appearance),
             ),
             (
-                render_label_text(&crate::tr!("ai_assistant", "ai-assistant-ai-files-changed"), appearance),
+                render_label_text(&crate::tr!("ai_assistant", "ai-files-changed"), appearance),
                 render_value_text(
                     self.summary.files_changed.unwrap_or(0).to_string(),
                     font_size,
                     appearance,
                 ),
             ),
-            (render_label_text(&crate::tr!("ai_assistant", "ai-assistant-ai-diffs-applied"), appearance), diffs_value),
+            (render_label_text(&crate::tr!("ai_assistant", "ai-diffs-applied"), appearance), diffs_value),
             (
-                render_label_text(&crate::tr!("ai_assistant", "ai-assistant-ai-commands-executed"), appearance),
+                render_label_text(&crate::tr!("ai_assistant", "ai-commands-executed"), appearance),
                 render_value_text(
                     self.summary.commands_executed.unwrap_or(0).to_string(),
                     font_size,
@@ -460,7 +460,7 @@ impl RequestMetadataTurnView {
         let mut rows = Vec::new();
         if let Some(ttft) = self.summary.time_to_first_token_ms() {
             rows.push((
-                render_label_text(&crate::tr!("ai_assistant", "ai-assistant-ai-time-to-first-token"), appearance),
+                render_label_text(&crate::tr!("ai_assistant", "ai-time-to-first-token"), appearance),
                 render_value_text(format_seconds(ttft), font_size, appearance),
             ));
         }
@@ -475,7 +475,7 @@ impl RequestMetadataTurnView {
             .sum();
         if let Some(total) = per_request_total_ms {
             rows.push((
-                render_label_text(&crate::tr!("ai_assistant", "ai-assistant-ai-total-agent-response-time"), appearance),
+                render_label_text(&crate::tr!("ai_assistant", "ai-total-agent-response-time"), appearance),
                 render_value_text(format_seconds(total), font_size, appearance),
             ));
         }
@@ -483,7 +483,7 @@ impl RequestMetadataTurnView {
         // requests.
         if let Some(wall_ms) = self.summary.request_duration_ms() {
             rows.push((
-                render_label_text(&crate::tr!("ai_assistant", "ai-assistant-ai-total-time-including-tools"), appearance),
+                render_label_text(&crate::tr!("ai_assistant", "ai-total-time-including-tools"), appearance),
                 render_value_text(format_seconds(wall_ms), font_size, appearance),
             ));
         }
@@ -565,7 +565,7 @@ impl RequestMetadataTurnView {
 
         if let Some(rows) = self.tool_call_summary_rows(appearance) {
             push_row(
-                Self::render_section_header(&crate::tr!("ai_assistant", "ai-assistant-ai-tool-call-summary-header"), appearance),
+                Self::render_section_header(&crate::tr!("ai_assistant", "ai-tool-call-summary-header"), appearance),
                 Self::render_section_header("", appearance),
                 8.,
             );

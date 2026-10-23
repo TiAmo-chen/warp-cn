@@ -252,9 +252,9 @@ impl WorkflowsMoreInfoView {
         appearance: &Appearance,
     ) -> Box<dyn Element> {
         let label = if cloud_workflow.model().data.is_agent_mode_workflow() {
-            crate::tr!("terminal", "terminal-menu-edit-prompt")
+            crate::tr!("terminal", "menu-edit-prompt")
         } else {
-            crate::tr!("workflows", "workflows-edit-workflow")
+            crate::tr!("workflows", "edit-workflow")
         };
         let workflow = cloud_workflow.clone();
         render_hoverable_card_button(
@@ -438,7 +438,7 @@ impl WorkflowsMoreInfoView {
             .with_child(
                 Container::new(
                     Text::new_inline(
-                        crate::tr!("workflows", "workflows-command-edited"),
+                        crate::tr!("workflows", "command-edited"),
                         appearance.ui_font_family(),
                         appearance.monospace_font_size(),
                     )
@@ -503,7 +503,7 @@ impl WorkflowsMoreInfoView {
                     1.,
                     Container::new(
                         Text::new_inline(
-                            crate::tr!("workflows", "workflows-to-cycle-parameters"),
+                            crate::tr!("workflows", "to-cycle-parameters"),
                             appearance.ui_font_family(),
                             appearance.monospace_font_size(),
                         )
@@ -537,7 +537,7 @@ impl WorkflowsMoreInfoView {
         let workflow = self.workflow.as_workflow().to_owned();
         render_hoverable_card_button(
             icons::Icon::Workflow,
-            Some(crate::tr!("terminal", "terminal-menu-save-as-workflow").to_string()),
+            Some(crate::tr!("terminal", "menu-save-as-workflow").to_string()),
             self.button_mouse_states.save_as_workflow.clone(),
             move |ctx, _, _| {
                 ctx.dispatch_typed_action(TerminalAction::OpenWorkflowModalForAIWorkflow(
@@ -1007,7 +1007,7 @@ impl WorkflowsMoreInfoView {
             appearance
                 .ui_builder()
                 .link(
-                    crate::tr!("workflows", "workflows-view-context").into(),
+                    crate::tr!("workflows", "view-context").into(),
                     Some(workflow_source),
                     None,
                     self.button_mouse_states.view_context.clone(),

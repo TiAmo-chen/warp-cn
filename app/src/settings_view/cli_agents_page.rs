@@ -193,7 +193,7 @@ impl CLIAgentsPageView {
 
                     dropdown.set_menu_header_text_override(|label| {
                         if label == crate::tr!("settings", "other") {
-                            crate::tr!("settings", "settings-ai-other-agent").to_string()
+                            crate::tr!("settings", "ai-other-agent").to_string()
                         } else {
                             label.to_string()
                         }

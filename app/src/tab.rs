@@ -553,7 +553,7 @@ impl TabData {
                     Manager::as_ref(ctx).has_session_link(&view.id(), status)
                 });
             menu_items.push(
-                MenuItemFields::new(crate::tr!("ai_assistant", "ai-assistant-ai-doc-copy-link"))
+                MenuItemFields::new(crate::tr!("ai_assistant", "ai-doc-copy-link"))
                     .with_on_select_action(WorkspaceAction::CopySharedSessionLinkFromTab {
                         tab_index: index,
                     })
@@ -712,9 +712,9 @@ impl TabData {
         if can_move_right {
             menu_items.push(
                 MenuItemFields::new(if uses_vertical_tabs {
-                    crate::tr!("terminal", "terminal-move-tab-down")
+                    crate::tr!("terminal", "move-tab-down")
                 } else {
-                    crate::tr!("terminal", "terminal-move-tab-right")
+                    crate::tr!("terminal", "move-tab-right")
                 })
                 .with_on_select_action(WorkspaceAction::MoveTabRight(index))
                 .into_item(),
@@ -723,9 +723,9 @@ impl TabData {
         if can_move_left {
             menu_items.push(
                 MenuItemFields::new(if uses_vertical_tabs {
-                    crate::tr!("terminal", "terminal-move-tab-up")
+                    crate::tr!("terminal", "move-tab-up")
                 } else {
-                    crate::tr!("terminal", "terminal-move-tab-left")
+                    crate::tr!("terminal", "move-tab-left")
                 })
                 .with_on_select_action(WorkspaceAction::MoveTabLeft(index))
                 .into_item(),
@@ -794,9 +794,9 @@ impl TabData {
         if not_last_tab {
             menu_items.push(
                 MenuItemFields::new(if uses_vertical_tabs {
-                    crate::tr!("terminal", "terminal-close-tabs-below")
+                    crate::tr!("terminal", "close-tabs-below")
                 } else {
-                    crate::tr!("terminal", "terminal-close-tabs-to-the-right")
+                    crate::tr!("terminal", "close-tabs-to-the-right")
                 })
                 .with_on_select_action(WorkspaceAction::CloseTabsRight(index))
                 .into_item(),
@@ -1720,7 +1720,7 @@ impl<'a> TabComponent<'a> {
 
                         if state.is_hovered() {
                             let tooltip = ui_builder
-                                .tool_tip(crate::tr!("ai_assistant", "ai-assistant-ai-cloud-agent-run").to_string())
+                                .tool_tip(crate::tr!("ai_assistant", "ai-cloud-agent-run").to_string())
                                 .build()
                                 .finish();
                             stack.add_positioned_overlay_child(

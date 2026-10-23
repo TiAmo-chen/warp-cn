@@ -561,7 +561,7 @@ impl Transcript {
                     .finish();
 
                 appearance.ui_builder().tool_tip_on_element(
-                    crate::tr!("ai_assistant", "ai-assistant-copy-answer-to-clipboard").to_string(),
+                    crate::tr!("ai_assistant", "copy-answer-to-clipboard").to_string(),
                     tooltip_handle,
                     copy_button,
                     ParentAnchor::TopRight,

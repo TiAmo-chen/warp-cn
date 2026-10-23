@@ -97,7 +97,7 @@ impl BlockInsertionMenuState {
 
         if embedded_objects_enabled {
             menu.add_item(
-                MenuItemFields::new(crate::tr!("notebooks", "notebooks-block-embed"))
+                MenuItemFields::new(crate::tr!("notebooks", "block-embed"))
                     .with_icon(Icon::EmbedBlock)
                     .with_on_select_action(EditorViewAction::OpenEmbeddedObjectSearch)
                     .into_item(),
@@ -117,7 +117,7 @@ impl BlockInsertionMenuState {
         }
 
         menu.add_item(
-            MenuItemFields::new(crate::tr!("notebooks", "notebooks-block-divider"))
+            MenuItemFields::new(crate::tr!("notebooks", "block-divider"))
                 .with_icon(Icon::HorizontalRuleBlock)
                 .with_on_select_action(EditorViewAction::InsertBlock(
                     warp_editor::content::text::BlockType::Item(BufferBlockItem::HorizontalRule),
@@ -306,7 +306,7 @@ impl RichTextEditorView {
         })
         .with_tooltip(move || {
             ui_builder
-                .tool_tip(crate::tr!("notebooks", "notebooks-insert-block").to_string())
+                .tool_tip(crate::tr!("notebooks", "insert-block").to_string())
                 .build()
                 .finish()
         })

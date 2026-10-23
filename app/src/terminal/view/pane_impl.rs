@@ -825,9 +825,9 @@ impl TerminalView {
         button
             .with_tooltip(move || {
                 let tooltip_text = if is_open {
-                    crate::tr!("terminal", "terminal-tooltip-hide-details")
+                    crate::tr!("terminal", "tooltip-hide-details")
                 } else {
-                    crate::tr!("terminal", "terminal-tooltip-show-details")
+                    crate::tr!("terminal", "tooltip-show-details")
                 };
                 ui_builder
                     .tool_tip(tooltip_text.to_string())
@@ -883,7 +883,7 @@ impl TerminalView {
             let tooltip_text = if is_open {
                 crate::tr!("terminal", "tooltip-hide-details")
             } else {
-                crate::tr!("terminal", "terminal-tooltip-show-details")
+                crate::tr!("terminal", "tooltip-show-details")
             };
             ui_builder
                 .tool_tip(tooltip_text.to_string())
@@ -1170,8 +1170,8 @@ impl TerminalView {
 
 fn default_agent_conversation_title(is_ambient_agent: bool) -> String {
     if is_ambient_agent {
-        crate::tr!("agent_cloud", "agent-cloud-new-cloud-agent").to_owned()
+        crate::tr!("agent_cloud", "new-cloud-agent").to_owned()
     } else {
-        crate::tr!("terminal", "terminal-new-agent-conversation").to_owned()
+        crate::tr!("terminal", "new-agent-conversation").to_owned()
     }
 }

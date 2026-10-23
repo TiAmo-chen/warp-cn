@@ -1372,7 +1372,7 @@ impl AIContextMenu {
         let theme = appearance.theme();
         Container::new(
             Text::new(
-                crate::tr!("context_chips", "context-chips-no-results-found"),
+                crate::tr!("context_chips", "no-results-found"),
                 appearance.ui_font_family(),
                 appearance.monospace_font_size(),
             )
@@ -1405,7 +1405,7 @@ impl AIContextMenu {
         let theme = appearance.theme();
         Container::new(
             Text::new(
-                crate::tr!("search", "search-indexing"),
+                crate::tr!("search", "indexing"),
                 appearance.ui_font_family(),
                 appearance.monospace_font_size(),
             )

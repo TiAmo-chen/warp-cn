@@ -164,7 +164,7 @@ impl CommentEditor {
         ViewHandle<ActionButton>,
     ) {
         let save_button = ctx.add_typed_action_view(|ctx| {
-            ActionButton::new(crate::tr!("code_editor", "code-editor-code-review-comment"), PrimaryTheme)
+            ActionButton::new(crate::tr!("code_editor", "code-review-comment"), PrimaryTheme)
                 .with_keybinding(
                     KeystrokeSource::Fixed(
                         Keystroke::parse(crate::code_review::CODE_REVIEW_SUBMIT_KEYSTROKE)
@@ -334,7 +334,7 @@ impl CommentEditor {
             .finish();
 
         let label = Text::new(
-            crate::tr!("code_editor", "code-editor-code-comment-imported-from-github").to_string(),
+            crate::tr!("code_editor", "code-comment-imported-from-github").to_string(),
             appearance.ui_font_family(),
             appearance.ui_font_size(),
         )

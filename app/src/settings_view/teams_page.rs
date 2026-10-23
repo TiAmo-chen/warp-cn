@@ -1244,7 +1244,7 @@ impl TeamsPageView {
                 self.show_error(crate::tr!("settings", "failed-to-toggle-invite-links"), Some(err), ctx);
             }
             UserWorkspacesEvent::ResetInviteLinks => {
-                self.show_success(crate::tr!("settings", "settings-reset-invite-links"), ctx);
+                self.show_success(crate::tr!("settings", "reset-invite-links"), ctx);
                 ctx.notify();
             }
             UserWorkspacesEvent::ResetInviteLinksRejected(err) => {
@@ -1255,7 +1255,7 @@ impl TeamsPageView {
                 self.show_success(crate::tr!("settings", "deleted-invite"), ctx);
             }
             UserWorkspacesEvent::DeleteTeamInviteRejected(err) => {
-                self.show_error(crate::tr!("settings", "settings-failed-delete-invite"), Some(err), ctx);
+                self.show_error(crate::tr!("settings", "failed-delete-invite"), Some(err), ctx);
             }
             UserWorkspacesEvent::AddDomainRestrictionsSuccess => {
                 self.approve_domains_block_editor
@@ -1394,7 +1394,7 @@ impl TeamsPageView {
                 self.show_success(crate::tr!("settings", "successfully-updated-team-member-role"), ctx);
             }
             UserWorkspacesEvent::SetTeamMemberRoleRejected(err) => {
-                self.show_error(crate::tr!("settings", "settings-failed-update-team-member-role"), Some(err), ctx);
+                self.show_error(crate::tr!("settings", "failed-update-team-member-role"), Some(err), ctx);
             }
             UserWorkspacesEvent::RemoveUserFromTeamSuccess => {
                 self.update_team_members_state(ctx);
@@ -1603,7 +1603,7 @@ impl TeamsPageView {
                 ctx.notify();
             }
             TeamUpdateManagerEvent::RenameTeamSuccess => {
-                self.show_success(crate::tr!("settings", "settings-successfully-renamed-team"), ctx)
+                self.show_success(crate::tr!("settings", "successfully-renamed-team"), ctx)
             }
             TeamUpdateManagerEvent::RenameTeamError => {
                 self.show_error(crate::tr!("settings", "failed-to-rename-team"), None, ctx)
@@ -2833,9 +2833,9 @@ impl TeamsWidget {
         has_admin_permissions: bool,
     ) -> Box<dyn Element> {
         let prorated_message = if has_admin_permissions {
-            crate::tr!("settings", "settings-youll-be-charged-for-a-portion-of-the-team-members-usage-of-warp")
+            crate::tr!("settings", "youll-be-charged-for-a-portion-of-the-team-members-usage-of-warp")
         } else {
-            crate::tr!("settings", "settings-your-admin-will-be-charged-for-a-portion-of-the-team-members-usage-of-warp")
+            crate::tr!("settings", "your-admin-will-be-charged-for-a-portion-of-the-team-members-usage-of-warp")
         };
 
         let additional_members_cost_money_msg = if let Some((monthly_cost, yearly_cost)) =
@@ -3716,7 +3716,7 @@ impl TeamsWidget {
 
         // crate::tr!("settings", "by-email") subsection header
         section.add_child(
-            Container::new(self.render_subsubsection_header(crate::tr!("settings", "settings-by-email").to_owned(), appearance))
+            Container::new(self.render_subsubsection_header(crate::tr!("settings", "by-email").to_owned(), appearance))
                 .with_padding_top(CONTENT_SEPARATION_PADDING)
                 .with_padding_bottom(8.)
                 .finish(),
@@ -4126,7 +4126,7 @@ impl TeamsWidget {
     ) -> Box<dyn Element> {
         // Same layout as the crate::tr!("settings", "by-link") header row: text column on the left,
         // toggle on the right.
-        let header = self.render_subsubsection_header(crate::tr!("settings", "settings-by-discovery").to_owned(), appearance);
+        let header = self.render_subsubsection_header(crate::tr!("settings", "by-discovery").to_owned(), appearance);
 
         let domain = current_user_email.split('@').nth(1).unwrap_or("");
         let team_discoverability_instructions =

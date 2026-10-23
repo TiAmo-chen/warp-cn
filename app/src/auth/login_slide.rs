@@ -649,7 +649,7 @@ impl LoginSlideView {
             .with_child(
                 ui_builder
                     .link(
-                        crate::tr!("auth", "auth-terms-of-service").into(),
+                        crate::tr!("auth", "terms-of-service").into(),
                         Some(TOS_URL.into()),
                         None,
                         self.tos_mouse_state.clone(),
@@ -675,7 +675,7 @@ impl LoginSlideView {
             .with_child(
                 ui_builder
                     .link(
-                        crate::tr!("auth", "auth-privacy-settings").into(),
+                        crate::tr!("auth", "privacy-settings").into(),
                         None,
                         Some(Box::new(|ctx| {
                             ctx.dispatch_typed_action(LoginSlideAction::ShowPrivacySettings);
@@ -875,7 +875,7 @@ impl LoginSlideView {
         };
 
         let title = FormattedTextElement::from_str(
-            crate::tr!("auth", "auth-browser-sign-in-header"),
+            crate::tr!("auth", "browser-sign-in-header"),
             appearance.ui_font_family(),
             36.,
         )
@@ -900,7 +900,7 @@ impl LoginSlideView {
                     .with_child(
                         ui_builder
                             .link(
-                                crate::tr!("auth", "auth-copy-url").into(),
+                                crate::tr!("auth", "copy-url").into(),
                                 None,
                                 Some(Box::new(|ctx| {
                                     ctx.dispatch_typed_action(LoginSlideAction::CopyLoginUrl);
@@ -922,7 +922,7 @@ impl LoginSlideView {
             )
             .with_child(
                 ui_builder
-                    .span(crate::tr!("auth", "auth-the-page-manually"))
+                    .span(crate::tr!("auth", "the-page-manually"))
                     .with_style(sub_text_styles)
                     .build()
                     .finish(),
@@ -976,7 +976,7 @@ impl LoginSlideView {
                 .with_child(
                     ui_builder
                         .link(
-                            crate::tr!("auth", "auth-click-here-paste-token").into(),
+                            crate::tr!("auth", "click-here-paste-token").into(),
                             None,
                             Some(Box::new(|ctx| {
                                 ctx.dispatch_typed_action(LoginSlideAction::EnterToken);
@@ -1038,7 +1038,7 @@ impl LoginSlideView {
         let theme = appearance.theme();
 
         let title =
-            FormattedTextElement::from_str(crate::tr!("auth", "auth-privacy-settings"), appearance.ui_font_family(), 36.)
+            FormattedTextElement::from_str(crate::tr!("auth", "privacy-settings"), appearance.ui_font_family(), 36.)
                 .with_color(internal_colors::text_main(
                     theme,
                     theme.background().into_solid(),
@@ -1155,7 +1155,7 @@ impl LoginSlideView {
         let confirm_button = self.dialog_skip_button.render(
             appearance,
             button::Params {
-                content: button::Content::Label(crate::tr!("auth", "auth-skip-button").into()),
+                content: button::Content::Label(crate::tr!("auth", "skip-button").into()),
                 theme: &button::themes::Primary,
                 options: button::Options {
                     keystroke: Some(dialog_enter),

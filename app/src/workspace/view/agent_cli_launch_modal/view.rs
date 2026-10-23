@@ -156,7 +156,7 @@ impl AgentCliLaunchModal {
         });
 
         let get_started_button = ctx.add_view(|_ctx| {
-            ActionButton::new(crate::tr!("ai_assistant", "ai-assistant-ai-get-started"), CtaButtonTheme)
+            ActionButton::new(crate::tr!("ai_assistant", "ai-get-started"), CtaButtonTheme)
                 .with_full_width(true)
                 .on_click(|ctx| ctx.dispatch_typed_action(AgentCliLaunchModalAction::GetStarted))
         });

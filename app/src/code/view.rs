@@ -107,21 +107,21 @@ pub fn init(app: &mut AppContext) {
         .with_key_binding("cmdorctrl-s"),
         EditableBinding::new(
             "code_view:save_as",
-            crate::tr!("code", "code-save-file-as"),
+            crate::tr!("code", "save-file-as"),
             CodeViewAction::SaveFileAs,
         )
         .with_context_predicate(text_entry.clone())
         .with_key_binding("cmdorctrl-shift-S"),
         EditableBinding::new(
             "code_view:close_all_tabs",
-            crate::tr!("code", "code-close-all-tabs"),
+            crate::tr!("code", "close-all-tabs"),
             CodeViewAction::CloseAll,
         )
         .with_context_predicate(id!("CodeEditorView"))
         .with_key_binding("cmdorctrl-r w"),
         EditableBinding::new(
             "code_view:close_saved_tabs",
-            crate::tr!("code", "code-close-saved-tabs"),
+            crate::tr!("code", "close-saved-tabs"),
             CodeViewAction::CloseSaved,
         )
         .with_context_predicate(id!("CodeEditorView"))
@@ -957,7 +957,7 @@ impl CodeView {
 
     fn display_load_failure(window_id: WindowId, ctx: &mut ViewContext<Self>) {
         ToastStack::handle(ctx).update(ctx, |toast_stack, ctx| {
-            let toast = DismissibleToast::error(String::from(crate::tr!("code", "code-failed-to-load-file")))
+            let toast = DismissibleToast::error(String::from(crate::tr!("code", "failed-to-load-file")))
                 .with_object_id("failed_to_load_file".to_string());
             toast_stack.add_ephemeral_toast(toast, window_id, ctx);
         });
@@ -965,7 +965,7 @@ impl CodeView {
 
     fn display_save_failure(window_id: WindowId, ctx: &mut ViewContext<Self>) {
         ToastStack::handle(ctx).update(ctx, |toast_stack, ctx| {
-            let toast = DismissibleToast::error(String::from(crate::tr!("code", "code-failed-to-save-file")))
+            let toast = DismissibleToast::error(String::from(crate::tr!("code", "failed-to-save-file")))
                 .with_object_id("failed_to_save_file".to_string());
             toast_stack.add_ephemeral_toast(toast, window_id, ctx);
         });
@@ -982,7 +982,7 @@ impl CodeView {
 
     fn display_save_success(window_id: WindowId, ctx: &mut ViewContext<Self>) {
         ToastStack::handle(ctx).update(ctx, |toast_stack, ctx| {
-            let toast = DismissibleToast::success(String::from(crate::tr!("code", "code-file-saved-toast")))
+            let toast = DismissibleToast::success(String::from(crate::tr!("code", "file-saved-toast")))
                 .with_object_id("file_saved".to_string());
             toast_stack.add_ephemeral_toast(toast, window_id, ctx);
         });
@@ -2162,7 +2162,7 @@ impl CodeView {
             if active_location.is_some() {
                 items.push(MenuItem::Separator);
                 items.push(
-                    MenuItemFields::new(crate::tr!("code_review", "code-review-copy-file-path"))
+                    MenuItemFields::new(crate::tr!("code_review", "copy-file-path"))
                         .with_on_select_action(CodeViewAction::CopyFilePath)
                         .into_item(),
                 );

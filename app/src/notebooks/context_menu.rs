@@ -35,7 +35,7 @@ where
     /// Focus state of the pane containing this context menu.
     focus_handle: Option<PaneFocusHandle>,
     /// The display path of the file backing this pane, if any. When set, the menu offers a
-    /// crate::tr!("code", "code-copy-file-path") item. Only file-backed views (e.g. the file viewer) set this; for other
+    /// crate::tr!("code", "copy-file-path") item. Only file-backed views (e.g. the file viewer) set this; for other
     /// notebooks it stays `None` and the item is hidden.
     copy_file_path: Option<String>,
 }
@@ -152,7 +152,7 @@ where
                 items.push(MenuItem::Separator);
             }
             items.push(
-                MenuItemFields::new(crate::tr!("code_review", "code-review-copy-file-path"))
+                MenuItemFields::new(crate::tr!("code_review", "copy-file-path"))
                     .with_on_select_action(V::Action::from(ContextMenuAction::CopyFilePath))
                     .into_item(),
             );

@@ -41,11 +41,11 @@ impl AITip for CloudModeTip {
 pub fn get_cloud_mode_tips() -> Vec<CloudModeTip> {
     vec![
         CloudModeTip::new(
-            crate::tr!("agent_tips", "agent-tips-install-slack-integration"),
+            crate::tr!("agent_tips", "install-slack-integration"),
             Some("https://docs.warp.dev/platform/integrations/slack"),
         ),
         CloudModeTip::new(
-            crate::tr!("agent_tips", "agent-tips-build-programmatic-agents"),
+            crate::tr!("agent_tips", "build-programmatic-agents"),
             Some("https://docs.warp.dev/reference/api-and-sdk"),
         ),
         CloudModeTip::new(
@@ -53,23 +53,23 @@ pub fn get_cloud_mode_tips() -> Vec<CloudModeTip> {
             Some("https://docs.warp.dev/platform/secrets"),
         ),
         CloudModeTip::new(
-            crate::tr!("agent_tips", "agent-tips-view-runs-status"),
+            crate::tr!("agent_tips", "view-runs-status"),
             Some("https://oz.warp.dev"),
         ),
         CloudModeTip::new(
-            crate::tr!("agent_tips", "agent-tips-join-real-time"),
+            crate::tr!("agent_tips", "join-real-time"),
             Some("https://docs.warp.dev/platform/viewing-cloud-agent-runs"),
         ),
         CloudModeTip::new(
-            crate::tr!("agent_tips", "agent-tips-recurring-cron-agents"),
+            crate::tr!("agent_tips", "recurring-cron-agents"),
             Some("https://docs.warp.dev/platform/triggers/scheduled-agents"),
         ),
         CloudModeTip::new(
-            crate::tr!("agent_tips", "agent-tips-fix-bugs-linear"),
+            crate::tr!("agent_tips", "fix-bugs-linear"),
             Some("https://docs.warp.dev/platform/integrations/linear"),
         ),
         CloudModeTip::new(
-            crate::tr!("agent_tips", "agent-tips-respond-ci-failures"),
+            crate::tr!("agent_tips", "respond-ci-failures"),
             Some("https://docs.warp.dev/platform/integrations/github-actions"),
         ),
         CloudModeTip::new(
@@ -77,15 +77,15 @@ pub fn get_cloud_mode_tips() -> Vec<CloudModeTip> {
             Some("https://github.com/warpdotdev/oz-agent-action"),
         ),
         CloudModeTip::new(
-            crate::tr!("agent_tips", "agent-tips-rest-api-trigger"),
+            crate::tr!("agent_tips", "rest-api-trigger"),
             Some("https://docs.warp.dev/reference/api-and-sdk"),
         ),
         CloudModeTip::new(
-            crate::tr!("agent_tips", "agent-tips-docker-images-env"),
+            crate::tr!("agent_tips", "docker-images-env"),
             Some("https://docs.warp.dev/platform/environments/"),
         ),
         CloudModeTip::new(
-            crate::tr!("agent_tips", "agent-tips-share-session-links"),
+            crate::tr!("agent_tips", "share-session-links"),
             Some("https://docs.warp.dev/platform/viewing-cloud-agent-runs"),
         ),
         CloudModeTip::new(
@@ -93,15 +93,15 @@ pub fn get_cloud_mode_tips() -> Vec<CloudModeTip> {
             Some("https://docs.warp.dev/platform/overview/"),
         ),
         CloudModeTip::new(
-            crate::tr!("agent_tips", "agent-tips-fork-locally"),
+            crate::tr!("agent_tips", "fork-locally"),
             Some("https://docs.warp.dev/platform/viewing-cloud-agent-runs"),
         ),
         CloudModeTip::new(
-            crate::tr!("agent_tips", "agent-tips-internal-tools-databases"),
+            crate::tr!("agent_tips", "internal-tools-databases"),
             Some("https://docs.warp.dev/platform/integrations"),
         ),
         CloudModeTip::new(
-            crate::tr!("agent_tips", "agent-tips-clean-stale-flags"),
+            crate::tr!("agent_tips", "clean-stale-flags"),
             Some("https://docs.warp.dev/platform/triggers/scheduled-agents"),
         ),
         CloudModeTip::new(
@@ -109,11 +109,11 @@ pub fn get_cloud_mode_tips() -> Vec<CloudModeTip> {
             Some("https://docs.warp.dev/platform/integrations/linear"),
         ),
         CloudModeTip::new(
-            crate::tr!("agent_tips", "agent-tips-remote-dev-boxes"),
+            crate::tr!("agent_tips", "remote-dev-boxes"),
             Some("https://docs.warp.dev/platform/overview/"),
         ),
         CloudModeTip::new(
-            crate::tr!("agent_tips", "agent-tips-mcp-servers-access"),
+            crate::tr!("agent_tips", "mcp-servers-access"),
             Some("https://docs.warp.dev/agents/capabilities/mcp"),
         ),
         CloudModeTip::new(
@@ -121,19 +121,19 @@ pub fn get_cloud_mode_tips() -> Vec<CloudModeTip> {
             Some("https://docs.warp.dev/platform/overview/"),
         ),
         CloudModeTip::new(
-            crate::tr!("agent_tips", "agent-tips-teammate-runs-visibility"),
+            crate::tr!("agent_tips", "teammate-runs-visibility"),
             Some("https://oz.warp.dev"),
         ),
         CloudModeTip::new(
-            crate::tr!("agent_tips", "agent-tips-triage-github-issues"),
+            crate::tr!("agent_tips", "triage-github-issues"),
             Some("https://docs.warp.dev/platform/integrations/github-actions"),
         ),
         CloudModeTip::new(
-            crate::tr!("agent_tips", "agent-tips-daily-issues-summaries"),
+            crate::tr!("agent_tips", "daily-issues-summaries"),
             Some("https://docs.warp.dev/platform/integrations/github-actions"),
         ),
         CloudModeTip::new(
-            crate::tr!("agent_tips", "agent-tips-review-prs-suggest"),
+            crate::tr!("agent_tips", "review-prs-suggest"),
             Some("https://docs.warp.dev/platform/integrations/github-actions"),
         ),
         CloudModeTip::new(
@@ -141,27 +141,27 @@ pub fn get_cloud_mode_tips() -> Vec<CloudModeTip> {
             Some("https://docs.warp.dev/platform/environments/"),
         ),
         CloudModeTip::new(
-            crate::tr!("agent_tips", "agent-tips-webhooks-trigger"),
+            crate::tr!("agent_tips", "webhooks-trigger"),
             Some("https://docs.warp.dev/reference/api-and-sdk"),
         ),
         CloudModeTip::new(
-            crate::tr!("agent_tips", "agent-tips-restart-services-alerts"),
+            crate::tr!("agent_tips", "restart-services-alerts"),
             Some("https://docs.warp.dev/platform/triggers"),
         ),
         CloudModeTip::new(
-            crate::tr!("agent_tips", "agent-tips-personal-secrets-credentials"),
+            crate::tr!("agent_tips", "personal-secrets-credentials"),
             Some("https://docs.warp.dev/platform/secrets"),
         ),
         CloudModeTip::new(
-            crate::tr!("agent_tips", "agent-tips-team-secrets-infrastructure"),
+            crate::tr!("agent_tips", "team-secrets-infrastructure"),
             Some("https://docs.warp.dev/platform/secrets"),
         ),
         CloudModeTip::new(
-            crate::tr!("agent_tips", "agent-tips-nightly-dependency-checks"),
+            crate::tr!("agent_tips", "nightly-dependency-checks"),
             Some("https://docs.warp.dev/platform/triggers/scheduled-agents"),
         ),
         CloudModeTip::new(
-            crate::tr!("agent_tips", "agent-tips-format-lint-schedule"),
+            crate::tr!("agent_tips", "format-lint-schedule"),
             Some("https://docs.warp.dev/platform/triggers/scheduled-agents"),
         ),
         CloudModeTip::new(
@@ -177,7 +177,7 @@ pub fn get_cloud_mode_tips() -> Vec<CloudModeTip> {
             Some("https://docs.warp.dev/agents/capabilities/mcp"),
         ),
         CloudModeTip::new(
-            crate::tr!("agent_tips", "agent-tips-slack-bot-delegates"),
+            crate::tr!("agent_tips", "slack-bot-delegates"),
             Some("https://docs.warp.dev/platform/integrations/slack"),
         ),
         CloudModeTip::new(
@@ -185,19 +185,19 @@ pub fn get_cloud_mode_tips() -> Vec<CloudModeTip> {
             Some("https://docs.warp.dev/platform/integrations/slack"),
         ),
         CloudModeTip::new(
-            crate::tr!("agent_tips", "agent-tips-typescript-sdk-pipelines"),
+            crate::tr!("agent_tips", "typescript-sdk-pipelines"),
             Some("https://docs.warp.dev/reference/api-and-sdk"),
         ),
         CloudModeTip::new(
-            crate::tr!("agent_tips", "agent-tips-python-sdk-pipelines"),
+            crate::tr!("agent_tips", "python-sdk-pipelines"),
             Some("https://docs.warp.dev/reference/api-and-sdk"),
         ),
         CloudModeTip::new(
-            crate::tr!("agent_tips", "agent-tips-monitor-success-rates"),
+            crate::tr!("agent_tips", "monitor-success-rates"),
             Some("https://docs.warp.dev/reference/api-and-sdk"),
         ),
         CloudModeTip::new(
-            crate::tr!("agent_tips", "agent-tips-dashboard-team-activity"),
+            crate::tr!("agent_tips", "dashboard-team-activity"),
             Some("https://docs.warp.dev/reference/api-and-sdk"),
         ),
     ]

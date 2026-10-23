@@ -447,7 +447,7 @@ impl TypedActionView for Omnibar {
             }
             OmnibarAction::OpenLinkEditor => ActionAccessibilityContent::from_debug(),
             OmnibarAction::UnstyleLink => ActionAccessibilityContent::Custom(
-                AccessibilityContent::new_without_help(crate::tr!("notebooks", "notebooks-remove-link"), WarpA11yRole::UserAction),
+                AccessibilityContent::new_without_help(crate::tr!("notebooks", "remove-link"), WarpA11yRole::UserAction),
             ),
         }
     }

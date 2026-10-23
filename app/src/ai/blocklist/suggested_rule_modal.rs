@@ -246,7 +246,7 @@ impl SuggestedRuleView {
         ctx.subscribe_to_model(&network_status, |me, _, _event, ctx| {
             let is_edit_allowed = me.is_edit_allowed(ctx);
             let tooltip = if !is_edit_allowed {
-                Some(crate::tr!("ai_assistant", "ai-assistant-ai-editing-disabled-offline").to_string())
+                Some(crate::tr!("ai_assistant", "ai-editing-disabled-offline").to_string())
             } else {
                 None
             };

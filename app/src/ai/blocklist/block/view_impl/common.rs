@@ -790,9 +790,9 @@ fn render_hide_responses_button(
 ) -> Box<dyn Element> {
     let theme = appearance.theme();
     let button_text = if should_hide_responses {
-        crate::tr!("ai_assistant", "ai-assistant-ai-show-responses")
+        crate::tr!("ai_assistant", "ai-show-responses")
     } else {
-        crate::tr!("ai_assistant", "ai-assistant-ai-hide-responses")
+        crate::tr!("ai_assistant", "ai-hide-responses")
     };
     let text = Container::new(
         Text::new(
@@ -806,9 +806,9 @@ fn render_hide_responses_button(
     .finish();
 
     let tooltip_text = if should_hide_responses {
-        crate::tr!("ai_assistant", "ai-assistant-ai-show-agent-responses")
+        crate::tr!("ai_assistant", "ai-show-agent-responses")
     } else {
-        crate::tr!("ai_assistant", "ai-assistant-ai-hide-agent-responses")
+        crate::tr!("ai_assistant", "ai-hide-agent-responses")
     };
 
     render_warping_indicator_button(
@@ -872,7 +872,7 @@ fn render_stop_button(props: ButtonProps, appearance: &Appearance) -> Box<dyn El
         appearance,
         stop_icon,
         props.keystroke,
-        crate::tr!("ai_assistant", "ai-assistant-ai-stop-agent-task").to_string(),
+        crate::tr!("ai_assistant", "ai-stop-agent-task").to_string(),
         props.is_active,
         false,
         |ctx: &mut EventContext<'_>| {
@@ -900,9 +900,9 @@ fn render_queue_next_prompt_button(
     .finish();
 
     let tooltip_text = if props.is_active {
-        crate::tr!("ai_assistant", "ai-assistant-ai-auto-queue-on")
+        crate::tr!("ai_assistant", "ai-auto-queue-on")
     } else {
-        crate::tr!("ai_assistant", "ai-assistant-ai-auto-queue-off")
+        crate::tr!("ai_assistant", "ai-auto-queue-off")
     };
 
     render_warping_indicator_button(
@@ -946,7 +946,7 @@ fn render_auto_approve_button(
     let tooltip_text = if props.is_locked {
         "Fast forward is always enabled for cloud agent conversations"
     } else if is_active {
-        &crate::tr!("ai_assistant", "ai-assistant-ai-fast-forward-on-tooltip")
+        &crate::tr!("ai_assistant", "ai-fast-forward-on-tooltip")
     } else {
         "Auto-approve all agent actions for this task"
     };
@@ -1016,7 +1016,7 @@ fn render_force_refresh_inline(
         let mut stack = Stack::new().with_child(text_with_margin);
         if state.is_hovered() {
             let tool_tip = ui_builder
-                .tool_tip(crate::tr!("ai_assistant", "ai-assistant-ai-check-now-tooltip").to_owned())
+                .tool_tip(crate::tr!("ai_assistant", "ai-check-now-tooltip").to_owned())
                 .build()
                 .finish();
             stack.add_positioned_overlay_child(
@@ -2218,7 +2218,7 @@ fn render_mermaid_diagram_section<A: Action>(
         .finish();
 
     render_visual_card(
-        crate::tr!("ai_assistant", "ai-assistant-ai-mermaid-diagram").to_string(),
+        crate::tr!("ai_assistant", "ai-mermaid-diagram").to_string(),
         Icon::Dataflow,
         Container::new(mermaid_canvas)
             .with_background(theme.background())
@@ -3381,7 +3381,7 @@ fn render_invalid_api_key_error(
             background: Some(internal_colors::fg_overlay_3(theme).into()),
             ..Default::default()
         })
-        .with_text_label(crate::tr!("ai_assistant", "ai-assistant-ai-edit-api-keys").to_string())
+        .with_text_label(crate::tr!("ai_assistant", "ai-edit-api-keys").to_string())
         .with_cursor(Some(Cursor::PointingHand))
         .build()
         .on_click(move |ctx, _, _| {
@@ -3609,7 +3609,7 @@ pub(crate) fn render_debug_footer<V: View>(
                     warpui::ui_components::button::ButtonVariant::Text,
                     props.submit_issue_button_handle,
                 )
-                .with_centered_text_label(crate::tr!("ai_assistant", "ai-assistant-ai-send-feedback").to_string())
+                .with_centered_text_label(crate::tr!("ai_assistant", "ai-send-feedback").to_string())
                 .with_style(submit_button_style)
                 .with_hovered_styles(submit_button_hover_style)
                 .with_clicked_styles(submit_button_hover_style)
@@ -3669,7 +3669,7 @@ pub(crate) fn render_debug_footer<V: View>(
     })
     .finish();
     let copy_button_with_tooltip = appearance.ui_builder().tool_tip_on_element(
-        crate::tr!("ai_assistant", "ai-assistant-ai-copy-debug-id").to_string(),
+        crate::tr!("ai_assistant", "ai-copy-debug-id").to_string(),
         props.debug_copy_button_handle,
         copy_button,
         warpui::elements::ParentAnchor::TopRight,

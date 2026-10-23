@@ -13,7 +13,7 @@ impl From<ToastType> for DismissibleToast<WorkspaceAction> {
     fn from(value: ToastType) -> Self {
         match value {
             ToastType::CloudObjectNotFound => {
-                DismissibleToast::error(String::from(crate::tr!("workspace", "workspace-resource-not-found-or-access-denied")))
+                DismissibleToast::error(String::from(crate::tr!("workspace", "resource-not-found-or-access-denied")))
             }
         }
     }

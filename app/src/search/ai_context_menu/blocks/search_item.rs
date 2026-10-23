@@ -19,14 +19,14 @@ use crate::util::truncation::truncate_from_end;
 /// Calculate how long ago a timestamp was
 fn time_ago_string(timestamp: Option<&DateTime<Local>>) -> String {
     let Some(timestamp) = timestamp else {
-        return crate::tr!("search", "search-just-now").to_string();
+        return crate::tr!("search", "just-now").to_string();
     };
 
     let now = Local::now();
     let duration = now.signed_duration_since(*timestamp);
 
     if duration.num_seconds() < 60 {
-        crate::tr!("search", "search-just-now").to_string()
+        crate::tr!("search", "just-now").to_string()
     } else if duration.num_minutes() < 60 {
         format!("{} minutes ago", duration.num_minutes())
     } else if duration.num_hours() < 24 {
@@ -135,7 +135,7 @@ impl SearchItem for BlockSearchItem {
 
         // Create sub text: last 3 lines of output
         let sub_text = if self.output_lines.is_empty() {
-            crate::tr!("search", "search-block-no-output").to_string()
+            crate::tr!("search", "block-no-output").to_string()
         } else {
             let joined = self.output_lines.join("\n").trim().to_string();
             // Additional safety truncation for the hover card

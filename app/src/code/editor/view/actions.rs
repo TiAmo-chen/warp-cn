@@ -79,12 +79,12 @@ pub fn init(app: &mut AppContext) {
             text_entry.clone() & id!("Vim"),
         ),
         FixedBinding::new(
-            crate::tr!("code", "code-backspace"),
+            crate::tr!("code", "backspace"),
             CodeEditorViewAction::Backspace,
             text_entry.clone() & !id!("Vim"),
         ),
         FixedBinding::new(
-            crate::tr!("code", "code-backspace"),
+            crate::tr!("code", "backspace"),
             CodeEditorViewAction::VimBackspace,
             text_entry.clone() & id!("Vim"),
         ),
@@ -297,7 +297,7 @@ pub fn init(app: &mut AppContext) {
     app.register_editable_bindings([
         EditableBinding::new(
             "editor_view:move_backward_one_word",
-            crate::tr!("code", "code-move-backward-one-word"),
+            crate::tr!("code", "move-backward-one-word"),
             CodeEditorViewAction::MoveBackwardsByWord,
         )
         .with_context_predicate(text_entry.clone())
@@ -305,7 +305,7 @@ pub fn init(app: &mut AppContext) {
         .with_linux_or_windows_key_binding("ctrl-left"),
         EditableBinding::new(
             "editor_view:move_forward_one_word",
-            crate::tr!("code", "code-move-forward-one-word"),
+            crate::tr!("code", "move-forward-one-word"),
             CodeEditorViewAction::MoveForwardsByWord,
         )
         .with_context_predicate(text_entry.clone())
@@ -313,49 +313,49 @@ pub fn init(app: &mut AppContext) {
         .with_linux_or_windows_key_binding("ctrl-right"),
         EditableBinding::new(
             "editor_view:move_forward_one_word",
-            crate::tr!("editor", "editor-move-forward-one-word"),
+            crate::tr!("editor", "move-forward-one-word"),
             CodeEditorViewAction::MoveForwardsByWord,
         )
         .with_context_predicate(text_entry.clone())
         .with_key_binding("meta-f"),
         EditableBinding::new(
             "editor_view:move_backward_one_word",
-            crate::tr!("editor", "editor-move-backward-one-word"),
+            crate::tr!("editor", "move-backward-one-word"),
             CodeEditorViewAction::MoveBackwardsByWord,
         )
         .with_context_predicate(text_entry.clone())
         .with_key_binding("meta-b"),
         EditableBinding::new(
             "editor_view:up",
-            crate::tr!("code", "code-move-cursor-up"),
+            crate::tr!("code", "move-cursor-up"),
             CodeEditorViewAction::MoveUp,
         )
         .with_context_predicate(text_entry.clone())
         .with_key_binding("ctrl-p"),
         EditableBinding::new(
             "editor_view:down",
-            crate::tr!("code", "code-move-cursor-down"),
+            crate::tr!("code", "move-cursor-down"),
             CodeEditorViewAction::MoveDown,
         )
         .with_context_predicate(text_entry.clone())
         .with_key_binding("ctrl-n"),
         EditableBinding::new(
             "editor_view:left",
-            crate::tr!("code", "code-move-cursor-left"),
+            crate::tr!("code", "move-cursor-left"),
             CodeEditorViewAction::MoveLeft,
         )
         .with_context_predicate(text_entry.clone())
         .with_key_binding("ctrl-b"),
         EditableBinding::new(
             "editor_view:right",
-            crate::tr!("code", "code-move-cursor-right"),
+            crate::tr!("code", "move-cursor-right"),
             CodeEditorViewAction::MoveRight,
         )
         .with_context_predicate(text_entry.clone())
         .with_key_binding("ctrl-f"),
         EditableBinding::new(
             "editor_view:move_to_line_start",
-            crate::tr!("code", "code-move-to-line-start"),
+            crate::tr!("code", "move-to-line-start"),
             CodeEditorViewAction::MoveToLineStart,
         )
         .with_context_predicate(text_entry.clone())
@@ -371,7 +371,7 @@ pub fn init(app: &mut AppContext) {
         .with_linux_or_windows_key_binding("home"),
         EditableBinding::new(
             "editor_view:move_to_line_end",
-            crate::tr!("code", "code-move-to-line-end"),
+            crate::tr!("code", "move-to-line-end"),
             CodeEditorViewAction::MoveToLineEnd,
         )
         .with_context_predicate(text_entry.clone())
@@ -386,14 +386,14 @@ pub fn init(app: &mut AppContext) {
         .with_linux_or_windows_key_binding("end"),
         EditableBinding::new(
             "editor_view:cursor_at_buffer_start",
-            crate::tr!("code", "code-cursor-at-buffer-start"),
+            crate::tr!("code", "cursor-at-buffer-start"),
             CodeEditorViewAction::CursorAtBufferStart,
         )
         .with_context_predicate(text_entry.clone())
         .with_key_binding("cmdorctrl-up"),
         EditableBinding::new(
             "editor_view:cursor_at_buffer_end",
-            crate::tr!("code", "code-cursor-at-buffer-end"),
+            crate::tr!("code", "cursor-at-buffer-end"),
             CodeEditorViewAction::CursorAtBufferEnd,
         )
         .with_context_predicate(text_entry.clone())
@@ -404,35 +404,35 @@ pub fn init(app: &mut AppContext) {
     app.register_editable_bindings([
         EditableBinding::new(
             "editor_view:select_left_by_word",
-            crate::tr!("code", "code-select-one-word-to-the-left"),
+            crate::tr!("code", "select-one-word-to-the-left"),
             CodeEditorViewAction::SelectBackwardsByWord,
         )
         .with_context_predicate(text_entry.clone())
         .with_key_binding("shift-meta-B"),
         EditableBinding::new(
             "editor_view:select_right_by_word",
-            crate::tr!("code", "code-select-one-word-to-the-right"),
+            crate::tr!("code", "select-one-word-to-the-right"),
             CodeEditorViewAction::SelectForwardsByWord,
         )
         .with_context_predicate(text_entry.clone())
         .with_key_binding("shift-meta-F"),
         EditableBinding::new(
             "editor_view:select_left",
-            crate::tr!("code", "code-select-one-character-to-the-left"),
+            crate::tr!("code", "select-one-character-to-the-left"),
             CodeEditorViewAction::SelectLeft,
         )
         .with_context_predicate(text_entry.clone())
         .with_key_binding("shift-ctrl-B"),
         EditableBinding::new(
             "editor_view:select_right",
-            crate::tr!("code", "code-select-one-character-to-the-right"),
+            crate::tr!("code", "select-one-character-to-the-right"),
             CodeEditorViewAction::SelectRight,
         )
         .with_context_predicate(text_entry.clone())
         .with_key_binding("shift-ctrl-F"),
         EditableBinding::new(
             "editor_view:select_up",
-            crate::tr!("code", "code-select-up"),
+            crate::tr!("code", "select-up"),
             CodeEditorViewAction::SelectUp,
         )
         .with_context_predicate(text_entry.clone())
@@ -441,28 +441,28 @@ pub fn init(app: &mut AppContext) {
         .with_mac_key_binding("shift-ctrl-P"),
         EditableBinding::new(
             "editor_view:select_down",
-            crate::tr!("code", "code-select-down"),
+            crate::tr!("code", "select-down"),
             CodeEditorViewAction::SelectDown,
         )
         .with_context_predicate(text_entry.clone())
         .with_mac_key_binding("shift-ctrl-N"),
         EditableBinding::new(
             "editor_view:select_all",
-            crate::tr!("editor", "editor-select-all"),
+            crate::tr!("editor", "select-all"),
             CodeEditorViewAction::SelectAll,
         )
         .with_context_predicate(text_entry.clone())
         .with_custom_action(CustomAction::SelectAll),
         EditableBinding::new(
             "editor:select_to_line_start",
-            crate::tr!("code", "code-select-to-start-of-line"),
+            crate::tr!("code", "select-to-start-of-line"),
             CodeEditorViewAction::SelectToLineStart,
         )
         .with_context_predicate(text_entry.clone())
         .with_mac_key_binding("shift-ctrl-A"),
         EditableBinding::new(
             "editor:select_to_line_end",
-            crate::tr!("code", "code-select-to-end-of-line"),
+            crate::tr!("code", "select-to-end-of-line"),
             CodeEditorViewAction::SelectToLineEnd,
         )
         .with_context_predicate(text_entry.clone())
@@ -470,7 +470,7 @@ pub fn init(app: &mut AppContext) {
         // `shift-end` is registered on all platforms for this action.
         EditableBinding::new(
             "editor_view:select_to_line_end",
-            crate::tr!("code", "code-select-to-line-end"),
+            crate::tr!("code", "select-to-line-end"),
             CodeEditorViewAction::SelectToLineEnd,
         )
         .with_context_predicate(text_entry.clone())
@@ -478,7 +478,7 @@ pub fn init(app: &mut AppContext) {
         // `end` is registered on all platforms for this action.
         EditableBinding::new(
             "editor_view:select_to_line_start",
-            crate::tr!("code", "code-select-to-line-start"),
+            crate::tr!("code", "select-to-line-start"),
             CodeEditorViewAction::SelectToLineStart,
         )
         .with_context_predicate(text_entry.clone())
@@ -489,14 +489,14 @@ pub fn init(app: &mut AppContext) {
     app.register_editable_bindings([
         EditableBinding::new(
             "editor_view:backspace",
-            crate::tr!("editor", "editor-remove-previous-char"),
+            crate::tr!("editor", "remove-previous-char"),
             CodeEditorViewAction::Backspace,
         )
         .with_context_predicate(text_entry.clone())
         .with_key_binding("ctrl-h"),
         EditableBinding::new(
             "editor_view:toggle_comment",
-            crate::tr!("code", "code-toggle-comment"),
+            crate::tr!("code", "toggle-comment"),
             CodeEditorViewAction::ToggleComment,
         )
         .with_context_predicate(text_entry.clone())
@@ -508,28 +508,28 @@ pub fn init(app: &mut AppContext) {
             .with_key_binding("ctrl-d"),
         EditableBinding::new(
             "editor_view:vim_scroll_half_page_down",
-            crate::tr!("code", "code-scroll-down-half-page-vim"),
+            crate::tr!("code", "scroll-down-half-page-vim"),
             CodeEditorViewAction::ScrollHalfPageDown,
         )
         .with_context_predicate(text_entry.clone() & (id!("VimNormalMode") | id!("VimVisualMode")))
         .with_key_binding("ctrl-d"),
         EditableBinding::new(
             "editor_view:vim_scroll_half_page_up",
-            crate::tr!("code", "code-scroll-up-half-page-vim"),
+            crate::tr!("code", "scroll-up-half-page-vim"),
             CodeEditorViewAction::ScrollHalfPageUp,
         )
         .with_context_predicate(text_entry.clone() & (id!("VimNormalMode") | id!("VimVisualMode")))
         .with_key_binding("ctrl-u"),
         EditableBinding::new(
             "editor_view:cut_word_left",
-            crate::tr!("code", "code-cut-word-left"),
+            crate::tr!("code", "cut-word-left"),
             CodeEditorViewAction::CutWordLeft,
         )
         .with_context_predicate(text_entry.clone())
         .with_key_binding("ctrl-w"),
         EditableBinding::new(
             "editor:delete_word_left",
-            crate::tr!("code", "code-delete-word-left"),
+            crate::tr!("code", "delete-word-left"),
             CodeEditorViewAction::DeleteWordLeft,
         )
         .with_context_predicate(text_entry.clone())
@@ -537,14 +537,14 @@ pub fn init(app: &mut AppContext) {
         .with_linux_or_windows_key_binding("ctrl-backspace"),
         EditableBinding::new(
             "editor_view:cut_word_right",
-            crate::tr!("code", "code-cut-word-right"),
+            crate::tr!("code", "cut-word-right"),
             CodeEditorViewAction::CutWordRight,
         )
         .with_context_predicate(text_entry.clone())
         .with_key_binding("alt-d"),
         EditableBinding::new(
             "editor:delete_word_right",
-            crate::tr!("code", "code-delete-word-right"),
+            crate::tr!("code", "delete-word-right"),
             CodeEditorViewAction::DeleteWordRight,
         )
         .with_context_predicate(text_entry.clone())
@@ -552,13 +552,13 @@ pub fn init(app: &mut AppContext) {
         .with_linux_or_windows_key_binding("ctrl-delete"),
         EditableBinding::new(
             "editor_view:cut_all_left",
-            crate::tr!("code", "code-cut-all-left"),
+            crate::tr!("code", "cut-all-left"),
             CodeEditorViewAction::CutLineLeft,
         )
         .with_context_predicate(text_entry.clone()),
         EditableBinding::new(
             "editor_view:delete_all_left",
-            crate::tr!("code", "code-delete-all-left"),
+            crate::tr!("code", "delete-all-left"),
             CodeEditorViewAction::DeleteLineLeft,
         )
         .with_context_predicate(text_entry.clone())
@@ -569,14 +569,14 @@ pub fn init(app: &mut AppContext) {
         .with_linux_or_windows_key_binding("ctrl-y"),
         EditableBinding::new(
             "editor_view:cut_all_right",
-            crate::tr!("code", "code-cut-all-right"),
+            crate::tr!("code", "cut-all-right"),
             CodeEditorViewAction::CutLineRight,
         )
         .with_context_predicate(text_entry.clone())
         .with_key_binding("ctrl-k"),
         EditableBinding::new(
             "editor_view:delete_all_right",
-            crate::tr!("code", "code-delete-all-right"),
+            crate::tr!("code", "delete-all-right"),
             CodeEditorViewAction::DeleteLineRight,
         )
         .with_context_predicate(text_entry.clone())
@@ -587,7 +587,7 @@ pub fn init(app: &mut AppContext) {
     // Editable Vim keybindings
     app.register_editable_bindings([EditableBinding::new(
         "editor_view:vim_exit_insert_mode",
-        crate::tr!("code", "code-exit-vim-insert-mode"),
+        crate::tr!("code", "exit-vim-insert-mode"),
         CodeEditorViewAction::VimEscape,
     )
     .with_context_predicate(text_entry.clone() & id!("Vim"))
@@ -596,7 +596,7 @@ pub fn init(app: &mut AppContext) {
     // Editable Find Bar keybindings
     app.register_editable_bindings([EditableBinding::new(
         "code_editor:find",
-        crate::tr!("code", "code-find-in-code-editor"),
+        crate::tr!("code", "find-in-code-editor"),
         CodeEditorViewAction::ShowFindBar,
     )
     .with_key_binding(cmd_or_ctrl_shift("f"))
@@ -607,7 +607,7 @@ pub fn init(app: &mut AppContext) {
     // Editable Go to Line keybinding
     app.register_editable_bindings([EditableBinding::new(
         "editor_view:go_to_line",
-        crate::tr!("code", "code-go-to-line"),
+        crate::tr!("code", "go-to-line"),
         CodeEditorViewAction::ShowGoToLine,
     )
     .with_key_binding("ctrl-g") // Matches VSCode; editor-scoped via text_entry predicate

@@ -625,7 +625,7 @@ impl ImportedCommentElementState {
                 ActionButton::new("", NakedTheme)
                     .with_icon(Icon::Github)
                     .with_size(ButtonSize::Small)
-                    .with_tooltip(crate::tr!("ai_assistant", "ai-assistant-ai-open-in-github-tooltip"))
+                    .with_tooltip(crate::tr!("ai_assistant", "ai-open-in-github-tooltip"))
                     .on_click({
                         let url = url.clone();
                         move |ctx| {
@@ -639,7 +639,7 @@ impl ImportedCommentElementState {
 
         let action_id_for_open_button = action_id.clone();
         let open_in_code_review_button = ctx.add_typed_action_view(move |_| {
-            ActionButton::new(crate::tr!("ai_assistant", "ai-assistant-ai-open-in-code-review"), SecondaryTheme)
+            ActionButton::new(crate::tr!("ai_assistant", "ai-open-in-code-review"), SecondaryTheme)
                 .with_size(ButtonSize::Small)
                 .on_click(move |ctx| {
                     ctx.dispatch_typed_action(AIBlockAction::OpenImportedCommentInCodeReview {
@@ -1308,7 +1308,7 @@ impl AIBlock {
         });
 
         let manage_rules_button = ctx.add_typed_action_view(|_| {
-            ActionButton::new(crate::tr!("ai_assistant", "ai-assistant-ai-manage-rules"), NakedTheme)
+            ActionButton::new(crate::tr!("ai_assistant", "ai-manage-rules"), NakedTheme)
                 .on_click(|ctx| ctx.dispatch_typed_action(AIBlockAction::OpenAIFactCollection))
         });
 
@@ -1414,7 +1414,7 @@ impl AIBlock {
         });
 
         let review_changes_button = ctx.add_typed_action_view(|_| {
-            ActionButton::new(crate::tr!("ai_assistant", "ai-assistant-ai-review-changes"), SecondaryTheme)
+            ActionButton::new(crate::tr!("ai_assistant", "ai-review-changes"), SecondaryTheme)
                 .with_icon(Icon::Diff)
                 .with_size(ButtonSize::Small)
                 .on_click(|ctx| {
@@ -1423,7 +1423,7 @@ impl AIBlock {
         });
 
         let open_all_comments_button = ctx.add_typed_action_view(|_| {
-            ActionButton::new(crate::tr!("ai_assistant", "ai-assistant-ai-open-all-in-code-review"), SecondaryTheme)
+            ActionButton::new(crate::tr!("ai_assistant", "ai-open-all-in-code-review"), SecondaryTheme)
                 .with_size(ButtonSize::Small)
                 .on_click(|ctx| {
                     ctx.dispatch_typed_action(AIBlockAction::OpenAllImportedCommentsInCodeReview);
@@ -1440,7 +1440,7 @@ impl AIBlock {
         });
 
         let disable_rule_suggestions_button = ctx.add_typed_action_view(|_| {
-            ActionButton::new(crate::tr!("ai_assistant", "ai-assistant-ai-dont-show-again"), SuggestionDismissButtonTheme)
+            ActionButton::new(crate::tr!("ai_assistant", "ai-dont-show-again"), SuggestionDismissButtonTheme)
                 .with_size(ButtonSize::Small)
                 .on_click(|ctx| {
                     ctx.dispatch_typed_action(AIBlockAction::DisableRuleSuggestions);
@@ -1453,7 +1453,7 @@ impl AIBlock {
         let rewind_button = ctx.add_typed_action_view(|_| {
             ActionButton::new("Rewind", RewindButtonTheme)
                 .with_size(ButtonSize::XSmall)
-                .with_tooltip(crate::tr!("ai_assistant", "ai-assistant-ai-rewind-tooltip"))
+                .with_tooltip(crate::tr!("ai_assistant", "ai-rewind-tooltip"))
                 .on_click(move |ctx| {
                     ctx.dispatch_typed_action(TerminalAction::RewindAIConversation {
                         ai_block_view_id,
@@ -2197,7 +2197,7 @@ impl AIBlock {
                     action: AIAgentActionType::SuggestNewConversation { .. },
                     ..
                 } => {
-                    let start_new_conversation_button_text = crate::tr!("ai_assistant", "ai-assistant-ai-start-a-new-conversation").to_owned();
+                    let start_new_conversation_button_text = crate::tr!("ai_assistant", "ai-start-a-new-conversation").to_owned();
                     let continue_current_conversation_button_text =
                         "Continue current conversation".to_owned();
 
@@ -6635,7 +6635,7 @@ impl TypedActionView for AIBlock {
                 let window_id = ctx.window_id();
                 ToastStack::handle(ctx).update(ctx, |toast_stack, ctx| {
                     toast_stack.add_ephemeral_toast(
-                        DismissibleToast::success(String::from(crate::tr!("ai_assistant", "ai-assistant-ai-copied-to-clipboard"))),
+                        DismissibleToast::success(String::from(crate::tr!("ai_assistant", "ai-copied-to-clipboard"))),
                         window_id,
                         ctx,
                     );

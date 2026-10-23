@@ -230,7 +230,7 @@ pub fn maybe_log_out(app: &mut AppContext) {
         }));
 
         let alert_data = AlertDialogWithCallbacks::for_app(
-            crate::tr!("auth", "auth-logout-question"),
+            crate::tr!("auth", "logout-question"),
             info_text_vec.join("\n"),
             button_data,
             move |ctx| {

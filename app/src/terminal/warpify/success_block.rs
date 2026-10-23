@@ -189,7 +189,7 @@ impl WarpifySuccessBlock {
         appearance
             .ui_builder()
             .link(
-                crate::tr!("common", "common-learn-more-label").into(),
+                crate::tr!("common", "learn-more-label").into(),
                 None,
                 Some(Box::new({
                     move |ctx| {

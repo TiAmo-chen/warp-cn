@@ -671,7 +671,7 @@ impl InputSuggestions {
         ctx: &mut ViewContext<Self>,
     ) {
         ctx.emit_a11y_content(AccessibilityContent::new_without_help(
-            crate::tr!("input_suggestions", "input-suggestions-closed"),
+            crate::tr!("input_suggestions", "closed"),
             WarpA11yRole::UserAction,
         ));
         ctx.emit(Event::CloseSuggestion {
@@ -727,7 +727,7 @@ impl InputSuggestions {
                     Align::new(
                         Container::new(
                             Text::new_inline(
-                                String::from(crate::tr!("input_suggestions", "input-suggestions-no-suggestions")),
+                                String::from(crate::tr!("input_suggestions", "no-suggestions")),
                                 appearance.monospace_font_family(),
                                 appearance.monospace_font_size(),
                             )
@@ -911,7 +911,7 @@ impl InputSuggestions {
 
                                             let tooltip_element = appearance
                                                 .ui_builder()
-                                                .tool_tip(crate::tr!("editor", "editor-ignore-suggestion").to_string())
+                                                .tool_tip(crate::tr!("editor", "ignore-suggestion").to_string())
                                                 .build()
                                                 .finish();
 
@@ -1110,7 +1110,7 @@ impl View for InputSuggestions {
 
     fn accessibility_contents(&self, _: &AppContext) -> Option<AccessibilityContent> {
         Some(AccessibilityContent::new(
-            crate::tr!("input_suggestions", "input-suggestions-command-suggestions"),
+            crate::tr!("input_suggestions", "command-suggestions"),
             // TODO use bindings from user settings
             "Navigate with tab and shift-tab, and confirm with enter. Execute selected command \
                 with command + enter. Esc leaves the suggestions menu.",

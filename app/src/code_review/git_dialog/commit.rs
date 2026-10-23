@@ -85,9 +85,9 @@ pub(super) fn new_state(
     // whether or not the branch already has an upstream — but the label
     // and icon flip to communicate the user-visible difference.
     let (push_label, push_icon) = if has_upstream {
-        (crate::tr!("code_editor", "code-editor-code-review-commit-and-push"), Icon::ArrowUp)
+        (crate::tr!("code_editor", "code-review-commit-and-push"), Icon::ArrowUp)
     } else {
-        (crate::tr!("code_editor", "code-editor-code-review-commit-and-publish"), Icon::UploadCloud)
+        (crate::tr!("code_editor", "code-review-commit-and-publish"), Icon::UploadCloud)
     };
     // If AI autogen is on, the dialog opens with "Generating\u{2026}" and a
     // background request fills the editor when it resolves. Otherwise, we
@@ -124,7 +124,7 @@ pub(super) fn new_state(
     });
 
     let commit_button = ctx.add_typed_action_view(|_ctx| {
-        ActionButton::new(crate::tr!("code_editor", "code-editor-code-review-commit"), SecondaryTheme)
+        ActionButton::new(crate::tr!("code_editor", "code-review-commit"), SecondaryTheme)
             .with_size(ButtonSize::XSmall)
             .with_height(32.)
             .with_icon(Icon::GitCommit)
@@ -148,7 +148,7 @@ pub(super) fn new_state(
 
     let commit_and_create_pr_button = if allow_create_pr {
         Some(ctx.add_typed_action_view(|_ctx| {
-            ActionButton::new(crate::tr!("code_editor", "code-editor-code-review-commit-and-create-pr"), SecondaryTheme)
+            ActionButton::new(crate::tr!("code_editor", "code-review-commit-and-create-pr"), SecondaryTheme)
                 .with_size(ButtonSize::XSmall)
                 .with_height(32.)
                 .with_icon(Icon::Github)
@@ -418,9 +418,9 @@ pub(super) fn finish_commit_chain(
         Ok(Some(pr)) => show_pr_created_toast(pr, ctx),
         Ok(None) => {
             let msg = if matches!(intent, CommitChainMode::CommitOnly) {
-                crate::tr!("code_editor", "code-editor-code-review-changes-successfully-committed")
+                crate::tr!("code_editor", "code-review-changes-successfully-committed")
             } else {
-                crate::tr!("code_editor", "code-editor-code-review-changes-committed-and-pushed")
+                crate::tr!("code_editor", "code-review-changes-committed-and-pushed")
             };
             show_toast(msg, ctx);
         }
@@ -543,7 +543,7 @@ fn render_changes_section(state: &CommitState, appearance: &Appearance) -> Box<d
     let sub_color = theme.sub_text_color(theme.surface_1()).into_solid();
 
     let changes_label = Text::new(
-        crate::tr!("code_editor", "code-editor-code-review-changes"),
+        crate::tr!("code_editor", "code-review-changes"),
         appearance.ui_font_family(),
         appearance.ui_font_size(),
     )
@@ -551,7 +551,7 @@ fn render_changes_section(state: &CommitState, appearance: &Appearance) -> Box<d
     .finish();
 
     let include_label = Text::new(
-        crate::tr!("code_editor", "code-editor-code-review-include-unstaged"),
+        crate::tr!("code_editor", "code-review-include-unstaged"),
         appearance.ui_font_family(),
         appearance.ui_font_size(),
     )
@@ -605,7 +605,7 @@ fn render_message_editor(
     app: &AppContext,
 ) -> Box<dyn Element> {
     let label = Text::new(
-        crate::tr!("code_editor", "code-editor-code-review-commit-message"),
+        crate::tr!("code_editor", "code-review-commit-message"),
         appearance.ui_font_family(),
         appearance.ui_font_size(),
     )

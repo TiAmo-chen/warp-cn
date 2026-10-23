@@ -84,7 +84,7 @@ static TAB_CONFIGS: LazyLock<Vec<InlineMenuTabConfig<InlineModelSelectorTab>>> =
         if FeatureFlag::InlineMenuHeaders.is_enabled() {
             configs.push(InlineMenuTabConfig {
                 id: InlineModelSelectorTab::FullTerminalUse,
-                label: crate::tr!("terminal", "terminal-full-terminal-use").to_string(),
+                label: crate::tr!("terminal", "full-terminal-use").to_string(),
                 filters: HashSet::from([QueryFilter::FullTerminalUseModels]),
             });
         }

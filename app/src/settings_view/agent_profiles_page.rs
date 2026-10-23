@@ -251,7 +251,7 @@ impl AgentProfilesPageView {
                 let expanded = host_native_absolute_path(s, &None, &None);
                 Path::new(&expanded).is_dir()
             });
-            input.set_placeholder_text(crate::tr!("ai_assistant", "ai-assistant-ai-profile-eg-repo"), ctx);
+            input.set_placeholder_text(crate::tr!("ai_assistant", "ai-profile-eg-repo"), ctx);
             input
         });
         update_editor_interaction_state(
@@ -757,7 +757,7 @@ impl AgentProfilesPageView {
                 let expanded = host_native_absolute_path(s, &None, &None);
                 Path::new(&expanded).is_dir()
             });
-            input.set_placeholder_text(crate::tr!("ai_assistant", "ai-assistant-ai-profile-eg-repo"), ctx);
+            input.set_placeholder_text(crate::tr!("ai_assistant", "ai-profile-eg-repo"), ctx);
             input
         });
 
@@ -1350,7 +1350,7 @@ impl AgentProfilesPageView {
                             AgentModeCodingPermissionsType::AlwaysAskBeforeReading => "Always ask",
                             AgentModeCodingPermissionsType::AlwaysAllowReading => "Always allow",
                             AgentModeCodingPermissionsType::AllowReadingSpecificFiles => {
-                                &crate::tr!("settings", "settings-ai-allow-specific-dirs")
+                                &crate::tr!("settings", "ai-allow-specific-dirs")
                             }
                         };
                         DropdownItem::new(display, AgentProfilesPageAction::SetCodingPermission(t))
@@ -2818,7 +2818,7 @@ impl AgentsWidget {
         );
         render_ai_list(
             &crate::tr!("settings", "command-denylist"),
-            &crate::tr!("settings", "settings-regular-expressions-to-match-commands-that-the-warp-agent-should-always-ask-permission-to-execute"),
+            &crate::tr!("settings", "regular-expressions-to-match-commands-that-the-warp-agent-should-always-ask-permission-to-execute"),
             list,
             view,
             ai_settings,
@@ -2856,7 +2856,7 @@ impl AgentsWidget {
 
         render_ai_list(
             &crate::tr!("settings", "command-allowlist"),
-            &crate::tr!("settings", "settings-regular-expressions-to-match-commands-that-can-be-automatically-executed-by-the-warp-agent"),
+            &crate::tr!("settings", "regular-expressions-to-match-commands-that-can-be-automatically-executed-by-the-warp-agent"),
             list,
             view,
             ai_settings,
@@ -2895,7 +2895,7 @@ impl AgentsWidget {
 
         render_ai_list(
             &crate::tr!("settings", "directory-allowlist"),
-            &crate::tr!("ai_assistant", "ai-assistant-ai-directory-allowlist-desc"),
+            &crate::tr!("ai_assistant", "ai-directory-allowlist-desc"),
             list,
             view,
             ai_settings,
@@ -3071,7 +3071,7 @@ impl AgentsWidget {
                 ),
                 FormattedTextFragment::plain_text(" or "),
                 FormattedTextFragment::hyperlink(
-                    crate::tr!("settings", "settings-ai-learn-more-mcps"),
+                    crate::tr!("settings", "ai-learn-more-mcps"),
                     "https://docs.warp.dev/agents/capabilities/mcp",
                 ),
             ];
@@ -3145,7 +3145,7 @@ impl AgentsWidget {
         {
             let allowlist = self.render_mcp_list(
                 &crate::tr!("settings", "mcp-allowlist"),
-                &crate::tr!("settings", "settings-allow-the-warp-agent-to-call-these-mcp-servers"),
+                &crate::tr!("settings", "allow-the-warp-agent-to-call-these-mcp-servers"),
                 &view.mcp_allowlist_dropdown,
                 BlocklistAIPermissions::as_ref(app).get_mcp_allowlist(app, None),
                 view.mcp_allowlist_mouse_state_handles.clone(),
@@ -3162,7 +3162,7 @@ impl AgentsWidget {
         {
             let denylist = self.render_mcp_list(
                 &crate::tr!("settings", "mcp-denylist"),
-                &crate::tr!("settings", "settings-the-warp-agent-will-always-ask-for-permission-before-calling-any-mcp-servers-on-this-list"),
+                &crate::tr!("settings", "the-warp-agent-will-always-ask-for-permission-before-calling-any-mcp-servers-on-this-list"),
                 &view.mcp_denylist_dropdown,
                 BlocklistAIPermissions::as_ref(app).get_mcp_denylist(app, None),
                 view.mcp_denylist_mouse_state_handles.clone(),

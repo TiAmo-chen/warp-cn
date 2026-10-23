@@ -78,7 +78,7 @@ pub fn render_aws_cli_not_installed_banner(
         InlineBannerStyle::Recommendation,
         appearance,
         InlineBannerContent {
-            title: crate::tr!("terminal", "terminal-aws-cli-not-installed-title").to_string(),
+            title: crate::tr!("terminal", "aws-cli-not-installed-title").to_string(),
             content: Some(vec![description_text]),
             buttons,
             close_button: Some(close_button),

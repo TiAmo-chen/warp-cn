@@ -119,17 +119,17 @@ pub fn get_additional_keybindings() -> Vec<CommandBinding> {
     vec![
         CommandBinding::new(
             "workspace:hide_warp".into(),
-            crate::tr!("menus", "menus-app-hide").into(),
+            crate::tr!("menus", "app-hide").into(),
             Some(Keystroke::parse("cmd-h").expect("Valid keystroke")),
         ),
         CommandBinding::new(
             "workspace:hide_others".into(),
-            crate::tr!("menus", "menus-app-hide-others").into(),
+            crate::tr!("menus", "app-hide-others").into(),
             Some(Keystroke::parse("alt-cmd-h").expect("Valid keystroke")),
         ),
         CommandBinding::new(
             "workspace:quit_warp".into(),
-            crate::tr!("menus", "menus-app-quit").into(),
+            crate::tr!("menus", "app-quit").into(),
             Some(Keystroke::parse("cmd-q").expect("Valid keystroke")),
         ),
         CommandBinding::new(

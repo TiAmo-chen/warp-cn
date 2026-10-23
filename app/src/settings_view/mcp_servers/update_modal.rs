@@ -391,7 +391,7 @@ impl View for UpdateModalBody {
         // Add update options
         if self.update_options.is_empty() {
             let no_updates_text = Text::new(
-                crate::tr!("autoupdate", "autoupdate-no-updates"),
+                crate::tr!("autoupdate", "no-updates"),
                 appearance.ui_font_family(),
                 appearance.ui_font_size(),
             )

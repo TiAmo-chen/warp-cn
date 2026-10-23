@@ -307,7 +307,7 @@ pub(super) fn solarized_light() -> WarpTheme {
         Some(Details::Lighter),
         solarized_light_colors(),
         None,
-        Some(crate::tr!("appearance", "appearance-theme-solarized-light").to_string()),
+        Some(crate::tr!("appearance", "theme-solarized-light").to_string()),
     )
 }
 
@@ -320,7 +320,7 @@ pub(super) fn solarized_dark() -> WarpTheme {
         Some(Details::Darker),
         solarized_dark_colors(),
         None,
-        Some(crate::tr!("appearance", "appearance-theme-solarized-dark").to_string()),
+        Some(crate::tr!("appearance", "theme-solarized-dark").to_string()),
     )
 }
 
@@ -333,7 +333,7 @@ pub(super) fn gruvbox_dark() -> WarpTheme {
         Some(Details::Darker),
         gruvbox_dark_colors(),
         None,
-        Some(crate::tr!("appearance", "appearance-theme-gruvbox-dark").to_string()),
+        Some(crate::tr!("appearance", "theme-gruvbox-dark").to_string()),
     )
 }
 
@@ -346,7 +346,7 @@ pub(super) fn gruvbox_light() -> WarpTheme {
         Some(Details::Lighter),
         gruvbox_light_colors(),
         None,
-        Some(crate::tr!("appearance", "appearance-theme-gruvbox-light").to_string()),
+        Some(crate::tr!("appearance", "theme-gruvbox-light").to_string()),
     )
 }
 
@@ -366,7 +366,7 @@ pub(super) fn cyber_wave() -> WarpTheme {
         Some(Details::Darker),
         dark_mode_colors(),
         None,
-        Some(crate::tr!("appearance", "appearance-theme-cyber-wave").to_string()),
+        Some(crate::tr!("appearance", "theme-cyber-wave").to_string()),
     )
 }
 
@@ -385,7 +385,7 @@ pub(super) fn willow_dream() -> WarpTheme {
         Some(Details::Darker),
         dark_mode_colors(),
         None,
-        Some(crate::tr!("appearance", "appearance-theme-willow-dream").to_string()),
+        Some(crate::tr!("appearance", "theme-willow-dream").to_string()),
     )
 }
 
@@ -404,7 +404,7 @@ pub(super) fn fancy_dracula() -> WarpTheme {
         Some(Details::Darker),
         dracula_colors(),
         None,
-        Some(crate::tr!("appearance", "appearance-theme-fancy-dracula").to_string()),
+        Some(crate::tr!("appearance", "theme-fancy-dracula").to_string()),
     )
 }
 
@@ -504,7 +504,7 @@ pub(super) fn pink_city() -> WarpTheme {
             source: bundled_or_fetched_asset!("jpg/pink_city_bg.jpg"),
             opacity: 40,
         }),
-        Some(crate::tr!("appearance", "appearance-theme-pink-city").to_string()),
+        Some(crate::tr!("appearance", "theme-pink-city").to_string()),
     )
 }
 
@@ -544,7 +544,7 @@ pub(super) fn red_rock() -> WarpTheme {
             source: bundled_or_fetched_asset!("jpg/red_rock_bg.jpg"),
             opacity: 30,
         }),
-        Some(crate::tr!("appearance", "appearance-theme-red-rock").to_string()),
+        Some(crate::tr!("appearance", "theme-red-rock").to_string()),
     )
 }
 
@@ -565,7 +565,7 @@ pub(super) fn dark_city() -> WarpTheme {
             source: bundled_or_fetched_asset!("jpg/dark_city_bg.jpg"),
             opacity: 20,
         }),
-        Some(crate::tr!("appearance", "appearance-theme-dark-city").to_string()),
+        Some(crate::tr!("appearance", "theme-dark-city").to_string()),
     )
 }
 
@@ -581,7 +581,7 @@ pub(super) fn sent_referral_reward() -> WarpTheme {
             source: bundled_or_fetched_asset!("jpg/sent_referral_reward_bg.jpg"),
             opacity: 100,
         }),
-        Some(crate::tr!("appearance", "appearance-theme-warp-referral").to_string()),
+        Some(crate::tr!("appearance", "theme-warp-referral").to_string()),
     )
 }
 
@@ -597,7 +597,7 @@ pub(super) fn solar_flare() -> WarpTheme {
             source: bundled_or_fetched_asset!("jpg/solarflare_bg.jpg"),
             opacity: 20,
         }),
-        Some(crate::tr!("appearance", "appearance-theme-solar-flare").to_string()),
+        Some(crate::tr!("appearance", "theme-solar-flare").to_string()),
     )
 }
 
@@ -626,6 +626,6 @@ pub(super) fn received_referral_reward() -> WarpTheme {
             source: bundled_or_fetched_asset!("jpg/received_referral_reward_bg.jpg"),
             opacity: 100,
         }),
-        Some(crate::tr!("appearance", "appearance-theme-received-referral-reward").to_string()),
+        Some(crate::tr!("appearance", "theme-received-referral-reward").to_string()),
     )
 }

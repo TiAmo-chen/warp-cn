@@ -3442,9 +3442,9 @@ impl Element for BlockListElement {
                     // we want to show different text in the separator if this is an individual conversation
                     // restored from the command palette
                     let banner_intro_text = if is_historical_conversation_restoration {
-                        crate::tr!("terminal", "terminal-conversation-restored").to_string()
+                        crate::tr!("terminal", "conversation-restored").to_string()
                     } else {
-                        crate::tr!("terminal", "terminal-previous-session").to_string()
+                        crate::tr!("terminal", "previous-session").to_string()
                     };
 
                     let separator_text =

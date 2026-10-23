@@ -141,7 +141,7 @@ fn collect_buttons(
             } => {
                 // Only show plan button if synced to Warp Drive (has notebook_uid)
                 if let Some(notebook_uid) = notebook_uid {
-                    let button_text = title.clone().unwrap_or(crate::tr!("ai_assistant", "ai-assistant-ai-untitled-plan").to_string());
+                    let button_text = title.clone().unwrap_or(crate::tr!("ai_assistant", "ai-untitled-plan").to_string());
                     let theme = theme.clone();
                     buttons.push(ctx.add_typed_action_view(move |_| {
                         make_plan_button(button_text, *notebook_uid, theme)
@@ -213,7 +213,7 @@ fn make_plan_button(
     make_artifact_button(
         title,
         Icon::Compass,
-        &crate::tr!("ai_assistant", "ai-assistant-ai-open-plan"),
+        &crate::tr!("ai_assistant", "ai-open-plan"),
         None,
         ArtifactButtonAction::OpenPlan { notebook_uid },
         theme,
@@ -224,7 +224,7 @@ fn make_branch_button(branch: String, theme: Arc<dyn ActionButtonTheme>) -> Acti
     make_artifact_button(
         branch.clone(),
         Icon::GitBranch,
-        &crate::tr!("ai_assistant", "ai-assistant-ai-copy-branch-name"),
+        &crate::tr!("ai_assistant", "ai-copy-branch-name"),
         Some(AnsiColorIdentifier::Green),
         ArtifactButtonAction::CopyBranch { branch },
         theme,
@@ -246,7 +246,7 @@ fn make_pr_button(
     make_artifact_button(
         display_text,
         Icon::Github,
-        &crate::tr!("ai_assistant", "ai-assistant-ai-open-pull-request"),
+        &crate::tr!("ai_assistant", "ai-open-pull-request"),
         None,
         ArtifactButtonAction::OpenPullRequest { url },
         theme,
@@ -261,7 +261,7 @@ fn make_screenshot_button(
     make_artifact_button(
         label,
         Icon::Image,
-        &crate::tr!("ai_assistant", "ai-assistant-ai-view-screenshots"),
+        &crate::tr!("ai_assistant", "ai-view-screenshots"),
         None,
         ArtifactButtonAction::ViewScreenshots { artifact_uids },
         theme,
@@ -276,7 +276,7 @@ fn make_file_button(
     make_artifact_button(
         label,
         Icon::File,
-        &crate::tr!("ai_assistant", "ai-assistant-ai-download-file"),
+        &crate::tr!("ai_assistant", "ai-download-file"),
         None,
         ArtifactButtonAction::DownloadFile { artifact_uid },
         theme,

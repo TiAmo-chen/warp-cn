@@ -693,7 +693,7 @@ impl BillingAndUsagePageV2View {
             .with_main_axis_size(MainAxisSize::Max);
 
         plan_header.add_child(
-            Text::new_inline(crate::tr!("ai_assistant", "ai-assistant-ai-filter-plan"), appearance.ui_font_family(), HEADER_FONT_SIZE)
+            Text::new_inline(crate::tr!("ai_assistant", "ai-filter-plan"), appearance.ui_font_family(), HEADER_FONT_SIZE)
                 .with_style(Properties::default().weight(Weight::Bold))
                 .with_color(appearance.theme().active_ui_text_color().into())
                 .finish(),
@@ -1415,12 +1415,12 @@ impl BillingAndUsagePageV2View {
             UsageDisplayUnit::Credits => (
                 " to purchase add-on credits.",
                 crate::tr!("settings", "contact-your-account-executive-for-more-add-on-credits."),
-                crate::tr!("settings", "settings-contact-a-team-admin-to-enable-add-on-credits"),
+                crate::tr!("settings", "contact-a-team-admin-to-enable-add-on-credits"),
             ),
             UsageDisplayUnit::Dollars => (
                 " to purchase usage.",
                 crate::tr!("settings", "contact-your-account-executive-for-more-usage."),
-                crate::tr!("settings", "settings-contact-a-team-admin-to-enable-usage-purchases"),
+                crate::tr!("settings", "contact-a-team-admin-to-enable-usage-purchases"),
             ),
         };
         let explanation = match restriction {
@@ -1598,10 +1598,10 @@ impl BillingAndUsagePageV2View {
                     tooltip_override_text: Some(
                         match unit {
                             UsageDisplayUnit::Credits => {
-                                crate::tr!("settings", "settings-sets-the-monthly-limit-spent-on-add-on-credits")
+                                crate::tr!("settings", "sets-the-monthly-limit-spent-on-add-on-credits")
                             }
                             UsageDisplayUnit::Dollars => {
-                                crate::tr!("settings", "settings-sets-the-monthly-limit-spent-on-purchased-usage")
+                                crate::tr!("settings", "sets-the-monthly-limit-spent-on-purchased-usage")
                             }
                         }
                         .to_string(),

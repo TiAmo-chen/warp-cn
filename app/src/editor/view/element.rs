@@ -1506,7 +1506,7 @@ impl EditorElement {
                 .with_margin_right(self.view_snapshot.em_width)
                 .finish(),
                 Text::new(
-                    crate::tr!("code", "code-cycle-suggestions"),
+                    crate::tr!("code", "cycle-suggestions"),
                     self.view_snapshot.font_family,
                     font_size,
                 )

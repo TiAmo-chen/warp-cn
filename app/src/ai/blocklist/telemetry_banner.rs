@@ -130,7 +130,7 @@ impl View for TelemetryBanner {
                             ButtonVariant::Outlined,
                             self.privacy_settings_mouse_state.clone(),
                         )
-                        .with_text_label(crate::tr!("ai_assistant", "ai-assistant-ai-manage-privacy-settings").into())
+                        .with_text_label(crate::tr!("ai_assistant", "ai-manage-privacy-settings").into())
                         .with_style(UiComponentStyles {
                             ..Default::default()
                         })

@@ -655,7 +655,7 @@ impl GlobalSearchView {
             };
 
             let mut editor = EditorView::new(options, ctx);
-            editor.set_placeholder_text(crate::tr!("workspace", "workspace-search-in-files"), ctx);
+            editor.set_placeholder_text(crate::tr!("workspace", "search-in-files"), ctx);
             editor
         });
 
@@ -669,7 +669,7 @@ impl GlobalSearchView {
         let case_sensitivity_button = ctx.add_typed_action_view(|_ctx| {
             ActionButton::new_with_boxed_theme(String::new(), Arc::new(NakedTheme))
                 .with_icon(UiIcon::CaseSensitivity)
-                .with_tooltip(crate::tr!("workspace", "workspace-toggle-case-sensitivity"))
+                .with_tooltip(crate::tr!("workspace", "toggle-case-sensitivity"))
                 .with_size(ButtonSize::Small)
                 .on_click(|ctx| {
                     ctx.dispatch_typed_action(GlobalSearchAction::ToggleCaseSensitivity);
@@ -2146,7 +2146,7 @@ impl View for GlobalSearchView {
         } else if self.is_search_in_progress && self.total_match_count == 0 {
             "Searching…".to_string()
         } else if !self.is_search_in_progress && self.total_match_count == 0 {
-            crate::tr!("workspace", "workspace-global-search-no-results").to_string()
+            crate::tr!("workspace", "global-search-no-results").to_string()
         } else {
             match self.total_match_count {
                 1 => format!("1 result in {files} {file_word}"),
@@ -2172,7 +2172,7 @@ impl View for GlobalSearchView {
             font_color: Some(blended_colors::text_sub(theme, theme.background())),
             ..Default::default()
         };
-        let capped_message = crate::tr!("workspace", "workspace-global-search-capped-results").to_string();
+        let capped_message = crate::tr!("workspace", "global-search-capped-results").to_string();
         let capped_text = Span::new(capped_message, capped_text_styles)
             .with_soft_wrap()
             .build()
@@ -2323,8 +2323,8 @@ impl GlobalSearchView {
     fn render_pre_search_state(&self, app: &AppContext) -> Box<dyn Element> {
         self.render_zero_state(
             Icon::Search,
-            crate::tr!("settings", "settings-global-search"),
-            crate::tr!("workspace", "workspace-search-in-files-desc"),
+            crate::tr!("settings", "global-search"),
+            crate::tr!("workspace", "search-in-files-desc"),
             app,
         )
     }
@@ -2332,8 +2332,8 @@ impl GlobalSearchView {
     fn render_unavailable_state(&self, app: &AppContext) -> Box<dyn Element> {
         self.render_zero_state(
             Icon::AlertTriangle,
-            crate::tr!("workspace", "workspace-global-search-unavailable"),
-            crate::tr!("workspace", "workspace-global-search-unavailable-desc"),
+            crate::tr!("workspace", "global-search-unavailable"),
+            crate::tr!("workspace", "global-search-unavailable-desc"),
             app,
         )
     }
@@ -2341,7 +2341,7 @@ impl GlobalSearchView {
     fn render_remote_state(&self, app: &AppContext) -> Box<dyn Element> {
         self.render_zero_state(
             Icon::AlertTriangle,
-            crate::tr!("workspace", "workspace-global-search-unavailable"),
+            crate::tr!("workspace", "global-search-unavailable"),
             "Global search isn't available for this remote session.",
             app,
         )
@@ -2358,8 +2358,8 @@ impl GlobalSearchView {
     fn render_unsupported_session_state(&self, app: &AppContext) -> Box<dyn Element> {
         self.render_zero_state(
             Icon::AlertTriangle,
-            crate::tr!("workspace", "workspace-global-search-unavailable"),
-            crate::tr!("workspace", "workspace-global-search-unsupported-desc"),
+            crate::tr!("workspace", "global-search-unavailable"),
+            crate::tr!("workspace", "global-search-unsupported-desc"),
             app,
         )
     }

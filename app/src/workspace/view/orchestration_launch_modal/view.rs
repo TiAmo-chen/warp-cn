@@ -184,7 +184,7 @@ impl OrchestrationLaunchModal {
         });
 
         let learn_more_button = ctx.add_view(|_ctx| {
-            ActionButton::new(crate::tr!("common", "common-learn-more-label"), LearnMoreButtonTheme)
+            ActionButton::new(crate::tr!("common", "learn-more-label"), LearnMoreButtonTheme)
                 .with_icon(Icon::LinkExternal)
                 .with_full_width(true)
                 .on_click(|ctx| {
@@ -269,7 +269,7 @@ impl OrchestrationLaunchModal {
 
     fn render_title(appearance: &Appearance) -> Box<dyn Element> {
         Text::new(
-            crate::tr!("workspace", "workspace-orchestrate-any-agent"),
+            crate::tr!("workspace", "orchestrate-any-agent"),
             appearance.ui_font_family(),
             20.,
         )
@@ -280,7 +280,7 @@ impl OrchestrationLaunchModal {
 
     fn render_description(appearance: &Appearance) -> Box<dyn Element> {
         Text::new(
-            crate::tr!("workspace", "workspace-orchestration-improvements"),
+            crate::tr!("workspace", "orchestration-improvements"),
             appearance.ui_font_family(),
             14.,
         )

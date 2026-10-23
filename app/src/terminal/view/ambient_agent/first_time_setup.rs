@@ -51,7 +51,7 @@ impl TrialCredits {
                 format_dollars(cents as f32)
             ),
             None if self.credits == 1 => {
-                crate::tr!("agent_cloud", "agent-cloud-credits-single").to_string()
+                crate::tr!("agent_cloud", "credits-single").to_string()
             }
             None => format!(
                 "You have {} free credits to use on Oz cloud agents.",
@@ -180,7 +180,7 @@ impl FirstTimeCloudAgentSetupView {
         // Title - 20px medium weight
         column.add_child(
             Text::new(
-                crate::tr!("agent_cloud", "agent-cloud-start-title"),
+                crate::tr!("agent_cloud", "start-title"),
                 appearance.ui_font_family(),
                 20.,
             )
@@ -194,7 +194,7 @@ impl FirstTimeCloudAgentSetupView {
             FormattedTextFragment::plain_text(
                 "Use Oz cloud agents to run parallel agents, build agents that run autonomously, and check in on your agents from anywhere. ",
             ),
-            FormattedTextFragment::hyperlink(crate::tr!("agent_cloud", "agent-cloud-visit-docs"), "https://docs.warp.dev/platform/"),
+            FormattedTextFragment::hyperlink(crate::tr!("agent_cloud", "visit-docs"), "https://docs.warp.dev/platform/"),
         ];
         column.add_child(
             FormattedTextElement::new(
@@ -221,7 +221,7 @@ impl FirstTimeCloudAgentSetupView {
 
         // Bold/semibold text in foreground color (per Figma: font-semibold text-[#e3e2df])
         Text::new(
-            crate::tr!("agent_cloud", "agent-cloud-subheading"),
+            crate::tr!("agent_cloud", "subheading"),
             appearance.ui_font_family(),
             appearance.ui_font_size(),
         )

@@ -174,7 +174,7 @@ impl SearchItem for RewindSearchItem {
             row.finish()
         } else {
             Text::new_inline(
-                crate::tr!("terminal", "terminal-no-code-restored").to_string(),
+                crate::tr!("terminal", "no-code-restored").to_string(),
                 appearance.ui_font_family(),
                 secondary_font_size,
             )

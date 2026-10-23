@@ -820,7 +820,7 @@ impl Input {
                     .as_ref(ctx)
                     .active_conversation(self.terminal_view_id)
                 else {
-                    show_error_toast(crate::tr!("slash_commands", "slash-commands-slash-command-no-conversation-export").to_owned(), ctx);
+                    show_error_toast(crate::tr!("slash_commands", "slash-command-no-conversation-export").to_owned(), ctx);
                     return true;
                 };
 

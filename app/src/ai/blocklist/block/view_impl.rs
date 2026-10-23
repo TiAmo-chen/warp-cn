@@ -660,7 +660,7 @@ pub fn render_citation(
         }
         AIAgentCitation::WarpDocumentation { .. } => {
             let icon = Icon::Warp.to_warpui_icon(theme.foreground()).finish();
-            let name = String::from(crate::tr!("ai_assistant", "ai-assistant-ai-warp-docs"));
+            let name = String::from(crate::tr!("ai_assistant", "ai-warp-docs"));
             (Some(icon), name)
         }
         AIAgentCitation::WebPage { url } => {
@@ -767,7 +767,7 @@ where
                         appearance
                             .ui_builder()
                             .link(
-                                crate::tr!("ai_assistant", "ai-assistant-ai-manage-autonomy-permissions").into(),
+                                crate::tr!("ai_assistant", "ai-manage-autonomy-permissions").into(),
                                 None,
                                 Some(Box::new(move |ctx| {
                                     ctx.dispatch_typed_action(
@@ -842,7 +842,7 @@ pub fn render_autonomy_checkbox_setting_speedbump_footer(
                     appearance
                         .ui_builder()
                         .link(
-                            crate::tr!("ai_assistant", "ai-assistant-ai-manage-autonomy-permissions").into(),
+                            crate::tr!("ai_assistant", "ai-manage-autonomy-permissions").into(),
                             None,
                             Some(Box::new(move |ctx| {
                                 ctx.dispatch_typed_action(

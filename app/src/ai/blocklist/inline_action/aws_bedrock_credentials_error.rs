@@ -58,7 +58,7 @@ impl AwsBedrockCredentialsErrorView {
     ) -> Self {
         // Run button
         let run_button = ctx.add_typed_action_view(|_ctx| {
-            ActionButton::new(crate::tr!("ai_assistant", "ai-assistant-ai-refresh-aws-credentials"), PrimaryTheme)
+            ActionButton::new(crate::tr!("ai_assistant", "ai-refresh-aws-credentials"), PrimaryTheme)
                 .with_size(ButtonSize::InlineActionHeader)
                 .on_click(|ctx| {
                     ctx.dispatch_typed_action(AwsBedrockCredentialsErrorAction::RunLoginCommand)
@@ -188,7 +188,7 @@ impl View for AwsBedrockCredentialsErrorView {
             .finish();
 
             let checkbox_label = Text::new(
-                crate::tr!("ai_assistant", "ai-assistant-ai-always-run-auto"),
+                crate::tr!("ai_assistant", "ai-always-run-auto"),
                 appearance.ui_font_family(),
                 appearance.monospace_font_size() - 1.,
             )

@@ -2154,14 +2154,14 @@ pub fn init(app: &mut AppContext) {
 
     app.register_editable_bindings([EditableBinding::new(
         "input:insert_network_logging_workflow",
-        crate::tr!("terminal", "terminal-show-warp-network-log"),
+        crate::tr!("terminal", "show-warp-network-log"),
         WorkspaceAction::OpenNetworkLogPane,
     )
     .with_enabled(|| ContextFlag::NetworkLogConsole.is_enabled())]);
 
     app.register_editable_bindings([EditableBinding::new(
         "input:clear_screen",
-        crate::tr!("terminal", "terminal-clear-screen"),
+        crate::tr!("terminal", "clear-screen"),
         InputAction::ClearScreen,
     )
     .with_context_predicate(id!("Input"))
@@ -2170,14 +2170,14 @@ pub fn init(app: &mut AppContext) {
     app.register_editable_bindings([
         EditableBinding::new(
             "terminal:scroll_up_one_page",
-            crate::tr!("terminal", "terminal-scroll-output-up-one-page"),
+            crate::tr!("terminal", "scroll-output-up-one-page"),
             InputAction::PageUp,
         )
         .with_context_predicate(id!("Input") & !id!("IMEOpen"))
         .with_key_binding("pageup"),
         EditableBinding::new(
             "terminal:scroll_down_one_page",
-            crate::tr!("terminal", "terminal-scroll-output-down-one-page"),
+            crate::tr!("terminal", "scroll-output-down-one-page"),
             InputAction::PageDown,
         )
         .with_context_predicate(id!("Input") & !id!("IMEOpen"))
@@ -2186,8 +2186,8 @@ pub fn init(app: &mut AppContext) {
 
     app.register_editable_bindings([EditableBinding::new(
         "workspace:edit_prompt",
-        BindingDescription::new(crate::tr!("terminal", "terminal-edit-prompt"))
-            .with_custom_description(bindings::MAC_MENUS_CONTEXT, crate::tr!("terminal", "terminal-edit-prompt")),
+        BindingDescription::new(crate::tr!("terminal", "edit-prompt"))
+            .with_custom_description(bindings::MAC_MENUS_CONTEXT, crate::tr!("terminal", "edit-prompt")),
         WorkspaceAction::OpenPromptEditor {
             open_source: PromptEditorOpenSource::CommandPalette,
         },
@@ -2216,7 +2216,7 @@ pub fn init(app: &mut AppContext) {
     app.register_editable_bindings([
         EditableBinding::new(
             "workspace:show_command_search",
-            crate::tr!("search", "search-command-search-title"),
+            crate::tr!("search", "command-search-title"),
             WorkspaceAction::ShowCommandSearch(Default::default()),
         )
         // Only show command search if none of the input-related panels are open, and if we aren't
@@ -2231,7 +2231,7 @@ pub fn init(app: &mut AppContext) {
         .with_custom_action(CustomAction::CommandSearch),
         EditableBinding::new(
             "input:search_command_history",
-            crate::tr!("common", "common-history-search"),
+            crate::tr!("common", "history-search"),
             WorkspaceAction::ShowCommandSearch(CommandSearchOptions {
                 filter: Some(QueryFilter::History),
                 init_content: Default::default(),
@@ -2241,7 +2241,7 @@ pub fn init(app: &mut AppContext) {
         .with_custom_action(CustomAction::HistorySearch),
         EditableBinding::new(
             OPEN_COMPLETIONS_KEYBINDING_NAME,
-            crate::tr!("settings", "settings-tab-completions"),
+            crate::tr!("settings", "tab-completions"),
             InputAction::MaybeOpenCompletionSuggestions,
         )
         .with_context_predicate(id!("Input"))
@@ -2290,7 +2290,7 @@ pub fn init(app: &mut AppContext) {
     app.register_editable_bindings([
         EditableBinding::new(
             "input:toggle_natural_language_command_search",
-            crate::tr!("terminal", "terminal-open-ai-command-suggestions"),
+            crate::tr!("terminal", "open-ai-command-suggestions"),
             InputAction::ShowAiCommandSearch,
         )
         .with_context_predicate(
@@ -2303,7 +2303,7 @@ pub fn init(app: &mut AppContext) {
         .with_custom_action(CustomAction::AISearch),
         EditableBinding::new(
             START_NEW_CONVERSATION_KEYBINDING_NAME,
-            crate::tr!("terminal", "terminal-new-agent-conversation"),
+            crate::tr!("terminal", "new-agent-conversation"),
             InputAction::StartNewAgentConversation {
                 origin: AgentViewEntryOrigin::Input {
                     was_prompt_autodetected: false,
@@ -2319,7 +2319,7 @@ pub fn init(app: &mut AppContext) {
         .with_linux_or_windows_key_binding("ctrl-alt-shift-N"),
         EditableBinding::new(
             "input:enable_auto_detection",
-            crate::tr!("terminal", "terminal-trigger-auto-detection"),
+            crate::tr!("terminal", "trigger-auto-detection"),
             InputAction::EnableAutoDetection,
         )
         .with_enabled(|| FeatureFlag::AgentMode.is_enabled())
@@ -2333,7 +2333,7 @@ pub fn init(app: &mut AppContext) {
         .with_key_binding("alt-shift-I"),
         EditableBinding::new(
             "input:clear_and_reset_ai_context_menu_query",
-            crate::tr!("terminal", "terminal-clear-and-reset-ai-context-menu-query"),
+            crate::tr!("terminal", "clear-and-reset-ai-context-menu-query"),
             InputAction::ClearAndResetAIContextMenuQuery,
         )
         .with_context_predicate(id!("Input") & id!("AIContextMenuOpen") & !id!("IMEOpen"))
@@ -5387,7 +5387,7 @@ impl Input {
                     }
                     _ => {
                         ctx.emit(Event::ShowToast {
-                            message: crate::tr!("ai_assistant", "ai-assistant-ai-couldnt-navigate").to_string(),
+                            message: crate::tr!("ai_assistant", "ai-couldnt-navigate").to_string(),
                             flavor: ToastFlavor::Error,
                         });
                     }
@@ -6362,7 +6362,7 @@ impl Input {
             let window_id = ctx.window_id();
             ToastStack::handle(ctx).update(ctx, |toast_stack, ctx| {
                 let toast =
-                    DismissibleToast::default(String::from(crate::tr!("slash_commands", "slash-commands-slash-command-no-conversation-export")));
+                    DismissibleToast::default(String::from(crate::tr!("slash_commands", "slash-command-no-conversation-export")));
                 toast_stack.add_ephemeral_toast(toast, window_id, ctx);
             });
             return;
@@ -16935,7 +16935,7 @@ impl TypedActionView for Input {
                     ToastStack::handle(ctx).update(ctx, |toast_stack, ctx| {
                         toast_stack.add_ephemeral_toast(
                             DismissibleToast::error(
-                                crate::tr!("search", "search-toast-cannot-start-conv").to_string()
+                                crate::tr!("search", "toast-cannot-start-conv").to_string()
                             ),
                             window_id,
                             ctx,

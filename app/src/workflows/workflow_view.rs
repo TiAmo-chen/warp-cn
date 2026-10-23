@@ -109,7 +109,7 @@ pub fn init(app: &mut AppContext) {
     use warpui::keymap::macros::id;
     app.register_editable_bindings([EditableBinding::new(
         "workflowview:save",
-        crate::tr!("drive", "drive-workflow-save"),
+        crate::tr!("drive", "workflow-save"),
         WorkflowAction::Save,
     )
     .with_context_predicate(id!("WorkflowView"))
@@ -1573,8 +1573,8 @@ impl WorkflowView {
 
     fn save_aliases(&mut self, ctx: &mut ViewContext<Self>) {
         if let Err(e) = self.alias_bar.update(ctx, |bar, ctx| bar.save(ctx)) {
-            report_error!(e.context(crate::tr!("workflows", "workflows-error-saving-aliases")));
-            self.display_error_toast(crate::tr!("workflows", "workflows-error-saving-aliases").to_string(), ctx);
+            report_error!(e.context(crate::tr!("workflows", "error-saving-aliases")));
+            self.display_error_toast(crate::tr!("workflows", "error-saving-aliases").to_string(), ctx);
         }
     }
 
@@ -1584,7 +1584,7 @@ impl WorkflowView {
         // Block saving if secrets are detected in the workflow when secret redaction is enabled.
         if self.workflow_contains_secrets(ctx) {
             self.display_error_toast(
-                crate::tr!("workflows", "workflows-cannot-save-secrets").to_string(),
+                crate::tr!("workflows", "cannot-save-secrets").to_string(),
                 ctx,
             );
             return;
@@ -1618,7 +1618,7 @@ impl WorkflowView {
                     id
                 } else {
                     report_error!("No client_id obtained for creating workflow");
-                    self.display_error_toast(String::from(crate::tr!("workflows", "workflows-could-not-create")), ctx);
+                    self.display_error_toast(String::from(crate::tr!("workflows", "could-not-create")), ctx);
                     return;
                 };
 
@@ -1729,9 +1729,9 @@ impl WorkflowView {
         crate::workspace::ToastStack::handle(ctx).update(ctx, |stack, ctx| {
             stack.add_ephemeral_toast(
                 DismissibleToast::success(if self.is_for_agent_mode {
-                    crate::tr!("workflows", "workflows-prompt-copied").to_string()
+                    crate::tr!("workflows", "prompt-copied").to_string()
                 } else {
-                    crate::tr!("workflows", "workflows-command-copied").to_string()
+                    crate::tr!("workflows", "command-copied").to_string()
                 }),
                 window_id,
                 ctx,
@@ -1954,7 +1954,7 @@ impl WorkflowView {
                 let ui_builder = appearance.ui_builder().clone();
                 edit_button = edit_button.with_tooltip(move || {
                     ui_builder
-                        .tool_tip(crate::tr!("notebooks", "notebooks-sign-in-to-edit").to_string())
+                        .tool_tip(crate::tr!("notebooks", "sign-in-to-edit").to_string())
                         .build()
                         .finish()
                 });
@@ -2446,7 +2446,7 @@ impl WorkflowView {
                     .finish();
 
                 let button_with_tool_tip = appearance.ui_builder().tool_tip_on_element(
-                    crate::tr!("drive", "drive-workflow-ai-tooltip").to_string(),
+                    crate::tr!("drive", "workflow-ai-tooltip").to_string(),
                     self.ui_state_handles.ai_assist_tool_tip.clone(),
                     rendered_button,
                     ParentAnchor::TopMiddle,
@@ -2650,7 +2650,7 @@ impl WorkflowView {
                                         pane.display_upgrade_error(Some(team.uid), current_user_id, ctx);
                                     } else {
                                         pane.display_error_toast(
-                                            crate::tr!("drive", "drive-workflow-out-of-credits-admin").to_string(),
+                                            crate::tr!("drive", "workflow-out-of-credits-admin").to_string(),
                                             ctx,
                                         );
                                     }
@@ -2713,7 +2713,7 @@ impl WorkflowView {
 
         crate::workspace::ToastStack::handle(ctx).update(ctx, |stack, ctx| {
             stack.add_ephemeral_toast(
-                DismissibleToast::error(crate::tr!("workflows", "workflows-out-of-credits").into())
+                DismissibleToast::error(crate::tr!("workflows", "out-of-credits").into())
                     .with_link(toast_link),
                 window_id,
                 ctx,
@@ -2812,9 +2812,9 @@ impl WorkflowView {
 
         let appearance = Appearance::as_ref(app);
         let text = if deleted {
-            crate::tr!("workflows", "workflows-no-longer-access")
+            crate::tr!("workflows", "no-longer-access")
         } else {
-            crate::tr!("workflows", "workflows-moved-to-trash")
+            crate::tr!("workflows", "moved-to-trash")
         };
 
         let mut stack = Stack::new();
@@ -2868,7 +2868,7 @@ impl WorkflowView {
                         )
                         .with_tooltip(move || {
                             ui_builder
-                                .tool_tip(crate::tr!("drive", "drive-restore-workflow-tooltip").to_string())
+                                .tool_tip(crate::tr!("drive", "restore-workflow-tooltip").to_string())
                                 .build()
                                 .finish()
                         })
@@ -3182,7 +3182,7 @@ impl BackingView for WorkflowView {
         // Add "Copy Link" to menu
         if let Some(link) = self.workflow_link(ctx) {
             menu_items.push(
-                MenuItemFields::new(crate::tr!("ai_assistant", "ai-assistant-ai-doc-copy-link"))
+                MenuItemFields::new(crate::tr!("ai_assistant", "ai-doc-copy-link"))
                     .with_on_select_action(WorkflowAction::CopyLink(link))
                     .with_icon(Icon::Link)
                     .into_item(),
@@ -3194,7 +3194,7 @@ impl BackingView for WorkflowView {
             && let Ok(url) = Url::parse(&link)
         {
             menu_items.push(
-                MenuItemFields::new(crate::tr!("drive", "drive-menu-open-desktop"))
+                MenuItemFields::new(crate::tr!("drive", "menu-open-desktop"))
                     .with_on_select_action(WorkflowAction::OpenLinkOnDesktop(url))
                     .with_icon(Icon::Laptop)
                     .into_item(),

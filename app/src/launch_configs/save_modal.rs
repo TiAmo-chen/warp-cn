@@ -525,7 +525,7 @@ impl LaunchConfigSaveModal {
                 appearance
                     .ui_builder()
                     .link(
-                        crate::tr!("launch_configs", "launch-configs-docs-link").to_string(),
+                        crate::tr!("launch_configs", "docs-link").to_string(),
                         Some(
                             "https://docs.warp.dev/terminal/sessions/launch-configurations"
                                 .to_string(),
@@ -560,7 +560,7 @@ impl LaunchConfigSaveModal {
                     appearance,
                     match failure_type {
                         FailureType::FileAlreadyExists => {
-                            crate::tr!("launch_configs", "launch-configs-duplicate-name").to_string()
+                            crate::tr!("launch_configs", "duplicate-name").to_string()
                         }
                         FailureType::Other => "An issue was encountered while saving.".to_string(),
                     },
@@ -654,7 +654,7 @@ impl View for LaunchConfigSaveModal {
 
     fn accessibility_contents(&self, _ctx: &AppContext) -> Option<AccessibilityContent> {
         Some(AccessibilityContent::new(
-            crate::tr!("launch_configs", "launch-configs-modal-title"),
+            crate::tr!("launch_configs", "modal-title"),
             "Type the name of the file to which you want to save your
             current configuration of windows, tabs, and panes. Use enter to save the
             launch configuration, esc to quit the save configuration modal.",

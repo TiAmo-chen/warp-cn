@@ -215,7 +215,7 @@ impl ConversationEndedTombstoneView {
         let continue_locally_button = match tombstone_cta {
             Some(TombstoneCta::ContinueLocally { conversation_id }) => {
                 Some(ctx.add_typed_action_view(move |_| {
-                    ActionButton::new(crate::tr!("common", "common-continue-locally"), PrimaryTheme)
+                    ActionButton::new(crate::tr!("common", "continue-locally"), PrimaryTheme)
                         .with_tooltip(crate::tr!("common", "continue-locally-tooltip"))
                         .on_click(move |ctx| {
                             ctx.dispatch_typed_action(
@@ -376,7 +376,7 @@ impl ConversationEndedTombstoneView {
             .display_data
             .title
             .clone()
-            .unwrap_or_else(|| crate::tr!("ai_assistant", "ai-assistant-ai-agent-task").to_string());
+            .unwrap_or_else(|| crate::tr!("ai_assistant", "ai-agent-task").to_string());
         Flex::row()
             .with_main_axis_size(MainAxisSize::Min)
             .with_cross_axis_alignment(CrossAxisAlignment::Center)

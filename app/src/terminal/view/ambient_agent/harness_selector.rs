@@ -310,7 +310,7 @@ fn build_menu_items(
             fields = fields
                 .with_disabled(true)
                 .with_override_text_color(disabled_text_color)
-                .with_tooltip(crate::tr!("agent_cloud", "agent-cloud-disabled-by-admin"));
+                .with_tooltip(crate::tr!("agent_cloud", "disabled-by-admin"));
         }
         items.push(MenuItem::Item(fields));
     }

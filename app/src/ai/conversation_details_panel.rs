@@ -573,7 +573,7 @@ impl ConversationDetailsData {
                 runner_id: None,
                 conversation_id: None,
             },
-            title: crate::tr!("ai_assistant", "ai-assistant-ai-cloud-agent-run").to_string(),
+            title: crate::tr!("ai_assistant", "ai-cloud-agent-run").to_string(),
             creator: None,
             executor: None,
             created_at: None,
@@ -690,12 +690,12 @@ pub struct ConversationDetailsPanel {
     resizable_state_handle: ResizableStateHandle,
     scroll_state: ClippedScrollStateHandle,
     action_buttons: ViewHandle<ConversationActionButtonsRow>,
-    /// Whether to show the crate::tr!("ai_assistant", "ai-assistant-ai-open-conversation") button (we don't want to show a navigate to
+    /// Whether to show the crate::tr!("ai_assistant", "ai-open-conversation") button (we don't want to show a navigate to
     /// conversation button in the transcript view, but do in the management details view).
     show_open_button: bool,
     #[cfg(not(target_family = "wasm"))]
     continue_locally_button: ViewHandle<ActionButton>,
-    /// Text button crate::tr!("ai_assistant", "ai-assistant-ai-view-in-oz") shown next to crate::tr!("common", "continue-locally").
+    /// Text button crate::tr!("ai_assistant", "ai-view-in-oz") shown next to crate::tr!("common", "continue-locally").
     open_in_oz_button: ViewHandle<ActionButton>,
     /// Tracks when each copy button was last clicked (for checkmark feedback).
     copy_feedback_times: HashMap<CopyButtonKind, Instant>,
@@ -737,8 +737,8 @@ impl ConversationDetailsPanel {
                 })
         });
         let open_in_oz_button = ctx.add_typed_action_view(|_| {
-            ActionButton::new(crate::tr!("ai_assistant", "ai-assistant-ai-view-in-oz"), SecondaryTheme)
-                .with_tooltip(crate::tr!("ai_assistant", "ai-assistant-ai-view-in-oz-tooltip"))
+            ActionButton::new(crate::tr!("ai_assistant", "ai-view-in-oz"), SecondaryTheme)
+                .with_tooltip(crate::tr!("ai_assistant", "ai-view-in-oz-tooltip"))
                 .with_size(ButtonSize::Small)
                 .on_click(|ctx| {
                     ctx.dispatch_typed_action(ConversationDetailsPanelAction::OpenInOz);
@@ -949,7 +949,7 @@ impl ConversationDetailsPanel {
 
                 let window_id = ctx.window_id();
                 ToastStack::handle(ctx).update(ctx, |toast_stack, ctx| {
-                    let toast = DismissibleToast::default(crate::tr!("ai_assistant", "ai-assistant-ai-copied-branch-name").to_string());
+                    let toast = DismissibleToast::default(crate::tr!("ai_assistant", "ai-copied-branch-name").to_string());
                     toast_stack.add_ephemeral_toast(toast, window_id, ctx);
                 });
             }
@@ -1509,7 +1509,7 @@ impl ConversationDetailsPanel {
         let ui_font_size = appearance.ui_font_size();
 
         let label_text = Text::new(
-            crate::tr!("ai_assistant", "ai-assistant-ai-filter-harness-label").to_string(),
+            crate::tr!("ai_assistant", "ai-filter-harness-label").to_string(),
             appearance.ui_font_family(),
             ui_font_size,
         )
@@ -1592,7 +1592,7 @@ impl ConversationDetailsPanel {
         let oz_link = appearance
             .ui_builder()
             .link(
-                crate::tr!("ai_assistant", "ai-assistant-ai-open-in-oz").to_string(),
+                crate::tr!("ai_assistant", "ai-open-in-oz").to_string(),
                 Some(skill_url),
                 None,
                 self.mouse_states.skill_link.clone(),
@@ -1629,7 +1629,7 @@ impl ConversationDetailsPanel {
             let source_link = appearance
                 .ui_builder()
                 .link(
-                    crate::tr!("ai_assistant", "ai-assistant-ai-open-in-github-tooltip").to_string(),
+                    crate::tr!("ai_assistant", "ai-open-in-github-tooltip").to_string(),
                     Some(github_url),
                     None,
                     self.mouse_states.skill_source_link.clone(),
@@ -1653,7 +1653,7 @@ impl ConversationDetailsPanel {
         let ui_font_size = appearance.ui_font_size();
 
         let label_text = Text::new(
-            crate::tr!("ai_assistant", "ai-assistant-ai-initial-query").to_string(),
+            crate::tr!("ai_assistant", "ai-initial-query").to_string(),
             appearance.ui_font_family(),
             ui_font_size,
         )
@@ -1734,7 +1734,7 @@ impl ConversationDetailsPanel {
         let ui_font_size = appearance.ui_font_size();
 
         let header_text = Text::new(
-            crate::tr!("ai_assistant", "ai-assistant-ai-env-setup-commands").to_string(),
+            crate::tr!("ai_assistant", "ai-env-setup-commands").to_string(),
             appearance.ui_font_family(),
             ui_font_size,
         )
@@ -1799,7 +1799,7 @@ impl ConversationDetailsPanel {
 
         // Section header
         let header = Text::new(
-            crate::tr!("ai_assistant", "ai-assistant-ai-env-details").to_string(),
+            crate::tr!("ai_assistant", "ai-env-details").to_string(),
             appearance.ui_font_family(),
             ui_font_size,
         )
@@ -2245,7 +2245,7 @@ impl View for ConversationDetailsPanel {
                 if let Some(id) = conversation_id {
                     content.add_child(
                         Container::new(self.render_field_with_copy(
-                            &crate::tr!("ai_assistant", "ai-assistant-ai-conversation-id-label"),
+                            &crate::tr!("ai_assistant", "ai-conversation-id-label"),
                             id,
                             ConversationDetailsPanelAction::CopyConversationId,
                             CopyButtonKind::ConversationId,
@@ -2277,7 +2277,7 @@ impl View for ConversationDetailsPanel {
                 if let Some(task_id) = task_id {
                     content.add_child(
                         Container::new(self.render_field_with_copy(
-                            &crate::tr!("ai_assistant", "ai-assistant-ai-run-id-label"),
+                            &crate::tr!("ai_assistant", "ai-run-id-label"),
                             &task_id.to_string(),
                             ConversationDetailsPanelAction::CopyRunId,
                             CopyButtonKind::RunId,
@@ -2310,7 +2310,7 @@ impl View for ConversationDetailsPanel {
         if let Some(duration) = self.data.run_time {
             let formatted = human_readable_precise_duration(duration);
             content.add_child(
-                Container::new(self.render_simple_field(&crate::tr!("ai_assistant", "ai-assistant-ai-run-time"), &formatted, appearance))
+                Container::new(self.render_simple_field(&crate::tr!("ai_assistant", "ai-run-time"), &formatted, appearance))
                     .with_margin_bottom(FIELD_SPACING)
                     .finish(),
             );
@@ -2319,7 +2319,7 @@ impl View for ConversationDetailsPanel {
         if let Some(created_at) = self.data.created_at {
             let formatted = created_at.format("%I:%M %p on %-m/%-d/%Y").to_string();
             content.add_child(
-                Container::new(self.render_simple_field(&crate::tr!("ai_assistant", "ai-assistant-ai-filter-created-on-label"), &formatted, appearance))
+                Container::new(self.render_simple_field(&crate::tr!("ai_assistant", "ai-filter-created-on-label"), &formatted, appearance))
                     .with_margin_bottom(FIELD_SPACING)
                     .finish(),
             );

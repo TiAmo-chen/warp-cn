@@ -1074,7 +1074,7 @@ pub fn render_mode_toggle<A: OrchestrationControlAction>(
 ) -> Box<dyn Element> {
     let theme = appearance.theme();
     let label = Text::new(
-        crate::tr!("ai_assistant", "ai-assistant-ai-agent-location-label").to_string(),
+        crate::tr!("ai_assistant", "ai-agent-location-label").to_string(),
         appearance.ui_font_family(),
         appearance.monospace_font_size() - 1.,
     )
@@ -1212,7 +1212,7 @@ pub fn render_picker_row_with_layout<A: OrchestrationControlAction>(
         // from the "Primary model…" subtext that follows the picker row.
         add(
             &mut column,
-            &crate::tr!("agent_cloud", "agent-cloud-agent-harness-tooltip"),
+            &crate::tr!("agent_cloud", "agent-harness-tooltip"),
             handles
                 .harness_picker
                 .as_ref()
@@ -1279,7 +1279,7 @@ pub fn render_picker_row_with_layout<A: OrchestrationControlAction>(
 
         add_picker(
             &mut row,
-            &crate::tr!("agent_cloud", "agent-cloud-agent-harness-tooltip"),
+            &crate::tr!("agent_cloud", "agent-harness-tooltip"),
             handles
                 .harness_picker
                 .as_ref()

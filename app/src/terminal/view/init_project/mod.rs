@@ -461,13 +461,13 @@ impl InitStepBlock {
     ) -> Vec<KeyboardNavigableButtonBuilder> {
         vec![
             simple_navigation_button(
-                crate::tr!("ai_assistant", "ai-assistant-ai-create-an-environment").to_string(),
+                crate::tr!("ai_assistant", "ai-create-an-environment").to_string(),
                 mouse_states.create_button.clone(),
                 InitProjectBlockAction::StartCreateEnvironment,
                 false,
             ),
             simple_navigation_button(
-                crate::tr!("auth", "auth-skip-button").to_string(),
+                crate::tr!("auth", "skip-button").to_string(),
                 mouse_states.skip_button.clone(),
                 InitProjectBlockAction::SkipCreateEnvironment,
                 false,

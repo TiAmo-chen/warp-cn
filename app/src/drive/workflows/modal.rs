@@ -675,7 +675,7 @@ impl WorkflowModal {
 
         // Add "Copy workflow text" to menu
         menu_items.push(
-            MenuItemFields::new(crate::tr!("drive", "drive-workflow-copy-text"))
+            MenuItemFields::new(crate::tr!("drive", "workflow-copy-text"))
                 .with_on_select_action(WorkflowModalAction::CopyObjectToClipboard)
                 .with_icon(Icon::CopyMenuItem)
                 .into_item(),
@@ -1727,7 +1727,7 @@ impl WorkflowModal {
                 .finish();
 
             let button_with_tool_tip = appearance.ui_builder().tool_tip_on_element(
-                crate::tr!("drive", "drive-workflow-ai-tooltip").to_string(),
+                crate::tr!("drive", "workflow-ai-tooltip").to_string(),
                 self.button_mouse_states.ai_assist_tool_tip.clone(),
                 rendered_button,
                 ParentAnchor::BottomMiddle,

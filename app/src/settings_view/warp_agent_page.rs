@@ -287,7 +287,7 @@ pub fn init_actions_from_parent_view<T: Action + Clone>(
             ToggleSettingActionPair::custom(
                 SettingActionPairDescriptions::new(
                     &crate::tr!("settings", "show-warp-agent-changelog-in-new-agent-conversation-view"),
-                    &crate::tr!("settings", "settings-hide-warp-agent-changelog-in-new-agent-conversation-view"),
+                    &crate::tr!("settings", "hide-warp-agent-changelog-in-new-agent-conversation-view"),
                 ),
                 builder(SettingsAction::WarpAgent(
                     WarpAgentPageAction::ToggleShowOzUpdatesInZeroState,
@@ -514,7 +514,7 @@ pub fn init_actions_from_parent_view<T: Action + Clone>(
             ToggleSettingActionPair::custom(
                 SettingActionPairDescriptions::new(
                     &crate::tr!("settings", "allow-auto-approve-to-bypass-command-denylist"),
-                    &crate::tr!("settings", "settings-require-approval-for-denylisted-commands-in-auto-approve"),
+                    &crate::tr!("settings", "require-approval-for-denylisted-commands-in-auto-approve"),
                 ),
                 builder(SettingsAction::WarpAgent(
                     WarpAgentPageAction::ToggleAutoApproveBypassesCommandDenylist,
@@ -1134,7 +1134,7 @@ impl WarpAgentPageView {
             match current {
                 OpenConversationPreference::NewTab => dropdown.set_selected_by_name(crate::tr!("settings", "new-tab"), ctx),
                 OpenConversationPreference::SplitPane => {
-                    dropdown.set_selected_by_name(crate::tr!("common", "common-split-pane"), ctx)
+                    dropdown.set_selected_by_name(crate::tr!("common", "split-pane"), ctx)
                 }
             };
             dropdown
@@ -3652,7 +3652,7 @@ impl SettingsWidget for GitOperationsAutogenWidget {
         let is_toggleable = ai_settings.is_active_ai_enabled(app);
         Flex::column()
             .with_child(render_ai_setting_toggle::<GitOperationsAutogenEnabled>(
-                crate::tr!("settings", "settings-ai-commit-pr-gen-label"),
+                crate::tr!("settings", "ai-commit-pr-gen-label"),
                 WarpAgentPageAction::ToggleGitOperationsAutogen,
                 *ai_settings.git_operations_autogen_enabled_internal,
                 is_toggleable,
@@ -3981,7 +3981,7 @@ impl NaturalLanguageDetectionWidget {
                     vec![
                         FormattedTextFragment::plain_text(crate::tr!("settings", "encountered-an-incorrect-detection?-")),
                         FormattedTextFragment::hyperlink(
-                            crate::tr!("settings", "settings-let-us-know"),
+                            crate::tr!("settings", "let-us-know"),
                             "https://warpdotdev.typeform.com/to/offrTIpq",
                         ),
                     ]
@@ -4040,7 +4040,7 @@ impl NaturalLanguageDetectionWidget {
                         " Encountered an incorrect input detection? ",
                     ),
                     FormattedTextFragment::hyperlink(
-                        crate::tr!("settings", "settings-let-us-know"),
+                        crate::tr!("settings", "let-us-know"),
                         "https://warpdotdev.typeform.com/to/offrTIpq",
                     ),
                 ]
@@ -4130,7 +4130,7 @@ impl VoiceWidget {
             FormattedTextFragment::plain_text(
                 crate::tr!("settings", "voice-input-allows-you-to-control-warp-by-speaking-directly-to-your-terminal-(powered-by-"),
             ),
-            FormattedTextFragment::hyperlink(crate::tr!("settings", "settings-wispr-flow"), WISPR_FLOW_URL),
+            FormattedTextFragment::hyperlink(crate::tr!("settings", "wispr-flow"), WISPR_FLOW_URL),
             FormattedTextFragment::plain_text(")."),
         ];
 
@@ -4161,7 +4161,7 @@ impl VoiceWidget {
             column.add_child(render_dropdown_item(
                 appearance,
                 &crate::tr!("settings", "key-for-activating-voice-input"),
-                Some(&crate::tr!("settings", "settings-press-and-hold-to-activate")),
+                Some(&crate::tr!("settings", "press-and-hold-to-activate")),
                 None,
                 LocalOnlyIconState::for_setting(
                     VoiceInputToggleKey::storage_key(),
@@ -4175,7 +4175,7 @@ impl VoiceWidget {
             column.add_child(render_filterable_dropdown_item(
                 appearance,
                 &crate::tr!("settings", "speech-language"),
-                Some(&crate::tr!("settings", "settings-language-used-when-transcribing-voice-input")),
+                Some(&crate::tr!("settings", "language-used-when-transcribing-voice-input")),
                 None,
                 LocalOnlyIconState::for_setting(
                     VoiceInputLanguage::storage_key(),
@@ -4466,7 +4466,7 @@ impl SettingsWidget for ThinkingDisplayModeWidget {
         render_dropdown_item(
             appearance,
             &crate::tr!("settings", "agent-thinking-display"),
-            Some(&crate::tr!("settings", "settings-controls-how-reasoningthinking-traces-are-displayed")),
+            Some(&crate::tr!("settings", "controls-how-reasoningthinking-traces-are-displayed")),
             None,
             LocalOnlyIconState::for_setting(
                 ThinkingDisplayMode::storage_key(),
@@ -4500,7 +4500,7 @@ impl SettingsWidget for OrchestrationMessageDisplayModeWidget {
         render_dropdown_item(
             appearance,
             &crate::tr!("settings", "orchestration-message-display"),
-            Some(&crate::tr!("settings", "settings-controls-whether-orchestration-messages-stay-expanded")),
+            Some(&crate::tr!("settings", "controls-whether-orchestration-messages-stay-expanded")),
             None,
             LocalOnlyIconState::for_setting(
                 OrchestrationMessageDisplayMode::storage_key(),
@@ -6189,7 +6189,7 @@ impl AwsBedrockWidget {
                 let buffer_text = editor.as_ref(ctx).buffer_text(ctx);
                 let should_reset = buffer_text.trim().is_empty();
                 let value = if should_reset {
-                    crate::tr!("settings", "settings-ai-footer-placeholder").to_string()
+                    crate::tr!("settings", "ai-footer-placeholder").to_string()
                 } else {
                     buffer_text
                 };
@@ -6200,7 +6200,7 @@ impl AwsBedrockWidget {
                 });
                 if should_reset {
                     editor.update(ctx, |editor, ctx| {
-                        editor.set_buffer_text(&crate::tr!("settings", "settings-ai-footer-placeholder"), ctx);
+                        editor.set_buffer_text(&crate::tr!("settings", "ai-footer-placeholder"), ctx);
                     });
                 }
             }
@@ -6362,7 +6362,7 @@ impl AwsBedrockWidget {
         let toggle_description = if is_admin_enforced {
             crate::tr!("settings", "warp-loads-and-sends-local-aws-cli-credentials-for-bedrock-supported-models.-this-setting-is-managed-by-your-organization.").to_string()
         } else {
-            crate::tr!("settings", "settings-ai-aws-bedrock-desc")
+            crate::tr!("settings", "ai-aws-bedrock-desc")
                 .to_string()
         };
 

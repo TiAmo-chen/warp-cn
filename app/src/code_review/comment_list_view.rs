@@ -213,7 +213,7 @@ impl CommentListView {
         });
 
         let send_button = ctx.add_view(|ctx| {
-            ActionButton::new(crate::tr!("code_editor", "code-editor-code-review-send-to-agent"), PrimaryTheme)
+            ActionButton::new(crate::tr!("code_editor", "code-review-send-to-agent"), PrimaryTheme)
                 .with_size(ButtonSize::Small)
                 .with_keybinding(
                     KeystrokeSource::Fixed(
@@ -1062,7 +1062,7 @@ impl CommentListView {
         appearance: &Appearance,
     ) -> Vec<MenuItem<CommentListAction>> {
         let mut items = vec![
-            MenuItemFields::new(crate::tr!("code_editor", "code-editor-code-review-copy-text"))
+            MenuItemFields::new(crate::tr!("code_editor", "code-review-copy-text"))
                 .with_icon(Icon::Copy)
                 .with_on_select_action(CommentListAction::CopyCommentText)
                 .into_item(),
@@ -1073,9 +1073,9 @@ impl CommentListView {
             .with_on_select_action(CommentListAction::EditComment);
         if is_file_level || is_outdated {
             let tooltip_text = if is_file_level {
-                crate::tr!("code_review", "code-review-file-level-cannot-edit")
+                crate::tr!("code_review", "file-level-cannot-edit")
             } else {
-                crate::tr!("code_review", "code-review-outdated-cannot-edit")
+                crate::tr!("code_review", "outdated-cannot-edit")
             };
             edit_item = edit_item.with_disabled(true).with_tooltip(tooltip_text);
         }
@@ -1083,7 +1083,7 @@ impl CommentListView {
 
         if let Some(url) = html_url {
             items.push(
-                MenuItemFields::new(crate::tr!("code_editor", "code-editor-code-review-view-in-github"))
+                MenuItemFields::new(crate::tr!("code_editor", "code-review-view-in-github"))
                     .with_icon(Icon::Github)
                     .with_on_select_action(CommentListAction::ViewInGitHub {
                         url: url.to_string(),

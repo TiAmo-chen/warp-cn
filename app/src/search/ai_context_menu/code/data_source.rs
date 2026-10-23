@@ -235,7 +235,7 @@ struct CodeSearchError;
 #[cfg(not(target_family = "wasm"))]
 impl DataSourceRunError for CodeSearchError {
     fn user_facing_error(&self) -> String {
-        crate::tr!("search", "search-code-search-failed").to_string()
+        crate::tr!("search", "code-search-failed").to_string()
     }
 
     fn telemetry_payload(&self) -> serde_json::Value {

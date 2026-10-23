@@ -1027,7 +1027,7 @@ impl Action {
                     if let Some(window_id) = primary_window_id {
                         ToastStack::handle(ctx).update(ctx, |toast_stack, ctx| {
                             let toast =
-                                DismissibleToast::error(crate::tr!("terminal", "terminal-invalid-uri").to_owned());
+                                DismissibleToast::error(crate::tr!("terminal", "invalid-uri").to_owned());
                             toast_stack.add_ephemeral_toast(toast, window_id, ctx);
                         });
                     }
@@ -1238,7 +1238,7 @@ impl Action {
             | Self::FocusCloudMode
             | Self::AutoHandoffToCloud { .. } => W::default(),
             Self::NewTab => W::ShowPrimaryWindow(WindowActivationFallbackBehavior::Notify {
-                title: crate::tr!("common", "common-uri-new-tab-created").to_owned(),
+                title: crate::tr!("common", "uri-new-tab-created").to_owned(),
                 description: "Go to Warp to see your new tab.".to_owned(),
             }),
             Self::NewWindow => W::Nothing,

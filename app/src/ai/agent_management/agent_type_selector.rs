@@ -127,7 +127,7 @@ impl AgentTypeSelector {
         let theme = appearance.theme();
 
         let title = Text::new(
-            crate::tr!("ai_assistant", "ai-assistant-ai-choose-your-agent").to_string(),
+            crate::tr!("ai_assistant", "ai-choose-your-agent").to_string(),
             appearance.ui_font_family(),
             TITLE_FONT_SIZE,
         )

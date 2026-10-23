@@ -45,7 +45,7 @@ impl ReviewComment {
                 .head_title
                 .as_ref()
                 .cloned()
-                .unwrap_or_else(|| crate::tr!("ai_assistant", "ai-assistant-ai-review-comment").to_string()),
+                .unwrap_or_else(|| crate::tr!("ai_assistant", "ai-review-comment").to_string()),
         }
     }
 }

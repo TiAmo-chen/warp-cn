@@ -17,7 +17,7 @@ use warp_core::ui::theme::AnsiColorIdentifier;
     settings_value::SettingsValue,
 )]
 #[schemars(
-    description = crate::tr!("settings", "settings-new-tab-placement-desc"),
+    description = crate::tr!("settings", "new-tab-placement-desc"),
     rename_all = "snake_case"
 )]
 pub enum NewTabPlacement {
@@ -49,7 +49,7 @@ settings::macros::implement_setting_for_enum!(
     settings_value::SettingsValue,
 )]
 #[schemars(
-    description = crate::tr!("settings", "settings-tab-close-button-position-desc"),
+    description = crate::tr!("settings", "tab-close-button-position-desc"),
     rename_all = "snake_case"
 )]
 pub enum TabCloseButtonPosition {
@@ -83,7 +83,7 @@ settings::macros::implement_setting_for_enum!(
     settings_value::SettingsValue,
 )]
 #[schemars(
-    description = crate::tr!("settings", "settings-workspace-decoration-visibility-desc"),
+    description = crate::tr!("settings", "workspace-decoration-visibility-desc"),
     rename_all = "snake_case"
 )]
 pub enum WorkspaceDecorationVisibility {
@@ -249,7 +249,7 @@ pub fn canonical_directory_key(path: &Path) -> String {
     settings_value::SettingsValue,
 )]
 #[schemars(
-    description = crate::tr!("settings", "settings-header-toolbar-chip-selection-desc"),
+    description = crate::tr!("settings", "header-toolbar-chip-selection-desc"),
     rename_all = "snake_case"
 )]
 pub enum HeaderToolbarChipSelection {
@@ -306,7 +306,7 @@ settings::macros::implement_setting_for_enum!(
     settings_value::SettingsValue,
 )]
 #[schemars(
-    description = crate::tr!("settings", "settings-vertical-tabs-view-mode-desc"),
+    description = crate::tr!("settings", "vertical-tabs-view-mode-desc"),
     rename_all = "snake_case"
 )]
 pub enum VerticalTabsViewMode {
@@ -338,7 +338,7 @@ settings::macros::implement_setting_for_enum!(
     settings_value::SettingsValue,
 )]
 #[schemars(
-    description = crate::tr!("settings", "settings-vertical-tabs-display-granularity-desc"),
+    description = crate::tr!("settings", "vertical-tabs-display-granularity-desc"),
     rename_all = "snake_case"
 )]
 pub enum VerticalTabsDisplayGranularity {
@@ -370,7 +370,7 @@ settings::macros::implement_setting_for_enum!(
     settings_value::SettingsValue,
 )]
 #[schemars(
-    description = crate::tr!("settings", "settings-vertical-tabs-tab-item-mode-desc"),
+    description = crate::tr!("settings", "vertical-tabs-tab-item-mode-desc"),
     rename_all = "snake_case"
 )]
 pub enum VerticalTabsTabItemMode {
@@ -435,7 +435,7 @@ settings::macros::implement_setting_for_enum!(
     settings_value::SettingsValue,
 )]
 #[schemars(
-    description = crate::tr!("settings", "settings-vertical-tabs-compact-subtitle-desc"),
+    description = crate::tr!("settings", "vertical-tabs-compact-subtitle-desc"),
     rename_all = "snake_case"
 )]
 pub enum VerticalTabsCompactSubtitle {

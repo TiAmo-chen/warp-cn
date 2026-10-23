@@ -164,7 +164,7 @@ impl FeatureIntroModal {
         });
 
         let cta_button = ctx.add_view(|_ctx| {
-            ActionButton::new(crate::tr!("ai_assistant", "ai-assistant-ai-get-started"), PrimaryTheme)
+            ActionButton::new(crate::tr!("ai_assistant", "ai-get-started"), PrimaryTheme)
                 .on_click(|ctx| ctx.dispatch_typed_action(FeatureIntroModalAction::GetStarted))
         });
 

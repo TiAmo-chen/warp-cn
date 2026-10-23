@@ -85,7 +85,7 @@ impl AtContextMenuDisabledReason {
         match self {
             #[cfg(not(target_family = "wasm"))]
             AtContextMenuDisabledReason::NoObjectsAvailable => {
-                crate::tr!("terminal", "terminal-udi-no-objects").to_string()
+                crate::tr!("terminal", "udi-no-objects").to_string()
             }
             #[cfg(not(target_family = "wasm"))]
             AtContextMenuDisabledReason::SshWithoutRemoteServer => {
@@ -97,7 +97,7 @@ impl AtContextMenuDisabledReason {
             AtContextMenuDisabledReason::Wasm => "Requires a filesystem".to_string(),
             #[cfg(not(target_family = "wasm"))]
             AtContextMenuDisabledReason::DisabledInTerminalMode => {
-                crate::tr!("terminal", "terminal-udi-disabled-terminal-mode").to_string()
+                crate::tr!("terminal", "udi-disabled-terminal-mode").to_string()
             }
         }
     }
@@ -346,7 +346,7 @@ impl UniversalDeveloperInputButtonBar {
             #[cfg_attr(not(feature = "voice_input"), allow(unused_mut))]
             let mut button = ActionButton::new("", PromptIconButtonTheme::new(false))
                 .with_icon(Icon::Microphone)
-                .with_tooltip(crate::tr!("ai_assistant", "ai-assistant-ai-voice-input-tooltip"))
+                .with_tooltip(crate::tr!("ai_assistant", "ai-voice-input-tooltip"))
                 .with_size(button_size)
                 .with_tooltip_alignment(TooltipAlignment::Left);
             #[cfg(feature = "voice_input")]
@@ -377,7 +377,7 @@ impl UniversalDeveloperInputButtonBar {
         let file_button_view = ctx.add_typed_action_view(|_ctx| {
             ActionButton::new("", PromptIconButtonTheme::new(false))
                 .with_icon(Icon::Plus)
-                .with_tooltip(crate::tr!("ai_assistant", "ai-assistant-ai-attach-file-tooltip"))
+                .with_tooltip(crate::tr!("ai_assistant", "ai-attach-file-tooltip"))
                 .with_size(button_size)
                 .with_disabled_theme(UDIDisabledButtonTheme)
                 .with_tooltip_alignment(TooltipAlignment::Left)
@@ -389,7 +389,7 @@ impl UniversalDeveloperInputButtonBar {
         let slash_command_menu_view = ctx.add_typed_action_view(|_ctx| {
             ActionButton::new("", PromptIconButtonTheme::new(false))
                 .with_icon(Icon::SlashCommands)
-                .with_tooltip(crate::tr!("terminal", "terminal-udi-slash-commands"))
+                .with_tooltip(crate::tr!("terminal", "udi-slash-commands"))
                 .with_size(button_size)
                 .with_disabled_theme(UDIDisabledButtonTheme)
                 .with_tooltip_alignment(TooltipAlignment::Left)
@@ -681,9 +681,9 @@ impl UniversalDeveloperInputButtonBar {
         };
 
         let tooltip = if is_reader {
-            Some(crate::tr!("terminal", "terminal-udi-request-edit").to_string())
+            Some(crate::tr!("terminal", "udi-request-edit").to_string())
         } else if is_agent_in_control {
-            Some(crate::tr!("terminal", "terminal-udi-mode-locked").to_string())
+            Some(crate::tr!("terminal", "udi-mode-locked").to_string())
         } else {
             None
         };
@@ -1017,7 +1017,7 @@ fn build_renderable_option_config(
                 icon_color: fg_color,
                 label: None,
                 tooltip: Some(tooltip_config(
-                    crate::tr!("onboarding", "onboarding-agent-mode-label"),
+                    crate::tr!("onboarding", "agent-mode-label"),
                     Some(agent_mode_tooltip_subtext(terminal_keybindings)),
                     app,
                 )),

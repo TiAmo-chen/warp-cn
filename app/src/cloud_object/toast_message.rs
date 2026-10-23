@@ -76,21 +76,21 @@ impl CloudObjectToastMessage {
                 ObjectOperation::Update,
                 OperationSuccessType::Rejection,
             ) => {
-                Some(crate::tr!("cloud_object", "cloud-object-workflow-save-conflict").to_string())
+                Some(crate::tr!("cloud_object", "workflow-save-conflict").to_string())
             }
             (
                 ObjectType::GenericStringObject(GenericStringObjectFormat::Json(JsonObjectType::EnvVarCollection)),
                 ObjectOperation::Update,
                 OperationSuccessType::Rejection,
             ) => {
-                Some(crate::tr!("cloud_object", "cloud-object-env-vars-save-conflict").to_string())
+                Some(crate::tr!("cloud_object", "env-vars-save-conflict").to_string())
             }
             (
                 ObjectType::GenericStringObject(GenericStringObjectFormat::Json(JsonObjectType::AIFact)),
                 ObjectOperation::Update,
                 OperationSuccessType::Rejection,
             ) => {
-                Some(crate::tr!("cloud_object", "cloud-object-rule-save-conflict").to_string())
+                Some(crate::tr!("cloud_object", "rule-save-conflict").to_string())
             }
             (_, ObjectOperation::TakeEditAccess, OperationSuccessType::Failure) => {
                 Some(format!("Failed to start editing {object_name_lowercase}"))
@@ -128,10 +128,10 @@ impl CloudObjectToastMessage {
                 "Trash emptied: {count_objects_message} deleted forever"
             )),
             (ObjectOperation::EmptyTrash, OperationSuccessType::Failure) => {
-                Some(crate::tr!("cloud_object", "cloud-object-failed-empty-trash").to_string())
+                Some(crate::tr!("cloud_object", "failed-empty-trash").to_string())
             }
             (ObjectOperation::EmptyTrash, OperationSuccessType::Rejection) => {
-                Some(crate::tr!("cloud_object", "cloud-object-no-objects-in-trash").to_string())
+                Some(crate::tr!("cloud_object", "no-objects-in-trash").to_string())
             }
             _ => None,
         }
