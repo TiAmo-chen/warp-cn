@@ -26,7 +26,7 @@ use crate::workspace::tab_settings::{
 };
 
 const ADD_DIRECTORY_LABEL: &str = "+ Add directory…";
-const BUTTON_LABEL: &str = &crate::tr!("settings", "add-directory-color");
+const BUTTON_LABEL: &str = "Add directory color";
 const MENU_WIDTH: f32 = 340.;
 
 /// A dropdown used by the Directory tab colors settings widget, with a button fallback

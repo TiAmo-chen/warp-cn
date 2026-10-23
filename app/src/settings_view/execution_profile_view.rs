@@ -711,7 +711,7 @@ fn render_action_permission_line_with_icon(
     is_ai_enabled: bool,
 ) -> Box<dyn Element> {
     let permission_text = match permission {
-        ActionPermission::AgentDecides => crate::tr!("settings", "agent-decides"),
+        ActionPermission::AgentDecides => "Agent decides",
         ActionPermission::AlwaysAllow => "Always allow",
         ActionPermission::AlwaysAsk => "Always ask",
         ActionPermission::Unknown => "Unknown",
@@ -744,7 +744,7 @@ fn render_computer_use_permission_line_with_icon(
 ) -> Box<dyn Element> {
     let permission_text = match permission {
         crate::ai::execution_profiles::ComputerUsePermission::Never
-        | crate::ai::execution_profiles::ComputerUsePermission::Unknown => crate::tr!("settings", "never"),
+        | crate::ai::execution_profiles::ComputerUsePermission::Unknown => "Never",
         crate::ai::execution_profiles::ComputerUsePermission::AlwaysAsk => "Always ask",
         crate::ai::execution_profiles::ComputerUsePermission::AlwaysAllow => "Always allow",
     };
@@ -759,7 +759,7 @@ fn render_ask_user_question_permission_line_with_icon(
     is_ai_enabled: bool,
 ) -> Box<dyn Element> {
     let permission_text = match permission {
-        AskUserQuestionPermission::Never => crate::tr!("settings", "never-ask"),
+        AskUserQuestionPermission::Never => "Never ask",
         AskUserQuestionPermission::AskExceptInAutoApprove | AskUserQuestionPermission::Unknown => {
             "Ask unless auto-approve"
         }
@@ -776,7 +776,7 @@ fn render_run_agents_permission_line_with_icon(
     is_ai_enabled: bool,
 ) -> Box<dyn Element> {
     let permission_text = match permission {
-        RunAgentsPermission::NeverAllow | RunAgentsPermission::Unknown => crate::tr!("settings", "never"),
+        RunAgentsPermission::NeverAllow | RunAgentsPermission::Unknown => "Never",
         RunAgentsPermission::AlwaysAllow => "Always allow",
         RunAgentsPermission::AlwaysAsk => "Always ask",
     };

@@ -51,7 +51,7 @@ use crate::view_components::dropdown::DropdownAction;
 use crate::view_components::{Dropdown, SubmittableTextInput, SubmittableTextInputEvent};
 use crate::{TelemetryEvent, send_telemetry_from_ctx};
 
-const PAGE_TITLE: &str = &crate::tr!("settings", "third-party-cli-agents");
+const PAGE_TITLE: &str = "Third party CLI agents";
 
 pub struct CLIAgentsPageView {
     page: PageType<Self>,
@@ -200,7 +200,7 @@ impl CLIAgentsPageView {
                     });
 
                     let selected_name = if matches!(current_agent, CLIAgent::Unknown) {
-                        crate::tr!("settings", "other")
+                        "Other"
                     } else {
                         current_agent.display_name()
                     };

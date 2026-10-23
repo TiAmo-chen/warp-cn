@@ -28,7 +28,7 @@ use crate::ui_components::buttons::icon_button;
 use crate::ui_components::icons::Icon;
 use crate::view_components::action_button::{ActionButton, DangerSecondaryTheme, PrimaryTheme};
 
-const RULE_NAME_PLACEHOLDER_TEXT: &str = &crate::tr!("ai_assistant", "ai-assistant-ai-rule-name-placeholder");
+const RULE_NAME_PLACEHOLDER_TEXT: &str = "e.g. Rust rules";
 const RULE_DESCRIPTION_PLACEHOLDER_TEXT: &str = "e.g. Never use unwrap in Rust";
 
 #[derive(Debug, Clone, Copy)]

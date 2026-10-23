@@ -79,7 +79,7 @@ use {
     warp_graphql::queries::user_github_info::UserGithubInfoResult,
 };
 
-const PAGE_TITLE_TEXT: &str = &crate::tr!("settings", "environments");
+const PAGE_TITLE_TEXT: &str = "Environments";
 const PAGE_DESCRIPTION_TEXT: &str = "Environments define where your ambient agents run. Set one up in minutes via GitHub (recommended), Warp-assisted setup, or manual configuration.";
 const CARD_BORDER_WIDTH: f32 = 1.;
 const CARD_PADDING: f32 = 16.;
@@ -370,7 +370,7 @@ impl EnvironmentsPageView {
         });
 
         // Create search editor for list page
-        let search_editor = Self::create_single_line_editor(crate::tr!("settings", "search-environments..."), ctx);
+        let search_editor = Self::create_single_line_editor("Search environments...", ctx);
         ctx.subscribe_to_view(&search_editor, |me, _, event, ctx| match event {
             crate::editor::Event::Edited(_) => {
                 me.search_query = me.search_editor.as_ref(ctx).buffer_text(ctx);
@@ -1406,7 +1406,7 @@ impl EnvironmentsPageWidget {
         } else if dropdown_state.load_error_message.is_some() {
             ("Retry", true)
         } else if dropdown_state.auth_url.is_some() {
-            (crate::tr!("settings", "authorize"), true)
+            ("Authorize", true)
         } else {
             ("Get started", true)
         };

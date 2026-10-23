@@ -1348,7 +1348,7 @@ impl AgentProfilesPageView {
                     .map(|t| {
                         let display = match t {
                             AgentModeCodingPermissionsType::AlwaysAskBeforeReading => crate::tr!("settings", "always-ask"),
-                            AgentModeCodingPermissionsType::AlwaysAllowReading => crate::tr!("settings", "always-allow"),
+                            AgentModeCodingPermissionsType::AlwaysAllowReading => "Always allow",
                             AgentModeCodingPermissionsType::AllowReadingSpecificFiles => {
                                 "Allow in specific directories"
                             }
@@ -2163,7 +2163,7 @@ impl SettingsWidget for UsageWidget {
             ai_request_usage_model.included_usage_cents(),
         );
         let (header, unit) = if allowance_cents.is_some() {
-            (crate::tr!("settings", "usage"), "usage")
+            ("Usage", "usage")
         } else {
             ("Credits", "credits")
         };

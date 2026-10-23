@@ -37,7 +37,7 @@ use crate::{safe_info, send_telemetry_from_ctx};
 
 const HEADER_FONT_SIZE: f32 = 18.;
 const HEADER_MARGIN_BOTTOM: f32 = 32.;
-const HEADER_TEXT: &str = &crate::tr!("settings", "invite-a-friend-to-warp");
+const HEADER_TEXT: &str = "Invite a friend to Warp";
 const ANONYMOUS_USER_HEADER_TEXT: &str = "Sign up to participate in Warp's referral program";
 
 const INVITE_FIELD_LABEL_BOTTOM_MARGIN: f32 = 8.;
@@ -45,16 +45,16 @@ const INVITE_FIELD_LABEL_BOTTOM_MARGIN: f32 = 8.;
 const LINK_BOTTOM_MARGIN: f32 = 12.;
 const LINK_TEXT_PADDING: f32 = 10.;
 const LINK_CORNER_RADIUS: Radius = Radius::Pixels(4.);
-const LINK_ERROR_TEXT: &str = &crate::tr!("settings", "failed-to-load-referral-code.");
+const LINK_ERROR_TEXT: &str = "Failed to load referral code.";
 
 const BUTTON_WIDTH: f32 = 98.;
 const BUTTON_HEIGHT: f32 = 36.;
 const BUTTON_LEFT_MARGIN: f32 = 8.;
 const BUTTON_FONT_SIZE: f32 = 12.;
-const LINK_BUTTON_TEXT: &str = &crate::tr!("settings", "copy-link");
+const LINK_BUTTON_TEXT: &str = "Copy link";
 const EMAIL_BUTTON_TEXT: &str = "Send";
 const EMAIL_BUTTON_SENDING_TEXT: &str = "Sending...";
-const LOADING_TEXT: &str = &crate::tr!("settings", "loading...");
+const LOADING_TEXT: &str = "Loading...";
 
 const LINK_COPIED_TOAST: &str = "Link copied.";
 const EMAIL_SUCCESS_TOAST: &str = "Successfully sent emails.";
@@ -82,7 +82,7 @@ const METER_TOP_MARGIN: f32 = 16.;
 const METER_RIGHT_MARGIN: f32 = 12.;
 
 const CLAIMED_REFERRALS_LABEL_HORIZONTAL_SPACING: f32 = 4.;
-const CLAIMED_REFERRALS_COUNT_LABEL_SINGULAR: &str = &crate::tr!("settings", "current-referral");
+const CLAIMED_REFERRALS_COUNT_LABEL_SINGULAR: &str = "Current referral";
 const CLAIMED_REFERRALS_COUNT_LABEL_PLURAL: &str = "Current referrals";
 const CLAIMED_REFERRALS_LABEL_WIDTH: f32 = 52.;
 const CLAIMED_REFERRALS_LABEL_FONT_SIZE: f32 = 14.;
@@ -91,7 +91,7 @@ const CLAIMED_REFERRAL_COUNT_LEFT_MARGIN: f32 = 40.;
 
 const CLAIMED_REFERRAL_CLIP: usize = 999;
 
-const TERMS_LINK_TEXT: &str = &crate::tr!("settings", "certain-restrictions-apply.");
+const TERMS_LINK_TEXT: &str = "Certain restrictions apply.";
 const TERMS_URL: &str = "https://docs.warp.dev/support-and-community/community/refer-a-friend#referral-program-terms-and-conditions";
 const TERMS_CONTACT_TEXT: &str =
     " If you have any questions about the referral program, please contact referrals@warp.dev.";

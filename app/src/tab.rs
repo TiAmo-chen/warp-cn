@@ -712,7 +712,7 @@ impl TabData {
         if can_move_right {
             menu_items.push(
                 MenuItemFields::new(if uses_vertical_tabs {
-                    crate::tr!("workspace", "menu-move-tab-down")
+                    "Move Tab Down"
                 } else {
                     "Move Tab Right"
                 })
@@ -723,7 +723,7 @@ impl TabData {
         if can_move_left {
             menu_items.push(
                 MenuItemFields::new(if uses_vertical_tabs {
-                    crate::tr!("workspace", "menu-move-tab-up")
+                    "Move Tab Up"
                 } else {
                     "Move Tab Left"
                 })
@@ -794,7 +794,7 @@ impl TabData {
         if not_last_tab {
             menu_items.push(
                 MenuItemFields::new(if uses_vertical_tabs {
-                    crate::tr!("workspace", "menu-close-tabs-below")
+                    "Close Tabs Below"
                 } else {
                     "Close Tabs to the Right"
                 })

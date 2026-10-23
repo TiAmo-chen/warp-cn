@@ -26,7 +26,7 @@ use crate::appearance::Appearance;
 use crate::settings::{AISettings, MemoryEnabled, RuleSuggestionsEnabled, WarpDriveContextEnabled};
 use crate::util::bindings;
 
-const PAGE_TITLE: &str = &crate::tr!("settings", "knowledge");
+const PAGE_TITLE: &str = "Knowledge";
 
 const RULES_DOCS_URL: &str = "https://docs.warp.dev/agents/capabilities/rules";
 

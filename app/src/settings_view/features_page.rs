@@ -119,7 +119,7 @@ cfg_if::cfg_if! {
         static EXTRA_META_KEYS_RIGHT_TEXT: &str = "Right Option key is Meta";
     } else {
         static EXTRA_META_KEYS_LEFT_TEXT: &str = "Left Alt key is Meta";
-        static EXTRA_META_KEYS_RIGHT_TEXT: &str = &crate::tr!("settings", "right-alt-key-is-meta");
+        static EXTRA_META_KEYS_RIGHT_TEXT: &str = "Right Alt key is Meta";
     }
 }
 
@@ -3124,7 +3124,7 @@ impl FeaturesPageView {
                 .position(|val| *val == current_value)
                 .unwrap_or_else(|| {
                     report_error!(
-                        crate::tr!("settings", "could-not-find-current-ctrl-tab-behavior-value-in-dropdown-option-list")
+                        "Could not find current Ctrl-Tab behavior value in dropdown option list"
                     );
                     0
                 });
@@ -3159,7 +3159,7 @@ impl FeaturesPageView {
                 .position(|val| *val == current_value)
                 .unwrap_or_else(|| {
                     report_error!(
-                        crate::tr!("settings", "could-not-find-current-right-click-behavior-value-in-dropdown-option-list")
+                        "Could not find current right-click behavior value in dropdown option list"
                     );
                     0
                 });
@@ -3196,7 +3196,7 @@ impl FeaturesPageView {
                 .position(|val| *val == current_value)
                 .unwrap_or_else(|| {
                     report_error!(
-                        crate::tr!("settings", "could-not-find-current-newtabplacement-value-in-dropdown-option-list")
+                        "Could not find current NewTabPlacement value in dropdown option list"
                     );
                     0
                 });
@@ -6803,7 +6803,7 @@ impl TabKeyBehaviorWidget {
             TabBehavior::UserDefined => None,
         };
         let other_keybinding_name = match *view.tab_behavior {
-            TabBehavior::Completions => Some(crate::tr!("settings", "accept-autosuggestion")),
+            TabBehavior::Completions => Some("Accept Autosuggestion"),
             TabBehavior::Autosuggestions => Some("Open Completions Menu"),
             TabBehavior::UserDefined => None,
         };

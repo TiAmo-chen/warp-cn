@@ -73,40 +73,40 @@ use crate::workspaces::workspace::{
 use crate::{WorkspaceAction, send_telemetry_from_ctx};
 
 const HEADER_FONT_SIZE: f32 = 16.;
-const OVERAGE_USAGE_LINK_TEXT: &str = &crate::tr!("settings", "view-details-on-overage-usage");
+const OVERAGE_USAGE_LINK_TEXT: &str = "View details on overage usage";
 const OVERAGE_TOGGLE_ADMIN_HEADER: &str = "Enable premium model usage overages";
 const OVERAGE_TOGGLE_USER_HEADER_ENABLED: &str = "Premium model usage overages are enabled";
-const OVERAGE_TOGGLE_USER_HEADER_DISABLED: &str = &crate::tr!("settings", "premium-model-usage-overages-are-not-enabled");
+const OVERAGE_TOGGLE_USER_HEADER_DISABLED: &str = "Premium model usage overages are not enabled";
 const OVERAGE_TOGGLE_DESCRIPTION: &str = "Continue using premium models beyond your plan's limits. Usage is charged in $20 increments up to your spending limit, with any remaining balance charged on your scheduled billing date.";
 const OVERAGE_TOGGLE_USER_DESCRIPTION: &str =
-    &crate::tr!("settings", "ask-a-team-admin-to-enable-overages-for-more-ai-usage.");
+    "Ask a team admin to enable overages for more AI usage.";
 
 const SORT_MENU_ITEM_DISPLAY_NAME_A_Z_LABEL: &str = "A to Z";
 const SORT_MENU_ITEM_DISPLAY_NAME_Z_A_LABEL: &str = "Z to A";
-const SORT_MENU_ITEM_REQUEST_USAGE_ASCENDING_LABEL: &str = &crate::tr!("settings", "usage-ascending");
+const SORT_MENU_ITEM_REQUEST_USAGE_ASCENDING_LABEL: &str = "Usage ascending";
 const SORT_MENU_ITEM_REQUEST_USAGE_DESCENDING_LABEL: &str = "Usage descending";
 
 const AUTO_RELOAD_EXCEED_LIMIT_WARNING_STRING: &str = "Auto reload is disabled, as the next reload would exceed your monthly spend limit. Increase your limit to use auto reload.";
 const AUTO_RELOAD_DELINQUENT_WARNING_STRING: &str =
-    &crate::tr!("settings", "restricted-due-to-billing-issue.-update-your-payment-method-to-purchase-add-on-credits.");
+    "Restricted due to billing issue. Update your payment method to purchase add-on credits.";
 const AUTO_RELOAD_USAGE_DELINQUENT_WARNING_STRING: &str =
     "Restricted due to billing issue. Update your payment method to purchase usage.";
-const RESTRICTED_BILLING_USAGE_WARNING_STRING: &str = &crate::tr!("settings", "auto-reload-is-disabled-due-to-recent-failed-reload.-please-update-your-payment-method-and-try-again.");
+const RESTRICTED_BILLING_USAGE_WARNING_STRING: &str = "Auto reload is disabled due to recent failed reload. Please update your payment method and try again.";
 
 const OVERVIEW_TAB_TEXT: &str = "Overview";
-const USAGE_HISTORY_TAB_TEXT: &str = &crate::tr!("settings", "usage-history");
+const USAGE_HISTORY_TAB_TEXT: &str = "Usage History";
 
 const ENTERPRISE_USAGE_CALLOUT_HEADER: &str = "Usage reporting is currently limited";
 const ENTERPRISE_USAGE_CALLOUT_BODY_ADMIN_PREFIX: &str = "Enterprise credit usage isn't fully available in this view yet. For the most accurate spend tracking, ";
 const ENTERPRISE_USAGE_CALLOUT_BODY_ADMIN_LINK: &str = "visit the admin panel";
 const ENTERPRISE_USAGE_CALLOUT_BODY_ADMIN_SUFFIX: &str = ".";
-const ENTERPRISE_USAGE_CALLOUT_BODY_NON_ADMIN: &str = &crate::tr!("settings", "enterprise-credit-usage-isn't-fully-available-in-this-view-yet.-contact-a-team-admin-for-detailed-usage-reporting.");
+const ENTERPRISE_USAGE_CALLOUT_BODY_NON_ADMIN: &str = "Enterprise credit usage isn't fully available in this view yet. Contact a team admin for detailed usage reporting.";
 
 const ADDITIONAL_ADDON_CREDITS_DESCRIPTION_FOR_TEAM: &str =
-    &crate::tr!("settings", "purchased-add-on-credits-are-shared-across-your-team.");
+    "Purchased add-on credits are shared across your team.";
 const ADDON_USAGE_DESCRIPTION: &str = "Usage rolls over each billing cycle and expires after one year. Once your base plan usage is depleted, any additional purchased usage will be consumed.";
 const ADDITIONAL_ADDON_USAGE_DESCRIPTION_FOR_TEAM: &str =
-    &crate::tr!("settings", "purchased-usage-is-shared-across-your-team.");
+    "Purchased usage is shared across your team.";
 
 // Cloud agent trial widget constants.
 const AMBIENT_AGENT_TRIAL_TITLE: &str = "Cloud agent trial";
@@ -142,7 +142,7 @@ fn format_addon_premium_percent(premium_bps: i32) -> String {
     }
 }
 
-pub(crate) const CHECKOUT_PENDING_MESSAGE: &str = &crate::tr!("settings", "opening-your-browser-to-complete-your-purchase");
+pub(crate) const CHECKOUT_PENDING_MESSAGE: &str = "Opening your browser to complete your purchase";
 
 /// Renders the savings-framed upsell shown in the add-on credits panel for
 /// plans that purchase at a premium over list price, linking to the upgrade
@@ -534,7 +534,7 @@ impl BillingAndUsagePageView {
             UserWorkspacesEvent::PurchaseAddonCreditsSuccess => {
                 self.purchase_addon_credits_loading = false;
                 let message = match usage_display_unit(ctx) {
-                    UsageDisplayUnit::Credits => crate::tr!("settings", "successfully-purchased-add-on-credits"),
+                    UsageDisplayUnit::Credits => "Successfully purchased add-on credits",
                     UsageDisplayUnit::Dollars => "Successfully purchased usage",
                 };
                 self.show_toast(message, ToastFlavor::Success, ctx);
@@ -1181,7 +1181,7 @@ impl From<&BillingAndUsagePageAction> for LoginGatedFeature {
         match val {
             Upgrade { .. } => "Upgrade Plan",
             GenerateStripeBillingPortalLink { .. } => "Generate Stripe Billing Portal Link",
-            _ => crate::tr!("settings", "unknown-reason"),
+            _ => "Unknown reason",
         }
     }
 }
@@ -1814,7 +1814,7 @@ impl BillingAndUsagePageView {
         let unit = usage_display_unit(app);
 
         let header_text = match unit {
-            UsageDisplayUnit::Credits => crate::tr!("settings", "add-on-credits"),
+            UsageDisplayUnit::Credits => "Add-on credits",
             UsageDisplayUnit::Dollars => "Add-on usage",
         };
         let header = Text::new_inline(header_text, appearance.ui_font_family(), 16.)
@@ -1880,7 +1880,7 @@ impl BillingAndUsagePageView {
                 let is_legacy_paid = workspace
                     .is_some_and(|workspace| workspace.billing_metadata.is_on_legacy_paid_plan());
                 let link_text = if is_legacy_paid {
-                    crate::tr!("settings", "switch-to-the-build-plan")
+                    "Switch to the Build plan"
                 } else {
                     "Upgrade to the Build plan"
                 };
@@ -1928,7 +1928,7 @@ impl BillingAndUsagePageView {
             (false, false, true) => {
                 let paragraph_text = match unit {
                     UsageDisplayUnit::Credits => {
-                        crate::tr!("settings", "contact-your-account-executive-for-more-add-on-credits.")
+                        "Contact your Account Executive for more add-on credits."
                     }
                     UsageDisplayUnit::Dollars => "Contact your Account Executive for more usage.",
                 };
@@ -1947,7 +1947,7 @@ impl BillingAndUsagePageView {
             // a generic message telling you to talk to them.
             (_, _, false) => {
                 let paragraph_text = match unit {
-                    UsageDisplayUnit::Credits => crate::tr!("settings", "contact-a-team-admin-to-purchase-add-on-credits."),
+                    UsageDisplayUnit::Credits => "Contact a team admin to purchase add-on credits.",
                     UsageDisplayUnit::Dollars => "Contact a team admin to purchase usage.",
                 };
                 Some(
@@ -2015,7 +2015,7 @@ impl BillingAndUsagePageView {
                 tooltip_override_text: Some(
                     match unit {
                         UsageDisplayUnit::Credits => {
-                            crate::tr!("settings", "sets-the-monthly-limit-spent-on-add-on-credits")
+                            "Sets the monthly limit spent on add-on credits"
                         }
                         UsageDisplayUnit::Dollars => {
                             "Sets the monthly limit spent on purchased usage"
@@ -2635,7 +2635,7 @@ impl BillingAndUsagePageView {
             .finish()
         } else {
             let (header, unit) = if shows_dollars(divisor, usage_cents) {
-                (crate::tr!("settings", "usage"), "usage")
+                ("Usage", "usage")
             } else {
                 ("Credits", "credits")
             };
@@ -3432,7 +3432,7 @@ impl BillingAndUsagePageView {
                         let upgrade_text = match billing_metadata.customer_type {
                             CustomerType::Prosumer => crate::tr!("settings", "upgrade-to-turbo-plan"),
                             CustomerType::Turbo => "Upgrade to Lightspeed plan",
-                            _ => crate::tr!("settings", "upgrade"),
+                            _ => "Upgrade",
                         };
                         vec![
                             FormattedTextFragment::hyperlink(upgrade_text, upgrade_url),

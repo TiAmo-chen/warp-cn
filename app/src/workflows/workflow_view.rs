@@ -116,7 +116,7 @@ pub fn init(app: &mut AppContext) {
     .with_key_binding("cmdorctrl-s")]);
 
     app.register_editable_bindings([EditableBinding::new(
-        crate::tr!("workflows", "workflows-close-workflow"),
+        "Close Workflow",
         crate::tr!("common", "close-label"),
         WorkflowAction::Close,
     )

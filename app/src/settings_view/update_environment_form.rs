@@ -51,7 +51,7 @@ use crate::view_components::{
 };
 use crate::workspaces::user_workspaces::UserWorkspaces;
 
-const SUBMIT_BUTTON_FOCUSED: &str = &crate::tr!("settings", "submitbuttonfocused");
+const SUBMIT_BUTTON_FOCUSED: &str = "SubmitButtonFocused";
 
 pub fn init(app: &mut AppContext) {
     use warpui::keymap::macros::*;
@@ -265,13 +265,13 @@ impl EnvironmentFormCopy {
     pub fn orchestration_modal() -> Self {
         Self {
             name_placeholder: "e.g., dev-env",
-            repos_placeholder_authed: &crate::tr!("settings", "browse-github-repos..."),
+            repos_placeholder_authed: "Browse GitHub repos...",
             repos_placeholder_unauthed: REPOS_PLACEHOLDER_UNAUTHED,
             docker_image_label: "Docker image",
             docker_image_placeholder: "e.g., node:20-alpine",
             description_placeholder: DESCRIPTION_PLACEHOLDER,
             setup_commands_placeholder: "e.g., node start",
-            setup_commands_helper: &crate::tr!("settings", "press-enter-or-click-the-submit-button-to-add-each-command."),
+            setup_commands_helper: "Press Enter or click the submit button to add each command.",
             show_description_character_count: false,
         }
     }
@@ -280,10 +280,10 @@ impl EnvironmentFormCopy {
 impl Default for EnvironmentFormCopy {
     fn default() -> Self {
         Self {
-            name_placeholder: &crate::tr!("settings", "environment-name"),
+            name_placeholder: "Environment name",
             repos_placeholder_authed: REPOS_PLACEHOLDER_AUTHED,
             repos_placeholder_unauthed: REPOS_PLACEHOLDER_UNAUTHED,
-            docker_image_label: &crate::tr!("settings", "docker-image-reference"),
+            docker_image_label: "Docker image reference",
             docker_image_placeholder: "e.g. python:3.11, node:20-alpine",
             description_placeholder: DESCRIPTION_PLACEHOLDER,
             setup_commands_placeholder: "e.g. cd my-repo && pip install -r requirements.txt",
@@ -371,7 +371,7 @@ pub struct UpdateEnvironmentForm {
 
 const DESCRIPTION_MAX_CHARS: usize = 240;
 const DESCRIPTION_PLACEHOLDER: &str = "e.g., this environment is for all front end focused agents";
-const REPOS_PLACEHOLDER_AUTHED: &str = &crate::tr!("settings", "enter-repos-(owner/repo-format)");
+const REPOS_PLACEHOLDER_AUTHED: &str = "Enter repos (owner/repo format)";
 const REPOS_PLACEHOLDER_UNAUTHED: &str = "Paste repo URL(s)";
 const FORM_FIELD_SPACING: f32 = 20.;
 const FORM_LABEL_SPACING: f32 = 6.;
@@ -842,7 +842,7 @@ impl UpdateEnvironmentForm {
     fn update_submit_button_label(&mut self, ctx: &mut ViewContext<Self>) {
         let button_text = match (&self.mode, self.show_header) {
             (EnvironmentFormMode::Create, true) => crate::tr!("settings", "create"),
-            (EnvironmentFormMode::Create, false) => crate::tr!("settings", "create-environment"),
+            (EnvironmentFormMode::Create, false) => "Create environment",
             (EnvironmentFormMode::Edit { .. }, true) => "Save",
             (EnvironmentFormMode::Edit { .. }, false) => "Save environment",
         };
@@ -1254,7 +1254,7 @@ impl UpdateEnvironmentForm {
                     AUTH_URL_REFRESH_THRESHOLD.as_secs_f64()
                 );
             } else {
-                debug!(crate::tr!("settings", "refreshing-github-auth-url-(no-previous-fetch-timestamp)"));
+                debug!("Refreshing GitHub auth URL (no previous fetch timestamp)");
             }
             self.fetch_github_repos_for_auth(ctx);
         } else {
@@ -1357,7 +1357,7 @@ impl UpdateEnvironmentForm {
                             if let Some(tx_id) = Self::extract_tx_id(auth_url) {
                                 debug!("Refetched GitHub auth URL with tx_id={tx_id}");
                             } else {
-                                debug!(crate::tr!("settings", "refetched-github-auth-url-(tx_id-missing)"));
+                                debug!("Refetched GitHub auth URL (tx_id missing)");
                             }
                         }
                         me.update_repos_input_placeholder(ctx);
@@ -1743,7 +1743,7 @@ impl UpdateEnvironmentForm {
 
     fn render_header(&self, appearance: &Appearance, app: &AppContext) -> Box<dyn Element> {
         let (title, button_handle) = match &self.mode {
-            EnvironmentFormMode::Create => (crate::tr!("settings", "create-environment"), &self.submit_button),
+            EnvironmentFormMode::Create => ("Create environment", &self.submit_button),
             EnvironmentFormMode::Edit { .. } => ("Edit environment", &self.submit_button),
         };
 
@@ -1870,7 +1870,7 @@ impl UpdateEnvironmentForm {
             .with_spacing(FORM_LABEL_SPACING);
 
         field.add_child(Self::render_form_label(
-            crate::tr!("settings", "setup-command(s)"),
+            "Setup command(s)",
             false,
             appearance,
         ));
@@ -3106,7 +3106,7 @@ impl UpdateEnvironmentForm {
         let button_text = if is_loading {
             "Generating…"
         } else {
-            &crate::tr!("settings", "suggest-image")
+            "Suggest image"
         };
 
         let tooltip_text = "Warp will suggest a Docker image based on your selected repositories.";

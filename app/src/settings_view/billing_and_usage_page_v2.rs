@@ -67,19 +67,19 @@ use crate::workspaces::workspace::{CustomerType, Workspace, WorkspaceUid};
 use crate::{WorkspaceAction, send_telemetry_from_ctx};
 
 const ADDITIONAL_ADDON_CREDITS_DESCRIPTION_FOR_TEAM: &str =
-    &crate::tr!("settings", "purchased-add-on-credits-are-added-to-your-team's-shared-credit-pool.");
-const ADDON_USAGE_DESCRIPTION: &str = &crate::tr!("settings", "usage-rolls-over-each-billing-cycle-and-expires-after-one-year.-once-your-base-plan-usage-is-depleted,-any-additional-purchased-usage-will-be-consumed.");
+    "Purchased add-on credits are added to your team's shared credit pool.";
+const ADDON_USAGE_DESCRIPTION: &str = "Usage rolls over each billing cycle and expires after one year. Once your base plan usage is depleted, any additional purchased usage will be consumed.";
 const ADDITIONAL_ADDON_USAGE_DESCRIPTION_FOR_TEAM: &str =
-    &crate::tr!("settings", "purchased-usage-is-added-to-your-team's-shared-pool.");
+    "Purchased usage is added to your team's shared pool.";
 const MANAGED_AUTO_RELOAD_HEADER: &str = "Auto-reload is enabled";
 
 const ADDON_CREDITS_DELINQUENT_WARNING_STRING: &str =
-    &crate::tr!("settings", "restricted-due-to-billing-issue.-update-your-payment-method-to-purchase-add-on-credits.");
+    "Restricted due to billing issue. Update your payment method to purchase add-on credits.";
 const ADDON_USAGE_DELINQUENT_WARNING_STRING: &str =
     "Restricted due to billing issue. Update your payment method to purchase usage.";
 const ADDON_CREDITS_NON_ADMIN_DELINQUENT_WARNING_STRING: &str =
-    &crate::tr!("settings", "restricted-due-to-billing-issue.-contact-your-team-admin-to-update-their-payment-method.");
-const RESTRICTED_BILLING_USAGE_WARNING_STRING: &str = &crate::tr!("settings", "auto-reload-is-disabled-due-to-recent-failed-reload.-please-update-your-payment-method-and-try-again.");
+    "Restricted due to billing issue. Contact your team admin to update their payment method.";
+const RESTRICTED_BILLING_USAGE_WARNING_STRING: &str = "Auto reload is disabled due to recent failed reload. Please update your payment method and try again.";
 const RESTRICTED_BILLING_USAGE_NON_ADMIN_WARNING_STRING: &str = "Auto reload is disabled due to recent failed reload. Contact your team admin to update their payment method.";
 
 const HEADER_FONT_SIZE: f32 = 16.;
@@ -115,7 +115,7 @@ pub(super) const AGGREGATE_CREDITS_DOT_COLOR: ColorU = ColorU {
     a: 255,
 };
 const DEFAULT_MAX_MONTHLY_SPEND_CENTS: i32 = 20_000;
-const AMBIENT_AGENT_TRIAL_TITLE: &str = &crate::tr!("settings", "cloud-agent-trial");
+const AMBIENT_AGENT_TRIAL_TITLE: &str = "Cloud agent trial";
 
 #[derive(Default)]
 struct PlanSectionMouseStates {
@@ -523,7 +523,7 @@ impl BillingAndUsagePageV2View {
             UserWorkspacesEvent::PurchaseAddonCreditsSuccess => {
                 self.addon_credits.purchase_loading = false;
                 let message = match usage_display_unit(ctx) {
-                    UsageDisplayUnit::Credits => crate::tr!("settings", "successfully-purchased-add-on-credits"),
+                    UsageDisplayUnit::Credits => "Successfully purchased add-on credits",
                     UsageDisplayUnit::Dollars => "Successfully purchased usage",
                 };
                 self.show_toast(message, ToastFlavor::Success, ctx);
@@ -952,7 +952,7 @@ impl BillingAndUsagePageV2View {
         }
 
         for (pool, bucket) in [
-            (crate::tr!("settings", "personal"), &classified.personal),
+            ("Personal", &classified.personal),
             ("Team", &classified.team),
             ("Workspace", &classified.workspace),
         ] {
@@ -1335,7 +1335,7 @@ impl BillingAndUsagePageV2View {
                     "Auto-reload is paused because the next reload would exceed your team’s monthly spend limit. Contact a team admin to increase it."
                 }
                 (false, true) => {
-                    crate::tr!("settings", "this-purchase-would-exceed-your-monthly-limit.-increase-your-limit-to-continue.")
+                    "This purchase would exceed your monthly limit. Increase your limit to continue."
                 }
                 (false, false) => {
                     "This purchase would exceed your team’s monthly spend limit. Contact a team admin to increase it."
@@ -1598,7 +1598,7 @@ impl BillingAndUsagePageV2View {
                     tooltip_override_text: Some(
                         match unit {
                             UsageDisplayUnit::Credits => {
-                                crate::tr!("settings", "sets-the-monthly-limit-spent-on-add-on-credits")
+                                "Sets the monthly limit spent on add-on credits"
                             }
                             UsageDisplayUnit::Dollars => {
                                 "Sets the monthly limit spent on purchased usage"

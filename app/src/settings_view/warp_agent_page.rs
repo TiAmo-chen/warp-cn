@@ -118,13 +118,13 @@ use crate::{TelemetryEvent, UserWorkspaces, send_telemetry_from_ctx};
 const AI_SETTINGS_DROPDOWN_WIDTH: f32 = 250.;
 const AI_SETTINGS_DROPDOWN_MAX_HEIGHT: f32 = 250.;
 
-const NEXT_COMMAND_DESCRIPTION: &str = &crate::tr!("settings", "let-ai-suggest-the-next-command-to-run-based-on-your-command-history,-outputs,-and-common-workflows.");
+const NEXT_COMMAND_DESCRIPTION: &str = "Let AI suggest the next command to run based on your command history, outputs, and common workflows.";
 const PROMPT_SUGGESTIONS_DESCRIPTION: &str = "Let AI suggest natural language prompts, as inline banners in the input, based on recent commands and their outputs.";
-const SUGGESTED_CODE_BANNERS_DESCRIPTION: &str = &crate::tr!("settings", "let-ai-suggest-code-diffs-and-queries-as-inline-banners-in-the-blocklist,-based-on-recent-commands-and-their-outputs.");
+const SUGGESTED_CODE_BANNERS_DESCRIPTION: &str = "Let AI suggest code diffs and queries as inline banners in the blocklist, based on recent commands and their outputs.";
 const NATURAL_LANGUAGE_AUTOSUGGESTIONS: &str =
     "Let AI suggest natural language autosuggestions, based on recent commands and their outputs.";
 const SHARED_BLOCK_TITLE_GENERATION_DESCRIPTION: &str =
-    &crate::tr!("settings", "let-ai-generate-a-title-for-your-shared-block-based-on-the-command-and-output.");
+    "Let AI generate a title for your shared block based on the command and output.";
 const GIT_OPERATIONS_AUTOGEN_DESCRIPTION: &str =
     "Let AI generate commit messages and pull request titles and descriptions.";
 const WISPR_FLOW_URL: &str = "https://wisprflow.ai/";
@@ -4810,7 +4810,7 @@ impl SettingsWidget for CloudHandoffWidget {
         let is_force_disabled = !is_any_ai_enabled || cloud_convos_off;
 
         let tooltip_text = if cloud_convos_off {
-            crate::tr!("settings", "cloud-handoff-requires-cloud-conversations-to-be-enabled.")
+            "Cloud handoff requires cloud conversations to be enabled."
         } else {
             ""
         };

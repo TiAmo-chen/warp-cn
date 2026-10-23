@@ -778,7 +778,7 @@ impl PlatformPageWidget {
         );
         if FeatureFlag::TeamApiKeys.is_enabled() || FeatureFlag::NamedAgents.is_enabled() {
             let scope_display = match key.scope {
-                ApiKeyScope::Personal => crate::tr!("settings", "personal"),
+                ApiKeyScope::Personal => "Personal",
                 ApiKeyScope::Team => "Team",
                 ApiKeyScope::Agent => "Agent",
             };

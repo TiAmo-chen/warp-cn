@@ -46,7 +46,7 @@ impl BillingAndUsageDispatchView {
                 .position(|value| *value == current_value)
                 .unwrap_or_else(|| {
                     report_error!(
-                        crate::tr!("settings", "could-not-find-current-usagedisplayunit-value-in-dropdown-option-list")
+                        "Could not find current UsageDisplayUnit value in dropdown option list"
                     );
                     0
                 });

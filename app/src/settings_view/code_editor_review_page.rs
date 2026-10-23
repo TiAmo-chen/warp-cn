@@ -29,7 +29,7 @@ use crate::view_components::{Dropdown, DropdownItem};
 use crate::workspace::tab_settings::TabSettings;
 use crate::{TelemetryEvent, send_telemetry_from_ctx};
 
-const PAGE_TITLE: &str = &crate::tr!("settings", "editor-and-code-review");
+const PAGE_TITLE: &str = "Editor and Code Review";
 
 pub struct EditorAndCodeReviewPageView {
     page: PageType<Self>,

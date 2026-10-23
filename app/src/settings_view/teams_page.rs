@@ -89,30 +89,30 @@ use crate::workspaces::workspace::{
 
 const TEAM_MEMBERS_HEADER_POSITION_ID: &str = "team_settings:team_members_header";
 // Styling for team create page
-const TEAM_NAME_EDITOR_PLACEHOLDER_TEXT: &str = &crate::tr!("settings", "team-name");
+const TEAM_NAME_EDITOR_PLACEHOLDER_TEXT: &str = "Team name";
 const CREATE_TEAM_BUTTON_LEFT_PADDING: f32 = 10.;
 const CREATE_TEAM_DESCRIPTION: &str = "When you create a team, you can collaborate on agent-driven development by sharing cloud agent runs, environments, automations, and artifacts. You can also create a shared knowledge store for teammates and agents alike.";
 
-const OR_JOIN_TEAM_HEADER: &str = &crate::tr!("settings", "or,-join-an-existing-team-within-your-company");
+const OR_JOIN_TEAM_HEADER: &str = "Or, join an existing team within your company";
 const JOIN_TEAM_HEADER: &str = "Join an existing team within your company";
 const BROWSE_TEAMS_BUTTON_LABEL: &str = "Browse teams";
-const SWITCH_TEAM_BUTTON_LABEL: &str = &crate::tr!("settings", "switch-team");
+const SWITCH_TEAM_BUTTON_LABEL: &str = "Switch team";
 const JOIN_WORKSPACE_OR_TEAM_HEADER: &str =
     "Join an existing workspace or team within your company";
 const OR_JOIN_WORKSPACE_OR_TEAM_HEADER: &str =
     "Or, join an existing workspace or team within your company";
-const NO_JOINABLE_TEAMS_HEADER: &str = &crate::tr!("settings", "there-are-currently-no-joinable-teams.");
+const NO_JOINABLE_TEAMS_HEADER: &str = "There are currently no joinable teams.";
 const NO_TEAMS_TO_JOIN_DESCRIPTION: &str =
     "Contact an admin to join a team to gain access to more features.";
-const ADMIN_PANEL_CTA_LINK_TEXT: &str = &crate::tr!("settings", "visit-the-admin-panel");
+const ADMIN_PANEL_CTA_LINK_TEXT: &str = "Visit the admin panel";
 const ADMIN_PANEL_CTA_TRAILING_COPY: &str = "to manage and create new teams.";
 
 // Styling for team management page
-const LEAVE_TEAM_BUTTON_LABEL: &str = &crate::tr!("settings", "leave-team");
+const LEAVE_TEAM_BUTTON_LABEL: &str = "Leave Team";
 const DELETE_TEAM_BUTTON_LABEL: &str = "Delete team";
 const CREATE_TEAM_BUTTON_LABEL: &str = "Create";
 const APPROVE_DOMAINS_PLACEHOLDER: &str = "Domains, comma separated";
-const EMAILS_PLACEHOLDER: &str = &crate::tr!("settings", "emails,-comma-separated");
+const EMAILS_PLACEHOLDER: &str = "Emails, comma separated";
 const APPROVE_DOMAINS_BUTTON_LABEL: &str = "Set";
 const SEND_EMAIL_INVITES_BUTTON_LABEL: &str = "Invite";
 const BUTTON_WIDTH: f32 = 82.;
@@ -129,18 +129,18 @@ const SUBSUBSECTION_HEADER_FONT_SIZE: f32 = 14.;
 const OWNER_STATE_CHIP_ACCENT_OPACITY: u8 = 30;
 
 const INVALID_DOMAINS_INSTRUCTIONS: &str =
-    &crate::tr!("settings", "some-of-the-provided-domains-are-invalid,-or-have-already-been-added.");
+    "Some of the provided domains are invalid, or have already been added.";
 
 const INVITE_LINK_TOGGLE_INSTRUCTIONS: &str = "As an admin, you can choose whether to enable or disable the ability for team members to invite others by invitation link.";
 const INVITE_LINK_UNAVAILABLE_INSTRUCTIONS: &str =
     "Your team’s visibility settings prevent you from creating invite links.";
 const INVITE_LINK_DOMAIN_RESTRICTIONS_INSTRUCTIONS: &str = "Restrict by domain — only allow users with emails at specific domains to join your team through the invite link.";
 
-const INVITE_BY_EMAIL_EXPIRY_INSTRUCTIONS: &str = &crate::tr!("settings", "email-invitations-are-valid-for-7-days.");
+const INVITE_BY_EMAIL_EXPIRY_INSTRUCTIONS: &str = "Email invitations are valid for 7 days.";
 const INVALID_EMAILS_INSTRUCTIONS: &str =
     "Some of the provided email addresses are invalid, already invited, or members of the team.";
 
-const OFFLINE_TEXT: &str = &crate::tr!("settings", "you-are-offline.");
+const OFFLINE_TEXT: &str = "You are offline.";
 
 const DISABLED_MEMBER_TOOLTIP_TEXT: &str = "This user's account is disabled";
 
@@ -312,7 +312,7 @@ impl From<&TeamsPageAction> for LoginGatedFeature {
             ShowDeleteTeamConfirmationDialog => "Delete Team",
             CreateTeam => "Create Team",
             DeletePendingEmailInvitation { .. } => "Delete Pending Email Invitation",
-            RemoveUserFromTeam { .. } => crate::tr!("settings", "remove-user-from-team"),
+            RemoveUserFromTeam { .. } => "Remove User From Team",
             RemoveUserFromWorkspace { .. } => "Remove User From Workspace",
             AddDomainRestrictions { .. } => "Add Domain Restrictions",
             DeleteDomainRestriction { .. } => crate::tr!("settings", "delete-domain-restriction"),
@@ -405,7 +405,7 @@ impl std::fmt::Display for TeamsInviteOption {
             "{}",
             match self {
                 TeamsInviteOption::Link => "Link",
-                TeamsInviteOption::Email => &crate::tr!("settings", "email"),
+                TeamsInviteOption::Email => "Email",
             },
         )
     }
@@ -593,7 +593,7 @@ impl WorkspaceDiscoveryAction {
     fn label(self) -> &'static str {
         match self {
             Self::Continue => "Continue",
-            Self::Join => crate::tr!("settings", "join"),
+            Self::Join => "Join",
         }
     }
 }
@@ -2671,7 +2671,7 @@ impl TeamsWidget {
         .finish();
 
         let title = match warning {
-            GrowTeamWarning::SeatCapReached => crate::tr!("settings", "your-team-is-full"),
+            GrowTeamWarning::SeatCapReached => "Your team is full",
             GrowTeamWarning::SeatCapExceeded => "You've exceeded your member limit",
             GrowTeamWarning::PaymentPastDue => "Payment past due",
             GrowTeamWarning::PaymentUnpaid => crate::tr!("settings", "subscription-unpaid"),
@@ -2686,7 +2686,7 @@ impl TeamsWidget {
         );
 
         let body_prefix = match warning {
-            GrowTeamWarning::SeatCapReached => crate::tr!("settings", "you've-reached-your-plan's-member-limit."),
+            GrowTeamWarning::SeatCapReached => "You've reached your plan's member limit.",
             GrowTeamWarning::SeatCapExceeded => {
                 "You've exceeded your plan's member limit. Existing team members keep their access, but you won't be able to add new members."
             }
@@ -2704,7 +2704,7 @@ impl TeamsWidget {
         );
         let cta_sentence = if !has_admin_permissions {
             if is_delinquency {
-                crate::tr!("settings", "contact-a-team-admin-to-restore-access.")
+                "Contact a team admin to restore access."
             } else {
                 "Contact a team admin to grow the team."
             }
@@ -2714,7 +2714,7 @@ impl TeamsWidget {
                 GrowTeamWarningCta::UpdateBilling => {
                     "Update your payment information to restore access."
                 }
-                GrowTeamWarningCta::ContactSupport => crate::tr!("settings", "contact-support-to-restore-access."),
+                GrowTeamWarningCta::ContactSupport => "Contact support to restore access.",
                 GrowTeamWarningCta::None => {
                     if is_delinquency {
                         "Contact support to restore access."
@@ -2817,7 +2817,7 @@ impl TeamsWidget {
     ) -> (&'static str, &'static str) {
         if billing_metadata.customer_type == CustomerType::Business {
             (
-                &crate::tr!("settings", "upgrade-to-enterprise"),
+                "Upgrade to Enterprise",
                 " for an unlimited team member limit.",
             )
         } else {
@@ -2833,7 +2833,7 @@ impl TeamsWidget {
         has_admin_permissions: bool,
     ) -> Box<dyn Element> {
         let prorated_message = if has_admin_permissions {
-            crate::tr!("settings", "you'll-be-charged-for-a-portion-of-the-team-member's-usage-of-warp.")
+            "You'll be charged for a portion of the team member's usage of Warp."
         } else {
             "Your admin will be charged for a portion of the team member's usage of Warp."
         };
@@ -3354,7 +3354,7 @@ impl TeamsWidget {
                     match team.billing_metadata.customer_type {
                         CustomerType::Prosumer => crate::tr!("settings", "upgrade-to-turbo-plan"),
                         CustomerType::Turbo => "Upgrade to Lightspeed plan",
-                        _ => crate::tr!("settings", "compare-plans"),
+                        _ => "Compare Plans",
                     }
                 };
                 billing_links.add_child(
@@ -3399,7 +3399,7 @@ impl TeamsWidget {
     ) -> Box<dyn Element> {
         let mut section = Flex::column();
         let sub_header_text = match team.billing_metadata.customer_type {
-            CustomerType::Free => crate::tr!("settings", "free-plan-usage-limits"),
+            CustomerType::Free => "Free plan usage limits",
             _ => "Plan usage limits",
         };
         section.add_child(self.render_subsection_header(sub_header_text.into(), appearance));

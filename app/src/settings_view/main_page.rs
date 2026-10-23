@@ -54,7 +54,7 @@ const PHOTO_SIZE: f32 = 40.;
 const REFERRAL_CTA: &str = "Earn rewards by sharing Warp with friends & colleagues";
 const REGULAR_TEXT_FONT_SIZE: f32 = 12.;
 const VERTICAL_MARGIN: f32 = 24.;
-const LOG_OUT_TEXT: &str = &crate::tr!("settings", "log-out");
+const LOG_OUT_TEXT: &str = "Log out";
 lazy_static! {
     static ref SETTINGS_SYNC_BINDINGS_ADDED: Arc<Mutex<bool>> = Default::default();
 }
@@ -148,7 +148,7 @@ impl From<&MainPageAction> for LoginGatedFeature {
             Upgrade { .. } => "Upgrade Plan",
             GenerateStripeBillingPortalLink { .. } => "Generate Stripe Billing Portal Link",
             ToggleSettingsSync => "Toggle Settings Sync",
-            _ => crate::tr!("settings", "unknown-reason"),
+            _ => "Unknown reason",
         }
     }
 }
@@ -568,7 +568,7 @@ impl AccountWidget {
                         let description = match billing_metadata.customer_type {
                             CustomerType::Prosumer => crate::tr!("settings", "upgrade-to-turbo-plan"),
                             CustomerType::Turbo => "Upgrade to Lightspeed plan",
-                            _ => crate::tr!("settings", "compare-plans"),
+                            _ => "Compare Plans",
                         };
                         let team_uid = team.uid;
                         plan_info.add_child(
@@ -859,11 +859,11 @@ impl VersionInfoWidget {
                 match autoupdate::get_update_state(app) {
                     AutoupdateStage::NoUpdateAvailable => (
                         Some(StatusContent {
-                            text: &crate::tr!("settings", "up-to-date"),
+                            text: "Up to date",
                             color: faded_text_color,
                         }),
                         Some(CallToActionContent {
-                            text: &crate::tr!("settings", "check-for-updates"),
+                            text: "Check for updates",
                             action: MainPageAction::CheckForUpdate,
                         }),
                     ),
@@ -883,49 +883,49 @@ impl VersionInfoWidget {
                     ),
                     AutoupdateStage::UpdateReady { .. } => (
                         Some(StatusContent {
-                            text: &crate::tr!("settings", "update-available"),
+                            text: "Update available",
                             color: ansi_red,
                         }),
                         Some(CallToActionContent {
-                            text: &crate::tr!("settings", "relaunch-warp"),
+                            text: "Relaunch Warp",
                             action: MainPageAction::Relaunch,
                         }),
                     ),
                     AutoupdateStage::Updating { .. } => (
                         Some(StatusContent {
-                            text: &crate::tr!("settings", "updating..."),
+                            text: "Updating...",
                             color: faded_text_color,
                         }),
                         None,
                     ),
                     AutoupdateStage::UpdatedPendingRestart { .. } => (
                         Some(StatusContent {
-                            text: &crate::tr!("settings", "installed-update"),
+                            text: "Installed update",
                             color: faded_text_color,
                         }),
                         Some(CallToActionContent {
-                            text: &crate::tr!("settings", "relaunch-warp"),
+                            text: "Relaunch Warp",
                             action: MainPageAction::Relaunch,
                         }),
                     ),
                     AutoupdateStage::UnableToUpdateToNewVersion { .. } => (
                         Some(StatusContent {
-                            text: &crate::tr!("settings", "a-new-version-of-warp-is-available-but-can't-be-installed"),
+                            text: "A new version of Warp is available but can't be installed",
                             color: ansi_red,
                         }),
                         Some(CallToActionContent {
-                            text: &crate::tr!("settings", "update-warp-manually"),
+                            text: "Update Warp manually",
                             // note: the handler for this action is a no-op
                             action: MainPageAction::DownloadUpdate,
                         }),
                     ),
                     AutoupdateStage::UnableToLaunchNewVersion { .. } => (
                         Some(StatusContent {
-                            text: &crate::tr!("settings", "a-new-version-of-warp-is-installed-but-can't-be-launched."),
+                            text: "A new version of Warp is installed but can't be launched.",
                             color: ansi_red,
                         }),
                         Some(CallToActionContent {
-                            text: &crate::tr!("settings", "update-warp-manually"),
+                            text: "Update Warp manually",
                             // note: the handler for this action is a no-op
                             action: MainPageAction::DownloadUpdate,
                         }),
@@ -1054,7 +1054,7 @@ impl SettingsWidget for VersionInfoWidget {
                 .with_margin_top(VERTICAL_MARGIN)
                 .finish()
         } else {
-            report_error!(crate::tr!("settings", "shouldn't-render-versioninfowidget-without-git_release_tag"));
+            report_error!("Shouldn't render VersionInfoWidget without GIT_RELEASE_TAG");
             Empty::new().finish()
         }
     }

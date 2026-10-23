@@ -90,7 +90,7 @@ pub trait SettingsPageMeta {
     /// should respect the `allow_steal_focus` parameter, abstaining from focusing the page if it's
     /// false.
     fn on_page_selected(&mut self, _allow_steal_focus: bool, _ctx: &mut ViewContext<Self>) {
-        log::info!(crate::tr!("settings", "no-updates-for-the-selected-view-handle."));
+        log::info!("No updates for the selected view handle.");
     }
 
     fn should_render(&self, _ctx: &AppContext) -> bool;
@@ -1160,7 +1160,7 @@ pub(crate) fn render_settings_info_banner(
 }
 
 const WORKSPACE_OVERRIDE_TOOLTIP_TEXT: &str =
-    &crate::tr!("settings", "this-option-is-enforced-by-your-organization's-settings-and-cannot-be-customized.");
+    "This option is enforced by your organization's settings and cannot be customized.";
 
 pub struct InputListItem<SettingsPageAction: Action + Clone> {
     pub item: String,

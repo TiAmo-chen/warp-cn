@@ -825,7 +825,7 @@ impl TerminalView {
         button
             .with_tooltip(move || {
                 let tooltip_text = if is_open {
-                    crate::tr!("terminal", "tooltip-hide-details")
+                    "Hide details"
                 } else {
                     "Show details"
                 };

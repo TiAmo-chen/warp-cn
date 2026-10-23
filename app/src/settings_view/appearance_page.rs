@@ -1155,7 +1155,7 @@ impl AppearanceSettingsPageView {
                 .position(|val| *val == current_value)
                 .unwrap_or_else(|| {
                     report_error!(
-                        crate::tr!("settings", "could-not-find-current-thinstrokes-value-in-dropdown-option-list")
+                        "Could not find current ThinStrokes value in dropdown option list"
                     );
                     0
                 });
@@ -1489,7 +1489,7 @@ impl AppearanceSettingsPageView {
             text_settings_widgets.push(Box::new(LigaturesWidget::default()));
         }
 
-        categories.push(Category::new(crate::tr!("notebooks", "notebooks-block-text"), text_settings_widgets));
+        categories.push(Category::new("Text", text_settings_widgets));
 
         categories.push(Category::new(
             "Cursor",
@@ -1655,7 +1655,7 @@ impl AppearanceSettingsPageView {
 
     fn input_mode_dropdown_item_label(val: InputMode) -> &'static str {
         match val {
-            InputMode::PinnedToBottom => crate::tr!("settings", "pin-to-the-bottom-(warp-mode)"),
+            InputMode::PinnedToBottom => "Pin to the bottom (Warp mode)",
             InputMode::PinnedToTop => "Pin to the top (Reverse mode)",
             InputMode::Waterfall => "Start at the top (Classic mode)",
         }
@@ -1667,7 +1667,7 @@ impl AppearanceSettingsPageView {
             AppIcon::Default => "Default",
             AppIcon::Classic1 => "Classic 1",
             AppIcon::Classic2 => "Classic 2",
-            AppIcon::Classic3 => crate::tr!("settings", "classic-3"),
+            AppIcon::Classic3 => "Classic 3",
             AppIcon::Comets => "Comets",
             AppIcon::GlassSky => "Glass Sky",
             AppIcon::Glitch => "Glitch",
@@ -1688,7 +1688,7 @@ impl AppearanceSettingsPageView {
             ThinStrokes::Never => "Never",
             ThinStrokes::OnLowDpiDisplays => "On low-DPI displays",
             ThinStrokes::OnHighDpiDisplays => "On high-DPI displays",
-            ThinStrokes::Always => crate::tr!("settings", "always"),
+            ThinStrokes::Always => "Always",
         }
     }
 
@@ -1696,7 +1696,7 @@ impl AppearanceSettingsPageView {
         match val {
             EnforceMinimumContrast::Always => "Always",
             EnforceMinimumContrast::OnlyNamedColors => "Only for named colors",
-            EnforceMinimumContrast::Never => crate::tr!("settings", "never"),
+            EnforceMinimumContrast::Never => "Never",
         }
     }
 
@@ -2865,7 +2865,7 @@ impl ThemeSelectWidget {
     ) -> Box<dyn Element> {
         let theme: WarpTheme = WarpConfig::as_ref(app).theme_config().theme(&theme_kind);
         let mode_ui_label = match theme_chooser_mode {
-            ThemeChooserMode::SystemLight => crate::tr!("settings", "light"),
+            ThemeChooserMode::SystemLight => "Light",
             ThemeChooserMode::SystemDark => "Dark",
             ThemeChooserMode::SystemAgnostic => "Current theme",
         };
@@ -3361,7 +3361,7 @@ impl SettingsWidget for WindowOpacityWidget {
             // supporting alpha.
             if !window.supports_transparency() && window.graphics_backend() != GraphicsBackend::Gl {
                 let mut message = Cow::Borrowed(
-                    crate::tr!("settings", "the-selected-graphics-settings-may-not-support-rendering-transparent-windows."),
+                    "The selected graphics settings may not support rendering transparent windows.",
                 );
                 let gpu_settings = GPUSettings::as_ref(app);
                 if (gpu_settings
@@ -5281,7 +5281,7 @@ impl SettingsWidget for DirectoryTabColorsWidget {
         for (idx, (dir_path, current_color)) in directory_tab_colors(app).into_iter().enumerate() {
             let Some(dot_mouse_states) = view.color_picker_dot_states.get(idx).cloned() else {
                 report_error!(
-                    crate::tr!("settings", "missing-color-picker-dot-states-for-directory"),
+                    "Missing color picker dot states for directory",
                     extra: { "index" => %idx }
                 );
                 continue;

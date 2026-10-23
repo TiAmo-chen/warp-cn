@@ -873,7 +873,7 @@ impl View for CustomEndpointModal {
                             .finish(),
                     )
                     .with_child(
-                        ConstrainedBox::new(label(crate::tr!("settings", "model-alias-(optional)")))
+                        ConstrainedBox::new(label("Model alias (optional)"))
                             .with_width(MODEL_INPUT_WIDTH)
                             .finish(),
                     )
