@@ -50,9 +50,9 @@ jobs:
           $iscc = 'C:\Program Files (x86)\Inno Setup 6\ISCC.exe'
           if (-not (Test-Path $iscc)) { $iscc = 'C:\Program Files\Inno Setup 6\ISCC.exe' }
           if (-not (Test-Path $iscc)) { throw 'ISCC.exe not found' }
-          & $iscc 'installer\portable.iss'
+          & $iscc "/O$PWD\Output" 'installer\portable.iss'
           if ($LASTEXITCODE -ne 0) { throw "ISCC failed: $LASTEXITCODE" }
-          Get-ChildItem . -Filter '*.exe' | Where-Object { $_.Name -like 'Warp*' } |
+          Get-ChildItem "$PWD\Output" -Filter '*.exe' |
             Select-Object Name, @{n='MB';e={[math]::Round($_.Length/1MB,2)}} | Format-Table -AutoSize
 
       - name: Upload installer

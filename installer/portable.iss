@@ -18,7 +18,6 @@ Uninstallable=no
 CreateUninstallRegKey=no
 DisableProgramGroupPage=yes
 OutputBaseFilename=Warp-zh-Portable
-OutputDir=..\Output
 SourceDir=..
 Compression=lzma2/ultra64
 SolidCompression=yes
