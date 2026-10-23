@@ -1491,7 +1491,7 @@ impl CodePageWidget {
 
         if let Some(completed_successfully) = index_state.last_sync_successful() {
             let (text, color, icon) = if completed_successfully {
-                (crate::tr!("settings", "synced"), theme.ansi_fg_green(), Icon::Check)
+                ("Synced", theme.ansi_fg_green(), Icon::Check)
             } else if let Some(CodebaseIndexFinishedStatus::Failed(
                 CodebaseIndexingError::ExceededMaxFileLimit
                 | CodebaseIndexingError::MaxDepthExceeded,
@@ -1602,7 +1602,7 @@ impl CodePageWidget {
                 }
             }
             RemoteCodebaseIndexState::Ready => IndexingStatusPresentation {
-                text: Cow::from(crate::tr!("settings", "synced")),
+                text: Cow::from("Synced"),
                 color: theme.ansi_fg_green(),
                 icon: Some(Icon::Check),
                 refresh_action: Some(IndexingRefreshAction::Resync),

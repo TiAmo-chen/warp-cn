@@ -328,7 +328,7 @@ impl From<&TeamsPageAction> for LoginGatedFeature {
             JoinTeamWithTeamDiscovery { .. } => "Join Team With Team Discovery",
             ShowWorkspaceTeams { .. } => "Show Workspace Teams",
             JoinWorkspaceFromDiscovery { .. } => "Join Workspace From Discovery",
-            _ => crate::tr!("settings", "unknown-reason"),
+            _ => "Unknown reason",
         }
     }
 }
