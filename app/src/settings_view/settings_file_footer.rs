@@ -6,7 +6,7 @@
 //! * An inline yellow error alert (mirroring the workspace-level banner in
 //!   `Workspace::render_settings_error_banner`) when the settings file has an
 //!   error *and* the user has dismissed the workspace banner.
-//! * Otherwise, a plain bordered "Open settings file" button.
+//! * Otherwise, a plain bordered crate::tr!("settings", "open-settings-file") button.
 use pathfinder_color::ColorU;
 use warp_core::ui::color::coloru_with_opacity;
 use warp_core::ui::theme::Fill;
@@ -29,16 +29,16 @@ const FOOTER_PADDING: f32 = 12.;
 /// Font size used for the button label and the alert copy; matches the
 /// Figma spec for both designs.
 const FOOTER_FONT_SIZE: f32 = 12.;
-/// Height of the plain "Open settings file" button.
+/// Height of the plain crate::tr!("settings", "open-settings-file") button.
 const OPEN_BUTTON_HEIGHT: f32 = 32.;
 /// Height of action buttons inside the error alert.
 const ALERT_ACTION_BUTTON_HEIGHT: f32 = 24.;
 /// Size of the leading icons (search-sm, code-02, alert-circle, oz).
 const FOOTER_ICON_SIZE: f32 = 16.;
-/// Size of the Warp Agent brand mark inside the "Fix with Warp Agent" button. Matches the
+/// Size of the Warp Agent brand mark inside the crate::tr!("settings", "fix-with-warp-agent") button. Matches the
 /// Figma spec and the workspace banner's secondary-button icon sizing.
 const ALERT_OZ_ICON_SIZE: f32 = 14.;
-/// Horizontal padding inside the "Open file" / "Fix with Warp Agent" action buttons.
+/// Horizontal padding inside the crate::tr!("settings", "open-file") / "Fix with Warp Agent" action buttons.
 /// Matches the workspace banner's secondary button pad.
 const ALERT_BUTTON_HORIZONTAL_PADDING: f32 = 8.;
 /// Spacing between the two action buttons when they fit on one row.
@@ -57,7 +57,7 @@ const ALERT_TEXT_MAX_HEIGHT: f32 = 140.;
 pub enum SettingsFooterKind {
     /// Footer is not rendered at all (feature flag off).
     Hidden,
-    /// Render the plain "Open settings file" button.
+    /// Render the plain crate::tr!("settings", "open-settings-file") button.
     OpenButton,
     /// Render the inline yellow error alert.
     ErrorAlert,
@@ -93,7 +93,7 @@ pub struct SettingsFooterMouseStates {
     pub alert_text_scroll_state: ClippedScrollStateHandle,
 }
 
-/// Renders the plain "Open settings file" button shown in the default state.
+/// Renders the plain crate::tr!("settings", "open-settings-file") button shown in the default state.
 ///
 /// Visual spec (Figma `5655:62575`): 32px tall, full-width, 1px outlined,
 /// 4px rounded corners, `code-02` leading icon, semibold label.
@@ -113,7 +113,7 @@ pub fn render_open_settings_file_button(
             .with_height(FOOTER_ICON_SIZE)
             .finish();
 
-        let label = Text::new_inline("Open settings file", ui_font_family, FOOTER_FONT_SIZE)
+        let label = Text::new_inline(crate::tr!("settings", "open-settings-file"), ui_font_family, FOOTER_FONT_SIZE)
             .with_color(text_color)
             .with_style(Properties {
                 weight: Weight::Semibold,
@@ -228,7 +228,7 @@ pub fn render_settings_error_alert(
         ui_font_family,
         text_color,
         mouse_states.alert_open_file_button.clone(),
-        "Open file",
+        crate::tr!("settings", "open-file"),
         /*icon=*/ None,
         /*bordered=*/ true,
         WorkspaceAction::OpenSettingsFile,

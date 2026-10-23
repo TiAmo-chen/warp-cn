@@ -67,13 +67,13 @@ impl SetDefaultModelModalBody {
         });
 
         let cancel_button = ctx.add_typed_action_view(|_| {
-            ActionButton::new("Not now", NakedTheme).on_click(|ctx| {
+            ActionButton::new(crate::tr!("settings", "not-now"), NakedTheme).on_click(|ctx| {
                 ctx.dispatch_typed_action(SetDefaultModelModalBodyAction::Cancel);
             })
         });
 
         let save_button = ctx.add_typed_action_view(|_| {
-            ActionButton::new("Change default model", PrimaryTheme).on_click(|ctx| {
+            ActionButton::new(crate::tr!("settings", "change-default-model"), PrimaryTheme).on_click(|ctx| {
                 ctx.dispatch_typed_action(SetDefaultModelModalBodyAction::Save);
             })
         });
@@ -128,7 +128,7 @@ impl Entity for SetDefaultModelModalBody {
 
 impl View for SetDefaultModelModalBody {
     fn ui_name() -> &'static str {
-        "SetDefaultModelModalBody"
+        crate::tr!("settings", "setdefaultmodelmodalbody")
     }
 
     fn render(&self, app: &AppContext) -> Box<dyn Element> {

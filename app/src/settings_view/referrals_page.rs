@@ -37,7 +37,7 @@ use crate::{safe_info, send_telemetry_from_ctx};
 
 const HEADER_FONT_SIZE: f32 = 18.;
 const HEADER_MARGIN_BOTTOM: f32 = 32.;
-const HEADER_TEXT: &str = "Invite a friend to Warp";
+const HEADER_TEXT: &str = crate::tr!("settings", "invite-a-friend-to-warp");
 const ANONYMOUS_USER_HEADER_TEXT: &str = "Sign up to participate in Warp's referral program";
 
 const INVITE_FIELD_LABEL_BOTTOM_MARGIN: f32 = 8.;
@@ -45,16 +45,16 @@ const INVITE_FIELD_LABEL_BOTTOM_MARGIN: f32 = 8.;
 const LINK_BOTTOM_MARGIN: f32 = 12.;
 const LINK_TEXT_PADDING: f32 = 10.;
 const LINK_CORNER_RADIUS: Radius = Radius::Pixels(4.);
-const LINK_ERROR_TEXT: &str = "Failed to load referral code.";
+const LINK_ERROR_TEXT: &str = crate::tr!("settings", "failed-to-load-referral-code.");
 
 const BUTTON_WIDTH: f32 = 98.;
 const BUTTON_HEIGHT: f32 = 36.;
 const BUTTON_LEFT_MARGIN: f32 = 8.;
 const BUTTON_FONT_SIZE: f32 = 12.;
-const LINK_BUTTON_TEXT: &str = "Copy link";
+const LINK_BUTTON_TEXT: &str = crate::tr!("settings", "copy-link");
 const EMAIL_BUTTON_TEXT: &str = "Send";
 const EMAIL_BUTTON_SENDING_TEXT: &str = "Sending...";
-const LOADING_TEXT: &str = "Loading...";
+const LOADING_TEXT: &str = crate::tr!("settings", "loading...");
 
 const LINK_COPIED_TOAST: &str = "Link copied.";
 const EMAIL_SUCCESS_TOAST: &str = "Successfully sent emails.";
@@ -82,7 +82,7 @@ const METER_TOP_MARGIN: f32 = 16.;
 const METER_RIGHT_MARGIN: f32 = 12.;
 
 const CLAIMED_REFERRALS_LABEL_HORIZONTAL_SPACING: f32 = 4.;
-const CLAIMED_REFERRALS_COUNT_LABEL_SINGULAR: &str = "Current referral";
+const CLAIMED_REFERRALS_COUNT_LABEL_SINGULAR: &str = crate::tr!("settings", "current-referral");
 const CLAIMED_REFERRALS_COUNT_LABEL_PLURAL: &str = "Current referrals";
 const CLAIMED_REFERRALS_LABEL_WIDTH: f32 = 52.;
 const CLAIMED_REFERRALS_LABEL_FONT_SIZE: f32 = 14.;
@@ -91,7 +91,7 @@ const CLAIMED_REFERRAL_COUNT_LEFT_MARGIN: f32 = 40.;
 
 const CLAIMED_REFERRAL_CLIP: usize = 999;
 
-const TERMS_LINK_TEXT: &str = "Certain restrictions apply.";
+const TERMS_LINK_TEXT: &str = crate::tr!("settings", "certain-restrictions-apply.");
 const TERMS_URL: &str = "https://docs.warp.dev/support-and-community/community/refer-a-friend#referral-program-terms-and-conditions";
 const TERMS_CONTACT_TEXT: &str =
     " If you have any questions about the referral program, please contact referrals@warp.dev.";
@@ -149,7 +149,7 @@ lazy_static! {
             icon_path: "bundled/svg/referral-theme.svg",
             icon_width: 64.,
             icon_height: 64.,
-            label: "Exclusive theme".to_owned(),
+            label: crate::tr!("settings", "exclusive-theme").to_owned(),
         },
         Reward {
             required_referral_count: 5,
@@ -163,42 +163,42 @@ lazy_static! {
             icon_path: "bundled/svg/referral-tshirt.svg",
             icon_width: 64.,
             icon_height: 64.,
-            label: "T-shirt".to_owned(),
+            label: crate::tr!("settings", "t-shirt").to_owned(),
         },
         Reward {
             required_referral_count: 20,
             icon_path: "bundled/svg/referral-notebook.svg",
             icon_width: 64.,
             icon_height: 64.,
-            label: "Notebook".to_owned(),
+            label: crate::tr!("settings", "notebook").to_owned(),
         },
         Reward {
             required_referral_count: 35,
             icon_path: "bundled/svg/referral-hat.svg",
             icon_width: 64.,
             icon_height: 64.,
-            label: "Baseball cap".to_owned(),
+            label: crate::tr!("settings", "baseball-cap").to_owned(),
         },
         Reward {
             required_referral_count: 50,
             icon_path: "bundled/svg/referral-hoodie.svg",
             icon_width: 64.,
             icon_height: 64.,
-            label: "Hoodie".to_owned(),
+            label: crate::tr!("settings", "hoodie").to_owned(),
         },
         Reward {
             required_referral_count: 75,
             icon_path: "bundled/svg/referral-hydroflask.svg",
             icon_width: 48.,
             icon_height: 48.,
-            label: "Premium Hydro Flask".to_owned(),
+            label: crate::tr!("settings", "premium-hydro-flask").to_owned(),
         },
         Reward {
             required_referral_count: 100,
             icon_path: "bundled/svg/referral-backpack.svg",
             icon_width: 50.,
             icon_height: 50.,
-            label: "Backpack".to_owned(),
+            label: crate::tr!("settings", "backpack").to_owned(),
         },
     ];
 }
@@ -274,7 +274,7 @@ impl ReferralsPageView {
         match &self.api_state {
             ApiState::Loading | ApiState::Failed => {
                 // Shouldn't happen as the buttons will be disabled
-                log::warn!("Attempting to copy link before API request is complete");
+                log::warn!(crate::tr!("settings", "attempting-to-copy-link-before-api-request-is-complete"));
             }
             ApiState::Ready { referral_info, .. } => {
                 send_telemetry_from_ctx!(TelemetryEvent::CopyInviteLink, ctx);
@@ -313,7 +313,7 @@ impl ReferralsPageView {
             },
             _ => {
                 // Shouldn't happen as the buttons will be disabled
-                log::warn!("Attempting to send email referrals before API is available");
+                log::warn!(crate::tr!("settings", "attempting-to-send-email-referrals-before-api-is-available"));
             }
         }
     }
@@ -339,7 +339,7 @@ impl ReferralsPageView {
                 });
             }
             Err(err) => {
-                report_error!(err.context("Error sending referral emails"));
+                report_error!(err.context(crate::tr!("settings", "error-sending-referral-emails")));
                 ctx.emit(ReferralsPageEvent::ShowToast {
                     message: EMAIL_FAILURE_TOAST.to_owned(),
                     flavor: ToastFlavor::Error,
@@ -385,7 +385,7 @@ impl Entity for ReferralsPageView {
 
 impl View for ReferralsPageView {
     fn ui_name() -> &'static str {
-        "ReferralsPageView"
+        crate::tr!("settings", "referralspageview")
     }
 
     fn render(&self, app: &AppContext) -> Box<dyn Element> {
@@ -446,7 +446,7 @@ impl From<ViewHandle<ReferralsPageView>> for SettingsPageViewHandle {
 }
 #[derive(Error, Debug)]
 enum EmailValidationError {
-    #[error("Email is empty")]
+    #[error(crate::tr!("settings", "email-is-empty"))]
     Empty,
     #[error("Email is invalid: {0}")]
     Invalid(String),
@@ -456,7 +456,7 @@ impl EmailValidationError {
     /// The user-readable error descriptions.
     fn ui_message(&self) -> String {
         match self {
-            EmailValidationError::Empty => "Please enter an email.".to_owned(),
+            EmailValidationError::Empty => crate::tr!("settings", "please-enter-an-email.").to_owned(),
             EmailValidationError::Invalid(invalid_email) => {
                 format!("Please ensure the following email is valid: {invalid_email}")
             }
@@ -621,7 +621,7 @@ impl ReferralsWidget {
         Flex::column()
             .with_child(self.render_label("Link", appearance))
             .with_child(self.render_link_row(view, appearance))
-            .with_child(self.render_label("Email", appearance))
+            .with_child(self.render_label(crate::tr!("settings", "email"), appearance))
             .with_child(self.render_email_row(view, appearance))
             .finish()
     }
@@ -647,7 +647,7 @@ impl ReferralsWidget {
                 self.sign_up_button_mouse_state.clone(),
             )
             .with_style(button_styles)
-            .with_text_label("Sign up".to_owned())
+            .with_text_label(crate::tr!("settings", "sign-up").to_owned())
             .build()
             .on_click(move |ctx, _, _| {
                 ctx.dispatch_typed_action(ReferralsPageAction::SignupAnonymousUser);

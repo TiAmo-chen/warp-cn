@@ -290,7 +290,7 @@ impl LaunchConfigSaveModal {
     pub fn reset_editor(&mut self, ctx: &mut ViewContext<Self>) {
         self.editor.update(ctx, |editor, ctx| {
             editor.clear_buffer_and_reset_undo_stack(ctx);
-            editor.set_placeholder_text("launch_config.yaml", ctx);
+            editor.set_placeholder_text(crate::tr!("common", "launch-config-placeholder"), ctx);
         });
     }
 
@@ -436,7 +436,7 @@ impl LaunchConfigSaveModal {
                     1.0,
                     Align::new(
                         Text::new_inline(
-                            "Save Current Configuration",
+                            crate::tr!("common", "save-current-configuration"),
                             appearance.header_font_family(),
                             appearance.header_font_size(),
                         )

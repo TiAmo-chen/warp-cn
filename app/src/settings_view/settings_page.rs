@@ -90,7 +90,7 @@ pub trait SettingsPageMeta {
     /// should respect the `allow_steal_focus` parameter, abstaining from focusing the page if it's
     /// false.
     fn on_page_selected(&mut self, _allow_steal_focus: bool, _ctx: &mut ViewContext<Self>) {
-        log::info!("No updates for the selected view handle.");
+        log::info!(crate::tr!("settings", "no-updates-for-the-selected-view-handle."));
     }
 
     fn should_render(&self, _ctx: &AppContext) -> bool;
@@ -639,7 +639,7 @@ pub fn render_info_icon<T: Clone + Action>(
 ) -> Box<dyn Element> {
     let tooltip_text = additional_info
         .tooltip_override_text
-        .unwrap_or("Click to learn more in docs".to_owned());
+        .unwrap_or(crate::tr!("settings", "click-to-learn-more-in-docs").to_owned());
     let icon = Container::new(
         ConstrainedBox::new(
             Icon::Info
@@ -697,7 +697,7 @@ pub fn render_local_only_icon(
         .ui_builder()
         .local_only_icon_with_tooltip(
             13.,
-            custom_tooltip.unwrap_or("This setting is not synced to your other devices".to_owned()),
+            custom_tooltip.unwrap_or(crate::tr!("settings", "this-setting-is-not-synced-to-your-other-devices").to_owned()),
             mouse_state.clone(),
         )
         .finish();
@@ -1160,7 +1160,7 @@ pub(crate) fn render_settings_info_banner(
 }
 
 const WORKSPACE_OVERRIDE_TOOLTIP_TEXT: &str =
-    "This option is enforced by your organization's settings and cannot be customized.";
+    crate::tr!("settings", "this-option-is-enforced-by-your-organization's-settings-and-cannot-be-customized.");
 
 pub struct InputListItem<SettingsPageAction: Action + Clone> {
     pub item: String,
@@ -1355,7 +1355,7 @@ fn render_alternating_color_list_item<SettingsPageAction: Action + Clone>(
     .finish()
 }
 
-/// Adds a setting (e.g., "Background opacity") to the parent flex if it is supported on the current platform. Returns
+/// Adds a setting (e.g., crate::tr!("settings", "background-opacity")) to the parent flex if it is supported on the current platform. Returns
 /// true if the setting was added to the flex, false if not.
 ///
 /// This is the default method to use when rendering a setting in the settings menu, across all pages
@@ -2209,5 +2209,5 @@ pub(super) fn build_reset_button(
             font_size: Some(appearance.ui_font_size() * 0.8),
             ..Default::default()
         })
-        .with_text_label("Reset to default".to_owned())
+        .with_text_label(crate::tr!("settings", "reset-to-default").to_owned())
 }

@@ -71,7 +71,7 @@ impl ScriptingSettingsPageView {
             vec![Box::new(LocalControlModeWidget)];
 
         Self {
-            page: PageType::new_uncategorized(widgets, Some(PageTitle::new("Scripting"))),
+            page: PageType::new_uncategorized(widgets, Some(PageTitle::new(crate::tr!("settings", "scripting")))),
             local_only_icon_tooltip_states: RefCell::new(HashMap::new()),
             local_control_mode_dropdown,
             #[cfg(target_os = "macos")]
@@ -172,7 +172,7 @@ impl TypedActionView for ScriptingSettingsPageView {
 
 impl View for ScriptingSettingsPageView {
     fn ui_name() -> &'static str {
-        "ScriptingSettingsPage"
+        crate::tr!("settings", "scriptingsettingspage")
     }
 
     fn render(&self, app: &AppContext) -> Box<dyn Element> {
@@ -233,7 +233,7 @@ impl SettingsWidget for WarpControlCliInstallWidget {
         let label = if view.warpctrl_installing {
             "Installing…"
         } else if installed {
-            "Installed"
+            crate::tr!("settings", "installed")
         } else {
             "Install"
         };
@@ -259,13 +259,13 @@ impl SettingsWidget for WarpControlCliInstallWidget {
         };
 
         render_body_item::<ScriptingSettingsPageAction>(
-            "Warp Control CLI command".into(),
+            crate::tr!("settings", "warp-control-cli-command").into(),
             None,
             LocalOnlyIconState::Hidden,
             ToggleState::Enabled,
             appearance,
             button,
-            Some("Install the warpctrl command for scripting Warp from your terminal.".to_owned()),
+            Some(crate::tr!("settings", "install-the-warpctrl-command-for-scripting-warp-from-your-terminal.").to_owned()),
         )
     }
 }

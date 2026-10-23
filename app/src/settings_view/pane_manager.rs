@@ -27,7 +27,7 @@ impl SettingsPaneManager {
     pub fn settings_view(&self, window_id: WindowId) -> ViewHandle<SettingsView> {
         self.panes
             .get(&window_id)
-            .expect("Window should have corresponding settings view")
+            .expect(crate::tr!("settings", "window-should-have-corresponding-settings-view"))
             .settings_view
             .clone()
     }
@@ -63,7 +63,7 @@ impl SettingsPaneManager {
                 pane_id: pane.id(),
             });
         } else {
-            log::warn!("Settings view should already exist for settings pane");
+            log::warn!(crate::tr!("settings", "settings-view-should-already-exist-for-settings-pane"));
         }
     }
 

@@ -114,7 +114,7 @@ impl HandoffEnvironmentCreationModal {
                 };
 
                 let Some(owner) = owner else {
-                    report_error!("Unable to create environment: not logged in");
+                    report_error!(crate::tr!("settings", "unable-to-create-environment:-not-logged-in"));
                     ctx.emit(HandoffEnvironmentCreationModalEvent::CreationFailed {
                         error_message: "Not logged in".to_string(),
                     });
@@ -195,7 +195,7 @@ impl HandoffEnvironmentCreationModal {
             .finish();
 
         let dialog = Dialog::new(
-            "Create environment".to_string(),
+            crate::tr!("settings", "create-environment").to_string(),
             None,
             dialog_styles(appearance),
         )
@@ -236,7 +236,7 @@ impl TypedActionView for HandoffEnvironmentCreationModal {
 
 impl View for HandoffEnvironmentCreationModal {
     fn ui_name() -> &'static str {
-        "HandoffEnvironmentCreationModal"
+        crate::tr!("settings", "handoffenvironmentcreationmodal")
     }
 
     fn render(&self, app: &AppContext) -> Box<dyn Element> {

@@ -113,7 +113,7 @@ pub fn init(app: &mut AppContext) {
     app.register_editable_bindings([
         EditableBinding::new(
             "find:find_next_occurrence",
-            "Find the next occurrence of your search query",
+            crate::tr!("code", "code-find-next-occurrence"),
             FindAction::CmdG,
         )
         .with_context_predicate(id!("CodeEditorFind"))

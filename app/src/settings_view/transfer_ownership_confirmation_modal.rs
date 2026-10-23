@@ -42,7 +42,7 @@ impl Entity for TransferOwnershipConfirmationModal {
 
 impl View for TransferOwnershipConfirmationModal {
     fn ui_name() -> &'static str {
-        "TransferOwnershipConfirmationModal"
+        crate::tr!("settings", "transferownershipconfirmationmodal")
     }
 
     fn render(&self, app: &AppContext) -> Box<dyn Element> {
@@ -74,7 +74,7 @@ impl View for TransferOwnershipConfirmationModal {
                 appearance
                     .ui_builder()
                     .button(ButtonVariant::Secondary, self.cancel_mouse_state.clone())
-                    .with_text_label("Cancel".to_string())
+                    .with_text_label(crate::tr!("settings", "cancel").to_string())
                     .with_style(button_style)
                     .build()
                     .on_click(|ctx, _, _| {
@@ -87,7 +87,7 @@ impl View for TransferOwnershipConfirmationModal {
                     appearance
                         .ui_builder()
                         .button(ButtonVariant::Accent, self.confirm_mouse_state.clone())
-                        .with_text_label("Transfer".to_string())
+                        .with_text_label(crate::tr!("settings", "transfer").to_string())
                         .with_style(button_style)
                         .build()
                         .on_click(|ctx, _, _| {
@@ -138,7 +138,7 @@ impl TypedActionView for TransferOwnershipConfirmationModal {
                 let (Some(new_owner_uid), Some(team_uid)) = (self.new_owner_uid, self.team_uid)
                 else {
                     report_error!(
-                        "Transfer ownership confirm button pressed with no new owner set"
+                        crate::tr!("settings", "transfer-ownership-confirm-button-pressed-with-no-new-owner-set")
                     );
                     return;
                 };

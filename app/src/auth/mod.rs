@@ -142,7 +142,7 @@ pub fn maybe_log_out(app: &mut AppContext) {
             || num_unsaved_files > 0)
     {
         send_telemetry_sync_from_app_ctx!(TelemetryEvent::LogOutModalShown, app);
-        let mut button_data = vec![ModalButton::for_app("Yes, log out", |ctx| {
+        let mut button_data = vec![ModalButton::for_app(crate::tr!("auth", "yes-log-out"), |ctx| {
             log_out_and_open_web(ctx);
         })];
 
@@ -157,7 +157,7 @@ pub fn maybe_log_out(app: &mut AppContext) {
                 "You have {num_long_running_commands} {plural} running."
             ));
 
-            button_data.push(ModalButton::for_app("Show running processes", move |ctx| {
+            button_data.push(ModalButton::for_app(crate::tr!("workspace", "quit-show-processes"), move |ctx| {
                 send_telemetry_sync_from_app_ctx!(
                     TelemetryEvent::LogOutModalCancel { nav_palette: true },
                     ctx
@@ -222,7 +222,7 @@ pub fn maybe_log_out(app: &mut AppContext) {
             ));
         }
 
-        button_data.push(ModalButton::for_app("Cancel", move |ctx| {
+        button_data.push(ModalButton::for_app(crate::tr!("common", "cancel-label"), move |ctx| {
             send_telemetry_sync_from_app_ctx!(
                 TelemetryEvent::LogOutModalCancel { nav_palette: false },
                 ctx

@@ -336,7 +336,7 @@ impl BuyCreditsBanner {
 
         let sub_text_color = theme.sub_text_color(theme.surface_1());
 
-        let label = Text::new_inline("Auto reload", appearance.ui_font_family(), 12.)
+        let label = Text::new_inline(crate::tr!("settings", "auto-reload"), appearance.ui_font_family(), 12.)
             .with_color(sub_text_color.into())
             .finish();
 
@@ -563,7 +563,7 @@ impl BuyCreditsBanner {
                     }),
                     ..Default::default()
                 })
-                .with_text_label("Manage billing".to_string())
+                .with_text_label(crate::tr!("settings", "manage-billing").to_string())
                 .build()
                 .on_click(|ctx, _, _| {
                     ctx.dispatch_typed_action(Action::ManageBilling);

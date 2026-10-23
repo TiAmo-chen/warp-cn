@@ -180,7 +180,7 @@ impl PlatformPageView {
                 ..Default::default()
             };
             let mut editor = EditorView::single_line(options, ctx);
-            editor.set_placeholder_text("Search API keys", ctx);
+            editor.set_placeholder_text(crate::tr!("settings", "search-api-keys"), ctx);
             editor
         });
         ctx.subscribe_to_view(&api_key_search_editor, |me, _, event, ctx| {
@@ -195,7 +195,7 @@ impl PlatformPageView {
         });
 
         let create_api_key_modal_view = ctx.add_typed_action_view(|ctx| {
-            Modal::new(Some("New API key".to_string()), create_api_key_body, ctx)
+            Modal::new(Some(crate::tr!("settings", "new-api-key").to_string()), create_api_key_body, ctx)
                 .with_modal_style(UiComponentStyles {
                     width: Some(MODAL_WIDTH),
                     height: Some(MODAL_HEIGHT),
@@ -246,7 +246,7 @@ impl PlatformPageView {
 
     fn show_create_api_key_modal(&mut self, ctx: &mut ViewContext<Self>) {
         self.create_api_key_modal_state
-            .set_title(Some("New API key".to_string()), ctx);
+            .set_title(Some(crate::tr!("settings", "new-api-key").to_string()), ctx);
         self.create_api_key_modal_state.open(ctx);
         ctx.emit(PlatformPageViewEvent::ShowCreateApiKeyModal);
     }
@@ -275,7 +275,7 @@ impl PlatformPageView {
             }
             CreateApiKeyModalEvent::Created { api_key } => {
                 self.create_api_key_modal_state
-                    .set_title(Some("Save your key".to_string()), ctx);
+                    .set_title(Some(crate::tr!("settings", "save-your-key").to_string()), ctx);
                 let ui_key = APIKeyProperties::from(api_key);
                 self.ensure_expire_button_for_key(ctx, ui_key.uid.clone());
                 self.api_keys.push(ui_key);
@@ -329,7 +329,7 @@ impl PlatformPageView {
                 let window_id = ctx.window_id();
                 crate::ToastStack::handle(ctx).update(ctx, |toast_stack, ctx| {
                     let toast = crate::view_components::DismissibleToast::success(
-                        "API key deleted".to_string(),
+                        crate::tr!("settings", "api-key-deleted").to_string(),
                     );
                     toast_stack.add_ephemeral_toast(toast, window_id, ctx);
                 });
@@ -369,7 +369,7 @@ impl TypedActionView for PlatformPageView {
 
 impl View for PlatformPageView {
     fn ui_name() -> &'static str {
-        "PlatformPage"
+        crate::tr!("settings", "platformpage")
     }
 
     fn render(&self, app: &AppContext) -> Box<dyn Element> {
@@ -458,7 +458,7 @@ impl ApiKeyTableColumnWidths {
     fn width(state_handle: &ResizableStateHandle) -> f32 {
         state_handle
             .lock()
-            .expect("API key table column width handle should lock")
+            .expect(crate::tr!("settings", "api-key-table-column-width-handle-should-lock"))
             .size()
     }
 
@@ -501,7 +501,7 @@ impl PlatformPageWidget {
             FormattedTextFragment::plain_text(
                 "Create and manage API keys to allow cloud agents to access your Warp account.\nFor more information, visit the ",
             ),
-            FormattedTextFragment::hyperlink("Documentation.", API_KEY_DOCS_URL),
+            FormattedTextFragment::hyperlink(crate::tr!("settings", "documentation."), API_KEY_DOCS_URL),
         ];
 
         let text_element = FormattedTextElement::new(
@@ -535,7 +535,7 @@ impl PlatformPageWidget {
             Flex::row()
                 .with_cross_axis_alignment(CrossAxisAlignment::Center)
                 .with_child(
-                    Text::new_inline("API keys", appearance.ui_font_family(), 16.)
+                    Text::new_inline(crate::tr!("settings", "api-keys"), appearance.ui_font_family(), 16.)
                         .with_style(Properties::default().weight(Weight::Bold))
                         .with_color(appearance.theme().active_ui_text_color().into())
                         .with_clip(ClipConfig::end())
@@ -548,7 +548,7 @@ impl PlatformPageWidget {
                             ButtonVariant::Outlined,
                             self.create_api_key_button_mouse_state.clone(),
                         )
-                        .with_text_label("+ Create API Key".to_string())
+                        .with_text_label(crate::tr!("zz_zh02_supplement", "settings-create-key").to_string())
                         .build()
                         .on_click(|ctx, _, _| {
                             ctx.dispatch_typed_action(PlatformPageAction::ShowCreateApiKeyModal);
@@ -627,13 +627,13 @@ impl PlatformPageWidget {
         );
         if show_scope_column {
             header_row.add_child(
-                Expanded::new(1., self.render_header_cell(appearance, "Scope")).finish(),
+                Expanded::new(1., self.render_header_cell(appearance, crate::tr!("settings", "scope"))).finish(),
             );
         }
         header_row
             .add_child(Expanded::new(1., self.render_header_cell(appearance, "Created")).finish());
         header_row.add_child(
-            Expanded::new(1., self.render_header_cell(appearance, "Last used")).finish(),
+            Expanded::new(1., self.render_header_cell(appearance, crate::tr!("settings", "last-used"))).finish(),
         );
         header_row.add_child(
             Expanded::new(1., self.render_header_cell(appearance, "Expires at")).finish(),
@@ -658,7 +658,7 @@ impl PlatformPageWidget {
     ) -> Box<dyn Element> {
         let width = width_handle
             .lock()
-            .expect("API key header width handle should lock")
+            .expect(crate::tr!("settings", "api-key-header-width-handle-should-lock"))
             .size();
         let header_cell = ConstrainedBox::new(
             Flex::row()
@@ -733,7 +733,7 @@ impl PlatformPageWidget {
         let last_used = key
             .last_used_at
             .map(format_approx_duration_from_now_utc)
-            .unwrap_or_else(|| "Never".to_owned());
+            .unwrap_or_else(|| crate::tr!("settings", "never").to_owned());
         let expires_at = key
             .expires_at
             .map(|dt| format!("{}", dt.format("%b %-d, %Y")))
@@ -778,7 +778,7 @@ impl PlatformPageWidget {
         );
         if FeatureFlag::TeamApiKeys.is_enabled() || FeatureFlag::NamedAgents.is_enabled() {
             let scope_display = match key.scope {
-                ApiKeyScope::Personal => "Personal",
+                ApiKeyScope::Personal => crate::tr!("settings", "personal"),
                 ApiKeyScope::Team => "Team",
                 ApiKeyScope::Agent => "Agent",
             };
@@ -868,7 +868,7 @@ impl PlatformPageWidget {
                     .with_child(
                         Container::new(
                             Text::new(
-                                "No API Keys",
+                                crate::tr!("settings", "no-api-keys"),
                                 appearance.ui_font_family(),
                                 SUBHEADER_FONT_SIZE,
                             )
@@ -882,7 +882,7 @@ impl PlatformPageWidget {
                     .with_child(
                         Container::new(
                             Text::new(
-                                "Create a key to manage external access to Warp",
+                                crate::tr!("settings", "create-a-key-to-manage-external-access-to-warp"),
                                 appearance.ui_font_family(),
                                 CONTENT_FONT_SIZE,
                             )
@@ -903,7 +903,7 @@ impl PlatformPageWidget {
     fn render_no_search_results(&self, appearance: &Appearance) -> Box<dyn Element> {
         Container::new(
             Text::new(
-                "No API keys match your search",
+                crate::tr!("settings", "no-api-keys-match-your-search"),
                 appearance.ui_font_family(),
                 CONTENT_FONT_SIZE,
             )

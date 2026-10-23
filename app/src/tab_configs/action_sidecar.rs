@@ -119,7 +119,7 @@ pub(crate) fn render_action_sidecar(
         },
     };
 
-    // "Make default" button (always shown; visually disabled with tooltip when already the default)
+    // crate::tr!("menus", "make-default") button (always shown; visually disabled with tooltip when already the default)
     let make_default_button = if is_already_default {
         let disabled_style = UiComponentStyles {
             font_color: Some(theme.disabled_text_color(theme.surface_2()).into()),
@@ -129,7 +129,7 @@ pub(crate) fn render_action_sidecar(
         appearance
             .ui_builder()
             .button(ButtonVariant::Outlined, mouse_states.make_default.clone())
-            .with_centered_text_label("Make default".into())
+            .with_centered_text_label(crate::tr!("menus", "make-default").into())
             .with_style(disabled_style)
             .with_tooltip({
                 let ui_builder = appearance.ui_builder().clone();
@@ -163,7 +163,7 @@ pub(crate) fn render_action_sidecar(
             .finish(),
     );
 
-    // "Edit config" and "Remove" buttons (only for user tab configs)
+    // crate::tr!("settings", "mcp-edit-config") and crate::tr!("common", "remove-label") buttons (only for user tab configs)
     if let SidecarItemKind::UserTabConfig { config } = item
         && let Some(config_path) = &config.source_path
     {

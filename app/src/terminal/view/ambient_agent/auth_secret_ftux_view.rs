@@ -69,7 +69,7 @@ pub enum AuthSecretFtuxAction {
     Back,
     /// Open the harness-specific documentation in a browser.
     LearnMore(&'static str),
-    /// Toggle the "Share with team" checkbox on the creation form.
+    /// Toggle the crate::tr!("settings", "share-with-team") checkbox on the creation form.
     ToggleTeamScope,
     /// Toggle the compact-mode harness picker. Ignored when compact mode
     /// is disabled (cloud mode).
@@ -1019,7 +1019,7 @@ impl AuthSecretFtuxView {
         let accent_fill = Appearance::as_ref(app).theme().accent();
         let continue_disabled = !self.can_submit_creation_form(app);
         row.add_child(self.render_button(
-            "Continue",
+            crate::tr!("common", "continue-label"),
             self.continue_mouse_state.clone(),
             Some(accent_fill),
             AuthSecretFtuxAction::Continue,

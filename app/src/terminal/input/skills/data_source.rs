@@ -275,7 +275,7 @@ impl SearchItem for SkillSearchItem {
                 .finish(),
         );
 
-        // Description and optional "Project Skill" badge
+        // Description and optional crate::tr!("terminal", "project-skill") badge
         // The description should truncate first, badge stays fixed size
         // We wrap the whole description_row in Shrinkable to give it a bounded constraint
         let mut description_row = Flex::row().with_cross_axis_alignment(CrossAxisAlignment::Center);

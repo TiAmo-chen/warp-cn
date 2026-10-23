@@ -160,7 +160,7 @@ impl View for TerminalViewZeroStateBlock {
             )
             .with_child(
                 Text::new(
-                    "New terminal session",
+                    crate::tr!("terminal", "new-terminal-session"),
                     appearance.ui_font_family(),
                     title_font_size,
                 )

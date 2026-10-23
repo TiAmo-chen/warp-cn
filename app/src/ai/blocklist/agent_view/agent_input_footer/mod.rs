@@ -245,7 +245,7 @@ pub struct AgentInputFooter {
     // Fast-forward (auto-approve) toggle button shown in the agent view footer.
     fast_forward_button: ViewHandle<ActionButton>,
 
-    // "Hand off to cloud" chip. Visibility is gated on native/local handoff
+    // crate::tr!("ai_assistant", "ai-assistant-ai-hand-off-to-cloud-tooltip") chip. Visibility is gated on native/local handoff
     // availability. Per-conversation eligibility is enforced by
     // `Workspace::start_local_to_cloud_handoff`.
     handoff_to_cloud_button: ViewHandle<ActionButton>,

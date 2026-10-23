@@ -150,7 +150,7 @@ const SIDEBAR_WIDTH_DEFAULT: f32 = 200.;
 /// Wider sidebar used when the settings-file footer is enabled. Sized to
 /// match Figma's settings nav rail (223px alert + 12px horizontal padding
 /// on each side + 1px right border), giving the error-alert footer enough
-/// room to render its "Open file" and "Fix with Warp Agent" buttons side-by-side
+/// room to render its crate::tr!("settings", "open-file") and "Fix with Warp Agent" buttons side-by-side
 /// with the designed 24px indent and 8px internal padding.
 const SIDEBAR_WIDTH_WITH_FOOTER: f32 = 248.;
 
@@ -239,7 +239,7 @@ pub(super) fn render_beta_chip(appearance: &Appearance) -> Box<dyn Element> {
     let theme = appearance.theme();
     let chip_color = theme.sub_text_color(theme.surface_3()).into_solid();
     Container::new(
-        Text::new_inline("BETA", appearance.ui_font_family(), 10.)
+        Text::new_inline(crate::tr!("common", "beta-label"), appearance.ui_font_family(), 10.)
             .with_color(chip_color)
             .finish(),
     )
@@ -345,19 +345,19 @@ use crate::util::bindings::custom_tag_to_keystroke;
 impl Display for SettingsSection {
     fn fmt(&self, f: &mut fmt::Formatter<'_>) -> fmt::Result {
         match self {
-            SettingsSection::BillingAndUsage => write!(f, "Billing and usage"),
+            SettingsSection::BillingAndUsage => write!(f, crate::tr!("settings", "billing-and-usage")),
             SettingsSection::Keybindings => write!(f, "Keyboard shortcuts"),
-            SettingsSection::SharedBlocks => write!(f, "Shared blocks"),
-            SettingsSection::Scripting => write!(f, "Scripting"),
-            SettingsSection::WarpDrive => write!(f, "Warp Drive"),
+            SettingsSection::SharedBlocks => write!(f, crate::tr!("settings", "shared-blocks-tab")),
+            SettingsSection::Scripting => write!(f, crate::tr!("settings", "scripting")),
+            SettingsSection::WarpDrive => write!(f, crate::tr!("settings", "warp-drive")),
             SettingsSection::WarpAgent => write!(f, "Warp Agent"),
-            SettingsSection::AgentProfiles => write!(f, "Profiles"),
+            SettingsSection::AgentProfiles => write!(f, crate::tr!("settings", "profiles")),
             SettingsSection::AgentMCPServers => write!(f, "MCP servers"),
-            SettingsSection::Knowledge => write!(f, "Knowledge"),
-            SettingsSection::ThirdPartyCLIAgents => write!(f, "Third party CLI agents"),
+            SettingsSection::Knowledge => write!(f, crate::tr!("settings", "knowledge-tab")),
+            SettingsSection::ThirdPartyCLIAgents => write!(f, crate::tr!("settings", "third-party-cli-agents")),
             SettingsSection::CodeIndexing => write!(f, "Indexing and projects"),
-            SettingsSection::EditorAndCodeReview => write!(f, "Editor and Code Review"),
-            SettingsSection::CloudEnvironments => write!(f, "Environments"),
+            SettingsSection::EditorAndCodeReview => write!(f, crate::tr!("settings", "editor-code-review")),
+            SettingsSection::CloudEnvironments => write!(f, crate::tr!("settings", "environments")),
             SettingsSection::WarpCloudAgentAPIKeys => write!(f, "API keys"),
             _ => write!(f, "{self:?}"),
         }
@@ -380,30 +380,30 @@ impl SettingsSection {
     /// `settings_section_for_simple_subpage`).
     pub fn slug(self) -> &'static str {
         match self {
-            Self::About => "About",
-            Self::Account => "Account",
-            Self::BillingAndUsage => "Billing and usage",
+            Self::About => crate::tr!("settings", "about"),
+            Self::Account => crate::tr!("settings", "account"),
+            Self::BillingAndUsage => crate::tr!("settings", "billing-and-usage"),
             Self::Appearance => "Appearance",
             Self::Features => "Features",
             Self::Keybindings => "Keyboard shortcuts",
-            Self::Privacy => "Privacy",
+            Self::Privacy => crate::tr!("settings", "privacy"),
             Self::Referrals => "Referrals",
-            Self::Scripting => "Scripting",
+            Self::Scripting => crate::tr!("settings", "scripting"),
             Self::SharedBlocks => "Shared blocks",
             Self::Teams => "Teams",
-            Self::WarpDrive => "Warp Drive",
+            Self::WarpDrive => crate::tr!("settings", "warp-drive"),
             Self::Warpify => "Warpify",
             Self::WarpAgent => "Warp Agent",
-            Self::AgentProfiles => "Profiles",
+            Self::AgentProfiles => crate::tr!("settings", "profiles"),
             Self::AgentMCPServers => "MCP servers",
             Self::Knowledge => "Knowledge",
             Self::ThirdPartyCLIAgents => "Third party CLI agents",
             Self::CodeIndexing => "Indexing and projects",
             Self::EditorAndCodeReview => "Editor and Code Review",
-            Self::CloudEnvironments => "Environments",
+            Self::CloudEnvironments => crate::tr!("settings", "environments"),
             // Keeps the "Oz" spelling the slug was seeded from; only the
             // Display label above dropped it.
-            Self::WarpCloudAgentAPIKeys => "Oz Cloud API Keys",
+            Self::WarpCloudAgentAPIKeys => crate::tr!("settings", "oz-cloud-api-keys"),
         }
     }
 
@@ -416,31 +416,31 @@ impl SettingsSection {
     /// to remember to normalize one before navigating.
     pub fn from_slug(slug: &str) -> Option<Self> {
         let section = match slug {
-            "About" => Self::About,
-            "Account" => Self::Account,
-            "Billing and usage" => Self::BillingAndUsage,
+            crate::tr!("settings", "about") => Self::About,
+            crate::tr!("settings", "account") => Self::Account,
+            crate::tr!("settings", "billing-and-usage") => Self::BillingAndUsage,
             "Appearance" => Self::Appearance,
             "Features" => Self::Features,
             "Keyboard shortcuts" => Self::Keybindings,
-            "Privacy" => Self::Privacy,
+            crate::tr!("settings", "privacy") => Self::Privacy,
             "Referrals" => Self::Referrals,
-            "Scripting" => Self::Scripting,
+            crate::tr!("settings", "scripting") => Self::Scripting,
             "Shared blocks" => Self::SharedBlocks,
             "Teams" => Self::Teams,
-            "Warp Drive" | "WarpDrive" => Self::WarpDrive,
+            crate::tr!("settings", "warp-drive") | "WarpDrive" => Self::WarpDrive,
             "Warpify" => Self::Warpify,
             // "Oz" and "AI" are older names for what is now the Warp Agent page.
             "Warp Agent" | "Oz" | "AI" => Self::WarpAgent,
-            "Profiles" | "AgentProfiles" => Self::AgentProfiles,
+            crate::tr!("settings", "profiles") | "AgentProfiles" => Self::AgentProfiles,
             // "MCP Servers" named the standalone page before it moved under the
             // Agents umbrella; it differs from the current slug only by casing.
             "MCP servers" | "MCP Servers" | "AgentMCPServers" => Self::AgentMCPServers,
             "Knowledge" => Self::Knowledge,
-            "Third party CLI agents" | "ThirdPartyCLIAgents" => Self::ThirdPartyCLIAgents,
-            // "Code" named the combined page before it split in two.
+            "Third party CLI agents" | crate::tr!("settings", "thirdpartycliagents") => Self::ThirdPartyCLIAgents,
+            // crate::tr!("settings", "code-tab") named the combined page before it split in two.
             "Indexing and projects" | "CodeIndexing" | "Code" => Self::CodeIndexing,
-            "Editor and Code Review" | "EditorAndCodeReview" => Self::EditorAndCodeReview,
-            "Environments" | "CloudEnvironments" => Self::CloudEnvironments,
+            "Editor and Code Review" | crate::tr!("settings", "editorandcodereview") => Self::EditorAndCodeReview,
+            crate::tr!("settings", "environments") | "CloudEnvironments" => Self::CloudEnvironments,
             "Oz Cloud API Keys" | "OzCloudAPIKeys" => Self::WarpCloudAgentAPIKeys,
             _ => return None,
         };
@@ -492,186 +492,186 @@ impl DisplayCount {
 
 pub mod flags {
     // The following are context flags to determine if the enable or disable binding is shown.
-    pub const COPY_ON_SELECT_CONTEXT_FLAG: &str = "Copy_On_Select";
+    pub const COPY_ON_SELECT_CONTEXT_FLAG: &str = crate::tr!("settings", "copy_on_select");
 
     pub const LINUX_SELECTION_CLIPBOARD_FLAG: &str = "Linux_Selection_Clipboard";
     pub const RESTORE_SESSION_CONTEXT_FLAG: &str = "Restore_Sessions";
-    pub const HONOR_PS1_CONTEXT_FLAG: &str = "Honor_PS1";
+    pub const HONOR_PS1_CONTEXT_FLAG: &str = crate::tr!("settings", "honor_ps1");
     pub const GIT_PROMPT_CONTEXT_FLAG: &str = "Git_Prompt";
     pub const AUTOCOMPLETE_SYMBOLS_CONTEXT_FLAG: &str = "Autocomplete_Symbols";
-    pub const QUAKE_MODE_ENABLED_CONTEXT_FLAG: &str = "Quake_Mode_Editor";
+    pub const QUAKE_MODE_ENABLED_CONTEXT_FLAG: &str = crate::tr!("settings", "quake_mode_editor");
     pub const QUAKE_WINDOW_OPEN_FLAG: &str = "Quake_Window_Open";
     pub const EXTRA_META_KEYS_RIGHT_CONTEXT_FLAG: &str = "Extra_Meta_Keys_Right";
-    pub const EXTRA_META_KEYS_LEFT_CONTEXT_FLAG: &str = "Extra_Meta_Keys_Left";
+    pub const EXTRA_META_KEYS_LEFT_CONTEXT_FLAG: &str = crate::tr!("settings", "extra_meta_keys_left");
     pub const MOUSE_REPORTING_CONTEXT_FLAG: &str = "Mouse_Reporting";
     pub const SCROLL_REPORTING_CONTEXT_FLAG: &str = "Scroll_Reporting";
-    pub const FOCUS_REPORTING_CONTEXT_FLAG: &str = "Focus_Reporting";
+    pub const FOCUS_REPORTING_CONTEXT_FLAG: &str = crate::tr!("settings", "focus_reporting");
     pub const SSH_REUSE_CONTROL_MASTER_CONTEXT_FLAG: &str = "SSH_Reuse_Control_Master";
     pub const SSH_WARPIFICATION_CONTEXT_FLAG: &str = "SSH_Warpification";
-    pub const NOTIFICATIONS_CONTEXT_FLAG: &str = "Notifications_Enabled";
+    pub const NOTIFICATIONS_CONTEXT_FLAG: &str = crate::tr!("settings", "notifications_enabled");
     pub const LONG_RUNNING_NOTIFICATIONS_FLAG: &str = "Long_Running_Notifications";
     pub const AGENT_TASK_COMPLETED_NOTIFICATIONS_FLAG: &str = "Agent_Task_Completed_Notifications";
-    pub const NEEDS_ATTENTION_NOTIFICATIONS_FLAG: &str = "Needs_Attention_Notifications";
+    pub const NEEDS_ATTENTION_NOTIFICATIONS_FLAG: &str = crate::tr!("settings", "needs_attention_notifications");
     pub const NOTIFICATION_SOUND_FLAG: &str = "Notification_Sound";
     pub const AGENT_IN_APP_NOTIFICATIONS_FLAG: &str = "Agent_In_App_Notifications";
-    pub const LINK_TOOLTIP_CONTEXT_FLAG: &str = "Link_Tooltip";
+    pub const LINK_TOOLTIP_CONTEXT_FLAG: &str = crate::tr!("settings", "link_tooltip");
     pub const COMPACT_MODE_CONTEXT_FLAG: &str = "Compact_Mode_Enabled";
     pub const CURSOR_BLINK_CONTEXT_FLAG: &str = "Cursor_Blink_Enabled";
-    pub const VIM_MODE_CONTEXT_FLAG: &str = "Vim_Mode_Enabled";
+    pub const VIM_MODE_CONTEXT_FLAG: &str = crate::tr!("settings", "vim_mode_enabled");
     pub const VIM_UNNAMED_SYSTEM_CLIPBOARD: &str = "Vim_Unnamed_System_Clipboard";
     pub const VIM_SHOW_STATUS_BAR: &str = "Vim_Show_Status_Bar";
     pub const JUMP_TO_BOTTOM_OF_BLOCK_BUTTON_CONTEXT_FLAG: &str =
-        "Jump_To_Bottom_Of_Block_Button_Enabled";
+        crate::tr!("settings", "jump_to_bottom_of_block_button_enabled");
     pub const RESPECT_SYSTEM_THEME_CONTEXT_FLAG: &str = "Respect_System_Theme";
-    pub const COMPLETIONS_OPEN_WHILE_TYPING_CONTEXT_FLAG: &str = "Completions_Open_While_Typing";
+    pub const COMPLETIONS_OPEN_WHILE_TYPING_CONTEXT_FLAG: &str = crate::tr!("settings", "completions_open_while_typing");
     pub const WARP_COMPLETIONS_CONTEXT_FLAG: &str = "Warp_Completions";
     pub const NATIVE_SHELL_COMPLETIONS_CONTEXT_FLAG: &str = "Native_Shell_Completions";
-    pub const COMMAND_CORRECTIONS_CONTEXT_FLAG: &str = "Command_Corrections";
+    pub const COMMAND_CORRECTIONS_CONTEXT_FLAG: &str = crate::tr!("settings", "command_corrections");
     pub const ERROR_UNDERLINING_FLAG: &str = "error_underlining";
     pub const SYNTAX_HIGHLIGHTING_FLAG: &str = "syntax_highlighting";
-    pub const SAME_LINE_PROMPT: &str = "Same_Line_Prompt_Enabled";
+    pub const SAME_LINE_PROMPT: &str = crate::tr!("settings", "same_line_prompt_enabled");
     pub const TELEMETRY_FLAG: &str = "telemetry";
     pub const SETTINGS_SYNC_FLAG: &str = "settings_sync";
     pub const SAFE_MODE_FLAG: &str = "safe_mode";
     pub const CRASH_REPORTING_FLAG: &str = "crash_reporting";
-    pub const CLOUD_CONVERSATION_STORAGE_FLAG: &str = "Cloud_Conversation_Storage_Enabled";
+    pub const CLOUD_CONVERSATION_STORAGE_FLAG: &str = crate::tr!("settings", "cloud_conversation_storage_enabled");
     pub const CLOUD_CONVERSATION_STORAGE_EDITABLE_FLAG: &str =
         "Cloud_Conversation_Storage_Editable";
-    pub const DIM_INACTIVE_PANES_FLAG: &str = "Dim_Inactive_Panes";
+    pub const DIM_INACTIVE_PANES_FLAG: &str = crate::tr!("settings", "dim_inactive_panes");
     pub const OPEN_WINDOWS_AT_CUSTOM_SIZE_FLAG: &str = "Open_Windows_At_Custom_Size";
     pub const LEFT_PANEL_VISIBILITY_ACROSS_TABS_FLAG: &str = "Left_Panel_Visibility_Across_Tabs";
-    pub const MATCH_AI_FONT_TO_TERMINAL_FONT_FLAG: &str = "Match_AI_Font_To_Terminal_Font";
+    pub const MATCH_AI_FONT_TO_TERMINAL_FONT_FLAG: &str = crate::tr!("settings", "match_ai_font_to_terminal_font");
     pub const MATCH_NOTEBOOK_FONT_SIZE_TO_TERMINAL_FONT_SIZE_FLAG: &str =
         "Match_Notebook_Font_Size_To_Terminal_Font_Size";
-    pub const QUIT_WARNING_MODAL: &str = "Quit_Warning_Modal";
+    pub const QUIT_WARNING_MODAL: &str = crate::tr!("settings", "quit_warning_modal");
     pub const BLOCK_DIVIDERS_CONTEXT_FLAG: &str = "Block_Dividers_Enabled";
 
     pub const LOG_OUT_WARNING_MODAL: &str = "Log_Out_Warning_Modal";
-    pub const SMART_SELECT_FLAG: &str = "Smart_Select_Enabled";
+    pub const SMART_SELECT_FLAG: &str = crate::tr!("settings", "smart_select_enabled");
     pub const ACTIVATION_HOTKEY_FLAG: &str = "Activation_Hotkey_Enabled";
     pub const TAB_INDICATORS_FLAG: &str = "Tab_Indicators_Enabled";
-    pub const SHOW_CODE_REVIEW_BUTTON_FLAG: &str = "Show_Code_Review_Button_Enabled";
+    pub const SHOW_CODE_REVIEW_BUTTON_FLAG: &str = crate::tr!("settings", "show_code_review_button_enabled");
     pub const SHOW_CODE_REVIEW_DIFF_STATS_FLAG: &str = "Show_Code_Review_Diff_Stats_Enabled";
-    pub const AUTO_OPEN_CODE_REVIEW_PANE_FLAG: &str = "Auto_Open_Code_Review_Pane_Enabled";
+    pub const AUTO_OPEN_CODE_REVIEW_PANE_FLAG: &str = crate::tr!("settings", "auto_open_code_review_pane_enabled");
     pub const USE_VERTICAL_TABS_FLAG: &str = "Use_Vertical_Tabs";
     pub const PRESERVE_ACTIVE_TAB_COLOR_FLAG: &str = "Preserve_Active_Tab_Color";
     pub const SHOW_VERTICAL_TAB_PANEL_IN_RESTORED_WINDOWS_FLAG: &str =
-        "Show_Vertical_Tab_Panel_In_Restored_Windows";
+        crate::tr!("settings", "show_vertical_tab_panel_in_restored_windows");
     pub const USE_LATEST_USER_PROMPT_AS_CONVERSATION_TITLE_IN_TAB_NAMES_FLAG: &str =
         "Use_Latest_User_Prompt_As_Conversation_Title_In_Tab_Names";
-    pub const ALT_SCREEN_PADDING_FLAG: &str = "Alt_Screen_Padding";
+    pub const ALT_SCREEN_PADDING_FLAG: &str = crate::tr!("settings", "alt_screen_padding");
     pub const SESSION_CONFIG_TAB_CONFIG_CHIP_OPEN: &str = "Session_Config_Tab_Config_Chip_Open";
     pub const FEATURE_INTRO_MODAL_OPEN: &str = "Feature_Intro_Modal_Open";
-    pub const FOCUS_PANES_ON_HOVER_CONTEXT_FLAG: &str = "Focus_Panes_On_Hover";
+    pub const FOCUS_PANES_ON_HOVER_CONTEXT_FLAG: &str = crate::tr!("settings", "focus_panes_on_hover");
     pub const HIDE_WORKSPACE_DECORATIONS_CONTEXT_FLAG: &str = "Hide_Workspace_Decorations";
     pub const ALIAS_EXPANSION_FLAG: &str = "Alias_Expansion_Enabled";
-    pub const MIDDLE_CLICK_PASTE_FLAG: &str = "Middle_Click_Paste_Enabled";
+    pub const MIDDLE_CLICK_PASTE_FLAG: &str = crate::tr!("settings", "middle_click_paste_enabled");
     pub const CODE_AS_DEFAULT_EDITOR: &str = "Code_As_Default_Enabled";
     pub const SYNC_ALL_TABS_FLAG: &str = "Sync_All_Tabs_Enabled";
-    pub const SYNC_ALL_PANES_IN_CURRENT_TAB: &str = "Sync_All_Panes_In_Current_Tab";
+    pub const SYNC_ALL_PANES_IN_CURRENT_TAB: &str = crate::tr!("settings", "sync_all_panes_in_current_tab");
     pub const USE_AUDIBLE_BELL_CONTEXT_FLAG: &str = "Use_Audible_Terminal_Bell";
     pub const SHOW_INPUT_HINT_TEXT_CONTEXT_FLAG: &str = "Show_Input_Hint_text";
-    pub const SHOW_AGENT_TIPS_FLAG: &str = "Show_Agent_Tips";
+    pub const SHOW_AGENT_TIPS_FLAG: &str = crate::tr!("settings", "show_agent_tips");
     pub const SHOW_OZ_UPDATES_IN_ZERO_STATE_FLAG: &str = "Show_Oz_Updates_In_Zero_State";
     pub const USE_AGENT_FOOTER_FLAG: &str = "Use_Agent_Footer";
-    pub const THINKING_DISPLAY_SHOW_AND_COLLAPSE: &str = "Thinking_Display_ShowAndCollapse";
+    pub const THINKING_DISPLAY_SHOW_AND_COLLAPSE: &str = crate::tr!("settings", "thinking_display_showandcollapse");
     pub const THINKING_DISPLAY_ALWAYS_SHOW: &str = "Thinking_Display_AlwaysShow";
     pub const THINKING_DISPLAY_NEVER_SHOW: &str = "Thinking_Display_NeverShow";
     pub const ORCHESTRATION_MESSAGE_DISPLAY_SHOW_AND_COLLAPSE: &str =
-        "Orchestration_Message_Display_ShowAndCollapse";
+        crate::tr!("settings", "orchestration_message_display_showandcollapse");
     pub const ORCHESTRATION_MESSAGE_DISPLAY_ALWAYS_SHOW: &str =
         "Orchestration_Message_Display_AlwaysShow";
     pub const ORCHESTRATION_MESSAGE_DISPLAY_ALWAYS_COLLAPSE: &str =
-        "Orchestration_Message_Display_AlwaysCollapse";
+        crate::tr!("settings", "orchestration_message_display_alwayscollapse");
     pub const PROMPT_SUBMISSION_INTERRUPT: &str = "Prompt_Submission_Interrupt";
-    pub const PROMPT_SUBMISSION_STEER: &str = "Prompt_Submission_Steer";
+    pub const PROMPT_SUBMISSION_STEER: &str = crate::tr!("settings", "prompt_submission_steer");
     pub const PROMPT_SUBMISSION_QUEUE: &str = "Prompt_Submission_Queue";
     pub const LRC_SUBMISSION_SEND_IMMEDIATELY: &str = "LRC_Submission_Send_Immediately";
     pub const LRC_SUBMISSION_QUEUE_UNTIL_COMMAND_COMPLETES: &str =
-        "LRC_Submission_Queue_Until_Command_Completes";
+        crate::tr!("settings", "lrc_submission_queue_until_command_completes");
     pub const SHOW_TERMINAL_INPUT_MESSAGE_LINE_FLAG: &str = "Show_Terminal_Input_Message_Line";
     pub const PRESERVE_INPUT_FOCUS_ON_BLOCK_SELECTION_FLAG: &str =
-        "Preserve_Input_Focus_On_Block_Selection";
+        crate::tr!("settings", "preserve_input_focus_on_block_selection");
     pub const SLASH_COMMANDS_IN_TERMINAL_FLAG: &str = "Slash_Commands_In_Terminal";
-    pub const AT_CONTEXT_MENU_IN_TERMINAL_FLAG: &str = "At_Context_Menu_In_Terminal";
+    pub const AT_CONTEXT_MENU_IN_TERMINAL_FLAG: &str = crate::tr!("settings", "at_context_menu_in_terminal");
     pub const AI_COMMAND_SEARCH_HASH_TRIGGER_FLAG: &str = "AI_Command_Search_Hash_Trigger";
     pub const OUTLINE_CODEBASE_SYMBOLS_FOR_AT_CONTEXT_MENU_FLAG: &str =
-        "Outline_Codebase_Symbols_For_At_Context_Menu";
+        crate::tr!("settings", "outline_codebase_symbols_for_at_context_menu");
     pub const AUTOSUGGESTIONS_ENABLED_FLAG: &str = "Autosuggestions_Enabled";
-    pub const AUTOSUGGESTION_KEYBINDING_HINT_FLAG: &str = "Hide_Autosuggestion_Keybinding_Hint";
+    pub const AUTOSUGGESTION_KEYBINDING_HINT_FLAG: &str = crate::tr!("settings", "hide_autosuggestion_keybinding_hint");
     pub const SHOW_AUTOSUGGESTION_IGNORE_BUTTON_FLAG: &str = "Show_Autosuggestion_Ignore_Button";
-    pub const SHOW_TERMINAL_ZERO_STATE_BLOCK_FLAG: &str = "Show_Terminal_Zero_State_Block";
+    pub const SHOW_TERMINAL_ZERO_STATE_BLOCK_FLAG: &str = crate::tr!("settings", "show_terminal_zero_state_block");
     pub const GLOBAL_WORKFLOWS_IN_COMMAND_SEARCH_FLAG: &str = "Global_Workflows_In_Command_Search";
-    pub const PREFER_LOW_POWER_GPU_FLAG: &str = "Prefer_Low_Power_GPU";
+    pub const PREFER_LOW_POWER_GPU_FLAG: &str = crate::tr!("settings", "prefer_low_power_gpu");
     pub const INITIALIZATION_BLOCK_FLAG: &str = "Initialization_Block_Visible";
     pub const IN_BAND_COMMAND_BLOCKS_FLAG: &str = "In_Band_Command_Blocks_Visible";
-    pub const RECORDING_MODE_FLAG: &str = "Recording_Mode_Enabled";
+    pub const RECORDING_MODE_FLAG: &str = crate::tr!("settings", "recording_mode_enabled");
     pub const IN_BAND_GENERATORS_FLAG: &str = "In_Band_Generators_Enabled";
     pub const WARP_SAME_LINE_PROMPT_FLAG: &str = "Warp_Same_Line_Prompt_Enabled";
-    pub const DEBUG_NETWORK_ONLINE_FLAG: &str = "Network_Status_Online";
+    pub const DEBUG_NETWORK_ONLINE_FLAG: &str = crate::tr!("settings", "network_status_online");
     pub const AI_INPUT_AUTODETECTION_FLAG: &str = "AI_Input_Autodetection";
     pub const NLD_IN_TERMINAL_FLAG: &str = "NLD_In_Terminal";
-    pub const INTELLIGENT_AUTOSUGGESTIONS_FLAG: &str = "Intelligent_Autosuggestions";
+    pub const INTELLIGENT_AUTOSUGGESTIONS_FLAG: &str = crate::tr!("settings", "intelligent_autosuggestions");
     pub const PROMPT_SUGGESTIONS_FLAG: &str = "Prompt_Suggestions";
     pub const CODE_SUGGESTIONS_FLAG: &str = "Code_Suggestions";
-    pub const NATURAL_LANGUAGE_AUTOSUGGESTIONS_FLAG: &str = "Natural_Language_Autosuggestions";
+    pub const NATURAL_LANGUAGE_AUTOSUGGESTIONS_FLAG: &str = crate::tr!("settings", "natural_language_autosuggestions");
     pub const SHARED_BLOCK_TITLE_GENERATION_FLAG: &str = "Shared_Block_Title_Generation";
-    pub const GIT_OPERATIONS_AUTOGEN_FLAG: &str = "Git_Operations_Autogen";
+    pub const GIT_OPERATIONS_AUTOGEN_FLAG: &str = crate::tr!("settings", "git_operations_autogen");
     pub const INCLUDE_AGENT_COMMANDS_IN_HISTORY_FLAG: &str = "Include_Agent_Commands_In_History";
     pub const AUTO_APPROVE_BYPASSES_COMMAND_DENYLIST_FLAG: &str =
-        "Auto_Approve_Bypasses_Command_Denylist";
+        crate::tr!("settings", "auto_approve_bypasses_command_denylist");
     pub const AI_RULES_FLAG: &str = "AI_Rules";
     pub const SUGGESTED_RULES_FLAG: &str = "Suggested_Rules";
-    pub const WARP_DRIVE_CONTEXT_FLAG: &str = "Warp_Drive_Context";
+    pub const WARP_DRIVE_CONTEXT_FLAG: &str = crate::tr!("settings", "warp_drive_context");
     pub const FILE_BASED_MCP_FLAG: &str = "File_Based_MCP";
     pub const WARP_CREDIT_FALLBACK_FLAG: &str = "Warp_Credit_Fallback";
-    pub const SHOW_BASE_MODEL_PICKER_IN_PROMPT_FLAG: &str = "Show_Base_Model_Picker_In_Prompt";
+    pub const SHOW_BASE_MODEL_PICKER_IN_PROMPT_FLAG: &str = crate::tr!("settings", "show_base_model_picker_in_prompt");
     pub const DEBUG_SHOW_MEMORY_STATS_FLAG: &str = "Debug_Memory_Statistics";
     pub const ALLOW_NATIVE_WAYLAND: &str = "Allow_Native_Wayland";
-    pub const IS_ANY_AI_ENABLED: &str = "IsAnyAIEnabled";
+    pub const IS_ANY_AI_ENABLED: &str = crate::tr!("settings", "isanyaienabled");
     pub const IS_ACTIVE_AI_ENABLED: &str = "IsActiveAIEnabled";
     pub const IS_VOICE_INPUT_ENABLED: &str = "IsVoiceInputEnabled";
-    pub const IS_BLOCK_AI_SUMMARIES_ENABLED: &str = "IsBlockAISummariesEnabled";
+    pub const IS_BLOCK_AI_SUMMARIES_ENABLED: &str = crate::tr!("settings", "isblockaisummariesenabled");
     pub const IS_CODEBASE_INDEXING_ENABLED: &str = "IsCodebaseIndexingEnabled";
     pub const IS_AUTOINDEXING_ENABLED: &str = "IsAutoIndexingEnabled";
-    pub const LIGATURE_RENDERING_CONTEXT_FLAG: &str = "Ligature_Rendering_Enabled";
+    pub const LIGATURE_RENDERING_CONTEXT_FLAG: &str = crate::tr!("settings", "ligature_rendering_enabled");
     pub const HAS_SETTINGS_TO_IMPORT_FLAG: &str = "HasSettingsToImport";
     /// The user's setting enabled UDI, but we may show a classic input (e.g. ssh/subshell warpification)
-    pub const UNIVERSAL_DEVELOPER_INPUT_ENABLED: &str = "UniversalDeveloperInputEnabled";
+    pub const UNIVERSAL_DEVELOPER_INPUT_ENABLED: &str = crate::tr!("settings", "universaldeveloperinputenabled");
     pub const AGENT_MODE_INPUT: &str = "InputAgentMode";
     pub const TERMINAL_MODE_INPUT: &str = "InputTerminalMode";
-    pub const WARP_IS_DEFAULT_TERMINAL: &str = "WarpIsDefaultTerminal";
+    pub const WARP_IS_DEFAULT_TERMINAL: &str = crate::tr!("settings", "warpisdefaultterminal");
     pub const PASSIVE_CODE_DIFF_KEYBINDINGS_ENABLED: &str = "PassiveCodeDiffKeybindingsEnabled";
     /// When set, ctrl-enter should accept a prompt suggestion rather than insert a newline.
     /// This flag is set by the terminal Input when there's a pending passive code diff.
-    pub const CTRL_ENTER_ACCEPTS_PROMPT_SUGGESTION: &str = "CtrlEnterAcceptsPromptSuggestion";
+    pub const CTRL_ENTER_ACCEPTS_PROMPT_SUGGESTION: &str = crate::tr!("settings", "ctrlenteracceptspromptsuggestion");
     /// When set, the terminal input owns Page Up / Page Down so the editor's fixed bindings
     /// should not match.
     pub const TERMINAL_INPUT_PAGE_KEYS_HANDLED_BY_INPUT: &str =
-        "TerminalInputPageKeysHandledByInput";
+        crate::tr!("settings", "terminalinputpagekeyshandledbyinput");
     pub const HAS_PENDING_PROMPT_SUGGESTION: &str = "HasPendingPromptSuggestion";
     pub const ACTIVE_AGENT_VIEW: &str = "ActiveAgentView";
     pub const ACTIVE_INLINE_AGENT_VIEW: &str = "ActiveInlineAgentView";
     /// When set, ctrl-enter should be the active binding to enter agent view.
     ///
     /// This is true on linux and windows.
-    pub const CTRL_ENTER_ENTERS_AGENT_VIEW: &str = "CtrlEnterEntersAgentView";
+    pub const CTRL_ENTER_ENTERS_AGENT_VIEW: &str = crate::tr!("settings", "ctrlenterentersagentview");
     pub const AGENT_VIEW_ENABLED: &str = "FeatureFlag.AgentView";
     pub const LOCKED_INPUT: &str = "LockedInput";
-    pub const OPEN_INLINE_CONVERSATION_MENU: &str = "OpenInlineConversationMenu";
+    pub const OPEN_INLINE_CONVERSATION_MENU: &str = crate::tr!("settings", "openinlineconversationmenu");
     pub const EMPTY_INPUT_BUFFER: &str = "EmptyInputBuffer";
     pub const CLI_AGENT_RICH_INPUT_OPEN: &str = "CLIAgentRichInputOpen";
-    pub const CLI_AGENT_FOOTER_ENABLED: &str = "CLIAgentFooterEnabled";
+    pub const CLI_AGENT_FOOTER_ENABLED: &str = crate::tr!("settings", "cliagentfooterenabled");
     pub const CLI_AGENT_RICH_INPUT_CHIP_ENABLED: &str = "CLIAgentRichInputChipEnabled";
     pub const AUTO_TOGGLE_RICH_INPUT_FLAG: &str = "AutoToggleRichInput";
     pub const AUTO_OPEN_RICH_INPUT_ON_CLI_AGENT_START_FLAG: &str =
-        "AutoOpenRichInputOnCLIAgentStart";
+        crate::tr!("settings", "autoopenrichinputoncliagentstart");
     pub const AUTO_DISMISS_RICH_INPUT_AFTER_SUBMIT_FLAG: &str = "AutoDismissRichInputAfterSubmit";
-    pub const ENABLE_WARP_DRIVE: &str = "EnableWarpDrive";
+    pub const ENABLE_WARP_DRIVE: &str = crate::tr!("settings", "enablewarpdrive");
     // Tools panel settings
     pub const SHOW_CONVERSATION_HISTORY: &str = "ShowConversationHistory";
     pub const SHOW_PROJECT_EXPLORER: &str = "ShowProjectExplorer";
-    pub const SHOW_GLOBAL_SEARCH: &str = "ShowGlobalSearch";
+    pub const SHOW_GLOBAL_SEARCH: &str = crate::tr!("settings", "showglobalsearch");
     pub const SHOW_HIDDEN_FILES: &str = "ShowHiddenFiles";
 }
 
@@ -698,7 +698,7 @@ pub fn init_actions_from_parent_view<T: Action + Clone>(
             vec![
                 ToggleSettingActionPair::custom(
                     SettingActionPairDescriptions::new(
-                        "Show initialization block",
+                        crate::tr!("settings", "show-initialization-block"),
                         "Hide initialization block",
                     ),
                     builder(SettingsAction::Debug(
@@ -712,7 +712,7 @@ pub fn init_actions_from_parent_view<T: Action + Clone>(
                 ),
                 ToggleSettingActionPair::custom(
                     SettingActionPairDescriptions::new(
-                        "Show in-band command blocks",
+                        crate::tr!("settings", "show-in-band-command-blocks"),
                         "Hide in-band command blocks",
                     ),
                     builder(SettingsAction::Debug(
@@ -733,27 +733,27 @@ pub fn init_actions_from_parent_view<T: Action + Clone>(
         ToggleSettingActionPair::add_toggle_setting_action_pairs_as_bindings(
             vec![
                 ToggleSettingActionPair::new(
-                    "recording mode",
+                    crate::tr!("settings", "toggle-recording-mode"),
                     WorkspaceAction::ToggleRecordingMode,
-                    &id!("Workspace"),
+                    &id!(crate::tr!("settings", "workspace")),
                     flags::RECORDING_MODE_FLAG,
                 ),
                 ToggleSettingActionPair::new(
-                    "in-band generators for new sessions",
+                    crate::tr!("settings", "toggle-inband-generators"),
                     WorkspaceAction::ToggleInBandGenerators,
-                    &id!("Workspace"),
+                    &id!(crate::tr!("settings", "workspace")),
                     flags::IN_BAND_GENERATORS_FLAG,
                 ),
                 ToggleSettingActionPair::new(
-                    "debug network status",
+                    crate::tr!("settings", "toggle-debug-network"),
                     WorkspaceAction::ToggleDebugNetworkStatus,
-                    &id!("Workspace"),
+                    &id!(crate::tr!("settings", "workspace")),
                     flags::DEBUG_NETWORK_ONLINE_FLAG,
                 ),
                 ToggleSettingActionPair::new(
-                    "memory statistics",
+                    crate::tr!("settings", "toggle-memory-stats"),
                     WorkspaceAction::ToggleShowMemoryStats,
-                    &id!("Workspace"),
+                    &id!(crate::tr!("settings", "workspace")),
                     flags::DEBUG_SHOW_MEMORY_STATS_FLAG,
                 ),
             ],
@@ -761,7 +761,7 @@ pub fn init_actions_from_parent_view<T: Action + Clone>(
         );
     }
 
-    let context = id!("SettingsViewInTab") & !id!("IMEOpen");
+    let context = id!("SettingsViewInTab") & !id!(crate::tr!("settings", "imeopen"));
     app.register_fixed_bindings([
         FixedBinding::new("down", SettingsAction::Down, context.clone()),
         FixedBinding::new("up", SettingsAction::Up, context.clone()),
@@ -1199,7 +1199,7 @@ pub struct SettingsView {
 
 impl SettingsView {
     pub fn new(page: Option<SettingsSection>, ctx: &mut ViewContext<Self>) -> Self {
-        let pane_configuration = ctx.add_model(|_ctx| PaneConfiguration::new("Settings"));
+        let pane_configuration = ctx.add_model(|_ctx| PaneConfiguration::new(crate::tr!("settings", "settings")));
 
         let global_resource_handles = GlobalResourceHandlesProvider::as_ref(ctx).get().clone();
         // Main settings page with accounts info
@@ -1357,7 +1357,7 @@ impl SettingsView {
                 ..Default::default()
             };
             let mut editor = EditorView::single_line(options, ctx);
-            editor.set_placeholder_text("Search", ctx);
+            editor.set_placeholder_text(crate::tr!("settings", "search"), ctx);
             editor
         });
 
@@ -1408,7 +1408,7 @@ impl SettingsView {
         let mut nav_items = vec![
             SettingsNavItem::Page(SettingsSection::Account),
             SettingsNavItem::Umbrella(SettingsUmbrella::new(
-                "Agents",
+                crate::tr!("settings", "agents"),
                 vec![
                     SettingsSection::WarpAgent,
                     SettingsSection::AgentProfiles,
@@ -1426,7 +1426,7 @@ impl SettingsView {
                 ],
             )),
             SettingsNavItem::Umbrella(SettingsUmbrella::new(
-                "Cloud platform",
+                crate::tr!("settings", "cloud-platform"),
                 vec![
                     SettingsSection::CloudEnvironments,
                     SettingsSection::WarpCloudAgentAPIKeys,
@@ -1653,28 +1653,28 @@ impl SettingsView {
 
         if ContextFlag::CreateNewSession.is_enabled() {
             items.extend(vec![
-                MenuItemFields::new("Split pane right")
+                MenuItemFields::new(crate::tr!("settings", "split-pane-right"))
                     .with_on_select_action(SettingsAction::Split(Direction::Right))
                     .with_key_shortcut_label(keybinding_name_to_display_string(
                         "pane_group:add_right",
                         ctx,
                     ))
                     .into_item(),
-                MenuItemFields::new("Split pane left")
+                MenuItemFields::new(crate::tr!("settings", "split-pane-left"))
                     .with_on_select_action(SettingsAction::Split(Direction::Left))
                     .with_key_shortcut_label(keybinding_name_to_display_string(
                         "pane_group:add_left",
                         ctx,
                     ))
                     .into_item(),
-                MenuItemFields::new("Split pane down")
+                MenuItemFields::new(crate::tr!("settings", "split-pane-down"))
                     .with_on_select_action(SettingsAction::Split(Direction::Down))
                     .with_key_shortcut_label(keybinding_name_to_display_string(
                         "pane_group:add_down",
                         ctx,
                     ))
                     .into_item(),
-                MenuItemFields::new("Split pane up")
+                MenuItemFields::new(crate::tr!("settings", "split-pane-up"))
                     .with_on_select_action(SettingsAction::Split(Direction::Up))
                     .with_key_shortcut_label(keybinding_name_to_display_string(
                         "pane_group:add_up",
@@ -1703,7 +1703,7 @@ impl SettingsView {
             );
 
             items.push(
-                MenuItemFields::new("Close pane")
+                MenuItemFields::new(crate::tr!("settings", "close-pane"))
                     .with_on_select_action(SettingsAction::Close)
                     .with_key_shortcut_label(
                         custom_tag_to_keystroke(CustomAction::CloseCurrentSession.into())
@@ -2418,7 +2418,7 @@ impl SettingsView {
                 .with_cross_axis_alignment(CrossAxisAlignment::Center)
                     .with_children([
                         Text::new(
-                            "No settings match your search.",
+                            crate::tr!("settings", "no-settings-match-your-search."),
                             appearance.ui_font_family(),
                             appearance.ui_font_size(),
                         )
@@ -2426,7 +2426,7 @@ impl SettingsView {
                         .with_color(theme.sub_text_color(theme.background()).into_solid())
                         .finish(),
                         Text::new(
-                            "You may want to try using different keywords or checking for any possible typos.",
+                            crate::tr!("settings", "you-may-want-to-try-using-different-keywords-or-checking-for-any-possible-typos."),
                             appearance.ui_font_family(),
                             appearance.ui_font_size(),
                         )
@@ -2589,7 +2589,7 @@ impl View for SettingsView {
                 }
             }
         }
-        // Footer: "Open settings file" button, or an inline error alert if
+        // Footer: crate::tr!("settings", "open-settings-file") button, or an inline error alert if
         // the workspace-level banner was dismissed. Rendered below the
         // scrollable nav list but inside the same sidebar column so it
         // shares the right-border and SIDEBAR_WIDTH constraint.
@@ -2899,7 +2899,7 @@ impl BackingView for SettingsView {
         _ctx: &view::HeaderRenderContext<'_>,
         _app: &AppContext,
     ) -> view::HeaderContent {
-        view::HeaderContent::simple("Settings")
+        view::HeaderContent::simple(crate::tr!("settings", "settings"))
     }
 
     fn set_focus_handle(&mut self, focus_handle: PaneFocusHandle, _ctx: &mut ViewContext<Self>) {

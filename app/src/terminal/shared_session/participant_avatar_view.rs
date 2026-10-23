@@ -165,13 +165,13 @@ impl ParticipantAvatarView {
         ];
 
         match self.role {
-            Some(Role::Reader) => items.extend([MenuItemFields::new("Make editor")
+            Some(Role::Reader) => items.extend([MenuItemFields::new(crate::tr!("terminal", "make-editor"))
                 .with_on_select_action(ParticipantAvatarAction::UpdateRole {
                     participant_id,
                     role: Role::Executor,
                 })
                 .into_item()]),
-            Some(Role::Executor) => items.extend([MenuItemFields::new("Make viewer")
+            Some(Role::Executor) => items.extend([MenuItemFields::new(crate::tr!("terminal", "make-viewer"))
                 .with_on_select_action(ParticipantAvatarAction::UpdateRole {
                     participant_id,
                     role: Role::Reader,
@@ -585,7 +585,7 @@ pub fn render_viewer_role_button(
     let button = icon_button(appearance, icon, false, mouse_state_handle.clone())
         .with_tooltip(move || {
             ui_builder
-                .tool_tip("Change role".to_string())
+                .tool_tip(crate::tr!("terminal", "change-role").to_string())
                 .build()
                 .finish()
         })

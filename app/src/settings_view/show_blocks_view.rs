@@ -147,7 +147,7 @@ impl UserOwnedBlock {
                 ButtonVariant::Basic,
                 self.copy_button_mouse_state_handle.clone(),
             )
-            .with_text_label("Copy link".into());
+            .with_text_label(crate::tr!("settings", "copy-link").into());
 
         let button = if self.unshare_request_status == UnshareBlockRequestState::InFlight {
             button.disabled().build()
@@ -164,7 +164,7 @@ impl UserOwnedBlock {
         if self.unshare_request_status == UnshareBlockRequestState::InFlight {
             appearance
                 .ui_builder()
-                .label("Deleting...")
+                .label(crate::tr!("settings", "deleting..."))
                 .with_style(
                     UiComponentStyles::default()
                         .set_font_family_id(appearance.monospace_font_family())
@@ -302,11 +302,11 @@ impl GetBlocksForUserRequestState {
         let ui_builder = appearance.ui_builder();
         match self {
             GetBlocksForUserRequestState::NotStarted => pad(ui_builder
-                .label("You don't have any shared blocks yet.")
+                .label(crate::tr!("settings", "you-don't-have-any-shared-blocks-yet."))
                 .build()
                 .finish()),
             GetBlocksForUserRequestState::InFlight => {
-                pad(ui_builder.label("Getting blocks...").build().finish())
+                pad(ui_builder.label(crate::tr!("settings", "getting-blocks...")).build().finish())
             }
             GetBlocksForUserRequestState::Failed => pad(ui_builder
                 .label("Failed to load blocks. Please try again.")
@@ -362,7 +362,7 @@ impl GetBlocksForUserRequestState {
                     .finish()
                 } else {
                     pad(ui_builder
-                        .label("You don't have any shared blocks yet.")
+                        .label(crate::tr!("settings", "you-don't-have-any-shared-blocks-yet."))
                         .build()
                         .finish())
                 }
@@ -423,7 +423,7 @@ impl ShowBlocksView {
 
             menu.set_items(
                 vec![MenuItem::Item(
-                    MenuItemFields::new("Unshare").with_on_select_action(ShowBlocksAction::Unshare),
+                    MenuItemFields::new(crate::tr!("settings", "unshare")).with_on_select_action(ShowBlocksAction::Unshare),
                 )],
                 ctx,
             );
@@ -479,7 +479,7 @@ impl ShowBlocksView {
                 self.get_blocks_for_user_status = GetBlocksForUserRequestState::Done(blocks)
             }
             Err(_) => {
-                log::info!("Failed to fetch blocks owned by user from server");
+                log::info!(crate::tr!("settings", "failed-to-fetch-blocks-owned-by-user-from-server"));
                 self.get_blocks_for_user_status = GetBlocksForUserRequestState::Failed;
             }
         }
@@ -490,7 +490,7 @@ impl ShowBlocksView {
         ctx.clipboard()
             .write(ClipboardContent::plain_text(block_url.to_string()));
         ctx.emit(ShowBlocksEvent::ShowToast {
-            message: "Link copied.".to_string(),
+            message: crate::tr!("settings", "link-copied.").to_string(),
             flavor: ToastFlavor::Default,
         })
     }
@@ -548,14 +548,14 @@ impl ShowBlocksView {
             match request_result {
                 Ok(_) => {
                     ctx.emit(ShowBlocksEvent::ShowToast {
-                        message: "Block was successfully unshared.".to_string(),
+                        message: crate::tr!("settings", "block-was-successfully-unshared.").to_string(),
                         flavor: ToastFlavor::Success,
                     });
                     user_block.unshare_request_status = UnshareBlockRequestState::Done;
                 }
                 Err(_) => {
                     ctx.emit(ShowBlocksEvent::ShowToast {
-                        message: "Failed to unshare block. Please try again.".to_string(),
+                        message: crate::tr!("settings", "failed-to-unshare-block.-please-try-again.").to_string(),
                         flavor: ToastFlavor::Error,
                     });
                     user_block.unshare_request_status = UnshareBlockRequestState::Failed;
@@ -595,7 +595,7 @@ impl TypedActionView for ShowBlocksView {
 
 impl View for ShowBlocksView {
     fn ui_name() -> &'static str {
-        "ShowBlockView"
+        crate::tr!("settings", "showblockview")
     }
 
     fn render(&self, app: &AppContext) -> Box<dyn Element> {
@@ -655,7 +655,7 @@ impl ShowBlocksWidget {
                     .with_child(
                         Align::new(
                             ui_builder
-                                .label("Unshare block")
+                                .label(crate::tr!("settings", "unshare-block"))
                                 .with_style(UiComponentStyles {
                                     font_size: Some(appearance.header_font_size()),
                                     ..Default::default()
@@ -690,7 +690,7 @@ impl ShowBlocksWidget {
                                                 ButtonVariant::Basic,
                                                 view.state_handles.cancel_dialog_handle.clone(),
                                             )
-                                            .with_text_label("Cancel".into())
+                                            .with_text_label(crate::tr!("settings", "cancel").into())
                                             .build()
                                             .on_click(|ctx, _, _| {
                                                 ctx.dispatch_typed_action(
@@ -708,7 +708,7 @@ impl ShowBlocksWidget {
                                                         .confirm_dialog_handle
                                                         .clone(),
                                                 )
-                                                .with_text_label("Unshare".into())
+                                                .with_text_label(crate::tr!("settings", "unshare").into())
                                                 .build()
                                                 .on_click(|ctx, _, _| {
                                                     ctx.dispatch_typed_action(
@@ -797,7 +797,7 @@ impl SettingsWidget for ShowBlocksWidget {
             );
         }
 
-        let header = render_page_title("Shared blocks", HEADER_FONT_SIZE, appearance);
+        let header = render_page_title(crate::tr!("settings", "shared-blocks"), HEADER_FONT_SIZE, appearance);
         let col = Flex::column()
             .with_child(header)
             .with_child(Expanded::new(1., stack.finish()).finish());

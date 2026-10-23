@@ -553,7 +553,7 @@ fn render_new_environment_footer<A: OrchestrationControlAction>(
                         .finish(),
                 )
                 .with_child(
-                    Text::new_inline("New environment", font_family, font_size)
+                    Text::new_inline(crate::tr!("settings", "new-environment"), font_family, font_size)
                         .with_color(text_color.into())
                         .finish(),
                 )
@@ -632,7 +632,7 @@ fn auth_secret_trigger_label(selection: &AuthSecretSelection, supports_create_ne
 /// Populates the auth secret picker from [`api_key_snapshot`]: Inherit,
 /// loaded managed secrets, then a "+ New API key…" entry for harnesses
 /// with managed-secret types. Also kicks off a lazy fetch so subsequent
-/// paints replace "Loading…" with real entries.
+/// paints replace crate::tr!("common", "loading-label") with real entries.
 pub fn populate_auth_secret_picker_for_harness<A: OrchestrationControlAction, V: View>(
     dropdown: &ViewHandle<Dropdown<A>>,
     selection: &AuthSecretSelection,
@@ -1074,7 +1074,7 @@ pub fn render_mode_toggle<A: OrchestrationControlAction>(
 ) -> Box<dyn Element> {
     let theme = appearance.theme();
     let label = Text::new(
-        "Agent location".to_string(),
+        crate::tr!("ai_assistant", "ai-assistant-ai-agent-location-label").to_string(),
         appearance.ui_font_family(),
         appearance.monospace_font_size() - 1.,
     )

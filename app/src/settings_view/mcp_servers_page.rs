@@ -51,7 +51,7 @@ pub enum InstallOrigin {
     Deeplink,
 }
 
-const PAGE_TITLE_TEXT: &str = "MCP Servers";
+const PAGE_TITLE_TEXT: &str = crate::tr!("settings", "mcp-servers");
 #[derive(Debug, Default, Copy, Clone)]
 pub enum MCPServersSettingsPage {
     #[default]
@@ -150,7 +150,7 @@ impl MCPServersSettingsPageView {
     ) {
         let message = match server_name {
             Some(name) => format!("Successfully logged out of {name} MCP server"),
-            None => "Successfully logged out of MCP server".to_string(),
+            None => crate::tr!("settings", "successfully-logged-out-of-mcp-server").to_string(),
         };
         match item_id {
             ServerCardItemId::TemplatableMCP(_) => {
@@ -164,7 +164,7 @@ impl MCPServersSettingsPageView {
                 self.add_toast(&message, ctx);
             }
             ServerCardItemId::GalleryMCP(_) => {
-                report_error!("Logging out is not supported for gallery MCP servers.");
+                report_error!(crate::tr!("settings", "logging-out-is-not-supported-for-gallery-mcp-servers."));
             }
             ServerCardItemId::FileBasedMCP(uuid) => {
                 if let Some(installation) =
@@ -316,7 +316,7 @@ impl MCPServersSettingsPageView {
                 "Ignoring MCP deeplink autoinstall for '{autoinstall_param}': installation modal already open"
             );
             self.add_error_toast(
-                "Finish the current MCP install before opening another install link.".to_string(),
+                crate::tr!("settings", "finish-the-current-mcp-install-before-opening-another-install-link.").to_string(),
                 ctx,
             );
             return;
@@ -516,7 +516,7 @@ impl Entity for MCPServersSettingsPageView {
 
 impl View for MCPServersSettingsPageView {
     fn ui_name() -> &'static str {
-        "MCPServersSettingsPageView"
+        crate::tr!("settings", "mcpserverssettingspageview")
     }
 
     fn render(&self, _app: &AppContext) -> Box<dyn Element> {

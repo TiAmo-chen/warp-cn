@@ -82,7 +82,7 @@ fn is_valid_worktree_branch_name(name: &str) -> bool {
             .all(|c| c.is_ascii_alphanumeric() || c == '-' || c == '_')
 }
 
-/// Body view for the "New worktree" modal.
+/// Body view for the crate::tr!("workspace", "new-worktree") modal.
 ///
 /// Renders a repo picker, branch picker, auto-generate checkbox, and
 /// Cancel / Open footer. The workspace wraps this in a `Modal<NewWorktreeModal>`.
@@ -336,7 +336,7 @@ impl View for NewWorktreeModal {
             let esc_badge = {
                 let badge_bg = internal_colors::neutral_2(theme);
                 let badge_text = Text::new_inline(
-                    "ESC".to_string(),
+                    crate::tr!("zz_zh02_supplement", "settings-esc-key").to_string(),
                     appearance.ui_font_family(),
                     ESC_BADGE_FONT_SIZE,
                 )
@@ -463,7 +463,7 @@ impl View for NewWorktreeModal {
             .with_child(checkbox_element)
             .with_child(
                 Text::new_inline(
-                    "Autogenerate worktree branch name".to_string(),
+                    crate::tr!("workspace", "autogenerate-branch-name").to_string(),
                     appearance.ui_font_family(),
                     appearance.ui_font_size(),
                 )
@@ -539,7 +539,7 @@ impl View for NewWorktreeModal {
         let cancel_button = appearance
             .ui_builder()
             .button(ButtonVariant::Text, self.cancel_button_mouse_state.clone())
-            .with_text_label("Cancel".to_string())
+            .with_text_label(crate::tr!("common", "cancel-label").to_string())
             .with_style(text_button_base)
             .with_style(UiComponentStyles {
                 font_color: Some(main_text.into()),
@@ -561,7 +561,7 @@ impl View for NewWorktreeModal {
             let mut builder = appearance
                 .ui_builder()
                 .button(ButtonVariant::Text, self.open_button_mouse_state.clone())
-                .with_text_label("Open".to_string())
+                .with_text_label(crate::tr!("common", "open-label").to_string())
                 .with_style(text_button_base)
                 .with_style(UiComponentStyles {
                     font_color: Some(font_color.into()),

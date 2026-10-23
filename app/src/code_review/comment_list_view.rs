@@ -213,7 +213,7 @@ impl CommentListView {
         });
 
         let send_button = ctx.add_view(|ctx| {
-            ActionButton::new("Send to Agent", PrimaryTheme)
+            ActionButton::new(crate::tr!("code_editor", "code-editor-code-review-send-to-agent"), PrimaryTheme)
                 .with_size(ButtonSize::Small)
                 .with_keybinding(
                     KeystrokeSource::Fixed(

@@ -217,7 +217,7 @@ fn render_linked_code_block_internal(
             let insert_button = render_button(
                 appearance,
                 Icon::AtSign,
-                "Add as Context",
+                crate::tr!("ai_assistant", "ai-assistant-ai-add-as-context"),
                 mouse_handles.insert_button,
                 insert_text,
                 on_insert,
@@ -236,7 +236,7 @@ fn render_linked_code_block_internal(
             let copy_button = render_button(
                 appearance,
                 Icon::Copy,
-                "Copy",
+                crate::tr!("common", "copy-label"),
                 mouse_handles.copy_button,
                 code_clone.clone(),
                 on_copy,
@@ -255,7 +255,7 @@ fn render_linked_code_block_internal(
             let open_button = render_button(
                 appearance,
                 Icon::LinkExternal,
-                "Open file",
+                crate::tr!("common", "open-file-label"),
                 mouse_handles.open_button,
                 code_clone.clone(),
                 on_open,
@@ -324,7 +324,7 @@ fn render_plain_code_block_internal(
             let copy_button = render_button(
                 appearance,
                 Icon::Copy,
-                "Copy",
+                crate::tr!("common", "copy-label"),
                 mouse_handles.copy_button,
                 code_clone.clone(),
                 on_copy,
@@ -339,7 +339,7 @@ fn render_plain_code_block_internal(
             let insert_button = render_button(
                 appearance,
                 Icon::TerminalInput,
-                "Run in terminal",
+                crate::tr!("ai_assistant", "ai-assistant-ai-run-in-terminal"),
                 mouse_handles.insert_button,
                 code_clone.clone(),
                 on_execute,

@@ -1,4 +1,4 @@
-//! The "Warp Agent" settings page, shown under the Agents umbrella.
+//! The crate::tr!("settings", "warp-agent") settings page, shown under the Agents umbrella.
 //!
 //! Covers Warp's own AI: the global toggle, Active AI suggestions, agent
 //! input behavior, voice input, credentials (BYO keys, Bedrock, Gemini
@@ -118,13 +118,13 @@ use crate::{TelemetryEvent, UserWorkspaces, send_telemetry_from_ctx};
 const AI_SETTINGS_DROPDOWN_WIDTH: f32 = 250.;
 const AI_SETTINGS_DROPDOWN_MAX_HEIGHT: f32 = 250.;
 
-const NEXT_COMMAND_DESCRIPTION: &str = "Let AI suggest the next command to run based on your command history, outputs, and common workflows.";
+const NEXT_COMMAND_DESCRIPTION: &str = crate::tr!("settings", "let-ai-suggest-the-next-command-to-run-based-on-your-command-history,-outputs,-and-common-workflows.");
 const PROMPT_SUGGESTIONS_DESCRIPTION: &str = "Let AI suggest natural language prompts, as inline banners in the input, based on recent commands and their outputs.";
-const SUGGESTED_CODE_BANNERS_DESCRIPTION: &str = "Let AI suggest code diffs and queries as inline banners in the blocklist, based on recent commands and their outputs.";
+const SUGGESTED_CODE_BANNERS_DESCRIPTION: &str = crate::tr!("settings", "let-ai-suggest-code-diffs-and-queries-as-inline-banners-in-the-blocklist,-based-on-recent-commands-and-their-outputs.");
 const NATURAL_LANGUAGE_AUTOSUGGESTIONS: &str =
     "Let AI suggest natural language autosuggestions, based on recent commands and their outputs.";
 const SHARED_BLOCK_TITLE_GENERATION_DESCRIPTION: &str =
-    "Let AI generate a title for your shared block based on the command and output.";
+    crate::tr!("settings", "let-ai-generate-a-title-for-your-shared-block-based-on-the-command-and-output.");
 const GIT_OPERATIONS_AUTOGEN_DESCRIPTION: &str =
     "Let AI generate commit messages and pull request titles and descriptions.";
 const WISPR_FLOW_URL: &str = "https://wisprflow.ai/";
@@ -156,7 +156,7 @@ pub fn init_actions_from_parent_view<T: Action + Clone>(
     ToggleSettingActionPair::add_toggle_setting_action_pairs_as_bindings(
         vec![
             ToggleSettingActionPair::new(
-                "Active AI",
+                crate::tr!("settings", "active-ai"),
                 builder(SettingsAction::WarpAgent(
                     WarpAgentPageAction::ToggleActiveAI,
                 )),
@@ -219,7 +219,7 @@ pub fn init_actions_from_parent_view<T: Action + Clone>(
     ToggleSettingActionPair::add_toggle_setting_action_pairs_as_bindings(
         vec![
             ToggleSettingActionPair::new(
-                "Next Command",
+                crate::tr!("settings", "next-command"),
                 builder(SettingsAction::WarpAgent(
                     WarpAgentPageAction::ToggleIntelligentAutosuggestions,
                 )),
@@ -233,7 +233,7 @@ pub fn init_actions_from_parent_view<T: Action + Clone>(
     ToggleSettingActionPair::add_toggle_setting_action_pairs_as_bindings(
         vec![
             ToggleSettingActionPair::new(
-                "prompt suggestions",
+                crate::tr!("settings", "ai-prompt-suggestions-label"),
                 builder(SettingsAction::WarpAgent(
                     WarpAgentPageAction::TogglePromptSuggestions,
                 )),
@@ -263,7 +263,7 @@ pub fn init_actions_from_parent_view<T: Action + Clone>(
     ToggleSettingActionPair::add_toggle_setting_action_pairs_as_bindings(
         vec![
             ToggleSettingActionPair::custom(
-                SettingActionPairDescriptions::new("Show agent tips", "Hide agent tips"),
+                SettingActionPairDescriptions::new(crate::tr!("settings", "show-agent-tips"), "Hide agent tips"),
                 builder(SettingsAction::WarpAgent(
                     WarpAgentPageAction::ToggleShowAgentTips,
                 )),
@@ -286,7 +286,7 @@ pub fn init_actions_from_parent_view<T: Action + Clone>(
         vec![
             ToggleSettingActionPair::custom(
                 SettingActionPairDescriptions::new(
-                    "Show Warp Agent changelog in new agent conversation view",
+                    crate::tr!("settings", "show-warp-agent-changelog-in-new-agent-conversation-view"),
                     "Hide Warp Agent changelog in new agent conversation view",
                 ),
                 builder(SettingsAction::WarpAgent(
@@ -414,7 +414,7 @@ pub fn init_actions_from_parent_view<T: Action + Clone>(
     ToggleSettingActionPair::add_toggle_setting_action_pairs_as_bindings(
         vec![
             ToggleSettingActionPair::new(
-                "natural language autosuggestions",
+                crate::tr!("settings", "ai-nl-autosuggestions-label"),
                 builder(SettingsAction::WarpAgent(
                     WarpAgentPageAction::ToggleNaturalLanguageAutosuggestions,
                 )),
@@ -429,7 +429,7 @@ pub fn init_actions_from_parent_view<T: Action + Clone>(
     ToggleSettingActionPair::add_toggle_setting_action_pairs_as_bindings(
         vec![
             ToggleSettingActionPair::new(
-                "shared block title generation",
+                crate::tr!("settings", "ai-shared-block-title-gen-label"),
                 builder(SettingsAction::WarpAgent(
                     WarpAgentPageAction::ToggleSharedTitleGeneration,
                 )),
@@ -503,7 +503,7 @@ pub fn init_actions_from_parent_view<T: Action + Clone>(
     ToggleSettingActionPair::add_toggle_setting_action_pairs_as_bindings(
         vec![
             ToggleSettingActionPair::new(
-                "include agent-executed commands in history",
+                crate::tr!("settings", "ai-include-agent-commands"),
                 builder(SettingsAction::WarpAgent(
                     WarpAgentPageAction::ToggleIncludeAgentCommandsInHistory,
                 )),
@@ -513,7 +513,7 @@ pub fn init_actions_from_parent_view<T: Action + Clone>(
             .with_group(bindings::BindingGroup::WarpAi),
             ToggleSettingActionPair::custom(
                 SettingActionPairDescriptions::new(
-                    "Allow auto-approve to bypass command denylist",
+                    crate::tr!("settings", "allow-auto-approve-to-bypass-command-denylist"),
                     "Require approval for denylisted commands in auto-approve",
                 ),
                 builder(SettingsAction::WarpAgent(
@@ -545,7 +545,7 @@ pub fn init_actions_from_parent_view<T: Action + Clone>(
     ToggleSettingActionPair::add_toggle_setting_action_pairs_as_bindings(
         vec![
             ToggleSettingActionPair::new(
-                "Auto-spawn servers from third-party agents",
+                crate::tr!("settings", "auto-spawn-servers-from-third-party-agents"),
                 builder(SettingsAction::WarpAgent(
                     WarpAgentPageAction::ToggleFileBasedMcp,
                 )),
@@ -564,7 +564,7 @@ pub fn init_actions_from_parent_view<T: Action + Clone>(
     ToggleSettingActionPair::add_toggle_setting_action_pairs_as_bindings(
         vec![
             ToggleSettingActionPair::new(
-                "Warp credit fallback",
+                crate::tr!("settings", "warp-credit-fallback"),
                 builder(SettingsAction::WarpAgent(
                     WarpAgentPageAction::ToggleCanUseWarpCreditsForFallback,
                 )),
@@ -640,7 +640,7 @@ struct GrokOauthAttempt {
     cancellation: OauthCancellationHandle,
     /// Set once this attempt is done trying (Cancel, or a manual code
     /// already exchanged). Finalizing also needs `released`, so the row
-    /// shows a disabled "Cancelling" state until the port is confirmed free.
+    /// shows a disabled crate::tr!("settings", "cancelling") state until the port is confirmed free.
     outcome: Option<GrokOauthAttemptOutcome>,
     /// Set once the loopback listener is confirmed released, independent of
     /// `outcome` -- a raced-in callback's token exchange can still be in
@@ -720,7 +720,7 @@ impl WarpAgentPageView {
                 .position(|val| val == current_value)
                 .unwrap_or_else(|| {
                     log::warn!(
-                        "Could not find current VoiceInputToggleKey value in dropdown option list"
+                        crate::tr!("settings", "could-not-find-current-voiceinputtogglekey-value-in-dropdown-option-list")
                     );
                     0
                 });
@@ -840,7 +840,7 @@ impl WarpAgentPageView {
             };
             let mut editor = EditorView::new(options, ctx);
 
-            editor.set_placeholder_text("Commands, comma separated", ctx);
+            editor.set_placeholder_text(crate::tr!("settings", "commands,-comma-separated"), ctx);
 
             let current_value = AISettings::as_ref(ctx)
                 .autodetection_command_denylist
@@ -1016,7 +1016,7 @@ impl WarpAgentPageView {
 
         let custom_endpoint_modal_view = ctx.add_typed_action_view(|ctx| {
             Modal::new(
-                Some("Add custom endpoint".to_string()),
+                Some(crate::tr!("settings", "add-custom-endpoint").to_string()),
                 custom_endpoint_modal_body.clone(),
                 ctx,
             )
@@ -1062,7 +1062,7 @@ impl WarpAgentPageView {
         });
         let set_default_model_modal_view = ctx.add_typed_action_view(|ctx| {
             Modal::new(
-                Some("Change your default model?".to_string()),
+                Some(crate::tr!("settings", "change-your-default-model?").to_string()),
                 set_default_model_modal_body.clone(),
                 ctx,
             )
@@ -1117,11 +1117,11 @@ impl WarpAgentPageView {
 
             let items = vec![
                 DropdownItem::new(
-                    "New Tab",
+                    crate::tr!("settings", "new-tab"),
                     WarpAgentPageAction::SetConversationLayout(OpenConversationPreference::NewTab),
                 ),
                 DropdownItem::new(
-                    "Split Pane",
+                    crate::tr!("settings", "split-pane"),
                     WarpAgentPageAction::SetConversationLayout(
                         OpenConversationPreference::SplitPane,
                     ),
@@ -1132,7 +1132,7 @@ impl WarpAgentPageView {
             let current = *crate::util::file::external_editor::EditorSettings::as_ref(ctx)
                 .open_conversation_layout_preference;
             match current {
-                OpenConversationPreference::NewTab => dropdown.set_selected_by_name("New Tab", ctx),
+                OpenConversationPreference::NewTab => dropdown.set_selected_by_name(crate::tr!("settings", "new-tab"), ctx),
                 OpenConversationPreference::SplitPane => {
                     dropdown.set_selected_by_name("Split Pane", ctx)
                 }
@@ -1200,7 +1200,7 @@ impl WarpAgentPageView {
                     crate::ToastStack::handle(ctx).update(ctx, |toast_stack, ctx| {
                         toast_stack.add_ephemeral_toast(
                             crate::view_components::DismissibleToast::error(
-                                "Couldn't disconnect your ChatGPT subscription. Please try again."
+                                crate::tr!("settings", "couldn't-disconnect-your-chatgpt-subscription.-please-try-again.")
                                     .to_string(),
                             ),
                             window_id,
@@ -1303,7 +1303,7 @@ impl WarpAgentPageView {
                 let window_id = ctx.window_id();
                 crate::ToastStack::handle(ctx).update(ctx, |toast_stack, ctx| {
                     let toast = crate::view_components::DismissibleToast::success(
-                        "Default model updated".to_string(),
+                        crate::tr!("settings", "default-model-updated").to_string(),
                     );
                     toast_stack.add_ephemeral_toast(toast, window_id, ctx);
                 });
@@ -1517,7 +1517,7 @@ impl WarpAgentPageView {
         (0..count)
             .map(|index| {
                 let button = ctx.add_typed_action_view(move |_| {
-                    ActionButton::new("Edit", SecondaryTheme)
+                    ActionButton::new(crate::tr!("common", "edit-label"), SecondaryTheme)
                         .with_icon(Icon::Pencil)
                         .with_size(ButtonSize::Small)
                         .on_click(move |ctx| {
@@ -1559,7 +1559,7 @@ impl WarpAgentPageView {
         self.pending_remove_custom_endpoint_index = None;
 
         self.custom_endpoint_modal_state
-            .set_title(Some("Add custom endpoint".to_string()), ctx);
+            .set_title(Some(crate::tr!("settings", "add-custom-endpoint").to_string()), ctx);
         self.custom_endpoint_modal_state.prefill(None, None, ctx);
         self.custom_endpoint_modal_state.open(ctx);
         ctx.emit(WarpAgentPageEvent::ShowModal);
@@ -1585,7 +1585,7 @@ impl WarpAgentPageView {
         self.pending_remove_custom_endpoint_index = None;
 
         self.custom_endpoint_modal_state
-            .set_title(Some("Edit custom endpoint".to_string()), ctx);
+            .set_title(Some(crate::tr!("settings", "edit-custom-endpoint").to_string()), ctx);
         self.custom_endpoint_modal_state
             .prefill(endpoint.as_ref(), Some(index), ctx);
         self.custom_endpoint_modal_state.open(ctx);
@@ -1650,7 +1650,7 @@ impl WarpAgentPageView {
                 let window_id = ctx.window_id();
                 crate::ToastStack::handle(ctx).update(ctx, |toast_stack, ctx| {
                     let toast = crate::view_components::DismissibleToast::success(
-                        "Endpoint added".to_string(),
+                        crate::tr!("settings", "endpoint-added").to_string(),
                     );
                     toast_stack.add_ephemeral_toast(toast, window_id, ctx);
                 });
@@ -1695,7 +1695,7 @@ impl WarpAgentPageView {
                 let window_id = ctx.window_id();
                 crate::ToastStack::handle(ctx).update(ctx, |toast_stack, ctx| {
                     let toast = crate::view_components::DismissibleToast::success(
-                        "Endpoint saved".to_string(),
+                        crate::tr!("settings", "endpoint-saved").to_string(),
                     );
                     toast_stack.add_ephemeral_toast(toast, window_id, ctx);
                 });
@@ -1783,7 +1783,7 @@ impl WarpAgentPageView {
                 let window_id = ctx.window_id();
                 crate::ToastStack::handle(ctx).update(ctx, |toast_stack, ctx| {
                     let toast = crate::view_components::DismissibleToast::success(
-                        "Endpoint removed".to_string(),
+                        crate::tr!("settings", "endpoint-removed").to_string(),
                     );
                     toast_stack.add_ephemeral_toast(toast, window_id, ctx);
                 });
@@ -1806,7 +1806,7 @@ impl WarpAgentPageView {
                 ..Default::default()
             };
             let mut editor = EditorView::single_line(options, ctx);
-            editor.set_placeholder_text("Paste sign-in code", ctx);
+            editor.set_placeholder_text(crate::tr!("settings", "paste-sign-in-code"), ctx);
             editor
         })
     }
@@ -1833,7 +1833,7 @@ impl WarpAgentPageView {
             Ok(attempt) => attempt,
             Err(err) => {
                 safe_error!(
-                    safe: ("Failed to start Grok OAuth callback server"),
+                    safe: (crate::tr!("settings", "failed-to-start-grok-oauth-callback-server")),
                     full: ("Failed to start Grok OAuth callback server: {err:#}")
                 );
                 send_telemetry_from_ctx!(
@@ -1874,7 +1874,7 @@ impl WarpAgentPageView {
             )
             .with_object_id(GROK_OAUTH_CONNECT_TOAST_OBJECT_ID.to_string())
             .with_link(
-                ToastLink::new("Copy URL".to_string())
+                ToastLink::new(crate::tr!("settings", "copy-url").to_string())
                     .with_onclick_action(WorkspaceAction::CopyTextToClipboard(authorize_url)),
             );
             toast_stack.add_persistent_toast(toast, window_id, ctx);
@@ -1937,7 +1937,7 @@ impl WarpAgentPageView {
                         editor.clear_buffer(ctx);
                     });
                     safe_error!(
-                        safe: ("Grok OAuth loopback callback failed"),
+                        safe: (crate::tr!("settings", "grok-oauth-loopback-callback-failed")),
                         full: ("Grok OAuth loopback callback failed: {err:#}")
                     );
                     send_telemetry_from_ctx!(
@@ -1994,7 +1994,7 @@ impl WarpAgentPageView {
                         )
                         .with_object_id(CHATGPT_OAUTH_CONNECT_TOAST_OBJECT_ID.to_string())
                         .with_link(
-                            ToastLink::new("Copy URL".to_string()).with_onclick_action(
+                            ToastLink::new(crate::tr!("settings", "copy-url").to_string()).with_onclick_action(
                                 WorkspaceAction::CopyTextToClipboard(authorize_url),
                             ),
                         );
@@ -2114,7 +2114,7 @@ impl WarpAgentPageView {
                  then try again."
             }
             ChatGPTConnectFailure::Unknown => {
-                "Couldn't connect your ChatGPT subscription. Please try again."
+                crate::tr!("settings", "couldn't-connect-your-chatgpt-subscription.-please-try-again.")
             }
         };
         let window_id = ctx.window_id();
@@ -2181,7 +2181,7 @@ impl WarpAgentPageView {
         let window_id = ctx.window_id();
         ToastStack::handle(ctx).update(ctx, |toast_stack, ctx| {
             toast_stack.add_ephemeral_toast(
-                DismissibleToast::success("SuperGrok subscription connected".to_string())
+                DismissibleToast::success(crate::tr!("settings", "supergrok-subscription-connected").to_string())
                     .with_object_id(GROK_OAUTH_CONNECT_TOAST_OBJECT_ID.to_string()),
                 window_id,
                 ctx,
@@ -2258,7 +2258,7 @@ impl WarpAgentPageView {
                     Err(err) => {
                         // Keep the row open so the user can correct the code.
                         safe_error!(
-                            safe: ("Grok manual code exchange failed"),
+                            safe: (crate::tr!("settings", "grok-manual-code-exchange-failed")),
                             full: ("Grok manual code exchange failed: {err:#}")
                         );
                         send_telemetry_from_ctx!(
@@ -2319,7 +2319,7 @@ impl WarpAgentPageView {
             ];
             let active_ai_toggle = SwitchStateHandle::default();
             categories.push(Category::with_header(
-                CategoryHeader::new("Active AI").with_trailing_element(
+                CategoryHeader::new(crate::tr!("settings", "active-ai")).with_trailing_element(
                     move |_view, _appearance, app| render_active_ai_toggle(&active_ai_toggle, app),
                 ),
                 active_ai_widgets,
@@ -2327,7 +2327,7 @@ impl WarpAgentPageView {
         }
 
         categories.push(Category::new(
-            "Input",
+            crate::tr!("settings", "input"),
             vec![
                 Box::new(NaturalLanguageDetectionWidget::default()),
                 Box::new(ShowInputHintTextWidget::default()),
@@ -2345,7 +2345,7 @@ impl WarpAgentPageView {
                 .is_supported_on_current_platform();
         if voice_supported {
             categories.push(Category::new(
-                "Voice",
+                crate::tr!("settings", "voice"),
                 vec![Box::new(VoiceWidget::default())],
             ));
         }
@@ -2361,7 +2361,7 @@ impl WarpAgentPageView {
 
         let page_view_handle = ctx.handle();
         categories.push(Category::with_header(
-            CategoryHeader::new("Custom Inference").with_trailing_element(
+            CategoryHeader::new(crate::tr!("settings", "custom-inference")).with_trailing_element(
                 move |view: &Self, _appearance, app| {
                     let workspaces = UserWorkspaces::as_ref(app);
                     let team_scope = workspaces.team_context(&page_view_handle, app);
@@ -2378,12 +2378,12 @@ impl WarpAgentPageView {
         ));
 
         categories.push(Category::new(
-            "AWS Bedrock",
+            crate::tr!("settings", "aws-bedrock"),
             vec![Box::new(AwsBedrockWidget::new(ctx))],
         ));
 
         categories.push(Category::new(
-            "Gemini Enterprise",
+            crate::tr!("settings", "gemini-enterprise"),
             vec![Box::new(GeminiEnterpriseWidget::new(ctx))],
         ));
 
@@ -2396,11 +2396,11 @@ impl WarpAgentPageView {
                 widgets.push(Box::new(CustomModelRoutersWidget));
                 widgets
             };
-            categories.push(Category::new("Custom Routers", custom_router_widgets));
+            categories.push(Category::new(crate::tr!("settings", "custom-routers"), custom_router_widgets));
         }
 
         categories.push(Category::new(
-            "Agent Attribution",
+            crate::tr!("settings", "ai-agent-attribution-header"),
             vec![Box::new(AgentAttributionWidget::default())],
         ));
 
@@ -2415,11 +2415,11 @@ impl WarpAgentPageView {
         ];
         #[cfg(feature = "local_fs")]
         other_widgets.push(Box::new(ConversationLayoutPreferenceWidget));
-        categories.push(Category::new("Other", other_widgets));
+        categories.push(Category::new(crate::tr!("settings", "other"), other_widgets));
 
         if FeatureFlag::AgentModeComputerUse.is_enabled() {
             categories.push(Category::new(
-                "Experimental",
+                crate::tr!("settings", "ai-experimental"),
                 vec![Box::new(CloudAgentComputerUseWidget::default())],
             ));
         }
@@ -2428,7 +2428,7 @@ impl WarpAgentPageView {
         let global_ai_sign_up_button = MouseStateHandle::default();
         PageType::new_categorized(
             categories,
-            Some(PageTitle::new("Warp Agent").with_trailing_element(
+            Some(PageTitle::new(crate::tr!("settings", "warp-agent")).with_trailing_element(
                 move |_view, appearance, app| {
                     render_global_ai_toggle(
                         &global_ai_switch_state,
@@ -2513,7 +2513,7 @@ impl WarpAgentPageView {
 
 impl View for WarpAgentPageView {
     fn ui_name() -> &'static str {
-        "WarpAgentPage"
+        crate::tr!("settings", "warpagentpage")
     }
 
     fn render(&self, app: &warpui::AppContext) -> Box<dyn warpui::Element> {
@@ -2887,7 +2887,7 @@ impl TypedActionView for WarpAgentPageView {
                     send_telemetry_from_ctx!(
                         // We purposely keep the FeaturesPageAction event, even though we have moved the setting to AI settings.
                         TelemetryEvent::FeaturesPageAction {
-                            action: "ToggleShowInputHintText".to_string(),
+                            action: crate::tr!("settings", "toggleshowinputhinttext").to_string(),
                             value: format!("{}", *input_settings.show_hint_text),
                         },
                         ctx
@@ -2903,7 +2903,7 @@ impl TypedActionView for WarpAgentPageView {
                     );
                     send_telemetry_from_ctx!(
                         TelemetryEvent::FeaturesPageAction {
-                            action: "ToggleAiCommandSearchHashTrigger".to_string(),
+                            action: crate::tr!("settings", "toggleaicommandsearchhashtrigger").to_string(),
                             value: format!(
                                 "{}",
                                 *input_settings.enable_ai_command_search_hash_trigger
@@ -3071,7 +3071,7 @@ impl TypedActionView for WarpAgentPageView {
                 );
                 send_telemetry_from_ctx!(
                     TelemetryEvent::FeaturesPageAction {
-                        action: "SetConversationLayout".to_string(),
+                        action: crate::tr!("settings", "setconversationlayout").to_string(),
                         value: format!("{layout:?}")
                     },
                     ctx
@@ -3162,7 +3162,7 @@ impl TypedActionView for WarpAgentPageView {
                 let window_id = ctx.window_id();
                 crate::ToastStack::handle(ctx).update(ctx, |toast_stack, ctx| {
                     let toast = crate::view_components::DismissibleToast::default(
-                        "SuperGrok subscription disconnected".to_string(),
+                        crate::tr!("settings", "supergrok-subscription-disconnected").to_string(),
                     );
                     toast_stack.add_ephemeral_toast(toast, window_id, ctx);
                 });
@@ -3234,7 +3234,7 @@ fn render_global_ai_toggle(
             Container::new(
                 ConstrainedBox::new(
                     Container::new(
-                        Text::new("Your organization disallows AI when the active pane contains content from a remote session", appearance.ui_font_family(), 12.)
+                        Text::new(crate::tr!("settings", "your-organization-disallows-ai-when-the-active-pane-contains-content-from-a-remote-session"), appearance.ui_font_family(), 12.)
                             .with_color(appearance.theme().ui_warning_color())
                             .finish()
                     )
@@ -3258,7 +3258,7 @@ fn render_global_ai_toggle(
                 .with_child(
                     Container::new(
                         Text::new_inline(
-                            "To use AI features, please create an account.",
+                            crate::tr!("settings", "to-use-ai-features,-please-create-an-account."),
                             appearance.ui_font_family(),
                             14.,
                         )
@@ -3289,7 +3289,7 @@ fn render_global_ai_toggle(
                                 }),
                                 ..Default::default()
                             })
-                            .with_text_label("Sign up".to_owned())
+                            .with_text_label(crate::tr!("settings", "sign-up").to_owned())
                             .build()
                             .on_click(move |ctx, _, _| {
                                 ctx.dispatch_typed_action(WarpAgentPageAction::SignupAnonymousUser);
@@ -3375,7 +3375,7 @@ fn is_git_operations_autogen_toggleable(app: &AppContext) -> bool {
         && UserWorkspaces::as_ref(app).is_git_operations_ai_enabled()
 }
 
-/// The "Active AI" category's header trailing widget: the master switch for all of
+/// The crate::tr!("settings", "active-ai") category's header trailing widget: the master switch for all of
 /// the category's child settings.
 fn render_active_ai_toggle(toggle: &SwitchStateHandle, app: &AppContext) -> Box<dyn Element> {
     let ai_settings = AISettings::as_ref(app);
@@ -3419,7 +3419,7 @@ impl SettingsWidget for NextCommandWidget {
         Flex::column()
             .with_child(
                 render_ai_setting_toggle::<IntelligentAutosuggestionsEnabled>(
-                    "Next Command",
+                    crate::tr!("settings", "next-command"),
                     WarpAgentPageAction::ToggleIntelligentAutosuggestions,
                     *ai_settings.intelligent_autosuggestions_enabled_internal,
                     is_toggleable,
@@ -3464,7 +3464,7 @@ impl SettingsWidget for PromptSuggestionsWidget {
         Flex::column()
             .with_child(
                 render_ai_setting_toggle::<AgentModeQuerySuggestionsEnabled>(
-                    "Prompt Suggestions",
+                    crate::tr!("settings", "prompt-suggestions"),
                     WarpAgentPageAction::TogglePromptSuggestions,
                     *ai_settings.prompt_suggestions_enabled_internal,
                     is_toggleable,
@@ -3509,7 +3509,7 @@ impl SettingsWidget for SuggestedCodeBannersWidget {
         Flex::column()
             .with_child(
                 render_ai_setting_toggle::<AgentModeQuerySuggestionsEnabled>(
-                    "Suggested Code Banners",
+                    crate::tr!("settings", "suggested-code-banners"),
                     WarpAgentPageAction::ToggleCodeSuggestions,
                     *ai_settings.code_suggestions_enabled_internal,
                     is_toggleable,
@@ -3555,7 +3555,7 @@ impl SettingsWidget for NaturalLanguageAutosuggestionsWidget {
             .with_child(render_ai_setting_toggle::<
                 NaturalLanguageAutosuggestionsEnabled,
             >(
-                "Natural Language Autosuggestions",
+                crate::tr!("settings", "natural-language-autosuggestions"),
                 WarpAgentPageAction::ToggleNaturalLanguageAutosuggestions,
                 *ai_settings.natural_language_autosuggestions_enabled_internal,
                 is_toggleable,
@@ -3608,7 +3608,7 @@ impl SettingsWidget for SharedBlockTitleGenerationWidget {
         Flex::column()
             .with_child(
                 render_ai_setting_toggle::<SharedBlockTitleGenerationEnabled>(
-                    "Shared Block Title Generation",
+                    crate::tr!("settings", "shared-block-title-generation"),
                     WarpAgentPageAction::ToggleSharedTitleGeneration,
                     *ai_settings.shared_block_title_generation_enabled_internal,
                     is_toggleable,
@@ -3722,7 +3722,7 @@ impl SettingsWidget for ShowInputHintTextWidget {
     ) -> Box<dyn Element> {
         let is_any_ai_enabled = AISettings::as_ref(app).is_any_ai_enabled(app);
         render_ai_setting_toggle::<ShowHintText>(
-            "Show input hint text",
+            crate::tr!("settings", "show-input-hint-text"),
             WarpAgentPageAction::ToggleShowInputHintText,
             *InputSettings::as_ref(app).show_hint_text,
             is_any_ai_enabled,
@@ -3788,7 +3788,7 @@ impl SettingsWidget for ShowAgentTipsWidget {
     ) -> Box<dyn Element> {
         let is_any_ai_enabled = AISettings::as_ref(app).is_any_ai_enabled(app);
         render_ai_setting_toggle::<ShowAgentTips>(
-            "Show agent tips",
+            crate::tr!("settings", "show-agent-tips"),
             WarpAgentPageAction::ToggleShowAgentTips,
             *InputSettings::as_ref(app).show_agent_tips,
             is_any_ai_enabled,
@@ -3820,7 +3820,7 @@ impl SettingsWidget for IncludeAgentCommandsInHistoryWidget {
         let ai_settings = AISettings::as_ref(app);
         let is_any_ai_enabled = ai_settings.is_any_ai_enabled(app);
         render_ai_setting_toggle::<IncludeAgentCommandsInHistory>(
-            "Include agent-executed commands in history",
+            crate::tr!("settings", "include-agent-executed-commands-in-history"),
             WarpAgentPageAction::ToggleIncludeAgentCommandsInHistory,
             *ai_settings.include_agent_commands_in_history,
             is_any_ai_enabled,
@@ -3853,7 +3853,7 @@ impl SettingsWidget for AutoApproveBypassesCommandDenylistWidget {
         let is_any_ai_enabled = ai_settings.is_any_ai_enabled(app);
         Flex::column()
             .with_child(render_ai_setting_toggle::<AutoApproveBypassesCommandDenylist>(
-                "Allow auto-approve to bypass command denylist",
+                crate::tr!("settings", "allow-auto-approve-to-bypass-command-denylist"),
                 WarpAgentPageAction::ToggleAutoApproveBypassesCommandDenylist,
                 *ai_settings.auto_approve_bypasses_command_denylist,
                 is_any_ai_enabled,
@@ -3862,7 +3862,7 @@ impl SettingsWidget for AutoApproveBypassesCommandDenylistWidget {
                 app,
             ))
             .with_child(render_ai_setting_description(
-                "When enabled, fast forward and auto-approve run denylisted commands without asking for confirmation.",
+                crate::tr!("settings", "when-enabled,-fast-forward-and-auto-approve-run-denylisted-commands-without-asking-for-confirmation."),
                 is_any_ai_enabled,
                 app,
             ))
@@ -3895,7 +3895,7 @@ impl SettingsWidget for PromptSubmissionModeWidget {
 
         let mut column = Flex::column().with_child(render_dropdown_item(
             appearance,
-            "Default prompt submission mode",
+            crate::tr!("settings", "default-prompt-submission-mode"),
             Some(
                 "What happens when you submit a new prompt while the agent is still \
                  responding. You can override this per conversation using the auto-queue \
@@ -3918,7 +3918,7 @@ impl SettingsWidget for PromptSubmissionModeWidget {
             column.add_child(
                 Container::new(render_dropdown_item(
                     appearance,
-                    "Default long-running command submission mode",
+                    crate::tr!("settings", "default-long-running-command-submission-mode"),
                     Some(
                         "What happens when you submit a prompt while an agent is driving an \
                          agent-requested long-running command. Queued prompts are sent to the \
@@ -3979,7 +3979,7 @@ impl NaturalLanguageDetectionWidget {
             static AUTODETECTION_DESCRIPTION_FRAGMENTS: LazyLock<Vec<FormattedTextFragment>> =
                 LazyLock::new(|| {
                     vec![
-                        FormattedTextFragment::plain_text("Encountered an incorrect detection? "),
+                        FormattedTextFragment::plain_text(crate::tr!("settings", "encountered-an-incorrect-detection?-")),
                         FormattedTextFragment::hyperlink(
                             "Let us know",
                             "https://warpdotdev.typeform.com/to/offrTIpq",
@@ -3989,7 +3989,7 @@ impl NaturalLanguageDetectionWidget {
 
             section.add_children([
                 render_ai_setting_toggle::<NLDInTerminalEnabled>(
-                    "Autodetect agent prompts in terminal input",
+                    crate::tr!("settings", "autodetect-agent-prompts-in-terminal-input"),
                     WarpAgentPageAction::ToggleNLDInTerminal,
                     ai_settings.is_nld_in_terminal_enabled(app),
                     is_toggleable,
@@ -3998,7 +3998,7 @@ impl NaturalLanguageDetectionWidget {
                     app,
                 ),
                 render_ai_setting_toggle::<AIAutoDetectionEnabled>(
-                    "Autodetect terminal commands in agent input",
+                    crate::tr!("settings", "autodetect-terminal-commands-in-agent-input"),
                     WarpAgentPageAction::ToggleAIInputAutoDetection,
                     is_nld_enabled,
                     is_toggleable,
@@ -4034,7 +4034,7 @@ impl NaturalLanguageDetectionWidget {
             > = LazyLock::new(|| {
                 vec![
                     FormattedTextFragment::plain_text(
-                        "Enabling natural language detection will detect when natural language is written in the terminal input, and then automatically switch to Agent Mode for AI queries.",
+                        crate::tr!("settings", "enabling-natural-language-detection-will-detect-when-natural-language-is-written-in-the-terminal-input,-and-then-automatically-switch-to-agent-mode-for-ai-queries."),
                     ),
                     FormattedTextFragment::plain_text(
                         " Encountered an incorrect input detection? ",
@@ -4048,7 +4048,7 @@ impl NaturalLanguageDetectionWidget {
 
             section.add_children([
                 render_ai_setting_toggle::<AIAutoDetectionEnabled>(
-                    "Natural language detection",
+                    crate::tr!("settings", "natural-language-detection"),
                     WarpAgentPageAction::ToggleAIInputAutoDetection,
                     is_nld_enabled,
                     is_toggleable,
@@ -4082,13 +4082,13 @@ impl NaturalLanguageDetectionWidget {
 
         section
             .with_child(render_ai_setting_label::<AICommandDenylist>(
-                "Natural language denylist".to_owned(),
+                crate::tr!("settings", "natural-language-denylist").to_owned(),
                 is_toggleable,
                 &view.local_only_icon_tooltip_states,
                 app,
             ))
             .with_child(render_ai_setting_description(
-                "Commands listed here will never trigger natural language detection.",
+                crate::tr!("settings", "commands-listed-here-will-never-trigger-natural-language-detection."),
                 is_toggleable,
                 app,
             ))
@@ -4117,7 +4117,7 @@ impl VoiceWidget {
         let ai_settings = AISettings::as_ref(app);
         let is_toggleable = ai_settings.is_any_ai_enabled(app);
         let mut column = Flex::column().with_child(render_ai_setting_toggle::<VoiceInputEnabled>(
-            "Voice Input",
+            crate::tr!("settings", "voice-input"),
             WarpAgentPageAction::ToggleVoiceInput,
             *ai_settings.voice_input_enabled_internal,
             is_toggleable,
@@ -4128,7 +4128,7 @@ impl VoiceWidget {
 
         let voice_input_description_text_fragments = vec![
             FormattedTextFragment::plain_text(
-                "Voice input allows you to control Warp by speaking directly to your terminal (powered by ",
+                crate::tr!("settings", "voice-input-allows-you-to-control-warp-by-speaking-directly-to-your-terminal-(powered-by-"),
             ),
             FormattedTextFragment::hyperlink("Wispr Flow", WISPR_FLOW_URL),
             FormattedTextFragment::plain_text(")."),
@@ -4160,7 +4160,7 @@ impl VoiceWidget {
         if ai_settings.is_voice_input_enabled(app) {
             column.add_child(render_dropdown_item(
                 appearance,
-                "Key for Activating Voice Input",
+                crate::tr!("settings", "key-for-activating-voice-input"),
                 Some("Press and hold to activate."),
                 None,
                 LocalOnlyIconState::for_setting(
@@ -4174,7 +4174,7 @@ impl VoiceWidget {
             ));
             column.add_child(render_filterable_dropdown_item(
                 appearance,
-                "Speech Language",
+                crate::tr!("settings", "speech-language"),
                 Some("Language used when transcribing voice input."),
                 None,
                 LocalOnlyIconState::for_setting(
@@ -4331,7 +4331,7 @@ impl SettingsWidget for ShowOzUpdatesInZeroStateWidget {
         let ai_settings = AISettings::as_ref(app);
         let is_toggleable = ai_settings.is_any_ai_enabled(app);
         render_ai_setting_toggle::<ShouldShowOzUpdatesInZeroState>(
-            "Show Warp Agent changelog in new conversation view",
+            crate::tr!("settings", "show-warp-agent-changelog-in-new-conversation-view"),
             WarpAgentPageAction::ToggleShowOzUpdatesInZeroState,
             *ai_settings.should_show_oz_updates_in_zero_state,
             is_toggleable,
@@ -4435,7 +4435,7 @@ impl SettingsWidget for ShowConversationHistoryWidget {
         let ai_settings = AISettings::as_ref(app);
         let is_toggleable = ai_settings.is_any_ai_enabled(app);
         render_ai_setting_toggle::<ShowConversationHistory>(
-            "Show conversation history in tools panel",
+            crate::tr!("settings", "show-conversation-history-in-tools-panel"),
             WarpAgentPageAction::ToggleShowConversationHistory,
             *ai_settings.show_conversation_history,
             is_toggleable,
@@ -4465,7 +4465,7 @@ impl SettingsWidget for ThinkingDisplayModeWidget {
         let is_any_ai_enabled = AISettings::as_ref(app).is_any_ai_enabled(app);
         render_dropdown_item(
             appearance,
-            "Agent thinking display",
+            crate::tr!("settings", "agent-thinking-display"),
             Some("Controls how reasoning/thinking traces are displayed."),
             None,
             LocalOnlyIconState::for_setting(
@@ -4499,7 +4499,7 @@ impl SettingsWidget for OrchestrationMessageDisplayModeWidget {
         let is_any_ai_enabled = AISettings::as_ref(app).is_any_ai_enabled(app);
         render_dropdown_item(
             appearance,
-            "Orchestration message display",
+            crate::tr!("settings", "orchestration-message-display"),
             Some("Controls whether orchestration messages stay expanded."),
             None,
             LocalOnlyIconState::for_setting(
@@ -4540,7 +4540,7 @@ impl SettingsWidget for ConversationLayoutPreferenceWidget {
         let is_any_ai_enabled = AISettings::as_ref(app).is_any_ai_enabled(app);
         render_dropdown_item(
             appearance,
-            "Preferred layout when opening existing agent conversations",
+            crate::tr!("settings", "preferred-layout-when-opening-existing-agent-conversations"),
             None,
             None,
             LocalOnlyIconState::for_setting(
@@ -4627,7 +4627,7 @@ impl SettingsWidget for AgentAttributionWidget {
                 .switch(self.toggle.clone())
                 .check(state.is_enabled)
                 .with_tooltip(TooltipConfig {
-                    text: "This option is enforced by your organization's settings and cannot be customized.".to_string(),
+                    text: crate::tr!("settings", "this-option-is-enforced-by-your-organization's-settings-and-cannot-be-customized.").to_string(),
                     styles: ui_builder.default_tool_tip_styles(),
                 })
                 .disable()
@@ -4653,7 +4653,7 @@ impl SettingsWidget for AgentAttributionWidget {
 
         let toggle_row = build_toggle_element(
             render_body_item_label::<WarpAgentPageAction>(
-                "Enable agent attribution".to_string(),
+                crate::tr!("settings", "enable-agent-attribution").to_string(),
                 Some(styles::header_font_color(!state.is_disabled, app)),
                 None,
                 LocalOnlyIconState::Hidden,
@@ -4668,7 +4668,7 @@ impl SettingsWidget for AgentAttributionWidget {
         Flex::column()
             .with_child(toggle_row)
             .with_child(render_ai_setting_description(
-                "Warp Agent can add attribution to commit messages and pull requests it creates",
+                crate::tr!("settings", "warp-agent-can-add-attribution-to-commit-messages-and-pull-requests-it-creates"),
                 !state.is_disabled,
                 app,
             ))
@@ -4723,7 +4723,7 @@ impl SettingsWidget for CloudAgentComputerUseWidget {
                 .switch(self.toggle.clone())
                 .check(is_checked)
                 .with_tooltip(TooltipConfig {
-                    text: "This option is enforced by your organization's settings and cannot be customized.".to_string(),
+                    text: crate::tr!("settings", "this-option-is-enforced-by-your-organization's-settings-and-cannot-be-customized.").to_string(),
                     styles: ui_builder.default_tool_tip_styles(),
                 })
                 .disable()
@@ -4751,7 +4751,7 @@ impl SettingsWidget for CloudAgentComputerUseWidget {
 
         let toggle_row = build_toggle_element(
             render_body_item_label::<WarpAgentPageAction>(
-                "Computer use in Cloud Agents".to_string(),
+                crate::tr!("settings", "computer-use-in-cloud-agents").to_string(),
                 Some(styles::header_font_color(!is_disabled, app)),
                 None,
                 LocalOnlyIconState::Hidden,
@@ -4766,7 +4766,7 @@ impl SettingsWidget for CloudAgentComputerUseWidget {
         Flex::column()
             .with_child(toggle_row)
             .with_child(render_ai_setting_description(
-                "Enable computer use in cloud agent conversations started from the Warp app.",
+                crate::tr!("settings", "enable-computer-use-in-cloud-agent-conversations-started-from-the-warp-app."),
                 !is_disabled,
                 app,
             ))
@@ -4810,7 +4810,7 @@ impl SettingsWidget for CloudHandoffWidget {
         let is_force_disabled = !is_any_ai_enabled || cloud_convos_off;
 
         let tooltip_text = if cloud_convos_off {
-            "Cloud handoff requires cloud conversations to be enabled."
+            crate::tr!("settings", "cloud-handoff-requires-cloud-conversations-to-be-enabled.")
         } else {
             ""
         };
@@ -4839,7 +4839,7 @@ impl SettingsWidget for CloudHandoffWidget {
 
         let handoff_row = build_toggle_element(
             render_body_item_label::<WarpAgentPageAction>(
-                "Cloud handoff".to_string(),
+                crate::tr!("settings", "cloud-handoff").to_string(),
                 Some(styles::header_font_color(!is_force_disabled, app)),
                 None,
                 LocalOnlyIconState::Hidden,
@@ -4854,7 +4854,7 @@ impl SettingsWidget for CloudHandoffWidget {
         Flex::column()
             .with_child(handoff_row)
             .with_child(render_ai_setting_description(
-                "Hand off local agent conversations to a cloud agent.",
+                crate::tr!("settings", "hand-off-local-agent-conversations-to-a-cloud-agent."),
                 !is_force_disabled,
                 app,
             ))
@@ -4902,7 +4902,7 @@ impl SettingsWidget for AutoHandoffOnSleepWidget {
             .finish();
         let auto_handoff_on_sleep_row = build_toggle_element(
             render_body_item_label::<WarpAgentPageAction>(
-                "Auto-handoff before sleep".to_string(),
+                crate::tr!("settings", "auto-handoff-before-sleep").to_string(),
                 Some(styles::header_font_color(true, app)),
                 None,
                 LocalOnlyIconState::Hidden,
@@ -4917,7 +4917,7 @@ impl SettingsWidget for AutoHandoffOnSleepWidget {
         Flex::column()
             .with_child(auto_handoff_on_sleep_row)
             .with_child(render_ai_setting_description(
-                "When macOS is about to sleep, automatically moves the most recently focused running local Warp Agent conversation to Cloud Mode so it can keep working.",
+                crate::tr!("settings", "when-macos-is-about-to-sleep,-automatically-moves-the-most-recently-focused-running-local-warp-agent-conversation-to-cloud-mode-so-it-can-keep-working."),
                 true,
                 app,
             ))
@@ -5054,7 +5054,7 @@ impl ApiKeysWidget {
                     .map(str::to_owned);
                 let placeholder = provider
                     .api_key_placeholder()
-                    .expect("API-key providers have input placeholders");
+                    .expect(crate::tr!("settings", "api-key-providers-have-input-placeholders"));
                 let editor = ctx.add_typed_action_view(move |ctx| {
                     let appearance = Appearance::handle(ctx).as_ref(ctx);
                     let options = SingleLineEditorOptions {
@@ -5169,14 +5169,14 @@ impl ApiKeysWidget {
         });
 
         let grok_connect_button = ctx.add_typed_action_view(|_| {
-            ActionButton::new("Continue with Grok", SecondaryTheme)
+            ActionButton::new(crate::tr!("settings", "continue-with-grok"), SecondaryTheme)
                 .with_size(ButtonSize::Small)
                 .on_click(|ctx| {
                     ctx.dispatch_typed_action(WarpAgentPageAction::ConnectGrokSubscription);
                 })
         });
         let grok_cancel_button = ctx.add_typed_action_view(|_| {
-            ActionButton::new("Cancel", SecondaryTheme)
+            ActionButton::new(crate::tr!("settings", "cancel"), SecondaryTheme)
                 .with_size(ButtonSize::Small)
                 .on_click(|ctx| {
                     ctx.dispatch_typed_action(WarpAgentPageAction::CancelGrokSubscriptionConnect);
@@ -5191,21 +5191,21 @@ impl ApiKeysWidget {
             button.set_disabled(true, ctx);
         });
         let grok_disconnect_button = ctx.add_typed_action_view(|_| {
-            ActionButton::new("Disconnect", DangerSecondaryTheme)
+            ActionButton::new(crate::tr!("settings", "disconnect"), DangerSecondaryTheme)
                 .with_size(ButtonSize::Small)
                 .on_click(|ctx| {
                     ctx.dispatch_typed_action(WarpAgentPageAction::DisconnectGrokSubscription);
                 })
         });
         let chatgpt_connect_button = ctx.add_typed_action_view(|_| {
-            ActionButton::new("Continue with ChatGPT", SecondaryTheme)
+            ActionButton::new(crate::tr!("settings", "continue-with-chatgpt"), SecondaryTheme)
                 .with_size(ButtonSize::Small)
                 .on_click(|ctx| {
                     ctx.dispatch_typed_action(WarpAgentPageAction::ConnectChatGPTSubscription);
                 })
         });
         let chatgpt_cancel_button = ctx.add_typed_action_view(|_| {
-            ActionButton::new("Cancel", SecondaryTheme)
+            ActionButton::new(crate::tr!("settings", "cancel"), SecondaryTheme)
                 .with_size(ButtonSize::Small)
                 .on_click(|ctx| {
                     ctx.dispatch_typed_action(
@@ -5214,7 +5214,7 @@ impl ApiKeysWidget {
                 })
         });
         let chatgpt_disconnect_button = ctx.add_typed_action_view(|_| {
-            ActionButton::new("Disconnect", SecondaryTheme)
+            ActionButton::new(crate::tr!("settings", "disconnect"), SecondaryTheme)
                 .with_size(ButtonSize::Small)
                 .on_click(|ctx| {
                     ctx.dispatch_typed_action(WarpAgentPageAction::DisconnectChatGPTSubscription);
@@ -5465,22 +5465,22 @@ impl ApiKeysWidget {
 
         if show_provider_keys {
             add_paragraph(vec![FormattedTextFragment::plain_text(
-                "Use your own API keys from model providers for Warp Agent. API keys are used to make requests to your chosen model provider. Using auto models or models you do not have available API keys for will consume Warp credits.",
+                crate::tr!("settings", "use-your-own-api-keys-from-model-providers-for-warp-agent.-api-keys-are-used-to-make-requests-to-your-chosen-model-provider.-using-auto-models-or-models-you-do-not-have-available-api-keys-for-will-consume-warp-credits."),
             )]);
         }
 
         if show_custom_endpoints {
             add_paragraph(vec![FormattedTextFragment::plain_text(
-                "Add custom endpoints to use third-party models. Custom endpoints must support OpenAI Chat Completions, OpenAI Responses, or Anthropic Messages.",
+                crate::tr!("settings", "add-custom-endpoints-to-use-third-party-models.-custom-endpoints-must-support-openai-chat-completions,-openai-responses,-or-anthropic-messages."),
             )]);
         }
 
         if show_provider_keys || show_custom_endpoints {
             add_paragraph(vec![FormattedTextFragment::plain_text(
-                "API keys added here are stored only on this device, not on Warp's servers.",
+                crate::tr!("settings", "api-keys-added-here-are-stored-only-on-this-device,-not-on-warp's-servers."),
             )]);
             add_paragraph(vec![FormattedTextFragment::hyperlink(
-                "Learn more",
+                crate::tr!("settings", "learn-more"),
                 CUSTOM_INFERENCE_LEARN_MORE_URL,
             )]);
         }
@@ -5566,7 +5566,7 @@ impl ApiKeysWidget {
         list.finish()
     }
 
-    /// The "Connect SuperGrok subscription" row: label and description on the
+    /// The crate::tr!("settings", "connect-supergrok-subscription") row: label and description on the
     /// left, a Connect/Disconnect button on the right, and a "Connected on
     /// ..." status line underneath while a subscription is connected.
     fn render_grok_subscription_row(
@@ -5583,7 +5583,7 @@ impl ApiKeysWidget {
             .with_cross_axis_alignment(CrossAxisAlignment::Center)
             .with_spacing(4.)
             .with_child(
-                Text::new_inline("Use your", appearance.ui_font_family(), CONTENT_FONT_SIZE)
+                Text::new_inline(crate::tr!("settings", "use-your"), appearance.ui_font_family(), CONTENT_FONT_SIZE)
                     .with_color(text_color.into())
                     .finish(),
             )
@@ -5595,7 +5595,7 @@ impl ApiKeysWidget {
             )
             .with_child(
                 Text::new_inline(
-                    "Premium or SuperGrok plan",
+                    crate::tr!("settings", "premium-or-supergrok-plan"),
                     appearance.ui_font_family(),
                     CONTENT_FONT_SIZE,
                 )
@@ -5621,7 +5621,7 @@ impl ApiKeysWidget {
 
         let description = Container::new(
             Text::new(
-                "Connect your SuperGrok plan to use Grok models in the Warp Agent through your xAI account.",
+                crate::tr!("settings", "connect-your-supergrok-plan-to-use-grok-models-in-the-warp-agent-through-your-xai-account."),
                 appearance.ui_font_family(),
                 CONTENT_FONT_SIZE,
             )
@@ -5644,7 +5644,7 @@ impl ApiKeysWidget {
                     connected_at.format("%m/%d/%Y at %-I:%M%P")
                 ),
                 // Tokens stored before the connection time was tracked.
-                None => "Connected.".to_string(),
+                None => crate::tr!("settings", "connected.").to_string(),
             };
             let check = ConstrainedBox::new(
                 Icon::Check
@@ -5674,7 +5674,7 @@ impl ApiKeysWidget {
         column.finish()
     }
 
-    /// The "Connect ChatGPT subscription" row. Unlike SuperGrok, the connection
+    /// The crate::tr!("settings", "connect-chatgpt-subscription") row. Unlike SuperGrok, the connection
     /// lives on warp-server, so the row renders the last server-reported status.
     fn render_chatgpt_subscription_row(
         &self,
@@ -5691,7 +5691,7 @@ impl ApiKeysWidget {
             .with_cross_axis_alignment(CrossAxisAlignment::Center)
             .with_spacing(4.)
             .with_child(
-                Text::new_inline("Use your", appearance.ui_font_family(), CONTENT_FONT_SIZE)
+                Text::new_inline(crate::tr!("settings", "use-your"), appearance.ui_font_family(), CONTENT_FONT_SIZE)
                     .with_color(text_color.into())
                     .finish(),
             )
@@ -5703,7 +5703,7 @@ impl ApiKeysWidget {
             )
             .with_child(
                 Text::new_inline(
-                    "OpenAI ChatGPT plan",
+                    crate::tr!("settings", "openai-chatgpt-plan"),
                     appearance.ui_font_family(),
                     CONTENT_FONT_SIZE,
                 )
@@ -5733,7 +5733,7 @@ impl ApiKeysWidget {
 
         let description = Container::new(
             Text::new(
-                "Connect your ChatGPT plan to use OpenAI models in the Warp Agent through your OpenAI account.",
+                crate::tr!("settings", "connect-your-chatgpt-plan-to-use-openai-models-in-the-warp-agent-through-your-openai-account."),
                 appearance.ui_font_family(),
                 CONTENT_FONT_SIZE,
             )
@@ -5839,7 +5839,7 @@ impl ApiKeysWidget {
         let ai_settings = AISettings::as_ref(app);
 
         let toggle = render_ai_setting_toggle::<CanUseWarpCreditsForFallback>(
-            "Warp credit fallback",
+            crate::tr!("settings", "warp-credit-fallback"),
             WarpAgentPageAction::ToggleCanUseWarpCreditsForFallback,
             *ai_settings.can_use_warp_credits_for_fallback,
             ai_settings.is_any_ai_enabled(app),
@@ -5849,7 +5849,7 @@ impl ApiKeysWidget {
         );
 
         let description = render_ai_setting_description(
-            "When enabled, agent requests may be routed to one of Warp's provided models in the event of an error. Warp will prioritize using your API keys over your Warp credits.",
+            crate::tr!("settings", "when-enabled,-agent-requests-may-be-routed-to-one-of-warp's-provided-models-in-the-event-of-an-error.-warp-will-prioritize-using-your-api-keys-over-your-warp-credits."),
             ai_settings.is_any_ai_enabled(app),
             app,
         );
@@ -5949,7 +5949,7 @@ impl SettingsWidget for ApiKeysWidget {
             ));
         } else if managed_byok_byoe_enabled {
             column.add_child(render_ai_setting_description(
-                "Your organization manages custom inference. Personal API keys and custom endpoints are currently disabled.",
+                crate::tr!("settings", "your-organization-manages-custom-inference.-personal-api-keys-and-custom-endpoints-are-currently-disabled."),
                 is_any_ai_enabled,
                 app,
             ));
@@ -5970,7 +5970,7 @@ impl SettingsWidget for ApiKeysWidget {
                 column.add_child(
                     Container::new(
                         Text::new_inline(
-                            "Custom endpoints",
+                            crate::tr!("settings", "custom-endpoints"),
                             appearance.ui_font_family(),
                             CONTENT_FONT_SIZE,
                         )
@@ -6063,7 +6063,7 @@ impl SettingsWidget for ApiKeysWidget {
             {
                 if team.billing_metadata.customer_type == CustomerType::Enterprise {
                     vec![
-                        FormattedTextFragment::hyperlink("Contact sales", "mailto:sales@warp.dev"),
+                        FormattedTextFragment::hyperlink(crate::tr!("settings", "contact-sales"), "mailto:sales@warp.dev"),
                         FormattedTextFragment::plain_text(
                             " to enable bringing your own API keys on your Enterprise plan.",
                         ),
@@ -6075,14 +6075,14 @@ impl SettingsWidget for ApiKeysWidget {
                     if has_admin_permissions {
                         vec![
                             FormattedTextFragment::hyperlink(
-                                "Upgrade to the Build plan",
+                                crate::tr!("settings", "upgrade-to-the-build-plan"),
                                 upgrade_url,
                             ),
                             FormattedTextFragment::plain_text(" to use your own API keys."),
                         ]
                     } else {
                         vec![FormattedTextFragment::plain_text(
-                            "Ask your team's admin to upgrade to the Build plan to use your own API keys.",
+                            crate::tr!("settings", "ask-your-team's-admin-to-upgrade-to-the-build-plan-to-use-your-own-api-keys."),
                         )]
                     }
                 }
@@ -6091,7 +6091,7 @@ impl SettingsWidget for ApiKeysWidget {
             {
                 vec![
                     FormattedTextFragment::hyperlink_action(
-                        "Create an account",
+                        crate::tr!("settings", "create-an-account"),
                         WarpAgentPageAction::SignupAnonymousUser,
                     ),
                     FormattedTextFragment::plain_text(" to use your own API keys."),
@@ -6100,7 +6100,7 @@ impl SettingsWidget for ApiKeysWidget {
                 let user_id = auth_state.user_id().unwrap_or_default();
                 let upgrade_url = UserWorkspaces::upgrade_link(user_id);
                 vec![
-                    FormattedTextFragment::hyperlink("Upgrade to the Build plan", upgrade_url),
+                    FormattedTextFragment::hyperlink(crate::tr!("settings", "upgrade-to-the-build-plan"), upgrade_url),
                     FormattedTextFragment::plain_text(" to use your own API keys."),
                 ]
             };
@@ -6175,7 +6175,7 @@ impl AwsBedrockWidget {
                 ..Default::default()
             };
             let mut editor = EditorView::single_line(options, ctx);
-            editor.set_placeholder_text("aws login", ctx);
+            editor.set_placeholder_text(crate::tr!("settings", "ai-footer-placeholder"), ctx);
             editor.set_buffer_text(&aws_auth_refresh_command, ctx);
             editor
         });
@@ -6223,7 +6223,7 @@ impl AwsBedrockWidget {
                 ..Default::default()
             };
             let mut editor = EditorView::single_line(options, ctx);
-            editor.set_placeholder_text("default", ctx);
+            editor.set_placeholder_text(crate::tr!("settings", "appearance-default-label"), ctx);
             editor.set_buffer_text(&aws_auth_refresh_profile, ctx);
             editor
         });
@@ -6253,7 +6253,7 @@ impl AwsBedrockWidget {
         });
 
         let refresh_credentials_button = ctx.add_typed_action_view(|_| {
-            ActionButton::new("Refresh", SecondaryTheme)
+            ActionButton::new(crate::tr!("settings", "refresh"), SecondaryTheme)
                 .with_icon(Icon::RefreshCw04)
                 .with_size(ButtonSize::Small)
                 .on_click(|ctx| {
@@ -6360,7 +6360,7 @@ impl AwsBedrockWidget {
             user_workspaces.is_aws_bedrock_credentials_enabled(&scope, app);
         let is_usage_enabled = is_section_enabled && are_credentials_enabled;
         let toggle_description = if is_admin_enforced {
-            "Warp loads and sends local AWS CLI credentials for Bedrock-supported models. This setting is managed by your organization.".to_string()
+            crate::tr!("settings", "warp-loads-and-sends-local-aws-cli-credentials-for-bedrock-supported-models.-this-setting-is-managed-by-your-organization.").to_string()
         } else {
             "Warp loads and sends local AWS CLI credentials for Bedrock-supported models."
                 .to_string()
@@ -6369,7 +6369,7 @@ impl AwsBedrockWidget {
         let mut column = Flex::column().with_spacing(16.).with_child(
             Flex::column()
                 .with_child(render_ai_setting_toggle::<AwsBedrockCredentialsEnabled>(
-                    "Use AWS Bedrock credentials",
+                    crate::tr!("settings", "use-aws-bedrock-credentials"),
                     WarpAgentPageAction::ToggleAwsBedrockCredentialsEnabled,
                     are_credentials_enabled,
                     is_toggleable,
@@ -6501,14 +6501,14 @@ impl AwsBedrockWidget {
         );
         column.add_child(render_input(
             appearance,
-            "Login Command",
+            crate::tr!("settings", "login-command"),
             self.aws_auth_refresh_command_editor.clone(),
             is_usage_enabled,
             app,
         ));
         column.add_child(render_input(
             appearance,
-            "AWS Profile",
+            crate::tr!("settings", "aws-profile"),
             self.aws_auth_refresh_profile_editor.clone(),
             is_usage_enabled,
             app,
@@ -6517,7 +6517,7 @@ impl AwsBedrockWidget {
         let auto_login_enabled = *AISettings::as_ref(app).aws_bedrock_auto_login.value();
 
         let toggle = render_ai_setting_toggle::<AwsBedrockAutoLogin>(
-            "Automatically run login command",
+            crate::tr!("settings", "automatically-run-login-command"),
             WarpAgentPageAction::ToggleAwsBedrockAutoLogin,
             auto_login_enabled,
             is_usage_enabled,
@@ -6526,7 +6526,7 @@ impl AwsBedrockWidget {
             app,
         );
         let description = render_ai_setting_description(
-            "When enabled, the login command will run automatically when AWS Bedrock credentials expire.",
+            crate::tr!("settings", "when-enabled,-the-login-command-will-run-automatically-when-aws-bedrock-credentials-expire."),
             is_usage_enabled,
             app,
         );
@@ -6590,7 +6590,7 @@ impl GeminiEnterpriseWidget {
         let self_handle = ctx.handle();
         let is_refresh_enabled = Self::is_refresh_enabled(ctx);
         let refresh_credentials_button = ctx.add_typed_action_view(|_| {
-            ActionButton::new("Refresh", SecondaryTheme)
+            ActionButton::new(crate::tr!("settings", "refresh"), SecondaryTheme)
                 .with_icon(Icon::RefreshCw04)
                 .with_size(ButtonSize::Small)
                 .on_click(|ctx| {
@@ -6682,7 +6682,7 @@ impl GeminiEnterpriseWidget {
             Flex::column()
                 .with_child(
                     render_ai_setting_toggle::<GeminiEnterpriseCredentialsEnabled>(
-                        "Use Gemini Enterprise credentials",
+                        crate::tr!("settings", "use-gemini-enterprise-credentials"),
                         WarpAgentPageAction::ToggleGeminiEnterpriseCredentialsEnabled,
                         are_credentials_enabled,
                         is_toggleable,
@@ -6873,7 +6873,7 @@ impl SettingsWidget for CustomModelRoutersWidget {
         let mut column = Flex::column();
 
         column.add_child(render_ai_setting_description(
-            "Automatically route tasks to specific models based on task complexity or custom rules. Custom routers will appear in your model selector menu.",
+            crate::tr!("settings", "automatically-route-tasks-to-specific-models-based-on-task-complexity-or-custom-rules.-custom-routers-will-appear-in-your-model-selector-menu."),
             is_any_ai_enabled,
             app,
         ));

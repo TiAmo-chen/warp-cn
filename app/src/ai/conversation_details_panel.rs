@@ -690,12 +690,12 @@ pub struct ConversationDetailsPanel {
     resizable_state_handle: ResizableStateHandle,
     scroll_state: ClippedScrollStateHandle,
     action_buttons: ViewHandle<ConversationActionButtonsRow>,
-    /// Whether to show the "Open conversation" button (we don't want to show a navigate to
+    /// Whether to show the crate::tr!("ai_assistant", "ai-assistant-ai-open-conversation") button (we don't want to show a navigate to
     /// conversation button in the transcript view, but do in the management details view).
     show_open_button: bool,
     #[cfg(not(target_family = "wasm"))]
     continue_locally_button: ViewHandle<ActionButton>,
-    /// Text button "View in Oz" shown next to "Continue locally".
+    /// Text button crate::tr!("ai_assistant", "ai-assistant-ai-view-in-oz") shown next to crate::tr!("common", "continue-locally").
     open_in_oz_button: ViewHandle<ActionButton>,
     /// Tracks when each copy button was last clicked (for checkmark feedback).
     copy_feedback_times: HashMap<CopyButtonKind, Instant>,
@@ -729,16 +729,16 @@ impl ConversationDetailsPanel {
 
         #[cfg(not(target_family = "wasm"))]
         let continue_locally_button = ctx.add_typed_action_view(|_| {
-            ActionButton::new("Continue locally", PrimaryTheme)
-                .with_tooltip("Fork this conversation locally")
+            ActionButton::new(crate::tr!("common", "continue-locally"), PrimaryTheme)
+                .with_tooltip(crate::tr!("common", "continue-locally-tooltip"))
                 .with_size(ButtonSize::Small)
                 .on_click(|ctx| {
                     ctx.dispatch_typed_action(ConversationDetailsPanelAction::ContinueLocally);
                 })
         });
         let open_in_oz_button = ctx.add_typed_action_view(|_| {
-            ActionButton::new("View in Oz", SecondaryTheme)
-                .with_tooltip("View this run in the Oz web app")
+            ActionButton::new(crate::tr!("ai_assistant", "ai-assistant-ai-view-in-oz"), SecondaryTheme)
+                .with_tooltip(crate::tr!("ai_assistant", "ai-assistant-ai-view-in-oz-tooltip"))
                 .with_size(ButtonSize::Small)
                 .on_click(|ctx| {
                     ctx.dispatch_typed_action(ConversationDetailsPanelAction::OpenInOz);
@@ -1213,7 +1213,7 @@ impl ConversationDetailsPanel {
         let ui_font_size = appearance.ui_font_size();
 
         let label_text = Text::new(
-            "Agent".to_string(),
+            crate::tr!("settings", "default-session-agent").to_string(),
             appearance.ui_font_family(),
             ui_font_size,
         )
@@ -1270,7 +1270,7 @@ impl ConversationDetailsPanel {
         let ui_font_size = appearance.ui_font_size();
 
         let label_text = Text::new(
-            "Error".to_string(),
+            crate::tr!("common", "error-label").to_string(),
             appearance.ui_font_family(),
             ui_font_size,
         )
@@ -1401,7 +1401,7 @@ impl ConversationDetailsPanel {
 
         // Section header
         let header = Text::new(
-            "Status".to_string(),
+            crate::tr!("common", "status-label").to_string(),
             appearance.ui_font_family(),
             ui_font_size,
         )
@@ -1509,7 +1509,7 @@ impl ConversationDetailsPanel {
         let ui_font_size = appearance.ui_font_size();
 
         let label_text = Text::new(
-            "Harness".to_string(),
+            crate::tr!("ai_assistant", "ai-assistant-ai-filter-harness-label").to_string(),
             appearance.ui_font_family(),
             ui_font_size,
         )

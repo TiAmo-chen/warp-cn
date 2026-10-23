@@ -1,4 +1,4 @@
-//! The "Conversation" usage popover, anchored to the footer's usage icon.
+//! The crate::tr!("workspace", "conversation") usage popover, anchored to the footer's usage icon.
 
 #[cfg(test)]
 use std::cell::Cell;

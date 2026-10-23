@@ -109,7 +109,7 @@ fn render_comment_file_path_header(
 
         let outdated_chip = Container::new(
             Text::new(
-                "Outdated",
+                crate::tr!("code_review", "code-review-outdated"),
                 appearance.ui_font_family(),
                 appearance.ui_font_size(),
             )
@@ -172,7 +172,7 @@ fn render_comment_text_section(
     if is_imported_from_github {
         left_section.add_child(
             Text::new(
-                "From GitHub".to_string(),
+                crate::tr!("code_review", "code-review-from-github").to_string(),
                 appearance.ui_font_family(),
                 appearance.ui_font_size(),
             )

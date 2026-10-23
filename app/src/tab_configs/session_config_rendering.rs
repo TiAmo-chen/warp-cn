@@ -87,7 +87,7 @@ where
     let on_accent_bg = bg.is_some();
     let on_select = Arc::new(on_select);
 
-    let label = Text::new_inline("Session type".to_string(), appearance.ui_font_family(), 12.)
+    let label = Text::new_inline(crate::tr!("common", "session-type").to_string(), appearance.ui_font_family(), 12.)
         .with_color(if on_accent_bg {
             callout_label_color(appearance)
         } else {
@@ -224,7 +224,7 @@ where
     let on_accent_bg = bg.is_some();
 
     let label = Text::new_inline(
-        "Select directory".to_string(),
+        crate::tr!("workspace", "select-directory").to_string(),
         appearance.ui_font_family(),
         12.,
     )
@@ -356,7 +356,7 @@ where
             if state.is_hovered() {
                 let tooltip = Container::new(
                     Text::new_inline(
-                        "Select a git repository to enable worktree support".to_string(),
+                        crate::tr!("workspace", "select-git-repo").to_string(),
                         font_family,
                         12.,
                     )
@@ -400,7 +400,7 @@ where
         blended_colors::text_sub(theme, theme.background())
     };
     let label = Text::new(
-        "Automatically create a worktree when opening a new tab",
+        crate::tr!("workspace", "auto-create-worktree"),
         appearance.ui_font_family(),
         12.,
     )
@@ -534,7 +534,7 @@ where
     };
 
     let label = Text::new(
-        "Auto-generate worktree branch name",
+        crate::tr!("workspace", "auto-generate-branch"),
         appearance.ui_font_family(),
         12.,
     )

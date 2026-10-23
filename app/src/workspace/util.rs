@@ -409,7 +409,7 @@ fn get_terminal_background_opacity(window_id: WindowId, app: &AppContext) -> u8 
     }
 }
 
-/// Builds the team-switcher dropdown items: a "Teams" header followed by one entry per team,
+/// Builds the team-switcher dropdown items: a crate::tr!("settings", "teams-tab") header followed by one entry per team,
 /// marking the current team with a check icon.
 pub fn team_switcher_menu_items(
     teams: &[Team],

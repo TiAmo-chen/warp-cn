@@ -73,7 +73,7 @@ impl GeminiEnterpriseCredentialsErrorView {
             ctx.notify();
         });
         let manage_button = ctx.add_typed_action_view(|_| {
-            ActionButton::new("Manage", NakedTheme)
+            ActionButton::new(crate::tr!("common", "manage"), NakedTheme)
                 .with_size(ButtonSize::InlineActionHeader)
                 .on_click(|ctx| {
                     ctx.dispatch_typed_action(GeminiEnterpriseCredentialsErrorAction::OpenSettings)

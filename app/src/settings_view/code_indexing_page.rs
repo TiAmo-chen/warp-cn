@@ -72,22 +72,22 @@ const SUB_SECTION_MARGIN: f32 = 8.;
 const STATUS_ICON_SIZE: f32 = 16.;
 const LSP_STATUS_INDICATOR_SIZE: f32 = 8.;
 const CODE_FEATURE_NAME: &str = "Code";
-const INITIALIZATION_SETTINGS_HEADER: &str = "Initialization Settings";
+const INITIALIZATION_SETTINGS_HEADER: &str = crate::tr!("settings", "initialization-settings");
 const CODEBASE_INDEXING_LABEL: &str = "Codebase indexing";
 const CODEBASE_INDEX_DESCRIPTION: &str = "Warp can automatically index code repositories as you navigate them, helping agents quickly understand context and provide solutions. Code is never stored on the server. If a codebase is unable to be indexed, Warp can still navigate your codebase and gain insights via grep and find tool calling.";
-const WARP_INDEXING_IGNORE_DESCRIPTION: &str = "To exclude specific files or directories from indexing, add them to the .warpindexingignore file in your repository directory. These files will still be accessible to AI features, but they won't be included in codebase embeddings.";
-const AUTO_INDEX_FEATURE_NAME: &str = "Index new folders by default";
+const WARP_INDEXING_IGNORE_DESCRIPTION: &str = crate::tr!("settings", "to-exclude-specific-files-or-directories-from-indexing,-add-them-to-the-.warpindexingignore-file-in-your-repository-directory.-these-files-will-still-be-accessible-to-ai-features,-but-they-won't-be-included-in-codebase-embeddings.");
+const AUTO_INDEX_FEATURE_NAME: &str = crate::tr!("settings", "index-new-folders-by-default");
 const AUTO_INDEX_DESCRIPTION: &str = "When set to true, Warp will automatically index code repositories as you navigate them - helping agents quickly understand context and provide targeted solutions.";
-const INDEXING_DISABLED_ADMIN_TEXT: &str = "Team admins have disabled codebase indexing.";
+const INDEXING_DISABLED_ADMIN_TEXT: &str = crate::tr!("settings", "team-admins-have-disabled-codebase-indexing.");
 const INDEXING_WORKSPACE_ENABLED_ADMIN_TEXT: &str = "Team admins have enabled codebase indexing.";
 const INDEXING_DISABLED_GLOBAL_AI_TEXT: &str =
-    "AI Features must be enabled to use codebase indexing.";
+    crate::tr!("settings", "ai-features-must-be-enabled-to-use-codebase-indexing.");
 const CODEBASE_INDEX_LIMIT_REACHED: &str = "You have reached the maximum number of codebase indices for your plan. Delete existing indices to auto-index new codebases.";
 #[cfg(not(target_family = "wasm"))]
 const REMOTE_CODEBASE_INDEX_LIMIT_REACHED_FAILURE: &str =
     "maximum number of codebase indexes has been reached";
 
-const PAGE_TITLE: &str = "Codebase Indexing";
+const PAGE_TITLE: &str = crate::tr!("settings", "codebase-indexing");
 
 #[cfg(not(target_family = "wasm"))]
 fn remote_codebase_index_limit_reached(status: &RemoteCodebaseIndexStatus) -> bool {
@@ -198,7 +198,7 @@ pub struct CodeIndexingPageView {
     lsp_row_mouse_states: Vec<LspServerRowMouseStates>,
     open_project_rules_mouse_states: Vec<MouseStateHandle>,
     /// Tracks installation status for suggested LSP servers so the UI can decide
-    /// whether to show "Available for download" vs "Installed" and whether the
+    /// whether to show crate::tr!("settings", "available-for-download") vs "Installed" and whether the
     /// "+" button should trigger install or just enable.
     suggested_server_statuses: HashMap<(PathBuf, LSPServerType), LspRepoStatus>,
 }
@@ -330,7 +330,7 @@ impl CodeIndexingPageView {
         });
 
         // Re-render when project rules are added or removed so the
-        // "Open project rules" button visibility stays up to date.
+        // crate::tr!("settings", "open-project-rules") button visibility stays up to date.
         ctx.subscribe_to_model(&ProjectContextModel::handle(ctx), |_me, _, event, ctx| {
             if matches!(event, ProjectContextModelEvent::KnownRulesChanged(_)) {
                 ctx.notify();
@@ -364,7 +364,7 @@ impl CodeIndexingPageView {
 
     fn build_page(ctx: &mut ViewContext<Self>) -> PageType<Self> {
         let manual_add_directory_button = ctx.add_typed_action_view(|_| {
-            ActionButton::new("Index new folder", SecondaryTheme)
+            ActionButton::new(crate::tr!("settings", "index-new-folder"), SecondaryTheme)
                 .with_icon(Icon::FindAll)
                 .on_click(|ctx| {
                     ctx.dispatch_typed_action(CodeIndexingPageAction::ManualAddDirectory);
@@ -425,7 +425,7 @@ impl Entity for CodeIndexingPageView {
 
 impl View for CodeIndexingPageView {
     fn ui_name() -> &'static str {
-        "CodeIndexingPage"
+        crate::tr!("settings", "codeindexingpage")
     }
 
     fn render(&self, app: &AppContext) -> Box<dyn Element> {
@@ -947,7 +947,7 @@ impl CodePageWidget {
         .finish()
     }
 
-    /// Renders the "Initialization Settings" section header.
+    /// Renders the crate::tr!("settings", "initialization-settings") section header.
     fn render_initialization_settings_header(&self, appearance: &Appearance) -> Box<dyn Element> {
         let ui_builder = appearance.ui_builder();
         let theme = appearance.theme();
@@ -1033,7 +1033,7 @@ impl CodePageWidget {
         .finish()
     }
 
-    /// Renders the "Initialized / indexed folders" section.
+    /// Renders the crate::tr!("settings", "initialized-/-indexed-folders") section.
     fn render_initialized_folders(
         &self,
         mouse_states: InitializedFoldersMouseStates,
@@ -1057,7 +1057,7 @@ impl CodePageWidget {
 
         let mut content = Flex::column();
 
-        // Section header with "Index folder" button
+        // Section header with crate::tr!("settings", "index-folder") button
         content.add_child(
             Container::new(
                 Flex::row()
@@ -1066,7 +1066,7 @@ impl CodePageWidget {
                     .with_cross_axis_alignment(CrossAxisAlignment::Center)
                     .with_child(
                         ui_builder
-                            .span("Initialized / indexed folders")
+                            .span(crate::tr!("settings", "initialized-/-indexed-folders"))
                             .with_style(UiComponentStyles {
                                 font_size: Some(16.0),
                                 font_weight: Some(Weight::Semibold),
@@ -1190,7 +1190,7 @@ impl CodePageWidget {
                 Container::new(
                     appearance
                         .ui_builder()
-                        .paragraph("No folders have been initialized yet.")
+                        .paragraph(crate::tr!("settings", "no-folders-have-been-initialized-yet."))
                         .build()
                         .finish(),
                 )
@@ -1223,7 +1223,7 @@ impl CodePageWidget {
 
         let mut workspace_content = Flex::column().with_spacing(MAIN_SECTION_MARGIN);
 
-        // Workspace path header with "Open project rules" button
+        // Workspace path header with crate::tr!("settings", "open-project-rules") button
         let home_dir =
             dirs::home_dir().and_then(|home_dir| home_dir.to_str().map(|s| s.to_owned()));
         let user_friendly = user_friendly_path(
@@ -1236,7 +1236,7 @@ impl CodePageWidget {
         let workspace_rule_paths =
             ProjectContextModel::as_ref(app).rules_for_workspace(workspace_path);
 
-        // Only show "Open project rules" button if rules exist for this workspace
+        // Only show crate::tr!("settings", "open-project-rules") button if rules exist for this workspace
         let open_rules_button: Option<Box<dyn Element>> = if !workspace_rule_paths.is_empty() {
             let open_rules_button = ui_builder
                 .button(ButtonVariant::Secondary, open_rules_mouse)
@@ -1257,7 +1257,7 @@ impl CodePageWidget {
                 .with_text_and_icon_label(
                     warpui::ui_components::button::TextAndIcon::new(
                         warpui::ui_components::button::TextAndIconAlignment::IconFirst,
-                        "Open project rules",
+                        crate::tr!("settings", "open-project-rules"),
                         warpui::elements::Icon::new(
                             "bundled/svg/file-code-02.svg",
                             theme.foreground(),
@@ -1421,7 +1421,7 @@ impl CodePageWidget {
         let mut column = Flex::column().with_spacing(SUB_SECTION_MARGIN);
         column.add_child(
             ui_builder
-                .span("INDEXING")
+                .span(crate::tr!("settings", "indexing"))
                 .with_style(UiComponentStyles {
                     font_size: Some(11.0),
                     font_weight: Some(Weight::Semibold),
@@ -1460,7 +1460,7 @@ impl CodePageWidget {
         let theme = appearance.theme();
         let Some(index_state) = index_state else {
             return IndexingStatusPresentation {
-                text: Cow::from("No index created"),
+                text: Cow::from(crate::tr!("settings", "no-index-created")),
                 color: theme.disabled_ui_text_color().into_solid(),
                 icon: Some(Icon::SlashCircle),
                 refresh_action: None,
@@ -1477,7 +1477,7 @@ impl CodePageWidget {
                     completed_nodes,
                     total_nodes,
                 }) => Cow::from(format!("Syncing - {completed_nodes} / {total_nodes}")),
-                None => Cow::from("Syncing..."),
+                None => Cow::from(crate::tr!("settings", "syncing...")),
             };
 
             return IndexingStatusPresentation {
@@ -1491,20 +1491,20 @@ impl CodePageWidget {
 
         if let Some(completed_successfully) = index_state.last_sync_successful() {
             let (text, color, icon) = if completed_successfully {
-                ("Synced", theme.ansi_fg_green(), Icon::Check)
+                (crate::tr!("settings", "synced"), theme.ansi_fg_green(), Icon::Check)
             } else if let Some(CodebaseIndexFinishedStatus::Failed(
                 CodebaseIndexingError::ExceededMaxFileLimit
                 | CodebaseIndexingError::MaxDepthExceeded,
             )) = index_state.last_sync_result()
             {
                 (
-                    "Codebase too large",
+                    crate::tr!("settings", "codebase-too-large"),
                     theme.ui_warning_color(),
                     Icon::AlertTriangle,
                 )
             } else if index_state.has_synced_version() {
                 (
-                    "Stale",
+                    crate::tr!("settings", "stale"),
                     theme.nonactive_ui_detail().into_solid(),
                     Icon::ClockRefresh,
                 )
@@ -1521,7 +1521,7 @@ impl CodePageWidget {
             };
         }
 
-        log::warn!("No index state for codebase");
+        log::warn!(crate::tr!("settings", "no-index-state-for-codebase"));
         IndexingStatusPresentation {
             text: Cow::from("No index built"),
             color: theme.nonactive_ui_text_color().into_solid(),
@@ -1541,7 +1541,7 @@ impl CodePageWidget {
 
         match status.state {
             RemoteCodebaseIndexState::NotEnabled => IndexingStatusPresentation {
-                text: Cow::from("No index created"),
+                text: Cow::from(crate::tr!("settings", "no-index-created")),
                 color: theme.disabled_ui_text_color().into_solid(),
                 icon: Some(Icon::SlashCircle),
                 refresh_action: Some(IndexingRefreshAction::RequestRemote),
@@ -1551,7 +1551,7 @@ impl CodePageWidget {
                 let limit_reached = remote_codebase_index_limit_reached(status);
                 IndexingStatusPresentation {
                     text: Cow::from(if limit_reached {
-                        "Index limit reached"
+                        crate::tr!("settings", "index-limit-reached")
                     } else {
                         "Unavailable"
                     }),
@@ -1570,14 +1570,14 @@ impl CodePageWidget {
                 }
             }
             RemoteCodebaseIndexState::Disabled => IndexingStatusPresentation {
-                text: Cow::from("Disabled"),
+                text: Cow::from(crate::tr!("settings", "disabled")),
                 color: theme.disabled_ui_text_color().into_solid(),
                 icon: Some(Icon::SlashCircle),
                 refresh_action: Some(IndexingRefreshAction::RequestRemote),
                 show_delete: true,
             },
             RemoteCodebaseIndexState::Queued => IndexingStatusPresentation {
-                text: Cow::from("Queued"),
+                text: Cow::from(crate::tr!("settings", "queued")),
                 color: theme.disabled_ui_text_color().into_solid(),
                 icon: None,
                 refresh_action: None,
@@ -1590,7 +1590,7 @@ impl CodePageWidget {
                     }
                     (Some(completed), None) => Cow::from(format!("Indexing - {completed}")),
                     (None, Some(total)) => Cow::from(format!("Indexing - 0 / {total}")),
-                    (None, None) => Cow::from("Indexing..."),
+                    (None, None) => Cow::from(crate::tr!("settings", "indexing...")),
                 };
 
                 IndexingStatusPresentation {
@@ -1602,14 +1602,14 @@ impl CodePageWidget {
                 }
             }
             RemoteCodebaseIndexState::Ready => IndexingStatusPresentation {
-                text: Cow::from("Synced"),
+                text: Cow::from(crate::tr!("settings", "synced")),
                 color: theme.ansi_fg_green(),
                 icon: Some(Icon::Check),
                 refresh_action: Some(IndexingRefreshAction::Resync),
                 show_delete: true,
             },
             RemoteCodebaseIndexState::Stale => IndexingStatusPresentation {
-                text: Cow::from("Stale"),
+                text: Cow::from(crate::tr!("settings", "stale")),
                 color: theme.nonactive_ui_detail().into_solid(),
                 icon: Some(Icon::ClockRefresh),
                 refresh_action: Some(IndexingRefreshAction::Resync),
@@ -1764,7 +1764,7 @@ impl CodePageWidget {
 
         let mut content = Flex::column().with_spacing(SUB_SECTION_MARGIN);
 
-        // "LSP SERVERS" label
+        // crate::tr!("settings", "lsp-servers") label
         content.add_child(
             ui_builder
                 .span("LSP SERVERS")
@@ -1881,9 +1881,9 @@ impl CodePageWidget {
 
         let (description, is_installing) = match &repo_status {
             Some(LspRepoStatus::DisabledAndInstalled { .. }) => ("Installed", false),
-            Some(LspRepoStatus::Installing { .. }) => ("Installing...", true),
+            Some(LspRepoStatus::Installing { .. }) => (crate::tr!("settings", "installing..."), true),
             Some(LspRepoStatus::CheckingForInstallation) => ("Checking...", true),
-            _ => ("Available for download", false),
+            _ => (crate::tr!("settings", "available-for-download"), false),
         };
 
         name_desc_column.add_child(
@@ -2064,7 +2064,7 @@ impl CodePageWidget {
                     background: Some(theme.surface_3().into()),
                     ..Default::default()
                 })
-                .with_text_label("Restart server".to_owned())
+                .with_text_label(crate::tr!("settings", "restart-server").to_owned())
                 .build()
                 .with_cursor(Cursor::PointingHand)
                 .on_click(move |ctx, _, _| {
@@ -2077,7 +2077,7 @@ impl CodePageWidget {
             right_content.add_child(restart_button);
         }
 
-        // Show "View logs" when the server has been started (Available, Starting/Busy, or Failed)
+        // Show crate::tr!("settings", "view-logs") when the server has been started (Available, Starting/Busy, or Failed)
         #[cfg(not(target_family = "wasm"))]
         {
             let has_logs = server_model.is_some_and(|model| {
@@ -2094,7 +2094,7 @@ impl CodePageWidget {
                         font_size: Some(12.),
                         ..Default::default()
                     })
-                    .with_text_label("View logs".to_owned())
+                    .with_text_label(crate::tr!("settings", "view-logs").to_owned())
                     .build()
                     .with_cursor(Cursor::PointingHand)
                     .on_click(move |ctx, _, _| {
@@ -2150,7 +2150,7 @@ impl CodePageWidget {
                         AnsiColorIdentifier::Green
                             .to_ansi_color(&theme.terminal_colors().normal)
                             .into(),
-                        "Available",
+                        crate::tr!("settings", "available"),
                     ),
                     LspState::Starting | LspState::Available { .. } => (
                         AnsiColorIdentifier::Yellow
@@ -2165,7 +2165,7 @@ impl CodePageWidget {
                         "Failed",
                     ),
                     LspState::Stopped { .. } | LspState::Stopping { .. } => {
-                        (theme.disabled_ui_text_color().into_solid(), "Stopped")
+                        (theme.disabled_ui_text_color().into_solid(), crate::tr!("settings", "stopped"))
                     }
                 }
             }

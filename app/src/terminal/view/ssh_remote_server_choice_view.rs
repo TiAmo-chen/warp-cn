@@ -10,7 +10,7 @@
 //! - a child [`KeyboardNavigableButtons`] handle for the two selectable
 //!   cards ("Install Warp's SSH extension" / "Continue without installing"),
 //! - the [`SessionId`] this prompt is scoped to (used for event forwarding),
-//! - the current "Don't ask me this again" checked state (purely local to
+//! - the current crate::tr!("common", "do-not-ask-again") checked state (purely local to
 //!   this prompt instance; persisted to `ssh_extension_install_mode` only
 //!   when the user clicks Install or Skip).
 //!

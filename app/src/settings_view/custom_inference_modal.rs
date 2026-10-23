@@ -151,7 +151,7 @@ impl CustomEndpointModal {
                 ..Default::default()
             };
             let mut editor = EditorView::single_line(options, ctx);
-            editor.set_placeholder_text("Please include 'https://'", ctx);
+            editor.set_placeholder_text(crate::tr!("settings", "please-include-'https://'"), ctx);
             if let Some(ep) = endpoint {
                 editor.set_buffer_text(&ep.url, ctx);
             }
@@ -259,7 +259,7 @@ impl CustomEndpointModal {
             });
         }
         let remove_endpoint_button = ctx.add_typed_action_view(|_| {
-            ActionButton::new("Remove", DangerSecondaryTheme)
+            ActionButton::new(crate::tr!("settings", "remove"), DangerSecondaryTheme)
                 .with_icon(Icon::Trash)
                 .on_click(|ctx| {
                     ctx.dispatch_typed_action(CustomEndpointModalAction::RemoveEndpoint);
@@ -725,7 +725,7 @@ impl Entity for CustomEndpointModal {
 
 impl View for CustomEndpointModal {
     fn ui_name() -> &'static str {
-        "CustomEndpointModal"
+        crate::tr!("settings", "customendpointmodal")
     }
 
     fn render(&self, app: &AppContext) -> Box<dyn Element> {
@@ -759,7 +759,7 @@ impl View for CustomEndpointModal {
         column.add_child(
             Container::new(
                 Text::new(
-                    "Provide your endpoint details below. You can add as many models from the endpoint as you'd like and can also provide aliases for the model picker in your input.",
+                    crate::tr!("settings", "provide-your-endpoint-details-below.-you-can-add-as-many-models-from-the-endpoint-as-you'd-like-and-can-also-provide-aliases-for-the-model-picker-in-your-input."),
                     appearance.ui_font_family(),
                     LABEL_FONT_SIZE,
                 )
@@ -772,7 +772,7 @@ impl View for CustomEndpointModal {
         );
         // Request/response protocol
         column.add_child(
-            Container::new(label("API schema"))
+            Container::new(label(crate::tr!("settings", "api-schema")))
                 .with_margin_bottom(4.)
                 .finish(),
         );
@@ -784,7 +784,7 @@ impl View for CustomEndpointModal {
 
         // Endpoint name
         column.add_child(
-            Container::new(label("Endpoint name"))
+            Container::new(label(crate::tr!("settings", "endpoint-name")))
                 .with_margin_bottom(4.)
                 .finish(),
         );
@@ -807,7 +807,7 @@ impl View for CustomEndpointModal {
 
         // Endpoint URL
         column.add_child(
-            Container::new(label("Endpoint URL"))
+            Container::new(label(crate::tr!("settings", "endpoint-url")))
                 .with_margin_bottom(4.)
                 .finish(),
         );
@@ -837,7 +837,7 @@ impl View for CustomEndpointModal {
 
         // API key
         column.add_child(
-            Container::new(label("API key"))
+            Container::new(label(crate::tr!("settings", "api-key")))
                 .with_margin_bottom(4.)
                 .finish(),
         );
@@ -868,12 +868,12 @@ impl View for CustomEndpointModal {
                 Flex::row()
                     .with_spacing(MODEL_ROW_SPACING)
                     .with_child(
-                        ConstrainedBox::new(label("Model name"))
+                        ConstrainedBox::new(label(crate::tr!("settings", "model-name")))
                             .with_width(MODEL_INPUT_WIDTH)
                             .finish(),
                     )
                     .with_child(
-                        ConstrainedBox::new(label("Model alias (optional)"))
+                        ConstrainedBox::new(label(crate::tr!("settings", "model-alias-(optional)")))
                             .with_width(MODEL_INPUT_WIDTH)
                             .finish(),
                     )
@@ -999,7 +999,7 @@ impl View for CustomEndpointModal {
                     ButtonVariant::Secondary,
                     self.cancel_button_mouse_state.clone(),
                 )
-                .with_text_label("Cancel".to_string())
+                .with_text_label(crate::tr!("settings", "cancel").to_string())
                 .with_style(button_style)
                 .build()
                 .on_click(move |ctx, _, _| {
@@ -1012,9 +1012,9 @@ impl View for CustomEndpointModal {
             .ui_builder()
             .button(ButtonVariant::Accent, self.save_button_mouse_state.clone())
             .with_text_label(if is_editing {
-                "Save".to_string()
+                crate::tr!("common", "save-label").to_string()
             } else {
-                "Add endpoint".to_string()
+                crate::tr!("settings", "add-endpoint").to_string()
             })
             .with_style(button_style);
         if !is_valid {

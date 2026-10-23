@@ -46,7 +46,7 @@ impl BillingAndUsageDispatchView {
                 .position(|value| *value == current_value)
                 .unwrap_or_else(|| {
                     report_error!(
-                        "Could not find current UsageDisplayUnit value in dropdown option list"
+                        crate::tr!("settings", "could-not-find-current-usagedisplayunit-value-in-dropdown-option-list")
                     );
                     0
                 });
@@ -100,7 +100,7 @@ impl BillingAndUsageDispatchView {
             }
         });
 
-        let page = PageType::new_monolith(BillingAndUsageWidget, Some("Billing and Usage"), true);
+        let page = PageType::new_monolith(BillingAndUsageWidget, Some(crate::tr!("settings", "billing-and-usage")), true);
 
         Self {
             page,
@@ -167,7 +167,7 @@ impl TypedActionView for BillingAndUsageDispatchView {
 
 impl View for BillingAndUsageDispatchView {
     fn ui_name() -> &'static str {
-        "Billing and usage"
+        crate::tr!("settings", "billing-and-usage")
     }
 
     fn render(&self, app: &AppContext) -> Box<dyn Element> {
@@ -250,7 +250,7 @@ impl SettingsWidget for BillingAndUsageWidget {
             page.add_child(
                 Container::new(render_dropdown_item(
                     appearance,
-                    "Usage display unit",
+                    crate::tr!("settings", "usage-display-unit"),
                     Some("Select the unit for usage and spend amounts."),
                     None,
                     LocalOnlyIconState::for_setting(

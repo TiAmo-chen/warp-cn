@@ -503,7 +503,7 @@ impl TabData {
                     .is_active_sharer()
                 {
                     menu_items.push(
-                        MenuItemFields::new("Stop sharing")
+                        MenuItemFields::new(crate::tr!("workspace", "menu-stop-sharing"))
                             .with_on_select_action(WorkspaceAction::StopSharingSessionFromTabMenu {
                                 terminal_view_id: focused_session_view.id(),
                             })
@@ -511,7 +511,7 @@ impl TabData {
                     );
                 } else {
                     menu_items.push(
-                        MenuItemFields::new("Share session")
+                        MenuItemFields::new(crate::tr!("workspace", "menu-share-session"))
                             .with_on_select_action(WorkspaceAction::OpenShareSessionModal(index))
                             .into_item(),
                     );
@@ -521,7 +521,7 @@ impl TabData {
             // Always show an option to stop sharing all when there's at least 1 shared session in the tab.
             if !shared_session_view_ids.is_empty() {
                 menu_items.push(
-                    MenuItemFields::new("Stop sharing all")
+                    MenuItemFields::new(crate::tr!("workspace", "menu-stop-sharing-all"))
                         .with_on_select_action(WorkspaceAction::StopSharingAllSessionsInTab {
                             pane_group: self.pane_group.downgrade(),
                         })
@@ -530,7 +530,7 @@ impl TabData {
             }
         }
 
-        // Add "Copy link" option if the focused session in this tab is being shared or viewed.
+        // Add crate::tr!("settings", "copy-link") option if the focused session in this tab is being shared or viewed.
         // Disable the item (rather than silently no-op) when the Manager does not yet have a
         // session id (e.g. during ViewPending / SharePending while the session is still setting up).
         let focused_session_view = self.pane_group.as_ref(ctx).focused_session_view(ctx);
@@ -688,7 +688,7 @@ impl TabData {
             // TODO add option to show the keybinding once we figure out a nice API to retrieve
             // the actual keybinding (based on the user's preferences etc.)
             menu_items.append(&mut vec![
-                MenuItemFields::new("Rename tab")
+                MenuItemFields::new(crate::tr!("workspace", "menu-rename-tab"))
                     .with_on_select_action(WorkspaceAction::RenameTab(index))
                     .into_item(),
             ]);
@@ -697,7 +697,7 @@ impl TabData {
             let title = self.pane_group.as_ref(ctx).custom_title(ctx);
             if title.is_some() {
                 menu_items.push(
-                    MenuItemFields::new("Reset tab name")
+                    MenuItemFields::new(crate::tr!("workspace", "menu-reset-tab-name"))
                         .with_on_select_action(WorkspaceAction::ResetTabName(index))
                         .into_item(),
                 );
@@ -712,7 +712,7 @@ impl TabData {
         if can_move_right {
             menu_items.push(
                 MenuItemFields::new(if uses_vertical_tabs {
-                    "Move Tab Down"
+                    crate::tr!("workspace", "menu-move-tab-down")
                 } else {
                     "Move Tab Right"
                 })
@@ -723,7 +723,7 @@ impl TabData {
         if can_move_left {
             menu_items.push(
                 MenuItemFields::new(if uses_vertical_tabs {
-                    "Move Tab Up"
+                    crate::tr!("workspace", "menu-move-tab-up")
                 } else {
                     "Move Tab Left"
                 })
@@ -778,14 +778,14 @@ impl TabData {
 
         if ContextFlag::CloseWindow.is_enabled() || tabs_len != 1 {
             menu_items.push(
-                MenuItemFields::new("Close tab")
+                MenuItemFields::new(crate::tr!("workspace", "menu-close-tab"))
                     .with_on_select_action(WorkspaceAction::CloseTab(index))
                     .into_item(),
             );
         }
         if tabs_len > 1 {
             menu_items.push(
-                MenuItemFields::new("Close other tabs")
+                MenuItemFields::new(crate::tr!("workspace", "menu-close-other-tabs"))
                     .with_on_select_action(WorkspaceAction::CloseOtherTabs(index))
                     .into_item(),
             );
@@ -794,7 +794,7 @@ impl TabData {
         if not_last_tab {
             menu_items.push(
                 MenuItemFields::new(if uses_vertical_tabs {
-                    "Close Tabs Below"
+                    crate::tr!("workspace", "menu-close-tabs-below")
                 } else {
                     "Close Tabs to the Right"
                 })
@@ -810,7 +810,7 @@ impl TabData {
             return vec![];
         }
         vec![
-            MenuItemFields::new("Save as new config")
+            MenuItemFields::new(crate::tr!("workspace", "menu-save-new-config"))
                 .with_on_select_action(WorkspaceAction::SaveCurrentTabAsNewConfig(index))
                 .into_item(),
         ]

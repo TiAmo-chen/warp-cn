@@ -104,7 +104,7 @@ pub fn render_header_section(
 }
 
 fn render_header_title(appearance: &Appearance) -> Box<dyn Element> {
-    Text::new_inline("Edit Profile", appearance.ui_font_family(), 16.)
+    Text::new_inline(crate::tr!("ai_assistant", "ai-assistant-ai-edit-profile"), appearance.ui_font_family(), 16.)
         .with_style(Properties::default().weight(Weight::Bold))
         .with_color(appearance.theme().active_ui_text_color().into())
         .finish()
@@ -112,7 +112,7 @@ fn render_header_title(appearance: &Appearance) -> Box<dyn Element> {
 
 fn render_header_name_label(appearance: &Appearance) -> Box<dyn Element> {
     Container::new(
-        Text::new("Name", appearance.ui_font_family(), 13.)
+        Text::new(crate::tr!("common", "name-label"), appearance.ui_font_family(), 13.)
             .with_color(appearance.theme().active_ui_text_color().into())
             .finish(),
     )
@@ -312,7 +312,7 @@ fn render_context_window_row(
     let max = cw.max;
 
     let label = Text::new(
-        "Context window".to_string(),
+        crate::tr!("ai_assistant", "ai-assistant-ai-context-window").to_string(),
         appearance.ui_font_family(),
         13.,
     )
@@ -321,7 +321,7 @@ fn render_context_window_row(
     let min_label_text = min.separate_with_commas();
     let max_label_text = max.separate_with_commas();
     let desc = Text::new(
-        "The base model's working memory — how many tokens of your conversation, code, and documents it can consider at once. Larger windows enable longer conversations and more coherent responses over bigger codebases, at the cost of higher latency and compute usage.".to_string(),
+        crate::tr!("ai_assistant", "ai-assistant-ai-context-window-desc").to_string(),
         appearance.ui_font_family(),
         11.,
     )
@@ -906,7 +906,7 @@ pub fn render_plan_auto_sync_toggle(
     .finish();
 
     let label_elem = Text::new(
-        "Plan auto-sync".to_string(),
+        crate::tr!("ai_assistant", "ai-assistant-ai-plan-auto-sync").to_string(),
         appearance.ui_font_family(),
         13.,
     )
@@ -914,7 +914,7 @@ pub fn render_plan_auto_sync_toggle(
     .finish();
 
     let desc_elem = Text::new(
-        "The plans this agent creates will be automatically added and synced to Warp Drive."
+        crate::tr!("ai_assistant", "ai-assistant-ai-plan-auto-sync-desc")
             .to_string(),
         appearance.ui_font_family(),
         11.,
@@ -980,7 +980,7 @@ pub fn render_web_search_toggle(
     .finish();
 
     let label_elem = Text::new(
-        "Call web tools".to_string(),
+        crate::tr!("ai_assistant", "ai-assistant-ai-call-web-tools").to_string(),
         appearance.ui_font_family(),
         13.,
     )
@@ -988,7 +988,7 @@ pub fn render_web_search_toggle(
     .finish();
 
     let desc_elem = Text::new(
-        "The agent may use web search when helpful for completing tasks.".to_string(),
+        crate::tr!("ai_assistant", "ai-assistant-ai-call-web-tools-desc").to_string(),
         appearance.ui_font_family(),
         11.,
     )

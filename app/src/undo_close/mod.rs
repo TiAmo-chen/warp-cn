@@ -15,7 +15,7 @@ pub fn init(ctx: &mut AppContext) {
 
     ctx.register_editable_bindings([EditableBinding::new(
         "app:reopen_closed_session",
-        "Reopen closed session",
+        crate::tr!("common", "menu-reopen-closed-session"),
         // Trigger ReopenClosedSession on the active workspace when
         // the action is taken from the command palette.
         WorkspaceAction::ReopenClosedSession,

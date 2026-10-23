@@ -184,7 +184,7 @@ fn user_facing_git_error(raw: &str) -> &'static str {
 // `push::render_body`, etc.) and are kept here so the whole dialog lives in
 // one module.
 
-/// Renders a "Branch" label with git-branch icon and branch name.
+/// Renders a crate::tr!("workspace", "branch") label with git-branch icon and branch name.
 fn render_branch_section(
     branch_name: impl Into<String>,
     appearance: &Appearance,

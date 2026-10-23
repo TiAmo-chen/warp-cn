@@ -109,15 +109,15 @@ pub fn init(app: &mut AppContext) {
     use warpui::keymap::macros::id;
     app.register_editable_bindings([EditableBinding::new(
         "workflowview:save",
-        "Save workflow",
+        crate::tr!("drive", "drive-workflow-save"),
         WorkflowAction::Save,
     )
     .with_context_predicate(id!("WorkflowView"))
     .with_key_binding("cmdorctrl-s")]);
 
     app.register_editable_bindings([EditableBinding::new(
-        "Close Workflow",
-        "Close",
+        crate::tr!("workflows", "workflows-close-workflow"),
+        crate::tr!("common", "close-label"),
         WorkflowAction::Close,
     )
     .with_custom_action(CustomAction::CloseCurrentSession)

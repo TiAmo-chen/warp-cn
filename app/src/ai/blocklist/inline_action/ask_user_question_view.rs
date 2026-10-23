@@ -95,12 +95,12 @@ pub fn init(app: &mut AppContext) {
     // into surrounding views.
     app.register_fixed_bindings([
         FixedBinding::new(
-            "left",
+            crate::tr!("settings", "appearance-left"),
             AskUserQuestionViewAction::NavigatePrev,
             id!(AskUserQuestionView::ui_name()) & id!(ASK_USER_QUESTION_ACTIVE),
         ),
         FixedBinding::new(
-            "right",
+            crate::tr!("settings", "appearance-right"),
             AskUserQuestionViewAction::NavigateNext,
             id!(AskUserQuestionView::ui_name()) & id!(ASK_USER_QUESTION_ACTIVE),
         ),
@@ -221,7 +221,7 @@ impl AskUserQuestionView {
             ctx,
         );
         let skip_button = CompactibleActionButton::new(
-            "Skip all".to_string(),
+            crate::tr!("ai_assistant", "ai-assistant-ai-skip-all").to_string(),
             Some(KeystrokeSource::Fixed(CTRL_C_KEYSTROKE.clone())),
             ButtonSize::InlineActionHeader,
             AskUserQuestionViewAction::SkipAll,
@@ -230,7 +230,7 @@ impl AskUserQuestionView {
             ctx,
         );
         let next_button = CompactibleActionButton::new(
-            "Next".to_string(),
+            crate::tr!("common", "next-label").to_string(),
             Some(KeystrokeSource::Fixed(
                 Keystroke::parse("enter").expect("keystroke should parse"),
             )),
@@ -541,7 +541,7 @@ impl AskUserQuestionView {
         let initial_text = initial_text.map(String::from);
         let input = ctx.add_view(move |ctx| {
             let input = compact_agent_input::CompactAgentInput::new(ctx);
-            input.set_placeholder_text("Type your answer and press Enter", ctx);
+            input.set_placeholder_text(crate::tr!("ai_assistant", "ai-assistant-ai-type-answer"), ctx);
             if let Some(initial_text) = initial_text.as_deref() {
                 input.set_text(initial_text, ctx);
             }

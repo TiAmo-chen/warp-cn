@@ -46,10 +46,10 @@ const ROW_HEIGHT: f32 = 28.;
 const EDIT_BUTTONS_BORDER_RADIUS: f32 = 4.0;
 
 pub const SEARCH_PLACEHOLDER: &str = "Search by name or by keys (ex. \"cmd d\")";
-const SHORTCUT_CONFLICT_WARNING_TEXT: &str = "This shortcut conflicts with other keybinds";
+const SHORTCUT_CONFLICT_WARNING_TEXT: &str = crate::tr!("settings", "this-shortcut-conflicts-with-other-keybinds");
 const KEYBINDINGS_PAGE_SHORTCUT: &str = "workspace:toggle_keybindings_page";
-const RESET_BUTTON_TEXT: &str = "Default";
-const CANCEL_BUTTON_TEXT: &str = "Cancel";
+const RESET_BUTTON_TEXT: &str = crate::tr!("settings", "default");
+const CANCEL_BUTTON_TEXT: &str = crate::tr!("settings", "cancel");
 const CLEAR_BUTTON_TEXT: &str = "Clear";
 const SAVE_BUTTON_TEXT: &str = "Save";
 
@@ -324,7 +324,7 @@ impl KeybindingRow {
             Empty::new().finish()
         };
 
-        let press_new_shortcut_text = render_text("Press new keyboard shortcut", None, appearance);
+        let press_new_shortcut_text = render_text(crate::tr!("settings", "press-new-keyboard-shortcut"), None, appearance);
 
         let new_shortcut_element = Container::new(press_new_shortcut_text)
             .with_margin_left(ROW_LEFT_MARGIN)
@@ -448,7 +448,7 @@ impl KeybindingRow {
                         )
                         .finish()
                     } else {
-                        render_button("Cancel", appearance, cancel_button_color)
+                        render_button(crate::tr!("settings", "cancel"), appearance, cancel_button_color)
                     }
                 },
             )
@@ -661,7 +661,7 @@ impl KeybindingsView {
                     ctx.notify();
                 }
                 None => {
-                    report_error!("Modifying row should exist");
+                    report_error!(crate::tr!("settings", "modifying-row-should-exist"));
                 }
             }
         }
@@ -693,7 +693,7 @@ impl KeybindingsView {
                     ctx.notify();
                 }
                 None => {
-                    report_error!("Modifying row should exist");
+                    report_error!(crate::tr!("settings", "modifying-row-should-exist"));
                 }
             }
         }
@@ -711,7 +711,7 @@ impl KeybindingsView {
                     keybinding_state.unsaved_binding = Some(key.clone());
                 }
                 None => {
-                    report_error!("Modifying row does not exist when it should");
+                    report_error!(crate::tr!("settings", "modifying-row-does-not-exist-when-it-should"));
                 }
             }
 
@@ -729,7 +729,7 @@ impl Entity for KeybindingsView {
 
 impl View for KeybindingsView {
     fn ui_name() -> &'static str {
-        "KeybindingsView"
+        crate::tr!("settings", "keybindingsview")
     }
 
     fn render(&self, app: &AppContext) -> Box<dyn Element> {
@@ -971,7 +971,7 @@ impl KeybindingsWidget {
     ) -> Box<dyn Element> {
         let font_size = appearance.ui_font_size() + FONT_DELTA;
         let mut description = Flex::column().with_child(render_text(
-            "Add your own custom keybindings to existing actions below.",
+            crate::tr!("settings", "add-your-own-custom-keybindings-to-existing-actions-below."),
             Some(UiComponentStyles {
                 font_size: Some(font_size),
                 font_color: Some(
@@ -1106,7 +1106,7 @@ impl SettingsWidget for KeybindingsWidget {
         {
             Some(LocalOnlyIconState::Visible {
                 mouse_state: self.local_only_icon_mouse_state.clone(),
-                custom_tooltip: Some("Keyboard shortcuts are not synced to the cloud".to_string()),
+                custom_tooltip: Some(crate::tr!("settings", "keyboard-shortcuts-are-not-synced-to-the-cloud").to_string()),
             })
         } else {
             None
@@ -1114,7 +1114,7 @@ impl SettingsWidget for KeybindingsWidget {
 
         let subheader = render_sub_header(
             appearance,
-            "Configure keyboard shortcuts",
+            crate::tr!("settings", "configure-keyboard-shortcuts"),
             local_only_icon_state,
         );
         let description = self.render_description(view.bindings.as_ref(), appearance);
@@ -1124,7 +1124,7 @@ impl SettingsWidget for KeybindingsWidget {
             .with_child(description)
             .with_child(render_columns(
                 Container::new(render_text(
-                    "Command",
+                    crate::tr!("settings", "command"),
                     Some(UiComponentStyles {
                         font_size: Some(appearance.ui_font_size() + FONT_DELTA),
                         ..Default::default()

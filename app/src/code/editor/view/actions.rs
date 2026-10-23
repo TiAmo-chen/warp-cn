@@ -79,12 +79,12 @@ pub fn init(app: &mut AppContext) {
             text_entry.clone() & id!("Vim"),
         ),
         FixedBinding::new(
-            "backspace",
+            crate::tr!("code", "code-backspace"),
             CodeEditorViewAction::Backspace,
             text_entry.clone() & !id!("Vim"),
         ),
         FixedBinding::new(
-            "backspace",
+            crate::tr!("code", "code-backspace"),
             CodeEditorViewAction::VimBackspace,
             text_entry.clone() & id!("Vim"),
         ),
@@ -99,12 +99,12 @@ pub fn init(app: &mut AppContext) {
             text_entry.clone() & id!("Vim"),
         ),
         FixedBinding::new(
-            "delete",
+            crate::tr!("common", "delete-label"),
             CodeEditorViewAction::Delete,
             text_entry.clone() & !id!("Vim"),
         ),
         FixedBinding::new(
-            "delete",
+            crate::tr!("common", "delete-label"),
             CodeEditorViewAction::VimDelete,
             text_entry.clone() & id!("Vim"),
         ),
@@ -501,35 +501,35 @@ pub fn init(app: &mut AppContext) {
         )
         .with_context_predicate(text_entry.clone())
         .with_key_binding("cmdorctrl-/"),
-        EditableBinding::new("editor_view:delete", "Delete", CodeEditorViewAction::Delete)
+        EditableBinding::new("editor_view:delete", crate::tr!("common", "delete-label"), CodeEditorViewAction::Delete)
             .with_context_predicate(
                 text_entry.clone() & !id!("VimNormalMode") & !id!("VimVisualMode"),
             )
             .with_key_binding("ctrl-d"),
         EditableBinding::new(
             "editor_view:vim_scroll_half_page_down",
-            "Scroll down half a page (vim)",
+            crate::tr!("code", "code-scroll-down-half-page-vim"),
             CodeEditorViewAction::ScrollHalfPageDown,
         )
         .with_context_predicate(text_entry.clone() & (id!("VimNormalMode") | id!("VimVisualMode")))
         .with_key_binding("ctrl-d"),
         EditableBinding::new(
             "editor_view:vim_scroll_half_page_up",
-            "Scroll up half a page (vim)",
+            crate::tr!("code", "code-scroll-up-half-page-vim"),
             CodeEditorViewAction::ScrollHalfPageUp,
         )
         .with_context_predicate(text_entry.clone() & (id!("VimNormalMode") | id!("VimVisualMode")))
         .with_key_binding("ctrl-u"),
         EditableBinding::new(
             "editor_view:cut_word_left",
-            "Cut word left",
+            crate::tr!("code", "code-cut-word-left"),
             CodeEditorViewAction::CutWordLeft,
         )
         .with_context_predicate(text_entry.clone())
         .with_key_binding("ctrl-w"),
         EditableBinding::new(
             "editor:delete_word_left",
-            "Delete word left",
+            crate::tr!("code", "code-delete-word-left"),
             CodeEditorViewAction::DeleteWordLeft,
         )
         .with_context_predicate(text_entry.clone())
@@ -537,14 +537,14 @@ pub fn init(app: &mut AppContext) {
         .with_linux_or_windows_key_binding("ctrl-backspace"),
         EditableBinding::new(
             "editor_view:cut_word_right",
-            "Cut word right",
+            crate::tr!("code", "code-cut-word-right"),
             CodeEditorViewAction::CutWordRight,
         )
         .with_context_predicate(text_entry.clone())
         .with_key_binding("alt-d"),
         EditableBinding::new(
             "editor:delete_word_right",
-            "Delete word right",
+            crate::tr!("code", "code-delete-word-right"),
             CodeEditorViewAction::DeleteWordRight,
         )
         .with_context_predicate(text_entry.clone())
@@ -552,13 +552,13 @@ pub fn init(app: &mut AppContext) {
         .with_linux_or_windows_key_binding("ctrl-delete"),
         EditableBinding::new(
             "editor_view:cut_all_left",
-            "Cut all left",
+            crate::tr!("code", "code-cut-all-left"),
             CodeEditorViewAction::CutLineLeft,
         )
         .with_context_predicate(text_entry.clone()),
         EditableBinding::new(
             "editor_view:delete_all_left",
-            "Delete all left",
+            crate::tr!("code", "code-delete-all-left"),
             CodeEditorViewAction::DeleteLineLeft,
         )
         .with_context_predicate(text_entry.clone())
@@ -569,14 +569,14 @@ pub fn init(app: &mut AppContext) {
         .with_linux_or_windows_key_binding("ctrl-y"),
         EditableBinding::new(
             "editor_view:cut_all_right",
-            "Cut all right",
+            crate::tr!("code", "code-cut-all-right"),
             CodeEditorViewAction::CutLineRight,
         )
         .with_context_predicate(text_entry.clone())
         .with_key_binding("ctrl-k"),
         EditableBinding::new(
             "editor_view:delete_all_right",
-            "Delete all right",
+            crate::tr!("code", "code-delete-all-right"),
             CodeEditorViewAction::DeleteLineRight,
         )
         .with_context_predicate(text_entry.clone())
@@ -587,7 +587,7 @@ pub fn init(app: &mut AppContext) {
     // Editable Vim keybindings
     app.register_editable_bindings([EditableBinding::new(
         "editor_view:vim_exit_insert_mode",
-        "Exit Vim insert mode",
+        crate::tr!("code", "code-exit-vim-insert-mode"),
         CodeEditorViewAction::VimEscape,
     )
     .with_context_predicate(text_entry.clone() & id!("Vim"))
@@ -596,7 +596,7 @@ pub fn init(app: &mut AppContext) {
     // Editable Find Bar keybindings
     app.register_editable_bindings([EditableBinding::new(
         "code_editor:find",
-        "Find in code editor",
+        crate::tr!("code", "code-find-in-code-editor"),
         CodeEditorViewAction::ShowFindBar,
     )
     .with_key_binding(cmd_or_ctrl_shift("f"))

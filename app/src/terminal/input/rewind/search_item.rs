@@ -139,9 +139,9 @@ impl SearchItem for RewindSearchItem {
             theme.sub_text_color(theme.surface_1()).into();
 
         let changes_element: Box<dyn Element> = if self.is_current {
-            // "Current" item shows "No code to be restored"
+            // "Current" item shows crate::tr!("terminal", "no-code-restored")
             Text::new_inline(
-                "No code to be restored".to_string(),
+                crate::tr!("terminal", "no-code-restored").to_string(),
                 appearance.ui_font_family(),
                 secondary_font_size,
             )

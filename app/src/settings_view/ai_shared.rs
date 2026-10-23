@@ -51,7 +51,7 @@ pub fn update_editor_interaction_state<V: View>(
     })
 }
 
-/// The "Toolbar layout" chip editor. Shared by the Warp Agent toolbar and the
+/// The crate::tr!("settings", "toolbar-layout") chip editor. Shared by the Warp Agent toolbar and the
 /// third-party coding agent toolbar, which are separate settings backed by the
 /// same editor view.
 pub fn render_toolbar_layout_editor(
@@ -61,7 +61,7 @@ pub fn render_toolbar_layout_editor(
     let label = Container::new(
         appearance
             .ui_builder()
-            .span("Toolbar layout".to_string())
+            .span(crate::tr!("settings", "toolbar-layout").to_string())
             .with_style(UiComponentStyles {
                 font_size: Some(CONTENT_FONT_SIZE),
                 ..Default::default()

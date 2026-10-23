@@ -118,7 +118,7 @@ impl CloudSetupGuideView {
         );
 
         let visit_oz_button = ctx.add_typed_action_view(|_| {
-            ActionButton::new("Visit Oz", SecondaryTheme)
+            ActionButton::new(crate::tr!("ai_assistant", "ai-assistant-ai-visit-oz"), SecondaryTheme)
                 .on_click(|ctx| ctx.dispatch_typed_action(CloudSetupGuideAction::VisitOz))
         });
 
@@ -146,7 +146,7 @@ impl CloudSetupGuideView {
         let mut header_container = Flex::column().with_spacing(8.);
 
         let title = Text::new(
-            "Getting started with Oz cloud agents",
+            crate::tr!("ai_assistant", "ai-assistant-ai-cloud-agents-getting-started"),
             appearance.ui_font_family(),
             title_font_size,
         )
@@ -156,7 +156,7 @@ impl CloudSetupGuideView {
         header_container.add_child(title);
 
         let subtitle = Text::new(
-            "Start Oz cloud agents directly in Warp from an integration (Linear, Slack), with an event (GitHub, built-in schedule), or programmatically with the Oz SDK or CLI.",
+            crate::tr!("ai_assistant", "ai-assistant-ai-cloud-agents-subtitle"),
             appearance.ui_font_family(),
             subtitle_font_size,
         )
@@ -215,7 +215,7 @@ impl CloudSetupGuideView {
         let font_size = 16.;
 
         let text = Text::new_inline(
-            "Quick start: Visit oz.warp.dev for a UI-based setup experience.",
+            crate::tr!("ai_assistant", "ai-assistant-ai-quick-start-visit"),
             appearance.ui_font_family(),
             font_size,
         )
@@ -249,7 +249,7 @@ impl CloudSetupGuideView {
         let font_size = 16.;
 
         Text::new(
-            "Manual setup: Create a Slack or Linear integration with the Oz CLI",
+            crate::tr!("ai_assistant", "ai-assistant-ai-manual-setup-create-integration"),
             appearance.ui_font_family(),
             font_size,
         )
@@ -361,7 +361,7 @@ impl CloudSetupGuideView {
                             Argument::new("NAME", ArgumentType::Text)
                                 .with_description("Name for the environment"),
                             Argument::new("DOCKER_IMAGE", ArgumentType::Text)
-                                .with_description("Docker image to use for the environment"),
+                                .with_description(crate::tr!("ai_assistant", "ai-assistant-ai-wf-create-env-cli-arg-image")),
                         ],
                     ),
                 ),
@@ -436,7 +436,7 @@ impl CloudSetupGuideView {
             .with_child(Self::render_step_number(1, appearance))
             .with_child(
                 Text::new(
-                    "Create an environment",
+                    crate::tr!("ai_assistant", "ai-assistant-ai-create-an-environment"),
                     appearance.ui_font_family(),
                     step_title_font_size,
                 )
@@ -448,7 +448,7 @@ impl CloudSetupGuideView {
 
         let description = Container::new(
             Text::new(
-                "First, set up an environment to create an integration.",
+                crate::tr!("ai_assistant", "ai-assistant-ai-first-set-up-environment"),
                 appearance.ui_font_family(),
                 step_desc_font_size,
             )
@@ -479,7 +479,7 @@ impl CloudSetupGuideView {
 
         let or_text = Container::new(
             Text::new(
-                "Or, supply your own existing docker image.",
+                crate::tr!("ai_assistant", "ai-assistant-ai-or-supply-docker-image"),
                 appearance.ui_font_family(),
                 step_desc_font_size,
             )
@@ -521,7 +521,7 @@ impl CloudSetupGuideView {
             .with_child(Self::render_step_number(2, appearance))
             .with_child(
                 Text::new(
-                    "Create an integration",
+                    crate::tr!("ai_assistant", "ai-assistant-ai-create-an-integration"),
                     appearance.ui_font_family(),
                     step_title_font_size,
                 )

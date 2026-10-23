@@ -12,7 +12,7 @@ use warpui::{AppContext, Element, Entity, SingletonEntity, TypedActionView, View
 use crate::appearance::Appearance;
 use crate::server::ids::ServerId;
 use crate::workspaces::team::DiscoverableTeam;
-const SUBTITLE: &str = "You can join any open team in your Warp workspace.";
+const SUBTITLE: &str = crate::tr!("settings", "you-can-join-any-open-team-in-your-warp-workspace.");
 const MAX_VISIBLE_TEAMS: usize = 4;
 const TEAM_LIST_MAX_HEIGHT: f32 = 264.;
 
@@ -116,7 +116,7 @@ impl JoinTeamsModal {
             .with_centered_text_label(if is_joining {
                 "Joining…".to_string()
             } else {
-                "Join".to_string()
+                crate::tr!("settings", "join").to_string()
             })
             .with_style(UiComponentStyles {
                 width: Some(88.),
@@ -158,7 +158,7 @@ impl Entity for JoinTeamsModal {
 
 impl View for JoinTeamsModal {
     fn ui_name() -> &'static str {
-        "JoinTeamsModal"
+        crate::tr!("settings", "jointeamsmodal")
     }
 
     fn render(&self, app: &AppContext) -> Box<dyn Element> {

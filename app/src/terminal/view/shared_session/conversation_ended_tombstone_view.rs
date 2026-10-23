@@ -154,7 +154,7 @@ impl TombstoneDisplayData {
 }
 
 /// Tombstone view shown when an agent conversation ends.
-/// Displays metadata, artifacts, and actions like "Continue locally".
+/// Displays metadata, artifacts, and actions like crate::tr!("common", "continue-locally").
 pub struct ConversationEndedTombstoneView {
     display_data: TombstoneDisplayData,
     artifact_buttons_view: ViewHandle<ArtifactButtonsRow>,
@@ -199,7 +199,7 @@ impl ConversationEndedTombstoneView {
         let continue_in_cloud_button = match tombstone_cta {
             Some(TombstoneCta::ContinueInCloud { task_id }) => {
                 Some(ctx.add_typed_action_view(move |_| {
-                    ActionButton::new("Continue", PrimaryTheme)
+                    ActionButton::new(crate::tr!("common", "continue-label"), PrimaryTheme)
                         .with_tooltip("Continue this cloud conversation")
                         .on_click(move |ctx| {
                             ctx.dispatch_typed_action(
@@ -216,7 +216,7 @@ impl ConversationEndedTombstoneView {
             Some(TombstoneCta::ContinueLocally { conversation_id }) => {
                 Some(ctx.add_typed_action_view(move |_| {
                     ActionButton::new("Continue locally", PrimaryTheme)
-                        .with_tooltip("Fork this conversation locally")
+                        .with_tooltip(crate::tr!("common", "continue-locally-tooltip"))
                         .on_click(move |ctx| {
                             ctx.dispatch_typed_action(
                                 ConversationEndedTombstoneAction::ContinueLocally(conversation_id),
@@ -236,8 +236,8 @@ impl ConversationEndedTombstoneView {
             } else {
                 conversation_id.map(|conv_id| {
                     ctx.add_typed_action_view(move |_| {
-                        ActionButton::new("Open in Warp", PrimaryTheme)
-                            .with_tooltip("Open this conversation in the Warp desktop app")
+                        ActionButton::new(crate::tr!("workspace", "open-in-warp"), PrimaryTheme)
+                            .with_tooltip(crate::tr!("terminal", "open-in-desktop-tooltip"))
                             .on_click(move |ctx| {
                                 ctx.dispatch_typed_action(
                                     ConversationEndedTombstoneAction::OpenInWarp(conv_id),
@@ -344,7 +344,7 @@ impl ConversationEndedTombstoneView {
 
         if is_transcript {
             return Text::new(
-                "You're viewing a snapshot",
+                crate::tr!("terminal", "viewing-snapshot"),
                 appearance.overline_font_family(),
                 appearance.monospace_font_size(),
             )

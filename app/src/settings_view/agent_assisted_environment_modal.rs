@@ -93,7 +93,7 @@ pub struct AgentAssistedEnvironmentModal {
 impl AgentAssistedEnvironmentModal {
     pub fn new(ctx: &mut ViewContext<Self>) -> Self {
         let add_repo_button = ctx.add_typed_action_view(|_ctx| {
-            ActionButton::new("Add repo", SecondaryTheme)
+            ActionButton::new(crate::tr!("settings", "add-repo"), SecondaryTheme)
                 .with_size(ButtonSize::Small)
                 .on_click(|ctx| {
                     ctx.dispatch_typed_action(
@@ -103,13 +103,13 @@ impl AgentAssistedEnvironmentModal {
         });
 
         let cancel_button = ctx.add_typed_action_view(|_ctx| {
-            ActionButton::new("Cancel", SecondaryTheme).on_click(|ctx| {
+            ActionButton::new(crate::tr!("settings", "cancel"), SecondaryTheme).on_click(|ctx| {
                 ctx.dispatch_typed_action(AgentAssistedEnvironmentModalAction::Cancel);
             })
         });
 
         let create_button = ctx.add_typed_action_view(|_ctx| {
-            ActionButton::new("Create environment", PrimaryTheme).on_click(|ctx| {
+            ActionButton::new(crate::tr!("settings", "create-environment"), PrimaryTheme).on_click(|ctx| {
                 ctx.dispatch_typed_action(AgentAssistedEnvironmentModalAction::Confirm);
             })
         });
@@ -325,12 +325,12 @@ impl AgentAssistedEnvironmentModal {
             .with_cross_axis_alignment(CrossAxisAlignment::Stretch)
             .with_spacing(8.);
 
-        col.add_child(self.render_section_title("Selected repos", appearance));
+        col.add_child(self.render_section_title(crate::tr!("settings", "selected-repos"), appearance));
 
         if self.selected_repo_paths.is_empty() {
             col.add_child(
                 Text::new(
-                    "No repos selected yet",
+                    crate::tr!("settings", "no-repos-selected-yet"),
                     appearance.ui_font_family(),
                     appearance.ui_font_size() * 0.95,
                 )
@@ -406,7 +406,7 @@ impl AgentAssistedEnvironmentModal {
             .with_child(
                 Expanded::new(
                     1.,
-                    self.render_section_title("Available indexed repos", appearance),
+                    self.render_section_title(crate::tr!("settings", "available-indexed-repos"), appearance),
                 )
                 .finish(),
             )
@@ -428,7 +428,7 @@ impl AgentAssistedEnvironmentModal {
                 if self.available_repos_loading {
                     "Loading locally indexed repos…"
                 } else {
-                    "No locally indexed repos found yet. Index a repo, then try again."
+                    crate::tr!("settings", "no-locally-indexed-repos-found-yet.-index-a-repo,-then-try-again.")
                 }
             } else {
                 "Local repo selection is unavailable in this build."
@@ -501,7 +501,7 @@ impl AgentAssistedEnvironmentModal {
         if !has_any_available {
             col.add_child(
                 Text::new(
-                    "All locally indexed repos are already selected.",
+                    crate::tr!("settings", "all-locally-indexed-repos-are-already-selected."),
                     appearance.ui_font_family(),
                     appearance.ui_font_size() * 0.95,
                 )
@@ -588,7 +588,7 @@ impl AgentAssistedEnvironmentModal {
             move |paths_result, ctx| {
                 let result = paths_result.and_then(|paths| {
                     paths.into_iter().next().map(PathBuf::from).ok_or_else(|| {
-                        FilePickerError::DialogFailed("No directory selected".to_string())
+                        FilePickerError::DialogFailed(crate::tr!("settings", "no-directory-selected").to_string())
                     })
                 });
 
@@ -606,7 +606,7 @@ impl AgentAssistedEnvironmentModal {
 
     fn render_dialog(&self, appearance: &Appearance, app: &AppContext) -> Box<dyn Element> {
         let description = if FeatureFlag::FullSourceCodeEmbedding.is_enabled() {
-            "Select locally indexed repos to provide context for the environment creation agent."
+            crate::tr!("settings", "select-locally-indexed-repos-to-provide-context-for-the-environment-creation-agent.")
         } else {
             "Select repos to provide context for the environment creation agent."
         }
@@ -632,7 +632,7 @@ impl AgentAssistedEnvironmentModal {
             .finish();
 
         let dialog = Dialog::new(
-            "Select repos for your environment".to_string(),
+            crate::tr!("settings", "select-repos-for-your-environment").to_string(),
             Some(description),
             dialog_styles(appearance),
         )

@@ -33,13 +33,13 @@ pub struct DeleteEnvironmentConfirmationDialog {
 impl DeleteEnvironmentConfirmationDialog {
     pub fn new(ctx: &mut ViewContext<Self>) -> Self {
         let cancel_button = ctx.add_typed_action_view(|_| {
-            ActionButton::new("Cancel", NakedTheme).on_click(|ctx| {
+            ActionButton::new(crate::tr!("settings", "cancel"), NakedTheme).on_click(|ctx| {
                 ctx.dispatch_typed_action(DeleteEnvironmentConfirmationDialogAction::Cancel);
             })
         });
 
         let confirm_button = ctx.add_typed_action_view(|_| {
-            ActionButton::new("Delete environment", DangerPrimaryTheme).on_click(|ctx| {
+            ActionButton::new(crate::tr!("settings", "delete-environment"), DangerPrimaryTheme).on_click(|ctx| {
                 ctx.dispatch_typed_action(DeleteEnvironmentConfirmationDialogAction::Confirm);
             })
         });
@@ -72,7 +72,7 @@ impl Entity for DeleteEnvironmentConfirmationDialog {
 
 impl View for DeleteEnvironmentConfirmationDialog {
     fn ui_name() -> &'static str {
-        "DeleteEnvironmentConfirmationDialog"
+        crate::tr!("settings", "deleteenvironmentconfirmationdialog")
     }
 
     fn render(&self, app: &AppContext) -> Box<dyn Element> {
@@ -88,7 +88,7 @@ impl View for DeleteEnvironmentConfirmationDialog {
         );
 
         let dialog = Dialog::new(
-            "Delete environment?".to_string(),
+            crate::tr!("settings", "delete-environment?").to_string(),
             Some(description),
             dialog_styles(appearance),
         )

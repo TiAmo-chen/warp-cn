@@ -124,7 +124,7 @@ pub(super) fn new_state(
     });
 
     let commit_button = ctx.add_typed_action_view(|_ctx| {
-        ActionButton::new("Commit", SecondaryTheme)
+        ActionButton::new(crate::tr!("code_editor", "code-editor-code-review-commit"), SecondaryTheme)
             .with_size(ButtonSize::XSmall)
             .with_height(32.)
             .with_icon(Icon::GitCommit)
@@ -148,7 +148,7 @@ pub(super) fn new_state(
 
     let commit_and_create_pr_button = if allow_create_pr {
         Some(ctx.add_typed_action_view(|_ctx| {
-            ActionButton::new("Commit and create PR", SecondaryTheme)
+            ActionButton::new(crate::tr!("code_editor", "code-editor-code-review-commit-and-create-pr"), SecondaryTheme)
                 .with_size(ButtonSize::XSmall)
                 .with_height(32.)
                 .with_icon(Icon::Github)
@@ -543,7 +543,7 @@ fn render_changes_section(state: &CommitState, appearance: &Appearance) -> Box<d
     let sub_color = theme.sub_text_color(theme.surface_1()).into_solid();
 
     let changes_label = Text::new(
-        "Changes",
+        crate::tr!("code_editor", "code-editor-code-review-changes"),
         appearance.ui_font_family(),
         appearance.ui_font_size(),
     )
@@ -551,7 +551,7 @@ fn render_changes_section(state: &CommitState, appearance: &Appearance) -> Box<d
     .finish();
 
     let include_label = Text::new(
-        "Include unstaged",
+        crate::tr!("code_editor", "code-editor-code-review-include-unstaged"),
         appearance.ui_font_family(),
         appearance.ui_font_size(),
     )
@@ -605,7 +605,7 @@ fn render_message_editor(
     app: &AppContext,
 ) -> Box<dyn Element> {
     let label = Text::new(
-        "Commit message",
+        crate::tr!("code_editor", "code-editor-code-review-commit-message"),
         appearance.ui_font_family(),
         appearance.ui_font_size(),
     )

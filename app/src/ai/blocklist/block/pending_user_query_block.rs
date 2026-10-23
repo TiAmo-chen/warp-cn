@@ -24,7 +24,7 @@ use crate::ui_components::blended_colors;
 use crate::ui_components::icons::Icon;
 use crate::view_components::action_button::{ActionButton, ButtonSize, NakedTheme};
 
-/// Renders a pending user query block with dimmed text and a "Queued" badge.
+/// Renders a pending user query block with dimmed text and a crate::tr!("common", "status-queued") badge.
 /// Displayed when a follow-up prompt is queued via `/fork-and-compact <prompt>`,
 /// `/compact-and <prompt>`, `/queue <prompt>`, or for the initial prompt of a
 /// Cloud Mode run waiting for its real shared-session transcript query to arrive.
@@ -52,7 +52,7 @@ impl PendingUserQueryBlock {
     ) -> Self {
         let close_button = show_close_button.then(|| {
             ctx.add_typed_action_view(|_| {
-                ActionButton::new("Remove queued prompt", NakedTheme)
+                ActionButton::new(crate::tr!("ai_assistant", "ai-assistant-ai-remove-queued-prompt"), NakedTheme)
                     .with_icon(Icon::X)
                     .with_size(ButtonSize::XSmall)
                     .on_click(|ctx| {
@@ -62,7 +62,7 @@ impl PendingUserQueryBlock {
         });
         let send_now_button = show_send_now_button.then(|| {
             ctx.add_typed_action_view(|_| {
-                ActionButton::new("Send now", NakedTheme)
+                ActionButton::new(crate::tr!("ai_assistant", "ai-assistant-ai-send-now"), NakedTheme)
                     .with_icon(Icon::Play)
                     .with_size(ButtonSize::XSmall)
                     .on_click(|ctx| {
@@ -169,7 +169,7 @@ impl View for PendingUserQueryBlock {
         .finish();
 
         let queued_badge = Text::new(
-            "Queued",
+            crate::tr!("common", "status-queued"),
             appearance.ui_font_family(),
             appearance.monospace_font_size().max(4.) - 2.,
         )

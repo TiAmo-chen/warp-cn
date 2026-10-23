@@ -372,14 +372,14 @@ impl EnvVarCollectionView {
         // Add "Copy Link" to menu
         if let Some(link) = self.env_var_collection_link(ctx) {
             menu_items.push(
-                MenuItemFields::new("Copy link")
+                MenuItemFields::new(crate::tr!("settings", "copy-link"))
                     .with_on_select_action(EnvVarCollectionAction::CopyLink(link))
                     .with_icon(Icon::Link)
                     .into_item(),
             );
         }
 
-        // Add "Duplicate" to menu
+        // Add crate::tr!("drive", "drive-menu-duplicate") to menu
         if space != Some(Space::Shared) {
             menu_items.push(
                 MenuItemFields::new("Duplicate")
@@ -389,7 +389,7 @@ impl EnvVarCollectionView {
             );
         }
 
-        // Add "Trash" to menu
+        // Add crate::tr!("drive", "drive-trash-label") to menu
         if self.is_online(ctx)
             && (!FeatureFlag::SharedWithMe.is_enabled() || access_level.can_trash())
         {
@@ -403,7 +403,7 @@ impl EnvVarCollectionView {
 
         #[cfg(feature = "local_fs")]
         menu_items.push(
-            MenuItemFields::new("Export")
+            MenuItemFields::new(crate::tr!("drive", "drive-menu-export"))
                 .with_on_select_action(EnvVarCollectionAction::Export)
                 .with_icon(Icon::Download)
                 .into_item(),

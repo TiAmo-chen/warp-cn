@@ -163,7 +163,7 @@ impl CreateApiKeyModal {
                 ..Default::default()
             };
             let mut editor = EditorView::single_line(options, ctx);
-            editor.set_placeholder_text("Warp API Key", ctx);
+            editor.set_placeholder_text(crate::tr!("zz_zh02_supplement", "settings-warp-api-key"), ctx);
             editor
         });
 

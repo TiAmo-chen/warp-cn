@@ -652,7 +652,7 @@ fn render_title_and_description(props: HeaderProps, app: &AppContext) -> Vec<Box
             items.push(
                 Container::new(
                     Text::new(
-                        "Run your agent task in an isolated cloud environment.",
+                        crate::tr!("ai_assistant", "ai-assistant-ai-run-in-cloud-env"),
                         appearance.ui_font_family(),
                         appearance.monospace_font_size(),
                     )
@@ -892,7 +892,7 @@ fn render_recent_conversations_section(
         .with_child(
             Container::new(
                 Text::new(
-                    "RECENT ACTIVITY",
+                    crate::tr!("ai_assistant", "ai-assistant-ai-recent-activity"),
                     appearance.ui_font_family(),
                     header_font_size,
                 )
@@ -1123,7 +1123,7 @@ fn render_oz_updates(props: OzUpdatesProps<'_>, app: &AppContext) -> Option<Box<
                                 .with_child(
                                     Container::new(
                                         Text::new(
-                                            "View changelog",
+                                            crate::tr!("workspace", "view-changelog"),
                                             appearance.ui_font_family(),
                                             appearance.monospace_font_size() - 2.,
                                         )

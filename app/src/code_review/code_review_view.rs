@@ -204,7 +204,7 @@ where
     .with_tooltip(move || {
         ui_builder
             .tool_tip(if is_sidebar_expanded {
-                "Hide file navigation".to_owned()
+                crate::tr!("code_review", "code-review-hide-file-navigation").to_owned()
             } else {
                 "Show file navigation".to_owned()
             })

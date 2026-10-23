@@ -83,7 +83,7 @@ pub fn render_welcome_banner(
         ),
     );
 
-    // "New" badge
+    // crate::tr!("common", "new-label") badge
     let text = Text::new_inline("New".to_string(), appearance.ui_font_family(), 14.)
         .with_color(PhenomenonStyle::modal_badge_text())
         .finish();
@@ -105,7 +105,7 @@ pub fn render_welcome_banner(
 
     // Title
     let title = Text::new(
-        "Introducing universal agent support: level up any coding agent with Warp",
+        crate::tr!("workspace", "welcome-banner-title"),
         appearance.ui_font_family(),
         20.,
     )

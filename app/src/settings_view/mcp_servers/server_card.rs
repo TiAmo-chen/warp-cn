@@ -474,7 +474,7 @@ impl ServerCardView {
 
         if tools.is_empty() {
             return Text::new(
-                "No tools available".to_string(),
+                crate::tr!("settings", "mcp-no-tools").to_string(),
                 appearance.ui_font_family(),
                 appearance.ui_font_size(),
             )

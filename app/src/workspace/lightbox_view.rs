@@ -17,11 +17,11 @@ pub fn init(app: &mut AppContext) {
     app.register_fixed_bindings([
         FixedBinding::new("escape", LightboxViewAction::Dismiss, view_id.clone()),
         FixedBinding::new(
-            "left",
+            crate::tr!("settings", "appearance-left"),
             LightboxViewAction::NavigatePrevious,
             view_id.clone(),
         ),
-        FixedBinding::new("right", LightboxViewAction::NavigateNext, view_id),
+        FixedBinding::new(crate::tr!("settings", "appearance-right"), LightboxViewAction::NavigateNext, view_id),
     ]);
 }
 

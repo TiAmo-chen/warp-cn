@@ -51,7 +51,7 @@ impl GoToLineView {
                 },
                 ctx,
             );
-            editor.set_placeholder_text("Line number:Column", ctx);
+            editor.set_placeholder_text(crate::tr!("code_editor", "code-editor-code-goto-line-placeholder"), ctx);
             editor
         });
 
@@ -136,7 +136,7 @@ impl View for GoToLineView {
         let theme = appearance.theme();
 
         let label = Text::new_inline(
-            "Go to line",
+            crate::tr!("code_editor", "code-editor-go-to-line"),
             appearance.ui_font_family(),
             GOTO_LINE_LABEL_FONT_SIZE,
         )

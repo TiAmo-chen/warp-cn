@@ -16,7 +16,7 @@ pub enum NewFeaturePopupLabel {
 }
 
 pub enum FeaturePopupBadge {
-    // Displays "NEW" badge prior to the label
+    // Displays crate::tr!("common", "new-label") badge prior to the label
     New,
     // Displays an alert icon prior to the label
     AlertIcon,

@@ -764,7 +764,7 @@ impl ShareBlockModal {
                     .manage_permalinks_mouse_state
                     .clone(),
             )
-            .with_centered_text_label("Manage shared blocks".to_string())
+            .with_centered_text_label(crate::tr!("terminal", "manage-shared-blocks").to_string())
             .with_style(
                 self.button_style_overrides(appearance)
                     .set_font_size(12.)
