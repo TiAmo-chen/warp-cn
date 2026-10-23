@@ -720,7 +720,7 @@ impl WarpAgentPageView {
                 .position(|val| val == current_value)
                 .unwrap_or_else(|| {
                     log::warn!(
-                        crate::tr!("settings", "settings-could-not-find-current-voiceinputtogglekey-value-in-dropdown-option-list")
+                        "Could not find current VoiceInputToggleKey value in dropdown option list"
                     );
                     0
                 });
@@ -1833,7 +1833,7 @@ impl WarpAgentPageView {
             Ok(attempt) => attempt,
             Err(err) => {
                 safe_error!(
-                    safe: (crate::tr!("settings", "settings-failed-to-start-grok-oauth-callback-server")),
+                    safe: ("Failed to start Grok OAuth callback server"),
                     full: ("Failed to start Grok OAuth callback server: {err:#}")
                 );
                 send_telemetry_from_ctx!(
@@ -1937,7 +1937,7 @@ impl WarpAgentPageView {
                         editor.clear_buffer(ctx);
                     });
                     safe_error!(
-                        safe: (crate::tr!("settings", "settings-grok-oauth-loopback-callback-failed")),
+                        safe: ("Grok OAuth loopback callback failed"),
                         full: ("Grok OAuth loopback callback failed: {err:#}")
                     );
                     send_telemetry_from_ctx!(
@@ -2258,7 +2258,7 @@ impl WarpAgentPageView {
                     Err(err) => {
                         // Keep the row open so the user can correct the code.
                         safe_error!(
-                            safe: (crate::tr!("settings", "settings-grok-manual-code-exchange-failed")),
+                            safe: ("Grok manual code exchange failed"),
                             full: ("Grok manual code exchange failed: {err:#}")
                         );
                         send_telemetry_from_ctx!(

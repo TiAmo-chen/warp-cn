@@ -34,7 +34,7 @@ settings::macros::implement_setting_for_enum!(
     surface: settings::SettingSurfaces::GUI,
     private: false,
     toml_path: "general.new_tab_placement",
-    description: crate::tr!("settings", "settings-new-tab-placement-desc"),
+    description: "Where new tabs are placed in the tab bar.",
 );
 
 #[derive(
@@ -66,7 +66,7 @@ settings::macros::implement_setting_for_enum!(
     surface: settings::SettingSurfaces::GUI,
     private: false,
     toml_path: "appearance.tabs.tab_close_button_position",
-    description: crate::tr!("settings", "settings-tab-close-button-position-desc"),
+    description: "Position of the close button on tabs.",
 );
 
 /// Visibility options for workspace decorations like the tab bar.
@@ -104,7 +104,7 @@ settings::macros::implement_setting_for_enum!(
     surface: settings::SettingSurfaces::GUI,
     private: false,
     toml_path: "appearance.tabs.workspace_decoration_visibility",
-    description: crate::tr!("settings", "settings-workspace-decoration-visibility-desc"),
+    description: "When workspace decorations such as the tab bar are visible.",
 );
 
 impl WorkspaceDecorationVisibility {
@@ -198,7 +198,7 @@ settings::macros::implement_setting_for_enum!(
     private: false,
     toml_path: "appearance.tabs.directory_tab_colors",
     max_table_depth: 0,
-    description: crate::tr!("settings", "settings-directory-tab-colors-desc"),
+    description: "Mapping of directory paths to their tab color assignments.",
     feature_flag: warp_core::features::FeatureFlag::DirectoryTabColors,
 );
 
@@ -291,7 +291,7 @@ settings::macros::implement_setting_for_enum!(
     surface: settings::SettingSurfaces::GUI,
     private: false,
     toml_path: "appearance.tabs.header_toolbar_chip_selection",
-    description: crate::tr!("settings", "settings-header-toolbar-chip-selection-desc"),
+    description: "Configuration for the header toolbar chips in the vertical tab panel header.",
 );
 
 #[derive(
@@ -323,7 +323,7 @@ settings::macros::implement_setting_for_enum!(
     surface: settings::SettingSurfaces::GUI,
     private: false,
     toml_path: "appearance.vertical_tabs.view_mode",
-    description: crate::tr!("settings", "settings-vertical-tabs-view-mode-desc"),
+    description: "Display mode for the vertical tab bar.",
 );
 
 #[derive(
@@ -355,7 +355,7 @@ settings::macros::implement_setting_for_enum!(
     surface: settings::SettingSurfaces::GUI,
     private: false,
     toml_path: "appearance.vertical_tabs.display_granularity",
-    description: crate::tr!("settings", "settings-vertical-tabs-display-granularity-desc"),
+    description: "Granularity of rows displayed in the vertical tabs panel.",
 );
 
 #[derive(
@@ -387,7 +387,7 @@ settings::macros::implement_setting_for_enum!(
     surface: settings::SettingSurfaces::GUI,
     private: false,
     toml_path: "appearance.vertical_tabs.tab_item_mode",
-    description: crate::tr!("settings", "settings-vertical-tabs-tab-item-mode-desc"),
+    description: "Tab item display mode in vertical tabs.",
 );
 
 #[derive(
@@ -420,7 +420,7 @@ settings::macros::implement_setting_for_enum!(
     surface: settings::SettingSurfaces::GUI,
     private: false,
     toml_path: "appearance.vertical_tabs.primary_info",
-    description: crate::tr!("settings", "settings-vertical-tabs-primary-info-desc"),
+    description: "The primary information displayed on vertical tabs.",
 );
 
 #[derive(
@@ -453,7 +453,7 @@ settings::macros::implement_setting_for_enum!(
     surface: settings::SettingSurfaces::GUI,
     private: false,
     toml_path: "appearance.vertical_tabs.compact_subtitle",
-    description: crate::tr!("settings", "settings-vertical-tabs-compact-subtitle-desc"),
+    description: "Subtitle shown on compact vertical tabs.",
 );
 
 define_settings_group!(TabSettings, settings: [
@@ -465,7 +465,7 @@ define_settings_group!(TabSettings, settings: [
         surface: settings::SettingSurfaces::GUI,
         private: false,
         toml_path: "appearance.tabs.show_indicators_button",
-        description: crate::tr!("settings", "settings-show-indicators-desc"),
+        description: "Whether to show activity indicators on tabs.",
     },
     show_code_review_button: ShowCodeReviewButton {
         type: bool,

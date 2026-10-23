@@ -1254,7 +1254,7 @@ impl UpdateEnvironmentForm {
                     AUTH_URL_REFRESH_THRESHOLD.as_secs_f64()
                 );
             } else {
-                debug!(crate::tr!("settings", "settings-refreshing-github-auth-url-no-previous-fetch-timestamp"));
+                debug!("Refreshing GitHub auth URL (no previous fetch timestamp)");
             }
             self.fetch_github_repos_for_auth(ctx);
         } else {

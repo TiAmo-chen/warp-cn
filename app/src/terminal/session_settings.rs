@@ -284,7 +284,7 @@ define_settings_group!(SessionSettings, settings: [
         surface: settings::SettingSurfaces::GUI,
         private: false,
         toml_path: "session.startup_shell_override",
-        description: crate::tr!("settings", "settings-startup-shell-override-desc"),
+        description: "The shell to use when Warp starts up.",
     },
     new_session_shell_override: NewSessionShellOverride {
         type: Option<NewSessionShell>,
@@ -440,5 +440,5 @@ settings::macros::implement_setting_for_enum!(
     private: false,
     toml_path: "session.working_directory_config",
     max_table_depth: 1,
-    description: crate::tr!("settings", "settings-working-directory-config-desc"),
+    description: "Controls the working directory used when opening new sessions.",
 );

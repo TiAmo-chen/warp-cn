@@ -156,7 +156,7 @@ settings::macros::implement_setting_for_enum!(
     surface: settings::SettingSurfaces::GUI,
     private: false,
     toml_path: "agents.voice.voice_input_toggle_key",
-    description: crate::tr!("settings", "settings-ai-voice-toggle-key-desc"),
+    description: "The key used to toggle voice input.",
 );
 
 impl VoiceInputToggleKey {
@@ -519,7 +519,7 @@ settings::macros::implement_setting_for_enum!(
     surface: settings::SettingSurfaces::GUI,
     private: false,
     toml_path: "general.default_session_mode",
-    description: crate::tr!("settings", "settings-ai-default-session-mode-desc"),
+    description: "The default mode for new terminal sessions.",
 );
 
 impl DefaultSessionMode {
@@ -570,7 +570,7 @@ settings::macros::implement_setting_for_enum!(
     surface: settings::SettingSurfaces::GUI,
     private: false,
     toml_path: "agents.warp_agent.other.thinking_display_mode",
-    description: crate::tr!("settings", "settings-ai-thinking-display-desc"),
+    description: "Controls how agent thinking traces are displayed after streaming.",
 );
 
 impl ThinkingDisplayMode {
@@ -1230,7 +1230,7 @@ define_settings_group!(AISettings, settings: [
         surface: settings::SettingSurfaces::GUI,
         private: false,
         toml_path: "agents.warp_agent.is_any_ai_enabled",
-        description: crate::tr!("settings", "settings-ai-all-features-desc"),
+        description: "Controls whether all AI features are enabled.",
     },
     // This field should not be referenced directly to lookup active AI enablement -- use the
     // `is_active_ai_enabled()` getter.

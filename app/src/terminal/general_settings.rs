@@ -15,7 +15,7 @@ define_settings_group!(GeneralSettings, settings: [
         surface: settings::SettingSurfaces::GUI,
         private: false,
         toml_path: "general.show_warning_before_quitting",
-        description: crate::tr!("terminal", "terminal-setting-description-show-warning-before-quitting"),
+        description: "Whether to show a warning dialog before quitting Warp.",
     },
     quit_on_last_window_closed: QuitOnLastWindowClosed {
         type: bool,
