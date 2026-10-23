@@ -11,7 +11,7 @@ env:
   # crates/warp_core/src/channel/state.rs and into the Windows version
   # resource by app/build.rs. Without it, the UI and the exe both show
   # "v#.##.###". Format follows the upstream release tags.
-  GIT_RELEASE_TAG: v0.2026.5.13.zh_01
+  GIT_RELEASE_TAG: v0.2026.5.13.zh_02
 
 jobs:
   build:

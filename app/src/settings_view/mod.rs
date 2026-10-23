@@ -1214,35 +1214,29 @@ impl SettingsView {
 
         // Build sidebar nav items. AI page is presented as an "Agents" umbrella
         // with subpages; the actual AI SettingsPage is hidden from direct sidebar listing.
+        //
+        // ── zh_02 精简版 ────────────────────────────────────────────────
+        // 以下入口依赖 Warp 的联网服务（账号 / 团队 / 云环境 / Warp Drive / Oz /
+        // 账单 / 推荐返利 / 云端代码库索引 / 第三方 CLI 代理 / 共享区块），
+        // 在 OSS 自编译构建里无法使用，故不在侧边栏展示。
+        // 只隐藏入口，页面代码与 enum 变体全部保留，便于将来一行恢复。
         let mut nav_items = vec![
-            SettingsNavItem::Page(SettingsSection::Account),
             SettingsNavItem::Umbrella(SettingsUmbrella::new(
                 crate::tr!("settings", "agents-umbrella"),
-                SettingsSection::ai_subpages().to_vec(),
+                vec![
+                    SettingsSection::WarpAgent,
+                    SettingsSection::AgentProfiles,
+                    SettingsSection::AgentMCPServers,
+                ],
             )),
-            SettingsNavItem::Page(SettingsSection::BillingAndUsage),
             SettingsNavItem::Umbrella(SettingsUmbrella::new(
                 crate::tr!("settings", "code-umbrella"),
-                vec![
-                    SettingsSection::CodeIndexing,
-                    SettingsSection::EditorAndCodeReview,
-                ],
+                vec![SettingsSection::EditorAndCodeReview],
             )),
-            SettingsNavItem::Umbrella(SettingsUmbrella::new(
-                crate::tr!("settings", "cloud-platform-umbrella"),
-                vec![
-                    SettingsSection::CloudEnvironments,
-                    SettingsSection::OzCloudAPIKeys,
-                ],
-            )),
-            SettingsNavItem::Page(SettingsSection::Teams),
             SettingsNavItem::Page(SettingsSection::Appearance),
             SettingsNavItem::Page(SettingsSection::Features),
             SettingsNavItem::Page(SettingsSection::Keybindings),
             SettingsNavItem::Page(SettingsSection::Warpify),
-            SettingsNavItem::Page(SettingsSection::Referrals),
-            SettingsNavItem::Page(SettingsSection::SharedBlocks),
-            SettingsNavItem::Page(SettingsSection::WarpDrive),
             SettingsNavItem::Page(SettingsSection::Privacy),
             SettingsNavItem::Page(SettingsSection::About),
         ];
@@ -1252,7 +1246,7 @@ impl SettingsView {
             Some(SettingsSection::AI) => SettingsSection::WarpAgent,
             Some(SettingsSection::Code) => SettingsSection::CodeIndexing,
             Some(section) if section.is_subpage() => section,
-            other => other.unwrap_or_default(),
+            other => other.unwrap_or(SettingsSection::Appearance),
         };
 
         // Auto-expand the umbrella if the initial page is one of its subpages.
