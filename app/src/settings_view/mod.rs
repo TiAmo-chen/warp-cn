@@ -391,7 +391,7 @@ impl SettingsSection {
             Self::Scripting => "Scripting",
             Self::SharedBlocks => "Shared blocks",
             Self::Teams => "Teams",
-            Self::WarpDrive => crate::tr!("settings", "warp-drive"),
+            Self::WarpDrive => "Warp Drive",
             Self::Warpify => "Warpify",
             Self::WarpAgent => "Warp Agent",
             Self::AgentProfiles => crate::tr!("settings", "profiles"),

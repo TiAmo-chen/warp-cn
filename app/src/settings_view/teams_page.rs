@@ -325,7 +325,7 @@ impl From<&TeamsPageAction> for LoginGatedFeature {
             ToggleTeamDiscoverability { .. } | ToggleTeamDiscoverabilityBeforeCreation => {
                 "Toggle Team Discoverability"
             }
-            JoinTeamWithTeamDiscovery { .. } => crate::tr!("settings", "join-team-with-team-discovery"),
+            JoinTeamWithTeamDiscovery { .. } => "Join Team With Team Discovery",
             ShowWorkspaceTeams { .. } => "Show Workspace Teams",
             JoinWorkspaceFromDiscovery { .. } => "Join Workspace From Discovery",
             _ => crate::tr!("settings", "unknown-reason"),

@@ -1498,7 +1498,7 @@ impl CodePageWidget {
             )) = index_state.last_sync_result()
             {
                 (
-                    crate::tr!("settings", "codebase-too-large"),
+                    "Codebase too large",
                     theme.ui_warning_color(),
                     Icon::AlertTriangle,
                 )
