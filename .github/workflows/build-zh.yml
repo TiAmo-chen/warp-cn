@@ -11,7 +11,7 @@ env:
   # crates/warp_core/src/channel/state.rs and into the Windows version
   # resource by app/build.rs. Without it, the UI and the exe both show
   # "v#.##.###". Format follows the upstream release tags.
-  GIT_RELEASE_TAG: v0.2026.5.13.zh_02
+  GIT_RELEASE_TAG: v0.2026.5.13.zh_03
 
 jobs:
   build:
@@ -84,7 +84,7 @@ jobs:
           RUSTFLAGS: -C debuginfo=0
           CARGO_NET_RETRY: 5
         run: |
-          cargo build --profile release -p warp --bin warp-oss --features oss-default,gui
+          cargo build --profile release -p warp --bin warp-oss --features oss-default,gui,release_bundle
 
       - name: Package
         shell: pwsh
