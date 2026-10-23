@@ -1,0 +1,90 @@
+name: check-master-zh
+
+on:
+  workflow_dispatch:
+  push:
+    branches:
+      - master-zh
+
+permissions:
+  contents: read
+
+jobs:
+  check:
+    name: cargo check (master-zh probe)
+    runs-on: windows-latest
+    timeout-minutes: 240
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+        with:
+          lfs: false
+          fetch-depth: 1
+
+      - name: Free disk space
+        uses: jlumbroso/free-disk-space@main
+        with:
+          tool-cache: true
+          android: true
+          dotnet: true
+          haskell: true
+          swap-storage: false
+
+      - name: Install protoc
+        shell: pwsh
+        run: choco install protoc -y --no-progress
+
+      - name: Install Rust toolchain
+        shell: bash
+        run: |
+          rustup show
+          rustc --version
+
+      # command-signatures-v2/build.rs shells out to `yarn build`.
+      - name: Prepare command-signatures JS
+        shell: bash
+        run: |
+          set -x
+          cd crates/command-signatures-v2/js
+          corepack enable || true
+          if command -v yarn >/dev/null 2>&1; then
+            yarn install || true
+            yarn build || true
+          fi
+          if [ ! -d build ]; then
+            npm install --no-audit --no-fund
+            npx tsc -p tsconfig.json
+          fi
+          ls -la build | head -20
+
+      # 非致命：即使编译失败也继续，用于统计错误量
+      - name: cargo check (non-fatal)
+        shell: bash
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+          CARGO_FULL_PROFILE: release
+          RUSTFLAGS: -C debuginfo=0
+          CARGO_NET_RETRY: 5
+        run: |
+          set +e
+          cargo check --profile release -p warp --bin warp-oss \
+            --features oss-default,gui 2>&1 | tee /tmp/check.log
+          echo "================ PROBE SUMMARY ================"
+          echo "unique error codes:"
+          grep -oE 'error\[E[0-9]+\]' /tmp/check.log | sort | uniq -c | sort -rn | head -40 || true
+          echo "---- error count ----"
+          grep -cE '^error(\[|:)' /tmp/check.log || true
+          echo "---- 'could not compile' ----"
+          grep -c 'could not compile' /tmp/check.log || true
+          echo "---- first 80 error lines ----"
+          grep -nE '^error(\[|:)' /tmp/check.log | head -80 || true
+          exit 0
+
+      - name: Upload check log
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: check-log-master-zh
+          path: /tmp/check.log
+          if-no-files-found: warn
+          retention-days: 14

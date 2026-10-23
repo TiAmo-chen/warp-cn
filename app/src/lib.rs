@@ -1,6 +1,8 @@
 #![allow(clippy::doc_lazy_continuation)]
 
 mod ai;
+mod i18n;
+pub use warp_i18n::tr;
 mod alloc;
 mod antivirus;
 #[cfg(target_os = "macos")]
@@ -778,6 +780,8 @@ fn apply_scroll_multiplier(event: &mut Event, app: &AppContext) {
 /// parser and therefore do not require a separate mode flag.
 #[::tracing::instrument(skip_all, fields(tags.cloud_agent = true))]
 pub fn run() -> Result<()> {
+    // Fluent bundle must exist before any UI string is resolved.
+    i18n::init_i18n();
     // Perform any necessary platform-specific initialization.
     platform::init();
 
