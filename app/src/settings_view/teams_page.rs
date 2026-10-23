@@ -98,12 +98,12 @@ const JOIN_TEAM_HEADER: &str = "Join an existing team within your company";
 const BROWSE_TEAMS_BUTTON_LABEL: &str = "Browse teams";
 const SWITCH_TEAM_BUTTON_LABEL: &str = "Switch team";
 const JOIN_WORKSPACE_OR_TEAM_HEADER: &str =
-    &crate::tr!("settings", "settings-join-an-existing-workspace-or-team-within-your-company");
+    "Join an existing workspace or team within your company";
 const OR_JOIN_WORKSPACE_OR_TEAM_HEADER: &str =
-    &crate::tr!("settings", "settings-or-join-an-existing-workspace-or-team-within-your-company");
+    "Or, join an existing workspace or team within your company";
 const NO_JOINABLE_TEAMS_HEADER: &str = "There are currently no joinable teams.";
 const NO_TEAMS_TO_JOIN_DESCRIPTION: &str =
-    &crate::tr!("settings", "settings-contact-an-admin-to-join-a-team-to-gain-access-to-more-features");
+    "Contact an admin to join a team to gain access to more features.";
 const ADMIN_PANEL_CTA_LINK_TEXT: &str = "Visit the admin panel";
 const ADMIN_PANEL_CTA_TRAILING_COPY: &str = "to manage and create new teams.";
 
@@ -129,7 +129,7 @@ const SUBSUBSECTION_HEADER_FONT_SIZE: f32 = 14.;
 const OWNER_STATE_CHIP_ACCENT_OPACITY: u8 = 30;
 
 const INVALID_DOMAINS_INSTRUCTIONS: &str =
-    &crate::tr!("settings", "settings-some-of-the-provided-domains-are-invalid-or-have-already-been-added");
+    "Some of the provided domains are invalid, or have already been added.";
 
 const INVITE_LINK_TOGGLE_INSTRUCTIONS: &str = "As an admin, you can choose whether to enable or disable the ability for team members to invite others by invitation link.";
 const INVITE_LINK_UNAVAILABLE_INSTRUCTIONS: &str =
@@ -138,7 +138,7 @@ const INVITE_LINK_DOMAIN_RESTRICTIONS_INSTRUCTIONS: &str = "Restrict by domain â
 
 const INVITE_BY_EMAIL_EXPIRY_INSTRUCTIONS: &str = "Email invitations are valid for 7 days.";
 const INVALID_EMAILS_INSTRUCTIONS: &str =
-    &crate::tr!("settings", "settings-some-of-the-provided-email-addresses-are-invalid-already-invited-or-members-of-the-team");
+    "Some of the provided email addresses are invalid, already invited, or members of the team.";
 
 const OFFLINE_TEXT: &str = "You are offline.";
 
@@ -2717,7 +2717,7 @@ impl TeamsWidget {
                 GrowTeamWarningCta::ContactSupport => "Contact support to restore access.",
                 GrowTeamWarningCta::None => {
                     if is_delinquency {
-                        crate::tr!("settings", "settings-contact-support-to-restore-access")
+                        "Contact support to restore access."
                     } else {
                         "Contact sales to grow your team."
                     }
@@ -2817,11 +2817,11 @@ impl TeamsWidget {
     ) -> (&'static str, &'static str) {
         if billing_metadata.customer_type == CustomerType::Business {
             (
-                &crate::tr!("settings", "settings-upgrade-to-enterprise"),
+                "Upgrade to Enterprise",
                 " for an unlimited team member limit.",
             )
         } else {
-            (&crate::tr!("settings", "settings-upgrade-to-business"), " for a higher team member limit.")
+            ("Upgrade to Business", " for a higher team member limit.")
         }
     }
 

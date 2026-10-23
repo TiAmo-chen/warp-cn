@@ -5876,20 +5876,20 @@ fn subtitle_options_for_primary(
             (VerticalTabsCompactSubtitle::Branch, "Branch"),
             (
                 VerticalTabsCompactSubtitle::WorkingDirectory,
-                &crate::tr!("common", "common-working-directory"),
+                "Working Directory",
             ),
         ],
         VerticalTabsPrimaryInfo::WorkingDirectory => [
             (VerticalTabsCompactSubtitle::Branch, "Branch"),
             (
                 VerticalTabsCompactSubtitle::Command,
-                &crate::tr!("workspace", "workspace-command-conversation"),
+                "Command / Conversation",
             ),
         ],
         VerticalTabsPrimaryInfo::Branch => [
             (
                 VerticalTabsCompactSubtitle::Command,
-                &crate::tr!("workspace", "workspace-command-conversation"),
+                "Command / Conversation",
             ),
             (
                 VerticalTabsCompactSubtitle::WorkingDirectory,
@@ -6232,7 +6232,7 @@ pub(super) fn render_settings_popup(
             let pr_link_info_tooltip = if show_pr_link && pr_validation_suppressed {
                 Some(ShowToggleInfoTooltip {
                     mouse_state: state.show_pr_link_info_tooltip_mouse_state.clone(),
-                    tooltip_text: &crate::tr!("workspace", "workspace-requires-github-cli"),
+                    tooltip_text: "Requires the GitHub CLI to be installed and authenticated",
                 })
             } else {
                 None

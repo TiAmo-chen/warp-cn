@@ -72,7 +72,7 @@ fn host_presence(execution_mode: &RunAgentsExecutionMode) -> bool {
 
 const CONFIG_BLOCK_HEADER: &str = "Use orchestration";
 const CONFIG_BLOCK_DESCRIPTION: &str =
-    &crate::tr!("ai_assistant", "ai-assistant-ai-orchestration-description");
+    "Break this work into coordinated streams with multiple agents.";
 const BASE_MODEL_HELPER: &str = "The primary model all agents will use.";
 
 // ── Action type ─────────────────────────────────────────────────────

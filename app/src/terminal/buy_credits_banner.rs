@@ -710,7 +710,7 @@ impl BuyCreditsBanner {
         let unit = usage_display_unit(app);
         let (title, exceeds_limit_text, admin_description, member_description) = match unit {
             UsageDisplayUnit::Credits => (
-                crate::tr!("ai_assistant", "ai-assistant-ai-out-of-requests-primary-text"),
+                "Out of credits",
                 "Purchasing these credits would take you over your monthly spend limit. ",
                 "Add more credits to your account to continue using the Warp Agent.",
                 "Contact a team admin to purchase more credits to continue.",

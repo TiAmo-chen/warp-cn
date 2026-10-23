@@ -73,7 +73,7 @@ pub fn render_inline_notifications_discovery_banner(
 
     let (title, buttons) = match notifications_mode {
         NotificationsMode::Dismissed => (
-            crate::tr!("terminal", "terminal-notifications-dismissed"),
+            "We won't show this banner again, but you can always go to Settings to enable notifications.",
             vec![],
         ),
         NotificationsMode::Disabled => (

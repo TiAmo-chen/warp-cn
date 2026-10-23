@@ -28472,7 +28472,7 @@ impl TypedActionView for TerminalView {
             AttemptLoginGatedFeature => {
                 AuthManager::handle(ctx).update(ctx, |auth_manager, ctx| {
                     auth_manager.attempt_login_gated_feature(
-                        &crate::tr!("search", "search-upgrade-ai-usage"),
+                        "Upgrade AI Usage",
                         AuthViewVariant::RequireLoginCloseable,
                         ctx,
                     )

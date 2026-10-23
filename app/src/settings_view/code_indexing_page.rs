@@ -81,7 +81,7 @@ const AUTO_INDEX_DESCRIPTION: &str = "When set to true, Warp will automatically 
 const INDEXING_DISABLED_ADMIN_TEXT: &str = "Team admins have disabled codebase indexing.";
 const INDEXING_WORKSPACE_ENABLED_ADMIN_TEXT: &str = "Team admins have enabled codebase indexing.";
 const INDEXING_DISABLED_GLOBAL_AI_TEXT: &str =
-    &crate::tr!("settings", "settings-ai-features-must-be-enabled-to-use-codebase-indexing");
+    "AI Features must be enabled to use codebase indexing.";
 const CODEBASE_INDEX_LIMIT_REACHED: &str = "You have reached the maximum number of codebase indices for your plan. Delete existing indices to auto-index new codebases.";
 #[cfg(not(target_family = "wasm"))]
 const REMOTE_CODEBASE_INDEX_LIMIT_REACHED_FAILURE: &str =

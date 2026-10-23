@@ -611,7 +611,7 @@ impl AuthViewBody {
                 &crate::tr!("auth", "auth-hit-drive-limit-closeable")
             }
             AuthViewVariant::ShareRequirementCloseable => {
-                crate::tr!("auth", "auth-share-requirement-closeable")
+                &crate::tr!("auth", "auth-share-requirement-closeable")
             }
             _ => "",
         };

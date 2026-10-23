@@ -1674,12 +1674,12 @@ pub(crate) fn fork_button_action(
         && conversation_id.is_some_and(|id| conversation_is_cloud_oz_for_slash_command(id, ctx))
     {
         ForkButtonAction {
-            tooltip: &crate::tr!("common", "common-continue-locally"),
+            tooltip: "Continue locally",
             command_name: commands::CONTINUE_LOCALLY.name,
         }
     } else {
         ForkButtonAction {
-            tooltip: &crate::tr!("ai_assistant", "ai-assistant-ai-fork-conversation"),
+            tooltip: "Fork conversation",
             command_name: commands::FORK.name,
         }
     }

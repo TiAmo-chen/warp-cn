@@ -200,7 +200,7 @@ impl OrchestrationConfigState {
                 if self.harness_type.eq_ignore_ascii_case("opencode") =>
             {
                 Some(
-                    &crate::tr!("ai_assistant", "ai-assistant-ai-opencode-cloud-disabled-reason"),
+                    "OpenCode is not supported on Cloud yet. Switch to Local or pick a different harness.",
                 )
             }
             RunAgentsExecutionMode::Remote { .. } => None,

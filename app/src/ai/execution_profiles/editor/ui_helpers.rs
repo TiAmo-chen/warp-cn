@@ -68,7 +68,7 @@ fn nice_step(raw: f64) -> f64 {
 use crate::settings_view::{InputListItem, render_input_list, render_separator};
 
 pub const WORKSPACE_OVERRIDE_TOOLTIP_MESSAGE: &str =
-    &crate::tr!("ai_assistant", "ai-assistant-ai-workspace-override-tooltip");
+    "This option is enforced by your organization's settings and cannot be customized.";
 pub fn render_header_section(
     appearance: &Appearance,
     profile_name_editor: &ViewHandle<EditorView>,
@@ -725,7 +725,7 @@ fn render_directory_allowlist_section(
 
     render_list_section(
         &crate::tr!("ai_assistant", "ai-assistant-ai-directory-allowlist"),
-        crate::tr!("ai_assistant", "ai-assistant-ai-directory-allowlist-desc"),
+        &crate::tr!("ai_assistant", "ai-assistant-ai-directory-allowlist-desc"),
         &profile_data.directory_allowlist,
         &view.directory_allowlist_mouse_state_handles,
         Some(&view.directory_allowlist_editor),
@@ -751,7 +751,7 @@ fn render_command_allowlist_section(
 
     render_list_section(
         &crate::tr!("ai_assistant", "ai-assistant-ai-command-allowlist"),
-        crate::tr!("ai_assistant", "ai-assistant-ai-command-allowlist-desc"),
+        &crate::tr!("ai_assistant", "ai-assistant-ai-command-allowlist-desc"),
         &profile_data.command_allowlist,
         &view.command_allowlist_mouse_state_handles,
         Some(&view.command_allowlist_editor),
@@ -818,7 +818,7 @@ fn render_command_denylist_section(
 
     let mut column = Flex::column().with_child(create_section_header(
         &crate::tr!("ai_assistant", "ai-assistant-ai-command-denylist"),
-        crate::tr!("ai_assistant", "ai-assistant-ai-command-denylist-desc"),
+        &crate::tr!("ai_assistant", "ai-assistant-ai-command-denylist-desc"),
         appearance,
     ));
     column = column.with_child(list);
@@ -846,7 +846,7 @@ fn render_mcp_allowlist_section(
 
     render_list_section(
         &crate::tr!("ai_assistant", "ai-assistant-ai-mcp-allowlist"),
-        crate::tr!("ai_assistant", "ai-assistant-ai-mcp-allowlist-desc"),
+        &crate::tr!("ai_assistant", "ai-assistant-ai-mcp-allowlist-desc"),
         &profile_data.mcp_allowlist,
         &view.mcp_allowlist_mouse_state_handles,
         None,
@@ -872,7 +872,7 @@ fn render_mcp_denylist_section(
 
     render_list_section(
         &crate::tr!("ai_assistant", "ai-assistant-ai-mcp-denylist"),
-        crate::tr!("ai_assistant", "ai-assistant-ai-mcp-denylist-desc"),
+        &crate::tr!("ai_assistant", "ai-assistant-ai-mcp-denylist-desc"),
         &profile_data.mcp_denylist,
         &view.mcp_denylist_mouse_state_handles,
         None,

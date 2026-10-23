@@ -103,7 +103,7 @@ pub fn build_managed_secret_value(
 }
 
 static CODEX_AUTH_SECRET_TYPES: [AuthSecretTypeInfo; 1] = [AuthSecretTypeInfo {
-    display_name: &crate::tr!("ai_assistant", "ai-assistant-ai-secret-openai-key"),
+    display_name: "OpenAI API Key",
     secret_type: ManagedSecretType::OpenaiApiKey,
     learn_more_url: CODEX_LEARN_MORE_URL,
     fields: &[
@@ -124,7 +124,7 @@ static CODEX_AUTH_SECRET_TYPES: [AuthSecretTypeInfo; 1] = [AuthSecretTypeInfo {
 
 static CLAUDE_AUTH_SECRET_TYPES: [AuthSecretTypeInfo; 3] = [
     AuthSecretTypeInfo {
-        display_name: &crate::tr!("ai_assistant", "ai-assistant-ai-secret-anthropic-key"),
+        display_name: "Anthropic API Key",
         secret_type: ManagedSecretType::AnthropicApiKey,
         learn_more_url: CLAUDE_LEARN_MORE_URL,
         fields: &[AuthSecretTypeField {

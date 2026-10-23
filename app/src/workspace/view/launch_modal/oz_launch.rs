@@ -172,7 +172,7 @@ impl Slide for OzLaunchSlide {
 
     fn checkbox_config(&self) -> Option<CheckboxConfig> {
         Some(CheckboxConfig {
-            label: &crate::tr!("workspace", "workspace-sync-conversations-to-cloud"),
+            label: "Sync conversations to cloud",
             description: "Agent conversations stored in the cloud can be shared with anyone with one click, and allow conversations to be continued across devices and on logout.",
         })
     }

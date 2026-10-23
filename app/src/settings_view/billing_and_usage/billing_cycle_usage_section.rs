@@ -734,19 +734,19 @@ fn visibility_cta_for(
 ) -> Option<(&'static str, &'static str, BillingCycleUsageAction, Icon)> {
     match granularity {
         UsageVisibilityGranularity::OwnOnly => Some((
-            &crate::tr!("ai_assistant", "ai-assistant-ai-upgrade-to-build-text"),
+            "Upgrade to Build",
             "to see team-level credit usage.",
             BillingCycleUsageAction::OpenUpgrade,
             Icon::ArrowCircleBrokenUp,
         )),
         UsageVisibilityGranularity::TeamAggregate => Some((
-            &crate::tr!("settings", "settings-upgrade-to-business"),
+            "Upgrade to Business",
             "to see per-user credit attribution.",
             BillingCycleUsageAction::OpenUpgrade,
             Icon::ArrowCircleBrokenUp,
         )),
         UsageVisibilityGranularity::PerUserTotals => Some((
-            &crate::tr!("settings", "settings-upgrade-to-enterprise"),
+            "Upgrade to Enterprise",
             "to see fine-grained credit attribution and set per-user spend limits.",
             BillingCycleUsageAction::OpenUpgrade,
             Icon::ArrowCircleBrokenUp,

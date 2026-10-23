@@ -2013,7 +2013,7 @@ impl Network {
 }
 
 const NO_QUOTA_REMAINING_MESSAGE: &str =
-    &crate::tr!("terminal", "terminal-sharing-usage-exceeded");
+    "Session sharing usage exceeded for the day. Please try again later.";
 fn session_terminated_reason_diagnostic_label(reason: &SessionTerminatedReason) -> &'static str {
     match reason {
         SessionTerminatedReason::NoUserQuotaRemaining {} => "no_user_quota_remaining",

@@ -431,7 +431,7 @@ impl AgentAssistedEnvironmentModal {
                     &crate::tr!("settings", "settings-no-locally-indexed-repos-found-yet-index-a-repo-then-try-again")
                 }
             } else {
-                crate::tr!("settings", "settings-local-repo-selection-is-unavailable-in-this-build")
+                &crate::tr!("settings", "settings-local-repo-selection-is-unavailable-in-this-build")
             };
 
             col.add_child(

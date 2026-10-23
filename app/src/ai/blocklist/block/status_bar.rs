@@ -948,7 +948,7 @@ impl BlocklistAIStatusBar {
         if let Some(auth_url) = ambient_agent_model.github_auth_url() {
             let error_message = ambient_agent_model
                 .github_auth_error_message()
-                .unwrap_or(&crate::tr!("ai_assistant", "ai-assistant-ai-missing-github-auth"));
+                .unwrap_or("Missing GitHub authentication.");
             return Some(render_wrapping_standard_message_bar(
                 CoreIcon::Triangle,
                 error_color,

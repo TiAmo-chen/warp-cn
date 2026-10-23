@@ -210,8 +210,8 @@ impl CliAgentPluginManager for ClaudeCodePluginManager {
 }
 
 static INSTALL_INSTRUCTIONS: LazyLock<PluginInstructions> = LazyLock::new(|| PluginInstructions {
-    title: &crate::tr!("terminal", "terminal-plugin-install-claude-title"),
-    subtitle: &crate::tr!("terminal", "terminal-plugin-install-claude-subtitle"),
+    title: "Install Warp Plugin for Claude Code",
+    subtitle: "Ensure that jq is installed on your machine. Then, run these commands.",
     steps: &[
         PluginInstructionStep {
             description: "Add the Warp plugin marketplace repository",
@@ -227,15 +227,15 @@ static INSTALL_INSTRUCTIONS: LazyLock<PluginInstructions> = LazyLock::new(|| Plu
         },
     ],
     post_install_notes: &[
-        &crate::tr!("terminal", "terminal-plugin-restart-activate"),
+        "Restart Claude Code to activate the plugin.",
         "There are some known issues with Claude Code's plugin system. \
              If the plugin is not found after step 1, you can try manually adding an \"extraKnownMarketplaces\" entry to ~/.claude/settings.json.",
     ],
 });
 
 static UPDATE_INSTRUCTIONS: LazyLock<PluginInstructions> = LazyLock::new(|| PluginInstructions {
-    title: &crate::tr!("terminal", "terminal-plugin-update-claude-title"),
-    subtitle: &crate::tr!("terminal", "terminal-plugin-update-claude-subtitle"),
+    title: "Update Warp Plugin for Claude Code",
+    subtitle: "Run the following commands.",
     steps: &[
         PluginInstructionStep {
             description: "Remove the existing marketplace (if present)",
@@ -256,7 +256,7 @@ static UPDATE_INSTRUCTIONS: LazyLock<PluginInstructions> = LazyLock::new(|| Plug
             link: None,
         },
     ],
-    post_install_notes: &[&crate::tr!("terminal", "terminal-plugin-restart-update")],
+    post_install_notes: &["Restart Claude Code to activate the update."],
 });
 
 fn check_installed(claude_dir: &Path) -> bool {

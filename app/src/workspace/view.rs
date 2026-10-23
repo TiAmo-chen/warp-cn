@@ -8194,13 +8194,13 @@ impl Workspace {
         let pane_name_target = match target {
             VerticalTabsPaneContextMenuTarget::ClickedPane(locator) => PaneNameMenuTarget {
                 locator,
-                rename_label: &crate::tr!("workspace", "workspace-rename-pane"),
-                reset_label: &crate::tr!("workspace", "workspace-reset-pane-name"),
+                rename_label: "Rename pane",
+                reset_label: "Reset pane name",
             },
             VerticalTabsPaneContextMenuTarget::ActivePane(locator) => PaneNameMenuTarget {
                 locator,
-                rename_label: &crate::tr!("workspace", "workspace-rename-active-pane"),
-                reset_label: &crate::tr!("workspace", "workspace-reset-active-pane-name"),
+                rename_label: "Rename active pane",
+                reset_label: "Reset active pane name",
             },
         };
         let can_move_left = self.can_move_tab(tab_index, TabMovement::Left);
@@ -20823,7 +20823,7 @@ impl Workspace {
                         ToolPanelView::ConversationListView => "Agent conversations",
                     }
                 } else {
-                    &crate::tr!("settings", "settings-tools-panel")
+                    "Tools panel"
                 };
                 (
                     self.active_tab_pane_group().as_ref(ctx).left_panel_open,
@@ -25637,7 +25637,7 @@ impl TypedActionView for Workspace {
             AttemptLoginGatedAIUpgrade => {
                 AuthManager::handle(ctx).update(ctx, |auth_manager, ctx| {
                     auth_manager.attempt_login_gated_feature(
-                        &crate::tr!("search", "search-upgrade-ai-usage"),
+                        "Upgrade AI Usage",
                         AuthViewVariant::RequireLoginCloseable,
                         ctx,
                     )

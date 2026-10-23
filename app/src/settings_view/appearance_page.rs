@@ -3917,7 +3917,7 @@ impl SettingsWidget for DimInactivePanesWidget {
     type View = AppearanceSettingsPageView;
 
     fn search_terms(&self) -> &str {
-        &crate::tr!("zz_zh02_supplement", "settings-dim-inactive-panes")
+        "dim inactive panes"
     }
 
     fn render(
@@ -3960,7 +3960,7 @@ impl SettingsWidget for FocusFollowsMouseWidget {
     type View = AppearanceSettingsPageView;
 
     fn search_terms(&self) -> &str {
-        &crate::tr!("zz_zh02_supplement", "settings-focus-follows-mouse")
+        "focus follows mouse"
     }
 
     fn render(
@@ -4051,7 +4051,7 @@ impl SettingsWidget for JumpToBottomOfBlockWidget {
     type View = AppearanceSettingsPageView;
 
     fn search_terms(&self) -> &str {
-        &crate::tr!("zz_zh02_supplement", "settings-jump-bottom-block")
+        "jump to bottom of block button"
     }
 
     fn render(

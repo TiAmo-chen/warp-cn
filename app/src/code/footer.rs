@@ -1285,9 +1285,9 @@ impl CodeFooterView {
                     .finish()
             },
             if is_plural {
-                &crate::tr!("code", "code-footer-restart-all-servers")
+                "Restart all servers"
             } else {
-                &crate::tr!("code", "code-footer-restart-server")
+                "Restart server"
             },
             CodeFooterViewAction::RestartAllServers,
         )
@@ -1313,9 +1313,9 @@ impl CodeFooterView {
                     .finish()
             },
             if is_plural {
-                &crate::tr!("code", "code-footer-stop-all-servers")
+                "Stop all servers"
             } else {
-                &crate::tr!("code", "code-footer-stop-server")
+                "Stop server"
             },
             CodeFooterViewAction::StopAllServers,
         )
@@ -1341,11 +1341,11 @@ impl CodeFooterView {
                     .finish()
             },
             if !is_plural {
-                &crate::tr!("code", "code-footer-start-server")
+                "Start server"
             } else if has_running {
-                &crate::tr!("code", "code-footer-start-all-stopped-servers")
+                "Start all stopped servers"
             } else {
-                &crate::tr!("code", "code-footer-start-all-servers")
+                "Start all servers"
             },
             CodeFooterViewAction::StartAllServers,
         )

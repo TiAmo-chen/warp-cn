@@ -52,7 +52,7 @@ const SEARCH_PLACEHOLDER_TEXT: &str = "Search rules";
 const ZERO_STATE_TEXT: &str =
     "Add a rule above, or drop one at ~/.agents/AGENTS.md to apply it across every project.";
 const ZERO_STATE_TEXT_PROJECT: &str =
-    &crate::tr!("ai_assistant", "ai-assistant-ai-zero-state-project-text");
+    "Once you generate a WARP.md rules file for a project, it will appear here.";
 
 const DISABLED_BANNER_TEXT: &str =
     "Your rules are disabled and won't be used as context in sessions. You can ";

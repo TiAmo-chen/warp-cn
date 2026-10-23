@@ -189,7 +189,7 @@ pub struct CloudAgentStartupPresentation {
 impl CloudAgentStartupPresentation {
     pub fn failure(message: impl Into<String>) -> Self {
         Self {
-            title: &crate::tr!("agent_cloud", "agent-cloud-failed-title"),
+            title: "Failed to start environment",
             detail: message.into(),
             action_label: None,
             primary_url: None,
@@ -206,9 +206,9 @@ impl CloudAgentStartupPresentation {
             }
         };
         Self {
-            title: &crate::tr!("agent_cloud", "agent-cloud-github-auth-title"),
+            title: "GitHub Authentication Required",
             detail: detail.to_string(),
-            action_label: Some(&crate::tr!("agent_cloud", "agent-cloud-github-auth-button")),
+            action_label: Some("Authenticate with GitHub"),
             primary_url: Some(auth_url.into()),
         }
     }

@@ -19,31 +19,31 @@ pub fn sections(ctx: &mut ViewContext<ResourceCenterMainView>) -> Vec<Section> {
         items: vec![
             FeatureItem::new(
                 "Create your first block",
-                crate::tr!("resource_center", "resource-center-rc-create-first-block-desc"),
+                "Run a command to see your command and output grouped.",
                 Tip::Hint(TipHint::CreateBlock),
                 ctx,
             ),
             FeatureItem::new(
                 "Navigate blocks",
-                crate::tr!("resource_center", "resource-center-rc-navigate-blocks-desc"),
+                "Click to select a block and navigate with arrow keys.",
                 Tip::Hint(TipHint::BlockSelect),
                 ctx,
             ),
             FeatureItem::new(
                 "Take an action on block",
-                crate::tr!("resource_center", "resource-center-rc-take-action-on-block-desc"),
+                "Right click on a block to copy/paste, share, more.",
                 Tip::Hint(TipHint::BlockAction),
                 ctx,
             ),
             FeatureItem::new(
                 "Open command palette",
-                crate::tr!("resource_center", "resource-center-rc-open-command-palette-desc"),
+                "Access all of Warp via the keyboard.",
                 Tip::Action(TipAction::CommandPalette),
                 ctx,
             ),
             FeatureItem::new(
                 "Set your theme",
-                crate::tr!("resource_center", "resource-center-rc-set-your-theme-desc"),
+                "Make Warp your own by choosing a theme.",
                 Tip::Action(TipAction::ThemePicker),
                 ctx,
             ),
@@ -90,14 +90,14 @@ fn maximize_warp_items(ctx: &mut ViewContext<ResourceCenterMainView>) -> Vec<Fea
 
     maximize_warp_items.push(FeatureItem::new(
         "Command search",
-        crate::tr!("resource_center", "resource-center-rc-command-search-desc"),
+        "Find and run previously executed commands, workflows, and more.",
         Tip::Action(TipAction::CommandSearch),
         ctx,
     ));
 
     maximize_warp_items.push(FeatureItem::new(
         "AI command search",
-        crate::tr!("resource_center", "resource-center-rc-ai-command-search-desc"),
+        "Generate shell commands with natural language.",
         Tip::Action(TipAction::AiCommandSearch),
         ctx,
     ));
@@ -105,7 +105,7 @@ fn maximize_warp_items(ctx: &mut ViewContext<ResourceCenterMainView>) -> Vec<Fea
     if ContextFlag::CreateNewSession.is_enabled() {
         maximize_warp_items.push(FeatureItem::new(
             "Split panes",
-            crate::tr!("resource_center", "resource-center-rc-split-panes-desc"),
+            "Split tabs into multiple panes to make your ideal layout.",
             Tip::Action(TipAction::SplitPane),
             ctx,
         ));
@@ -114,7 +114,7 @@ fn maximize_warp_items(ctx: &mut ViewContext<ResourceCenterMainView>) -> Vec<Fea
     if ContextFlag::LaunchConfigurations.is_enabled() {
         maximize_warp_items.push(FeatureItem::new(
             "Launch configuration",
-            crate::tr!("resource_center", "resource-center-rc-launch-configuration-desc"),
+            "Save your current configuration of windows, tabs, and panes.",
             Tip::Action(TipAction::SaveNewLaunchConfig),
             ctx,
         ));

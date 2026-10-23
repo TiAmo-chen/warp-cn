@@ -859,11 +859,11 @@ impl VersionInfoWidget {
                 match autoupdate::get_update_state(app) {
                     AutoupdateStage::NoUpdateAvailable => (
                         Some(StatusContent {
-                            text: &crate::tr!("settings", "settings-up-to-date"),
+                            text: "Up to date",
                             color: faded_text_color,
                         }),
                         Some(CallToActionContent {
-                            text: &crate::tr!("settings", "settings-check-for-updates"),
+                            text: "Check for updates",
                             action: MainPageAction::CheckForUpdate,
                         }),
                     ),
@@ -883,11 +883,11 @@ impl VersionInfoWidget {
                     ),
                     AutoupdateStage::UpdateReady { .. } => (
                         Some(StatusContent {
-                            text: &crate::tr!("settings", "settings-update-available"),
+                            text: "Update available",
                             color: ansi_red,
                         }),
                         Some(CallToActionContent {
-                            text: &crate::tr!("settings", "settings-relaunch-warp"),
+                            text: "Relaunch Warp",
                             action: MainPageAction::Relaunch,
                         }),
                     ),
@@ -900,32 +900,32 @@ impl VersionInfoWidget {
                     ),
                     AutoupdateStage::UpdatedPendingRestart { .. } => (
                         Some(StatusContent {
-                            text: &crate::tr!("settings", "settings-installed-update"),
+                            text: "Installed update",
                             color: faded_text_color,
                         }),
                         Some(CallToActionContent {
-                            text: &crate::tr!("settings", "settings-relaunch-warp"),
+                            text: "Relaunch Warp",
                             action: MainPageAction::Relaunch,
                         }),
                     ),
                     AutoupdateStage::UnableToUpdateToNewVersion { .. } => (
                         Some(StatusContent {
-                            text: &crate::tr!("settings", "settings-a-new-version-of-warp-is-available-but-cant-be-installed"),
+                            text: "A new version of Warp is available but can't be installed",
                             color: ansi_red,
                         }),
                         Some(CallToActionContent {
-                            text: &crate::tr!("settings", "settings-update-warp-manually"),
+                            text: "Update Warp manually",
                             // note: the handler for this action is a no-op
                             action: MainPageAction::DownloadUpdate,
                         }),
                     ),
                     AutoupdateStage::UnableToLaunchNewVersion { .. } => (
                         Some(StatusContent {
-                            text: &crate::tr!("settings", "settings-a-new-version-of-warp-is-installed-but-cant-be-launched"),
+                            text: "A new version of Warp is installed but can't be launched.",
                             color: ansi_red,
                         }),
                         Some(CallToActionContent {
-                            text: &crate::tr!("settings", "settings-update-warp-manually"),
+                            text: "Update Warp manually",
                             // note: the handler for this action is a no-op
                             action: MainPageAction::DownloadUpdate,
                         }),

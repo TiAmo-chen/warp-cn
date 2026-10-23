@@ -493,19 +493,19 @@ impl OrchestrationPillBar {
 
         let mut items = if is_open_elsewhere {
             vec![item(
-                &crate::tr!("ai_assistant", "ai-assistant-ai-focus-pane"),
+                "Focus pane",
                 Icon::ArrowSplit,
                 OrchestrationPillBarAction::FocusOpenedConversation(conversation_id),
             )]
         } else {
             vec![
                 item(
-                    &crate::tr!("ai_assistant", "ai-assistant-ai-open-in-new-pane"),
+                    "Open in new pane",
                     Icon::ArrowSplit,
                     OrchestrationPillBarAction::OpenInNewPane(conversation_id),
                 ),
                 item(
-                    &crate::tr!("ai_assistant", "ai-assistant-ai-open-in-new-tab"),
+                    "Open in new tab",
                     Icon::Plus,
                     OrchestrationPillBarAction::OpenInNewTab(conversation_id),
                 ),
@@ -513,7 +513,7 @@ impl OrchestrationPillBar {
         };
         if Self::oz_run_url_for_conversation(conversation_id, ctx).is_some() {
             items.push(item(
-                &crate::tr!("ai_assistant", "ai-assistant-ai-view-in-oz"),
+                "View in Oz",
                 Icon::Oz,
                 OrchestrationPillBarAction::ViewInOz(conversation_id),
             ));
@@ -534,7 +534,7 @@ impl OrchestrationPillBar {
         items.push(MenuItem::Separator);
         if is_in_progress {
             items.push(destructive_item(
-                &crate::tr!("ai_assistant", "ai-assistant-ai-stop-agent"),
+                "Stop agent",
                 Icon::StopFilled,
                 OrchestrationPillBarAction::Stop(conversation_id),
             ));

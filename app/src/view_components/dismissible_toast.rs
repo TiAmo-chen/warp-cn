@@ -297,7 +297,7 @@ impl<A: Action + Clone> TypedActionView for DismissibleToastStack<A> {
                     "Show more",
                     |toast| {
                         if toast.message_expanded {
-                            &crate::tr!("workspace", "workspace-show-less")
+                            "Show less"
                         } else {
                             "Show more"
                         }

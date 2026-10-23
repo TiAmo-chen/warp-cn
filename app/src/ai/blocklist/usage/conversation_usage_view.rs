@@ -752,7 +752,7 @@ impl ConversationUsageView {
             self.details_toggle_mouse_state.clone(),
             self.details_expanded,
             "Hide details",
-            crate::tr!("ai_assistant", "ai-assistant-ai-view-details"),
+            "View details",
             ConversationUsageViewAction::ToggleDetailsExpanded,
             appearance,
         );

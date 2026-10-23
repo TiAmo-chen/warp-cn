@@ -1531,7 +1531,7 @@ impl AgentInputFooter {
             .unwrap_or(&crate::tr!("ai_assistant", "ai-assistant-ai-plugin-installed-restart-toast"));
         self.handle_plugin_operation(
             &crate::tr!("ai_assistant", "ai-assistant-ai-installing-warp-plugin"),
-            crate::tr!("ai_assistant", "ai-assistant-ai-failed-install-warp-plugin"),
+            &crate::tr!("ai_assistant", "ai-assistant-ai-failed-install-warp-plugin"),
             success_msg,
             PluginChipTelemetryKind::Install,
             |manager| async move { manager.install().await },
@@ -1548,7 +1548,7 @@ impl AgentInputFooter {
             .unwrap_or(&crate::tr!("ai_assistant", "ai-assistant-ai-plugin-updated-restart-toast"));
         self.handle_plugin_operation(
             &crate::tr!("ai_assistant", "ai-assistant-ai-updating-warp-plugin"),
-            crate::tr!("ai_assistant", "ai-assistant-ai-failed-update-warp-plugin"),
+            &crate::tr!("ai_assistant", "ai-assistant-ai-failed-update-warp-plugin"),
             success_msg,
             PluginChipTelemetryKind::Update,
             |manager| async move { manager.update().await },

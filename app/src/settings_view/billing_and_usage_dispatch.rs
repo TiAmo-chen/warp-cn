@@ -100,7 +100,7 @@ impl BillingAndUsageDispatchView {
             }
         });
 
-        let page = PageType::new_monolith(BillingAndUsageWidget, Some(&crate::tr!("settings", "settings-billing-tab")), true);
+        let page = PageType::new_monolith(BillingAndUsageWidget, Some("Billing and Usage"), true);
 
         Self {
             page,
