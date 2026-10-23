@@ -1528,7 +1528,7 @@ impl AgentInputFooter {
             .cli_agent(ctx)
             .and_then(plugin_manager_for)
             .map(|m| m.install_success_message())
-            .unwrap_or(&crate::tr!("ai_assistant", "ai-assistant-ai-plugin-installed-restart-toast"));
+            .unwrap_or("Warp plugin installed. Please restart the session to activate.");
         self.handle_plugin_operation(
             &crate::tr!("ai_assistant", "ai-assistant-ai-installing-warp-plugin"),
             &crate::tr!("ai_assistant", "ai-assistant-ai-failed-install-warp-plugin"),
@@ -1545,7 +1545,7 @@ impl AgentInputFooter {
             .cli_agent(ctx)
             .and_then(plugin_manager_for)
             .map(|m| m.update_success_message())
-            .unwrap_or(&crate::tr!("ai_assistant", "ai-assistant-ai-plugin-updated-restart-toast"));
+            .unwrap_or("Warp plugin updated. Please restart the session to activate.");
         self.handle_plugin_operation(
             &crate::tr!("ai_assistant", "ai-assistant-ai-updating-warp-plugin"),
             &crate::tr!("ai_assistant", "ai-assistant-ai-failed-update-warp-plugin"),

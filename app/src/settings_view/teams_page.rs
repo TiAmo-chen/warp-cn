@@ -2712,7 +2712,7 @@ impl TeamsWidget {
             match cta {
                 GrowTeamWarningCta::Upgrade => "Upgrade to grow your team.",
                 GrowTeamWarningCta::UpdateBilling => {
-                    &crate::tr!("settings", "settings-update-your-payment-information-to-restore-access")
+                    "Update your payment information to restore access."
                 }
                 GrowTeamWarningCta::ContactSupport => "Contact support to restore access.",
                 GrowTeamWarningCta::None => {

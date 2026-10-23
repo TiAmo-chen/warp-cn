@@ -61,22 +61,22 @@ pub fn sections(ctx: &mut ViewContext<ResourceCenterMainView>) -> Vec<Section> {
         section_name: FeatureSection::AdvancedSetup,
         items: vec![
             ContentItem {
-                title: &crate::tr!("resource_center", "resource-center-rc-use-custom-prompt"),
+                title: "Use your custom prompt",
                 description: "Set up Warp to honor your PS1 setting",
                 url: "https://docs.warp.dev/terminal/appearance/prompt",
-                button_label: &crate::tr!("resource_center", "resource-center-rc-view-documentation"),
+                button_label: "View documentation",
             },
             ContentItem {
-                title: &crate::tr!("resource_center", "resource-center-rc-integrate-ide"),
+                title: "Integrate Warp with your IDE",
                 description: "Configure Warp to launch from your most used development tools",
                 url: "https://docs.warp.dev/terminal/integrations-and-plugins",
-                button_label: &crate::tr!("resource_center", "resource-center-rc-view-documentation"),
+                button_label: "View documentation",
             },
             ContentItem {
-                title: &crate::tr!("resource_center", "resource-center-rc-how-warp-uses-warp"),
+                title: "How Warp uses Warp",
                 description: "Learn how Warp's engineering team uses their favorite features",
                 url: "https://www.warp.dev/blog/how-warp-uses-warp",
-                button_label: &crate::tr!("resource_center", "resource-center-rc-read-article"),
+                button_label: "Read article",
             },
         ],
     };
