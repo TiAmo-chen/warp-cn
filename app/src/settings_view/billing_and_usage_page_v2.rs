@@ -1329,7 +1329,7 @@ impl BillingAndUsagePageV2View {
         } else if would_exceed {
             Some(match (auto_reload_enabled, has_admin_permissions) {
                 (true, true) => {
-                    crate::tr!("settings", "auto-reload-is-paused-because-the-next-reload-would-exceed-your-monthly-spend-limit.-increase-your-limit-to-continue-using-auto-reload.")
+                    "Auto-reload is paused because the next reload would exceed your monthly spend limit. Increase your limit to continue using auto-reload."
                 }
                 (true, false) => {
                     "Auto-reload is paused because the next reload would exceed your team’s monthly spend limit. Contact a team admin to increase it."

@@ -566,7 +566,7 @@ impl AccountWidget {
                         .filter(|metadata| metadata.can_upgrade_to_higher_tier_plan())
                     {
                         let description = match billing_metadata.customer_type {
-                            CustomerType::Prosumer => crate::tr!("settings", "upgrade-to-turbo-plan"),
+                            CustomerType::Prosumer => "Upgrade to Turbo",
                             CustomerType::Turbo => "Upgrade to Lightspeed plan",
                             _ => "Compare Plans",
                         };

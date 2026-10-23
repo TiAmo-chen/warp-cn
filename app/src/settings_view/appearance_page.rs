@@ -1673,7 +1673,7 @@ impl AppearanceSettingsPageView {
             AppIcon::Glitch => "Glitch",
             AppIcon::Cow => "Cow",
             AppIcon::Glow => "Glow",
-            AppIcon::Holographic => crate::tr!("settings", "holographic"),
+            AppIcon::Holographic => "Holographic",
             AppIcon::Mono => "Mono",
             AppIcon::Neon => "Neon",
             AppIcon::Original => "Original",

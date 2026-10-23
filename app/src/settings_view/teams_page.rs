@@ -315,7 +315,7 @@ impl From<&TeamsPageAction> for LoginGatedFeature {
             RemoveUserFromTeam { .. } => "Remove User From Team",
             RemoveUserFromWorkspace { .. } => "Remove User From Workspace",
             AddDomainRestrictions { .. } => "Add Domain Restrictions",
-            DeleteDomainRestriction { .. } => crate::tr!("settings", "delete-domain-restriction"),
+            DeleteDomainRestriction { .. } => "Delete Domain Restriction",
             SendEmailInvites { .. } => "Send Email Invites",
             GenerateUpgradeLink { .. } => "Generate Upgrade Link",
             GenerateStripeBillingPortalLink { .. } => crate::tr!("settings", "generate-stripe-billing-portal-link"),
@@ -2674,7 +2674,7 @@ impl TeamsWidget {
             GrowTeamWarning::SeatCapReached => "Your team is full",
             GrowTeamWarning::SeatCapExceeded => "You've exceeded your member limit",
             GrowTeamWarning::PaymentPastDue => "Payment past due",
-            GrowTeamWarning::PaymentUnpaid => crate::tr!("settings", "subscription-unpaid"),
+            GrowTeamWarning::PaymentUnpaid => &crate::tr!("settings", "subscription-unpaid"),
         };
         let title_element = self.render_subsection_header(title.to_owned(), appearance);
 
@@ -2691,7 +2691,7 @@ impl TeamsWidget {
                 "You've exceeded your plan's member limit. Existing team members keep their access, but you won't be able to add new members."
             }
             GrowTeamWarning::PaymentPastDue => {
-                crate::tr!("settings", "team-invites-have-been-restricted-due-to-a-past-due-payment.")
+                &crate::tr!("settings", "team-invites-have-been-restricted-due-to-a-past-due-payment.")
             }
             GrowTeamWarning::PaymentUnpaid => {
                 "Team invites have been restricted due to an unpaid subscription."
@@ -2710,7 +2710,7 @@ impl TeamsWidget {
             }
         } else {
             match cta {
-                GrowTeamWarningCta::Upgrade => crate::tr!("settings", "upgrade-to-grow-your-team."),
+                GrowTeamWarningCta::Upgrade => "Upgrade to grow your team.",
                 GrowTeamWarningCta::UpdateBilling => {
                     "Update your payment information to restore access."
                 }
@@ -3352,7 +3352,7 @@ impl TeamsWidget {
                     crate::tr!("settings", "upgrade-to-build")
                 } else {
                     match team.billing_metadata.customer_type {
-                        CustomerType::Prosumer => crate::tr!("settings", "upgrade-to-turbo-plan"),
+                        CustomerType::Prosumer => "Upgrade to Turbo",
                         CustomerType::Turbo => "Upgrade to Lightspeed plan",
                         _ => "Compare Plans",
                     }

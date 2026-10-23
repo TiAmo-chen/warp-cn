@@ -1883,7 +1883,7 @@ impl CodePageWidget {
             Some(LspRepoStatus::DisabledAndInstalled { .. }) => ("Installed", false),
             Some(LspRepoStatus::Installing { .. }) => ("Installing...", true),
             Some(LspRepoStatus::CheckingForInstallation) => ("Checking...", true),
-            _ => (crate::tr!("settings", "available-for-download"), false),
+            _ => ("Available for download", false),
         };
 
         name_desc_column.add_child(

@@ -382,7 +382,7 @@ impl SettingsSection {
         match self {
             Self::About => "About",
             Self::Account => "Account",
-            Self::BillingAndUsage => crate::tr!("settings", "billing-and-usage"),
+            Self::BillingAndUsage => "Billing and usage",
             Self::Appearance => "Appearance",
             Self::Features => "Features",
             Self::Keybindings => "Keyboard shortcuts",

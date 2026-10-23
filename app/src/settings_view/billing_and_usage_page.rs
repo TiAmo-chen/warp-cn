@@ -3430,7 +3430,7 @@ impl BillingAndUsagePageView {
                         }
                     } else {
                         let upgrade_text = match billing_metadata.customer_type {
-                            CustomerType::Prosumer => crate::tr!("settings", "upgrade-to-turbo-plan"),
+                            CustomerType::Prosumer => "Upgrade to Turbo",
                             CustomerType::Turbo => "Upgrade to Lightspeed plan",
                             _ => "Upgrade",
                         };

@@ -1347,7 +1347,7 @@ impl AgentProfilesPageView {
                 AgentModeCodingPermissionsType::iter()
                     .map(|t| {
                         let display = match t {
-                            AgentModeCodingPermissionsType::AlwaysAskBeforeReading => crate::tr!("settings", "always-ask"),
+                            AgentModeCodingPermissionsType::AlwaysAskBeforeReading => "Always ask",
                             AgentModeCodingPermissionsType::AlwaysAllowReading => "Always allow",
                             AgentModeCodingPermissionsType::AllowReadingSpecificFiles => {
                                 "Allow in specific directories"
