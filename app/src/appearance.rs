@@ -334,9 +334,16 @@ fn load_default_ui_font_family(ctx: &mut AppContext) -> anyhow::Result<FamilyId>
         // Windows when rendering any UI text: https://learn.microsoft.com/en-us/windows/win32/uxguide/vis-fonts.
         // This font should be bundled with any modern version of Windows, if we can't load it for
         // any reason we fallback to using our normal bundled font.
+        //
+        // For the zh-CN build we prefer a CJK-capable UI font first: Segoe UI has no CJK glyphs
+        // and the platform per-character fallback is not applied to every UI text path, which
+        // left Chinese labels rendered as hollow boxes.
         #[cfg(windows)]
-        if let Ok(font_family_id) = font_cache.load_system_font("Segoe UI") {
-            return Ok(font_family_id);
+        for candidate in ["Microsoft YaHei UI", "Microsoft YaHei", "Segoe UI"] {
+            if let Ok(font_family_id) = font_cache.load_system_font(candidate) {
+                log::info!("zh: using UI font family {candidate}");
+                return Ok(font_family_id);
+            }
         }
 
         roboto
@@ -445,6 +452,36 @@ fn emit_theme_background_event(theme: &WarpTheme) {
 }
 
 pub fn register(app: &mut impl AddSingletonModel) {
-    app.add_singleton_model(|ctx| build_appearance(ctx));
+    app.add_singleton_model(|ctx| {
+        let appearance = build_appearance(ctx);
+        register_system_cjk_fallback(ctx);
+        appearance
+    });
     app.add_singleton_model(AppearanceManager::new);
+}
+
+/// Registers a platform CJK system font as the `Noto Sans SC` fallback family, so
+/// Chinese text keeps rendering when the CDN-hosted fallback fonts cannot be
+/// downloaded (offline use, restricted networks, unauthenticated OSS builds).
+fn register_system_cjk_fallback(ctx: &mut AppContext) {
+    #[cfg(target_os = "windows")]
+    let candidates: &[&str] = &["Microsoft YaHei", "SimSun"];
+    #[cfg(target_os = "macos")]
+    let candidates: &[&str] = &["PingFang SC"];
+    #[cfg(target_os = "linux")]
+    let candidates: &[&str] = &["Noto Sans CJK SC", "WenQuanYi Micro Hei"];
+
+    warpui::fonts::Cache::handle(ctx).update(ctx, |font_cache, _| {
+        if font_cache.is_fallback_family_loaded("Noto Sans SC") {
+            return;
+        }
+        for candidate in candidates {
+            if let Ok(family_id) = font_cache.get_or_load_system_font(candidate) {
+                font_cache.register_system_fallback_family("Noto Sans SC", family_id);
+                log::info!("zh: registered {candidate} as the Noto Sans SC fallback family");
+                return;
+            }
+        }
+        log::warn!("zh: no system CJK font found for fallback");
+    });
 }

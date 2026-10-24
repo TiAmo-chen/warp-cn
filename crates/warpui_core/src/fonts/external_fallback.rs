@@ -127,6 +127,15 @@ impl Cache {
         self.font_fallback_cache.fallback_font_fn = Some(fallback_font_fn);
     }
 
+    /// Registers an already-loaded system font family as the fallback for the given
+    /// external family name (e.g. `"Noto Sans SC"`). Used by the zh-CN build so CJK
+    /// text renders even when the CDN-hosted fallback fonts cannot be downloaded.
+    pub fn register_system_fallback_family(&mut self, name: FontFamilyName, family_id: FamilyId) {
+        self.font_fallback_cache
+            .loaded_fallback_families
+            .insert(name, family_id);
+    }
+
     fn app_fallback_family_for_char(&self, ch: char) -> Option<ExternalFontFamily> {
         self.font_fallback_cache.app_fallback_family_for_char(ch)
     }
@@ -162,7 +171,7 @@ impl Cache {
         result.into_iter()
     }
 
-    pub(crate) fn is_fallback_family_loaded(&self, family: FontFamilyName) -> bool {
+    pub fn is_fallback_family_loaded(&self, family: FontFamilyName) -> bool {
         self.font_fallback_cache
             .loaded_fallback_families
             .contains_key(family)
