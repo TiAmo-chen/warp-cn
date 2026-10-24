@@ -196,12 +196,12 @@ pub fn init(ctx: &mut AppContext) {
             id!("EditorView") & !id!("IMEOpen"),
         ),
         FixedBinding::new(
-            crate::tr!("code", "backspace"),
+            "backspace",
             EditorAction::Backspace,
             id!("EditorView") & !id!("IMEOpen") & !id!("Vim"),
         ),
         FixedBinding::new(
-            crate::tr!("code", "backspace"),
+            "backspace",
             EditorAction::VimBackspace,
             id!("EditorView") & !id!("IMEOpen") & id!("Vim"),
         ),
@@ -224,7 +224,7 @@ pub fn init(ctx: &mut AppContext) {
             id!("EditorView") & !id!("IMEOpen"),
         ),
         FixedBinding::new(
-            crate::tr!("common", "delete-label"),
+            "delete",
             EditorAction::Delete,
             id!("EditorView") & !id!("IMEOpen"),
         ),
@@ -275,7 +275,7 @@ pub fn init(ctx: &mut AppContext) {
             id!("EditorView") & !id!("IMEOpen"),
         ),
         FixedBinding::new(
-            crate::tr!("common", "menu-tab"),
+            "tab",
             EditorAction::Tab,
             id!("EditorView") & !id!("IMEOpen"),
         ),

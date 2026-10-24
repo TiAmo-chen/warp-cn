@@ -95,12 +95,12 @@ pub fn init(app: &mut AppContext) {
     // into surrounding views.
     app.register_fixed_bindings([
         FixedBinding::new(
-            crate::tr!("settings", "appearance-left"),
+            "left",
             AskUserQuestionViewAction::NavigatePrev,
             id!(AskUserQuestionView::ui_name()) & id!(ASK_USER_QUESTION_ACTIVE),
         ),
         FixedBinding::new(
-            crate::tr!("settings", "appearance-right"),
+            "right",
             AskUserQuestionViewAction::NavigateNext,
             id!(AskUserQuestionView::ui_name()) & id!(ASK_USER_QUESTION_ACTIVE),
         ),

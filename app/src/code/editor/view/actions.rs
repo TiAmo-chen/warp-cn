@@ -79,12 +79,12 @@ pub fn init(app: &mut AppContext) {
             text_entry.clone() & id!("Vim"),
         ),
         FixedBinding::new(
-            crate::tr!("code", "backspace"),
+            "backspace",
             CodeEditorViewAction::Backspace,
             text_entry.clone() & !id!("Vim"),
         ),
         FixedBinding::new(
-            crate::tr!("code", "backspace"),
+            "backspace",
             CodeEditorViewAction::VimBackspace,
             text_entry.clone() & id!("Vim"),
         ),
@@ -99,12 +99,12 @@ pub fn init(app: &mut AppContext) {
             text_entry.clone() & id!("Vim"),
         ),
         FixedBinding::new(
-            crate::tr!("common", "delete-label"),
+            "delete",
             CodeEditorViewAction::Delete,
             text_entry.clone() & !id!("Vim"),
         ),
         FixedBinding::new(
-            crate::tr!("common", "delete-label"),
+            "delete",
             CodeEditorViewAction::VimDelete,
             text_entry.clone() & id!("Vim"),
         ),

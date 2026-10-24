@@ -120,7 +120,7 @@ pub fn init(app: &mut AppContext) {
             id!("RichTextEditorView") & !id!("IMEOpen") & !id!("BlockInsertionMenu"),
         ),
         FixedBinding::new(
-            crate::tr!("code", "backspace"),
+            "backspace",
             EditorViewAction::Backspace,
             id!("RichTextEditorView") & !id!("IMEOpen"),
         ),
@@ -129,7 +129,7 @@ pub fn init(app: &mut AppContext) {
             EditorViewAction::Backspace,
             id!("RichTextEditorView") & !id!("IMEOpen"),
         ),
-        FixedBinding::new(crate::tr!("common", "delete-label"), EditorViewAction::Delete, text_entry.clone()),
+        FixedBinding::new("delete", EditorViewAction::Delete, text_entry.clone()),
         FixedBinding::new(
             "shift-up",
             EditorViewAction::SelectUp,

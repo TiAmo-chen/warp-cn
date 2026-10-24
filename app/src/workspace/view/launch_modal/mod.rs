@@ -44,12 +44,12 @@ pub fn init<S: Slide>(app: &mut AppContext) {
             id!("LaunchModal"),
         ),
         FixedBinding::new(
-            crate::tr!("settings", "appearance-left"),
+            "left",
             LaunchModalAction::<S>::PrevSlide,
             id!("LaunchModal"),
         ),
         FixedBinding::new(
-            crate::tr!("settings", "appearance-right"),
+            "right",
             LaunchModalAction::<S>::NextSlide,
             id!("LaunchModal"),
         ),
