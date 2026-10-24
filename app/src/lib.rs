@@ -37,7 +37,6 @@ mod dynamic_libraries;
 mod env_vars;
 mod experiments;
 mod external_secrets;
-#[cfg(target_family = "wasm")]
 mod font_fallback;
 mod global_resource_handles;
 mod gpu_state;
