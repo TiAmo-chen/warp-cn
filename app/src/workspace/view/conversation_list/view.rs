@@ -797,10 +797,14 @@ fn render_zero_state(
         .with_cross_axis_alignment(CrossAxisAlignment::Center)
         .with_spacing(4.)
         .with_child(
-            Text::new(crate::tr!("workspace", "no-conversations-yet"), appearance.ui_font_family(), 14.)
-                .with_color(theme.sub_text_color(theme.background()).into_solid())
-                .with_style(Properties::default().weight(Weight::Semibold))
-                .finish(),
+            Text::new(
+                crate::tr!("workspace", "no-conversations-yet"),
+                appearance.ui_font_family(),
+                14.,
+            )
+            .with_color(theme.sub_text_color(theme.background()).into_solid())
+            .with_style(Properties::default().weight(Weight::Semibold))
+            .finish(),
         )
         .with_child(
             ConstrainedBox::new(
@@ -820,9 +824,13 @@ fn render_zero_state(
 
     let new_conversation_button =
         Hoverable::new(zero_state_button_mouse_state, move |mouse_state| {
-            let label = Text::new_inline(crate::tr!("ai_assistant", "ai-chat-new-conversation"), appearance.ui_font_family(), 12.)
-                .with_color(theme.main_text_color(theme.background()).into_solid())
-                .finish();
+            let label = Text::new_inline(
+                crate::tr!("ai_assistant", "ai-chat-new-conversation"),
+                appearance.ui_font_family(),
+                12.,
+            )
+            .with_color(theme.main_text_color(theme.background()).into_solid())
+            .finish();
 
             let button_content = Flex::row()
                 .with_cross_axis_alignment(CrossAxisAlignment::Center)
@@ -1049,8 +1057,10 @@ impl TypedActionView for ConversationListView {
                         })
                         .with_disabled(!entry.capabilities.can_delete);
                     if !entry.capabilities.can_delete {
-                        delete_item =
-                            delete_item.with_tooltip(crate::tr!("workspace", "cannot-delete-conversation-tooltip"));
+                        delete_item = delete_item.with_tooltip(crate::tr!(
+                            "workspace",
+                            "cannot-delete-conversation-tooltip"
+                        ));
                     }
 
                     // Only show share item if the conversation is shareable

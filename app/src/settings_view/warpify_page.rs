@@ -111,7 +111,10 @@ impl WarpifyPageView {
         let add_added_commands_editor = ctx.add_typed_action_view(|ctx| {
             let mut input =
                 SubmittableTextInput::new(ctx).validate_on_edit(|regex| Regex::new(regex).is_ok());
-            input.set_placeholder_text(crate::tr!("settings", "cli-agent-footer-command-placeholder"), ctx);
+            input.set_placeholder_text(
+                crate::tr!("settings", "cli-agent-footer-command-placeholder"),
+                ctx,
+            );
             input
         });
 
@@ -122,7 +125,10 @@ impl WarpifyPageView {
 
         let add_denylisted_commands_editor = ctx.add_typed_action_view(|ctx| {
             let mut input = SubmittableTextInput::new(ctx);
-            input.set_placeholder_text(crate::tr!("settings", "cli-agent-footer-command-placeholder"), ctx);
+            input.set_placeholder_text(
+                crate::tr!("settings", "cli-agent-footer-command-placeholder"),
+                ctx,
+            );
             input
         });
 
@@ -421,7 +427,8 @@ impl TypedActionView for WarpifyPageView {
                     );
                     send_telemetry_from_ctx!(
                         TelemetryEvent::FeaturesPageAction {
-                            action: crate::tr!("settings", "togglesshreusecontrolmaster").to_string(),
+                            action: crate::tr!("settings", "togglesshreusecontrolmaster")
+                                .to_string(),
                             value: ssh_settings
                                 .reuse_existing_control_master
                                 .value()
@@ -514,7 +521,11 @@ impl TitleWidget {
         .finish();
 
         Flex::column()
-            .with_child(render_page_title(&crate::tr!("settings", "warpify"), HEADER_FONT_SIZE, appearance))
+            .with_child(render_page_title(
+                &crate::tr!("settings", "warpify"),
+                HEADER_FONT_SIZE,
+                appearance,
+            ))
             .with_child(warpify_description)
             .finish()
     }

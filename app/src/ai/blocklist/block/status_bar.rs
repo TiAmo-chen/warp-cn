@@ -955,7 +955,10 @@ impl BlocklistAIStatusBar {
                 error_color,
                 vec![
                     FormattedTextFragment::plain_text(format!("{error_message} ")),
-                    FormattedTextFragment::hyperlink(crate::tr!("ai_assistant", "ai-authenticate-github"), auth_url.to_owned()),
+                    FormattedTextFragment::hyperlink(
+                        crate::tr!("ai_assistant", "ai-authenticate-github"),
+                        auth_url.to_owned(),
+                    ),
                 ],
                 app,
             ));
@@ -967,9 +970,10 @@ impl BlocklistAIStatusBar {
                 CoreIcon::StopFilled,
                 color,
                 color,
-                vec![FormattedTextFragment::plain_text(
-                    crate::tr!("ai_assistant", "ai-cloud-agent-cancelled"),
-                )],
+                vec![FormattedTextFragment::plain_text(crate::tr!(
+                    "ai_assistant",
+                    "ai-cloud-agent-cancelled"
+                ))],
                 app,
             ));
         }
@@ -1047,7 +1051,10 @@ fn render_agent_tip(tip: &AgentTip, app: &AppContext) -> Box<dyn Element> {
         _ => {
             if let Some(link_target) = tip.link.clone() {
                 fragments.push(FormattedTextFragment::plain_text(" "));
-                fragments.push(FormattedTextFragment::hyperlink(crate::tr!("common", "learn-more-label"), link_target));
+                fragments.push(FormattedTextFragment::hyperlink(
+                    crate::tr!("common", "learn-more-label"),
+                    link_target,
+                ));
             }
         }
     }

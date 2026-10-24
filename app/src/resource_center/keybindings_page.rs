@@ -346,7 +346,11 @@ impl KeybindingsView {
                         .build()
                         .finish(),
                 )
-                .with_child(self.render_text(crate::tr!("common", "to-toggle-this-panel").into(), None, appearance))
+                .with_child(self.render_text(
+                    crate::tr!("common", "to-toggle-this-panel").into(),
+                    None,
+                    appearance,
+                ))
                 .with_cross_axis_alignment(CrossAxisAlignment::Center)
                 .finish();
 

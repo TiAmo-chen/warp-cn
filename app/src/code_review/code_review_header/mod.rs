@@ -433,7 +433,9 @@ impl CodeReviewHeader {
             }))
             .with_tooltip(move || {
                 ui_builder
-                    .tool_tip(crate::tr!("code_editor", "code-review-add-diff-set-context").to_owned())
+                    .tool_tip(
+                        crate::tr!("code_editor", "code-review-add-diff-set-context").to_owned(),
+                    )
                     .build()
                     .finish()
             })

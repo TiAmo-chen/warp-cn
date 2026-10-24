@@ -433,7 +433,9 @@ fn screenshot_lightbox_image_from_download_result(
             log::warn!("Failed to load screenshot artifact {index}: {e}");
             Some(LightboxImage {
                 source: LightboxImageSource::Loading,
-                description: Some(crate::tr!("ai_assistant", "ai-artifact-failed-load").to_string()),
+                description: Some(
+                    crate::tr!("ai_assistant", "ai-artifact-failed-load").to_string(),
+                ),
             })
         }
     }
@@ -459,7 +461,9 @@ pub fn download_file_artifact<V: warpui::View>(
                 log::warn!("Failed to load file artifact {artifact_uid}: {error}");
                 show_file_download_toast(
                     &artifact_uid,
-                    DismissibleToast::error(crate::tr!("ai_assistant", "ai-failed-prepare-file-download").to_string()),
+                    DismissibleToast::error(
+                        crate::tr!("ai_assistant", "ai-failed-prepare-file-download").to_string(),
+                    ),
                     ctx,
                 );
             }

@@ -71,12 +71,15 @@ pub struct CodexModal {
 impl CodexModal {
     pub fn new(ctx: &mut ViewContext<Self>) -> Self {
         let cta_button = ctx.add_view(|_| {
-            ActionButton::new(crate::tr!("workspace", "use-latest-codex-model"), WhiteButtonTheme)
-                .with_icon(Icon::OpenAILogo)
-                .with_full_width(true)
-                .on_click(|ctx| {
-                    ctx.dispatch_typed_action(CodexModalAction::UseCodex);
-                })
+            ActionButton::new(
+                crate::tr!("workspace", "use-latest-codex-model"),
+                WhiteButtonTheme,
+            )
+            .with_icon(Icon::OpenAILogo)
+            .with_full_width(true)
+            .on_click(|ctx| {
+                ctx.dispatch_typed_action(CodexModalAction::UseCodex);
+            })
         });
 
         CodexModal {
@@ -90,9 +93,13 @@ impl CodexModal {
         // Magenta/pink color for the badge
         let magenta: ColorU = theme.terminal_colors().normal.magenta.into();
         Container::new(
-            Text::new(crate::tr!("common", "new-label"), appearance.ui_font_family(), 12.)
-                .with_color(magenta)
-                .finish(),
+            Text::new(
+                crate::tr!("common", "new-label"),
+                appearance.ui_font_family(),
+                12.,
+            )
+            .with_color(magenta)
+            .finish(),
         )
         .with_vertical_padding(4.)
         .with_horizontal_padding(10.)

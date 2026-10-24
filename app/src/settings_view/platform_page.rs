@@ -195,34 +195,38 @@ impl PlatformPageView {
         });
 
         let create_api_key_modal_view = ctx.add_typed_action_view(|ctx| {
-            Modal::new(Some(crate::tr!("settings", "new-api-key").to_string()), create_api_key_body, ctx)
-                .with_modal_style(UiComponentStyles {
-                    width: Some(MODAL_WIDTH),
-                    height: Some(MODAL_HEIGHT),
-                    ..Default::default()
-                })
-                .with_header_style(UiComponentStyles {
-                    padding: Some(Coords {
-                        top: 24.,
-                        bottom: 0.,
-                        left: 24.,
-                        right: 24.,
-                    }),
-                    font_size: Some(16.),
-                    font_weight: Some(warpui::fonts::Weight::Bold),
-                    ..Default::default()
-                })
-                .with_body_style(UiComponentStyles {
-                    padding: Some(Coords {
-                        top: 0.,
-                        bottom: 24.,
-                        left: 24.,
-                        right: 24.,
-                    }),
-                    ..Default::default()
-                })
-                .with_background_opacity(100)
-                .with_dismiss_on_click()
+            Modal::new(
+                Some(crate::tr!("settings", "new-api-key").to_string()),
+                create_api_key_body,
+                ctx,
+            )
+            .with_modal_style(UiComponentStyles {
+                width: Some(MODAL_WIDTH),
+                height: Some(MODAL_HEIGHT),
+                ..Default::default()
+            })
+            .with_header_style(UiComponentStyles {
+                padding: Some(Coords {
+                    top: 24.,
+                    bottom: 0.,
+                    left: 24.,
+                    right: 24.,
+                }),
+                font_size: Some(16.),
+                font_weight: Some(warpui::fonts::Weight::Bold),
+                ..Default::default()
+            })
+            .with_body_style(UiComponentStyles {
+                padding: Some(Coords {
+                    top: 0.,
+                    bottom: 24.,
+                    left: 24.,
+                    right: 24.,
+                }),
+                ..Default::default()
+            })
+            .with_background_opacity(100)
+            .with_dismiss_on_click()
         });
         ctx.subscribe_to_view(&create_api_key_modal_view, |me, _, event, ctx| {
             me.handle_modal_event(event, ctx);
@@ -274,8 +278,10 @@ impl PlatformPageView {
                 self.hide_create_api_key_modal(ctx);
             }
             CreateApiKeyModalEvent::Created { api_key } => {
-                self.create_api_key_modal_state
-                    .set_title(Some(crate::tr!("settings", "save-your-key").to_string()), ctx);
+                self.create_api_key_modal_state.set_title(
+                    Some(crate::tr!("settings", "save-your-key").to_string()),
+                    ctx,
+                );
                 let ui_key = APIKeyProperties::from(api_key);
                 self.ensure_expire_button_for_key(ctx, ui_key.uid.clone());
                 self.api_keys.push(ui_key);
@@ -458,7 +464,10 @@ impl ApiKeyTableColumnWidths {
     fn width(state_handle: &ResizableStateHandle) -> f32 {
         state_handle
             .lock()
-            .expect(&crate::tr!("settings", "api-key-table-column-width-handle-should-lock"))
+            .expect(&crate::tr!(
+                "settings",
+                "api-key-table-column-width-handle-should-lock"
+            ))
             .size()
     }
 
@@ -501,7 +510,10 @@ impl PlatformPageWidget {
             FormattedTextFragment::plain_text(
                 "Create and manage API keys to allow cloud agents to access your Warp account.\nFor more information, visit the ",
             ),
-            FormattedTextFragment::hyperlink(crate::tr!("settings", "documentation"), API_KEY_DOCS_URL),
+            FormattedTextFragment::hyperlink(
+                crate::tr!("settings", "documentation"),
+                API_KEY_DOCS_URL,
+            ),
         ];
 
         let text_element = FormattedTextElement::new(
@@ -535,11 +547,15 @@ impl PlatformPageWidget {
             Flex::row()
                 .with_cross_axis_alignment(CrossAxisAlignment::Center)
                 .with_child(
-                    Text::new_inline(crate::tr!("settings", "api-keys"), appearance.ui_font_family(), 16.)
-                        .with_style(Properties::default().weight(Weight::Bold))
-                        .with_color(appearance.theme().active_ui_text_color().into())
-                        .with_clip(ClipConfig::end())
-                        .finish(),
+                    Text::new_inline(
+                        crate::tr!("settings", "api-keys"),
+                        appearance.ui_font_family(),
+                        16.,
+                    )
+                    .with_style(Properties::default().weight(Weight::Bold))
+                    .with_color(appearance.theme().active_ui_text_color().into())
+                    .with_clip(ClipConfig::end())
+                    .finish(),
                 )
                 .with_child(Shrinkable::new(1.0, Empty::new().finish()).finish())
                 .with_child(
@@ -627,16 +643,28 @@ impl PlatformPageWidget {
         );
         if show_scope_column {
             header_row.add_child(
-                Expanded::new(1., self.render_header_cell(appearance, &crate::tr!("settings", "scope"))).finish(),
+                Expanded::new(
+                    1.,
+                    self.render_header_cell(appearance, &crate::tr!("settings", "scope")),
+                )
+                .finish(),
             );
         }
         header_row
             .add_child(Expanded::new(1., self.render_header_cell(appearance, "Created")).finish());
         header_row.add_child(
-            Expanded::new(1., self.render_header_cell(appearance, &crate::tr!("settings", "last-used"))).finish(),
+            Expanded::new(
+                1.,
+                self.render_header_cell(appearance, &crate::tr!("settings", "last-used")),
+            )
+            .finish(),
         );
         header_row.add_child(
-            Expanded::new(1., self.render_header_cell(appearance, &crate::tr!("settings", "expires-at"))).finish(),
+            Expanded::new(
+                1.,
+                self.render_header_cell(appearance, &crate::tr!("settings", "expires-at")),
+            )
+            .finish(),
         );
         header_row.add_child(Expanded::new(0.5, self.render_header_cell(appearance, "")).finish());
 
@@ -658,7 +686,10 @@ impl PlatformPageWidget {
     ) -> Box<dyn Element> {
         let width = width_handle
             .lock()
-            .expect(&crate::tr!("settings", "api-key-header-width-handle-should-lock"))
+            .expect(&crate::tr!(
+                "settings",
+                "api-key-header-width-handle-should-lock"
+            ))
             .size();
         let header_cell = ConstrainedBox::new(
             Flex::row()
@@ -882,7 +913,10 @@ impl PlatformPageWidget {
                     .with_child(
                         Container::new(
                             Text::new(
-                                crate::tr!("settings", "create-a-key-to-manage-external-access-to-warp"),
+                                crate::tr!(
+                                    "settings",
+                                    "create-a-key-to-manage-external-access-to-warp"
+                                ),
                                 appearance.ui_font_family(),
                                 CONTENT_FONT_SIZE,
                             )

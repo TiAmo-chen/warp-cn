@@ -60,7 +60,8 @@ pub struct GetStartedView {
 
 impl GetStartedView {
     pub fn new(ctx: &mut ViewContext<Self>) -> Self {
-        let pane_configuration = ctx.add_model(|_ctx| PaneConfiguration::new(crate::tr!("ai_assistant", "ai-get-started")));
+        let pane_configuration = ctx
+            .add_model(|_ctx| PaneConfiguration::new(crate::tr!("ai_assistant", "ai-get-started")));
         let project_buttons = ctx.add_typed_action_view(ProjectButtons::new);
         ctx.subscribe_to_view(&project_buttons, Self::handle_project_buttons_event);
 

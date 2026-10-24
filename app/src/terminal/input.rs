@@ -2186,8 +2186,10 @@ pub fn init(app: &mut AppContext) {
 
     app.register_editable_bindings([EditableBinding::new(
         "workspace:edit_prompt",
-        BindingDescription::new(crate::tr!("terminal", "edit-prompt"))
-            .with_custom_description(bindings::MAC_MENUS_CONTEXT, crate::tr!("terminal", "edit-prompt")),
+        BindingDescription::new(crate::tr!("terminal", "edit-prompt")).with_custom_description(
+            bindings::MAC_MENUS_CONTEXT,
+            crate::tr!("terminal", "edit-prompt"),
+        ),
         WorkspaceAction::OpenPromptEditor {
             open_source: PromptEditorOpenSource::CommandPalette,
         },
@@ -6361,8 +6363,10 @@ impl Input {
         else {
             let window_id = ctx.window_id();
             ToastStack::handle(ctx).update(ctx, |toast_stack, ctx| {
-                let toast =
-                    DismissibleToast::default(String::from(crate::tr!("slash_commands", "slash-command-no-conversation-export")));
+                let toast = DismissibleToast::default(String::from(crate::tr!(
+                    "slash_commands",
+                    "slash-command-no-conversation-export"
+                )));
                 toast_stack.add_ephemeral_toast(toast, window_id, ctx);
             });
             return;
@@ -16935,7 +16939,7 @@ impl TypedActionView for Input {
                     ToastStack::handle(ctx).update(ctx, |toast_stack, ctx| {
                         toast_stack.add_ephemeral_toast(
                             DismissibleToast::error(
-                                crate::tr!("search", "toast-cannot-start-conv").to_string()
+                                crate::tr!("search", "toast-cannot-start-conv").to_string(),
                             ),
                             window_id,
                             ctx,

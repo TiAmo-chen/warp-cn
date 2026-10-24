@@ -51,9 +51,11 @@ impl DeleteAuthSecretConfirmationDialog {
         });
 
         let delete_button = ctx.add_typed_action_view(|_| {
-            ActionButton::new(crate::tr!("common", "delete-label"), DangerPrimaryTheme).on_click(|ctx| {
-                ctx.dispatch_typed_action(DeleteAuthSecretConfirmationDialogAction::Confirm);
-            })
+            ActionButton::new(crate::tr!("common", "delete-label"), DangerPrimaryTheme).on_click(
+                |ctx| {
+                    ctx.dispatch_typed_action(DeleteAuthSecretConfirmationDialogAction::Confirm);
+                },
+            )
         });
 
         Self {

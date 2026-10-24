@@ -473,40 +473,49 @@ impl AgentInputFooter {
 
         let cli_button_size = ButtonSize::AgentInputButton;
         let file_explorer_button = ctx.add_typed_action_view(|ctx| {
-            ActionButton::new(crate::tr!("ai_assistant", "ai-file-explorer-label"), AgentInputButtonTheme)
-                .with_icon(Icon::FileCopy)
-                .with_tooltip(crate::tr!("ai_assistant", "ai-file-explorer-tooltip"))
-                .with_size(cli_button_size)
-                .with_tooltip_alignment(TooltipAlignment::Left)
-                .with_keybinding(
-                    KeystrokeSource::Binding(TOGGLE_PROJECT_EXPLORER_BINDING_NAME),
-                    ctx,
-                )
-                .with_compact_keybinding(true)
-                .on_click(|ctx| {
-                    ctx.dispatch_typed_action(AgentInputFooterAction::ToggleFileExplorer);
-                })
+            ActionButton::new(
+                crate::tr!("ai_assistant", "ai-file-explorer-label"),
+                AgentInputButtonTheme,
+            )
+            .with_icon(Icon::FileCopy)
+            .with_tooltip(crate::tr!("ai_assistant", "ai-file-explorer-tooltip"))
+            .with_size(cli_button_size)
+            .with_tooltip_alignment(TooltipAlignment::Left)
+            .with_keybinding(
+                KeystrokeSource::Binding(TOGGLE_PROJECT_EXPLORER_BINDING_NAME),
+                ctx,
+            )
+            .with_compact_keybinding(true)
+            .on_click(|ctx| {
+                ctx.dispatch_typed_action(AgentInputFooterAction::ToggleFileExplorer);
+            })
         });
         // CLI agent-specific buttons (only rendered when a CLI agent session is active).
         let rich_input_button = ctx.add_typed_action_view(|ctx| {
-            ActionButton::new(crate::tr!("ai_assistant", "ai-rich-input-label"), AgentInputButtonTheme)
-                .with_icon(Icon::TextInput)
-                .with_tooltip(crate::tr!("ai_assistant", "ai-rich-input-tooltip"))
-                .with_size(cli_button_size)
-                .with_tooltip_alignment(TooltipAlignment::Left)
-                .with_keybinding(
-                    KeystrokeSource::Binding(OPEN_CLI_AGENT_RICH_INPUT_KEYBINDING),
-                    ctx,
-                )
-                .with_compact_keybinding(true)
-                .on_click(|ctx| {
-                    ctx.dispatch_typed_action(AgentInputFooterAction::ToggleRichInput);
-                })
+            ActionButton::new(
+                crate::tr!("ai_assistant", "ai-rich-input-label"),
+                AgentInputButtonTheme,
+            )
+            .with_icon(Icon::TextInput)
+            .with_tooltip(crate::tr!("ai_assistant", "ai-rich-input-tooltip"))
+            .with_size(cli_button_size)
+            .with_tooltip_alignment(TooltipAlignment::Left)
+            .with_keybinding(
+                KeystrokeSource::Binding(OPEN_CLI_AGENT_RICH_INPUT_KEYBINDING),
+                ctx,
+            )
+            .with_compact_keybinding(true)
+            .on_click(|ctx| {
+                ctx.dispatch_typed_action(AgentInputFooterAction::ToggleRichInput);
+            })
         });
         let settings_button = ctx.add_typed_action_view(|_ctx| {
             ActionButton::new("", AgentInputButtonTheme)
                 .with_icon(Icon::Settings)
-                .with_tooltip(crate::tr!("ai_assistant", "ai-open-coding-agent-settings-tooltip"))
+                .with_tooltip(crate::tr!(
+                    "ai_assistant",
+                    "ai-open-coding-agent-settings-tooltip"
+                ))
                 .with_size(cli_button_size)
                 .with_tooltip_alignment(TooltipAlignment::Left)
                 .on_click(|ctx| {
@@ -515,57 +524,71 @@ impl AgentInputFooter {
         });
 
         let install_plugin_button = ctx.add_typed_action_view(|_ctx| {
-            ActionButton::new(crate::tr!("ai_assistant", "ai-enable-notifications-label"), InstallPluginButtonTheme)
-                .with_icon(Icon::Download)
-                .with_tooltip(
-                    crate::tr!("ai_assistant", "ai-install-plugin-tooltip"),
-                )
-                .with_size(cli_button_size)
-                .with_tooltip_alignment(TooltipAlignment::Left)
-                .with_adjoined_side(AdjoinedSide::Right)
-                .on_click(|ctx| {
-                    ctx.dispatch_typed_action(AgentInputFooterAction::InstallPlugin);
-                })
+            ActionButton::new(
+                crate::tr!("ai_assistant", "ai-enable-notifications-label"),
+                InstallPluginButtonTheme,
+            )
+            .with_icon(Icon::Download)
+            .with_tooltip(crate::tr!("ai_assistant", "ai-install-plugin-tooltip"))
+            .with_size(cli_button_size)
+            .with_tooltip_alignment(TooltipAlignment::Left)
+            .with_adjoined_side(AdjoinedSide::Right)
+            .on_click(|ctx| {
+                ctx.dispatch_typed_action(AgentInputFooterAction::InstallPlugin);
+            })
         });
 
         let plugin_instructions_button = ctx.add_typed_action_view(|_ctx| {
-            ActionButton::new(crate::tr!("ai_assistant", "ai-notifications-setup-instructions-label"), InstallPluginButtonTheme)
-                .with_icon(Icon::Info)
-                .with_tooltip(crate::tr!("ai_assistant", "ai-notifications-setup-instructions-tooltip"))
-                .with_size(cli_button_size)
-                .with_tooltip_alignment(TooltipAlignment::Left)
-                .with_adjoined_side(AdjoinedSide::Right)
-                .on_click(|ctx| {
-                    ctx.dispatch_typed_action(
-                        AgentInputFooterAction::OpenPluginInstallInstructionsPane,
-                    );
-                })
+            ActionButton::new(
+                crate::tr!("ai_assistant", "ai-notifications-setup-instructions-label"),
+                InstallPluginButtonTheme,
+            )
+            .with_icon(Icon::Info)
+            .with_tooltip(crate::tr!(
+                "ai_assistant",
+                "ai-notifications-setup-instructions-tooltip"
+            ))
+            .with_size(cli_button_size)
+            .with_tooltip_alignment(TooltipAlignment::Left)
+            .with_adjoined_side(AdjoinedSide::Right)
+            .on_click(|ctx| {
+                ctx.dispatch_typed_action(
+                    AgentInputFooterAction::OpenPluginInstallInstructionsPane,
+                );
+            })
         });
 
         let update_plugin_button = ctx.add_typed_action_view(|_ctx| {
-            ActionButton::new(crate::tr!("ai_assistant", "ai-update-warp-plugin-label"), InstallPluginButtonTheme)
-                .with_icon(Icon::Download)
-                .with_tooltip(crate::tr!("ai_assistant", "ai-update-plugin-tooltip"))
-                .with_size(cli_button_size)
-                .with_tooltip_alignment(TooltipAlignment::Left)
-                .with_adjoined_side(AdjoinedSide::Right)
-                .on_click(|ctx| {
-                    ctx.dispatch_typed_action(AgentInputFooterAction::UpdatePlugin);
-                })
+            ActionButton::new(
+                crate::tr!("ai_assistant", "ai-update-warp-plugin-label"),
+                InstallPluginButtonTheme,
+            )
+            .with_icon(Icon::Download)
+            .with_tooltip(crate::tr!("ai_assistant", "ai-update-plugin-tooltip"))
+            .with_size(cli_button_size)
+            .with_tooltip_alignment(TooltipAlignment::Left)
+            .with_adjoined_side(AdjoinedSide::Right)
+            .on_click(|ctx| {
+                ctx.dispatch_typed_action(AgentInputFooterAction::UpdatePlugin);
+            })
         });
 
         let update_instructions_button = ctx.add_typed_action_view(|_ctx| {
-            ActionButton::new(crate::tr!("ai_assistant", "ai-plugin-update-instructions-label"), InstallPluginButtonTheme)
-                .with_icon(Icon::Info)
-                .with_tooltip(crate::tr!("ai_assistant", "ai-plugin-update-instructions-tooltip"))
-                .with_size(cli_button_size)
-                .with_tooltip_alignment(TooltipAlignment::Left)
-                .with_adjoined_side(AdjoinedSide::Right)
-                .on_click(|ctx| {
-                    ctx.dispatch_typed_action(
-                        AgentInputFooterAction::OpenPluginUpdateInstructionsPane,
-                    );
-                })
+            ActionButton::new(
+                crate::tr!("ai_assistant", "ai-plugin-update-instructions-label"),
+                InstallPluginButtonTheme,
+            )
+            .with_icon(Icon::Info)
+            .with_tooltip(crate::tr!(
+                "ai_assistant",
+                "ai-plugin-update-instructions-tooltip"
+            ))
+            .with_size(cli_button_size)
+            .with_tooltip_alignment(TooltipAlignment::Left)
+            .with_adjoined_side(AdjoinedSide::Right)
+            .on_click(|ctx| {
+                ctx.dispatch_typed_action(AgentInputFooterAction::OpenPluginUpdateInstructionsPane);
+            })
         });
 
         let dismiss_plugin_chip_button = ctx.add_typed_action_view(|_ctx| {
@@ -645,8 +668,12 @@ impl AgentInputFooter {
                 let is_open = matches!(new_input_state, CLIAgentInputState::Open { .. });
                 me.rich_input_button.update(ctx, |button, ctx| {
                     if is_open {
-                        button.set_label(crate::tr!("ai_assistant", "ai-hide-rich-input-label"), ctx);
-                        button.set_tooltip(Some(crate::tr!("ai_assistant", "ai-hide-rich-input-label")), ctx);
+                        button
+                            .set_label(crate::tr!("ai_assistant", "ai-hide-rich-input-label"), ctx);
+                        button.set_tooltip(
+                            Some(crate::tr!("ai_assistant", "ai-hide-rich-input-label")),
+                            ctx,
+                        );
                         button.set_keybinding(
                             Some(KeystrokeSource::Binding(
                                 OPEN_CLI_AGENT_RICH_INPUT_KEYBINDING,
@@ -655,7 +682,10 @@ impl AgentInputFooter {
                         );
                     } else {
                         button.set_label(crate::tr!("ai_assistant", "ai-rich-input-label"), ctx);
-                        button.set_tooltip(Some(crate::tr!("ai_assistant", "ai-rich-input-tooltip")), ctx);
+                        button.set_tooltip(
+                            Some(crate::tr!("ai_assistant", "ai-rich-input-tooltip")),
+                            ctx,
+                        );
                         button.set_keybinding(
                             Some(KeystrokeSource::Binding(
                                 OPEN_CLI_AGENT_RICH_INPUT_KEYBINDING,
@@ -680,21 +710,27 @@ impl AgentInputFooter {
         });
 
         let stop_remote_control_button = ctx.add_typed_action_view(|_ctx| {
-            ActionButton::new(crate::tr!("ai_assistant", "ai-stop-sharing-label"), RemoteControlButtonTheme)
-                .with_icon(Icon::StopFilled)
-                .with_icon_ansi_color(AnsiColorIdentifier::Red)
-                .with_tooltip(crate::tr!("ai_assistant", "ai-stop-sharing-label"))
-                .with_size(cli_button_size)
-                .with_tooltip_alignment(TooltipAlignment::Left)
-                .on_click(|ctx| {
-                    ctx.dispatch_typed_action(AgentInputFooterAction::StopRemoteControl);
-                })
+            ActionButton::new(
+                crate::tr!("ai_assistant", "ai-stop-sharing-label"),
+                RemoteControlButtonTheme,
+            )
+            .with_icon(Icon::StopFilled)
+            .with_icon_ansi_color(AnsiColorIdentifier::Red)
+            .with_tooltip(crate::tr!("ai_assistant", "ai-stop-sharing-label"))
+            .with_size(cli_button_size)
+            .with_tooltip_alignment(TooltipAlignment::Left)
+            .on_click(|ctx| {
+                ctx.dispatch_typed_action(AgentInputFooterAction::StopRemoteControl);
+            })
         });
 
         let context_window_button = ctx.add_typed_action_view(|_ctx| {
             ActionButton::new("", AgentInputButtonTheme)
                 .with_icon(Icon::ContextRemaining100)
-                .with_tooltip(crate::tr!("ai_assistant", "ai-context-window-usage-tooltip"))
+                .with_tooltip(crate::tr!(
+                    "ai_assistant",
+                    "ai-context-window-usage-tooltip"
+                ))
                 .with_size(button_size)
                 .with_tooltip_alignment(TooltipAlignment::Left)
         });
@@ -2106,9 +2142,10 @@ impl AgentInputFooter {
     fn show_cli_microphone_access_toast(&self, ctx: &mut ViewContext<Self>) {
         let window_id = ctx.window_id();
         ToastStack::handle(ctx).update(ctx, |toast_stack, ctx| {
-            let toast = DismissibleToast::error(String::from(
-                crate::tr!("ai_assistant", "ai-voice-microphone-access"),
-            ));
+            let toast = DismissibleToast::error(String::from(crate::tr!(
+                "ai_assistant",
+                "ai-voice-microphone-access"
+            )));
             toast_stack.add_ephemeral_toast(toast, window_id, ctx);
         });
     }

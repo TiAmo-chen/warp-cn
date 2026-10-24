@@ -957,16 +957,18 @@ impl CodeView {
 
     fn display_load_failure(window_id: WindowId, ctx: &mut ViewContext<Self>) {
         ToastStack::handle(ctx).update(ctx, |toast_stack, ctx| {
-            let toast = DismissibleToast::error(String::from(crate::tr!("code", "failed-to-load-file")))
-                .with_object_id("failed_to_load_file".to_string());
+            let toast =
+                DismissibleToast::error(String::from(crate::tr!("code", "failed-to-load-file")))
+                    .with_object_id("failed_to_load_file".to_string());
             toast_stack.add_ephemeral_toast(toast, window_id, ctx);
         });
     }
 
     fn display_save_failure(window_id: WindowId, ctx: &mut ViewContext<Self>) {
         ToastStack::handle(ctx).update(ctx, |toast_stack, ctx| {
-            let toast = DismissibleToast::error(String::from(crate::tr!("code", "failed-to-save-file")))
-                .with_object_id("failed_to_save_file".to_string());
+            let toast =
+                DismissibleToast::error(String::from(crate::tr!("code", "failed-to-save-file")))
+                    .with_object_id("failed_to_save_file".to_string());
             toast_stack.add_ephemeral_toast(toast, window_id, ctx);
         });
     }
@@ -982,8 +984,9 @@ impl CodeView {
 
     fn display_save_success(window_id: WindowId, ctx: &mut ViewContext<Self>) {
         ToastStack::handle(ctx).update(ctx, |toast_stack, ctx| {
-            let toast = DismissibleToast::success(String::from(crate::tr!("code", "file-saved-toast")))
-                .with_object_id("file_saved".to_string());
+            let toast =
+                DismissibleToast::success(String::from(crate::tr!("code", "file-saved-toast")))
+                    .with_object_id("file_saved".to_string());
             toast_stack.add_ephemeral_toast(toast, window_id, ctx);
         });
     }

@@ -587,7 +587,10 @@ impl CommandSearchView {
                             current_user_id,
                         )
                     } else {
-                        self.render_error_header_text(crate::tr!("search", "out-of-credits").to_string(), appearance)
+                        self.render_error_header_text(
+                            crate::tr!("search", "out-of-credits").to_string(),
+                            appearance,
+                        )
                     }
                 } else {
                     self.render_error_header_text(message, appearance)

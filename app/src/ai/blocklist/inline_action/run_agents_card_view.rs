@@ -1688,8 +1688,7 @@ pub(crate) fn format_terminal_state(result: &RunAgentsResult) -> (String, Status
         }
         RunAgentsResult::Denied { reason } => {
             let body = if reason.is_empty() {
-                crate::tr!("ai_assistant", "ai-orchestration-disabled-message")
-                    .to_string()
+                crate::tr!("ai_assistant", "ai-orchestration-disabled-message").to_string()
             } else {
                 format!(
                     "Orchestration is currently disabled. Re-enable on the plan card to launch. ({reason})"

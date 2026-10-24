@@ -213,18 +213,21 @@ impl CommentListView {
         });
 
         let send_button = ctx.add_view(|ctx| {
-            ActionButton::new(crate::tr!("code_editor", "code-review-send-to-agent"), PrimaryTheme)
-                .with_size(ButtonSize::Small)
-                .with_keybinding(
-                    KeystrokeSource::Fixed(
-                        Keystroke::parse(crate::code_review::CODE_REVIEW_SUBMIT_KEYSTROKE)
-                            .unwrap_or_default(),
-                    ),
-                    ctx,
-                )
-                .on_click(|ctx| {
-                    ctx.dispatch_typed_action(CommentListAction::Submit);
-                })
+            ActionButton::new(
+                crate::tr!("code_editor", "code-review-send-to-agent"),
+                PrimaryTheme,
+            )
+            .with_size(ButtonSize::Small)
+            .with_keybinding(
+                KeystrokeSource::Fixed(
+                    Keystroke::parse(crate::code_review::CODE_REVIEW_SUBMIT_KEYSTROKE)
+                        .unwrap_or_default(),
+                ),
+                ctx,
+            )
+            .on_click(|ctx| {
+                ctx.dispatch_typed_action(CommentListAction::Submit);
+            })
         });
 
         ctx.subscribe_to_view(&menu, |me, _, event, ctx| match event {

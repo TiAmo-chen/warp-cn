@@ -2372,7 +2372,10 @@ impl CodeDiffView {
 
         let checkbox_text = appearance
             .ui_builder()
-            .span(crate::tr!("ai_assistant", "ai-dont-show-suggested-code-banners"))
+            .span(crate::tr!(
+                "ai_assistant",
+                "ai-dont-show-suggested-code-banners"
+            ))
             .with_style(UiComponentStyles {
                 font_color: Some(font_color),
                 font_size: Some(font_size),

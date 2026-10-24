@@ -274,7 +274,8 @@ impl AgentProfilesPageView {
         let command_execution_allowlist_editor = ctx.add_typed_action_view(|ctx| {
             let mut input =
                 SubmittableTextInput::new(ctx).validate_on_edit(|s| Regex::new(s).is_ok());
-            input.set_placeholder_text(crate::tr!("settings", "ai-exec-allowlist-placeholder"), ctx);
+            input
+                .set_placeholder_text(crate::tr!("settings", "ai-exec-allowlist-placeholder"), ctx);
             input
         });
         update_editor_interaction_state(
@@ -829,7 +830,8 @@ impl AgentProfilesPageView {
         let command_allowlist_editor = ctx.add_typed_action_view(|ctx| {
             let mut input =
                 SubmittableTextInput::new(ctx).validate_on_edit(|s| Regex::new(s).is_ok());
-            input.set_placeholder_text(crate::tr!("settings", "ai-exec-allowlist-placeholder"), ctx);
+            input
+                .set_placeholder_text(crate::tr!("settings", "ai-exec-allowlist-placeholder"), ctx);
             input
         });
         update_editor_interaction_state(
@@ -2193,19 +2195,28 @@ impl SettingsWidget for UsageWidget {
                 let upgrade_url = UserWorkspaces::upgrade_link_for_team(team.uid);
                 if has_admin_permissions {
                     vec![
-                        FormattedTextFragment::hyperlink(crate::tr!("settings", "upgrade"), upgrade_url),
+                        FormattedTextFragment::hyperlink(
+                            crate::tr!("settings", "upgrade"),
+                            upgrade_url,
+                        ),
                         FormattedTextFragment::plain_text(" to get more AI usage."),
                     ]
                 } else {
                     // The /upgrade page says to contact their administrator.
                     vec![
-                        FormattedTextFragment::hyperlink(crate::tr!("settings", "compare-plans"), upgrade_url),
+                        FormattedTextFragment::hyperlink(
+                            crate::tr!("settings", "compare-plans"),
+                            upgrade_url,
+                        ),
                         FormattedTextFragment::plain_text(" for more AI usage."),
                     ]
                 }
             } else {
                 vec![
-                    FormattedTextFragment::hyperlink(crate::tr!("settings", "contact-support"), "mailto:support@warp.dev"),
+                    FormattedTextFragment::hyperlink(
+                        crate::tr!("settings", "contact-support"),
+                        "mailto:support@warp.dev",
+                    ),
                     FormattedTextFragment::plain_text(" for more AI usage."),
                 ]
             }
@@ -2666,7 +2677,10 @@ impl AgentsWidget {
         {
             widget_children.push(
                 Container::new(render_settings_info_banner(
-                    &crate::tr!("settings", "some-of-your-permissions-are-managed-by-your-workspace"),
+                    &crate::tr!(
+                        "settings",
+                        "some-of-your-permissions-are-managed-by-your-workspace"
+                    ),
                     None,
                     appearance,
                 ))
@@ -2818,7 +2832,10 @@ impl AgentsWidget {
         );
         render_ai_list(
             &crate::tr!("settings", "command-denylist"),
-            &crate::tr!("settings", "regular-expressions-to-match-commands-that-the-warp-agent-should-always-ask-permission-to-execute"),
+            &crate::tr!(
+                "settings",
+                "regular-expressions-to-match-commands-that-the-warp-agent-should-always-ask-permission-to-execute"
+            ),
             list,
             view,
             ai_settings,
@@ -2856,7 +2873,10 @@ impl AgentsWidget {
 
         render_ai_list(
             &crate::tr!("settings", "command-allowlist"),
-            &crate::tr!("settings", "regular-expressions-to-match-commands-that-can-be-automatically-executed-by-the-warp-agent"),
+            &crate::tr!(
+                "settings",
+                "regular-expressions-to-match-commands-that-can-be-automatically-executed-by-the-warp-agent"
+            ),
             list,
             view,
             ai_settings,
@@ -2989,9 +3009,10 @@ impl AgentsWidget {
         );
 
         let codebase_context_description = vec![
-            FormattedTextFragment::plain_text(
-                crate::tr!("settings", "allow-the-warp-agent-to-generate-an-outline-of-your-codebase-that-can-be-used-for-context-no-code-is-ever-stored-on-our-servers-"),
-            ),
+            FormattedTextFragment::plain_text(crate::tr!(
+                "settings",
+                "allow-the-warp-agent-to-generate-an-outline-of-your-codebase-that-can-be-used-for-context-no-code-is-ever-stored-on-our-servers-"
+            )),
             FormattedTextFragment::hyperlink(
                 crate::tr!("settings", "learn-more"),
                 "https://docs.warp.dev/agents/capabilities/codebase-context",
@@ -3062,9 +3083,10 @@ impl AgentsWidget {
 
         let subtext = {
             let subtext_fragments = vec![
-                FormattedTextFragment::plain_text(
-                    crate::tr!("settings", "you-havent-added-any-mcp-servers-yet-once-you-do-youll-be-able-to-control-how-much-autonomy-the-warp-agent-has-when-interacting-with-them-"),
-                ),
+                FormattedTextFragment::plain_text(crate::tr!(
+                    "settings",
+                    "you-havent-added-any-mcp-servers-yet-once-you-do-youll-be-able-to-control-how-much-autonomy-the-warp-agent-has-when-interacting-with-them-"
+                )),
                 FormattedTextFragment::hyperlink_action(
                     crate::tr!("settings", "add-a-server"),
                     AgentProfilesPageAction::OpenMCPServerCollection,

@@ -316,7 +316,11 @@ impl MCPServersSettingsPageView {
                 "Ignoring MCP deeplink autoinstall for '{autoinstall_param}': installation modal already open"
             );
             self.add_error_toast(
-                crate::tr!("settings", "finish-the-current-mcp-install-before-opening-another-install-link").to_string(),
+                crate::tr!(
+                    "settings",
+                    "finish-the-current-mcp-install-before-opening-another-install-link"
+                )
+                .to_string(),
                 ctx,
             );
             return;

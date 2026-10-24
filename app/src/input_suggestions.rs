@@ -911,7 +911,10 @@ impl InputSuggestions {
 
                                             let tooltip_element = appearance
                                                 .ui_builder()
-                                                .tool_tip(crate::tr!("editor", "ignore-suggestion").to_string())
+                                                .tool_tip(
+                                                    crate::tr!("editor", "ignore-suggestion")
+                                                        .to_string(),
+                                                )
                                                 .build()
                                                 .finish();
 

@@ -50,9 +50,7 @@ impl TrialCredits {
                 "You have {} of free usage for Oz cloud agents.",
                 format_dollars(cents as f32)
             ),
-            None if self.credits == 1 => {
-                crate::tr!("agent_cloud", "credits-single").to_string()
-            }
+            None if self.credits == 1 => crate::tr!("agent_cloud", "credits-single").to_string(),
             None => format!(
                 "You have {} free credits to use on Oz cloud agents.",
                 self.credits
@@ -194,7 +192,10 @@ impl FirstTimeCloudAgentSetupView {
             FormattedTextFragment::plain_text(
                 "Use Oz cloud agents to run parallel agents, build agents that run autonomously, and check in on your agents from anywhere. ",
             ),
-            FormattedTextFragment::hyperlink(crate::tr!("agent_cloud", "visit-docs"), "https://docs.warp.dev/platform/"),
+            FormattedTextFragment::hyperlink(
+                crate::tr!("agent_cloud", "visit-docs"),
+                "https://docs.warp.dev/platform/",
+            ),
         ];
         column.add_child(
             FormattedTextElement::new(

@@ -76,59 +76,57 @@ impl EnableAutoReloadModalBody {
             },
         );
 
-        ctx.subscribe_to_model(
-            &UserWorkspaces::handle(ctx),
-            |me, _handle, event, ctx| {
-                match event {
-                    UserWorkspacesEvent::TeamsChanged => {
-                        // Pricing labels depend on the current team's purchase
-                        // policy (premium surcharge), so rebuild them when
-                        // teams change.
-                        me.update_addon_credits_options(ctx);
+        ctx.subscribe_to_model(&UserWorkspaces::handle(ctx), |me, _handle, event, ctx| {
+            match event {
+                UserWorkspacesEvent::TeamsChanged => {
+                    // Pricing labels depend on the current team's purchase
+                    // policy (premium surcharge), so rebuild them when
+                    // teams change.
+                    me.update_addon_credits_options(ctx);
+                    ctx.notify();
+                }
+                UserWorkspacesEvent::UpdateWorkspaceSettingsSuccess => {
+                    if me.update_workspace_settings_loading {
+                        me.update_workspace_settings_loading = false;
+
+                        // Emit telemetry for successful auto-reload enablement
+                        let selected_credits = me
+                            .addon_credits_options
+                            .get(me.selected_denomination_index)
+                            .map(|option| option.credits);
+                        send_telemetry_from_ctx!(
+                            TelemetryEvent::AutoReloadModalClosed {
+                                action: AutoReloadModalAction::EnabledAutoReload,
+                                selected_credits,
+                                banner_toggle_flag_enabled:
+                                    FeatureFlag::BuildPlanAutoReloadBannerToggle.is_enabled(),
+                                post_purchase_modal_flag_enabled:
+                                    FeatureFlag::BuildPlanAutoReloadPostPurchaseModal.is_enabled(),
+                            },
+                            ctx
+                        );
+
+                        ctx.emit(EnableAutoReloadModalBodyEvent::ShowToast {
+                            message: crate::tr!("terminal", "auto-reload-settings-updated")
+                                .to_string(),
+                            flavor: ToastFlavor::Success,
+                        });
+                        ctx.emit(EnableAutoReloadModalBodyEvent::Close);
+                    }
+                }
+                UserWorkspacesEvent::UpdateWorkspaceSettingsRejected(_err) => {
+                    if me.update_workspace_settings_loading {
+                        me.update_workspace_settings_loading = false;
+                        ctx.emit(EnableAutoReloadModalBodyEvent::ShowToast {
+                            message: crate::tr!("workspace", "failed-auto-reload").to_string(),
+                            flavor: ToastFlavor::Error,
+                        });
                         ctx.notify();
                     }
-                    UserWorkspacesEvent::UpdateWorkspaceSettingsSuccess => {
-                        if me.update_workspace_settings_loading {
-                            me.update_workspace_settings_loading = false;
-
-                            // Emit telemetry for successful auto-reload enablement
-                            let selected_credits = me
-                                .addon_credits_options
-                                .get(me.selected_denomination_index)
-                                .map(|option| option.credits);
-                            send_telemetry_from_ctx!(
-                                TelemetryEvent::AutoReloadModalClosed {
-                                    action: AutoReloadModalAction::EnabledAutoReload,
-                                    selected_credits,
-                                    banner_toggle_flag_enabled:
-                                        FeatureFlag::BuildPlanAutoReloadBannerToggle.is_enabled(),
-                                    post_purchase_modal_flag_enabled:
-                                        FeatureFlag::BuildPlanAutoReloadPostPurchaseModal.is_enabled(),
-                                },
-                                ctx
-                            );
-
-                            ctx.emit(EnableAutoReloadModalBodyEvent::ShowToast {
-                                message: crate::tr!("terminal", "auto-reload-settings-updated").to_string(),
-                                flavor: ToastFlavor::Success,
-                            });
-                            ctx.emit(EnableAutoReloadModalBodyEvent::Close);
-                        }
-                    }
-                    UserWorkspacesEvent::UpdateWorkspaceSettingsRejected(_err) => {
-                        if me.update_workspace_settings_loading {
-                            me.update_workspace_settings_loading = false;
-                            ctx.emit(EnableAutoReloadModalBodyEvent::ShowToast {
-                                message: crate::tr!("workspace", "failed-auto-reload").to_string(),
-                                flavor: ToastFlavor::Error,
-                            });
-                            ctx.notify();
-                        }
-                    }
-                    _ => {}
                 }
-            },
-        );
+                _ => {}
+            }
+        });
 
         ctx.subscribe_to_model(&AISettings::handle(ctx), |me, _, event, ctx| {
             if matches!(event, AISettingsChangedEvent::UsageDisplayUnit { .. }) {
@@ -435,14 +433,17 @@ impl EnableAutoReloadModal {
         let body = ctx.add_typed_action_view(EnableAutoReloadModalBody::new);
 
         let modal = ctx.add_typed_action_view(|ctx| {
-            Modal::new(Some(crate::tr!("terminal", "enable-auto-reload-title").to_string()), body.clone(), ctx).with_body_style(
-                UiComponentStyles {
-                    // Padding of 0 here since we add a horizontal bar that needs to span the full width in the body
-                    // So we handle padding in the body itself
-                    padding: Some(Coords::uniform(0.)),
-                    ..Default::default()
-                },
+            Modal::new(
+                Some(crate::tr!("terminal", "enable-auto-reload-title").to_string()),
+                body.clone(),
+                ctx,
             )
+            .with_body_style(UiComponentStyles {
+                // Padding of 0 here since we add a horizontal bar that needs to span the full width in the body
+                // So we handle padding in the body itself
+                padding: Some(Coords::uniform(0.)),
+                ..Default::default()
+            })
         });
 
         ctx.subscribe_to_view(&modal, |_, _, event, ctx| match event {

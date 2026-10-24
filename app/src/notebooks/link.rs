@@ -50,7 +50,9 @@ impl LinkTarget {
         match self {
             LinkTarget::LocalDirectory { .. } => Some(SecondaryAction {
                 label: crate::tr!("notebooks", "new-session").into(),
-                tooltip: Some(crate::tr!("notebooks", "open-a-new-terminal-session-in-this-directory").into()),
+                tooltip: Some(
+                    crate::tr!("notebooks", "open-a-new-terminal-session-in-this-directory").into(),
+                ),
                 accessibility_content: crate::tr!("notebooks", "open-in-terminal-session").into(),
             }),
             LinkTarget::LocalFile {
@@ -428,7 +430,9 @@ impl fmt::Display for ResolveError {
     fn fmt(&self, f: &mut fmt::Formatter) -> fmt::Result {
         match self {
             ResolveError::FileNotFound => f.write_str("File not found"),
-            ResolveError::MissingContext => f.write_str(&crate::tr!("notebooks", "no-base-directory")),
+            ResolveError::MissingContext => {
+                f.write_str(&crate::tr!("notebooks", "no-base-directory"))
+            }
             ResolveError::Unknown => f.write_str(&crate::tr!("notebooks", "broken-file-link")),
         }
     }

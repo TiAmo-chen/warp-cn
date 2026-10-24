@@ -1115,7 +1115,10 @@ impl SettingsWidget for IapCredentialsWidget {
         let disabled: ColorU = appearance.theme().disabled_ui_text_color().into();
         let active: ColorU = appearance.theme().active_ui_text_color().into();
         let (status_text, status_color): (String, ColorU) = match &state {
-            IapCredentialsState::Missing => (crate::tr!("settings", "not-yet-loaded").to_string(), disabled),
+            IapCredentialsState::Missing => (
+                crate::tr!("settings", "not-yet-loaded").to_string(),
+                disabled,
+            ),
             IapCredentialsState::Refreshing { .. } => ("Refreshing…".to_string(), active),
             IapCredentialsState::Loaded(cached) => {
                 let remaining = cached

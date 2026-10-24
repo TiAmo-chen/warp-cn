@@ -324,7 +324,11 @@ impl KeybindingRow {
             Empty::new().finish()
         };
 
-        let press_new_shortcut_text = render_text(&crate::tr!("settings", "press-new-keyboard-shortcut"), None, appearance);
+        let press_new_shortcut_text = render_text(
+            &crate::tr!("settings", "press-new-keyboard-shortcut"),
+            None,
+            appearance,
+        );
 
         let new_shortcut_element = Container::new(press_new_shortcut_text)
             .with_margin_left(ROW_LEFT_MARGIN)
@@ -971,7 +975,10 @@ impl KeybindingsWidget {
     ) -> Box<dyn Element> {
         let font_size = appearance.ui_font_size() + FONT_DELTA;
         let mut description = Flex::column().with_child(render_text(
-            &crate::tr!("settings", "add-your-own-custom-keybindings-to-existing-actions-below"),
+            &crate::tr!(
+                "settings",
+                "add-your-own-custom-keybindings-to-existing-actions-below"
+            ),
             Some(UiComponentStyles {
                 font_size: Some(font_size),
                 font_color: Some(
@@ -1106,7 +1113,10 @@ impl SettingsWidget for KeybindingsWidget {
         {
             Some(LocalOnlyIconState::Visible {
                 mouse_state: self.local_only_icon_mouse_state.clone(),
-                custom_tooltip: Some(crate::tr!("settings", "keyboard-shortcuts-are-not-synced-to-the-cloud").to_string()),
+                custom_tooltip: Some(
+                    crate::tr!("settings", "keyboard-shortcuts-are-not-synced-to-the-cloud")
+                        .to_string(),
+                ),
             })
         } else {
             None

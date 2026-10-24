@@ -518,7 +518,10 @@ impl<'a> QuitWarningDialog<'a> {
         }
 
         if let Some(callback) = on_discard_changes {
-            buttons.push(ModalButton::for_app(crate::tr!("workspace", "quit-dont-save-button").to_string(), callback));
+            buttons.push(ModalButton::for_app(
+                crate::tr!("workspace", "quit-dont-save-button").to_string(),
+                callback,
+            ));
         }
 
         if let Some(callback) = on_show_processes

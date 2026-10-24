@@ -129,10 +129,7 @@ impl View for CloseSessionConfirmationDialog {
         let dialog = Container::new(
             Dialog::new(
                 crate::tr!("workspace", "close-session-question").into(),
-                Some(
-                    crate::tr!("workspace", "close-session-sharing-warning")
-                        .into(),
-                ),
+                Some(crate::tr!("workspace", "close-session-sharing-warning").into()),
                 UiComponentStyles {
                     width: Some(460.),
                     padding: Some(Coords::uniform(24.)),
@@ -143,7 +140,7 @@ impl View for CloseSessionConfirmationDialog {
             .with_bottom_row_child(cancel_button)
             .with_bottom_row_child(close_session_button)
             .build()
-            .finish()
+            .finish(),
         )
         .with_margin_top(35.)
         .finish();

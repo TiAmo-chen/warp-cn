@@ -1574,7 +1574,10 @@ impl WorkflowView {
     fn save_aliases(&mut self, ctx: &mut ViewContext<Self>) {
         if let Err(e) = self.alias_bar.update(ctx, |bar, ctx| bar.save(ctx)) {
             report_error!(e.context(crate::tr!("workflows", "error-saving-aliases")));
-            self.display_error_toast(crate::tr!("workflows", "error-saving-aliases").to_string(), ctx);
+            self.display_error_toast(
+                crate::tr!("workflows", "error-saving-aliases").to_string(),
+                ctx,
+            );
         }
     }
 
@@ -1618,7 +1621,10 @@ impl WorkflowView {
                     id
                 } else {
                     report_error!("No client_id obtained for creating workflow");
-                    self.display_error_toast(String::from(crate::tr!("workflows", "could-not-create")), ctx);
+                    self.display_error_toast(
+                        String::from(crate::tr!("workflows", "could-not-create")),
+                        ctx,
+                    );
                     return;
                 };
 
@@ -2629,10 +2635,7 @@ impl WorkflowView {
                             environment_variables: None,
                         };
 
-                        send_telemetry_from_ctx!(
-                            TelemetryEvent::AutoGenerateMetadataSuccess,
-                            ctx
-                        );
+                        send_telemetry_from_ctx!(TelemetryEvent::AutoGenerateMetadataSuccess, ctx);
 
                         pane.populate_missing_field_with_suggestion(workflow, ctx);
                         ctx.notify();
@@ -2644,30 +2647,30 @@ impl WorkflowView {
                             if let Some(team) = UserWorkspaces::as_ref(ctx).team_for_view(ctx) {
                                 let current_user_email =
                                     pane.auth_state.user_email().unwrap_or_default();
-                                let has_admin_permissions = team.has_admin_permissions(&current_user_email);
+                                let has_admin_permissions =
+                                    team.has_admin_permissions(&current_user_email);
                                 if team.billing_metadata.can_upgrade_to_higher_tier_plan() {
                                     if has_admin_permissions {
-                                        pane.display_upgrade_error(Some(team.uid), current_user_id, ctx);
+                                        pane.display_upgrade_error(
+                                            Some(team.uid),
+                                            current_user_id,
+                                            ctx,
+                                        );
                                     } else {
                                         pane.display_error_toast(
-                                            crate::tr!("drive", "workflow-out-of-credits-admin").to_string(),
+                                            crate::tr!("drive", "workflow-out-of-credits-admin")
+                                                .to_string(),
                                             ctx,
                                         );
                                     }
                                 } else {
-                                    pane.display_error_toast(
-                                        message.clone(),
-                                        ctx,
-                                    );
+                                    pane.display_error_toast(message.clone(), ctx);
                                 }
                             } else {
                                 pane.display_upgrade_error(None, current_user_id, ctx);
                             }
                         } else {
-                            pane.display_error_toast(
-                                message.clone(),
-                                ctx,
-                            );
+                            pane.display_error_toast(message.clone(), ctx);
                         }
 
                         send_telemetry_from_ctx!(
@@ -2685,7 +2688,7 @@ impl WorkflowView {
                 AIRequestUsageModel::handle(ctx).update(ctx, |request_usage_model, ctx| {
                     request_usage_model.refresh_request_usage_async(ctx);
                 });
-            }
+            },
         );
 
         self.ai_metadata_assist_state = AiAssistState::RequestInFlight;
@@ -2868,7 +2871,9 @@ impl WorkflowView {
                         )
                         .with_tooltip(move || {
                             ui_builder
-                                .tool_tip(crate::tr!("drive", "restore-workflow-tooltip").to_string())
+                                .tool_tip(
+                                    crate::tr!("drive", "restore-workflow-tooltip").to_string(),
+                                )
                                 .build()
                                 .finish()
                         })

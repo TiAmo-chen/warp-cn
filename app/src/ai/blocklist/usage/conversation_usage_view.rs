@@ -407,7 +407,10 @@ impl ConversationUsageView {
 
         self.append_per_agent_rows(&mut labels, &mut values, rollup.as_ref(), appearance);
 
-        labels.push(render_label_text(&crate::tr!("ai_assistant", "ai-tool-calls"), appearance));
+        labels.push(render_label_text(
+            &crate::tr!("ai_assistant", "ai-tool-calls"),
+            appearance,
+        ));
         values.push(render_value_text(
             format_value_text(self.usage_info.tool_calls, "call"),
             appearance,
@@ -505,7 +508,10 @@ impl ConversationUsageView {
             );
         }
 
-        labels.push(render_label_text(&crate::tr!("ai_assistant", "ai-context-window-used"), appearance));
+        labels.push(render_label_text(
+            &crate::tr!("ai_assistant", "ai-context-window-used"),
+            appearance,
+        ));
         let context_usage_pct = self.usage_info.context_window_usage * 100.;
         let context_usage_str = if context_window_breakdown_enabled && self.context_window_expanded
         {
@@ -573,13 +579,19 @@ impl ConversationUsageView {
         ));
         values.push(render_section_header("".to_string(), appearance));
 
-        labels.push(render_label_text(&crate::tr!("ai_assistant", "ai-files-changed"), appearance));
+        labels.push(render_label_text(
+            &crate::tr!("ai_assistant", "ai-files-changed"),
+            appearance,
+        ));
         values.push(render_value_text(
             format_value_text(self.usage_info.files_changed, "file"),
             appearance,
         ));
 
-        labels.push(render_label_text(&crate::tr!("ai_assistant", "ai-diffs-applied"), appearance));
+        labels.push(render_label_text(
+            &crate::tr!("ai_assistant", "ai-diffs-applied"),
+            appearance,
+        ));
         let diffs_element = Flex::row()
             .with_cross_axis_alignment(CrossAxisAlignment::Center)
             .with_child(
@@ -616,7 +628,10 @@ impl ConversationUsageView {
             .finish();
         values.push(diffs_element);
 
-        labels.push(render_label_text(&crate::tr!("ai_assistant", "ai-commands-executed"), appearance));
+        labels.push(render_label_text(
+            &crate::tr!("ai_assistant", "ai-commands-executed"),
+            appearance,
+        ));
         values.push(render_value_text(
             format_value_text(self.usage_info.commands_executed, "command"),
             appearance,
@@ -648,7 +663,10 @@ impl ConversationUsageView {
             ));
             values.push(render_section_header("".to_string(), appearance));
 
-            labels.push(render_label_text(&crate::tr!("ai_assistant", "ai-time-to-first-token"), appearance));
+            labels.push(render_label_text(
+                &crate::tr!("ai_assistant", "ai-time-to-first-token"),
+                appearance,
+            ));
             values.push(render_value_text(
                 format!(
                     "{:.1} seconds",
@@ -657,7 +675,10 @@ impl ConversationUsageView {
                 appearance,
             ));
 
-            labels.push(render_label_text(&crate::tr!("ai_assistant", "ai-total-agent-response-time"), appearance));
+            labels.push(render_label_text(
+                &crate::tr!("ai_assistant", "ai-total-agent-response-time"),
+                appearance,
+            ));
             values.push(render_value_text(
                 format!(
                     "{:.1} seconds",

@@ -3975,7 +3975,10 @@ impl TerminalView {
                     FormattedTextFragment::plain_text(
                         "Seems like your shell is taking a while to start...  ",
                     ),
-                    FormattedTextFragment::hyperlink(crate::tr!("terminal", "more-info"), KNOWN_ISSUES_URL),
+                    FormattedTextFragment::hyperlink(
+                        crate::tr!("terminal", "more-info"),
+                        KNOWN_ISSUES_URL,
+                    ),
                 ]),
                 vec![BannerTextButton::new(
                     crate::tr!("settings", "toggle-show-init-block").to_string(),
@@ -4018,7 +4021,10 @@ impl TerminalView {
                 FormattedTextFragment::plain_text(
                     "Your shell configuration is incompatible with Warp...  ",
                 ),
-                FormattedTextFragment::hyperlink(crate::tr!("terminal", "more-info"), KNOWN_ISSUES_URL),
+                FormattedTextFragment::hyperlink(
+                    crate::tr!("terminal", "more-info"),
+                    KNOWN_ISSUES_URL,
+                ),
             ]))
         });
 
@@ -17636,9 +17642,12 @@ impl TerminalView {
 
                             if renders_in_warp_notebook_viewer(&path) {
                                 items.push(
-                                    MenuItemFields::new(crate::tr!("ai_assistant", "ai-open-in-warp"))
-                                        .with_on_select_action(TerminalAction::OpenFileInWarp(path))
-                                        .into_item(),
+                                    MenuItemFields::new(crate::tr!(
+                                        "ai_assistant",
+                                        "ai-open-in-warp"
+                                    ))
+                                    .with_on_select_action(TerminalAction::OpenFileInWarp(path))
+                                    .into_item(),
                                 );
                                 // Because the default for cmd-click is to open in Warp, we also
                                 // have an open-in-editor option.
@@ -17828,26 +17837,30 @@ impl TerminalView {
                 ];
 
                 if is_single_selection {
-                    let mut copy_output_menu_item = MenuItemFields::new(crate::tr!("terminal", "menu-copy-output"))
-                        .with_on_select_action(TerminalAction::ContextMenu(
-                            ContextMenuAction::CopyBlockOutputs,
-                        ))
-                        .with_disabled(tail_block.output_grid().is_empty());
+                    let mut copy_output_menu_item =
+                        MenuItemFields::new(crate::tr!("terminal", "menu-copy-output"))
+                            .with_on_select_action(TerminalAction::ContextMenu(
+                                ContextMenuAction::CopyBlockOutputs,
+                            ))
+                            .with_disabled(tail_block.output_grid().is_empty());
 
                     // If there is an active filter on a block, then we want to display a
                     // Copy filtered output option and assign the "terminal:copy_outputs" keybinding to it.
                     if tail_block.has_active_filter() {
                         items.insert(
                             1,
-                            MenuItemFields::new(crate::tr!("terminal", "menu-copy-filtered-output"))
-                                .with_on_select_action(TerminalAction::ContextMenu(
-                                    ContextMenuAction::CopyBlockFilteredOutputs,
-                                ))
-                                .with_key_shortcut_label(keybinding_name_to_display_string(
-                                    "terminal:copy_outputs",
-                                    ctx,
-                                ))
-                                .into_item(),
+                            MenuItemFields::new(crate::tr!(
+                                "terminal",
+                                "menu-copy-filtered-output"
+                            ))
+                            .with_on_select_action(TerminalAction::ContextMenu(
+                                ContextMenuAction::CopyBlockFilteredOutputs,
+                            ))
+                            .with_key_shortcut_label(keybinding_name_to_display_string(
+                                "terminal:copy_outputs",
+                                ctx,
+                            ))
+                            .into_item(),
                         );
                         items.insert(2, copy_output_menu_item.into_item());
                     } else {
@@ -18129,15 +18142,18 @@ impl TerminalView {
 
                             if ChannelState::channel().is_dogfood() {
                                 items.push(
-                                    MenuItemFields::new(crate::tr!("terminal", "menu-fork-from-here-dev-only"))
-                                        .with_on_select_action(TerminalAction::ContextMenu(
-                                            ContextMenuAction::ForkAIConversationFromExactExchange {
-                                                ai_block_view_id: *rich_content_view_id,
-                                                exchange_id: ai_metadata.exchange_id,
-                                                conversation_id: ai_metadata.conversation_id,
-                                            },
-                                        ))
-                                        .into_item(),
+                                    MenuItemFields::new(crate::tr!(
+                                        "terminal",
+                                        "menu-fork-from-here-dev-only"
+                                    ))
+                                    .with_on_select_action(TerminalAction::ContextMenu(
+                                        ContextMenuAction::ForkAIConversationFromExactExchange {
+                                            ai_block_view_id: *rich_content_view_id,
+                                            exchange_id: ai_metadata.exchange_id,
+                                            conversation_id: ai_metadata.conversation_id,
+                                        },
+                                    ))
+                                    .into_item(),
                                 );
                             }
                         }
@@ -18147,14 +18163,17 @@ impl TerminalView {
                             && !ai_metadata.ai_block_handle.as_ref(ctx).is_restored()
                         {
                             items.push(
-                                MenuItemFields::new(crate::tr!("terminal", "menu-rewind-to-before-here"))
-                                    .with_on_select_action(TerminalAction::RewindAIConversation {
-                                        ai_block_view_id: *rich_content_view_id,
-                                        exchange_id: ai_metadata.exchange_id,
-                                        conversation_id: ai_metadata.conversation_id,
-                                        entrypoint: AgentModeRewindEntrypoint::ContextMenu,
-                                    })
-                                    .into_item(),
+                                MenuItemFields::new(crate::tr!(
+                                    "terminal",
+                                    "menu-rewind-to-before-here"
+                                ))
+                                .with_on_select_action(TerminalAction::RewindAIConversation {
+                                    ai_block_view_id: *rich_content_view_id,
+                                    exchange_id: ai_metadata.exchange_id,
+                                    conversation_id: ai_metadata.conversation_id,
+                                    entrypoint: AgentModeRewindEntrypoint::ContextMenu,
+                                })
+                                .into_item(),
                             );
                         }
 
@@ -22578,13 +22597,19 @@ impl TerminalView {
 
         let Some(ambient_agent_view_model) = self.ambient_agent_view_model.clone() else {
             self.restore_followup_prompt_after_failed_submission(&prompt, ctx);
-            self.show_error_toast(crate::tr!("terminal", "couldnt-continue-cloud-task").to_string(), ctx);
+            self.show_error_toast(
+                crate::tr!("terminal", "couldnt-continue-cloud-task").to_string(),
+                ctx,
+            );
             return true;
         };
 
         if ambient_agent_view_model.as_ref(ctx).task_id() != Some(task_id) {
             self.restore_followup_prompt_after_failed_submission(&prompt, ctx);
-            self.show_error_toast(crate::tr!("terminal", "couldnt-continue-cloud-task").to_string(), ctx);
+            self.show_error_toast(
+                crate::tr!("terminal", "couldnt-continue-cloud-task").to_string(),
+                ctx,
+            );
             return true;
         }
 
@@ -22710,7 +22735,10 @@ impl TerminalView {
                 {
                     return;
                 }
-                self.show_error_toast(crate::tr!("terminal", "couldnt-continue-cloud-task").to_string(), ctx);
+                self.show_error_toast(
+                    crate::tr!("terminal", "couldnt-continue-cloud-task").to_string(),
+                    ctx,
+                );
             }
             InputEvent::SubmitSetupFailureDebugFollowup { task_id, prompt } => {
                 if !self.try_submit_setup_failure_debug_followup(*task_id, prompt.clone(), ctx) {
@@ -23620,7 +23648,10 @@ impl TerminalView {
                         "Pure is not yet supported in Warp. You might consider one of the \
                         supported prompts as an alternative.  ",
                     ),
-                    FormattedTextFragment::hyperlink(crate::tr!("common", "learn-more-label"), PROMPT_COMPATIBILITY_URL),
+                    FormattedTextFragment::hyperlink(
+                        crate::tr!("common", "learn-more-label"),
+                        PROMPT_COMPATIBILITY_URL,
+                    ),
                 ]))
             } else {
                 None
@@ -25425,9 +25456,13 @@ impl TerminalView {
                             .finish(),
                     )
                     .with_child(
-                        Text::new_inline(crate::tr!("terminal", "loading-session"), appearance.ui_font_family(), 14.)
-                            .with_color(color.into())
-                            .finish(),
+                        Text::new_inline(
+                            crate::tr!("terminal", "loading-session"),
+                            appearance.ui_font_family(),
+                            14.,
+                        )
+                        .with_color(color.into())
+                        .finish(),
                     )
                     .with_cross_axis_alignment(CrossAxisAlignment::Center)
                     .finish(),
@@ -26835,8 +26870,7 @@ impl TerminalView {
         ToastStack::handle(ctx).update(ctx, |toast_stack, ctx| {
             toast_stack.add_ephemeral_toast(
                 DismissibleToast::error(
-                    crate::tr!("terminal", "non-local-env-var-subshell")
-                        .to_owned(),
+                    crate::tr!("terminal", "non-local-env-var-subshell").to_owned(),
                 ),
                 window_id,
                 ctx,
@@ -26972,8 +27006,9 @@ impl TerminalView {
         let (shell_path_string, shell_type) = shell_session_info;
         if shell_type == ShellType::PowerShell {
             ToastStack::handle(ctx).update(ctx, |toast_stack, ctx| {
-                let toast =
-                    DismissibleToast::error(crate::tr!("terminal", "powershell-subshell-unsupported").to_owned());
+                let toast = DismissibleToast::error(
+                    crate::tr!("terminal", "powershell-subshell-unsupported").to_owned(),
+                );
                 toast_stack.add_ephemeral_toast(toast, window_id, ctx);
             });
             return;
@@ -28869,7 +28904,8 @@ impl TypedActionView for TerminalView {
                             ToastStack::handle(ctx).update(ctx, |toast_stack, ctx| {
                                 toast_stack.add_ephemeral_toast(
                                     DismissibleToast::error(
-                                        crate::tr!("terminal", "bundled-skills-cannot-be-edited").to_string(),
+                                        crate::tr!("terminal", "bundled-skills-cannot-be-edited")
+                                            .to_string(),
                                     ),
                                     window_id,
                                     ctx,

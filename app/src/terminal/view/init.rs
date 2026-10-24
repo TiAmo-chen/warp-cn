@@ -373,12 +373,20 @@ pub fn init(app: &mut AppContext) {
         .with_context_predicate(id!("Terminal")),
         // Paste is not rebindable on the web.
         #[cfg(not(target_family = "wasm"))]
-        EditableBinding::new("terminal:paste", crate::tr!("common", "paste-label"), TerminalAction::Paste)
-            .with_custom_action(CustomAction::Paste)
-            .with_context_predicate(id!("Terminal") & !id!("IMEOpen")),
-        EditableBinding::new("terminal:copy", crate::tr!("common", "copy-label"), TerminalAction::Copy)
-            .with_custom_action(CustomAction::Copy)
-            .with_context_predicate(id!("Terminal") & !id!("IMEOpen")),
+        EditableBinding::new(
+            "terminal:paste",
+            crate::tr!("common", "paste-label"),
+            TerminalAction::Paste,
+        )
+        .with_custom_action(CustomAction::Paste)
+        .with_context_predicate(id!("Terminal") & !id!("IMEOpen")),
+        EditableBinding::new(
+            "terminal:copy",
+            crate::tr!("common", "copy-label"),
+            TerminalAction::Copy,
+        )
+        .with_custom_action(CustomAction::Copy)
+        .with_context_predicate(id!("Terminal") & !id!("IMEOpen")),
         EditableBinding::new(
             "terminal:reinput_commands",
             crate::tr!("terminal", "reinput-selected-commands"),
@@ -751,11 +759,14 @@ pub fn init(app: &mut AppContext) {
     app.register_editable_bindings([
         EditableBinding::new(
             "terminal:ask_ai_assistant",
-            BindingDescription::new(crate::tr!("terminal", "attach-selected-block-as-agent-context"))
-                .with_custom_description(
-                    bindings::MAC_MENUS_CONTEXT,
-                    crate::tr!("terminal", "attach-selection-as-agent-context"),
-                ),
+            BindingDescription::new(crate::tr!(
+                "terminal",
+                "attach-selected-block-as-agent-context"
+            ))
+            .with_custom_description(
+                bindings::MAC_MENUS_CONTEXT,
+                crate::tr!("terminal", "attach-selection-as-agent-context"),
+            ),
             TerminalAction::ContextMenu(ContextMenuAction::AskAI(AskAISource::SelectedBlocks)),
         )
         .with_enabled(|| FeatureFlag::AgentMode.is_enabled())
@@ -772,11 +783,14 @@ pub fn init(app: &mut AppContext) {
         ),
         EditableBinding::new(
             "terminal:ask_ai_assistant",
-            BindingDescription::new(crate::tr!("terminal", "attach-selected-text-as-agent-context"))
-                .with_custom_description(
-                    bindings::MAC_MENUS_CONTEXT,
-                    crate::tr!("terminal", "attach-selection-as-agent-context"),
-                ),
+            BindingDescription::new(crate::tr!(
+                "terminal",
+                "attach-selected-text-as-agent-context"
+            ))
+            .with_custom_description(
+                bindings::MAC_MENUS_CONTEXT,
+                crate::tr!("terminal", "attach-selection-as-agent-context"),
+            ),
             TerminalAction::ContextMenu(ContextMenuAction::AskAI(
                 AskAISource::SelectedTerminalText,
             )),
@@ -1018,7 +1032,10 @@ pub fn init(app: &mut AppContext) {
 
     app.register_editable_bindings([EditableBinding::new(
         "workspace:write_codebase_index",
-        BindingDescription::new(crate::tr!("terminal", "write-current-codebase-index-snapshot")),
+        BindingDescription::new(crate::tr!(
+            "terminal",
+            "write-current-codebase-index-snapshot"
+        )),
         TerminalAction::WriteCodebaseIndex,
     )
     .with_enabled(|| FeatureFlag::CodebaseIndexPersistence.is_enabled())

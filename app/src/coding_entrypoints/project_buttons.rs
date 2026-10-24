@@ -228,7 +228,8 @@ impl View for ProjectButtons {
                     Icon::Plus,
                     ProjectButtonsAction::CreateProject,
                     TooltipData {
-                        text: crate::tr!("coding_entrypoints", "create-new-project-desc").to_string(),
+                        text:
+                            crate::tr!("coding_entrypoints", "create-new-project-desc").to_string(),
                         keybinding: keybinding_name_to_display_string(
                             "project_buttons:create_new_project",
                             app,
@@ -276,7 +277,8 @@ impl View for ProjectButtons {
                         Icon::Plus,
                         ProjectButtonsAction::CreateProject,
                         TooltipData {
-                            text: crate::tr!("coding_entrypoints", "open-repository-desc").to_string(),
+                            text: crate::tr!("coding_entrypoints", "open-repository-desc")
+                                .to_string(),
                             keybinding: keybinding_name_to_display_string(
                                 "project_buttons:open_repository",
                                 app,

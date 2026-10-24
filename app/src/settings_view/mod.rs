@@ -239,9 +239,13 @@ pub(super) fn render_beta_chip(appearance: &Appearance) -> Box<dyn Element> {
     let theme = appearance.theme();
     let chip_color = theme.sub_text_color(theme.surface_3()).into_solid();
     Container::new(
-        Text::new_inline(crate::tr!("common", "beta-label"), appearance.ui_font_family(), 10.)
-            .with_color(chip_color)
-            .finish(),
+        Text::new_inline(
+            crate::tr!("common", "beta-label"),
+            appearance.ui_font_family(),
+            10.,
+        )
+        .with_color(chip_color)
+        .finish(),
     )
     .with_background(theme.surface_3())
     .with_corner_radius(CornerRadius::with_all(Radius::Pixels(3.)))
@@ -344,26 +348,40 @@ use crate::util::bindings::custom_tag_to_keystroke;
 
 impl Display for SettingsSection {
     fn fmt(&self, f: &mut fmt::Formatter<'_>) -> fmt::Result {
-        match self {
-            SettingsSection::BillingAndUsage => write!(f, "Billing and usage"),
-            SettingsSection::Keybindings => write!(f, "Keyboard shortcuts"),
-            SettingsSection::SharedBlocks => write!(f, "Shared blocks"),
-            SettingsSection::Scripting => write!(f, "Scripting"),
-            SettingsSection::WarpDrive => write!(f, "Warp Drive"),
-            SettingsSection::WarpAgent => write!(f, "Warp Agent"),
-            SettingsSection::AgentProfiles => write!(f, "Profiles"),
-            SettingsSection::AgentMCPServers => write!(f, "MCP servers"),
-            SettingsSection::Knowledge => write!(f, "Knowledge"),
-            SettingsSection::ThirdPartyCLIAgents => write!(f, "Third party CLI agents"),
-            SettingsSection::CodeIndexing => write!(f, "Indexing and projects"),
-            SettingsSection::EditorAndCodeReview => write!(f, "Editor and Code Review"),
-            SettingsSection::CloudEnvironments => write!(f, "Environments"),
-            SettingsSection::WarpCloudAgentAPIKeys => write!(f, "API keys"),
-            _ => write!(f, "{self:?}"),
+        // zh: sidebar labels are translated; the stable identifiers live in `slug()`.
+        let key = match self {
+            SettingsSection::About => "about-tab",
+            SettingsSection::Account => "account-tab",
+            SettingsSection::BillingAndUsage => "billing-tab",
+            SettingsSection::Appearance => "appearance-tab",
+            SettingsSection::Features => "features-tab",
+            SettingsSection::Keybindings => "keybindings-tab",
+            SettingsSection::Privacy => "privacy-tab",
+            SettingsSection::Referrals => "referrals-tab",
+            SettingsSection::SharedBlocks => "shared-blocks-tab",
+            SettingsSection::Teams => "teams-tab",
+            SettingsSection::WarpDrive => "warp-drive-tab",
+            SettingsSection::Warpify => "warpify-tab",
+            SettingsSection::WarpAgent => "warp-agent-tab",
+            SettingsSection::AgentProfiles => "profiles-tab",
+            SettingsSection::AgentMCPServers => "mcp-servers-tab",
+            SettingsSection::Knowledge => "knowledge-tab",
+            SettingsSection::ThirdPartyCLIAgents => "third-party-cli-agents",
+            SettingsSection::CodeIndexing => "code-indexing",
+            SettingsSection::EditorAndCodeReview => "editor-code-review",
+            SettingsSection::CloudEnvironments => "environments-tab",
+            SettingsSection::WarpCloudAgentAPIKeys => "oz-cloud-api-keys",
+            SettingsSection::Scripting => "scripting",
+        };
+        let translated = crate::tr!("settings", key);
+        // Fall back to the key's own text when the translation is missing.
+        if translated.contains('-') && !translated.contains(' ') {
+            write!(f, "{self:?}")
+        } else {
+            write!(f, "{translated}")
         }
     }
 }
-
 impl SettingsSection {
     /// Stable identifier for this section, used everywhere the section leaves
     /// the process: the SQLite session-restore key and the
@@ -1199,7 +1217,8 @@ pub struct SettingsView {
 
 impl SettingsView {
     pub fn new(page: Option<SettingsSection>, ctx: &mut ViewContext<Self>) -> Self {
-        let pane_configuration = ctx.add_model(|_ctx| PaneConfiguration::new(crate::tr!("settings", "settings")));
+        let pane_configuration =
+            ctx.add_model(|_ctx| PaneConfiguration::new(crate::tr!("settings", "settings")));
 
         let global_resource_handles = GlobalResourceHandlesProvider::as_ref(ctx).get().clone();
         // Main settings page with accounts info
@@ -1405,10 +1424,16 @@ impl SettingsView {
 
         // Build sidebar nav items. Umbrellas group their subpages here and
         // nowhere else, so this list is the only place membership is declared.
+        static AGENTS_UMBRELLA_LABEL: std::sync::LazyLock<String> =
+            std::sync::LazyLock::new(|| crate::tr!("settings", "agents-umbrella"));
+        static CODE_UMBRELLA_LABEL: std::sync::LazyLock<String> =
+            std::sync::LazyLock::new(|| crate::tr!("settings", "code-umbrella"));
+        static CLOUD_UMBRELLA_LABEL: std::sync::LazyLock<String> =
+            std::sync::LazyLock::new(|| crate::tr!("settings", "cloud-platform-umbrella"));
         let mut nav_items = vec![
             SettingsNavItem::Page(SettingsSection::Account),
             SettingsNavItem::Umbrella(SettingsUmbrella::new(
-                "Agents",
+                &AGENTS_UMBRELLA_LABEL,
                 vec![
                     SettingsSection::WarpAgent,
                     SettingsSection::AgentProfiles,
@@ -1419,14 +1444,14 @@ impl SettingsView {
             )),
             SettingsNavItem::Page(SettingsSection::BillingAndUsage),
             SettingsNavItem::Umbrella(SettingsUmbrella::new(
-                "Code",
+                &CODE_UMBRELLA_LABEL,
                 vec![
                     SettingsSection::CodeIndexing,
                     SettingsSection::EditorAndCodeReview,
                 ],
             )),
             SettingsNavItem::Umbrella(SettingsUmbrella::new(
-                "Cloud platform",
+                &CLOUD_UMBRELLA_LABEL,
                 vec![
                     SettingsSection::CloudEnvironments,
                     SettingsSection::WarpCloudAgentAPIKeys,

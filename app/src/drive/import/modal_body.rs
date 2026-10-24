@@ -134,9 +134,9 @@ impl ImportModalBody {
                 } => {
                     let result = match server_id {
                         Some(id) => UploadResult::Success(id.clone()),
-                        None => {
-                            UploadResult::Error(crate::tr!("drive", "failed-upload-folder").to_string())
-                        }
+                        None => UploadResult::Error(
+                            crate::tr!("drive", "failed-upload-folder").to_string(),
+                        ),
                     };
 
                     state.mark_folder_synced(result, *folder_id);

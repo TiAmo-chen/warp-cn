@@ -416,7 +416,12 @@ impl FileUpload {
         let ui_builder = appearance.ui_builder().clone();
         Container::new(
             icon_button(appearance, Icon::X, true, file.clear_button.clone())
-                .with_tooltip(move || ui_builder.tool_tip(crate::tr!("terminal", "clear-upload").into()).build().finish())
+                .with_tooltip(move || {
+                    ui_builder
+                        .tool_tip(crate::tr!("terminal", "clear-upload").into())
+                        .build()
+                        .finish()
+                })
                 .build()
                 .on_click(move |event_ctx, _, _| {
                     event_ctx
@@ -460,7 +465,10 @@ impl FileUpload {
             FormattedTextElement::new(
                 FormattedText::new(vec![FormattedTextLine::Heading(FormattedTextHeader {
                     heading_size: 3,
-                    text: vec![FormattedTextFragment::plain_text(crate::tr!("terminal", "file-uploads"))],
+                    text: vec![FormattedTextFragment::plain_text(crate::tr!(
+                        "terminal",
+                        "file-uploads"
+                    ))],
                 })]),
                 appearance.ui_font_size(),
                 appearance.ui_font_family(),

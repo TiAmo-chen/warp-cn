@@ -528,8 +528,7 @@ impl AuthSecretFtuxDropdown {
         let theme = appearance.theme();
         let color = internal_colors::text_sub(theme, theme.surface_1());
         Text::new_inline(
-            crate::tr!("terminal", "ftux-no-secrets-helper")
-                .to_string(),
+            crate::tr!("terminal", "ftux-no-secrets-helper").to_string(),
             appearance.ui_font_family(),
             HELPER_FONT_SIZE,
         )

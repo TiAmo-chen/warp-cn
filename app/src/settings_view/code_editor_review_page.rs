@@ -441,8 +441,11 @@ impl SettingsWidget for CodeReviewPanelToggleWidget {
                 })
                 .finish(),
             Some(
-                crate::tr!("settings", "show-a-button-in-the-top-right-of-the-window-to-toggle-the-code-review-panel")
-                    .into(),
+                crate::tr!(
+                    "settings",
+                    "show-a-button-in-the-top-right-of-the-window-to-toggle-the-code-review-panel"
+                )
+                .into(),
             ),
         )
     }
@@ -485,7 +488,13 @@ impl SettingsWidget for CodeReviewDiffStatsToggleWidget {
                     );
                 })
                 .finish(),
-            Some(crate::tr!("settings", "show-lines-added-and-removed-counts-on-the-code-review-button").into()),
+            Some(
+                crate::tr!(
+                    "settings",
+                    "show-lines-added-and-removed-counts-on-the-code-review-button"
+                )
+                .into(),
+            ),
         )
     }
 }
@@ -526,8 +535,11 @@ impl SettingsWidget for ProjectExplorerToggleWidget {
                 })
                 .finish(),
             Some(
-                crate::tr!("settings", "adds-an-ide-style-project-explorer--file-tree-to-the-left-side-tools-panel")
-                    .into(),
+                crate::tr!(
+                    "settings",
+                    "adds-an-ide-style-project-explorer--file-tree-to-the-left-side-tools-panel"
+                )
+                .into(),
             ),
         )
     }
@@ -568,7 +580,13 @@ impl SettingsWidget for GlobalSearchToggleWidget {
                     ctx.dispatch_typed_action(EditorAndCodeReviewPageAction::ToggleGlobalSearch);
                 })
                 .finish(),
-            Some(crate::tr!("settings", "adds-global-file-search-to-the-left-side-tools-panel").into()),
+            Some(
+                crate::tr!(
+                    "settings",
+                    "adds-global-file-search-to-the-left-side-tools-panel"
+                )
+                .into(),
+            ),
         )
     }
 }
@@ -609,7 +627,11 @@ impl SettingsWidget for ShowHiddenFilesToggleWidget {
                 })
                 .finish(),
             Some(
-                crate::tr!("settings", "show-dotfiles-and-hidden-files-starting-with--in-the-project-explorer").into(),
+                crate::tr!(
+                    "settings",
+                    "show-dotfiles-and-hidden-files-starting-with--in-the-project-explorer"
+                )
+                .into(),
             ),
         )
     }

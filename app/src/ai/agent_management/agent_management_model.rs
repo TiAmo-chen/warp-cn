@@ -214,9 +214,9 @@ impl AgentNotificationsModel {
                     let metadata = TerminalViewMetadata::lookup(*terminal_view_id, ctx);
                     self.add_notification(
                         title,
-                        message
-                            .clone()
-                            .unwrap_or_else(|| crate::tr!("ai_assistant", "ai-waiting-for-input").to_owned()),
+                        message.clone().unwrap_or_else(|| {
+                            crate::tr!("ai_assistant", "ai-waiting-for-input").to_owned()
+                        }),
                         NotificationCategory::Request,
                         NotificationSourceAgent::CLI {
                             agent: *agent,
@@ -366,7 +366,8 @@ impl AgentNotificationsModel {
             return;
         }
 
-        let title = latest_query.unwrap_or_else(|| crate::tr!("ai_assistant", "ai-agent-task").to_owned());
+        let title =
+            latest_query.unwrap_or_else(|| crate::tr!("ai_assistant", "ai-agent-task").to_owned());
         let metadata = TerminalViewMetadata::lookup(terminal_view_id, ctx);
         let oz_agent = NotificationSourceAgent::Oz {
             is_ambient: metadata.is_ambient,

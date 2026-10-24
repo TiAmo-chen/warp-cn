@@ -1499,7 +1499,10 @@ impl TypedActionView for CLISubagentView {
                 let window_id = ctx.window_id();
                 ToastStack::handle(ctx).update(ctx, |toast_stack, ctx| {
                     toast_stack.add_ephemeral_toast(
-                        DismissibleToast::success(String::from(crate::tr!("ai_assistant", "ai-copied-to-clipboard"))),
+                        DismissibleToast::success(String::from(crate::tr!(
+                            "ai_assistant",
+                            "ai-copied-to-clipboard"
+                        ))),
                         window_id,
                         ctx,
                     );
@@ -1895,7 +1898,10 @@ fn render_permissions_speedbump(
 
     let formatted_text = FormattedTextElement::new(
         FormattedText::new([FormattedTextLine::Line(vec![
-            FormattedTextFragment::hyperlink("Manage Agent permissions", crate::tr!("ai_assistant", "ai-settings-ai")),
+            FormattedTextFragment::hyperlink(
+                "Manage Agent permissions",
+                crate::tr!("ai_assistant", "ai-settings-ai"),
+            ),
         ])]),
         font_size,
         font_family,

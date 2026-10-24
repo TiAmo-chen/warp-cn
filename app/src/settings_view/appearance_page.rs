@@ -3068,7 +3068,10 @@ impl SettingsWidget for CustomAppIconWidget {
         let dropdown = render_dropdown_item(
             appearance,
             &crate::tr!("settings", "customize-your-app-icon"),
-            show_bundle_warning.then_some(&crate::tr!("settings", "changing-the-app-icon-requires-the-app-to-be-bundled")),
+            show_bundle_warning.then_some(&crate::tr!(
+                "settings",
+                "changing-the-app-icon-requires-the-app-to-be-bundled"
+            )),
             None,
             LocalOnlyIconState::Hidden,
             None,
@@ -3309,7 +3312,10 @@ impl SettingsWidget for WindowOpacityWidget {
                 .with_child(
                     Container::new(
                         FormattedTextElement::from_str(
-                            crate::tr!("settings", "transparency-is-not-supported-with-your-graphics-drivers"),
+                            crate::tr!(
+                                "settings",
+                                "transparency-is-not-supported-with-your-graphics-drivers"
+                            ),
                             appearance.ui_font_family(),
                             appearance.ui_font_size(),
                         )
@@ -3502,7 +3508,10 @@ impl SettingsWidget for WindowBackdropWidget {
             col.add_child(
                 Container::new(
                     FormattedTextElement::from_str(
-                        crate::tr!("settings", "the-selected-hardware-may-not-support-rendering-transparent-windows"),
+                        crate::tr!(
+                            "settings",
+                            "the-selected-hardware-may-not-support-rendering-transparent-windows"
+                        ),
                         appearance.ui_font_family(),
                         appearance.ui_font_size(),
                     )
@@ -3539,7 +3548,11 @@ impl SettingsWidget for ToolsPanelStateScopeWidget {
         let is_enabled = *window_settings.left_panel_visibility_across_tabs;
 
         render_body_item::<AppearancePageAction>(
-            crate::tr!("settings", "tools-panel-visibility-is-consistent-across-tabs").to_string(),
+            crate::tr!(
+                "settings",
+                "tools-panel-visibility-is-consistent-across-tabs"
+            )
+            .to_string(),
             None,
             LocalOnlyIconState::for_setting(
                 LeftPanelVisibilityAcrossTabs::storage_key(),
@@ -3602,7 +3615,13 @@ impl SettingsWidget for ToolsPanelProjectExplorerWidget {
                     );
                 })
                 .finish(),
-            Some(crate::tr!("settings", "show-the-project-explorer--file-tree-tab-in-the-tools-panel").to_string()),
+            Some(
+                crate::tr!(
+                    "settings",
+                    "show-the-project-explorer--file-tree-tab-in-the-tools-panel"
+                )
+                .to_string(),
+            ),
         )
     }
 }
@@ -3642,7 +3661,13 @@ impl SettingsWidget for ToolsPanelConversationHistoryWidget {
                     );
                 })
                 .finish(),
-            Some(crate::tr!("settings", "show-the-agent-conversation-history-tab-in-the-tools-panel").to_string()),
+            Some(
+                crate::tr!(
+                    "settings",
+                    "show-the-agent-conversation-history-tab-in-the-tools-panel"
+                )
+                .to_string(),
+            ),
         )
     }
 }
@@ -3681,7 +3706,13 @@ impl SettingsWidget for ToolsPanelGlobalSearchWidget {
                         .dispatch_typed_action(AppearancePageAction::ToggleToolsPanelGlobalSearch);
                 })
                 .finish(),
-            Some(crate::tr!("settings", "show-the-global-file-search-tab-in-the-tools-panel").to_string()),
+            Some(
+                crate::tr!(
+                    "settings",
+                    "show-the-global-file-search-tab-in-the-tools-panel"
+                )
+                .to_string(),
+            ),
         )
     }
 }
@@ -4363,7 +4394,10 @@ impl SettingsWidget for TerminalFontWidget {
                             1.,
                             appearance
                                 .ui_builder()
-                                .span(crate::tr!("settings", "view-all-available-system-fonts").to_string())
+                                .span(
+                                    crate::tr!("settings", "view-all-available-system-fonts")
+                                        .to_string(),
+                                )
                                 .build()
                                 .with_margin_left(2.)
                                 .finish(),
@@ -4651,7 +4685,9 @@ impl SettingsWidget for LigaturesWidget {
                 mouse_state: self.info_mouse_state.clone(),
                 on_click_action: None,
                 secondary_text: None,
-                tooltip_override_text: Some(crate::tr!("settings", "ligatures-may-reduce-performance").to_string()),
+                tooltip_override_text: Some(
+                    crate::tr!("settings", "ligatures-may-reduce-performance").to_string(),
+                ),
             }),
             LocalOnlyIconState::for_setting(
                 LigatureRenderingEnabled::storage_key(),
@@ -4726,7 +4762,10 @@ impl SettingsWidget for CursorTypeWidget {
                     .with_child(
                         appearance
                             .ui_builder()
-                            .span(crate::tr!("settings", "cursor-type-is-disabled-in-vim-mode").to_string())
+                            .span(
+                                crate::tr!("settings", "cursor-type-is-disabled-in-vim-mode")
+                                    .to_string(),
+                            )
                             .build()
                             .finish(),
                     )
@@ -4747,7 +4786,8 @@ impl SettingsWidget for CursorTypeWidget {
                     .on_change(Rc::new(move |ctx, _, index| {
                         if let Some(index) = index {
                             ctx.dispatch_typed_action(AppearancePageAction::SetCursorType(
-                                CursorDisplayType::nth(index).expect(&crate::tr!("settings", "cursor-does-not-exist")),
+                                CursorDisplayType::nth(index)
+                                    .expect(&crate::tr!("settings", "cursor-does-not-exist")),
                             ));
                         }
                     }))
@@ -5258,7 +5298,10 @@ impl SettingsWidget for DirectoryTabColorsWidget {
             )
             .with_child(
                 Text::new(
-                    crate::tr!("settings", "automatically-color-tabs-based-on-the-directory-or-repo-youre-working-in"),
+                    crate::tr!(
+                        "settings",
+                        "automatically-color-tabs-based-on-the-directory-or-repo-youre-working-in"
+                    ),
                     appearance.ui_font_family(),
                     appearance.ui_font_size(),
                 )
@@ -5555,7 +5598,10 @@ impl SettingsWidget for ZoomLevelWidget {
         render_dropdown_item(
             appearance,
             &crate::tr!("menus", "window-zoom"),
-            Some(&crate::tr!("settings", "adjusts-the-default-zoom-level-across-all-windows")),
+            Some(&crate::tr!(
+                "settings",
+                "adjusts-the-default-zoom-level-across-all-windows"
+            )),
             Some(reset_button),
             LocalOnlyIconState::for_setting(
                 crate::window_settings::ZoomLevel::storage_key(),

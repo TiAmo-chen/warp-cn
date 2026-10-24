@@ -842,7 +842,10 @@ pub fn init(app: &mut AppContext) {
         EditableBinding::new(
             OPEN_GLOBAL_SEARCH_BINDING_NAME,
             BindingDescription::new(crate::tr!("workspace", "open-global-search"))
-                .with_custom_description(bindings::MAC_MENUS_CONTEXT, crate::tr!("workspace", "global-search-label")),
+                .with_custom_description(
+                    bindings::MAC_MENUS_CONTEXT,
+                    crate::tr!("workspace", "global-search-label"),
+                ),
             WorkspaceAction::OpenGlobalSearch,
         )
         .with_context_predicate(id!("Workspace") & id!(flags::SHOW_GLOBAL_SEARCH))
@@ -852,16 +855,20 @@ pub fn init(app: &mut AppContext) {
         EditableBinding::new(
             TOGGLE_WARP_DRIVE_BINDING_NAME,
             BindingDescription::new(crate::tr!("workspace", "toggle-warp-drive"))
-                .with_custom_description(bindings::MAC_MENUS_CONTEXT, crate::tr!("drive", "warp-drive")),
+                .with_custom_description(
+                    bindings::MAC_MENUS_CONTEXT,
+                    crate::tr!("drive", "warp-drive"),
+                ),
             WorkspaceAction::ToggleWarpDrive,
         )
         .with_context_predicate(id!("Workspace") & id!(flags::ENABLE_WARP_DRIVE)),
         EditableBinding::new(
             TOGGLE_CONVERSATION_LIST_VIEW_BINDING_NAME,
-            BindingDescription::new(crate::tr!("workspace", "toggle-agent-conversation-list-view")).with_custom_description(
-                bindings::MAC_MENUS_CONTEXT,
-                "Agent conversation list view",
-            ),
+            BindingDescription::new(crate::tr!(
+                "workspace",
+                "toggle-agent-conversation-list-view"
+            ))
+            .with_custom_description(bindings::MAC_MENUS_CONTEXT, "Agent conversation list view"),
             WorkspaceAction::ToggleConversationListView,
         )
         .with_enabled(|| FeatureFlag::AgentViewConversationListView.is_enabled())
@@ -872,7 +879,10 @@ pub fn init(app: &mut AppContext) {
         EditableBinding::new(
             "workspace:close_panel",
             BindingDescription::new(crate::tr!("workspace", "close-focused-panel"))
-                .with_custom_description(bindings::MAC_MENUS_CONTEXT, crate::tr!("workspace", "close-focused-panel")),
+                .with_custom_description(
+                    bindings::MAC_MENUS_CONTEXT,
+                    crate::tr!("workspace", "close-focused-panel"),
+                ),
             WorkspaceAction::ClosePanel,
         )
         .with_context_predicate(id!("Workspace"))
@@ -880,7 +890,10 @@ pub fn init(app: &mut AppContext) {
         EditableBinding::new(
             "workspace:toggle_command_palette",
             BindingDescription::new(crate::tr!("workspace", "toggle-command-palette"))
-                .with_custom_description(bindings::MAC_MENUS_CONTEXT, crate::tr!("common", "command-palette")),
+                .with_custom_description(
+                    bindings::MAC_MENUS_CONTEXT,
+                    crate::tr!("common", "command-palette"),
+                ),
             WorkspaceAction::TogglePalette {
                 mode: PaletteMode::Command,
                 source: PaletteSource::Keybinding,
@@ -905,9 +918,10 @@ pub fn init(app: &mut AppContext) {
         .with_custom_action(CustomAction::MoveTabLeft),
         EditableBinding::new(
             "workspace:move_tab_right",
-            BindingDescription::new(crate::tr!("workspace", "move-tab-right")).with_dynamic_override(|ctx| {
-                uses_vertical_tabs(ctx).then(|| "move tab down".into())
-            }),
+            BindingDescription::new(crate::tr!("workspace", "move-tab-right"))
+                .with_dynamic_override(|ctx| {
+                    uses_vertical_tabs(ctx).then(|| "move tab down".into())
+                }),
             WorkspaceAction::MoveActiveTabRight,
         )
         .with_group(bindings::BindingGroup::Navigation.as_str())
@@ -1100,7 +1114,10 @@ pub fn init(app: &mut AppContext) {
         EditableBinding::new(
             "workspace:close_window",
             BindingDescription::new(crate::tr!("menus", "file-close-window"))
-                .with_custom_description(bindings::MAC_MENUS_CONTEXT, crate::tr!("menus", "file-close-window")),
+                .with_custom_description(
+                    bindings::MAC_MENUS_CONTEXT,
+                    crate::tr!("menus", "file-close-window"),
+                ),
             WorkspaceAction::CloseWindow,
         )
         .with_mac_key_binding("cmd-shift-W")
@@ -1128,9 +1145,10 @@ pub fn init(app: &mut AppContext) {
         .with_context_predicate(id!("Workspace")),
         EditableBinding::new(
             "workspace:close_tabs_right_active_tab",
-            BindingDescription::new(crate::tr!("workspace", "close-tabs-to-right")).with_dynamic_override(|ctx| {
-                uses_vertical_tabs(ctx).then(|| "close tabs below".into())
-            }),
+            BindingDescription::new(crate::tr!("workspace", "close-tabs-to-right"))
+                .with_dynamic_override(|ctx| {
+                    uses_vertical_tabs(ctx).then(|| "close tabs below".into())
+                }),
             WorkspaceAction::CloseTabsRightActiveTab,
         )
         .with_group(bindings::BindingGroup::Close.as_str())
@@ -1477,7 +1495,10 @@ pub fn init(app: &mut AppContext) {
         EditableBinding::new(
             "workspace:open_ai_fact_collection",
             BindingDescription::new(crate::tr!("workspace", "open-ai-rules"))
-                .with_custom_description(bindings::MAC_MENUS_CONTEXT, crate::tr!("workspace", "open-ai-rules")),
+                .with_custom_description(
+                    bindings::MAC_MENUS_CONTEXT,
+                    crate::tr!("workspace", "open-ai-rules"),
+                ),
             WorkspaceAction::OpenAIFactCollection,
         )
         .with_enabled(|| FeatureFlag::AIRules.is_enabled())
@@ -1489,7 +1510,10 @@ pub fn init(app: &mut AppContext) {
     app.register_editable_bindings([EditableBinding::new(
         "workspace:open_mcp_servers",
         BindingDescription::new(crate::tr!("workspace", "open-mcp-servers"))
-            .with_custom_description(bindings::MAC_MENUS_CONTEXT, crate::tr!("workspace", "open-mcp-servers")),
+            .with_custom_description(
+                bindings::MAC_MENUS_CONTEXT,
+                crate::tr!("workspace", "open-mcp-servers"),
+            ),
         WorkspaceAction::OpenMCPServerCollection,
     )
     .with_enabled(|| {
@@ -1585,10 +1609,11 @@ fn add_open_setting_pages_as_editable_binding(app: &mut AppContext) {
         .with_custom_action(CustomAction::ViewSharedBlocks),
         EditableBinding::new(
             "workspace:show_settings_keyboard_shortcuts_page",
-            BindingDescription::new(crate::tr!("workspace", "open-settings-keyboard-shortcuts")).with_custom_description(
-                bindings::MAC_MENUS_CONTEXT,
-                "Configure Keyboard Shortcuts...",
-            ),
+            BindingDescription::new(crate::tr!("workspace", "open-settings-keyboard-shortcuts"))
+                .with_custom_description(
+                    bindings::MAC_MENUS_CONTEXT,
+                    "Configure Keyboard Shortcuts...",
+                ),
             WorkspaceAction::ShowSettingsPage(SettingsSection::Keybindings),
         )
         .with_group(bindings::BindingGroup::KeyboardShortcuts.as_str())
@@ -1597,7 +1622,10 @@ fn add_open_setting_pages_as_editable_binding(app: &mut AppContext) {
         EditableBinding::new(
             "workspace:show_settings_about_page",
             BindingDescription::new(crate::tr!("workspace", "open-settings-about"))
-                .with_custom_description(bindings::MAC_MENUS_CONTEXT, crate::tr!("menus", "app-about")),
+                .with_custom_description(
+                    bindings::MAC_MENUS_CONTEXT,
+                    crate::tr!("menus", "app-about"),
+                ),
             WorkspaceAction::ShowSettingsPage(SettingsSection::About),
         )
         .with_group(bindings::BindingGroup::Settings.as_str())
@@ -1606,7 +1634,10 @@ fn add_open_setting_pages_as_editable_binding(app: &mut AppContext) {
         EditableBinding::new(
             "workspace:show_settings_teams_page",
             BindingDescription::new(crate::tr!("workspace", "open-settings-teams"))
-                .with_custom_description(bindings::MAC_MENUS_CONTEXT, crate::tr!("drive", "open-team-settings")),
+                .with_custom_description(
+                    bindings::MAC_MENUS_CONTEXT,
+                    crate::tr!("drive", "open-team-settings"),
+                ),
             WorkspaceAction::ShowSettingsPage(SettingsSection::Teams),
         )
         .with_group(bindings::BindingGroup::Settings.as_str())

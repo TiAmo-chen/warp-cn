@@ -67,7 +67,10 @@ impl CLIAgentsPageView {
         let cli_agent_footer_command_editor = ctx.add_typed_action_view(|ctx| {
             let mut input =
                 SubmittableTextInput::new(ctx).validate_on_edit(|s| Regex::new(s).is_ok());
-            input.set_placeholder_text(crate::tr!("settings", "cli-agent-footer-command-placeholder"), ctx);
+            input.set_placeholder_text(
+                crate::tr!("settings", "cli-agent-footer-command-placeholder"),
+                ctx,
+            );
             input
         });
         update_editor_interaction_state(
@@ -439,9 +442,10 @@ impl SettingsWidget for CLIAgentWidget {
         );
 
         let description_fragments = vec![
-            FormattedTextFragment::plain_text(
-                crate::tr!("settings", "show-a-toolbar-with-quick-actions-when-running-coding-agents-like-"),
-            ),
+            FormattedTextFragment::plain_text(crate::tr!(
+                "settings",
+                "show-a-toolbar-with-quick-actions-when-running-coding-agents-like-"
+            )),
             FormattedTextFragment::inline_code("claude"),
             FormattedTextFragment::plain_text(", "),
             FormattedTextFragment::inline_code("codex"),
@@ -515,7 +519,8 @@ impl SettingsWidget for CLIAgentAutoToggleRichInputWidget {
                 on_click_action: None,
                 secondary_text: None,
                 tooltip_override_text: Some(
-                    crate::tr!("settings", "requires-the-warp-plugin-for-your-coding-agent").to_owned(),
+                    crate::tr!("settings", "requires-the-warp-plugin-for-your-coding-agent")
+                        .to_owned(),
                 ),
             }),
             LocalOnlyIconState::for_setting(
@@ -570,7 +575,10 @@ impl SettingsWidget for CLIAgentAutoOpenRichInputWidget {
         }
 
         render_ai_setting_toggle::<AutoOpenRichInputOnCLIAgentStart>(
-            crate::tr!("settings", "auto-open-rich-input-when-a-coding-agent-session-starts"),
+            crate::tr!(
+                "settings",
+                "auto-open-rich-input-when-a-coding-agent-session-starts"
+            ),
             CLIAgentsPageAction::ToggleAutoOpenRichInputOnCLIAgentStart,
             *AISettings::as_ref(app).auto_open_rich_input_on_cli_agent_start,
             true,
@@ -608,7 +616,10 @@ impl SettingsWidget for CLIAgentAutoDismissRichInputWidget {
         }
 
         render_ai_setting_toggle::<AutoDismissRichInputAfterSubmit>(
-            crate::tr!("settings", "auto-dismiss-rich-input-after-prompt-submission"),
+            crate::tr!(
+                "settings",
+                "auto-dismiss-rich-input-after-prompt-submission"
+            ),
             CLIAgentsPageAction::ToggleAutoDismissRichInputAfterSubmit,
             *AISettings::as_ref(app).auto_dismiss_rich_input_after_submit,
             true,
@@ -767,7 +778,10 @@ impl SettingsWidget for CLIAgentCommandsWidget {
 
         let description = appearance
             .ui_builder()
-            .paragraph(crate::tr!("settings", "add-regex-patterns-to-show-the-coding-agent-toolbar-for-matching-commands"))
+            .paragraph(crate::tr!(
+                "settings",
+                "add-regex-patterns-to-show-the-coding-agent-toolbar-for-matching-commands"
+            ))
             .with_style(UiComponentStyles {
                 font_size: Some(appearance.ui_font_size()),
                 font_color: Some(styles::description_font_color(true, app).into()),

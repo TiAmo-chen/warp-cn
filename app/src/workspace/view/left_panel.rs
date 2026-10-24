@@ -998,7 +998,10 @@ impl LeftPanelView {
 
         let tooltip = if let Some(keybinding) = tooltip_keybinding {
             ui_builder
-                .tool_tip_with_sublabel(crate::tr!("workspace", "close-panel").to_string(), keybinding)
+                .tool_tip_with_sublabel(
+                    crate::tr!("workspace", "close-panel").to_string(),
+                    keybinding,
+                )
                 .build()
                 .finish()
         } else {

@@ -2115,8 +2115,7 @@ impl DriveIndex {
     }
 
     fn render_team_space_zero_state(&self, appearance: &Appearance) -> Box<dyn Element> {
-        let hint_text =
-            crate::tr!("drive", "team-space-zero-state");
+        let hint_text = crate::tr!("drive", "team-space-zero-state");
         let zero_state_info = Container::new(
             appearance
                 .ui_builder()
@@ -2657,11 +2656,7 @@ impl DriveIndex {
                         1.,
                         appearance
                             .ui_builder()
-                            .wrappable_text(
-                                crate::tr!("drive", "trash-warning")
-                                    .to_string(),
-                                true,
-                            )
+                            .wrappable_text(crate::tr!("drive", "trash-warning").to_string(), true)
                             .with_style(UiComponentStyles {
                                 font_family_id: Some(appearance.ui_font_family()),
                                 font_size: Some(WARNING_FONT_SIZE),
@@ -4028,20 +4023,23 @@ impl DriveIndex {
             .with_cross_axis_alignment(CrossAxisAlignment::Start)
             .with_main_axis_alignment(MainAxisAlignment::SpaceBetween)
             .with_child(
-                Text::new_inline(crate::tr!("drive", "warp-drive").to_string(), appearance.ui_font_family(), 14.)
-                    .with_color(theme.main_text_color(background_color).into())
-                    .with_style(Properties {
-                        weight: warpui::fonts::Weight::Bold,
-                        ..Default::default()
-                    })
-                    .finish(),
+                Text::new_inline(
+                    crate::tr!("drive", "warp-drive").to_string(),
+                    appearance.ui_font_family(),
+                    14.,
+                )
+                .with_color(theme.main_text_color(background_color).into())
+                .with_style(Properties {
+                    weight: warpui::fonts::Weight::Bold,
+                    ..Default::default()
+                })
+                .finish(),
             )
             .with_child(Shrinkable::new(1., Empty::new().finish()).finish())
             .with_child(close_icon_button)
             .finish();
 
-        let personal_object_limit_description =
-            crate::tr!("drive", "sign-up-prompt");
+        let personal_object_limit_description = crate::tr!("drive", "sign-up-prompt");
 
         let body_text = appearance
             .ui_builder()
@@ -4421,7 +4419,13 @@ impl DriveIndex {
                         .payment_issue_banner_button_mouse_state
                         .clone(),
                 )
-                .with_centered_text_label(crate::tr!("ai_assistant", "ai-delinquent-due-to-payment-issue-action-text").into())
+                .with_centered_text_label(
+                    crate::tr!(
+                        "ai_assistant",
+                        "ai-delinquent-due-to-payment-issue-action-text"
+                    )
+                    .into(),
+                )
                 .with_style(UiComponentStyles {
                     font_size: Some(14.),
                     font_weight: Some(Weight::Light),
@@ -4657,12 +4661,15 @@ impl DriveIndex {
                         && let Some(ai_document_id) = notebook.model().ai_document_id
                     {
                         menu_items.push(
-                            MenuItemFields::new(crate::tr!("ai_assistant", "ai-doc-attach-to-active-session"))
-                                .with_on_select_action(DriveIndexAction::AttachPlanAsContext(
-                                    ai_document_id,
-                                ))
-                                .with_icon(Icon::Paperclip)
-                                .into_item(),
+                            MenuItemFields::new(crate::tr!(
+                                "ai_assistant",
+                                "ai-doc-attach-to-active-session"
+                            ))
+                            .with_on_select_action(DriveIndexAction::AttachPlanAsContext(
+                                ai_document_id,
+                            ))
+                            .with_icon(Icon::Paperclip)
+                            .into_item(),
                         );
                     }
                     if let Some(_workflow) = workflow {

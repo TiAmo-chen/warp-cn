@@ -165,18 +165,22 @@ impl ParticipantAvatarView {
         ];
 
         match self.role {
-            Some(Role::Reader) => items.extend([MenuItemFields::new(crate::tr!("terminal", "make-editor"))
-                .with_on_select_action(ParticipantAvatarAction::UpdateRole {
-                    participant_id,
-                    role: Role::Executor,
-                })
-                .into_item()]),
-            Some(Role::Executor) => items.extend([MenuItemFields::new(crate::tr!("terminal", "make-viewer"))
-                .with_on_select_action(ParticipantAvatarAction::UpdateRole {
-                    participant_id,
-                    role: Role::Reader,
-                })
-                .into_item()]),
+            Some(Role::Reader) => {
+                items.extend([MenuItemFields::new(crate::tr!("terminal", "make-editor"))
+                    .with_on_select_action(ParticipantAvatarAction::UpdateRole {
+                        participant_id,
+                        role: Role::Executor,
+                    })
+                    .into_item()])
+            }
+            Some(Role::Executor) => {
+                items.extend([MenuItemFields::new(crate::tr!("terminal", "make-viewer"))
+                    .with_on_select_action(ParticipantAvatarAction::UpdateRole {
+                        participant_id,
+                        role: Role::Reader,
+                    })
+                    .into_item()])
+            }
             // Sharer does not have context menu
             _ => {}
         }
@@ -543,7 +547,10 @@ pub fn render_revoke_all_button(
                 );
 
             stack.add_positioned_child(
-                render_tooltip(crate::tr!("terminal", "revoke-all-edit-permissions").to_string(), appearance),
+                render_tooltip(
+                    crate::tr!("terminal", "revoke-all-edit-permissions").to_string(),
+                    appearance,
+                ),
                 OffsetPositioning::offset_from_parent(
                     vec2f(0., 3.),
                     ParentOffsetBounds::Unbounded,

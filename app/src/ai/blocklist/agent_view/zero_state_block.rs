@@ -668,7 +668,10 @@ fn render_title_and_description(props: HeaderProps, app: &AppContext) -> Vec<Box
                 FormattedTextFragment::plain_text(
                     "Use cloud agents to run parallel agents, build agents that run autonomously, and check in on your agents from anywhere. ",
                 ),
-                FormattedTextFragment::hyperlink(crate::tr!("agent_cloud", "visit-docs"), CLOUD_AGENT_DOCS_URL),
+                FormattedTextFragment::hyperlink(
+                    crate::tr!("agent_cloud", "visit-docs"),
+                    CLOUD_AGENT_DOCS_URL,
+                ),
             ])]);
 
             items.push(
@@ -741,7 +744,10 @@ fn render_body(props: ZeroStateBodyProps<'_>, app: &AppContext) -> Vec<Box<dyn E
                             MessageItem::keystroke(
                                 ENTER_AGENT_VIEW_NEW_CONVERSATION_KEYSTROKE.clone(),
                             ),
-                            MessageItem::text(crate::tr!("terminal", "zero-state-new-agent-conversation")),
+                            MessageItem::text(crate::tr!(
+                                "terminal",
+                                "zero-state-new-agent-conversation"
+                            )),
                         ],
                         |ctx| {
                             ctx.dispatch_typed_action(TerminalAction::StartNewAgentConversation {
@@ -760,7 +766,10 @@ fn render_body(props: ZeroStateBodyProps<'_>, app: &AppContext) -> Vec<Box<dyn E
                             MessageItem::keystroke(
                                 ENTER_CLOUD_AGENT_VIEW_NEW_CONVERSATION_KEYSTROKE.clone(),
                             ),
-                            MessageItem::text(crate::tr!("terminal", "zero-state-new-cloud-agent-conversation")),
+                            MessageItem::text(crate::tr!(
+                                "terminal",
+                                "zero-state-new-cloud-agent-conversation"
+                            )),
                         ],
                         |ctx| {
                             ctx.dispatch_typed_action(TerminalAction::EnterCloudAgentView);

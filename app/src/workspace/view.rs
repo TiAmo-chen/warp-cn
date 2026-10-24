@@ -2770,7 +2770,10 @@ impl Workspace {
                         let toast = DismissibleToast::error(message)
                             .with_object_id(object_id.clone())
                             .with_link(
-                                ToastLink::new(crate::tr!("ai_assistant", "ai-open-file").to_string()).with_onclick_action(
+                                ToastLink::new(
+                                    crate::tr!("ai_assistant", "ai-open-file").to_string(),
+                                )
+                                .with_onclick_action(
                                     WorkspaceAction::OpenTabConfigErrorFile {
                                         path,
                                         toast_object_id: object_id,
@@ -2804,7 +2807,10 @@ impl Workspace {
                         let toast = DismissibleToast::error(message)
                             .with_object_id(object_id.clone())
                             .with_link(
-                                ToastLink::new(crate::tr!("ai_assistant", "ai-open-file").to_string()).with_onclick_action(
+                                ToastLink::new(
+                                    crate::tr!("ai_assistant", "ai-open-file").to_string(),
+                                )
+                                .with_onclick_action(
                                     WorkspaceAction::OpenTabConfigErrorFile {
                                         path,
                                         toast_object_id: object_id,
@@ -4804,7 +4810,9 @@ impl Workspace {
         ));
 
         self.toast_stack.update(ctx, |toast_stack, ctx| {
-            let toast = DismissibleToast::default(crate::tr!("workspace", "remote-control-link-copied").to_string());
+            let toast = DismissibleToast::default(
+                crate::tr!("workspace", "remote-control-link-copied").to_string(),
+            );
             toast_stack.add_ephemeral_toast(toast, ctx);
         });
     }
@@ -6974,9 +6982,10 @@ impl Workspace {
 
         // 1. Agent (if AI enabled)
         if is_any_ai_enabled {
-            let mut agent_item = MenuItemFields::new(crate::tr!("settings", "default-session-agent"))
-                .with_on_select_action(WorkspaceAction::AddAgentTab)
-                .with_icon(icons::Icon::LayoutAlt01);
+            let mut agent_item =
+                MenuItemFields::new(crate::tr!("settings", "default-session-agent"))
+                    .with_on_select_action(WorkspaceAction::AddAgentTab)
+                    .with_icon(icons::Icon::LayoutAlt01);
             if effective_default == DefaultSessionMode::Agent {
                 agent_item = agent_item.with_key_shortcut_label(shortcut_label.clone());
             }
@@ -6990,11 +6999,12 @@ impl Workspace {
             #[cfg(target_os = "windows")]
             {
                 let is_terminal_default = effective_default == DefaultSessionMode::Terminal;
-                let mut terminal_item = MenuItemFields::new(crate::tr!("common", "terminal-section"))
-                    .with_on_select_action(WorkspaceAction::AddTerminalTab {
-                        hide_homepage: false,
-                    })
-                    .with_icon(icons::Icon::LayoutAlt01);
+                let mut terminal_item =
+                    MenuItemFields::new(crate::tr!("common", "terminal-section"))
+                        .with_on_select_action(WorkspaceAction::AddTerminalTab {
+                            hide_homepage: false,
+                        })
+                        .with_icon(icons::Icon::LayoutAlt01);
                 if is_terminal_default {
                     terminal_item = terminal_item.with_key_shortcut_label(shortcut_label.clone());
                 }
@@ -7027,11 +7037,12 @@ impl Workspace {
             // On other platforms, Terminal is a regular item.
             #[cfg(not(target_os = "windows"))]
             {
-                let mut terminal_item = MenuItemFields::new(crate::tr!("common", "terminal-section"))
-                    .with_on_select_action(WorkspaceAction::AddTerminalTab {
-                        hide_homepage: false,
-                    })
-                    .with_icon(icons::Icon::LayoutAlt01);
+                let mut terminal_item =
+                    MenuItemFields::new(crate::tr!("common", "terminal-section"))
+                        .with_on_select_action(WorkspaceAction::AddTerminalTab {
+                            hide_homepage: false,
+                        })
+                        .with_icon(icons::Icon::LayoutAlt01);
                 if effective_default == DefaultSessionMode::Terminal {
                     terminal_item = terminal_item.with_key_shortcut_label(shortcut_label.clone());
                 }
@@ -7055,9 +7066,10 @@ impl Workspace {
 
         // 3b. Local Docker Sandbox
         if FeatureFlag::LocalDockerSandbox.is_enabled() {
-            let mut docker_item = MenuItemFields::new(crate::tr!("settings", "default-session-docker-sandbox"))
-                .with_on_select_action(WorkspaceAction::AddDockerSandboxTab)
-                .with_icon(icons::Icon::Docker);
+            let mut docker_item =
+                MenuItemFields::new(crate::tr!("settings", "default-session-docker-sandbox"))
+                    .with_on_select_action(WorkspaceAction::AddDockerSandboxTab)
+                    .with_icon(icons::Icon::Docker);
             if effective_default == DefaultSessionMode::DockerSandbox {
                 docker_item = docker_item.with_key_shortcut_label(shortcut_label.clone());
             }
@@ -14147,7 +14159,9 @@ impl Workspace {
             Err(e) => {
                 report_error!(e.context("Conversation forking failed"));
                 WorkspaceToastStack::handle(ctx).update(ctx, |toast_stack, ctx| {
-                    let toast = DismissibleToast::error(crate::tr!("workspace", "conversation-forking-failed").to_owned());
+                    let toast = DismissibleToast::error(
+                        crate::tr!("workspace", "conversation-forking-failed").to_owned(),
+                    );
                     toast_stack.add_ephemeral_toast(toast, window_id, ctx);
                 });
                 return;
@@ -14670,8 +14684,11 @@ impl Workspace {
                                     .to_string(),
                             )
                             .with_link(
-                                ToastLink::new(crate::tr!("workspace", "troubleshoot-notifications").to_string())
-                                    .with_href(url),
+                                ToastLink::new(
+                                    crate::tr!("workspace", "troubleshoot-notifications")
+                                        .to_string(),
+                                )
+                                .with_href(url),
                             );
                             toast_stack.add_persistent_toast(toast, ctx);
                         });
@@ -14714,7 +14731,10 @@ impl Workspace {
                 ..current_settings
             };
             if let Err(e) = settings.notifications.set_value(new_notifications, ctx) {
-                report_error!(e.context(crate::tr!("settings", "error-persisting-notifications-setting")));
+                report_error!(e.context(crate::tr!(
+                    "settings",
+                    "error-persisting-notifications-setting"
+                )));
             }
         });
     }
@@ -15329,14 +15349,19 @@ impl Workspace {
                                 .find(|binding| binding.name == "workspace:view_changelog")
                                 .and_then(|binding| trigger_to_keystroke(binding.trigger));
 
-                            let mut link = ToastLink::new(crate::tr!("ai_assistant", "ai-view-changelog").to_owned())
-                                .with_onclick_action(WorkspaceAction::ViewLatestChangelog);
+                            let mut link = ToastLink::new(
+                                crate::tr!("ai_assistant", "ai-view-changelog").to_owned(),
+                            )
+                            .with_onclick_action(WorkspaceAction::ViewLatestChangelog);
                             if let Some(keystroke) = keystroke {
                                 link = link.with_keystroke(keystroke);
                             }
 
-                            let toast = DismissibleToast::default(String::from(crate::tr!("workspace", "toast-warp-updated")))
-                                .with_link(link);
+                            let toast = DismissibleToast::default(String::from(crate::tr!(
+                                "workspace",
+                                "toast-warp-updated"
+                            )))
+                            .with_link(link);
 
                             stack.add_ephemeral_toast(toast, ctx);
                         });
@@ -16528,9 +16553,10 @@ impl Workspace {
 
                 if !object_found {
                     self.toast_stack.update(ctx, |toast_stack, ctx| {
-                        let toast = DismissibleToast::error(String::from(
-                            crate::tr!("workspace", "resource-not-found-or-access-denied"),
-                        ));
+                        let toast = DismissibleToast::error(String::from(crate::tr!(
+                            "workspace",
+                            "resource-not-found-or-access-denied"
+                        )));
                         toast_stack.add_ephemeral_toast(toast, ctx);
                     });
                     ctx.notify();
@@ -18023,8 +18049,9 @@ impl Workspace {
         {
             let window_id = ctx.window_id();
             WorkspaceToastStack::handle(ctx).update(ctx, |toast_stack, ctx| {
-                let toast =
-                    DismissibleToast::default(crate::tr!("workspace", "plan-already-in-context").to_owned());
+                let toast = DismissibleToast::default(
+                    crate::tr!("workspace", "plan-already-in-context").to_owned(),
+                );
                 toast_stack.add_ephemeral_toast(toast, window_id, ctx);
             });
             return;
@@ -18127,8 +18154,9 @@ impl Workspace {
 
         if !ContextFlag::CreateNewSession.is_enabled() {
             self.toast_stack.update(ctx, |toast_stack, ctx| {
-                let toast =
-                    DismissibleToast::error(crate::tr!("workspace", "cannot-open-new-terminal-session").to_string());
+                let toast = DismissibleToast::error(
+                    crate::tr!("workspace", "cannot-open-new-terminal-session").to_string(),
+                );
                 toast_stack.add_ephemeral_toast(toast, ctx);
             });
             return None;
@@ -18392,7 +18420,11 @@ impl Workspace {
                                     self.toast_stack.update(ctx, |view, ctx| {
                                         view.add_ephemeral_toast(
                                             DismissibleToast::error(
-                                                crate::tr!("workspace", "workflow-no-longer-available").to_string(),
+                                                crate::tr!(
+                                                    "workspace",
+                                                    "workflow-no-longer-available"
+                                                )
+                                                .to_string(),
                                             ),
                                             ctx,
                                         );
@@ -18574,7 +18606,8 @@ impl Workspace {
                                         .contains_ai_document(&ai_doc_id, ctx)
                                 }) {
                                     new_toast = DismissibleToast::success(
-                                        crate::tr!("workspace", "plan-synced-to-warp-drive").to_string(),
+                                        crate::tr!("workspace", "plan-synced-to-warp-drive")
+                                            .to_string(),
                                     )
                                     .with_object_id(object_id_clone)
                                     .with_link(
@@ -19171,7 +19204,10 @@ impl Workspace {
                 reporting
                     .mouse_reporting_enabled
                     .set_value(!prev_mouse_reporting_enabled, ctx)
-                    .expect(&crate::tr!("settings", "mousereportingenabled-failed-to-serialize"));
+                    .expect(&crate::tr!(
+                        "settings",
+                        "mousereportingenabled-failed-to-serialize"
+                    ));
                 prev_mouse_reporting_enabled
             });
 
@@ -19198,7 +19234,10 @@ impl Workspace {
             reporting
                 .scroll_reporting_enabled
                 .toggle_and_save_value(ctx)
-                .expect(&crate::tr!("settings", "scrollreportingenabled-failed-to-serialize"));
+                .expect(&crate::tr!(
+                    "settings",
+                    "scrollreportingenabled-failed-to-serialize"
+                ));
         });
     }
 
@@ -19207,7 +19246,10 @@ impl Workspace {
             reporting
                 .focus_reporting_enabled
                 .toggle_and_save_value(ctx)
-                .expect(&crate::tr!("settings", "focusreportingenabled-failed-to-serialize"));
+                .expect(&crate::tr!(
+                    "settings",
+                    "focusreportingenabled-failed-to-serialize"
+                ));
         });
     }
 
@@ -19331,8 +19373,9 @@ impl Workspace {
                 let command = code.trim().to_string();
                 let args_state =
                     ArgumentsState::for_command_workflow(&Default::default(), command.clone());
-                let workflow = Workflow::new(crate::tr!("workspace", "command-from-warp-ai"), command)
-                    .with_arguments(args_state.arguments);
+                let workflow =
+                    Workflow::new(crate::tr!("workspace", "command-from-warp-ai"), command)
+                        .with_arguments(args_state.arguments);
                 self.run_workflow_in_active_input(
                     &WorkflowType::AIGenerated {
                         workflow,
@@ -22535,8 +22578,7 @@ impl Workspace {
                         if is_incoming_version_past_current(new_version.soft_cutoff.as_deref()) {
                             VERSION_DEPRECATION_WITHOUT_PERMISSIONS_BANNER_TEXT.to_owned()
                         } else {
-                            crate::tr!("workspace", "unable-to-update")
-                                .to_owned()
+                            crate::tr!("workspace", "unable-to-update").to_owned()
                         };
 
                     Some(WorkspaceBannerFields {
@@ -22607,7 +22649,8 @@ impl Workspace {
                                         .to_string(),
                                     secondary_button: None,
                                     button: Some(WorkspaceBannerButtonDetails {
-                                        text: crate::tr!("workspace", "restart-app-and-update-now").to_string(),
+                                        text: crate::tr!("workspace", "restart-app-and-update-now")
+                                            .to_string(),
                                         action: WorkspaceAction::ApplyUpdate,
                                         variant: BannerButtonVariant::Outlined,
                                         icon: None,
@@ -25487,8 +25530,9 @@ impl TypedActionView for Workspace {
                 self.process_updated_sync_state(ctx);
 
                 self.toast_stack.update(ctx, |view, ctx| {
-                    let new_toast =
-                        DismissibleToast::success(crate::tr!("workspace", "disabled-all-synced-inputs").to_string());
+                    let new_toast = DismissibleToast::success(
+                        crate::tr!("workspace", "disabled-all-synced-inputs").to_string(),
+                    );
                     view.add_ephemeral_toast(new_toast, ctx);
                 });
                 send_telemetry_from_ctx!(TelemetryEvent::DisableInputSync, ctx);
@@ -26332,7 +26376,9 @@ impl TypedActionView for Workspace {
 
                 self.toast_stack.update(ctx, |view, ctx| {
                     view.add_ephemeral_toast(
-                        DismissibleToast::default(crate::tr!("workspace", "sampling-process-3s").to_string()),
+                        DismissibleToast::default(
+                            crate::tr!("workspace", "sampling-process-3s").to_string(),
+                        ),
                         ctx,
                     );
                 });
@@ -26572,7 +26618,11 @@ impl TypedActionView for Workspace {
                         ToastStack::handle(ctx).update(ctx, |toast_stack, ctx| {
                             toast_stack.add_ephemeral_toast(
                                 DismissibleToast::error(
-                                    crate::tr!("workspace", "failed-to-delete-conversation-exit-agent-view").to_string(),
+                                    crate::tr!(
+                                        "workspace",
+                                        "failed-to-delete-conversation-exit-agent-view"
+                                    )
+                                    .to_string(),
                                 ),
                                 window_id,
                                 ctx,
@@ -26587,7 +26637,9 @@ impl TypedActionView for Workspace {
                 send_telemetry_from_ctx!(TelemetryEvent::ConversationListItemDeleted, ctx);
                 ToastStack::handle(ctx).update(ctx, |toast_stack, ctx| {
                     toast_stack.add_ephemeral_toast(
-                        DismissibleToast::success(crate::tr!("workspace", "conversation-deleted").to_string()),
+                        DismissibleToast::success(
+                            crate::tr!("workspace", "conversation-deleted").to_string(),
+                        ),
                         window_id,
                         ctx,
                     );

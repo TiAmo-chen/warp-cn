@@ -112,9 +112,7 @@ impl EnvVarCollectionView {
                             )
                             .with_tooltip(move || {
                                 ui_builder
-                                    .tool_tip(
-                                        crate::tr!("env_vars", "restore-tooltip").to_string(),
-                                    )
+                                    .tool_tip(crate::tr!("env_vars", "restore-tooltip").to_string())
                                     .build()
                                     .finish()
                             })

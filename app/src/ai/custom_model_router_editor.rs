@@ -675,7 +675,10 @@ impl CustomRouterEditorView {
             .sub_text_color(appearance.theme().surface_1());
 
         let mut column = Flex::column()
-            .with_child(Self::section_label(crate::tr!("ai_assistant", "ai-default-model-label"), appearance))
+            .with_child(Self::section_label(
+                crate::tr!("ai_assistant", "ai-default-model-label"),
+                appearance,
+            ))
             .with_child(
                 ConstrainedBox::new(ChildView::new(&self.prompt_default_dropdown).finish())
                     .with_width(EDITOR_CONTENT_WIDTH)

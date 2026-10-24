@@ -42,12 +42,12 @@ pub fn classify_driver_error(error: &AgentDriverError) -> (AgentTaskState, TaskS
                      an administrator has disabled session sharing for your team. Please \
                      verify that session sharing is enabled in your team settings, or try \
                      running without the --share flag."
-                    .to_string()
+                        .to_string()
                 }
                 ShareSessionError::Timeout => {
                     "Failed to share agent session: timed out waiting for the session sharing \
                      server to respond. Please check your network connection and try again."
-                    .to_string()
+                        .to_string()
                 }
                 ShareSessionError::Interrupted => {
                     crate::tr!("ai_assistant", "ai-share-session-interrupted").to_string()

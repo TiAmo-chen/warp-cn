@@ -109,9 +109,11 @@ impl AgentAssistedEnvironmentModal {
         });
 
         let create_button = ctx.add_typed_action_view(|_ctx| {
-            ActionButton::new(crate::tr!("settings", "create-environment"), PrimaryTheme).on_click(|ctx| {
-                ctx.dispatch_typed_action(AgentAssistedEnvironmentModalAction::Confirm);
-            })
+            ActionButton::new(crate::tr!("settings", "create-environment"), PrimaryTheme).on_click(
+                |ctx| {
+                    ctx.dispatch_typed_action(AgentAssistedEnvironmentModalAction::Confirm);
+                },
+            )
         });
 
         let me = Self {
@@ -325,7 +327,9 @@ impl AgentAssistedEnvironmentModal {
             .with_cross_axis_alignment(CrossAxisAlignment::Stretch)
             .with_spacing(8.);
 
-        col.add_child(self.render_section_title(&crate::tr!("settings", "selected-repos"), appearance));
+        col.add_child(
+            self.render_section_title(&crate::tr!("settings", "selected-repos"), appearance),
+        );
 
         if self.selected_repo_paths.is_empty() {
             col.add_child(
@@ -406,7 +410,10 @@ impl AgentAssistedEnvironmentModal {
             .with_child(
                 Expanded::new(
                     1.,
-                    self.render_section_title(&crate::tr!("settings", "available-indexed-repos"), appearance),
+                    self.render_section_title(
+                        &crate::tr!("settings", "available-indexed-repos"),
+                        appearance,
+                    ),
                 )
                 .finish(),
             )
@@ -588,7 +595,9 @@ impl AgentAssistedEnvironmentModal {
             move |paths_result, ctx| {
                 let result = paths_result.and_then(|paths| {
                     paths.into_iter().next().map(PathBuf::from).ok_or_else(|| {
-                        FilePickerError::DialogFailed(crate::tr!("settings", "no-directory-selected").to_string())
+                        FilePickerError::DialogFailed(
+                            crate::tr!("settings", "no-directory-selected").to_string(),
+                        )
                     })
                 });
 
@@ -606,9 +615,15 @@ impl AgentAssistedEnvironmentModal {
 
     fn render_dialog(&self, appearance: &Appearance, app: &AppContext) -> Box<dyn Element> {
         let description = if FeatureFlag::FullSourceCodeEmbedding.is_enabled() {
-            crate::tr!("settings", "select-locally-indexed-repos-to-provide-context-for-the-environment-creation-agent")
+            crate::tr!(
+                "settings",
+                "select-locally-indexed-repos-to-provide-context-for-the-environment-creation-agent"
+            )
         } else {
-            crate::tr!("settings", "select-repos-to-provide-context-for-the-environment-creation-agent")
+            crate::tr!(
+                "settings",
+                "select-repos-to-provide-context-for-the-environment-creation-agent"
+            )
         }
         .to_string();
 

@@ -251,7 +251,10 @@ impl SettingsWidget for BillingAndUsageWidget {
                 Container::new(render_dropdown_item(
                     appearance,
                     &crate::tr!("settings", "usage-display-unit"),
-                    Some(&crate::tr!("settings", "select-the-unit-for-usage-and-spend-amounts")),
+                    Some(&crate::tr!(
+                        "settings",
+                        "select-the-unit-for-usage-and-spend-amounts"
+                    )),
                     None,
                     LocalOnlyIconState::for_setting(
                         UsageDisplayUnit::storage_key(),

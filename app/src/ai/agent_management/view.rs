@@ -313,20 +313,22 @@ impl AgentManagementView {
         let creator_dropdown = ctx.add_typed_action_view(Self::create_creator_dropdown);
 
         let no_filter_results_button = ctx.add_typed_action_view(move |_ctx| {
-            ActionButton::new(crate::tr!("ai_assistant", "ai-filter-clear-filters"), SecondaryTheme)
-                .with_size(ButtonSize::Small)
-                .on_click(move |ctx| {
-                    ctx.dispatch_typed_action(AgentManagementViewAction::ClearFilters)
-                })
+            ActionButton::new(
+                crate::tr!("ai_assistant", "ai-filter-clear-filters"),
+                SecondaryTheme,
+            )
+            .with_size(ButtonSize::Small)
+            .on_click(move |ctx| ctx.dispatch_typed_action(AgentManagementViewAction::ClearFilters))
         });
 
         let clear_all_filters_button = ctx.add_typed_action_view(move |_ctx| {
-            ActionButton::new(crate::tr!("ai_assistant", "ai-context-clear-all"), NakedTheme)
-                .with_icon(Icon::X)
-                .with_size(ButtonSize::Small)
-                .on_click(move |ctx| {
-                    ctx.dispatch_typed_action(AgentManagementViewAction::ClearFilters)
-                })
+            ActionButton::new(
+                crate::tr!("ai_assistant", "ai-context-clear-all"),
+                NakedTheme,
+            )
+            .with_icon(Icon::X)
+            .with_size(ButtonSize::Small)
+            .on_click(move |ctx| ctx.dispatch_typed_action(AgentManagementViewAction::ClearFilters))
         });
 
         let cloud_setup_guide_view = ctx.add_typed_action_view(CloudSetupGuideView::new);
@@ -644,21 +646,24 @@ impl AgentManagementView {
                     AgentManagementViewAction::SetCreatedOnFilter(CreatedOnFilter::All),
                 ),
             )),
-            MenuItem::Item(MenuItemFields::new(crate::tr!("ai_assistant", "ai-filter-last-24-hours")).with_on_select_action(
-                DropdownAction::select_action_and_close(
-                    AgentManagementViewAction::SetCreatedOnFilter(CreatedOnFilter::Last24Hours),
-                ),
-            )),
-            MenuItem::Item(MenuItemFields::new(crate::tr!("ai_assistant", "ai-filter-past-3-days")).with_on_select_action(
-                DropdownAction::select_action_and_close(
-                    AgentManagementViewAction::SetCreatedOnFilter(CreatedOnFilter::Past3Days),
-                ),
-            )),
-            MenuItem::Item(MenuItemFields::new(crate::tr!("ai_assistant", "ai-filter-last-week")).with_on_select_action(
-                DropdownAction::select_action_and_close(
-                    AgentManagementViewAction::SetCreatedOnFilter(CreatedOnFilter::LastWeek),
-                ),
-            )),
+            MenuItem::Item(
+                MenuItemFields::new(crate::tr!("ai_assistant", "ai-filter-last-24-hours"))
+                    .with_on_select_action(DropdownAction::select_action_and_close(
+                        AgentManagementViewAction::SetCreatedOnFilter(CreatedOnFilter::Last24Hours),
+                    )),
+            ),
+            MenuItem::Item(
+                MenuItemFields::new(crate::tr!("ai_assistant", "ai-filter-past-3-days"))
+                    .with_on_select_action(DropdownAction::select_action_and_close(
+                        AgentManagementViewAction::SetCreatedOnFilter(CreatedOnFilter::Past3Days),
+                    )),
+            ),
+            MenuItem::Item(
+                MenuItemFields::new(crate::tr!("ai_assistant", "ai-filter-last-week"))
+                    .with_on_select_action(DropdownAction::select_action_and_close(
+                        AgentManagementViewAction::SetCreatedOnFilter(CreatedOnFilter::LastWeek),
+                    )),
+            ),
         ];
 
         dropdown.set_rich_items(items, ctx);
@@ -678,11 +683,12 @@ impl AgentManagementView {
                     AgentManagementViewAction::SetArtifactFilter(ArtifactFilter::All),
                 ),
             )),
-            MenuItem::Item(MenuItemFields::new(crate::tr!("ai_assistant", "ai-filter-pull-request")).with_on_select_action(
-                DropdownAction::select_action_and_close(
-                    AgentManagementViewAction::SetArtifactFilter(ArtifactFilter::PullRequest),
-                ),
-            )),
+            MenuItem::Item(
+                MenuItemFields::new(crate::tr!("ai_assistant", "ai-filter-pull-request"))
+                    .with_on_select_action(DropdownAction::select_action_and_close(
+                        AgentManagementViewAction::SetArtifactFilter(ArtifactFilter::PullRequest),
+                    )),
+            ),
             MenuItem::Item(MenuItemFields::new("Plan").with_on_select_action(
                 DropdownAction::select_action_and_close(
                     AgentManagementViewAction::SetArtifactFilter(ArtifactFilter::Plan),
@@ -1267,7 +1273,9 @@ impl AgentManagementView {
 
                 let window_id = ctx.window_id();
                 ToastStack::handle(ctx).update(ctx, |toast_stack, ctx| {
-                    let toast = DismissibleToast::default(crate::tr!("ai_assistant", "ai-copied-branch-name").to_string());
+                    let toast = DismissibleToast::default(
+                        crate::tr!("ai_assistant", "ai-copied-branch-name").to_string(),
+                    );
                     toast_stack.add_ephemeral_toast(toast, window_id, ctx);
                 });
             }
@@ -2067,7 +2075,10 @@ impl AgentManagementView {
             let mut stack = Stack::new().with_child(loading_icon);
             if mouse_state.is_hovered() {
                 let tooltip = ui_builder
-                    .tool_tip(String::from(crate::tr!("agent_cloud", "loading-cloud-agent-runs")))
+                    .tool_tip(String::from(crate::tr!(
+                        "agent_cloud",
+                        "loading-cloud-agent-runs"
+                    )))
                     .build()
                     .finish();
                 stack.add_positioned_overlay_child(

@@ -141,9 +141,11 @@ impl MCPServersEditPageView {
         });
 
         let reinstall_button = ctx.add_typed_action_view(|_| {
-            ActionButton::new(crate::tr!("settings", "edit-variables"), PrimaryTheme).on_click(|ctx| {
-                ctx.dispatch_typed_action(MCPServersEditPageViewAction::Reinstall);
-            })
+            ActionButton::new(crate::tr!("settings", "edit-variables"), PrimaryTheme).on_click(
+                |ctx| {
+                    ctx.dispatch_typed_action(MCPServersEditPageViewAction::Reinstall);
+                },
+            )
         });
 
         let delete_button = ctx.add_typed_action_view(|_| {
@@ -187,9 +189,10 @@ impl MCPServersEditPageView {
         });
 
         let editing_disabled_banner = ctx.add_typed_action_view(|_| {
-            Banner::new_without_close(BannerTextContent::plain_text(
-                crate::tr!("settings", "mcp-editing-disabled"),
-            ))
+            Banner::new_without_close(BannerTextContent::plain_text(crate::tr!(
+                "settings",
+                "mcp-editing-disabled"
+            )))
             .with_icon(Icon::Warning)
         });
 
@@ -328,7 +331,12 @@ impl MCPServersEditPageView {
             false,
             self.log_out_icon_button_mouse_handle.clone(),
         )
-        .with_tooltip(move || ui_builder.tool_tip(crate::tr!("common", "menu-log-out").to_string()).build().finish())
+        .with_tooltip(move || {
+            ui_builder
+                .tool_tip(crate::tr!("common", "menu-log-out").to_string())
+                .build()
+                .finish()
+        })
         .build()
         .on_click(|ctx, _, _| ctx.dispatch_typed_action(MCPServersEditPageViewAction::LogOut))
         .finish();

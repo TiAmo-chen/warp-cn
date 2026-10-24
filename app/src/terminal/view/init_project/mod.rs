@@ -681,7 +681,9 @@ impl InitStepBlock {
                                 ButtonVariant::Outlined,
                                 mouse_states.view_status_button.clone(),
                             )
-                            .with_text_label(crate::tr!("terminal", "view-index-status").to_string())
+                            .with_text_label(
+                                crate::tr!("terminal", "view-index-status").to_string(),
+                            )
                             .build()
                             .on_click(|ctx, _, _| {
                                 ctx.dispatch_typed_action(

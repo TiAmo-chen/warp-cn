@@ -65,8 +65,7 @@ impl TerminalView {
             ToastStack::handle(ctx).update(ctx, |toast_stack, ctx| {
                 toast_stack.add_ephemeral_toast(
                     DismissibleToast::error(
-                        crate::tr!("search", "toast-cannot-start-conv")
-                            .to_string(),
+                        crate::tr!("search", "toast-cannot-start-conv").to_string(),
                     ),
                     window_id,
                     ctx,

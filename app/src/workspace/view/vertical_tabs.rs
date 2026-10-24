@@ -1627,7 +1627,10 @@ fn render_new_tab_button(
         let contents = if hover_state.is_hovered() {
             let tooltip = if let Some(sublabel) = tab_configs_keybinding.clone() {
                 ui_builder
-                    .tool_tip_with_sublabel(crate::tr!("workspace", "tab-configs").to_string(), sublabel)
+                    .tool_tip_with_sublabel(
+                        crate::tr!("workspace", "tab-configs").to_string(),
+                        sublabel,
+                    )
                     .build()
                     .finish()
             } else {
@@ -1773,9 +1776,13 @@ fn render_groups(
 
     if workspace.tabs.is_empty() {
         return Container::new(
-            Text::new_inline(crate::tr!("workspace", "no-tabs-open"), appearance.ui_font_family(), 12.)
-                .with_color(theme.sub_text_color(theme.background()).into())
-                .finish(),
+            Text::new_inline(
+                crate::tr!("workspace", "no-tabs-open"),
+                appearance.ui_font_family(),
+                12.,
+            )
+            .with_color(theme.sub_text_color(theme.background()).into())
+            .finish(),
         )
         .with_padding(Padding::uniform(12.))
         .finish();

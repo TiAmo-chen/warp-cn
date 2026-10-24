@@ -1026,8 +1026,9 @@ impl Action {
                 if let Err(err) = open_docker_container(url, ctx) {
                     if let Some(window_id) = primary_window_id {
                         ToastStack::handle(ctx).update(ctx, |toast_stack, ctx| {
-                            let toast =
-                                DismissibleToast::error(crate::tr!("terminal", "invalid-uri").to_owned());
+                            let toast = DismissibleToast::error(
+                                crate::tr!("terminal", "invalid-uri").to_owned(),
+                            );
                             toast_stack.add_ephemeral_toast(toast, window_id, ctx);
                         });
                     }

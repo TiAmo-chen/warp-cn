@@ -1576,7 +1576,11 @@ impl BillingAndUsagePageView {
                 on_click_action: None,
                 secondary_text: None,
                 tooltip_override_text: Some(
-                    crate::tr!("settings", "sets-the-monthly-overage-spending-limit-beyond-the-plan-amount").to_string(),
+                    crate::tr!(
+                        "settings",
+                        "sets-the-monthly-overage-spending-limit-beyond-the-plan-amount"
+                    )
+                    .to_string(),
                 ),
             },
         );
@@ -2018,7 +2022,10 @@ impl BillingAndUsagePageView {
                             crate::tr!("settings", "sets-the-monthly-limit-spent-on-add-on-credits")
                         }
                         UsageDisplayUnit::Dollars => {
-                            crate::tr!("settings", "sets-the-monthly-limit-spent-on-purchased-usage")
+                            crate::tr!(
+                                "settings",
+                                "sets-the-monthly-limit-spent-on-purchased-usage"
+                            )
                         }
                     }
                     .to_string(),
@@ -2039,7 +2046,10 @@ impl BillingAndUsagePageView {
         let monthly_spend_row = Flex::row()
             .with_cross_axis_alignment(CrossAxisAlignment::Center)
             .with_children([
-                ui_builder.span(crate::tr!("settings", "monthly-spend-limit")).build().finish(),
+                ui_builder
+                    .span(crate::tr!("settings", "monthly-spend-limit"))
+                    .build()
+                    .finish(),
                 Shrinkable::new(1., Align::new(info_icon).left().finish()).finish(),
                 icon_button(
                     appearance,
@@ -2068,10 +2078,13 @@ impl BillingAndUsagePageView {
                 let cost_cents = bonus_grants.cents_spent;
                 let cost_dollars = cost_cents as f64 / 100.0;
 
-                let label =
-                    Text::new_inline(crate::tr!("settings", "purchased-this-month"), appearance.ui_font_family(), 12.)
-                        .with_color(appearance.theme().active_ui_text_color().into())
-                        .finish();
+                let label = Text::new_inline(
+                    crate::tr!("settings", "purchased-this-month"),
+                    appearance.ui_font_family(),
+                    12.,
+                )
+                .with_color(appearance.theme().active_ui_text_color().into())
+                .finish();
 
                 let mut right_side =
                     Flex::row().with_cross_axis_alignment(CrossAxisAlignment::Center);
@@ -2344,7 +2357,10 @@ impl BillingAndUsagePageView {
                 .finish();
 
             let mut card_content_lower_children = vec![
-                ui_builder.span(crate::tr!("settings", "one-time-purchase")).build().finish(),
+                ui_builder
+                    .span(crate::tr!("settings", "one-time-purchase"))
+                    .build()
+                    .finish(),
                 buy_row.finish(),
             ];
 
@@ -2371,9 +2387,10 @@ impl BillingAndUsagePageView {
                 ));
             } else if would_exceed_limit {
                 let warning_fragments = vec![
-                    FormattedTextFragment::plain_text(
-                        crate::tr!("settings", "reloading-would-exceed-your-monthly-limit-"),
-                    ),
+                    FormattedTextFragment::plain_text(crate::tr!(
+                        "settings",
+                        "reloading-would-exceed-your-monthly-limit-"
+                    )),
                     FormattedTextFragment::hyperlink_action(
                         crate::tr!("settings", "increase-your-limit"),
                         BillingAndUsagePageAction::ShowAddOnCreditModal,
@@ -2450,9 +2467,13 @@ impl BillingAndUsagePageView {
 
         let mut left_side_component =
             Flex::row().with_cross_axis_alignment(CrossAxisAlignment::Center);
-        let label = Text::new_inline(crate::tr!("settings", "total-overages"), appearance.ui_font_family(), 12.)
-            .with_color(appearance.theme().active_ui_text_color().into())
-            .finish();
+        let label = Text::new_inline(
+            crate::tr!("settings", "total-overages"),
+            appearance.ui_font_family(),
+            12.,
+        )
+        .with_color(appearance.theme().active_ui_text_color().into())
+        .finish();
 
         left_side_component.add_child(Container::new(label).with_margin_right(8.).finish());
 
@@ -2781,12 +2802,16 @@ impl BillingAndUsagePageView {
             .with_main_axis_alignment(MainAxisAlignment::Center)
             .with_child(
                 Container::new(
-                    Text::new_inline(crate::tr!("settings", "last-30-days").to_string(), appearance.ui_font_family(), 14.)
-                        .with_color(blended_colors::text_sub(
-                            appearance.theme(),
-                            appearance.theme().surface_1(),
-                        ))
-                        .finish(),
+                    Text::new_inline(
+                        crate::tr!("settings", "last-30-days").to_string(),
+                        appearance.ui_font_family(),
+                        14.,
+                    )
+                    .with_color(blended_colors::text_sub(
+                        appearance.theme(),
+                        appearance.theme().surface_1(),
+                    ))
+                    .finish(),
                 )
                 .with_vertical_margin(12.)
                 .finish(),
@@ -2894,19 +2919,26 @@ impl BillingAndUsagePageView {
                 )
                 .with_child(
                     Container::new(
-                        Text::new(crate::tr!("settings", "no-usage-history"), appearance.ui_font_family(), 14.)
-                            .with_color(blended_colors::text_sub(
-                                appearance.theme(),
-                                appearance.theme().surface_1(),
-                            ))
-                            .finish(),
+                        Text::new(
+                            crate::tr!("settings", "no-usage-history"),
+                            appearance.ui_font_family(),
+                            14.,
+                        )
+                        .with_color(blended_colors::text_sub(
+                            appearance.theme(),
+                            appearance.theme().surface_1(),
+                        ))
+                        .finish(),
                     )
                     .with_margin_bottom(4.)
                     .finish(),
                 )
                 .with_child(
                     Text::new(
-                        crate::tr!("settings", "kick-off-an-agent-task-to-view-usage-history-here"),
+                        crate::tr!(
+                            "settings",
+                            "kick-off-an-agent-task-to-view-usage-history-here"
+                        ),
                         appearance.ui_font_family(),
                         14.,
                     )
@@ -3104,8 +3136,9 @@ impl BillingAndUsagePageView {
                     let hoverable =
                         Hoverable::new(self.sort_icon_mouse_state.clone(), |mouse_state| {
                             if mouse_state.is_hovered() {
-                                let tooltip =
-                                    appearance.ui_builder().tool_tip(crate::tr!("settings", "sort-by").to_string());
+                                let tooltip = appearance
+                                    .ui_builder()
+                                    .tool_tip(crate::tr!("settings", "sort-by").to_string());
 
                                 button.add_positioned_overlay_child(
                                     tooltip.build().finish(),
@@ -3393,9 +3426,10 @@ impl BillingAndUsagePageView {
                     ]
                 } else {
                     // Non-admin team member - show message to contact admin
-                    vec![FormattedTextFragment::plain_text(
-                        crate::tr!("settings", "contact-your-team-admin-to-resolve-billing-issues"),
-                    )]
+                    vec![FormattedTextFragment::plain_text(crate::tr!(
+                        "settings",
+                        "contact-your-team-admin-to-resolve-billing-issues"
+                    ))]
                 }
             } else if billing_metadata.can_upgrade_to_higher_tier_plan() {
                 let upgrade_url = UserWorkspaces::upgrade_link_for_team(team.uid);
@@ -3472,7 +3506,10 @@ impl BillingAndUsagePageView {
                 ]
             } else if !billing_metadata.is_usage_based_pricing_toggleable() {
                 vec![
-                    FormattedTextFragment::hyperlink(crate::tr!("settings", "contact-support"), "mailto:support@warp.dev"),
+                    FormattedTextFragment::hyperlink(
+                        crate::tr!("settings", "contact-support"),
+                        "mailto:support@warp.dev",
+                    ),
                     FormattedTextFragment::plain_text(" for more AI usage."),
                 ]
             } else {
@@ -3716,10 +3753,14 @@ impl BillingAndUsagePageView {
     }
 
     fn render_plan_header_text(&self, appearance: &Appearance) -> Box<dyn Element> {
-        Text::new_inline(crate::tr!("ai_assistant", "ai-filter-plan"), appearance.ui_font_family(), HEADER_FONT_SIZE)
-            .with_style(Properties::default().weight(Weight::Bold))
-            .with_color(appearance.theme().active_ui_text_color().into())
-            .finish()
+        Text::new_inline(
+            crate::tr!("ai_assistant", "ai-filter-plan"),
+            appearance.ui_font_family(),
+            HEADER_FONT_SIZE,
+        )
+        .with_style(Properties::default().weight(Weight::Bold))
+        .with_color(appearance.theme().active_ui_text_color().into())
+        .finish()
     }
 
     fn render_team_admin_actions(

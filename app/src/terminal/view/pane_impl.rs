@@ -780,7 +780,12 @@ impl TerminalView {
             self.ambient_agent_cancel_mouse_state.clone(),
             blended_colors::text_sub(theme, theme.background()).into(),
         )
-        .with_tooltip(move || ui_builder.tool_tip(crate::tr!("common", "cancel-label").to_string()).build().finish())
+        .with_tooltip(move || {
+            ui_builder
+                .tool_tip(crate::tr!("common", "cancel-label").to_string())
+                .build()
+                .finish()
+        })
         .build()
         .on_click(|ctx, _, _| {
             ctx.dispatch_typed_action::<PaneHeaderAction<TerminalAction, TerminalAction>>(

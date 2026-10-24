@@ -142,9 +142,12 @@ pub fn maybe_log_out(app: &mut AppContext) {
             || num_unsaved_files > 0)
     {
         send_telemetry_sync_from_app_ctx!(TelemetryEvent::LogOutModalShown, app);
-        let mut button_data = vec![ModalButton::for_app(crate::tr!("auth", "yes-log-out"), |ctx| {
-            log_out_and_open_web(ctx);
-        })];
+        let mut button_data = vec![ModalButton::for_app(
+            crate::tr!("auth", "yes-log-out"),
+            |ctx| {
+                log_out_and_open_web(ctx);
+            },
+        )];
 
         let mut info_text_vec: Vec<String> = vec![];
         if num_long_running_commands > 0 {
@@ -157,36 +160,40 @@ pub fn maybe_log_out(app: &mut AppContext) {
                 "You have {num_long_running_commands} {plural} running."
             ));
 
-            button_data.push(ModalButton::for_app(crate::tr!("workspace", "quit-show-processes"), move |ctx| {
-                send_telemetry_sync_from_app_ctx!(
-                    TelemetryEvent::LogOutModalCancel { nav_palette: true },
-                    ctx
-                );
-                let windowing_model = ctx.windows();
-                let window_id = if let Some(active_window_id) = windowing_model.active_window() {
-                    active_window_id
-                } else if let Some(window_id) = ctx.window_ids().collect_vec().first() {
-                    let window_id = *window_id;
-                    windowing_model.show_window_and_focus_app(window_id);
-                    window_id
-                } else {
-                    return;
-                };
-
-                if let Some(workspaces) = ctx.views_of_type::<Workspace>(window_id)
-                    && let Some(handle) = workspaces.first()
-                {
-                    ctx.dispatch_typed_action_for_view(
-                        window_id,
-                        handle.id(),
-                        &WorkspaceAction::OpenPalette {
-                            mode: PaletteMode::Navigation,
-                            source: PaletteSource::LogOutModal,
-                            query: Some("running".to_owned()),
-                        },
+            button_data.push(ModalButton::for_app(
+                crate::tr!("workspace", "quit-show-processes"),
+                move |ctx| {
+                    send_telemetry_sync_from_app_ctx!(
+                        TelemetryEvent::LogOutModalCancel { nav_palette: true },
+                        ctx
                     );
-                }
-            }))
+                    let windowing_model = ctx.windows();
+                    let window_id = if let Some(active_window_id) = windowing_model.active_window()
+                    {
+                        active_window_id
+                    } else if let Some(window_id) = ctx.window_ids().collect_vec().first() {
+                        let window_id = *window_id;
+                        windowing_model.show_window_and_focus_app(window_id);
+                        window_id
+                    } else {
+                        return;
+                    };
+
+                    if let Some(workspaces) = ctx.views_of_type::<Workspace>(window_id)
+                        && let Some(handle) = workspaces.first()
+                    {
+                        ctx.dispatch_typed_action_for_view(
+                            window_id,
+                            handle.id(),
+                            &WorkspaceAction::OpenPalette {
+                                mode: PaletteMode::Navigation,
+                                source: PaletteSource::LogOutModal,
+                                query: Some("running".to_owned()),
+                            },
+                        );
+                    }
+                },
+            ))
         }
 
         if num_shared_sessions > 0 {
@@ -222,12 +229,15 @@ pub fn maybe_log_out(app: &mut AppContext) {
             ));
         }
 
-        button_data.push(ModalButton::for_app(crate::tr!("common", "cancel-label"), move |ctx| {
-            send_telemetry_sync_from_app_ctx!(
-                TelemetryEvent::LogOutModalCancel { nav_palette: false },
-                ctx
-            );
-        }));
+        button_data.push(ModalButton::for_app(
+            crate::tr!("common", "cancel-label"),
+            move |ctx| {
+                send_telemetry_sync_from_app_ctx!(
+                    TelemetryEvent::LogOutModalCancel { nav_palette: false },
+                    ctx
+                );
+            },
+        ));
 
         let alert_data = AlertDialogWithCallbacks::for_app(
             crate::tr!("auth", "logout-question"),

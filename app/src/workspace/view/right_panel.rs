@@ -502,11 +502,17 @@ impl RightPanelView {
 
         #[cfg(feature = "local_fs")]
         let open_repository_button = ctx.add_typed_action_view(|_| {
-            ActionButton::new(crate::tr!("code_editor", "code-review-open-repository"), NakedTheme)
-                .with_size(crate::view_components::action_button::ButtonSize::Small)
-                .with_tooltip(crate::tr!("code_editor", "code-review-open-repository-tooltip"))
-                .with_tooltip_alignment(TooltipAlignment::Center)
-                .on_click(|ctx| ctx.dispatch_typed_action(RightPanelAction::OpenRepository))
+            ActionButton::new(
+                crate::tr!("code_editor", "code-review-open-repository"),
+                NakedTheme,
+            )
+            .with_size(crate::view_components::action_button::ButtonSize::Small)
+            .with_tooltip(crate::tr!(
+                "code_editor",
+                "code-review-open-repository-tooltip"
+            ))
+            .with_tooltip_alignment(TooltipAlignment::Center)
+            .on_click(|ctx| ctx.dispatch_typed_action(RightPanelAction::OpenRepository))
         });
 
         Self {
@@ -807,7 +813,10 @@ impl RightPanelView {
 
         let tooltip = if let Some(keybinding) = tooltip_keybinding {
             ui_builder
-                .tool_tip_with_sublabel(crate::tr!("workspace", "close-panel").to_string(), keybinding)
+                .tool_tip_with_sublabel(
+                    crate::tr!("workspace", "close-panel").to_string(),
+                    keybinding,
+                )
                 .build()
                 .finish()
         } else {
@@ -1080,10 +1089,14 @@ impl RightPanelView {
 
         let title = Shrinkable::new(
             1.0,
-            Text::new_inline(crate::tr!("workspace", "code-review").to_string(), appearance.ui_font_family(), 12.)
-                .with_style(Properties::default().weight(Weight::Bold))
-                .with_color(sub_text_color.into())
-                .finish(),
+            Text::new_inline(
+                crate::tr!("workspace", "code-review").to_string(),
+                appearance.ui_font_family(),
+                12.,
+            )
+            .with_style(Properties::default().weight(Weight::Bold))
+            .with_color(sub_text_color.into())
+            .finish(),
         )
         .finish();
 

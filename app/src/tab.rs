@@ -1720,7 +1720,9 @@ impl<'a> TabComponent<'a> {
 
                         if state.is_hovered() {
                             let tooltip = ui_builder
-                                .tool_tip(crate::tr!("ai_assistant", "ai-cloud-agent-run").to_string())
+                                .tool_tip(
+                                    crate::tr!("ai_assistant", "ai-cloud-agent-run").to_string(),
+                                )
                                 .build()
                                 .finish();
                             stack.add_positioned_overlay_child(

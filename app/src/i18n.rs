@@ -28,7 +28,9 @@ pub fn init_i18n() {
         Ok(id) => id,
         Err(_) => {
             log::warn!("i18n: invalid locale tag '{locale_tag}', falling back to en-US");
-            "en-US".parse().expect("en-US is a valid language identifier")
+            "en-US"
+                .parse()
+                .expect("en-US is a valid language identifier")
         }
     };
 

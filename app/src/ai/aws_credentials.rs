@@ -53,7 +53,11 @@ fn aws_profile_reference_for_message(profile: &str, capitalize_first_word: bool)
     let profile = profile.trim();
     if profile.is_empty() {
         if capitalize_first_word {
-            crate::tr!("ai_assistant", "ai-aws-profile-reference-default-capitalized").to_string()
+            crate::tr!(
+                "ai_assistant",
+                "ai-aws-profile-reference-default-capitalized"
+            )
+            .to_string()
         } else {
             crate::tr!("ai_assistant", "ai-aws-profile-reference-default").to_string()
         }
@@ -77,15 +81,12 @@ fn user_facing_aws_credentials_error_message(err: &CredentialsError, profile: &s
             aws_profile_reference_for_message(profile, true)
         ),
         CredentialsError::ProviderError(_) => {
-            crate::tr!("ai_assistant", "ai-aws-credentials-provider-error")
-                .to_string()
+            crate::tr!("ai_assistant", "ai-aws-credentials-provider-error").to_string()
         }
         CredentialsError::Unhandled(_) => {
-            crate::tr!("ai_assistant", "ai-aws-credentials-unexpected-error")
-                .to_string()
+            crate::tr!("ai_assistant", "ai-aws-credentials-unexpected-error").to_string()
         }
-        _ => "Unable to load AWS credentials. Refresh your AWS login and try again."
-            .to_string(),
+        _ => "Unable to load AWS credentials. Refresh your AWS login and try again.".to_string(),
     }
 }
 
@@ -420,8 +421,9 @@ pub(crate) fn refresh_aws_credentials_oidc(
         },
     );
     Box::pin(async move {
-        rx.await
-            .unwrap_or_else(|_| Err(crate::tr!("ai_assistant", "ai-aws-credentials-refresh-interrupted").to_string()))
+        rx.await.unwrap_or_else(|_| {
+            Err(crate::tr!("ai_assistant", "ai-aws-credentials-refresh-interrupted").to_string())
+        })
     })
 }
 

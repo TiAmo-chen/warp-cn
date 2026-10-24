@@ -927,7 +927,8 @@ impl FeaturesPageAction {
                 }
             }
             Self::ToggleGlobalWorkflowsInUniversalSearch => TelemetryEvent::FeaturesPageAction {
-                action: crate::tr!("settings", "toggleglobalworkflowsinuniversalsearch").to_string(),
+                action: crate::tr!("settings", "toggleglobalworkflowsinuniversalsearch")
+                    .to_string(),
                 value: to_string(*workflow_settings.show_global_workflows_in_universal_search),
             },
             Self::ToggleNotifications => TelemetryEvent::FeaturesPageAction {
@@ -1012,7 +1013,8 @@ impl FeaturesPageAction {
             Self::ToggleShowTerminalInputMessageLine => {
                 let settings = InputSettings::as_ref(ctx);
                 TelemetryEvent::FeaturesPageAction {
-                    action: crate::tr!("settings", "toggleshowterminalinputmessageline").to_string(),
+                    action: crate::tr!("settings", "toggleshowterminalinputmessageline")
+                        .to_string(),
                     value: to_string(settings.is_terminal_input_message_bar_enabled()),
                 }
             }
@@ -1259,7 +1261,8 @@ impl FeaturesPageAction {
                 value: to_string(*AppEditorSettings::as_ref(ctx).enable_autosuggestions),
             },
             Self::ToggleAutosuggestionKeybindingHint => TelemetryEvent::FeaturesPageAction {
-                action: crate::tr!("settings", "togglehideautosuggestionkeybindinghint").to_string(),
+                action: crate::tr!("settings", "togglehideautosuggestionkeybindinghint")
+                    .to_string(),
                 value: to_string(
                     *AppEditorSettings::as_ref(ctx)
                         .autosuggestion_keybinding_hint
@@ -1334,7 +1337,8 @@ impl FeaturesPageAction {
             },
             Self::ToggleOutlineCodebaseSymbolsForAtContextMenu => {
                 TelemetryEvent::FeaturesPageAction {
-                    action: crate::tr!("settings", "toggleoutlinecodebasesymbolsforatcontextmenu").to_string(),
+                    action: crate::tr!("settings", "toggleoutlinecodebasesymbolsforatcontextmenu")
+                        .to_string(),
                     value: to_string(
                         *InputSettings::as_ref(ctx)
                             .outline_codebase_symbols_for_at_context_menu
@@ -1355,7 +1359,8 @@ impl FeaturesPageAction {
             Self::TogglePreserveInputFocusOnBlockSelection => {
                 let settings = BlockListSettings::as_ref(ctx);
                 TelemetryEvent::FeaturesPageAction {
-                    action: crate::tr!("settings", "togglepreserveinputfocusonblockselection").to_string(),
+                    action: crate::tr!("settings", "togglepreserveinputfocusonblockselection")
+                        .to_string(),
                     value: to_string(*settings.preserve_input_focus_on_block_selection),
                 }
             }
@@ -1730,7 +1735,10 @@ impl TypedActionView for FeaturesPageView {
                     reporting
                         .mouse_reporting_enabled
                         .toggle_and_save_value(ctx)
-                        .expect(&crate::tr!("settings", "mousereportingenabled-failed-to-serialize"));
+                        .expect(&crate::tr!(
+                            "settings",
+                            "mousereportingenabled-failed-to-serialize"
+                        ));
                 });
                 ctx.notify();
             }
@@ -1739,7 +1747,10 @@ impl TypedActionView for FeaturesPageView {
                     reporting
                         .scroll_reporting_enabled
                         .toggle_and_save_value(ctx)
-                        .expect(&crate::tr!("settings", "scrollreportingenabled-failed-to-serialize"));
+                        .expect(&crate::tr!(
+                            "settings",
+                            "scrollreportingenabled-failed-to-serialize"
+                        ));
                 });
                 ctx.notify();
             }
@@ -1748,7 +1759,10 @@ impl TypedActionView for FeaturesPageView {
                     reporting
                         .focus_reporting_enabled
                         .toggle_and_save_value(ctx)
-                        .expect(&crate::tr!("settings", "focusreportingenabled-failed-to-serialize"));
+                        .expect(&crate::tr!(
+                            "settings",
+                            "focusreportingenabled-failed-to-serialize"
+                        ));
                 });
                 ctx.notify();
             }
@@ -1764,7 +1778,10 @@ impl TypedActionView for FeaturesPageView {
                     };
 
                     if let Err(e) = settings.notifications.set_value(new_settings, ctx) {
-                        report_error!(e.context(crate::tr!("settings", "failed-to-persist-notifications-setting")));
+                        report_error!(e.context(crate::tr!(
+                            "settings",
+                            "failed-to-persist-notifications-setting"
+                        )));
                     }
                 });
                 ctx.notify();
@@ -1787,7 +1804,10 @@ impl TypedActionView for FeaturesPageView {
                             ..current_settings
                         };
                         if let Err(e) = settings.notifications.set_value(new_settings, ctx) {
-                            report_error!(e.context(crate::tr!("settings", "error-persisting-notifications-setting")));
+                            report_error!(e.context(crate::tr!(
+                                "settings",
+                                "error-persisting-notifications-setting"
+                            )));
                         }
                     });
                 }
@@ -1802,7 +1822,10 @@ impl TypedActionView for FeaturesPageView {
                         ..current_settings
                     };
                     if let Err(e) = settings.notifications.set_value(new_settings, ctx) {
-                        report_error!(e.context(crate::tr!("settings", "error-persisting-notifications-setting")));
+                        report_error!(e.context(crate::tr!(
+                            "settings",
+                            "error-persisting-notifications-setting"
+                        )));
                     }
                 });
                 ctx.notify();
@@ -1818,7 +1841,10 @@ impl TypedActionView for FeaturesPageView {
                         ..current_settings
                     };
                     if let Err(e) = settings.notifications.set_value(new_settings, ctx) {
-                        report_error!(e.context(crate::tr!("settings", "error-persisting-notifications-setting")));
+                        report_error!(e.context(crate::tr!(
+                            "settings",
+                            "error-persisting-notifications-setting"
+                        )));
                     }
                 });
                 ctx.notify();
@@ -1833,7 +1859,10 @@ impl TypedActionView for FeaturesPageView {
                         ..current_settings
                     };
                     if let Err(e) = settings.notifications.set_value(new_settings, ctx) {
-                        report_error!(e.context(crate::tr!("settings", "error-persisting-notifications-setting")));
+                        report_error!(e.context(crate::tr!(
+                            "settings",
+                            "error-persisting-notifications-setting"
+                        )));
                     }
                 });
                 ctx.notify();
@@ -1848,7 +1877,10 @@ impl TypedActionView for FeaturesPageView {
                         ..current_settings
                     };
                     if let Err(e) = settings.notifications.set_value(new_settings, ctx) {
-                        report_error!(e.context(crate::tr!("settings", "error-persisting-notification-sound-setting")));
+                        report_error!(e.context(crate::tr!(
+                            "settings",
+                            "error-persisting-notification-sound-setting"
+                        )));
                     }
                 });
                 ctx.notify();
@@ -2216,9 +2248,10 @@ impl TypedActionView for FeaturesPageView {
                             .notification_toast_duration_secs
                             .set_value(duration_secs, ctx)
                         {
-                            report_error!(
-                                e.context(crate::tr!("settings", "error-persisting-notification-toast-duration"))
-                            );
+                            report_error!(e.context(crate::tr!(
+                                "settings",
+                                "error-persisting-notification-toast-duration"
+                            )));
                         }
                     });
                 }
@@ -3452,7 +3485,10 @@ impl FeaturesPageView {
                     .value()
                     .active_pin_position,
             )
-            .expect(&crate::tr!("settings", "pin-position-should-exist-in-default-size-percentages"));
+            .expect(&crate::tr!(
+                "settings",
+                "pin-position-should-exist-in-default-size-percentages"
+            ));
 
         self.quake_mode_height_editor.update(ctx, |editor, ctx| {
             editor.set_buffer_text(&format!("{}", default_size_percentage.height), ctx);
@@ -4003,7 +4039,10 @@ impl FeaturesPageView {
                 .with_child(
                     appearance
                         .ui_builder()
-                        .span(crate::tr!("settings", "autohides-on-loss-of-keyboard-focus"))
+                        .span(crate::tr!(
+                            "settings",
+                            "autohides-on-loss-of-keyboard-focus"
+                        ))
                         .build()
                         .with_margin_left(5.)
                         .finish(),
@@ -4217,9 +4256,13 @@ impl FeaturesPageView {
                     Shrinkable::new(
                         2.,
                         Align::new(
-                            Text::new_inline(crate::tr!("settings", "keybinding"), appearance.ui_font_family(), 13.)
-                                .with_color(appearance.theme().active_ui_text_color().into())
-                                .finish(),
+                            Text::new_inline(
+                                crate::tr!("settings", "keybinding"),
+                                appearance.ui_font_family(),
+                                13.,
+                            )
+                            .with_color(appearance.theme().active_ui_text_color().into())
+                            .finish(),
                         )
                         .left()
                         .finish(),
@@ -4238,7 +4281,10 @@ impl FeaturesPageView {
                         } else {
                             appearance
                                 .ui_builder()
-                                .paragraph(crate::tr!("settings", "click-to-set-global-hotkey").to_string())
+                                .paragraph(
+                                    crate::tr!("settings", "click-to-set-global-hotkey")
+                                        .to_string(),
+                                )
                                 .build()
                                 .finish()
                         })
@@ -4380,9 +4426,13 @@ impl FeaturesPageView {
                 }
 
                 Container::new(
-                    Text::new_inline(crate::tr!("settings", "change-keybinding"), appearance.ui_font_family(), 12.)
-                        .with_color(button_color)
-                        .finish(),
+                    Text::new_inline(
+                        crate::tr!("settings", "change-keybinding"),
+                        appearance.ui_font_family(),
+                        12.,
+                    )
+                    .with_color(button_color)
+                    .finish(),
                 )
                 .with_border(border)
                 .finish()
@@ -4601,7 +4651,11 @@ impl SettingsWidget for NativeRedirectWidget {
                 on_click_action: None,
                 secondary_text: None,
                 tooltip_override_text: Some(
-                    crate::tr!("settings", "automatically-open-links-in-desktop-app-whenever-possible").into(),
+                    crate::tr!(
+                        "settings",
+                        "automatically-open-links-in-desktop-app-whenever-possible"
+                    )
+                    .into(),
                 ),
             }),
             LocalOnlyIconState::for_setting(
@@ -5087,7 +5141,11 @@ impl SettingsWidget for MouseScrollMultiplierWidget {
                 on_click_action: None,
                 secondary_text: None,
                 tooltip_override_text: Some(
-                    crate::tr!("settings", "supports-floating-point-values-between-1-and-20").to_string(),
+                    crate::tr!(
+                        "settings",
+                        "supports-floating-point-values-between-1-and-20"
+                    )
+                    .to_string(),
                 ),
             }),
             LocalOnlyIconState::for_setting(
@@ -5289,7 +5347,10 @@ impl SettingsWidget for DesktopNotificationsWidget {
                 ),
                 view.render_notification_toggle(
                     session_settings.notifications.is_needs_attention_enabled,
-                    &crate::tr!("settings", "notify-when-a-command-or-agent-needs-your-attention-to-continue"),
+                    &crate::tr!(
+                        "settings",
+                        "notify-when-a-command-or-agent-needs-your-attention-to-continue"
+                    ),
                     FeaturesPageAction::ToggleNeedsAttentionNotifications,
                     view.button_mouse_states
                         .agent_needs_attention_notifications_checkbox
@@ -7164,7 +7225,9 @@ impl SmartSelectWidget {
         Flex::column()
             .with_child(
                 ui_builder
-                    .label(crate::tr!("settings", "characters-considered-part-of-a-word").to_string())
+                    .label(
+                        crate::tr!("settings", "characters-considered-part-of-a-word").to_string(),
+                    )
                     .with_style(UiComponentStyles {
                         margin: Some(Coords {
                             top: 10.0,
@@ -7388,9 +7451,10 @@ impl SettingsWidget for Osc52ClipboardAccessWidget {
         render_dropdown_item(
             appearance,
             &crate::tr!("settings", "clipboard-access-osc-52"),
-            Some(
-                &crate::tr!("settings", "controls-whether-programs-running-in-the-terminal-can-read-or-write-your-system-clipboard"),
-            ),
+            Some(&crate::tr!(
+                "settings",
+                "controls-whether-programs-running-in-the-terminal-can-read-or-write-your-system-clipboard"
+            )),
             None,
             LocalOnlyIconState::for_setting(
                 Osc52ClipboardAccessSetting::storage_key(),
@@ -7575,7 +7639,11 @@ impl SettingsWidget for LinuxSelectionClipboardWidget {
                 on_click_action: None,
                 secondary_text: None,
                 tooltip_override_text: Some(
-                    crate::tr!("settings", "whether-the-linux-primary-clipboard-should-be-supported").into(),
+                    crate::tr!(
+                        "settings",
+                        "whether-the-linux-primary-clipboard-should-be-supported"
+                    )
+                    .into(),
                 ),
             }),
             LocalOnlyIconState::for_setting(
@@ -7623,7 +7691,11 @@ impl SettingsWidget for GPUWidget {
     ) -> Box<dyn Element> {
         let gpu_settings = GPUSettings::as_ref(app);
         let mut col = Flex::column().with_child(render_body_item::<FeaturesPageAction>(
-            crate::tr!("settings", "prefer-rendering-new-windows-with-integrated-gpu-low-power").into(),
+            crate::tr!(
+                "settings",
+                "prefer-rendering-new-windows-with-integrated-gpu-low-power"
+            )
+            .into(),
             None,
             LocalOnlyIconState::for_setting(
                 PreferLowPowerGPU::storage_key(),
@@ -7653,7 +7725,10 @@ impl SettingsWidget for GPUWidget {
                 Container::new(
                     appearance
                         .ui_builder()
-                        .wrappable_text(crate::tr!("settings", "changes-will-apply-to-new-windows"), true)
+                        .wrappable_text(
+                            crate::tr!("settings", "changes-will-apply-to-new-windows"),
+                            true,
+                        )
                         .with_style(UiComponentStyles {
                             font_color: Some(theme.sub_text_color(theme.background()).into_solid()),
                             ..Default::default()
@@ -7698,7 +7773,9 @@ impl SettingsWidget for WindowSystemWidget {
                 mouse_state: self.additional_info_link.clone(),
                 on_click_action: None,
                 secondary_text: None,
-                tooltip_override_text: Some(crate::tr!("settings", "enables-the-use-of-wayland").to_string()),
+                tooltip_override_text: Some(
+                    crate::tr!("settings", "enables-the-use-of-wayland").to_string(),
+                ),
             }),
             LocalOnlyIconState::for_setting(
                 ForceX11::storage_key(),
@@ -7804,7 +7881,10 @@ impl SettingsWidget for GraphicsBackendWidget {
                 Container::new(
                     appearance
                         .ui_builder()
-                        .wrappable_text(crate::tr!("settings", "changes-will-apply-to-new-windows"), true)
+                        .wrappable_text(
+                            crate::tr!("settings", "changes-will-apply-to-new-windows"),
+                            true,
+                        )
                         .with_style(UiComponentStyles {
                             font_color: Some(theme.sub_text_color(theme.background()).into_solid()),
                             ..Default::default()

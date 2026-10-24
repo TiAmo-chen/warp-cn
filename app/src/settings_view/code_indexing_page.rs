@@ -1190,7 +1190,10 @@ impl CodePageWidget {
                 Container::new(
                     appearance
                         .ui_builder()
-                        .paragraph(crate::tr!("settings", "no-folders-have-been-initialized-yet"))
+                        .paragraph(crate::tr!(
+                            "settings",
+                            "no-folders-have-been-initialized-yet"
+                        ))
                         .build()
                         .finish(),
                 )

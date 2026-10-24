@@ -184,12 +184,13 @@ impl OrchestrationLaunchModal {
         });
 
         let learn_more_button = ctx.add_view(|_ctx| {
-            ActionButton::new(crate::tr!("common", "learn-more-label"), LearnMoreButtonTheme)
-                .with_icon(Icon::LinkExternal)
-                .with_full_width(true)
-                .on_click(|ctx| {
-                    ctx.dispatch_typed_action(OrchestrationLaunchModalAction::LearnMore)
-                })
+            ActionButton::new(
+                crate::tr!("common", "learn-more-label"),
+                LearnMoreButtonTheme,
+            )
+            .with_icon(Icon::LinkExternal)
+            .with_full_width(true)
+            .on_click(|ctx| ctx.dispatch_typed_action(OrchestrationLaunchModalAction::LearnMore))
         });
 
         let go_to_warp_button = ctx.add_view(|_ctx| {

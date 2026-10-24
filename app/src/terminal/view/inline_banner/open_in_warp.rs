@@ -47,9 +47,7 @@ impl OpenInWarpBannerState {
 /// Given an openable file, format a file-specific title for the Open in Warp banner.
 fn file_title_text(openable_path: &OpenablePath) -> String {
     match openable_path.file_type {
-        OpenableFileType::Markdown => {
-            crate::tr!("terminal", "open-markdown-title").to_string()
-        }
+        OpenableFileType::Markdown => crate::tr!("terminal", "open-markdown-title").to_string(),
         OpenableFileType::Code | OpenableFileType::Text => {
             cfg_if::cfg_if! {
                 if #[cfg(not(target_family = "wasm"))] {

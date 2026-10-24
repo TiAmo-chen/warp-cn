@@ -216,7 +216,9 @@ fn render_deleted_state(
         .with_main_axis_size(MainAxisSize::Max)
         .with_child(
             Text::new(
-                cached_title.unwrap_or_else(|| crate::tr!("ai_assistant", "ai-deleted-conversation").to_string()),
+                cached_title.unwrap_or_else(|| {
+                    crate::tr!("ai_assistant", "ai-deleted-conversation").to_string()
+                }),
                 appearance.ui_font_family(),
                 appearance.monospace_font_size(),
             )
@@ -314,9 +316,9 @@ impl View for AgentViewEntryBlock {
                 Shrinkable::new(
                     1.,
                     Text::new(
-                        conversation
-                            .title()
-                            .unwrap_or(crate::tr!("ai_assistant", "ai-untitled-conversation").to_string()),
+                        conversation.title().unwrap_or(
+                            crate::tr!("ai_assistant", "ai-untitled-conversation").to_string(),
+                        ),
                         appearance.ui_font_family(),
                         appearance.monospace_font_size(),
                     )

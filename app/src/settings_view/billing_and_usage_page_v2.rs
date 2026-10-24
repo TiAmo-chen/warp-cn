@@ -693,10 +693,14 @@ impl BillingAndUsagePageV2View {
             .with_main_axis_size(MainAxisSize::Max);
 
         plan_header.add_child(
-            Text::new_inline(crate::tr!("ai_assistant", "ai-filter-plan"), appearance.ui_font_family(), HEADER_FONT_SIZE)
-                .with_style(Properties::default().weight(Weight::Bold))
-                .with_color(appearance.theme().active_ui_text_color().into())
-                .finish(),
+            Text::new_inline(
+                crate::tr!("ai_assistant", "ai-filter-plan"),
+                appearance.ui_font_family(),
+                HEADER_FONT_SIZE,
+            )
+            .with_style(Properties::default().weight(Weight::Bold))
+            .with_color(appearance.theme().active_ui_text_color().into())
+            .finish(),
         );
 
         let mut right_side = Flex::row()
@@ -981,10 +985,14 @@ impl BillingAndUsagePageV2View {
             Flex::column()
                 .with_child(
                     Container::new(
-                        Text::new_inline(crate::tr!("settings", "balance"), appearance.ui_font_family(), HEADER_FONT_SIZE)
-                            .with_style(Properties::default().weight(Weight::Bold))
-                            .with_color(theme.active_ui_text_color().into())
-                            .finish(),
+                        Text::new_inline(
+                            crate::tr!("settings", "balance"),
+                            appearance.ui_font_family(),
+                            HEADER_FONT_SIZE,
+                        )
+                        .with_style(Properties::default().weight(Weight::Bold))
+                        .with_color(theme.active_ui_text_color().into())
+                        .finish(),
                     )
                     .with_margin_bottom(12.)
                     .finish(),
@@ -1414,7 +1422,10 @@ impl BillingAndUsagePageV2View {
         let (upgrade_suffix, contact_account_executive_text, contact_team_admin_text) = match unit {
             UsageDisplayUnit::Credits => (
                 " to purchase add-on credits.",
-                crate::tr!("settings", "contact-your-account-executive-for-more-add-on-credits"),
+                crate::tr!(
+                    "settings",
+                    "contact-your-account-executive-for-more-add-on-credits"
+                ),
                 crate::tr!("settings", "contact-a-team-admin-to-enable-add-on-credits"),
             ),
             UsageDisplayUnit::Dollars => (
@@ -1598,10 +1609,16 @@ impl BillingAndUsagePageV2View {
                     tooltip_override_text: Some(
                         match unit {
                             UsageDisplayUnit::Credits => {
-                                crate::tr!("settings", "sets-the-monthly-limit-spent-on-add-on-credits")
+                                crate::tr!(
+                                    "settings",
+                                    "sets-the-monthly-limit-spent-on-add-on-credits"
+                                )
                             }
                             UsageDisplayUnit::Dollars => {
-                                crate::tr!("settings", "sets-the-monthly-limit-spent-on-purchased-usage")
+                                crate::tr!(
+                                    "settings",
+                                    "sets-the-monthly-limit-spent-on-purchased-usage"
+                                )
                             }
                         }
                         .to_string(),
@@ -1620,7 +1637,10 @@ impl BillingAndUsagePageV2View {
             let spend_row = Flex::row()
                 .with_cross_axis_alignment(CrossAxisAlignment::Center)
                 .with_children([
-                    ui_builder.span(crate::tr!("settings", "monthly-spend-limit")).build().finish(),
+                    ui_builder
+                        .span(crate::tr!("settings", "monthly-spend-limit"))
+                        .build()
+                        .finish(),
                     Shrinkable::new(1., Align::new(info_icon).left().finish()).finish(),
                     icon_button(
                         appearance,
@@ -1684,9 +1704,13 @@ impl BillingAndUsagePageV2View {
         let cost_dollars = bonus_grants.cents_spent as f64 / 100.0;
         let theme = appearance.theme();
 
-        let label = Text::new_inline(crate::tr!("settings", "purchased-this-month"), appearance.ui_font_family(), 12.)
-            .with_color(theme.active_ui_text_color().into())
-            .finish();
+        let label = Text::new_inline(
+            crate::tr!("settings", "purchased-this-month"),
+            appearance.ui_font_family(),
+            12.,
+        )
+        .with_color(theme.active_ui_text_color().into())
+        .finish();
 
         let mut amounts = Flex::row().with_cross_axis_alignment(CrossAxisAlignment::Center);
         // Packs shown in dollars are bought as usage, so the credit count they carry is not a
@@ -1823,10 +1847,14 @@ impl BillingAndUsagePageV2View {
             );
 
             right_group.add_children([
-                Text::new_inline(crate::tr!("settings", "auto-reload"), appearance.ui_font_family(), 14.)
-                    .with_color(fg.into())
-                    .with_style(Properties::default().weight(Weight::Semibold))
-                    .finish(),
+                Text::new_inline(
+                    crate::tr!("settings", "auto-reload"),
+                    appearance.ui_font_family(),
+                    14.,
+                )
+                .with_color(fg.into())
+                .with_style(Properties::default().weight(Weight::Semibold))
+                .finish(),
                 Container::new(auto_reload_info_icon)
                     .with_margin_left(4.)
                     .finish(),
@@ -1988,12 +2016,16 @@ impl BillingAndUsagePageV2View {
             .with_main_axis_alignment(MainAxisAlignment::Center)
             .with_child(
                 Container::new(
-                    Text::new_inline(crate::tr!("settings", "last-30-days"), appearance.ui_font_family(), 14.)
-                        .with_color(blended_colors::text_sub(
-                            appearance.theme(),
-                            appearance.theme().surface_1(),
-                        ))
-                        .finish(),
+                    Text::new_inline(
+                        crate::tr!("settings", "last-30-days"),
+                        appearance.ui_font_family(),
+                        14.,
+                    )
+                    .with_color(blended_colors::text_sub(
+                        appearance.theme(),
+                        appearance.theme().surface_1(),
+                    ))
+                    .finish(),
                 )
                 .with_vertical_margin(12.)
                 .finish(),
@@ -2097,19 +2129,26 @@ impl BillingAndUsagePageV2View {
                 )
                 .with_child(
                     Container::new(
-                        Text::new(crate::tr!("settings", "no-usage-history"), appearance.ui_font_family(), 14.)
-                            .with_color(blended_colors::text_sub(
-                                appearance.theme(),
-                                appearance.theme().surface_1(),
-                            ))
-                            .finish(),
+                        Text::new(
+                            crate::tr!("settings", "no-usage-history"),
+                            appearance.ui_font_family(),
+                            14.,
+                        )
+                        .with_color(blended_colors::text_sub(
+                            appearance.theme(),
+                            appearance.theme().surface_1(),
+                        ))
+                        .finish(),
                     )
                     .with_margin_bottom(4.)
                     .finish(),
                 )
                 .with_child(
                     Text::new(
-                        crate::tr!("settings", "kick-off-an-agent-task-to-view-usage-history-here"),
+                        crate::tr!(
+                            "settings",
+                            "kick-off-an-agent-task-to-view-usage-history-here"
+                        ),
                         appearance.ui_font_family(),
                         14.,
                     )
@@ -2349,7 +2388,10 @@ impl TypedActionView for BillingAndUsagePageV2View {
                         .get(self.addon_credits.selected_denomination)
                     else {
                         self.show_toast(
-                            &crate::tr!("settings", "unable-to-enable-auto-reload-until-pricing-options-load"),
+                            &crate::tr!(
+                                "settings",
+                                "unable-to-enable-auto-reload-until-pricing-options-load"
+                            ),
                             ToastFlavor::Error,
                             ctx,
                         );

@@ -799,8 +799,7 @@ impl NotebookView {
                 ToastStack::handle(ctx).update(ctx, |toast_stack, ctx| {
                     toast_stack.add_ephemeral_toast(
                         DismissibleToast::error(
-                            crate::tr!("notebooks", "cannot-save-content-secrets")
-                                .to_string(),
+                            crate::tr!("notebooks", "cannot-save-content-secrets").to_string(),
                         ),
                         window_id,
                         ctx,
@@ -1408,10 +1407,13 @@ impl NotebookView {
 
         if let Some(ai_document_id) = self.active_notebook_data.as_ref(ctx).ai_document_id(ctx) {
             menu_items.push(
-                MenuItemFields::new(crate::tr!("ai_assistant", "ai-doc-attach-to-active-session"))
-                    .with_on_select_action(NotebookAction::AttachPlanAsContext(ai_document_id))
-                    .with_icon(icons::Icon::Paperclip)
-                    .into_item(),
+                MenuItemFields::new(crate::tr!(
+                    "ai_assistant",
+                    "ai-doc-attach-to-active-session"
+                ))
+                .with_on_select_action(NotebookAction::AttachPlanAsContext(ai_document_id))
+                .with_icon(icons::Icon::Paperclip)
+                .into_item(),
             );
         }
 
@@ -1731,8 +1733,7 @@ impl NotebookView {
                 ToastStack::handle(ctx).update(ctx, |toast_stack, ctx| {
                     toast_stack.add_ephemeral_toast(
                         DismissibleToast::error(
-                            crate::tr!("notebooks", "cannot-save-title-secrets")
-                                .to_string(),
+                            crate::tr!("notebooks", "cannot-save-title-secrets").to_string(),
                         ),
                         window_id,
                         ctx,
@@ -1974,7 +1975,10 @@ impl NotebookView {
                             )
                             .with_tooltip(move || {
                                 ui_builder
-                                    .tool_tip(crate::tr!("notebooks", "restore-notebook-from-trash").to_string())
+                                    .tool_tip(
+                                        crate::tr!("notebooks", "restore-notebook-from-trash")
+                                            .to_string(),
+                                    )
                                     .build()
                                     .finish()
                             })
@@ -2005,13 +2009,18 @@ impl NotebookView {
                                 .with_tooltip(move || {
                                     ui_builder
                                         .tool_tip(
-                                            crate::tr!("notebooks", "copy-notebook-contents-into-personal-workspace")
-                                                .to_string(),
+                                            crate::tr!(
+                                                "notebooks",
+                                                "copy-notebook-contents-into-personal-workspace"
+                                            )
+                                            .to_string(),
                                         )
                                         .build()
                                         .finish()
                                 })
-                                .with_text_label(crate::tr!("notebooks", "copy-to-personal").to_string())
+                                .with_text_label(
+                                    crate::tr!("notebooks", "copy-to-personal").to_string(),
+                                )
                                 .build()
                                 .on_click(|ctx, _, _| {
                                     ctx.dispatch_typed_action(NotebookAction::CopyToPersonal)
@@ -2089,7 +2098,10 @@ impl NotebookView {
                         )
                         .with_tooltip(move || {
                             ui_builder
-                                .tool_tip(crate::tr!("notebooks", "copy-notebook-contents-to-clipboard").to_string())
+                                .tool_tip(
+                                    crate::tr!("notebooks", "copy-notebook-contents-to-clipboard")
+                                        .to_string(),
+                                )
                                 .build()
                                 .finish()
                         })
@@ -2123,7 +2135,9 @@ impl NotebookView {
                             )
                             .with_tooltip(move || {
                                 ui_builder
-                                    .tool_tip(crate::tr!("notebooks", "refresh-notebook").to_string())
+                                    .tool_tip(
+                                        crate::tr!("notebooks", "refresh-notebook").to_string(),
+                                    )
                                     .build()
                                     .finish()
                             })
@@ -2315,7 +2329,9 @@ impl TypedActionView for NotebookView {
                 let window_id = ctx.window_id();
                 ToastStack::handle(ctx).update(ctx, |toast_stack, ctx| {
                     toast_stack.add_ephemeral_toast(
-                        DismissibleToast::success(crate::tr!("ai_assistant", "ai-link-copied-toast").to_string()),
+                        DismissibleToast::success(
+                            crate::tr!("ai_assistant", "ai-link-copied-toast").to_string(),
+                        ),
                         window_id,
                         ctx,
                     );

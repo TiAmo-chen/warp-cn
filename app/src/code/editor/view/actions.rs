@@ -501,11 +501,13 @@ pub fn init(app: &mut AppContext) {
         )
         .with_context_predicate(text_entry.clone())
         .with_key_binding("cmdorctrl-/"),
-        EditableBinding::new("editor_view:delete", crate::tr!("common", "delete-label"), CodeEditorViewAction::Delete)
-            .with_context_predicate(
-                text_entry.clone() & !id!("VimNormalMode") & !id!("VimVisualMode"),
-            )
-            .with_key_binding("ctrl-d"),
+        EditableBinding::new(
+            "editor_view:delete",
+            crate::tr!("common", "delete-label"),
+            CodeEditorViewAction::Delete,
+        )
+        .with_context_predicate(text_entry.clone() & !id!("VimNormalMode") & !id!("VimVisualMode"))
+        .with_key_binding("ctrl-d"),
         EditableBinding::new(
             "editor_view:vim_scroll_half_page_down",
             crate::tr!("code", "scroll-down-half-page-vim"),

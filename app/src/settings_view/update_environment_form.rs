@@ -479,11 +479,14 @@ impl UpdateEnvironmentForm {
         });
 
         let delete_button = ctx.add_typed_action_view(|_| {
-            ActionButton::new(crate::tr!("settings", "delete-environment"), DangerSecondaryTheme)
-                .with_icon(Icon::Trash)
-                .on_click(|ctx| {
-                    ctx.dispatch_typed_action(UpdateEnvironmentFormAction::Delete);
-                })
+            ActionButton::new(
+                crate::tr!("settings", "delete-environment"),
+                DangerSecondaryTheme,
+            )
+            .with_icon(Icon::Trash)
+            .on_click(|ctx| {
+                ctx.dispatch_typed_action(UpdateEnvironmentFormAction::Delete);
+            })
         });
 
         let cancel_button = ctx.add_typed_action_view(|_| {
@@ -1364,16 +1367,22 @@ impl UpdateEnvironmentForm {
                     }
                     Ok(UserGithubInfoResult::Unknown) => {
                         me.github_dropdown_state.load_error_message = Some(
-                            crate::tr!("settings", "couldnt-load-github-repos-you-can-paste-repo-urls-or-retry")
-                                .to_string(),
+                            crate::tr!(
+                                "settings",
+                                "couldnt-load-github-repos-you-can-paste-repo-urls-or-retry"
+                            )
+                            .to_string(),
                         );
                         me.update_repos_input_placeholder(ctx);
                     }
                     Err(e) => {
                         debug!("Failed to load GitHub repos: {e}");
                         me.github_dropdown_state.load_error_message = Some(
-                            crate::tr!("settings", "couldnt-load-github-repos-you-can-paste-repo-urls-or-retry")
-                                .to_string(),
+                            crate::tr!(
+                                "settings",
+                                "couldnt-load-github-repos-you-can-paste-repo-urls-or-retry"
+                            )
+                            .to_string(),
                         );
                         me.update_repos_input_placeholder(ctx);
                     }
@@ -1661,9 +1670,13 @@ impl UpdateEnvironmentForm {
                         theme.active_ui_text_color()
                     };
 
-                    Text::new_inline(crate::tr!("settings", "share-with-team"), font_family, font_size)
-                        .with_color(color.into())
-                        .finish()
+                    Text::new_inline(
+                        crate::tr!("settings", "share-with-team"),
+                        font_family,
+                        font_size,
+                    )
+                    .with_color(color.into())
+                    .finish()
                 },
             )
             .with_cursor(Cursor::PointingHand)
@@ -2171,7 +2184,9 @@ impl UpdateEnvironmentForm {
             .github_dropdown_state
             .load_error_message
             .clone()
-            .unwrap_or_else(|| crate::tr!("settings", "failed-to-load-github-repositories").to_string());
+            .unwrap_or_else(|| {
+                crate::tr!("settings", "failed-to-load-github-repositories").to_string()
+            });
 
         let mut field = Flex::column()
             .with_cross_axis_alignment(CrossAxisAlignment::Stretch)
@@ -2480,7 +2495,10 @@ impl UpdateEnvironmentForm {
     fn render_repo_helper_text_row(&self, appearance: &Appearance) -> Box<dyn Element> {
         let theme = appearance.theme();
         let helper = Text::new(
-            crate::tr!("settings", "type-ownerrepo-and-press-enter-to-add-or-select-from-dropdown"),
+            crate::tr!(
+                "settings",
+                "type-ownerrepo-and-press-enter-to-add-or-select-from-dropdown"
+            ),
             appearance.ui_font_family(),
             appearance.ui_font_size() * 0.85,
         )
@@ -3109,7 +3127,10 @@ impl UpdateEnvironmentForm {
             "Suggest image"
         };
 
-        let tooltip_text = crate::tr!("settings", "warp-will-suggest-a-docker-image-based-on-your-selected-repositories");
+        let tooltip_text = crate::tr!(
+            "settings",
+            "warp-will-suggest-a-docker-image-based-on-your-selected-repositories"
+        );
 
         let button = Hoverable::new(
             self.suggest_image_button_mouse_state.clone(),
@@ -3235,9 +3256,10 @@ impl UpdateEnvironmentForm {
                     },
                 );
                 Some(render_warning_box(
-                    WarningBoxConfig::new(
-                        crate::tr!("settings", "you-need-to-grant-access-to-your-github-repos-to-suggest-a-docker-image"),
-                    )
+                    WarningBoxConfig::new(crate::tr!(
+                        "settings",
+                        "you-need-to-grant-access-to-your-github-repos-to-suggest-a-docker-image"
+                    ))
                     .with_width(self.field_max_width)
                     .with_button(button),
                     appearance,

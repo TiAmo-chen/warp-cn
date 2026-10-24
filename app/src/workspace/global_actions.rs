@@ -108,7 +108,10 @@ fn toggle_mouse_reporting(_: &(), ctx: &mut AppContext) {
         reporting
             .mouse_reporting_enabled
             .toggle_and_save_value(ctx)
-            .expect(&crate::tr!("settings", "mousereportingenabled-failed-to-serialize"));
+            .expect(&crate::tr!(
+                "settings",
+                "mousereportingenabled-failed-to-serialize"
+            ));
     });
 }
 
@@ -117,7 +120,10 @@ fn toggle_scroll_reporting(_: &(), ctx: &mut AppContext) {
         reporting
             .scroll_reporting_enabled
             .toggle_and_save_value(ctx)
-            .expect(&crate::tr!("settings", "scrollreportingenabled-failed-to-serialize"));
+            .expect(&crate::tr!(
+                "settings",
+                "scrollreportingenabled-failed-to-serialize"
+            ));
     });
 }
 
@@ -126,7 +132,10 @@ fn toggle_focus_reporting(_: &(), ctx: &mut AppContext) {
         reporting
             .focus_reporting_enabled
             .toggle_and_save_value(ctx)
-            .expect(&crate::tr!("settings", "focusreportingenabled-failed-to-serialize"));
+            .expect(&crate::tr!(
+                "settings",
+                "focusreportingenabled-failed-to-serialize"
+            ));
     });
 }
 

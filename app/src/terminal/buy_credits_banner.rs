@@ -336,9 +336,13 @@ impl BuyCreditsBanner {
 
         let sub_text_color = theme.sub_text_color(theme.surface_1());
 
-        let label = Text::new_inline(crate::tr!("settings", "auto-reload"), appearance.ui_font_family(), 12.)
-            .with_color(sub_text_color.into())
-            .finish();
+        let label = Text::new_inline(
+            crate::tr!("settings", "auto-reload"),
+            appearance.ui_font_family(),
+            12.,
+        )
+        .with_color(sub_text_color.into())
+        .finish();
 
         let selected_amount = self
             .addon_credits_options
@@ -763,7 +767,10 @@ impl BuyCreditsBanner {
                 // Create formatted text with clickable hyperlink
                 let warning_text_fragments = vec![
                     FormattedTextFragment::plain_text(exceeds_limit_text),
-                    FormattedTextFragment::hyperlink_action(crate::tr!("terminal", "increase-limit"), Action::ManageBilling),
+                    FormattedTextFragment::hyperlink_action(
+                        crate::tr!("terminal", "increase-limit"),
+                        Action::ManageBilling,
+                    ),
                     FormattedTextFragment::plain_text(" to continue."),
                 ];
 

@@ -107,10 +107,7 @@ impl View for DeleteConversationConfirmationDialog {
 
         let dialog = Dialog::new(
             title,
-            Some(
-                crate::tr!("workspace", "delete-conversation-warning")
-                    .into(),
-            ),
+            Some(crate::tr!("workspace", "delete-conversation-warning").into()),
             UiComponentStyles {
                 width: Some(DIALOG_WIDTH),
                 ..dialog_styles(appearance)

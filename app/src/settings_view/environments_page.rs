@@ -506,8 +506,9 @@ impl EnvironmentsPageView {
         }
 
         // Create pane configuration for BackingView support
-        let pane_configuration =
-            ctx.add_model(|_| crate::pane_group::pane::PaneConfiguration::new(crate::tr!("settings", "environments")));
+        let pane_configuration = ctx.add_model(|_| {
+            crate::pane_group::pane::PaneConfiguration::new(crate::tr!("settings", "environments"))
+        });
 
         let mut view = Self {
             self_handle: ctx.handle(),
@@ -634,7 +635,10 @@ impl EnvironmentsPageView {
 
             if should_handle {
                 self.pending_save_env_id = None;
-                self.show_success_toast(crate::tr!("settings", "successfully-updated-environment").to_string(), ctx);
+                self.show_success_toast(
+                    crate::tr!("settings", "successfully-updated-environment").to_string(),
+                    ctx,
+                );
 
                 // No need to force a global cloud-object refresh here: on update success the
                 // sync pipeline updates this environment's `revision_ts` (used for crate::tr!("settings", "last-edited"))
@@ -652,7 +656,10 @@ impl EnvironmentsPageView {
             if let Some(result_client_id) = &result.client_id
                 && *result_client_id == pending_client_id
             {
-                self.show_success_toast(crate::tr!("settings", "successfully-created-environment").to_string(), ctx);
+                self.show_success_toast(
+                    crate::tr!("settings", "successfully-created-environment").to_string(),
+                    ctx,
+                );
             }
         }
 
@@ -665,7 +672,10 @@ impl EnvironmentsPageView {
             if let Some(server_id) = &result.server_id
                 && server_id.uid() == pending_env_id.uid()
             {
-                self.show_success_toast(crate::tr!("settings", "environment-deleted-successfully").to_string(), ctx);
+                self.show_success_toast(
+                    crate::tr!("settings", "environment-deleted-successfully").to_string(),
+                    ctx,
+                );
             }
         }
 
@@ -684,7 +694,10 @@ impl EnvironmentsPageView {
             self.pending_share_server_id = None;
 
             if matches!(result.success_type, OperationSuccessType::Success) {
-                self.show_success_toast(crate::tr!("settings", "successfully-shared-environment").to_string(), ctx);
+                self.show_success_toast(
+                    crate::tr!("settings", "successfully-shared-environment").to_string(),
+                    ctx,
+                );
             } else {
                 self.show_error_toast(crate::tr!("settings", "env-share-failed").to_string(), ctx);
             }
@@ -756,7 +769,8 @@ impl EnvironmentsPageView {
 
                 let Some(owner) = owner else {
                     self.show_error_toast(
-                        crate::tr!("settings", "unable-to-create-environment-not-logged-in").to_string(),
+                        crate::tr!("settings", "unable-to-create-environment-not-logged-in")
+                            .to_string(),
                         ctx,
                     );
                     return;
@@ -783,7 +797,8 @@ impl EnvironmentsPageView {
                 let Some(existing_env) = CloudAmbientAgentEnvironment::get_by_id(env_id, ctx)
                 else {
                     self.show_error_toast(
-                        crate::tr!("settings", "unable-to-save-environment-no-longer-exists").to_string(),
+                        crate::tr!("settings", "unable-to-save-environment-no-longer-exists")
+                            .to_string(),
                         ctx,
                     );
                     return;
@@ -955,7 +970,11 @@ impl TypedActionView for EnvironmentsPageView {
                     .map(|team| team.uid)
                 else {
                     self.show_error_toast(
-                        crate::tr!("settings", "unable-to-share-environment-you-are-not-currently-on-a-team").to_string(),
+                        crate::tr!(
+                            "settings",
+                            "unable-to-share-environment-you-are-not-currently-on-a-team"
+                        )
+                        .to_string(),
                         ctx,
                     );
                     return;
@@ -963,7 +982,11 @@ impl TypedActionView for EnvironmentsPageView {
 
                 let SyncId::ServerId(server_id) = *env_id else {
                     self.show_error_toast(
-                        crate::tr!("settings", "unable-to-share-environment-environment-is-not-yet-synced").to_string(),
+                        crate::tr!(
+                            "settings",
+                            "unable-to-share-environment-environment-is-not-yet-synced"
+                        )
+                        .to_string(),
                         ctx,
                     );
                     return;
@@ -1314,11 +1337,15 @@ impl EnvironmentsPageWidget {
         const HEADER_TO_LIST_SPACING: f32 = 8.;
 
         let header = match list_scope {
-            EnvironmentListScope::Personal => Self::render_overline_header(&crate::tr!("settings", "personal"), appearance),
+            EnvironmentListScope::Personal => {
+                Self::render_overline_header(&crate::tr!("settings", "personal"), appearance)
+            }
             EnvironmentListScope::Team => {
                 let shared_by_text = team_name
                     .map(|team_name| format!("Shared by Warp and {team_name}"))
-                    .unwrap_or_else(|| crate::tr!("settings", "shared-by-warp-and-your-team").to_string());
+                    .unwrap_or_else(|| {
+                        crate::tr!("settings", "shared-by-warp-and-your-team").to_string()
+                    });
                 Self::render_overline_header(&shared_by_text, appearance)
             }
         };

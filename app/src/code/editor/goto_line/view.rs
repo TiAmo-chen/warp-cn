@@ -51,7 +51,8 @@ impl GoToLineView {
                 },
                 ctx,
             );
-            editor.set_placeholder_text(crate::tr!("code_editor", "code-goto-line-placeholder"), ctx);
+            editor
+                .set_placeholder_text(crate::tr!("code_editor", "code-goto-line-placeholder"), ctx);
             editor
         });
 

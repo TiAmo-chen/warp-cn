@@ -697,7 +697,13 @@ pub fn render_local_only_icon(
         .ui_builder()
         .local_only_icon_with_tooltip(
             13.,
-            custom_tooltip.unwrap_or(crate::tr!("settings", "this-setting-is-not-synced-to-your-other-devices").to_owned()),
+            custom_tooltip.unwrap_or(
+                crate::tr!(
+                    "settings",
+                    "this-setting-is-not-synced-to-your-other-devices"
+                )
+                .to_owned(),
+            ),
             mouse_state.clone(),
         )
         .finish();

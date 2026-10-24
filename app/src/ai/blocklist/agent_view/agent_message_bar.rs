@@ -561,7 +561,10 @@ impl MessageProvider<AgentMessageArgs<'_>> for BootstrappingMessageProducer {
         {
             None
         } else {
-            Some(Message::from_text(crate::tr!("ai_assistant", "ai-starting-shell")))
+            Some(Message::from_text(crate::tr!(
+                "ai_assistant",
+                "ai-starting-shell"
+            )))
         }
     }
 }

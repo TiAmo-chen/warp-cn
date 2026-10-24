@@ -46,20 +46,23 @@ impl LoginFailureReason {
                 with_troubleshooting_text(vec![FormattedTextFragment::plain_text(text)])
             }
             LoginFailureReason::FailedUserAuthentication => {
-                with_troubleshooting_text(vec![FormattedTextFragment::plain_text(
-                    crate::tr!("auth", "request-login-failed"),
-                )])
+                with_troubleshooting_text(vec![FormattedTextFragment::plain_text(crate::tr!(
+                    "auth",
+                    "request-login-failed"
+                ))])
             }
             LoginFailureReason::FailedMintCustomToken => {
-                with_troubleshooting_text(vec![FormattedTextFragment::plain_text(
-                    crate::tr!("auth", "request-signup-failed"),
-                )])
+                with_troubleshooting_text(vec![FormattedTextFragment::plain_text(crate::tr!(
+                    "auth",
+                    "request-signup-failed"
+                ))])
             }
             LoginFailureReason::InvalidStateParameter
             | LoginFailureReason::MissingStateParameter => {
-                with_troubleshooting_text(vec![FormattedTextFragment::plain_text(
-                    crate::tr!("auth", "invalid-redirect-url"),
-                )])
+                with_troubleshooting_text(vec![FormattedTextFragment::plain_text(crate::tr!(
+                    "auth",
+                    "invalid-redirect-url"
+                ))])
             }
         };
         FormattedText::new([FormattedTextLine::Line(fragments)])

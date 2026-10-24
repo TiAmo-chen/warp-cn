@@ -297,7 +297,8 @@ impl View {
         });
 
         let placeholder_element = QueryResultRenderer::new(
-            MatchedBinding::placeholder(crate::tr!("context_chips", "no-results-found").into()).into(),
+            MatchedBinding::placeholder(crate::tr!("context_chips", "no-results-found").into())
+                .into(),
             "command_palette:no_results".into(),
             |_, _, _| {},
             *styles::QUERY_RESULT_RENDERER_STYLES,
@@ -850,8 +851,7 @@ impl View {
                         ToastStack::handle(ctx).update(ctx, |toast_stack, ctx| {
                             toast_stack.add_ephemeral_toast(
                                 DismissibleToast::error(
-                                    crate::tr!("search", "toast-cannot-switch-conv")
-                                        .to_string(),
+                                    crate::tr!("search", "toast-cannot-switch-conv").to_string(),
                                 ),
                                 window_id,
                                 ctx,

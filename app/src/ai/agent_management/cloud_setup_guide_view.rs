@@ -347,7 +347,11 @@ impl CloudSetupGuideView {
         let Some((workflow, setup_step)) = (match code {
             CREATE_ENV_SLASH_CMD => Some((
                 WorkflowType::Local(
-                    Workflow::new(crate::tr!("ai_assistant", "ai-wf-create-environment"), CREATE_ENV_SLASH_CMD).with_arguments(vec![
+                    Workflow::new(
+                        crate::tr!("ai_assistant", "ai-wf-create-environment"),
+                        CREATE_ENV_SLASH_CMD,
+                    )
+                    .with_arguments(vec![
                         Argument::new("github link or local filepath", ArgumentType::Text)
                             .with_description("GitHub link or local filepath to the repository"),
                     ]),
@@ -356,34 +360,43 @@ impl CloudSetupGuideView {
             )),
             CREATE_ENV_CLI_CMD => Some((
                 WorkflowType::Local(
-                    Workflow::new(crate::tr!("ai_assistant", "ai-wf-create-environment-cli"), CREATE_ENV_CLI_CMD).with_arguments(
-                        vec![
-                            Argument::new("NAME", ArgumentType::Text)
-                                .with_description("Name for the environment"),
-                            Argument::new("DOCKER_IMAGE", ArgumentType::Text)
-                                .with_description(crate::tr!("ai_assistant", "ai-wf-create-env-cli-arg-image")),
-                        ],
-                    ),
+                    Workflow::new(
+                        crate::tr!("ai_assistant", "ai-wf-create-environment-cli"),
+                        CREATE_ENV_CLI_CMD,
+                    )
+                    .with_arguments(vec![
+                        Argument::new("NAME", ArgumentType::Text)
+                            .with_description("Name for the environment"),
+                        Argument::new("DOCKER_IMAGE", ArgumentType::Text).with_description(
+                            crate::tr!("ai_assistant", "ai-wf-create-env-cli-arg-image"),
+                        ),
+                    ]),
                 ),
                 SetupGuideStep::CreateEnvironmentCli,
             )),
             CREATE_SLACK_INTEGRATION_CMD => Some((
                 WorkflowType::Local(
-                    Workflow::new(crate::tr!("ai_assistant", "ai-wf-create-slack-integration"), CREATE_SLACK_INTEGRATION_CMD)
-                        .with_arguments(vec![
-                            Argument::new("environment_id", ArgumentType::Text)
-                                .with_description("ID of the environment to integrate with"),
-                        ]),
+                    Workflow::new(
+                        crate::tr!("ai_assistant", "ai-wf-create-slack-integration"),
+                        CREATE_SLACK_INTEGRATION_CMD,
+                    )
+                    .with_arguments(vec![
+                        Argument::new("environment_id", ArgumentType::Text)
+                            .with_description("ID of the environment to integrate with"),
+                    ]),
                 ),
                 SetupGuideStep::CreateSlackIntegration,
             )),
             CREATE_LINEAR_INTEGRATION_CMD => Some((
                 WorkflowType::Local(
-                    Workflow::new(crate::tr!("ai_assistant", "ai-wf-create-linear-integration"), CREATE_LINEAR_INTEGRATION_CMD)
-                        .with_arguments(vec![
-                            Argument::new("environment_id", ArgumentType::Text)
-                                .with_description("ID of the environment to integrate with"),
-                        ]),
+                    Workflow::new(
+                        crate::tr!("ai_assistant", "ai-wf-create-linear-integration"),
+                        CREATE_LINEAR_INTEGRATION_CMD,
+                    )
+                    .with_arguments(vec![
+                        Argument::new("environment_id", ArgumentType::Text)
+                            .with_description("ID of the environment to integrate with"),
+                    ]),
                 ),
                 SetupGuideStep::CreateLinearIntegration,
             )),

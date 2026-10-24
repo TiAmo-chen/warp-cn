@@ -498,7 +498,8 @@ pub(super) fn render(props: Props, app: &AppContext) -> Box<dyn Element> {
                                             // action so the user sees the error instead
                                             // of an empty box.
                                             let formatted_text = render_requested_action_body_text(
-                                                crate::tr!("ai_assistant", "ai-failed-read-files").into(),
+                                                crate::tr!("ai_assistant", "ai-failed-read-files")
+                                                    .into(),
                                                 appearance.ui_font_family(),
                                                 app,
                                             );
@@ -901,7 +902,9 @@ pub(super) fn render(props: Props, app: &AppContext) -> Box<dyn Element> {
                             SummarizationType::ConversationSummary
                         ) && !are_all_text_sections_empty(&text.sections) =>
                         {
-                            let header_text = crate::tr!("ai_assistant", "ai-conversation-summarized").to_string();
+                            let header_text =
+                                crate::tr!("ai_assistant", "ai-conversation-summarized")
+                                    .to_string();
                             if let Some(element) = render_collapsible_block(
                                 output_message,
                                 header_text,
@@ -1065,9 +1068,10 @@ pub(super) fn render(props: Props, app: &AppContext) -> Box<dyn Element> {
                                     ));
                                 }
                                 None => {
-                                    fragments.push(FormattedTextFragment::plain_text(
-                                        crate::tr!("ai_assistant", "ai-this-conversation"),
-                                    ));
+                                    fragments.push(FormattedTextFragment::plain_text(crate::tr!(
+                                        "ai_assistant",
+                                        "ai-this-conversation"
+                                    )));
                                 }
                             };
                             match query {
@@ -1437,10 +1441,14 @@ fn render_search_codebase(
                                     .codebase_search_speedbump_option_handles
                                     .clone(),
                                 vec![
-                                    RadioButtonItem::text(
-                                        crate::tr!("ai_assistant", "ai-always-allow-file-access-coding"),
-                                    ),
-                                    RadioButtonItem::text(crate::tr!("ai_assistant", "ai-always-allow-file-access-repo")),
+                                    RadioButtonItem::text(crate::tr!(
+                                        "ai_assistant",
+                                        "ai-always-allow-file-access-coding"
+                                    )),
+                                    RadioButtonItem::text(crate::tr!(
+                                        "ai_assistant",
+                                        "ai-always-allow-file-access-repo"
+                                    )),
                                 ],
                                 props
                                     .state_handles
@@ -1482,7 +1490,11 @@ fn render_search_codebase(
                                 appearance
                                     .ui_builder()
                                     .link(
-                                        crate::tr!("ai_assistant", "ai-manage-autonomy-permissions").into(),
+                                        crate::tr!(
+                                            "ai_assistant",
+                                            "ai-manage-autonomy-permissions"
+                                        )
+                                        .into(),
                                         None,
                                         Some(Box::new(move |ctx| {
                                             ctx.dispatch_typed_action(
@@ -2514,9 +2526,12 @@ fn render_suggest_new_conversation(
     }
 
     if props.shared_session_status.is_viewer() {
-        let header_element = HeaderConfig::new(crate::tr!("ai_assistant", "ai-start-a-new-conversation"), app)
-            .with_icon(gray_stop_icon(appearance))
-            .render(app);
+        let header_element = HeaderConfig::new(
+            crate::tr!("ai_assistant", "ai-start-a-new-conversation"),
+            app,
+        )
+        .with_icon(gray_stop_icon(appearance))
+        .render(app);
 
         return Some(
             header_element
@@ -2529,8 +2544,7 @@ fn render_suggest_new_conversation(
 
     let mut content = Flex::column().with_cross_axis_alignment(CrossAxisAlignment::Stretch);
 
-    let new_conversation_header_text =
-        crate::tr!("ai_assistant", "ai-topic-changed");
+    let new_conversation_header_text = crate::tr!("ai_assistant", "ai-topic-changed");
     let new_conversation_header_element = HeaderConfig::new(new_conversation_header_text, app)
         .with_icon(yellow_stop_icon(appearance))
         .with_corner_radius_override(CornerRadius::with_top(Radius::Pixels(8.)))

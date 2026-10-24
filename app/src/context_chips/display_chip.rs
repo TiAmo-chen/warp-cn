@@ -1081,8 +1081,7 @@ impl DisplayChip {
                             // nvm-windows has documented issues when installed alongside an existing Node.js installation.
                             // https://github.com/coreybutler/nvm-windows?tab=readme-ov-file#star-star-uninstall-any-pre-existing-node-installations-star-star
                             // Prompt the agent to remove this first.
-                            crate::tr!("context_chips", "uninstall-node-install-nvm")
-                                .to_string()
+                            crate::tr!("context_chips", "uninstall-node-install-nvm").to_string()
                         } else {
                             crate::tr!("common", "install-nvm-for-me").to_string()
                         }));

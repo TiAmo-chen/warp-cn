@@ -1908,8 +1908,9 @@ impl View for RequestedCommandView {
                 {
                     let result_text = match result {
                         CallMCPToolResult::Success { result } => {
-                            serde_json::to_string_pretty(result)
-                                .unwrap_or_else(|_| crate::tr!("ai_assistant", "ai-error-formatting-json").to_string())
+                            serde_json::to_string_pretty(result).unwrap_or_else(|_| {
+                                crate::tr!("ai_assistant", "ai-error-formatting-json").to_string()
+                            })
                         }
                         CallMCPToolResult::Error(error) => format!("Error: {error}"),
                         CallMCPToolResult::Cancelled => "Tool call was cancelled".to_string(),

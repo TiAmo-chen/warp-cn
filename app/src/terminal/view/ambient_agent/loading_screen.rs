@@ -51,7 +51,10 @@ pub fn render_cloud_mode_loading_screen<T: Entity>(
         // Add link at the end if it exists
         if let Some(link_target) = tip.link() {
             fragments.push(FormattedTextFragment::plain_text(" "));
-            fragments.push(FormattedTextFragment::hyperlink(crate::tr!("common", "learn-more-label"), link_target));
+            fragments.push(FormattedTextFragment::hyperlink(
+                crate::tr!("common", "learn-more-label"),
+                link_target,
+            ));
         }
 
         let formatted_text = FormattedText::new(vec![FormattedTextLine::Line(fragments)]);

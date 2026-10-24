@@ -620,8 +620,12 @@ impl BuildPlanMigrationModal {
             features_list.add_child(zdr);
         }
 
-        let and_more =
-            Self::create_bullet_item(crate::tr!("workspace", "and-more").to_string(), font_family, 14., text_color);
+        let and_more = Self::create_bullet_item(
+            crate::tr!("workspace", "and-more").to_string(),
+            font_family,
+            14.,
+            text_color,
+        );
         features_list.add_child(and_more);
 
         let learn_more_fragments = vec![

@@ -40,7 +40,10 @@ pub fn init_actions_from_parent_view<T: Action + Clone>(
 ) {
     ToggleSettingActionPair::add_toggle_setting_action_pairs_as_bindings(
         vec![ToggleSettingActionPair::custom(
-            SettingActionPairDescriptions::new(&crate::tr!("settings", "enable-warp-drive"), "Disable Warp Drive"),
+            SettingActionPairDescriptions::new(
+                &crate::tr!("settings", "enable-warp-drive"),
+                "Disable Warp Drive",
+            ),
             builder(SettingsAction::WarpDrive(
                 WarpDriveSettingsPageAction::ToggleShowWarpDrive,
             )),

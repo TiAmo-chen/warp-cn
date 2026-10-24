@@ -386,7 +386,10 @@ impl AIDocumentView {
             ActionButton::new("", NakedTheme)
                 .with_icon(icons::Icon::History)
                 .with_size(ButtonSize::Small)
-                .with_tooltip(crate::tr!("ai_assistant", "ai-show-version-history-tooltip"))
+                .with_tooltip(crate::tr!(
+                    "ai_assistant",
+                    "ai-show-version-history-tooltip"
+                ))
                 .on_click(|ctx| {
                     ctx.dispatch_typed_action(
                         PaneHeaderAction::<AIDocumentAction, AIDocumentAction>::CustomAction(
@@ -721,9 +724,7 @@ impl AIDocumentView {
                 let theme = appearance.theme();
                 let color = theme.nonactive_ui_detail().into_solid();
                 let ui_builder = appearance.ui_builder().clone();
-                let tooltip_text =
-                    crate::tr!("ai_assistant", "ai-plan-synced-message")
-                        .to_string();
+                let tooltip_text = crate::tr!("ai_assistant", "ai-plan-synced-message").to_string();
                 let synced_status_mouse_state = self.synced_status_mouse_state.clone();
                 Container::new(
                     ConstrainedBox::new(
@@ -1166,7 +1167,9 @@ impl TypedActionView for AIDocumentView {
                 let window_id = ctx.window_id();
                 ToastStack::handle(ctx).update(ctx, |toast_stack, ctx| {
                     toast_stack.add_ephemeral_toast(
-                        DismissibleToast::success(crate::tr!("ai_assistant", "ai-link-copied-toast").to_string()),
+                        DismissibleToast::success(
+                            crate::tr!("ai_assistant", "ai-link-copied-toast").to_string(),
+                        ),
                         window_id,
                         ctx,
                     );
@@ -1179,7 +1182,9 @@ impl TypedActionView for AIDocumentView {
                 let window_id = ctx.window_id();
                 ToastStack::handle(ctx).update(ctx, |toast_stack, ctx| {
                     toast_stack.add_ephemeral_toast(
-                        DismissibleToast::success(crate::tr!("ai_assistant", "ai-plan-id-copied-toast").to_string()),
+                        DismissibleToast::success(
+                            crate::tr!("ai_assistant", "ai-plan-id-copied-toast").to_string(),
+                        ),
                         window_id,
                         ctx,
                     );
@@ -1351,19 +1356,25 @@ impl BackingView for AIDocumentView {
         #[cfg(feature = "local_fs")]
         {
             menu_items.push(
-                crate::menu::MenuItemFields::new(crate::tr!("ai_assistant", "ai-doc-save-as-markdown"))
-                    .with_on_select_action(AIDocumentAction::Export)
-                    .with_icon(Icon::Download)
-                    .into_item(),
+                crate::menu::MenuItemFields::new(crate::tr!(
+                    "ai_assistant",
+                    "ai-doc-save-as-markdown"
+                ))
+                .with_on_select_action(AIDocumentAction::Export)
+                .with_icon(Icon::Download)
+                .into_item(),
             );
         }
 
         // Add "Attach to active session" menu item
         menu_items.push(
-            MenuItemFields::new(crate::tr!("ai_assistant", "ai-doc-attach-to-active-session"))
-                .with_on_select_action(AIDocumentAction::AttachToActiveSession)
-                .with_icon(Icon::Paperclip)
-                .into_item(),
+            MenuItemFields::new(crate::tr!(
+                "ai_assistant",
+                "ai-doc-attach-to-active-session"
+            ))
+            .with_on_select_action(AIDocumentAction::AttachToActiveSession)
+            .with_icon(Icon::Paperclip)
+            .into_item(),
         );
 
         // Add "Copy plan ID" menu item

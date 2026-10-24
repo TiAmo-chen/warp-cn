@@ -271,8 +271,7 @@ const WSL_TEXT: &str = "Diffs don't currently work in WSL.";
 
 pub fn get_discard_button_disabled_tooltip(git_operation_blocked: bool) -> String {
     if git_operation_blocked {
-        crate::tr!("code_review", "cannot-discard-while-git-operation")
-            .to_string()
+        crate::tr!("code_review", "cannot-discard-while-git-operation").to_string()
     } else {
         crate::tr!("code_review", "no-changes-to-discard").to_string()
     }
@@ -1222,8 +1221,11 @@ impl CodeReviewView {
         });
 
         let discard_confirm_button = ctx.add_typed_action_view(|_ctx| {
-            ActionButton::new(crate::tr!("code_editor", "code-review-discard-changes"), DangerPrimaryTheme)
-                .on_click(|ctx| ctx.dispatch_typed_action(CodeReviewAction::ConfirmDiscardFile))
+            ActionButton::new(
+                crate::tr!("code_editor", "code-review-discard-changes"),
+                DangerPrimaryTheme,
+            )
+            .on_click(|ctx| ctx.dispatch_typed_action(CodeReviewAction::ConfirmDiscardFile))
         });
 
         let discard_cancel_button = ctx.add_typed_action_view(|_ctx| {
@@ -1295,22 +1297,34 @@ impl CodeReviewView {
         let header = CodeReviewHeader::new();
 
         let init_project_button = ctx.add_typed_action_view(|_ctx| {
-            ActionButton::new(crate::tr!("code_editor", "code-review-initialize-codebase"), NakedTheme)
-                .with_size(ButtonSize::Small)
-                .with_tooltip(crate::tr!("code_editor", "code-review-initialize-codebase-tooltip"))
-                .with_tooltip_alignment(TooltipAlignment::Center)
-                .on_click(|ctx| {
-                    ctx.dispatch_typed_action(CodeReviewAction::InitProjectForCurrentDirectory)
-                })
+            ActionButton::new(
+                crate::tr!("code_editor", "code-review-initialize-codebase"),
+                NakedTheme,
+            )
+            .with_size(ButtonSize::Small)
+            .with_tooltip(crate::tr!(
+                "code_editor",
+                "code-review-initialize-codebase-tooltip"
+            ))
+            .with_tooltip_alignment(TooltipAlignment::Center)
+            .on_click(|ctx| {
+                ctx.dispatch_typed_action(CodeReviewAction::InitProjectForCurrentDirectory)
+            })
         });
 
         #[cfg(not(target_family = "wasm"))]
         let open_repository_button = ctx.add_typed_action_view(|_ctx| {
-            ActionButton::new(crate::tr!("code_editor", "code-review-open-repository"), NakedTheme)
-                .with_size(ButtonSize::Small)
-                .with_tooltip(crate::tr!("code_editor", "code-review-open-repository-tooltip"))
-                .with_tooltip_alignment(TooltipAlignment::Center)
-                .on_click(|ctx| ctx.dispatch_typed_action(CodeReviewAction::OpenRepository))
+            ActionButton::new(
+                crate::tr!("code_editor", "code-review-open-repository"),
+                NakedTheme,
+            )
+            .with_size(ButtonSize::Small)
+            .with_tooltip(crate::tr!(
+                "code_editor",
+                "code-review-open-repository-tooltip"
+            ))
+            .with_tooltip_alignment(TooltipAlignment::Center)
+            .on_click(|ctx| ctx.dispatch_typed_action(CodeReviewAction::OpenRepository))
         });
 
         let has_repo = repo_path.is_some();
@@ -4088,10 +4102,14 @@ impl CodeReviewView {
                 .finish(),
             )
             .with_child(
-                Text::new(crate::tr!("code_editor", "code-no-open-changes"), appearance.ui_font_family(), 16.)
-                    .with_style(Properties::default().weight(Weight::Semibold))
-                    .with_color(theme.main_text_color(theme.surface_2()).into())
-                    .finish(),
+                Text::new(
+                    crate::tr!("code_editor", "code-no-open-changes"),
+                    appearance.ui_font_family(),
+                    16.,
+                )
+                .with_style(Properties::default().weight(Weight::Semibold))
+                .with_color(theme.main_text_color(theme.surface_2()).into())
+                .finish(),
             )
             .with_child(
                 Container::new(
@@ -4283,7 +4301,9 @@ impl CodeReviewView {
 
                 self.clear_review_comments(ctx);
                 ToastStack::handle(ctx).update(ctx, |stack, ctx| {
-                    let toast = DismissibleToast::default(crate::tr!("code_review", "comments-sent-to-agent").into());
+                    let toast = DismissibleToast::default(
+                        crate::tr!("code_review", "comments-sent-to-agent").into(),
+                    );
                     stack.add_ephemeral_toast(toast, self.window_id, ctx);
                 });
                 ctx.emit(CodeReviewViewEvent::ReviewSubmitted);
@@ -4291,7 +4311,8 @@ impl CodeReviewView {
             }
             ReviewSubmissionResult::Error => {
                 report_error!("Failed to submit review comments");
-                let error_message = crate::tr!("code_review", "could-not-submit-comments").to_string();
+                let error_message =
+                    crate::tr!("code_review", "could-not-submit-comments").to_string();
                 ToastStack::handle(ctx).update(ctx, |toast_stack, ctx| {
                     let toast = DismissibleToast::error(error_message);
                     toast_stack.add_ephemeral_toast(toast, self.window_id, ctx);
@@ -5520,8 +5541,10 @@ impl CodeReviewView {
                     )
                     .check(self.discard_dialog_state.stash_changes_enabled)
                     .with_label(
-                        appearance.ui_builder().span(crate::tr!("code_editor", "code-stash-changes")).with_style(
-                            UiComponentStyles {
+                        appearance
+                            .ui_builder()
+                            .span(crate::tr!("code_editor", "code-stash-changes"))
+                            .with_style(UiComponentStyles {
                                 font_size: Some(appearance.ui_font_size()),
                                 font_color: Some(
                                     appearance
@@ -5530,8 +5553,7 @@ impl CodeReviewView {
                                         .into(),
                                 ),
                                 ..Default::default()
-                            },
-                        ),
+                            }),
                     )
                     .build()
                     .on_click(|ctx, _, _| {
@@ -6606,7 +6628,10 @@ impl CodeReviewView {
                 });
                 self.git_operations_chevron.update(ctx, |button, ctx| {
                     button.set_disabled(disabled, ctx);
-                    button.set_tooltip(disabled.then_some(crate::tr!("code_review", "no-git-actions")), ctx);
+                    button.set_tooltip(
+                        disabled.then_some(crate::tr!("code_review", "no-git-actions")),
+                        ctx,
+                    );
                 });
             }
             PrimaryGitActionMode::Push => {
@@ -6806,17 +6831,23 @@ impl CodeReviewView {
 
         if FeatureFlag::DiffSetAsContext.is_enabled() && has_changes {
             items.push(
-                MenuItemFields::new(crate::tr!("code_editor", "code-review-add-diff-set-context"))
-                    .with_icon(Icon::Paperclip)
-                    .with_on_select_action(CodeReviewAction::AddDiffSetAsContext(DiffSetScope::All))
-                    .into_item(),
+                MenuItemFields::new(crate::tr!(
+                    "code_editor",
+                    "code-review-add-diff-set-context"
+                ))
+                .with_icon(Icon::Paperclip)
+                .with_on_select_action(CodeReviewAction::AddDiffSetAsContext(DiffSetScope::All))
+                .into_item(),
             );
         }
 
         let (comment_label, comment_icon) = if self.get_existing_diffset_comment(ctx).is_some() {
             (crate::tr!("code", "show-saved-comment"), Icon::MessageText)
         } else {
-            (crate::tr!("code_editor", "code-comment-add"), Icon::MessagePlusSquare)
+            (
+                crate::tr!("code_editor", "code-comment-add"),
+                Icon::MessagePlusSquare,
+            )
         };
 
         items.push(
@@ -6841,10 +6872,13 @@ impl CodeReviewView {
         let is_ai_enabled = AISettings::as_ref(ctx).is_any_ai_enabled(ctx);
         if is_ai_enabled && FeatureFlag::DiffSetAsContext.is_enabled() && has_changes {
             items.push(
-                MenuItemFields::new(crate::tr!("code_editor", "code-review-add-diff-set-context"))
-                    .with_icon(Icon::Paperclip)
-                    .with_on_select_action(CodeReviewAction::AddDiffSetAsContext(DiffSetScope::All))
-                    .into_item(),
+                MenuItemFields::new(crate::tr!(
+                    "code_editor",
+                    "code-review-add-diff-set-context"
+                ))
+                .with_icon(Icon::Paperclip)
+                .with_on_select_action(CodeReviewAction::AddDiffSetAsContext(DiffSetScope::All))
+                .into_item(),
             );
         }
 
@@ -6853,7 +6887,10 @@ impl CodeReviewView {
             {
                 (crate::tr!("code", "show-saved-comment"), Icon::MessageText)
             } else {
-                (crate::tr!("code_editor", "code-comment-add"), Icon::MessagePlusSquare)
+                (
+                    crate::tr!("code_editor", "code-comment-add"),
+                    Icon::MessagePlusSquare,
+                )
             };
 
             items.push(
