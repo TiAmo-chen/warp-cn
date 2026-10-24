@@ -17,7 +17,10 @@ PrivilegesRequired=lowest
 Uninstallable=no
 CreateUninstallRegKey=no
 DisableProgramGroupPage=yes
-OutputBaseFilename=Warp-zh-Portable
+#ifndef MyOutputName
+  #define MyOutputName "Warp-zh-Portable"
+#endif
+OutputBaseFilename={#MyOutputName}
 SourceDir=..
 Compression=lzma2/ultra64
 SolidCompression=yes

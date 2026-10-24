@@ -4,9 +4,17 @@ on:
   workflow_dispatch:
     inputs:
       release_tag:
-        description: 'Release tag to package (e.g. v0.2026.5.13.zh_03)'
+        description: 'Release tag that holds the payload zip'
         required: true
         default: 'v0.2026.5.13.zh_03'
+      asset_name:
+        description: 'Payload zip asset name'
+        required: true
+        default: 'warp-zh-win64.zip'
+      output_name:
+        description: 'Output installer base name (no extension)'
+        required: true
+        default: 'Warp-zh-Portable'
 
 permissions:
   contents: read
@@ -29,12 +37,11 @@ jobs:
           GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
         run: |
           $ErrorActionPreference = 'Stop'
-          $tag = '${{ inputs.release_tag }}'
           New-Item -ItemType Directory -Force payload | Out-Null
-          gh release download $tag --repo ${{ github.repository }} -p 'warp-zh-win64.zip' -D payload
-          Expand-Archive -Path 'payload\warp-zh-win64.zip' -DestinationPath payload\app -Force
-          Remove-Item 'payload\warp-zh-win64.zip' -Force
-          # Inno 的 Source 是 payload\*，所以把解出来的内容平铺到 payload 根
+          gh release download '${{ inputs.release_tag }}' --repo ${{ github.repository }} -p '${{ inputs.asset_name }}' -D payload
+          $zip = Get-ChildItem payload -Filter *.zip | Select-Object -First 1
+          Expand-Archive -Path $zip.FullName -DestinationPath payload\app -Force
+          Remove-Item $zip.FullName -Force
           Move-Item payload\app\* payload\ -Force
           Remove-Item payload\app -Recurse -Force
           Get-ChildItem payload -File | Select-Object Name, Length | Format-Table -AutoSize
@@ -50,7 +57,7 @@ jobs:
           $iscc = 'C:\Program Files (x86)\Inno Setup 6\ISCC.exe'
           if (-not (Test-Path $iscc)) { $iscc = 'C:\Program Files\Inno Setup 6\ISCC.exe' }
           if (-not (Test-Path $iscc)) { throw 'ISCC.exe not found' }
-          & $iscc "/O$PWD\Output" 'installer\portable.iss'
+          & $iscc "/O$PWD\Output" /DMyOutputName='${{ inputs.output_name }}' 'installer\portable.iss'
           if ($LASTEXITCODE -ne 0) { throw "ISCC failed: $LASTEXITCODE" }
           Get-ChildItem "$PWD\Output" -Filter '*.exe' |
             Select-Object Name, @{n='MB';e={[math]::Round($_.Length/1MB,2)}} | Format-Table -AutoSize

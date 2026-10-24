@@ -8,11 +8,23 @@ permissions:
 
 jobs:
   build:
-    name: Build master-zh
+    name: Build master-zh (${{ matrix.profile }})
     runs-on: windows-latest
     timeout-minutes: 350
+    strategy:
+      fail-fast: false
+      matrix:
+        include:
+          # 标准 release：编译快，推荐
+          - profile: release
+            release_tag: v0.2026.10.22.zh_02
+            artifact: warp-zh-master
+          # thin-LTO：编译慢，运行略快
+          - profile: rlto
+            release_tag: v0.2026.10.22.zh_02-lto
+            artifact: warp-zh-master-lto
     env:
-      GIT_RELEASE_TAG: v0.2026.10.22.zh_01
+      GIT_RELEASE_TAG: ${{ matrix.release_tag }}
     steps:
       - name: Checkout
         uses: actions/checkout@v4
@@ -44,11 +56,11 @@ jobs:
         shell: bash
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
-          CARGO_FULL_PROFILE: release
+          CARGO_FULL_PROFILE: ${{ matrix.profile }}
           RUSTFLAGS: -C debuginfo=0
           CARGO_NET_RETRY: 5
         run: |
-          cargo build --profile release -p warp --bin warp-oss \
+          cargo build --profile ${{ matrix.profile }} -p warp --bin warp-oss \
             --features gui,release_bundle
 
       - name: Package
@@ -56,7 +68,8 @@ jobs:
         run: |
           $ErrorActionPreference = 'Stop'
           New-Item -ItemType Directory dist | Out-Null
-          $rel = 'target\release'
+          $rel = 'target\${{ matrix.profile }}'
+          if (-not (Test-Path $rel)) { throw "build output not found: $rel" }
           Get-ChildItem $rel -File | Where-Object { $_.Extension -in '.exe','.dll' } | Copy-Item -Destination dist\
           if (Test-Path "$rel\x64") { Copy-Item "$rel\x64" dist\x64 -Recurse }
 
@@ -78,13 +91,13 @@ jobs:
           $exe = Get-Item 'dist\warp-oss.exe'
           Write-Host ('exe version: ' + $exe.VersionInfo.FileVersion)
           Write-Host ('exe size   : {0:N2} MB' -f ($exe.Length / 1MB))
-          Compress-Archive -Path dist\* -DestinationPath warp-zh-master.zip -Force
-          Write-Host ('zip size   : {0:N2} MB' -f ((Get-Item 'warp-zh-master.zip').Length / 1MB))
+          Compress-Archive -Path dist\* -DestinationPath '${{ matrix.artifact }}.zip' -Force
+          Write-Host ('zip size   : {0:N2} MB' -f ((Get-Item '${{ matrix.artifact }}.zip').Length / 1MB))
 
       - name: Upload artifact
         uses: actions/upload-artifact@v4
         with:
-          name: warp-zh-master
-          path: warp-zh-master.zip
+          name: ${{ matrix.artifact }}
+          path: ${{ matrix.artifact }}.zip
           if-no-files-found: error
           retention-days: 14
