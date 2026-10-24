@@ -17,11 +17,11 @@ jobs:
         include:
           # 标准 release：编译快，推荐
           - profile: release
-            release_tag: v0.2026.10.22.zh_02
+            release_tag: v0.2026.10.22.zh_03
             artifact: warp-zh-master
           # thin-LTO：编译慢，运行略快
           - profile: rlto
-            release_tag: v0.2026.10.22.zh_02-lto
+            release_tag: v0.2026.10.22.zh_03-lto
             artifact: warp-zh-master-lto
     env:
       GIT_RELEASE_TAG: ${{ matrix.release_tag }}
