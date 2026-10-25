@@ -4185,15 +4185,15 @@ impl DriveIndex {
         };
 
         let name = match object_type {
-            DriveObjectType::Notebook { .. } => "Notebooks",
-            DriveObjectType::Workflow => "Workflows",
-            DriveObjectType::EnvVarCollection => &crate::tr!("drive", "env-vars-type"),
-            DriveObjectType::Folder => "Folders",
-            DriveObjectType::AgentModeWorkflow => &crate::tr!("drive", "agent-workflows-type"),
-            DriveObjectType::AIFact => &crate::tr!("drive", "ai-fact-type"),
-            DriveObjectType::AIFactCollection => "Rules",
-            DriveObjectType::MCPServer => &crate::tr!("drive", "mcp-server-type"),
-            DriveObjectType::MCPServerCollection => &crate::tr!("drive", "mcp-servers-type"),
+            DriveObjectType::Notebook { .. } => "Notebooks".to_string(),
+            DriveObjectType::Workflow => "Workflows".to_string(),
+            DriveObjectType::EnvVarCollection => crate::tr!("drive", "env-vars-type"),
+            DriveObjectType::Folder => "Folders".to_string(),
+            DriveObjectType::AgentModeWorkflow => crate::tr!("drive", "agent-workflows-type"),
+            DriveObjectType::AIFact => crate::tr!("drive", "ai-fact-type"),
+            DriveObjectType::AIFactCollection => "Rules".to_string(),
+            DriveObjectType::MCPServer => crate::tr!("drive", "mcp-server-type"),
+            DriveObjectType::MCPServerCollection => crate::tr!("drive", "mcp-servers-type"),
         };
         let name_styles = UiComponentStyles {
             font_family_id: Some(appearance.ui_font_family()),
