@@ -1371,7 +1371,7 @@ impl Buffer {
         } else {
             debug_assert!(
                 false,
-                crate::tr!("editor", "tried-to-record-edits-in-an-insufficient-batch-state")
+                "Tried to record edits in an insufficient batch state"
             );
         }
     }

@@ -4311,7 +4311,7 @@ impl Workspace {
 
         debug_assert!(
             self.tab_count() > 0,
-            crate::tr!("workspace", "workspace-should-have-at-least-one-tab-upon-configuration")
+            "Workspace should have at least one tab upon configuration"
         );
 
         if self.left_panel_visibility_across_tabs_enabled(ctx) {

@@ -155,22 +155,22 @@ pub(crate) enum IPaneType {
 impl Display for IPaneType {
     fn fmt(&self, f: &mut std::fmt::Formatter<'_>) -> std::fmt::Result {
         match self {
-            IPaneType::Terminal => write!(f, crate::tr!("ai_assistant", "ai-agent-mode-terminal")),
-            IPaneType::Notebook => write!(f, crate::tr!("drive", "type-notebook")),
-            IPaneType::File => write!(f, crate::tr!("ai_assistant", "ai-filter-file")),
-            IPaneType::Code => write!(f, crate::tr!("notebooks", "block-code")),
+            IPaneType::Terminal => write!(f, "Terminal"),
+            IPaneType::Notebook => write!(f, "Notebook"),
+            IPaneType::File => write!(f, "File"),
+            IPaneType::Code => write!(f, "Code"),
             IPaneType::CodeDiff => write!(f, "{}", crate::tr!("code_editor", "code-diff-title")),
             IPaneType::EnvVarCollection => write!(f, "{}", crate::tr!("pane_group", "pane-type-env-var-collection")),
             IPaneType::EnvironmentManagement => write!(f, "{}", crate::tr!("pane_group", "pane-type-environment-management")),
-            IPaneType::Workflow => write!(f, crate::tr!("drive", "type-workflow")),
-            IPaneType::Settings => write!(f, crate::tr!("common", "settings-label")),
+            IPaneType::Workflow => write!(f, "Workflow"),
+            IPaneType::Settings => write!(f, "Settings"),
             IPaneType::AIFact => write!(f, "{}", crate::tr!("drive", "ai-fact-type")),
             IPaneType::AIDocument => write!(f, "{}", crate::tr!("pane_group", "pane-type-ai-document")),
-            IPaneType::CustomRouterEditor => write!(f, crate::tr!("pane_group", "custom-router-editor")),
+            IPaneType::CustomRouterEditor => write!(f, "Custom Router Editor"),
             IPaneType::ExecutionProfileEditor => write!(f, "{}", crate::tr!("pane_group", "pane-type-execution-profile-editor")),
-            IPaneType::GetStarted => write!(f, crate::tr!("pane_group", "pane-type-get-started")),
+            IPaneType::GetStarted => write!(f, "GetStarted"),
             IPaneType::NetworkLog => write!(f, "{}", crate::tr!("pane_group", "pane-type-network-log")),
-            IPaneType::DeferredPlaceholder => write!(f, crate::tr!("pane_group", "pane-type-placeholder")),
+            IPaneType::DeferredPlaceholder => write!(f, "Placeholder"),
             #[cfg(test)]
             IPaneType::Dummy => write!(f, "Dummy"),
         }

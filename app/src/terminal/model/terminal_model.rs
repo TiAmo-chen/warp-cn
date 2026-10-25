@@ -2311,7 +2311,7 @@ impl TerminalModel {
     ) {
         if !self.shared_session_status.is_sharer() {
             log::warn!(
-                crate::tr!("terminal", "tried-to-disable-secret-obfuscation-without-being-a-shared")
+                "Tried to disable secret obfuscation without being a shared session creator."
             );
             return;
         }
@@ -3365,7 +3365,7 @@ impl ansi::Handler for TerminalModel {
             }
             IsReceivingInBandCommandOutput::No if from_osc_sequence => {
                 log::warn!(
-                    crate::tr!("terminal", "received-an-in-band-command-output-end-osc-while-not-expec")
+                    "Received an in-band command output end OSC while not expecting in-band command output."
                 );
             }
             IsReceivingInBandCommandOutput::No => {}
@@ -3478,7 +3478,7 @@ impl ansi::Handler for TerminalModel {
                     last_item.update(completion_update);
                 } else {
                     log::warn!(
-                        crate::tr!("terminal", "received-update-last-completion-result-osc-before-any-comp")
+                        "Received update last completion result OSC before any completion results have been received"
                     );
                 }
             }

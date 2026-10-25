@@ -716,7 +716,7 @@ impl HeaderGrid {
                 }
                 None => {
                     log::warn!(
-                        crate::tr!("terminal", "prompt-end-point-should-not-be-none-after-resize-if-some-p")
+                        "Prompt end point should not be None after resize, if Some previously!"
                     );
                     // TODO(CORE-2241): Root-cause why we're ever reaching this code block.
                     self.cached_prompt_end_point = None;

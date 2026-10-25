@@ -956,7 +956,7 @@ impl AmbientAgentViewModel {
     ) {
         let Some(task_id) = self.task_id else {
             log::warn!(
-                crate::tr!("terminal", "attempted-to-submit-a-setup-failure-debug-follow-up-withou")
+                "Attempted to submit a setup-failure debug follow-up without an ambient task ID"
             );
             return;
         };

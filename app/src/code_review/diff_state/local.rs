@@ -606,7 +606,7 @@ impl LocalDiffStateModel {
                 let err_msg = err.to_string();
                 // If there are no local changes to stash, git stash will fail
                 // In this case, we can safely ignore the error
-                if err_msg.contains(crate::tr!("code_review", "no-local-changes-to-save")) {
+                if err_msg.contains("No local changes to save") {
                     Ok(())
                 } else {
                     let context = if relative_paths.len() == 1 {
@@ -685,7 +685,7 @@ impl LocalDiffStateModel {
                         log::warn!("Failed to clean untracked files: {err}");
                     }
                     Ok(())
-                } else if err_msg.contains(crate::tr!("code_review", "did-not-match-any-file-s-known-to-git")) {
+                } else if err_msg.contains("did not match any file(s) known to git") {
                     // If some files don't exist in the branch, we need to remove them
                     for file_path in relative_paths {
                         log::debug!(
@@ -697,7 +697,7 @@ impl LocalDiffStateModel {
 
                         if let Err(rm_err) = rm_res {
                             let rm_err_msg = rm_err.to_string();
-                            if rm_err_msg.contains(crate::tr!("code_review", "did-not-match-any-files")) {
+                            if rm_err_msg.contains("did not match any files") {
                                 // if the file was staged but it isn't in the working directory,
                                 // e.g. it was locally deleted
                                 log::debug!(
@@ -808,7 +808,7 @@ impl LocalDiffStateModel {
                         {
                             report_error!(
                                 e.context("Failed to restore old file from branch"),
-                                extra: { "old_path" => %old_path, crate::tr!("context_chips", "branch") => %branch }
+                                extra: { "old_path" => %old_path, "branch" => %branch }
                             );
                         }
                     }

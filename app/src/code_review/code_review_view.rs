@@ -555,7 +555,7 @@ impl RepositoryState {
         let CodeReviewViewState::Loaded(loaded_state) =
             mem::replace(&mut self.state, CodeReviewViewState::None)
         else {
-            unreachable!(crate::tr!("code_review", "state-was-verified-as-loaded"));
+            unreachable!("state was verified as Loaded");
         };
 
         Some(loaded_state)
@@ -2492,7 +2492,7 @@ impl CodeReviewView {
             DiffState::Loading => {
                 if let Some(repo) = self.active_repo.as_mut() {
                     log::info!(
-                        crate::tr!("code_review", "code-review-panel-setting-state-to-loading-after-receiving")
+                        "Code Review Panel: Setting state to loading after receiving 'loading' message."
                     );
                     repo.state = CodeReviewViewState::None;
                 }
@@ -2506,7 +2506,7 @@ impl CodeReviewView {
                 // the loading spinner.
                 if let Some(repo) = self.active_repo.as_mut() {
                     log::info!(
-                        crate::tr!("code_review", "code-review-panel-setting-state-to-no-repo-found-after-rec")
+                        "Code Review Panel: Setting state to no repo found after receiving 'not in repository' message."
                     );
                     repo.state = CodeReviewViewState::NoRepoFound;
                 }
@@ -2534,7 +2534,7 @@ impl CodeReviewView {
             // before this earlier NewDiffsComputed(None) was processed.
             // Preserve the existing view state rather than clobbering it.
             log::info!(
-                crate::tr!("code_review", "code-review-panel-ignoring-newdiffscomputed-none-for-alrea")
+                "Code Review Panel: Ignoring NewDiffsComputed(None) for already-loaded model"
             );
             return;
         };

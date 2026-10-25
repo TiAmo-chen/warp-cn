@@ -96,7 +96,7 @@ impl std::fmt::Display for SettingsFileError {
     fn fmt(&self, f: &mut std::fmt::Formatter<'_>) -> std::fmt::Result {
         match self {
             Self::FileParseFailed(_) => {
-                write!(f, crate::tr!("settings", "couldn-t-parse-due-to-invalid-syntax"))
+                write!(f, "Couldn't parse due to invalid syntax")
             }
             Self::InvalidSettings(keys) => match keys.as_slice() {
                 [key] => write!(f, "Invalid value for '{key}'"),

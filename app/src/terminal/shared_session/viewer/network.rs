@@ -573,7 +573,7 @@ impl Network {
                 };
                 if matches!(self.stage, Stage::JoinedSuccessfully) {
                     log::warn!(
-                        crate::tr!("terminal", "received-unexpected-joinedsuccessfully-message-when-we-ve")
+                        "Received unexpected JoinedSuccessfully message when we've already joined"
                     );
                     return;
                 }
@@ -613,7 +613,7 @@ impl Network {
             DownstreamMessage::RejoinedSuccessfully { participant_list } => {
                 if matches!(self.stage, Stage::JoinedSuccessfully) {
                     log::warn!(
-                        crate::tr!("terminal", "received-unexpected-rejoinedsuccessfully-message-when-we-v")
+                        "Received unexpected RejoinedSuccessfully message when we've already joined"
                     );
                     return;
                 }

@@ -154,7 +154,7 @@ impl WorkflowManager {
             });
         } else {
             safe_warn!(
-                safe: (crate::tr!("workflows", "ignoring-duplicate-workflow-pane-registration")),
+                safe: ("Ignoring duplicate Workflow pane registration"),
                 full: ("Ignoring duplicate Workflow pane registration for {workflow_id}")
             );
         }

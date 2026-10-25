@@ -223,7 +223,7 @@ impl MessageItem {
     ) -> Self {
         debug_assert!(
             !items.iter().any(|i| matches!(i, Self::Clickable { .. })),
-            crate::tr!("terminal", "nested-clickable-message-items-are-not-supported")
+            "Nested clickable message items are not supported"
         );
         Self::Clickable {
             items,
@@ -243,7 +243,7 @@ impl MessageItem {
             !items
                 .iter()
                 .any(|i| matches!(i, Self::Clickable { .. } | Self::Chip { .. })),
-            crate::tr!("terminal", "nested-interactive-message-items-are-not-supported")
+            "Nested interactive message items are not supported"
         );
         Self::Chip {
             items,

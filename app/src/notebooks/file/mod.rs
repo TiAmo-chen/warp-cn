@@ -721,7 +721,7 @@ impl FileNotebookView {
                 }
                 Err(err) => {
                     safe_warn!(
-                        safe: (crate::tr!("notebooks", "remote-server-error-reading-markdown-file")),
+                        safe: ("Remote server error reading markdown file"),
                         full: ("Remote server error reading markdown file: {err}")
                     );
                     me.file_state = match mem::replace(&mut me.file_state, FileState::NoFile) {

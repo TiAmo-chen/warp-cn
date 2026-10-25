@@ -9785,7 +9785,7 @@ impl TerminalView {
             self.write_user_bytes_to_pty(bytes.to_owned(), ctx);
         } else {
             safe_warn!(
-                safe: (crate::tr!("terminal", "command-not-long-running-ignoring-control-seq-on-terminal")),
+                safe: ("command not long-running. ignoring control seq on terminal."),
                 full: ("command not long-running. ignoring control seq on terminal: {:?}", bytes)
             )
         }
@@ -13688,7 +13688,7 @@ impl TerminalView {
                 } = get_update_state(ctx)
                 else {
                     log::warn!(
-                        crate::tr!("terminal", "got-a-finishupdate-event-without-autoupdatestate-being-upd")
+                        "Got a FinishUpdate event without AutoupdateState being UpdateReady!"
                     );
                     return;
                 };
@@ -18919,7 +18919,7 @@ impl TerminalView {
         else {
             debug_assert!(
                 false,
-                crate::tr!("terminal", "attempted-to-open-attachments-menu-for-ai-block-with-unkno")
+                "Attempted to open attachments menu for AI block with unknown conversation."
             );
             return;
         };
@@ -22848,7 +22848,7 @@ impl TerminalView {
                         // pane stack and has no parent terminal to host a local agent conversation.
                         if active_view.id() == self.id() {
                             log::warn!(
-                                crate::tr!("terminal", "exitcloudmodeandstartlocalagent-received-but-cloud-mode-pa")
+                                "ExitCloudModeAndStartLocalAgent received but cloud-mode pane has no parent terminal"
                             );
                         } else {
                             active_view.update(ctx, |view, ctx| {
@@ -29091,7 +29091,7 @@ impl TypedActionView for TerminalView {
                         OrchestrationNavigationDirection::Previous
                     }
                     CycleNextOrchestrationChildAgent => OrchestrationNavigationDirection::Next,
-                    _ => unreachable!(crate::tr!("terminal", "matched-orchestration-cycle-action")),
+                    _ => unreachable!("matched orchestration cycle action"),
                 };
                 if let Some(conversation_id) = self
                     .agent_view_controller

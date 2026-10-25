@@ -691,7 +691,7 @@ impl MCPServersEditPageView {
                                 }
                                 _ => {
                                     log::warn!(
-                                        crate::tr!("settings", "this-server-is-not-an-installation-and-cannot-be-unshared")
+                                        "This server is not an installation and cannot be unshared"
                                     );
                                 }
                             }

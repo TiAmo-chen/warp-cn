@@ -353,7 +353,7 @@ impl RoleChangeModal {
             } => {
                 let Some(terminal_pane_id) = self.terminal_pane_id else {
                     log::warn!(
-                        crate::tr!("terminal", "tried-to-close-role-request-modal-when-no-terminal-pane-id")
+                        "Tried to close role request modal when no terminal pane ID was present"
                     );
                     return;
                 };
@@ -371,7 +371,7 @@ impl RoleChangeModal {
             } => {
                 let Some(terminal_pane_id) = self.terminal_pane_id else {
                     log::warn!(
-                        crate::tr!("terminal", "tried-to-close-role-request-modal-when-no-terminal-pane-id")
+                        "Tried to close role request modal when no terminal pane ID was present"
                     );
                     return;
                 };
@@ -385,7 +385,7 @@ impl RoleChangeModal {
             SharerResponseBodyEvent::Close => {
                 if self.terminal_pane_id.is_none() {
                     log::warn!(
-                        crate::tr!("terminal", "tried-to-close-role-request-modal-when-no-terminal-pane-id")
+                        "Tried to close role request modal when no terminal pane ID was present"
                     );
                     return;
                 };

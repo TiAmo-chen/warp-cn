@@ -741,7 +741,7 @@ impl BlockList {
                             );
                         } else {
                             log::warn!(
-                                crate::tr!("terminal", "tried-to-restore-a-block-that-was-either-not-started-or-no")
+                                "Tried to restore a block that was either not started or not completed"
                             );
                         }
                     }
@@ -799,7 +799,7 @@ impl BlockList {
                 self.restore_block(block, BootstrapStage::PostBootstrapPrecmd, &mut processor);
             } else {
                 log::warn!(
-                    crate::tr!("terminal", "a-non-active-follow-up-scrollback-block-was-either-not-sta")
+                    "A non-active follow-up scrollback block was either not started or not completed"
                 );
             }
         }
@@ -1897,7 +1897,7 @@ impl BlockList {
                 || self
                     .block_at(block_index)
                     .is_some_and(|block| block.is_background()),
-            crate::tr!("terminal", "can-only-update-height-for-the-active-block-and-latest-bac")
+            "Can only update height for the active block and latest background block"
         );
 
         // Gaps are created via ctrl-l binding or `clear`, and shrink as more blocks are executed after.
@@ -2997,7 +2997,7 @@ impl BlockList {
         log::debug!("Adding background block to blocklist");
         debug_assert!(
             block.is_background(),
-            crate::tr!("terminal", "tried-to-insert-a-non-background-block")
+            "Tried to insert a non-background block"
         );
 
         let background_block_index = self.active_block_index();

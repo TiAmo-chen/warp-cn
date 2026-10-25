@@ -203,7 +203,7 @@ pub(super) async fn prepare_local_harness_child_launch(
                 harness_kind(harness, HarnessTransport::Pty)
                     .map_err(|error: AgentDriverError| error.to_string())?
             else {
-                unreachable!(crate::tr!("pane_group", "claude-resolves-to-a-third-party-harness"))
+                unreachable!("Claude resolves to a third-party harness")
             };
             third_party_harness
                 .validate()
@@ -232,7 +232,7 @@ pub(super) async fn prepare_local_harness_child_launch(
                 harness_kind(harness, HarnessTransport::Pty)
                     .map_err(|error: AgentDriverError| error.to_string())?
             else {
-                unreachable!(crate::tr!("pane_group", "codex-resolves-to-a-third-party-harness"))
+                unreachable!("Codex resolves to a third-party harness")
             };
             third_party_harness
                 .validate()

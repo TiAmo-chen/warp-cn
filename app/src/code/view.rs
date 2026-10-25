@@ -2373,7 +2373,7 @@ impl TypedActionView for CodeView {
                     ctx.open_file_path_in_explorer(&path);
                 } else {
                     log::warn!(
-                        crate::tr!("code", "reveal-in-finder-requested-but-the-active-code-tab-has-no")
+                        "Reveal in Finder requested, but the active code tab has no local file path"
                     );
                 }
             }

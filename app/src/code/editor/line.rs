@@ -74,7 +74,7 @@ impl EditorLineLocation {
             EditorLineLocation::Collapsed { line_range } => {
                 debug_assert!(
                     false,
-                    crate::tr!("code", "we-don-t-support-converting-from-collapsed-line-location-t")
+                    "We don't support converting from collapsed line location to render line location yet"
                 );
                 RenderLineLocation::Current(line_range.start)
             }

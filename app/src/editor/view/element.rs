@@ -1654,7 +1654,7 @@ impl Element for EditorElement {
             );
         }
         if size.x().is_infinite() {
-            unimplemented!(crate::tr!("editor", "we-don-t-yet-handle-an-infinite-width-constraint-on-buffer"));
+            unimplemented!("we don't yet handle an infinite width constraint on buffer elements");
         }
 
         let top_section_height_lines = top_section_height_px / view_snapshot.line_height;

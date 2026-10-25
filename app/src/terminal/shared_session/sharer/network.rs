@@ -990,7 +990,7 @@ impl Network {
                         network.handle_startup_failure(StartupFailure::InitializeSend, ctx);
                         return;
                     }
-                    sharer_info!(network, crate::tr!("terminal", "sent-session-sharing-initialization-message"));
+                    sharer_info!(network, "Sent session sharing initialization message");
                     network.on_websocket_connected(
                         Some(attempt),
                         ws_proxy_rx.clone(),
@@ -1204,7 +1204,7 @@ impl Network {
         };
         let Some(reconnect_endpoint) = connect_endpoint(format!("/sessions/{session_id}/resume"))
         else {
-            sharer_error!(self, crate::tr!("terminal", "this-channel-does-not-support-session-sharing"));
+            sharer_error!(self, "This channel does not support session-sharing.");
             return;
         };
 
@@ -1423,7 +1423,7 @@ impl Network {
                 // The connection may have timed out or the server restarted.
                 // We don't emit this event if we haven't started successfully to avoid an infinite retry loop.
                 if matches!(network.stage, Stage::StartedSuccessfully { .. }) {
-                    sharer_info!(network, crate::tr!("terminal", "sharer-reconnecting-websocket-closed-by-server"));
+                    sharer_info!(network, "Sharer reconnecting: websocket closed by server");
                     network.reconnect_websocket(ctx);
                 } else if matches!(network.stage, Stage::BeforeStarted { .. }) {
                     // If the websocket is closed while we were waiting for it to start, emit an error.
@@ -1525,7 +1525,7 @@ impl Network {
         let Some(downstream_message) = DownstreamMessage::from_json(text).ok() else {
             sharer_warn!(
                 self,
-                crate::tr!("terminal", "received-unexpected-message-from-shared-session-websocket")
+                "Received unexpected message from shared session websocket as sharer"
             );
             return;
         };
@@ -1540,7 +1540,7 @@ impl Network {
                 let Stage::BeforeStarted { startup_retry } = &self.stage else {
                     sharer_warn!(
                         self,
-                        crate::tr!("terminal", "received-unexpected-sessioninitialized-message-when-we-wer")
+                        "Received unexpected SessionInitialized message when we weren't in BeforeStarted stage"
                     );
                     return;
                 };
@@ -1582,7 +1582,7 @@ impl Network {
                 if !matches!(self.stage, Stage::Reconnecting { .. }) {
                     sharer_warn!(
                         self,
-                        crate::tr!("terminal", "received-unexpected-sessionreconnected-message-when-we-wer")
+                        "Received unexpected SessionReconnected message when we weren't reconnecting"
                     );
                     return;
                 }
@@ -1594,7 +1594,7 @@ impl Network {
                 }
                 sharer_info!(
                     self,
-                    crate::tr!("terminal", "successfully-reconnected-to-shared-session-server-as-share")
+                    "Successfully reconnected to shared session server as sharer."
                 );
                 if let Stage::Reconnecting { abort_handle } = &self.stage {
                     abort_handle.abort();
@@ -1899,7 +1899,7 @@ impl Network {
         let num_bytes = event_type.num_bytes();
         self.num_bytes_shared = self.num_bytes_shared.add(num_bytes).unwrap_or(Byte::MAX);
         if self.num_bytes_shared > self.max_session_size {
-            sharer_info!(self, crate::tr!("terminal", "stopping-shared-session-because-max-bytes-exceeded"));
+            sharer_info!(self, "Stopping shared session because max bytes exceeded.");
             self.end_session(SessionEndedReason::ExceededSizeLimit);
             return;
         }

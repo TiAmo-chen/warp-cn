@@ -1641,14 +1641,14 @@ impl NotebookView {
                             }
                             EditorState::CurrentUser => {
                                 safe_info!(
-                                    safe: (crate::tr!("notebooks", "optimistically-grabbing-edit-access-already-the-editor")),
+                                    safe: ("Optimistically grabbing edit access, already the editor"),
                                     full: ("Optmisitically grabbing edit access, user {email} is already the editor")
                                 );
                                 me.grab_edit_access(true, ctx);
                             }
                             EditorState::OtherUserIdle => {
                                     safe_info!(
-                                        safe: (crate::tr!("notebooks", "optimistically-grabbing-edit-access-editor-is-idle")),
+                                        safe: ("Optimistically grabbing edit access, editor is idle"),
                                         full: ("Optmisitically grabbing edit access, editor {email} is idle")
                                     );
                                     me.grab_edit_access(true, ctx);

@@ -227,7 +227,7 @@ impl NotebookManager {
             });
         } else {
             safe_warn!(
-                safe: (crate::tr!("notebooks", "ignoring-duplicate-notebook-pane-registration")),
+                safe: ("Ignoring duplicate notebook pane registration"),
                 full: ("Ignoring duplicate notebook pane registration for {notebook_id}")
             );
         }
@@ -326,7 +326,7 @@ impl NotebookManager {
                 self.panes_by_hashed_id
                     .insert(new_id.uid(), pane_data)
                     .is_none(),
-                crate::tr!("notebooks", "new-notebook-was-already-open")
+                "New notebook was already open"
             );
         } else {
             log::warn!("Tried to swap notebooks, but the old one was not open");
@@ -339,7 +339,7 @@ impl NotebookManager {
         for pane in self.panes_by_hashed_id.values() {
             if let Some(notebook_view) = pane.handle.upgrade(ctx) {
                 safe_debug!(
-                    safe : (crate::tr!("notebooks", "closing-notebook-on-termination")),
+                    safe : ("Closing notebook on termination"),
                     full: ("Closing notebook {} on termination", pane.notebook_id)
                 );
                 notebook_view.update(ctx, |view, ctx| view.on_detach(ctx));

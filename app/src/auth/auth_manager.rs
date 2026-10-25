@@ -107,7 +107,7 @@ where
 {
     assert!(
         attempts > 0,
-        crate::tr!("auth", "device-code-request-requires-at-least-one-attempt")
+        "device code request requires at least one attempt"
     );
 
     for attempt in 1..=attempts {
@@ -197,7 +197,7 @@ impl AuthManager {
             if !self.consume_auth_state(received_state) {
                 if self.should_silently_ignore_stale_redirect(&user_uid) {
                     log::info!(
-                        crate::tr!("auth", "dropping-auth-redirect-with-stale-state-for-already-logged")
+                        "Dropping auth redirect with stale state for already-logged-in user"
                     );
                     return;
                 }
@@ -237,7 +237,7 @@ impl AuthManager {
             // A connect attempt only ever expects a link result, never a login. A login for
             // another account here would silently switch the user's Warp account.
             log::warn!(
-                crate::tr!("auth", "ignoring-login-handoff-for-a-different-user-while-a-chatgp")
+                "Ignoring login handoff for a different user while a ChatGPT connect is pending"
             );
             ApiKeyManager::handle(ctx).update(ctx, |manager, ctx| {
                 manager.fail_chatgpt_oauth(ChatGPTConnectFailure::AccountMismatch, ctx);

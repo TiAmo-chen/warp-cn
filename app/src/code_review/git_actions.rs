@@ -153,7 +153,7 @@ async fn create_pr_with_ai_content(
         Ok(_) => {
             // Empty title/body would make `gh pr create` fail; fall back to --fill.
             log::warn!(
-                crate::tr!("code_review", "ai-pr-content-generation-returned-empty-title-body-falling")
+                "AI PR content generation returned empty title/body, falling back to --fill"
             );
             git::create_pr(repo_path, None, None, path_env).await
         }

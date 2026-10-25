@@ -4013,7 +4013,7 @@ impl Element for BlockListElement {
                             );
                         } else {
                             log::warn!(
-                                crate::tr!("terminal", "should-show-avatar-for-shared-session-participant-at-selec")
+                                "Should show avatar for shared session participant at selected block but avatar element was not found"
                             )
                         }
                     }

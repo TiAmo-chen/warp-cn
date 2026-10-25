@@ -1925,7 +1925,7 @@ impl TerminalView {
                 .is_sharer_or_viewer()
         {
             log::warn!(
-                crate::tr!("terminal", "tried-to-open-shared-session-reconnecting-banner-for-a-ses")
+                "Tried to open shared session reconnecting banner for a session that isn't shared"
             );
             return;
         }

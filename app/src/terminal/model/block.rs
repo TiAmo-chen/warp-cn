@@ -2589,7 +2589,7 @@ impl Block {
                     + self.padding_bottom()
             }
             BlockSection::NotContained => {
-                unreachable!(crate::tr!("terminal", "attempt-to-calculate-offset-for-section-not-within-block"))
+                unreachable!("Attempt to calculate offset for section not within block.")
             }
         }
     }

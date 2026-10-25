@@ -556,7 +556,7 @@ impl SettingsImportView {
         ImportedConfigModel::handle(ctx).update(ctx, |model, ctx| {
             let Some(config) = model.config(terminal_type_and_profile) else {
                 log::warn!(
-                    crate::tr!("settings", "attempted-to-write-preferences-from-an-invalid-terminal-ty")
+                    "Attempted to write preferences from an invalid terminal type and profile."
                 );
                 return;
             };

@@ -1521,7 +1521,7 @@ impl RightPanelView {
             Self::log_code_review_debug_state(debug_state);
         } else {
             log::info!(
-                crate::tr!("workspace", "no-active-code-review-view-is-associated-with-the-current")
+                "No active code review view is associated with the current tab/repo selection"
             );
         }
 

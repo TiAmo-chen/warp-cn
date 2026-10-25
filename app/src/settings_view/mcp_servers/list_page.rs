@@ -1367,7 +1367,7 @@ impl MCPServersListPageView {
                 }
                 ServerCardItemId::GalleryMCP(_) => {
                     log::warn!(
-                        crate::tr!("settings", "received-an-unexpected-gallery-server-card-when-separating")
+                        "Received an unexpected gallery server card when separating server cards by installed."
                     );
                 }
             }

@@ -261,14 +261,14 @@ impl AutoCloudHandoffController {
     fn maybe_show_sleep_prompt(&mut self, ctx: &mut ModelContext<Self>) {
         if !std::mem::take(&mut self.pending_sleep_prompt) {
             log::info!(
-                crate::tr!("workspace", "auto-handoff-sleep-prompt-nothing-to-show-on-wake-no-pendi")
+                "auto-handoff sleep prompt: nothing to show on wake, no pending prompt was recorded at sleep"
             );
             return;
         }
 
         if AISettings::as_ref(ctx).is_auto_handoff_on_sleep_enabled(ctx) {
             log::info!(
-                crate::tr!("workspace", "auto-handoff-sleep-prompt-not-showing-on-wake-auto-handoff")
+                "auto-handoff sleep prompt: not showing on wake, auto-handoff-on-sleep was enabled in the meantime"
             );
             return;
         }
@@ -281,7 +281,7 @@ impl AutoCloudHandoffController {
             send_telemetry_from_ctx!(CloudAgentTelemetryEvent::SleepPromptShown, ctx);
         } else {
             log::info!(
-                crate::tr!("workspace", "auto-handoff-sleep-prompt-not-showing-on-wake-modal-was-al")
+                "auto-handoff sleep prompt: not showing on wake, modal was already shown once"
             );
         }
     }
