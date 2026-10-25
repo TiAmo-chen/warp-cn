@@ -73,5 +73,5 @@ pane-group-this-shell-cannot-be-respawned = this shell cannot be respawned
 pane-group-should-have-new-terminal-view = should have new terminal view
 pane-group-local-child-agents-are-not-supported-in-wasm-builds = Local child agents are not supported in WASM builds.
 pane-group-remote-startagent-child-pane-missing-ambient-agent-view-mo = Remote StartAgent child pane missing ambient agent view model
-pane-group-open-files-and-review-code-diffs = Open files and review code diffs
+pane-group-open-files-and-review-code-diffs = 打开文件并审阅代码差异
 pane-group-attempting-to-move-to-pane-that-does-not-exist = Attempting to move to pane that does not exist

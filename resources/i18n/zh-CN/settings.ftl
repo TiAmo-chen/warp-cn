@@ -945,7 +945,7 @@ settings-agents = 代理
 # All locally indexed repos are already selected.
 settings-all-locally-indexed-repos-are-already-selected = 所有本地已索引的仓库都已选中。
 # Allow Warp users with the same email domain as you to find and join the team.
-settings-allow-warp-users-with-the-same-email-domain-as-you-to-find-and-join-the-team = Allow Warp users with the same email domain as you to find and join the team.
+settings-allow-warp-users-with-the-same-email-domain-as-you-to-find-and-join-the-team = 允许与你邮箱域名相同的 Warp 用户找到并加入团队。
 # Allow auto-approve to bypass command denylist
 settings-allow-auto-approve-to-bypass-command-denylist = 允许自动批准绕过命令黑名单
 # Allow in specific directories
@@ -1119,11 +1119,11 @@ settings-cancelling = Cancelling
 # Certain restrictions apply.
 settings-certain-restrictions-apply = 适用某些限制条件。
 # Change default model
-settings-change-default-model = Change default model
+settings-change-default-model = 更改默认模型
 # Change keybinding
 settings-change-keybinding = 更改键绑定
 # Change your default model?
-settings-change-your-default-model = Change your default model?
+settings-change-your-default-model = 要更改你的默认模型吗？
 # Changes will apply to new windows.
 settings-changes-will-apply-to-new-windows = Changes will apply to new windows.
 # Changing the app icon requires the app to be bundled.
@@ -1217,9 +1217,9 @@ settings-computer-use = 电脑操作：
 # Configure Global Hotkey
 settings-configure-global-hotkey = Configure Global Hotkey
 # Configure access
-settings-configure-access = Configure access
+settings-configure-access = 配置访问权限
 # Configure access on GitHub
-settings-configure-access-on-github = Configure access on GitHub
+settings-configure-access-on-github = 在 GitHub 上配置访问权限
 # Confirm before closing shared session
 settings-confirm-before-closing-shared-session = 关闭共享会话前确认
 # Connect ChatGPT subscription
@@ -1269,13 +1269,13 @@ settings-continue-with-chatgpt = Continue with ChatGPT
 # Continue with Grok
 settings-continue-with-grok = Continue with Grok
 # Controls how reasoning/thinking traces are displayed.
-settings-controls-how-reasoningthinking-traces-are-displayed = Controls how reasoning/thinking traces are displayed.
+settings-controls-how-reasoningthinking-traces-are-displayed = 控制如何显示推理/思考轨迹。
 # Controls the installation behavior for Warp's SSH extension when a remote host doesn't have it installed.
 settings-controls-the-installation-behavior-for-warps-ssh-extension-when-a-remote-host-doesnt-have-it-installed = 当远程主机未安装 Warp 的 SSH 扩展时，控制其安装行为。
 # Controls whether orchestration messages stay expanded.
-settings-controls-whether-orchestration-messages-stay-expanded = Controls whether orchestration messages stay expanded.
+settings-controls-whether-orchestration-messages-stay-expanded = 控制编排消息是否保持展开。
 # Controls whether programs running in the terminal can read or write your system clipboard.
-settings-controls-whether-programs-running-in-the-terminal-can-read-or-write-your-system-clipboard = Controls whether programs running in the terminal can read or write your system clipboard.
+settings-controls-whether-programs-running-in-the-terminal-can-read-or-write-your-system-clipboard = 控制终端中运行的程序是否可以读写系统剪贴板。
 # Copy URL
 settings-copy-url = 复制 URL
 # Copy link
@@ -1661,9 +1661,9 @@ settings-header-toolbar-layout = 标题工具栏布局
 # Help improve Warp
 settings-help-improve-warp = Help improve Warp
 # Hide Warp Agent changelog in new agent conversation view
-settings-hide-warp-agent-changelog-in-new-agent-conversation-view = Hide Warp Agent changelog in new agent conversation view
+settings-hide-warp-agent-changelog-in-new-agent-conversation-view = 在新的 Agent 会话视图中隐藏 Warp Agent 更新日志
 # Hide agent tips
-settings-hide-agent-tips = Hide agent tips
+settings-hide-agent-tips = 隐藏 Agent 提示
 # Hide in-band command blocks
 settings-hide-in-band-command-blocks = 隐藏带内命令块
 # Hide initialization block
@@ -2019,7 +2019,7 @@ settings-only-on-hover = Only on hover
 # Only show tab bar on hover
 settings-only-show-tab-bar-on-hover = 悬停时显示
 # Open Completions Menu
-settings-open-completions-menu = Open Completions Menu
+settings-open-completions-menu = 打开补全菜单
 # Open completions menu as you type
 settings-open-completions-menu-as-you-type = 输入时打开补全菜单
 # Open file
@@ -2133,11 +2133,11 @@ settings-preserve_active_tab_color = Preserve_Active_Tab_Color
 # Preserve_Input_Focus_On_Block_Selection
 settings-preserve_input_focus_on_block_selection = Preserve_Input_Focus_On_Block_Selection
 # Press Enter or click the submit button to add each command.
-settings-press-enter-or-click-the-submit-button-to-add-each-command = Press Enter or click the submit button to add each command.
+settings-press-enter-or-click-the-submit-button-to-add-each-command = 按回车或点击提交按钮来添加每条命令。
 # Press and hold to activate.
-settings-press-and-hold-to-activate = Press and hold to activate.
+settings-press-and-hold-to-activate = 按住以激活。
 # Press new keyboard shortcut
-settings-press-new-keyboard-shortcut = Press new keyboard shortcut
+settings-press-new-keyboard-shortcut = 按下新的快捷键
 # Privacy
 settings-privacy = Privacy
 # Privacy policy
@@ -2235,13 +2235,13 @@ settings-reloading-would-exceed-your-monthly-limit- = 充值将超出你的每�
 # Remove
 settings-remove = 移除
 # Remove User From Team
-settings-remove-user-from-team = Remove User From Team
+settings-remove-user-from-team = 从团队中移除用户
 # Remove User From Workspace
-settings-remove-user-from-workspace = Remove User From Workspace
+settings-remove-user-from-workspace = 从工作区中移除用户
 # Remove endpoint
-settings-remove-endpoint = Remove endpoint
+settings-remove-endpoint = 移除端点
 # Remove from workspace
-settings-remove-from-workspace = Remove from workspace
+settings-remove-from-workspace = 从工作区移除
 # RemoveCustomEndpointConfirmationDialog
 settings-removecustomendpointconfirmationdialog = RemoveCustomEndpointConfirmationDialog
 # Removed team member
@@ -2337,11 +2337,11 @@ settings-select-repos-for-your-environment = 为你的环境选择仓库
 # Select repos to provide context for the environment creation agent.
 settings-select-repos-to-provide-context-for-the-environment-creation-agent = 选择仓库，为环境创建代理提供上下文。
 # Select the unit for usage and spend amounts.
-settings-select-the-unit-for-usage-and-spend-amounts = Select the unit for usage and spend amounts.
+settings-select-the-unit-for-usage-and-spend-amounts = 选择用量与花费的显示单位。
 # Selected repos
 settings-selected-repos = Selected repos
 # Send Email Invites
-settings-send-email-invites = Send Email Invites
+settings-send-email-invites = 发送邮件邀请
 # Send crash reports
 settings-send-crash-reports = Send crash reports
 # Sending...
@@ -2427,13 +2427,13 @@ settings-show-jump-to-bottom-of-block-button = 显示跳转到块底部按钮
 # Show Vim status bar
 settings-show-vim-status-bar = 显示 Vim 状态栏
 # Show Warp Agent changelog in new agent conversation view
-settings-show-warp-agent-changelog-in-new-agent-conversation-view = Show Warp Agent changelog in new agent conversation view
+settings-show-warp-agent-changelog-in-new-agent-conversation-view = 在新的 Agent 会话视图中显示 Warp Agent 更新日志
 # Show Warp Agent changelog in new conversation view
-settings-show-warp-agent-changelog-in-new-conversation-view = Show Warp Agent changelog in new conversation view
+settings-show-warp-agent-changelog-in-new-conversation-view = 在新会话视图中显示 Warp Agent 更新日志
 # Show Warp in Dock
-settings-show-warp-in-dock = Show Warp in Dock
+settings-show-warp-in-dock = 在程序坞中显示 Warp
 # Show Workspace Teams
-settings-show-workspace-teams = Show Workspace Teams
+settings-show-workspace-teams = 显示工作区团队
 # Show a button in the top right of the window to toggle the code review panel.
 settings-show-a-button-in-the-top-right-of-the-window-to-toggle-the-code-review-panel = 在窗口右上角显示用于切换代码审查面板的按钮。
 # Show a toolbar with quick actions when running coding agents like 
@@ -2455,13 +2455,13 @@ settings-show-coding-agent-toolbar = 显示编码代理工具栏
 # Show conversation history in tools panel
 settings-show-conversation-history-in-tools-panel = 在工具面板中显示对话历史
 # Show diff stats on code review button
-settings-show-diff-stats-on-code-review-button = Show diff stats on code review button
+settings-show-diff-stats-on-code-review-button = 在代码审查按钮上显示差异统计
 # Show dotfiles and hidden files (starting with .) in the project explorer.
-settings-show-dotfiles-and-hidden-files-starting-with--in-the-project-explorer = Show dotfiles and hidden files (starting with .) in the project explorer.
+settings-show-dotfiles-and-hidden-files-starting-with--in-the-project-explorer = 在项目浏览器中显示点文件与隐藏文件（以 . 开头）。
 # Show help block in new sessions
 settings-show-help-block-in-new-sessions = 在新会话中显示帮助块
 # Show hidden files in project explorer
-settings-show-hidden-files-in-project-explorer = Show hidden files in project explorer
+settings-show-hidden-files-in-project-explorer = 在项目浏览器中显示隐藏文件
 # Show in-app agent notifications
 settings-show-in-app-agent-notifications = 显示应用内代理通知
 # Show in-band command blocks
@@ -2483,15 +2483,15 @@ settings-show-tab-indicators = 显示标签指示器
 # Show terminal input message line
 settings-show-terminal-input-message-line = 显示终端输入消息行
 # Show the Warp Drive tab in the tools panel.
-settings-show-the-warp-drive-tab-in-the-tools-panel = Show the Warp Drive tab in the tools panel.
+settings-show-the-warp-drive-tab-in-the-tools-panel = 在工具面板中显示 Warp Drive 标签页。
 # Show the agent conversation history tab in the tools panel.
-settings-show-the-agent-conversation-history-tab-in-the-tools-panel = Show the agent conversation history tab in the tools panel.
+settings-show-the-agent-conversation-history-tab-in-the-tools-panel = 在工具面板中显示 Agent 会话历史标签页。
 # Show the global file search tab in the tools panel.
-settings-show-the-global-file-search-tab-in-the-tools-panel = Show the global file search tab in the tools panel.
+settings-show-the-global-file-search-tab-in-the-tools-panel = 在工具面板中显示全局文件搜索标签页。
 # Show the latest user prompt instead of the generated conversation title for Oz and third-party agent sessions in vertical tabs.
 settings-show-the-latest-user-prompt-instead-of-the-generated-conversation-title-for-oz-and-third-party-agent-sessions-in-vertical-tabs = 在垂直标签页中，为 Oz 和第三方代理会话显示最新的用户提示，而不是生成的对话标题。
 # Show the project explorer / file tree tab in the tools panel.
-settings-show-the-project-explorer--file-tree-tab-in-the-tools-panel = Show the project explorer / file tree tab in the tools panel.
+settings-show-the-project-explorer--file-tree-tab-in-the-tools-panel = 在工具面板中显示项目浏览器/文件树标签页。
 # Show the tab bar
 settings-show-the-tab-bar = 显示标签栏
 # Show tooltip on click on links
@@ -2723,7 +2723,7 @@ settings-toggle-input-mode-warpclassic = 切换输入模式（Warp / 经典）
 # Toggle Settings Sync
 settings-toggle-settings-sync = Toggle Settings Sync
 # Toggle Team Discoverability
-settings-toggle-team-discoverability = Toggle Team Discoverability
+settings-toggle-team-discoverability = 切换团队可发现性
 # ToggleAgentInAppNotifications
 settings-toggleagentinappnotifications = ToggleAgentInAppNotifications
 # ToggleAgentTaskCompletedNotifications
@@ -2929,7 +2929,7 @@ settings-use-aws-bedrock-credentials = 使用 AWS Bedrock 凭证
 # Use Audible Bell
 settings-use-audible-bell = 使用声音提示
 # Use Gemini Enterprise credentials
-settings-use-gemini-enterprise-credentials = Use Gemini Enterprise credentials
+settings-use-gemini-enterprise-credentials = 使用 Gemini Enterprise 凭据
 # Use Wayland for window management
 settings-use-wayland-for-window-management = 使用 Wayland 进行窗口管理
 # Use an improved implementation of find to keep the UI responsive while searching for matches on large outputs.
@@ -3051,7 +3051,7 @@ settings-we-couldnt-find-a-good-match-we-recommend-using-a-custom-docker-image-f
 # We do not log this telemetry event from the client.
 settings-we-do-not-log-this-telemetry-event-from-the-client = We do not log this telemetry event from the client.
 # When a command takes longer than
-settings-when-a-command-takes-longer-than = When a command takes longer than
+settings-when-a-command-takes-longer-than = 当命令耗时超过
 # When enabled, agent requests may be routed to one of Warp's provided models in the event of an error. Warp will prioritize using your API keys over your Warp credits.
 settings-when-enabled-agent-requests-may-be-routed-to-one-of-warps-provided-models-in-the-event-of-an-error-warp-will-prioritize-using-your-api-keys-over-your-warp-credits = 启用后，当发生错误时，代理请求可能会路由到 Warp 提供的模型之一。Warp 会优先使用你的 API 密钥而非 Warp 额度。
 # When enabled, fast forward and auto-approve run denylisted commands without asking for confirmation.
@@ -3142,8 +3142,8 @@ settings-zen-mode = Zen mode
 ## zh: auto-extracted entries
 settings-the-verbosity-level-for-screen-reader-announcements = The verbosity level for screen reader announcements.
 settings-physical-key-used-to-toggle-voice-input = Physical key used to toggle voice input.
-settings-control-left = Control (Left)
-settings-control-right = Control (Right)
+settings-control-left = Control（左）
+settings-control-right = Control（右）
 settings-shift-left = Shift (Left)
 settings-shift-right = Shift (Right)
 settings-haitian-creole = Haitian Creole
@@ -3158,8 +3158,8 @@ settings-south-ndebele = South Ndebele
 settings-southern-sotho = Southern Sotho
 settings-western-frisian = Western Frisian
 settings-default-mode-for-new-sessions-ef3e1d = Default mode for new sessions.
-settings-controls-how-agent-thinking-is-displayed-after-streaming = Controls how agent thinking is displayed after streaming.
-settings-controls-how-child-agent-messages-are-displayed = Controls how child-agent messages are displayed.
+settings-controls-how-agent-thinking-is-displayed-after-streaming = 控制流式输出结束后如何显示 Agent 的思考过程。
+settings-controls-how-child-agent-messages-are-displayed = 控制如何显示子 Agent 的消息。
 settings-which-unit-the-usage-entry-displays-in-warp-agent-cli = Which unit the usage entry displays in Warp Agent CLI.
 settings-which-unit-the-usage-entry-displays-in-warp-agent-cli-cred = Which unit the usage entry displays in Warp Agent CLI: credits or dollars.
 settings-which-unit-the-gui-s-usage-spend-displays-show-credits-or = Which unit the GUI's usage/spend displays show: credits or dollars.
@@ -3171,110 +3171,110 @@ settings-git-diff-status = Git diff status
 settings-credit-usage = Credit usage
 settings-agent-to-do-list = Agent 待办列表
 settings-always-collapse = 始终折叠
-settings-set-child-agent-message-display-show-collapse = Set child-agent message display: show & collapse
-settings-set-child-agent-message-display-always-show = Set child-agent message display: always show
-settings-set-child-agent-message-display-always-collapse = Set child-agent message display: always collapse
+settings-set-child-agent-message-display-show-collapse = 子 Agent 消息显示：展开并折叠
+settings-set-child-agent-message-display-always-show = 子 Agent 消息显示：始终展开
+settings-set-child-agent-message-display-always-collapse = 子 Agent 消息显示：始终折叠
 settings-default-behavior-when-submitting-a-new-prompt-while-the-ag = Default behavior when submitting a new prompt while the agent is still responding.
 settings-interrupt-response = Interrupt response
 settings-steer-at-next-turn = Steer at next turn
 settings-queue-until-response-finishes = Queue until response finishes
-settings-set-default-prompt-submission-interrupt-response = Set default prompt submission: interrupt response
-settings-set-default-prompt-submission-steer-at-next-turn = Set default prompt submission: steer at next turn
-settings-set-default-prompt-submission-queue-until-response-finishe = Set default prompt submission: queue until response finishes
+settings-set-default-prompt-submission-interrupt-response = 默认提示提交方式：打断当前响应
+settings-set-default-prompt-submission-steer-at-next-turn = 默认提示提交方式：下一轮插入
+settings-set-default-prompt-submission-queue-until-response-finishe = 默认提示提交方式：排队等待响应完成
 settings-what-happens-when-a-prompt-is-submitted-while-an-agent-con = What happens when a prompt is submitted while an agent controls an agent-requested long-running command.
-settings-send-immediately = Send immediately
+settings-send-immediately = 立即发送
 settings-queue-until-command-finishes = Queue until command finishes
-settings-set-long-running-command-submission-send-immediately = Set long-running command submission: send immediately
-settings-set-long-running-command-submission-queue-until-command-fi = Set long-running command submission: queue until command finishes
+settings-set-long-running-command-submission-send-immediately = 长命令提交方式：立即发送
+settings-set-long-running-command-submission-queue-until-command-fi = 长命令提交方式：排队等待命令完成
 settings-file-read-permission-level-for-the-agent = File read permission level for the agent.
 settings-preferred-spoken-language-for-voice-input-transcription = Preferred spoken language for voice input transcription.
 settings-ai-execution-profiles-and-their-permissions = AI 执行配置及其权限。
 settings-custom-inference-endpoint-definitions = Custom inference endpoint definitions.
-settings-controls-the-order-and-visibility-of-warp-agent-cli-status = Controls the order and visibility of Warp Agent CLI statusline items.
+settings-controls-the-order-and-visibility-of-warp-agent-cli-status = 控制 Warp Agent CLI 状态栏条目的顺序与可见性。
 settings-whether-warp-should-route-eligible-requests-through-your-w = Whether Warp should route eligible requests through your workspace's Gemini Enterprise Google Cloud project.
 settings-whether-warp-credits-can-be-used-as-a-fallback-for-user-pr = Whether Warp credits can be used as a fallback for user-provided models.
 settings-when-enabled-the-rich-input-editor-submits-on-ctrl-enter-i = When enabled, the Rich Input editor submits on Ctrl+Enter instead of Enter. Enter inserts a newline.
-settings-whether-auto-approve-bypasses-the-command-denylist = Whether auto-approve bypasses the command denylist.
+settings-whether-auto-approve-bypasses-the-command-denylist = 自动批准是否绕过命令黑名单。
 settings-whether-to-force-disable-local-to-cloud-handoff = Whether to force-disable local-to-cloud handoff.
 settings-whether-to-force-disable-the-prefix-for-cloud-handoff-comp = Whether to force-disable the & prefix for cloud handoff compose mode.
 settings-whether-warp-automatically-hands-off-local-agent-conversat = Whether Warp automatically hands off local agent conversations to cloud when the computer is about to sleep.
-settings-whether-shell-alias-expansion-is-enabled-in-the-input = Whether shell alias expansion is enabled in the input.
+settings-whether-shell-alias-expansion-is-enabled-in-the-input = 是否在输入框中启用 shell 别名展开。
 settings-the-app-icon-displayed-in-the-dock = The app icon displayed in the dock.
 settings-whether-warp-is-shown-in-the-macos-dock-and-cmd-tab-switch = Whether Warp is shown in the macOS Dock and Cmd-Tab switcher.
-settings-whether-the-desktop-app-installation-has-been-detected = Whether the desktop app installation has been detected.
-settings-whether-the-bootstrap-block-is-visible-in-the-terminal = Whether the bootstrap block is visible in the terminal.
-settings-whether-in-band-command-blocks-are-visible-in-the-terminal = Whether in-band command blocks are visible in the terminal.
-settings-whether-the-ssh-connection-block-is-visible-in-the-termina = Whether the SSH connection block is visible in the terminal.
-settings-whether-the-changelog-is-shown-after-an-update = Whether the changelog is shown after an update.
-settings-whether-settings-are-synced-across-devices-via-the-cloud = Whether settings are synced across devices via the cloud.
+settings-whether-the-desktop-app-installation-has-been-detected = 是否检测到桌面应用安装。
+settings-whether-the-bootstrap-block-is-visible-in-the-terminal = 是否在终端中显示引导块。
+settings-whether-in-band-command-blocks-are-visible-in-the-terminal = 是否在终端中显示内联命令块。
+settings-whether-the-ssh-connection-block-is-visible-in-the-termina = 终端中是否显示 SSH 连接块。
+settings-whether-the-changelog-is-shown-after-an-update = 更新后是否显示更新日志。
+settings-whether-settings-are-synced-across-devices-via-the-cloud = 设置是否通过云端在多设备间同步。
 settings-whether-warp-is-used-as-the-default-code-editor = Whether Warp is used as the default code editor.
-settings-whether-codebase-context-is-provided-to-the-ai-agent = Whether codebase context is provided to the AI agent.
+settings-whether-codebase-context-is-provided-to-the-ai-agent = 是否向 AI Agent 提供代码库上下文。
 settings-whether-automatic-codebase-indexing-is-enabled = Whether automatic codebase indexing is enabled.
-settings-whether-the-project-explorer-is-shown-in-the-tools-panel = Whether the project explorer is shown in the tools panel.
-settings-whether-global-file-search-is-shown-in-the-tools-panel = Whether global file search is shown in the tools panel.
-settings-whether-hidden-files-dotfiles-are-shown-in-the-project-exp = Whether hidden files (dotfiles) are shown in the project explorer.
+settings-whether-the-project-explorer-is-shown-in-the-tools-panel = 是否在工具面板中显示项目浏览器。
+settings-whether-global-file-search-is-shown-in-the-tools-panel = 是否在工具面板中显示全局文件搜索。
+settings-whether-hidden-files-dotfiles-are-shown-in-the-project-exp = 是否在项目浏览器中显示隐藏文件（点文件）。
 settings-whether-the-warp-text-editor-automatically-saves-changes-a = Whether the Warp text editor automatically saves changes as you type and when the editor loses focus.
 settings-cursor-display-type-not-found-in-sequence = Cursor display type not found in Sequence!
 settings-how-line-numbers-are-displayed-in-code-editors = How line numbers are displayed in code editors.
 settings-trailing-separator-character-displayed-at-the-end-of-the-p = Trailing separator character displayed at the end of the prompt.
-settings-whether-the-cursor-blinks = Whether the cursor blinks.
+settings-whether-the-cursor-blinks = 光标是否闪烁。
 settings-the-visual-style-of-the-cursor = The visual style of the cursor.
 settings-whether-vim-keybindings-are-enabled = Whether Vim keybindings are enabled.
-settings-whether-the-vim-unnamed-register-uses-the-system-clipboard = Whether the Vim unnamed register uses the system clipboard.
-settings-whether-the-vim-status-bar-is-displayed = Whether the Vim status bar is displayed.
-settings-whether-matching-symbols-like-brackets-and-quotes-are-auto = Whether matching symbols like brackets and quotes are auto-completed.
-settings-whether-command-autosuggestions-are-shown = Whether command autosuggestions are shown.
-settings-whether-autosuggestion-keybinding-hints-are-displayed = Whether autosuggestion keybinding hints are displayed.
-settings-whether-the-ignore-button-is-shown-for-autosuggestions = Whether the ignore button is shown for autosuggestions.
+settings-whether-the-vim-unnamed-register-uses-the-system-clipboard = Vim 的匿名寄存器是否使用系统剪贴板。
+settings-whether-the-vim-status-bar-is-displayed = 是否显示 Vim 状态栏。
+settings-whether-matching-symbols-like-brackets-and-quotes-are-auto = 是否自动补全括号、引号等成对符号。
+settings-whether-command-autosuggestions-are-shown = 是否显示命令自动建议。
+settings-whether-autosuggestion-keybinding-hints-are-displayed = 是否显示自动建议的快捷键提示。
+settings-whether-the-ignore-button-is-shown-for-autosuggestions = 是否显示自动建议的忽略按钮。
 settings-the-monospace-font-used-in-the-terminal = The monospace font used in the terminal.
 settings-the-size-of-the-monospace-font-in-the-terminal = The size of the monospace font in the terminal.
 settings-the-weight-of-the-monospace-font-in-the-terminal = The weight of the monospace font in the terminal.
 settings-the-line-height-ratio-for-terminal-text = The line height ratio for terminal text.
 settings-the-font-used-for-ai-generated-content = The font used for AI-generated content.
-settings-whether-the-ai-font-automatically-matches-the-terminal-fon = Whether the AI font automatically matches the terminal font.
+settings-whether-the-ai-font-automatically-matches-the-terminal-fon = AI 字体是否自动与终端字体一致。
 settings-the-font-size-used-in-notebooks = The font size used in notebooks.
-settings-whether-the-notebook-font-size-matches-the-terminal-font-s = Whether the notebook font size matches the terminal font size.
+settings-whether-the-notebook-font-size-matches-the-terminal-font-s = 笔记本字号是否与终端字号一致。
 settings-whether-to-enforce-minimum-contrast-for-text-readability = Whether to enforce minimum contrast for text readability.
 settings-whether-to-use-thin-font-strokes-on-macos = Whether to use thin font strokes on macOS.
 settings-whether-to-prefer-the-integrated-low-power-gpu = Whether to prefer the integrated (low-power) GPU.
 settings-the-preferred-graphics-backend-on-windows = The preferred graphics backend on Windows.
 settings-unspecified-user-preferences-implementation-for-current-pl = Unspecified user preferences implementation for current platform!
-settings-whether-hint-text-is-shown-in-the-terminal-input = Whether hint text is shown in the terminal input.
-settings-whether-classic-completions-mode-is-enabled = Whether classic completions mode is enabled.
-settings-whether-the-completions-menu-opens-automatically-while-typ = Whether the completions menu opens automatically while typing.
+settings-whether-hint-text-is-shown-in-the-terminal-input = 是否在终端输入框中显示提示文本。
+settings-whether-classic-completions-mode-is-enabled = 是否启用经典补全模式。
+settings-whether-the-completions-menu-opens-automatically-while-typ = 输入时补全菜单是否自动弹出。
 settings-whether-warp-s-built-in-completions-are-shown-for-shell-co = Whether Warp's built-in completions are shown for shell commands.
 settings-whether-your-shell-s-own-completions-are-used-for-shell-co = Whether your shell's own completions are used for shell commands.
-settings-whether-command-errors-are-underlined-in-the-input = Whether command errors are underlined in the input.
-settings-whether-syntax-highlighting-is-enabled-in-the-terminal-inp = Whether syntax highlighting is enabled in the terminal input.
-settings-whether-command-corrections-are-suggested-for-mistyped-com = Whether command corrections are suggested for mistyped commands.
+settings-whether-command-errors-are-underlined-in-the-input = 是否在输入框中为命令错误加下划线。
+settings-whether-syntax-highlighting-is-enabled-in-the-terminal-inp = 终端输入框中是否启用语法高亮。
+settings-whether-command-corrections-are-suggested-for-mistyped-com = 是否为拼错的命令提供更正建议。
 settings-the-terminal-input-style = The terminal input style.
-settings-whether-slash-commands-are-available-in-the-terminal-input = Whether slash commands are available in the terminal input.
-settings-whether-agent-tips-are-displayed-in-the-input = Whether agent tips are displayed in the input.
-settings-whether-the-terminal-input-message-bar-is-shown = Whether the terminal input message bar is shown.
+settings-whether-slash-commands-are-available-in-the-terminal-input = 终端输入框中是否提供斜杠命令。
+settings-whether-agent-tips-are-displayed-in-the-input = 是否在输入框中显示 Agent 提示。
+settings-whether-the-terminal-input-message-bar-is-shown = 是否显示终端输入框的消息栏。
 settings-the-position-of-the-terminal-input = The position of the terminal input.
 settings-whether-to-force-x11-instead-of-wayland-on-linux = Whether to force X11 instead of Wayland on Linux.
-settings-whether-local-control-is-enabled = Whether local control is enabled.
+settings-whether-local-control-is-enabled = 是否启用本地控制。
 settings-couldn-t-parse-due-to-invalid-syntax = Couldn't parse due to invalid syntax
 settings-default-should-have-every-pin-position = Default should have every pin position
-settings-when-to-adjust-foreground-color-to-ensure-readability-agai = When to adjust foreground color to ensure readability against the background.
+settings-when-to-adjust-foreground-color-to-ensure-readability-agai = 何时调整前景色以保证在背景上的可读性。
 settings-preference-for-using-the-native-desktop-app-or-the-web-app = Preference for using the native desktop app or the web app.
 settings-whether-to-prefer-the-native-desktop-app-or-the-web-app = Whether to prefer the native desktop app or the web app.
-settings-whether-inactive-panes-are-visually-dimmed = Whether inactive panes are visually dimmed.
-settings-whether-panes-are-focused-when-hovered-over = Whether panes are focused when hovered over.
-settings-whether-anonymous-usage-telemetry-is-collected = Whether anonymous usage telemetry is collected.
-settings-whether-crash-reports-are-sent = Whether crash reports are sent.
-settings-whether-conversations-are-stored-in-the-cloud = Whether conversations are stored in the cloud.
+settings-whether-inactive-panes-are-visually-dimmed = 未激活的窗格是否变暗显示。
+settings-whether-panes-are-focused-when-hovered-over = 鼠标悬停时是否聚焦窗格。
+settings-whether-anonymous-usage-telemetry-is-collected = 是否收集匿名用量遥测数据。
+settings-whether-crash-reports-are-sent = 是否发送崩溃报告。
+settings-whether-conversations-are-stored-in-the-cloud = 会话是否存储在云端。
 settings-setting-schema-should-be-an-object = setting schema should be an object
 settings-warp-settings = Warp Settings
 settings-hierarchy-node-should-be-an-object = hierarchy node should be an object
 settings-properties-should-be-an-object = properties should be an object
 settings-the-scroll-speed-multiplier-for-mouse-scroll-events = The scroll speed multiplier for mouse scroll events.
 settings-what-a-bare-right-click-does-in-the-terminal = What a bare right-click does in the terminal.
-settings-open-the-context-menu = Open the context menu
+settings-open-the-context-menu = 打开上下文菜单
 settings-paste-from-the-clipboard = Paste from the clipboard
-settings-whether-text-is-automatically-copied-to-the-clipboard-when = Whether text is automatically copied to the clipboard when selected.
-settings-whether-the-linux-primary-selection-clipboard-is-used = Whether the Linux primary selection clipboard is used.
-settings-whether-middle-click-pastes-from-the-clipboard = Whether middle-click pastes from the clipboard.
+settings-whether-text-is-automatically-copied-to-the-clipboard-when = 选中文本时是否自动复制到剪贴板。
+settings-whether-the-linux-primary-selection-clipboard-is-used = 是否使用 Linux 的主选区剪贴板。
+settings-whether-middle-click-pastes-from-the-clipboard = 鼠标中键是否从剪贴板粘贴。
 settings-the-color-theme = The color theme.
 settings-whether-to-match-the-system-light-dark-theme = Whether to match the system light/dark theme.
 settings-the-themes-to-use-for-system-light-and-dark-modes = The themes to use for system light and dark modes.
@@ -3287,7 +3287,7 @@ settings-seconds-per-warp-agent-cli-zero-state-object-rotation-from = Seconds pe
 settings-normalized-half-depth-of-the-extruded-warp-agent-cli-zero = Normalized half-depth of the extruded Warp Agent CLI zero-state object, from 0.02 through 0.5.
 settings-whether-the-warp-agent-cli-zero-state-shows-the-signed-in = Whether the Warp Agent CLI zero state shows the signed-in account line.
 settings-whether-the-warp-agent-cli-zero-state-shows-the-project-pa = Whether the Warp Agent CLI zero state shows the project path and its discovered rules and skills.
-settings-whether-the-warp-agent-cli-zero-state-shows-the-mcp-sectio = Whether the Warp Agent CLI zero state shows the MCP section.
+settings-whether-the-warp-agent-cli-zero-state-shows-the-mcp-sectio = Warp Agent CLI 的零状态是否显示 MCP 区域。
 settings-whether-the-warp-agent-cli-zero-state-shows-the-rotating-o = Whether the Warp Agent CLI zero state shows the rotating object and its starfield.
 settings-whether-the-warp-agent-cli-zero-state-animation-stops-repa = Whether the Warp Agent CLI zero-state animation stops repainting while the terminal is unfocused.
 settings-imported-alacritty-theme = Imported Alacritty Theme
@@ -3305,7 +3305,7 @@ settings-hotkey-characters-ignoring-modifiers = HotKey Characters Ignoring Modif
 settings-hotkey-modifier-flags = HotKey Modifier Flags
 settings-hotkey-window-autohides = HotKey Window AutoHides
 settings-window-type = Window Type
-settings-use-separate-colors-for-light-and-dark-mode = Use Separate Colors for Light and Dark Mode
+settings-use-separate-colors-for-light-and-dark-mode = 为浅色与深色模式使用不同颜色
 settings-normal-font = Normal Font
 settings-custom-directory = Custom Directory
 settings-awds-window-option = AWDS Window Option
@@ -3560,7 +3560,7 @@ settings-oz-cloud-agent-computer-use-orchestration-multi-agent = oz cloud agent 
 settings-cloud-handoff-move-to-cloud-local = cloud handoff move to cloud local
 settings-cloud-handoff-auto-sleep-before-macos = cloud handoff auto sleep before macos
 settings-cloud-handoff-ampersand-trigger-compose = cloud handoff ampersand & trigger compose
-settings-use-to-trigger-handoff = Use & to trigger handoff
+settings-use-to-trigger-handoff = 使用 & 触发移交
 settings-type-as-the-first-character-to-enter-cloud-handoff-compose = Type & as the first character to enter cloud handoff compose mode.
 settings-aws-bedrock-amazon-credentials-login-command-profile-auto = aws bedrock amazon credentials login command profile auto refresh
 settings-gemini-enterprise-geap-google-vertex-credentials-refresh = gemini enterprise geap google vertex credentials refresh
@@ -3575,7 +3575,7 @@ settings-other-members = Other members
 settings-this-is-an-automated-agent-on-your-team = This is an automated agent on your team.
 settings-former-member = Former member
 settings-resets-b-d-i-m-p = Resets %b %d, %-I:%M %p
-settings-open-the-admin-panel = Open the admin panel
+settings-open-the-admin-panel = 打开管理面板
 settings-to-manage-workspace-settings-and-spend-limits = to manage workspace settings and spend limits.
 settings-to-see-team-level-credit-usage = to see team-level credit usage.
 settings-to-see-per-user-credit-attribution = to see per-user credit attribution.
@@ -3585,21 +3585,21 @@ settings-other-team-members-usage-across-add-on-pay-as-you-go-and-c = Other team
 settings-overall-usage = Overall usage
 settings-local-agent-usage = Local agent usage
 settings-cloud-agent-usage = Cloud agent usage
-settings-manage-usage = Manage usage
+settings-manage-usage = 管理用量
 settings-view-and-manage-your-chatgpt-usage = View and manage your ChatGPT usage
 settings-mouse-state-is-required-to-render-usage-history-entry-head = Mouse state is required to render usage history entry header
 settings-default-app-6292b3 = Default App
-settings-choose-an-editor-to-open-file-links = Choose an editor to open file links
+settings-choose-an-editor-to-open-file-links = 选择用于打开文件链接的编辑器
 settings-choose-an-editor-to-open-files-from-the-code-review-panel = Choose an editor to open files from the code review panel, project explorer, and global search
 settings-choose-a-layout-to-open-files-in-warp = Choose a layout to open files in Warp
-settings-open-markdown-files-in-warp-s-markdown-viewer-by-default = Open Markdown files in Warp's Markdown Viewer by default
+settings-open-markdown-files-in-warp-s-markdown-viewer-by-default = 默认用 Warp 的 Markdown 查看器打开 Markdown 文件
 settings-new-window-e5dc8e = New window
 settings-split-pane-50e333 = Split pane
 settings-delete-mcp-server = Delete MCP server?
 settings-this-will-uninstall-and-remove-this-mcp-server-from-all-yo = This will uninstall and remove this MCP server from all your devices.
 settings-delete-mcp-eb3c39 = Delete MCP
 settings-delete-shared-mcp-server = Delete shared MCP server?
-settings-remove-shared-mcp-server-from-team = Remove shared MCP server from team?
+settings-remove-shared-mcp-server-from-team = 要从团队中移除共享的 MCP 服务器吗？
 settings-this-will-uninstall-and-remove-this-mcp-server-from-warp-a = This will uninstall and remove this MCP server from Warp and across all of your teammates' devices.
 settings-no-mcp-server-specified = No MCP Server specified.
 settings-this-server-is-not-an-installation-and-cannot-be-unshared = This server is not an installation and cannot be unshared
