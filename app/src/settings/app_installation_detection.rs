@@ -15,7 +15,7 @@ use settings::{SupportedPlatforms, SyncToCloud};
     settings_value::SettingsValue,
 )]
 #[schemars(
-    description = "Whether the desktop app installation has been detected.",
+    description = crate::tr!("settings", "whether-the-desktop-app-installation-has-been-detected"),
     rename_all = "snake_case"
 )]
 pub enum UserAppInstallStatus {

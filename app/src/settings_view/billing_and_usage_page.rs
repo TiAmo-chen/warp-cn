@@ -156,12 +156,12 @@ pub(crate) fn render_premium_upgrade_savings_note(
     let theme = appearance.theme();
     let percent = format_addon_premium_percent(premium_bps);
     let purchasable = match unit {
-        UsageDisplayUnit::Credits => "add-on credits",
+        UsageDisplayUnit::Credits => crate::tr!("settings", "add-on-credits-150ba6"),
         UsageDisplayUnit::Dollars => "usage",
     };
     let fragments = vec![
         FormattedTextFragment::plain_text(format!("Save {percent} on {purchasable} by ")),
-        FormattedTextFragment::hyperlink("upgrading to a Build plan", upgrade_url),
+        FormattedTextFragment::hyperlink(crate::tr!("settings", "upgrading-to-a-build-plan"), upgrade_url),
         FormattedTextFragment::plain_text("."),
     ];
 
@@ -2152,7 +2152,7 @@ impl BillingAndUsagePageView {
         let auto_reload_amount = selected_option
             .map(|option| PackAmount::of(option, unit).label())
             .filter(|_| auto_reload_enabled)
-            .unwrap_or_else(|| "your selected package".to_string());
+            .unwrap_or_else(|| crate::tr!("settings", "your-selected-package").to_string());
         let auto_reload_description = match unit {
             UsageDisplayUnit::Credits => format!(
                 "When enabled, auto reload will automatically purchase {auto_reload_amount} when \

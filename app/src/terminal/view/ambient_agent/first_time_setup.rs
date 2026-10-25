@@ -241,7 +241,7 @@ impl FirstTimeCloudAgentSetupView {
         let theme = appearance.theme();
 
         let badge_text = if credits.usage_cents.is_some() {
-            "Free usage"
+            crate::tr!("terminal", "free-usage")
         } else {
             crate::tr!("terminal", "free-credits")
         };

@@ -109,11 +109,11 @@ impl DisplayMap {
     ) -> Result<MovementResult> {
         self.soft_wrap_state.read(|frame_layouts| {
             let frame_layouts = frame_layouts.map_err(|err| anyhow::anyhow!("Could not read Frame Layouts {:?}", err))?;
-            let point = frame_layouts.to_soft_wrap_point(point, clamp_direction).context("Point is out of bounds of laid out text")?;
+            let point = frame_layouts.to_soft_wrap_point(point, clamp_direction).context(crate::tr!("editor", "point-is-out-of-bounds-of-laid-out-text"))?;
 
             let line = frame_layouts
                 .get_line(point.row() as usize)
-                .context("Should have current line as it should not be possible for it to be beyond bounds, but was not able to retrieve it")?;
+                .context(crate::tr!("editor", "should-have-current-line-as-it-should-not-be-possible-for"))?;
             // Note that the index here will correspond to that of the original text so if
             // this line is soft wrapped, it will be higher than 0.
             let line_first_index = line.first_glyph().map_or(0, |glyph| glyph.index);
@@ -131,7 +131,7 @@ impl DisplayMap {
             let (point, is_same_row) = if point.row() > 0 {
                 let prev_line = frame_layouts
                     .get_line(point.row() as usize - 1)
-                    .context("Should have next line based on max point bounds check, but was not able to retrieve it")?;
+                    .context(crate::tr!("editor", "should-have-next-line-based-on-max-point-bounds-check-but"))?;
                 let prev_line_first_column = prev_line.first_glyph().map_or(0, |glyph| glyph.index as u32);
                 // Note that goal column is a relative value, rather than based
                 // on the original string.
@@ -171,11 +171,11 @@ impl DisplayMap {
     ) -> Result<MovementResult> {
         self.soft_wrap_state.read(|frame_layouts| {
             let frame_layouts = frame_layouts.map_err(|err| anyhow::anyhow!("Could not read Frame Layouts {:?}", err))?;
-            let point = frame_layouts.to_soft_wrap_point(point, clamp_direction).ok_or_else(|| anyhow::anyhow!("Point is out of bounds of laid out text"))?;
+            let point = frame_layouts.to_soft_wrap_point(point, clamp_direction).ok_or_else(|| anyhow::anyhow!(crate::tr!("editor", "point-is-out-of-bounds-of-laid-out-text")))?;
 
             let line = frame_layouts
                 .get_line(point.row() as usize)
-                .context("Should have current line as it should not be possible for it to be beyond bounds, but was not able to retrieve it")?;
+                .context(crate::tr!("editor", "should-have-current-line-as-it-should-not-be-possible-for"))?;
             // Note that the index here will correspond to that of the original text so if
             // this line is soft wrapped, it will be higher than 0.
             let line_first_index = line.first_glyph().map_or(0, |glyph| glyph.index);
@@ -199,7 +199,7 @@ impl DisplayMap {
             let (point, is_same_row) = if point.row() < max_point.row() {
                 let next_line = frame_layouts
                     .get_line(point.row() as usize + 1)
-                    .context("Should have next line based on max point bounds check, but was not able to retrieve it")?;
+                    .context(crate::tr!("editor", "should-have-next-line-based-on-max-point-bounds-check-but"))?;
                 let next_line_first_column = next_line.first_glyph().map_or(0, |glyph| glyph.index as u32);
                 // Note that goal column is a relative value, rather than based
                 // on the original string.

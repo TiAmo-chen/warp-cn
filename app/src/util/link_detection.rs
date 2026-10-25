@@ -516,7 +516,7 @@ fn parse_line_range(
     let potential_range = potential_range.trim();
 
     // Look for pattern "number-number"
-    let dash_pos = potential_range.find('-').ok_or("No dash found in range")?;
+    let dash_pos = potential_range.find('-').ok_or(crate::tr!("common", "no-dash-found-in-range"))?;
 
     // Extracting starting line number for potential range
     let start_str = potential_range[..dash_pos].trim();

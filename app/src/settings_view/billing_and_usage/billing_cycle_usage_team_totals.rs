@@ -59,7 +59,7 @@ pub fn build_team_total_card_summaries(
 ) -> Vec<TeamTotalCardSummary> {
     let (overall_segments, overall_credits, overall_cost) = aggregate_segments(entries.iter());
     let mut summaries = vec![TeamTotalCardSummary {
-        title: "Overall usage",
+        title: crate::tr!("settings", "overall-usage"),
         card_key: "__card_overall__",
         segments: overall_segments,
         total_credits: overall_credits,
@@ -83,7 +83,7 @@ pub fn build_team_total_card_summaries(
                 .filter(|e| e.usage_source == AiCreditsUsageSource::Cloud),
         );
         summaries.push(TeamTotalCardSummary {
-            title: "Local agent usage",
+            title: crate::tr!("settings", "local-agent-usage"),
             card_key: "__card_local__",
             segments: local_segments,
             total_credits: local_credits,
@@ -91,7 +91,7 @@ pub fn build_team_total_card_summaries(
             limit_cents: None,
         });
         summaries.push(TeamTotalCardSummary {
-            title: "Cloud agent usage",
+            title: crate::tr!("settings", "cloud-agent-usage"),
             card_key: "__card_cloud__",
             segments: cloud_segments,
             total_credits: cloud_credits,

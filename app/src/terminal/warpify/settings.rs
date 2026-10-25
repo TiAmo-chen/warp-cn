@@ -138,7 +138,7 @@ maybe_define_setting!(SshTmuxDeprecationNoticePending, group: WarpifySettings, {
 )]
 #[serde(rename_all = "snake_case")]
 #[schemars(
-    description = "Controls SSH extension installation behavior.",
+    description = crate::tr!("terminal", "controls-ssh-extension-installation-behavior"),
     rename_all = "snake_case"
 )]
 pub enum SshExtensionInstallMode {
@@ -166,8 +166,8 @@ impl SshExtensionInstallMode {
     pub fn display_name(&self) -> &'static str {
         match self {
             SshExtensionInstallMode::AlwaysAsk => crate::tr!("ai_assistant", "ai-profile-always-ask"),
-            SshExtensionInstallMode::AlwaysInstall => "Always install",
-            SshExtensionInstallMode::NeverInstall => "Never install",
+            SshExtensionInstallMode::AlwaysInstall => crate::tr!("terminal", "always-install"),
+            SshExtensionInstallMode::NeverInstall => crate::tr!("terminal", "never-install"),
         }
     }
 }

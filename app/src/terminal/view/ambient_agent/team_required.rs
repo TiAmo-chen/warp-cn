@@ -17,9 +17,9 @@ pub(crate) const BODY_ADMIN: &str = "You’re in this workspace but not on a tea
 pub(crate) const BODY_NON_ADMIN: &str = "You’re in this workspace but not on a team, so you can’t start cloud runs. Join a team, then try again.";
 pub(crate) const PRIMARY_CTA_LABEL: &str = "Open teams settings";
 pub(crate) const TOAST_ADMIN: &str =
-    "Cloud agents need a team. Join or create a team to start cloud runs.";
+    crate::tr!("terminal", "cloud-agents-need-a-team-join-or-create-a-team-to-start-cl");
 pub(crate) const TOAST_NON_ADMIN: &str =
-    "Cloud agents need a team. Join a team to start cloud runs.";
+    crate::tr!("terminal", "cloud-agents-need-a-team-join-a-team-to-start-cloud-runs");
 
 fn is_current_user_workspace_admin(app: &AppContext) -> bool {
     let Some(email) = AuthStateProvider::as_ref(app).get().user_email() else {

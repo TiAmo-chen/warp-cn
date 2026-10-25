@@ -928,7 +928,7 @@ impl BillingAndUsagePageV2View {
         if has_base_credits {
             let reset_str = ai_model
                 .next_refresh_time_local()
-                .format("Resets %b %d at %-I:%M %p")
+                .format(crate::tr!("settings", "resets-b-d-at-i-m-p"))
                 .to_string();
             let (base_remaining, base_limit) = base_allowance_balance(
                 unit,
@@ -1306,7 +1306,7 @@ impl BillingAndUsagePageV2View {
             .unwrap_or_default();
         let auto_reload_credit_amount = selected_credit_option
             .map(|o| PackAmount::of(o, unit).label())
-            .unwrap_or_else(|| "selected credit amount".to_string());
+            .unwrap_or_else(|| crate::tr!("settings", "selected-credit-amount").to_string());
         let auto_reload_tooltip_text = match unit {
             UsageDisplayUnit::Credits => format!(
                 "When any member on your team’s credit balance reaches 100 credits remaining, \
@@ -2418,7 +2418,7 @@ impl TypedActionView for BillingAndUsagePageV2View {
                         .options
                         .get(self.addon_credits.selected_denomination)
                         .map(|option| PackAmount::of(option, unit).label())
-                        .unwrap_or_else(|| "your selected package".to_string());
+                        .unwrap_or_else(|| crate::tr!("settings", "your-selected-package").to_string());
                     format!(
                         "Auto-reload enabled. We'll refill with {amount} when your balance runs low."
                     )

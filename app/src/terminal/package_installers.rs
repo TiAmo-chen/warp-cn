@@ -56,24 +56,24 @@ fn is_at_context_package_installer_prefix(buffer_text: &str) -> bool {
         // Node ecosystem
         "npm ",
         "npx ",
-        "pnpm ",
-        "yarn ",
+        crate::tr!("terminal", "pnpm"),
+        crate::tr!("terminal", "yarn"),
         "bun ",
-        "bunx ",
-        "deno ",
-        "astro add ",
+        crate::tr!("terminal", "bunx"),
+        crate::tr!("terminal", "deno"),
+        crate::tr!("terminal", "astro-add"),
         "Turbo",
         // Python installers
         "pip ",
-        "pip3 ",
-        "python -m pip ",
-        "python3 -m pip ",
-        "py -m pip ",
-        "uv pip ",
-        "poetry ",
+        crate::tr!("terminal", "pip3"),
+        crate::tr!("terminal", "python-m-pip"),
+        crate::tr!("terminal", "python3-m-pip"),
+        crate::tr!("terminal", "py-m-pip"),
+        crate::tr!("terminal", "uv-pip"),
+        crate::tr!("terminal", "poetry"),
         // Ruby
         "gem ",
-        "bundle ",
+        crate::tr!("terminal", "bundle"),
     ];
 
     PREFIXES.iter().any(|p| s.starts_with(p))

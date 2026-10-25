@@ -170,16 +170,16 @@ impl ITermTheme {
 fn color_dictionary_to_coloru(dict: Option<&mut Dictionary>) -> Result<ColorU, ThemeError> {
     let dict = dict.ok_or(ThemeError::MissingValueError)?;
     let srgb_color = Srgba::new(
-        dict.remove("Red Component")
+        dict.remove(crate::tr!("settings", "red-component"))
             .and_then(|value| value.as_real())
             .ok_or(ThemeError::MissingValueError)?,
-        dict.remove("Green Component")
+        dict.remove(crate::tr!("settings", "green-component"))
             .and_then(|value| value.as_real())
             .ok_or(ThemeError::MissingValueError)?,
-        dict.remove("Blue Component")
+        dict.remove(crate::tr!("settings", "blue-component"))
             .and_then(|value| value.as_real())
             .ok_or(ThemeError::MissingValueError)?,
-        dict.remove("Alpha Component")
+        dict.remove(crate::tr!("settings", "alpha-component"))
             .and_then(|value| value.as_real())
             .unwrap_or(1.),
     )
@@ -314,17 +314,17 @@ impl ITermGlobalHotkeyWindow {
         ITermGlobalHotkeyWindow {
             keystroke: ITermKeystroke {
                 key: hotkey_window
-                    .get("HotKey Characters Ignoring Modifiers")
+                    .get(crate::tr!("settings", "hotkey-characters-ignoring-modifiers"))
                     .and_then(|characters| characters.as_string())
                     .unwrap_or_default()
                     .to_string(),
                 modifier: hotkey_window
-                    .get("HotKey Modifier Flags")
+                    .get(crate::tr!("settings", "hotkey-modifier-flags"))
                     .and_then(|modifier| modifier.as_unsigned_integer())
                     .unwrap_or_default(),
             },
             autohide: hotkey_window
-                .get("HotKey Window AutoHides")
+                .get(crate::tr!("settings", "hotkey-window-autohides"))
                 .and_then(|autohide| autohide.as_boolean())
                 .unwrap_or(true),
             screen: hotkey_window
@@ -332,7 +332,7 @@ impl ITermGlobalHotkeyWindow {
                 .and_then(|screen| screen.as_signed_integer())
                 .unwrap_or(-1),
             screen_type: hotkey_window
-                .get("Window Type")
+                .get(crate::tr!("settings", "window-type"))
                 .and_then(|window_type| window_type.as_signed_integer())
                 .unwrap_or(-1),
         }
@@ -405,7 +405,7 @@ impl ITermProfile {
         copy_on_select: Option<bool>,
     ) -> Self {
         let theme_type = match dict
-            .remove("Use Separate Colors for Light and Dark Mode")
+            .remove(crate::tr!("settings", "use-separate-colors-for-light-and-dark-mode"))
             .and_then(|value| value.as_boolean())
             .unwrap_or(false)
         {
@@ -422,7 +422,7 @@ impl ITermProfile {
             .unwrap_or(true);
 
         let (font_family, font_size) = dict
-            .remove("Normal Font")
+            .remove(crate::tr!("settings", "normal-font"))
             .and_then(|font| font.into_string())
             .and_then(|font| {
                 // iTerm stores fonts in the format "{font-name-and-style} {font-size}".
@@ -435,7 +435,7 @@ impl ITermProfile {
             .unzip();
 
         let working_directory = match dict
-            .remove("Custom Directory")
+            .remove(crate::tr!("settings", "custom-directory"))
             .and_then(|value| value.into_string())
             .unwrap_or_default()
             .as_str()
@@ -450,26 +450,26 @@ impl ITermProfile {
             }
             "Advanced" => ITermWorkingDirectoryStrategy::Advanced {
                 new_window: ITermWorkingDirectory::from_str(
-                    dict.remove("AWDS Window Option")
+                    dict.remove(crate::tr!("settings", "awds-window-option"))
                         .and_then(|value| value.into_string())
                         .unwrap_or_default(),
-                    dict.remove("AWDS Window Directory")
+                    dict.remove(crate::tr!("settings", "awds-window-directory"))
                         .and_then(|value| value.into_string())
                         .unwrap_or_default(),
                 ),
                 new_tab: ITermWorkingDirectory::from_str(
-                    dict.remove("AWDS Tab Option")
+                    dict.remove(crate::tr!("settings", "awds-tab-option"))
                         .and_then(|value| value.into_string())
                         .unwrap_or_default(),
-                    dict.remove("AWDS Tab Directory")
+                    dict.remove(crate::tr!("settings", "awds-tab-directory"))
                         .and_then(|value| value.into_string())
                         .unwrap_or_default(),
                 ),
                 new_pane: ITermWorkingDirectory::from_str(
-                    dict.remove("AWDS Pane Option")
+                    dict.remove(crate::tr!("settings", "awds-pane-option"))
                         .and_then(|value| value.into_string())
                         .unwrap_or_default(),
-                    dict.remove("AWDS Pane Directory")
+                    dict.remove(crate::tr!("settings", "awds-pane-directory"))
                         .and_then(|value| value.into_string())
                         .unwrap_or_default(),
                 ),
@@ -479,7 +479,7 @@ impl ITermProfile {
 
         if hotkey_windows.is_empty()
             && dict
-                .get("Has Hotkey")
+                .get(crate::tr!("settings", "has-hotkey"))
                 .and_then(|has_hotkey_value| has_hotkey_value.as_boolean())
                 .is_some_and(|has_hotkey| has_hotkey)
         {
@@ -490,28 +490,28 @@ impl ITermProfile {
             theme: theme_type,
             profile_name: dict.remove("Name").and_then(|name| name.into_string()),
             left_option_as_meta: dict
-                .remove("Option Key Sends")
+                .remove(crate::tr!("settings", "option-key-sends"))
                 .map(|value| value.as_unsigned_integer() == Some(1))
                 .unwrap_or(false),
             right_option_as_meta: dict
-                .remove("Right Option Key Sends")
+                .remove(crate::tr!("settings", "right-option-key-sends"))
                 .map(|value| value.as_unsigned_integer() == Some(1))
                 .unwrap_or(false),
             mouse_reporting: mouse_reporting_enabled
                 && dict
-                    .remove("Mouse Reporting allow clicks and drags")
+                    .remove(crate::tr!("settings", "mouse-reporting-allow-clicks-and-drags"))
                     .and_then(|reporting| reporting.as_boolean())
                     .unwrap_or(true),
             // Allow scroll reporting to be set without mouse reporting
             scroll_reporting: dict
-                .remove("Mouse Reporting allow mouse wheel")
+                .remove(crate::tr!("settings", "mouse-reporting-allow-mouse-wheel"))
                 .and_then(|reporting| reporting.as_boolean())
                 .unwrap_or(true),
             font_name: font_family,
             font_size,
             default_shell: dict.remove(crate::tr!("terminal", "custom-shell")).and_then(|custom_command| {
                 if custom_command.into_string().is_some_and(|command_pref| {
-                    command_pref == "Custom Shell" || command_pref == "Yes"
+                    command_pref == crate::tr!("settings", "custom-shell-b82a7c") || command_pref == "Yes"
                 }) {
                     dict.remove("Command")
                         .and_then(|command| command.into_string())
@@ -537,7 +537,7 @@ impl ITermProfile {
                 .and_then(|blur| blur.as_boolean())
                 .unwrap_or_default()
             {
-                dict.remove("Blur Radius")
+                dict.remove(crate::tr!("settings", "blur-radius"))
                     .and_then(|blur_radius| blur_radius.as_real())
             } else {
                 None
@@ -584,14 +584,14 @@ impl ParseableConfig for ITermProfile {
         }
 
         let Some(default_guid) = dict
-            .remove("Default Bookmark Guid")
+            .remove(crate::tr!("settings", "default-bookmark-guid"))
             .and_then(|guid| guid.into_string())
         else {
             return Err(ConfigError::MalformattedFileError(path));
         };
 
         let Some(profiles) = dict
-            .remove("New Bookmarks")
+            .remove(crate::tr!("settings", "new-bookmarks"))
             .and_then(|profiles| profiles.into_array())
             .and_then(|profiles| {
                 profiles
@@ -608,11 +608,11 @@ impl ParseableConfig for ITermProfile {
             .iter()
             .filter_map(|hotkey_window| {
                 if !(hotkey_window
-                    .get("Has Hotkey")
+                    .get(crate::tr!("settings", "has-hotkey"))
                     .and_then(|has_hotkey_value| has_hotkey_value.as_boolean())
                     .is_some_and(|has_hotkey| has_hotkey)
                     && hotkey_window
-                        .get("Window Type")
+                        .get(crate::tr!("settings", "window-type"))
                         .and_then(|window_type| window_type.as_signed_integer())
                         .is_some_and(|window_type| {
                             [PIN_TOP, PIN_BOTTOM, PIN_LEFT, PIN_RIGHT].contains(&window_type)
@@ -888,138 +888,138 @@ fn default_light_theme() -> Box<ITermTheme> {
     Box::new(ITermTheme {
         terminal_colors: vec![
             Some(Dictionary::from_iter([
-                ("Red Component", Value::Real(0.0784313753247261)),
-                ("Color Space", Value::String("sRGB".to_string())),
-                ("Blue Component", Value::Real(0.11764705926179886)),
-                ("Alpha Component", Value::Real(1.0)),
-                ("Green Component", Value::Real(0.09803921729326248)),
+                (crate::tr!("settings", "red-component"), Value::Real(0.0784313753247261)),
+                (crate::tr!("settings", "color-space"), Value::String("sRGB".to_string())),
+                (crate::tr!("settings", "blue-component"), Value::Real(0.11764705926179886)),
+                (crate::tr!("settings", "alpha-component"), Value::Real(1.0)),
+                (crate::tr!("settings", "green-component"), Value::Real(0.09803921729326248)),
             ])),
             Some(Dictionary::from_iter([
-                ("Red Component", Value::Real(0.7074432373046875)),
-                ("Color Space", Value::String("sRGB".to_string())),
-                ("Blue Component", Value::Real(0.16300037503242493)),
-                ("Alpha Component", Value::Real(1.0)),
-                ("Green Component", Value::Real(0.23660069704055786)),
+                (crate::tr!("settings", "red-component"), Value::Real(0.7074432373046875)),
+                (crate::tr!("settings", "color-space"), Value::String("sRGB".to_string())),
+                (crate::tr!("settings", "blue-component"), Value::Real(0.16300037503242493)),
+                (crate::tr!("settings", "alpha-component"), Value::Real(1.0)),
+                (crate::tr!("settings", "green-component"), Value::Real(0.23660069704055786)),
             ])),
             Some(Dictionary::from_iter([
-                ("Red Component", Value::Real(0.0)),
-                ("Color Space", Value::String("sRGB".to_string())),
-                ("Blue Component", Value::Real(0.0)),
-                ("Alpha Component", Value::Real(1.0)),
-                ("Green Component", Value::Real(0.7607843279838562)),
+                (crate::tr!("settings", "red-component"), Value::Real(0.0)),
+                (crate::tr!("settings", "color-space"), Value::String("sRGB".to_string())),
+                (crate::tr!("settings", "blue-component"), Value::Real(0.0)),
+                (crate::tr!("settings", "alpha-component"), Value::Real(1.0)),
+                (crate::tr!("settings", "green-component"), Value::Real(0.7607843279838562)),
             ])),
             Some(Dictionary::from_iter([
-                ("Red Component", Value::Real(0.7805864810943604)),
-                ("Color Space", Value::String("sRGB".to_string())),
-                ("Blue Component", Value::Real(0.0)),
-                ("Alpha Component", Value::Real(1.0)),
-                ("Green Component", Value::Real(0.7695948481559753)),
+                (crate::tr!("settings", "red-component"), Value::Real(0.7805864810943604)),
+                (crate::tr!("settings", "color-space"), Value::String("sRGB".to_string())),
+                (crate::tr!("settings", "blue-component"), Value::Real(0.0)),
+                (crate::tr!("settings", "alpha-component"), Value::Real(1.0)),
+                (crate::tr!("settings", "green-component"), Value::Real(0.7695948481559753)),
             ])),
             Some(Dictionary::from_iter([
-                ("Red Component", Value::Real(0.15404300391674042)),
-                ("Color Space", Value::String("sRGB".to_string())),
-                ("Blue Component", Value::Real(0.7821617722511292)),
-                ("Alpha Component", Value::Real(1.0)),
-                ("Green Component", Value::Real(0.2647435665130615)),
+                (crate::tr!("settings", "red-component"), Value::Real(0.15404300391674042)),
+                (crate::tr!("settings", "color-space"), Value::String("sRGB".to_string())),
+                (crate::tr!("settings", "blue-component"), Value::Real(0.7821617722511292)),
+                (crate::tr!("settings", "alpha-component"), Value::Real(1.0)),
+                (crate::tr!("settings", "green-component"), Value::Real(0.2647435665130615)),
             ])),
             Some(Dictionary::from_iter([
-                ("Red Component", Value::Real(0.752197265625)),
-                ("Color Space", Value::String("sRGB".to_string())),
-                ("Blue Component", Value::Real(0.7449436187744141)),
-                ("Alpha Component", Value::Real(1.0)),
-                ("Green Component", Value::Real(0.24931684136390686)),
+                (crate::tr!("settings", "red-component"), Value::Real(0.752197265625)),
+                (crate::tr!("settings", "color-space"), Value::String("sRGB".to_string())),
+                (crate::tr!("settings", "blue-component"), Value::Real(0.7449436187744141)),
+                (crate::tr!("settings", "alpha-component"), Value::Real(1.0)),
+                (crate::tr!("settings", "green-component"), Value::Real(0.24931684136390686)),
             ])),
             Some(Dictionary::from_iter([
-                ("Red Component", Value::Real(0.0)),
-                ("Color Space", Value::String("sRGB".to_string())),
-                ("Blue Component", Value::Real(0.7816620469093323)),
-                ("Alpha Component", Value::Real(1.0)),
-                ("Green Component", Value::Real(0.7742590308189392)),
+                (crate::tr!("settings", "red-component"), Value::Real(0.0)),
+                (crate::tr!("settings", "color-space"), Value::String("sRGB".to_string())),
+                (crate::tr!("settings", "blue-component"), Value::Real(0.7816620469093323)),
+                (crate::tr!("settings", "alpha-component"), Value::Real(1.0)),
+                (crate::tr!("settings", "green-component"), Value::Real(0.7742590308189392)),
             ])),
             Some(Dictionary::from_iter([
-                ("Red Component", Value::Real(0.7810397744178772)),
-                ("Color Space", Value::String("sRGB".to_string())),
-                ("Blue Component", Value::Real(0.7810482978820801)),
-                ("Alpha Component", Value::Real(1.0)),
-                ("Green Component", Value::Real(0.7810582518577576)),
+                (crate::tr!("settings", "red-component"), Value::Real(0.7810397744178772)),
+                (crate::tr!("settings", "color-space"), Value::String("sRGB".to_string())),
+                (crate::tr!("settings", "blue-component"), Value::Real(0.7810482978820801)),
+                (crate::tr!("settings", "alpha-component"), Value::Real(1.0)),
+                (crate::tr!("settings", "green-component"), Value::Real(0.7810582518577576)),
             ])),
             Some(Dictionary::from_iter([
-                ("Red Component", Value::Real(0.4078176021575928)),
-                ("Color Space", Value::String("sRGB".to_string())),
-                ("Blue Component", Value::Real(0.4078223705291748)),
-                ("Alpha Component", Value::Real(1.0)),
-                ("Green Component", Value::Real(0.40782788395881653)),
+                (crate::tr!("settings", "red-component"), Value::Real(0.4078176021575928)),
+                (crate::tr!("settings", "color-space"), Value::String("sRGB".to_string())),
+                (crate::tr!("settings", "blue-component"), Value::Real(0.4078223705291748)),
+                (crate::tr!("settings", "alpha-component"), Value::Real(1.0)),
+                (crate::tr!("settings", "green-component"), Value::Real(0.40782788395881653)),
             ])),
             Some(Dictionary::from_iter([
-                ("Red Component", Value::Real(0.8659515380859375)),
-                ("Color Space", Value::String("sRGB".to_string())),
-                ("Blue Component", Value::Real(0.45833224058151245)),
-                ("Alpha Component", Value::Real(1.0)),
-                ("Green Component", Value::Real(0.4752407670021057)),
+                (crate::tr!("settings", "red-component"), Value::Real(0.8659515380859375)),
+                (crate::tr!("settings", "color-space"), Value::String("sRGB".to_string())),
+                (crate::tr!("settings", "blue-component"), Value::Real(0.45833224058151245)),
+                (crate::tr!("settings", "alpha-component"), Value::Real(1.0)),
+                (crate::tr!("settings", "green-component"), Value::Real(0.4752407670021057)),
             ])),
             Some(Dictionary::from_iter([
-                ("Red Component", Value::Real(0.3450070321559906)),
-                ("Color Space", Value::String("sRGB".to_string())),
-                ("Blue Component", Value::Real(0.5654193758964539)),
-                ("Alpha Component", Value::Real(1.0)),
-                ("Green Component", Value::Real(0.9042816162109375)),
+                (crate::tr!("settings", "red-component"), Value::Real(0.3450070321559906)),
+                (crate::tr!("settings", "color-space"), Value::String("sRGB".to_string())),
+                (crate::tr!("settings", "blue-component"), Value::Real(0.5654193758964539)),
+                (crate::tr!("settings", "alpha-component"), Value::Real(1.0)),
+                (crate::tr!("settings", "green-component"), Value::Real(0.9042816162109375)),
             ])),
             Some(Dictionary::from_iter([
-                ("Red Component", Value::Real(0.9259033203125)),
-                ("Color Space", Value::String("sRGB".to_string())),
-                ("Blue Component", Value::Real(0.0)),
-                ("Alpha Component", Value::Real(1.0)),
-                ("Green Component", Value::Real(0.8833775520324707)),
+                (crate::tr!("settings", "red-component"), Value::Real(0.9259033203125)),
+                (crate::tr!("settings", "color-space"), Value::String("sRGB".to_string())),
+                (crate::tr!("settings", "blue-component"), Value::Real(0.0)),
+                (crate::tr!("settings", "alpha-component"), Value::Real(1.0)),
+                (crate::tr!("settings", "green-component"), Value::Real(0.8833775520324707)),
             ])),
             Some(Dictionary::from_iter([
-                ("Red Component", Value::Real(0.6534907817840576)),
-                ("Color Space", Value::String("sRGB".to_string())),
-                ("Blue Component", Value::Real(0.9485321044921875)),
-                ("Alpha Component", Value::Real(1.0)),
-                ("Green Component", Value::Real(0.6704471707344055)),
+                (crate::tr!("settings", "red-component"), Value::Real(0.6534907817840576)),
+                (crate::tr!("settings", "color-space"), Value::String("sRGB".to_string())),
+                (crate::tr!("settings", "blue-component"), Value::Real(0.9485321044921875)),
+                (crate::tr!("settings", "alpha-component"), Value::Real(1.0)),
+                (crate::tr!("settings", "green-component"), Value::Real(0.6704471707344055)),
             ])),
             Some(Dictionary::from_iter([
-                ("Red Component", Value::Real(0.8821563720703125)),
-                ("Color Space", Value::String("sRGB".to_string())),
-                ("Blue Component", Value::Real(0.8821563720703125)),
-                ("Alpha Component", Value::Real(1.0)),
-                ("Green Component", Value::Real(0.4927266538143158)),
+                (crate::tr!("settings", "red-component"), Value::Real(0.8821563720703125)),
+                (crate::tr!("settings", "color-space"), Value::String("sRGB".to_string())),
+                (crate::tr!("settings", "blue-component"), Value::Real(0.8821563720703125)),
+                (crate::tr!("settings", "alpha-component"), Value::Real(1.0)),
+                (crate::tr!("settings", "green-component"), Value::Real(0.4927266538143158)),
             ])),
             Some(Dictionary::from_iter([
-                ("Red Component", Value::Real(0.3759753108024597)),
-                ("Color Space", Value::String("sRGB".to_string())),
-                ("Blue Component", Value::Real(1.0)),
-                ("Alpha Component", Value::Real(1.0)),
-                ("Green Component", Value::Real(0.9926329255104065)),
+                (crate::tr!("settings", "red-component"), Value::Real(0.3759753108024597)),
+                (crate::tr!("settings", "color-space"), Value::String("sRGB".to_string())),
+                (crate::tr!("settings", "blue-component"), Value::Real(1.0)),
+                (crate::tr!("settings", "alpha-component"), Value::Real(1.0)),
+                (crate::tr!("settings", "green-component"), Value::Real(0.9926329255104065)),
             ])),
             Some(Dictionary::from_iter([
-                ("Red Component", Value::Real(0.9999960064888)),
-                ("Color Space", Value::String("sRGB".to_string())),
-                ("Blue Component", Value::Real(1.0)),
-                ("Alpha Component", Value::Real(1.0)),
-                ("Green Component", Value::Real(1.0)),
+                (crate::tr!("settings", "red-component"), Value::Real(0.9999960064888)),
+                (crate::tr!("settings", "color-space"), Value::String("sRGB".to_string())),
+                (crate::tr!("settings", "blue-component"), Value::Real(1.0)),
+                (crate::tr!("settings", "alpha-component"), Value::Real(1.0)),
+                (crate::tr!("settings", "green-component"), Value::Real(1.0)),
             ])),
         ],
         foreground: Some(Dictionary::from_iter([
-            ("Red Component", Value::Real(0.06274509803921569)),
-            ("Color Space", Value::String("sRGB".to_string())),
-            ("Blue Component", Value::Real(0.06274509803921569)),
-            ("Alpha Component", Value::Real(1.0)),
-            ("Green Component", Value::Real(0.06274509803921569)),
+            (crate::tr!("settings", "red-component"), Value::Real(0.06274509803921569)),
+            (crate::tr!("settings", "color-space"), Value::String("sRGB".to_string())),
+            (crate::tr!("settings", "blue-component"), Value::Real(0.06274509803921569)),
+            (crate::tr!("settings", "alpha-component"), Value::Real(1.0)),
+            (crate::tr!("settings", "green-component"), Value::Real(0.06274509803921569)),
         ])),
         background: Some(Dictionary::from_iter([
-            ("Red Component", Value::Real(0.98)),
-            ("Color Space", Value::String("sRGB".to_string())),
-            ("Blue Component", Value::Real(0.98)),
-            ("Alpha Component", Value::Real(1.0)),
-            ("Green Component", Value::Real(0.98)),
+            (crate::tr!("settings", "red-component"), Value::Real(0.98)),
+            (crate::tr!("settings", "color-space"), Value::String("sRGB".to_string())),
+            (crate::tr!("settings", "blue-component"), Value::Real(0.98)),
+            (crate::tr!("settings", "alpha-component"), Value::Real(1.0)),
+            (crate::tr!("settings", "green-component"), Value::Real(0.98)),
         ])),
         cursor: Some(Dictionary::from_iter([
-            ("Red Component", Value::Real(0.0)),
-            ("Color Space", Value::String("sRGB".to_string())),
-            ("Blue Component", Value::Real(0.0)),
-            ("Alpha Component", Value::Real(1.0)),
-            ("Green Component", Value::Real(0.0)),
+            (crate::tr!("settings", "red-component"), Value::Real(0.0)),
+            (crate::tr!("settings", "color-space"), Value::String("sRGB".to_string())),
+            (crate::tr!("settings", "blue-component"), Value::Real(0.0)),
+            (crate::tr!("settings", "alpha-component"), Value::Real(1.0)),
+            (crate::tr!("settings", "green-component"), Value::Real(0.0)),
         ])),
     })
 }
@@ -1028,138 +1028,138 @@ fn default_dark_theme() -> Box<ITermTheme> {
     Box::new(ITermTheme {
         terminal_colors: vec![
             Some(Dictionary::from_iter([
-                ("Red Component", Value::Real(0.0784313753247261)),
-                ("Color Space", Value::String("sRGB".to_string())),
-                ("Blue Component", Value::Real(0.11764705926179886)),
-                ("Alpha Component", Value::Real(1.0)),
-                ("Green Component", Value::Real(0.09803921729326248)),
+                (crate::tr!("settings", "red-component"), Value::Real(0.0784313753247261)),
+                (crate::tr!("settings", "color-space"), Value::String("sRGB".to_string())),
+                (crate::tr!("settings", "blue-component"), Value::Real(0.11764705926179886)),
+                (crate::tr!("settings", "alpha-component"), Value::Real(1.0)),
+                (crate::tr!("settings", "green-component"), Value::Real(0.09803921729326248)),
             ])),
             Some(Dictionary::from_iter([
-                ("Red Component", Value::Real(0.7074432373046875)),
-                ("Color Space", Value::String("sRGB".to_string())),
-                ("Blue Component", Value::Real(0.16300037503242493)),
-                ("Alpha Component", Value::Real(1.0)),
-                ("Green Component", Value::Real(0.23660069704055786)),
+                (crate::tr!("settings", "red-component"), Value::Real(0.7074432373046875)),
+                (crate::tr!("settings", "color-space"), Value::String("sRGB".to_string())),
+                (crate::tr!("settings", "blue-component"), Value::Real(0.16300037503242493)),
+                (crate::tr!("settings", "alpha-component"), Value::Real(1.0)),
+                (crate::tr!("settings", "green-component"), Value::Real(0.23660069704055786)),
             ])),
             Some(Dictionary::from_iter([
-                ("Red Component", Value::Real(0.0)),
-                ("Color Space", Value::String("sRGB".to_string())),
-                ("Blue Component", Value::Real(0.0)),
-                ("Alpha Component", Value::Real(1.0)),
-                ("Green Component", Value::Real(0.7607843279838562)),
+                (crate::tr!("settings", "red-component"), Value::Real(0.0)),
+                (crate::tr!("settings", "color-space"), Value::String("sRGB".to_string())),
+                (crate::tr!("settings", "blue-component"), Value::Real(0.0)),
+                (crate::tr!("settings", "alpha-component"), Value::Real(1.0)),
+                (crate::tr!("settings", "green-component"), Value::Real(0.7607843279838562)),
             ])),
             Some(Dictionary::from_iter([
-                ("Red Component", Value::Real(0.7805864810943604)),
-                ("Color Space", Value::String("sRGB".to_string())),
-                ("Blue Component", Value::Real(0.0)),
-                ("Alpha Component", Value::Real(1.0)),
-                ("Green Component", Value::Real(0.7695948481559753)),
+                (crate::tr!("settings", "red-component"), Value::Real(0.7805864810943604)),
+                (crate::tr!("settings", "color-space"), Value::String("sRGB".to_string())),
+                (crate::tr!("settings", "blue-component"), Value::Real(0.0)),
+                (crate::tr!("settings", "alpha-component"), Value::Real(1.0)),
+                (crate::tr!("settings", "green-component"), Value::Real(0.7695948481559753)),
             ])),
             Some(Dictionary::from_iter([
-                ("Red Component", Value::Real(0.15404300391674042)),
-                ("Color Space", Value::String("sRGB".to_string())),
-                ("Blue Component", Value::Real(0.7821617722511292)),
-                ("Alpha Component", Value::Real(1.0)),
-                ("Green Component", Value::Real(0.2647435665130615)),
+                (crate::tr!("settings", "red-component"), Value::Real(0.15404300391674042)),
+                (crate::tr!("settings", "color-space"), Value::String("sRGB".to_string())),
+                (crate::tr!("settings", "blue-component"), Value::Real(0.7821617722511292)),
+                (crate::tr!("settings", "alpha-component"), Value::Real(1.0)),
+                (crate::tr!("settings", "green-component"), Value::Real(0.2647435665130615)),
             ])),
             Some(Dictionary::from_iter([
-                ("Red Component", Value::Real(0.752197265625)),
-                ("Color Space", Value::String("sRGB".to_string())),
-                ("Blue Component", Value::Real(0.7449436187744141)),
-                ("Alpha Component", Value::Real(1.0)),
-                ("Green Component", Value::Real(0.24931684136390686)),
+                (crate::tr!("settings", "red-component"), Value::Real(0.752197265625)),
+                (crate::tr!("settings", "color-space"), Value::String("sRGB".to_string())),
+                (crate::tr!("settings", "blue-component"), Value::Real(0.7449436187744141)),
+                (crate::tr!("settings", "alpha-component"), Value::Real(1.0)),
+                (crate::tr!("settings", "green-component"), Value::Real(0.24931684136390686)),
             ])),
             Some(Dictionary::from_iter([
-                ("Red Component", Value::Real(0.0)),
-                ("Color Space", Value::String("sRGB".to_string())),
-                ("Blue Component", Value::Real(0.7816620469093323)),
-                ("Alpha Component", Value::Real(1.0)),
-                ("Green Component", Value::Real(0.7742590308189392)),
+                (crate::tr!("settings", "red-component"), Value::Real(0.0)),
+                (crate::tr!("settings", "color-space"), Value::String("sRGB".to_string())),
+                (crate::tr!("settings", "blue-component"), Value::Real(0.7816620469093323)),
+                (crate::tr!("settings", "alpha-component"), Value::Real(1.0)),
+                (crate::tr!("settings", "green-component"), Value::Real(0.7742590308189392)),
             ])),
             Some(Dictionary::from_iter([
-                ("Red Component", Value::Real(0.7810397744178772)),
-                ("Color Space", Value::String("sRGB".to_string())),
-                ("Blue Component", Value::Real(0.7810482978820801)),
-                ("Alpha Component", Value::Real(1.0)),
-                ("Green Component", Value::Real(0.7810582518577576)),
+                (crate::tr!("settings", "red-component"), Value::Real(0.7810397744178772)),
+                (crate::tr!("settings", "color-space"), Value::String("sRGB".to_string())),
+                (crate::tr!("settings", "blue-component"), Value::Real(0.7810482978820801)),
+                (crate::tr!("settings", "alpha-component"), Value::Real(1.0)),
+                (crate::tr!("settings", "green-component"), Value::Real(0.7810582518577576)),
             ])),
             Some(Dictionary::from_iter([
-                ("Red Component", Value::Real(0.4078176021575928)),
-                ("Color Space", Value::String("sRGB".to_string())),
-                ("Blue Component", Value::Real(0.4078223705291748)),
-                ("Alpha Component", Value::Real(1.0)),
-                ("Green Component", Value::Real(0.40782788395881653)),
+                (crate::tr!("settings", "red-component"), Value::Real(0.4078176021575928)),
+                (crate::tr!("settings", "color-space"), Value::String("sRGB".to_string())),
+                (crate::tr!("settings", "blue-component"), Value::Real(0.4078223705291748)),
+                (crate::tr!("settings", "alpha-component"), Value::Real(1.0)),
+                (crate::tr!("settings", "green-component"), Value::Real(0.40782788395881653)),
             ])),
             Some(Dictionary::from_iter([
-                ("Red Component", Value::Real(0.8659515380859375)),
-                ("Color Space", Value::String("sRGB".to_string())),
-                ("Blue Component", Value::Real(0.45833224058151245)),
-                ("Alpha Component", Value::Real(1.0)),
-                ("Green Component", Value::Real(0.4752407670021057)),
+                (crate::tr!("settings", "red-component"), Value::Real(0.8659515380859375)),
+                (crate::tr!("settings", "color-space"), Value::String("sRGB".to_string())),
+                (crate::tr!("settings", "blue-component"), Value::Real(0.45833224058151245)),
+                (crate::tr!("settings", "alpha-component"), Value::Real(1.0)),
+                (crate::tr!("settings", "green-component"), Value::Real(0.4752407670021057)),
             ])),
             Some(Dictionary::from_iter([
-                ("Red Component", Value::Real(0.3450070321559906)),
-                ("Color Space", Value::String("sRGB".to_string())),
-                ("Blue Component", Value::Real(0.5654193758964539)),
-                ("Alpha Component", Value::Real(1.0)),
-                ("Green Component", Value::Real(0.9042816162109375)),
+                (crate::tr!("settings", "red-component"), Value::Real(0.3450070321559906)),
+                (crate::tr!("settings", "color-space"), Value::String("sRGB".to_string())),
+                (crate::tr!("settings", "blue-component"), Value::Real(0.5654193758964539)),
+                (crate::tr!("settings", "alpha-component"), Value::Real(1.0)),
+                (crate::tr!("settings", "green-component"), Value::Real(0.9042816162109375)),
             ])),
             Some(Dictionary::from_iter([
-                ("Red Component", Value::Real(0.9259033203125)),
-                ("Color Space", Value::String("sRGB".to_string())),
-                ("Blue Component", Value::Real(0.0)),
-                ("Alpha Component", Value::Real(1.0)),
-                ("Green Component", Value::Real(0.8833775520324707)),
+                (crate::tr!("settings", "red-component"), Value::Real(0.9259033203125)),
+                (crate::tr!("settings", "color-space"), Value::String("sRGB".to_string())),
+                (crate::tr!("settings", "blue-component"), Value::Real(0.0)),
+                (crate::tr!("settings", "alpha-component"), Value::Real(1.0)),
+                (crate::tr!("settings", "green-component"), Value::Real(0.8833775520324707)),
             ])),
             Some(Dictionary::from_iter([
-                ("Red Component", Value::Real(0.6534907817840576)),
-                ("Color Space", Value::String("sRGB".to_string())),
-                ("Blue Component", Value::Real(0.9485321044921875)),
-                ("Alpha Component", Value::Real(1.0)),
-                ("Green Component", Value::Real(0.6704471707344055)),
+                (crate::tr!("settings", "red-component"), Value::Real(0.6534907817840576)),
+                (crate::tr!("settings", "color-space"), Value::String("sRGB".to_string())),
+                (crate::tr!("settings", "blue-component"), Value::Real(0.9485321044921875)),
+                (crate::tr!("settings", "alpha-component"), Value::Real(1.0)),
+                (crate::tr!("settings", "green-component"), Value::Real(0.6704471707344055)),
             ])),
             Some(Dictionary::from_iter([
-                ("Red Component", Value::Real(0.8821563720703125)),
-                ("Color Space", Value::String("sRGB".to_string())),
-                ("Blue Component", Value::Real(0.8821563720703125)),
-                ("Alpha Component", Value::Real(1.0)),
-                ("Green Component", Value::Real(0.4927266538143158)),
+                (crate::tr!("settings", "red-component"), Value::Real(0.8821563720703125)),
+                (crate::tr!("settings", "color-space"), Value::String("sRGB".to_string())),
+                (crate::tr!("settings", "blue-component"), Value::Real(0.8821563720703125)),
+                (crate::tr!("settings", "alpha-component"), Value::Real(1.0)),
+                (crate::tr!("settings", "green-component"), Value::Real(0.4927266538143158)),
             ])),
             Some(Dictionary::from_iter([
-                ("Red Component", Value::Real(0.3759753108024597)),
-                ("Color Space", Value::String("sRGB".to_string())),
-                ("Blue Component", Value::Real(1.0)),
-                ("Alpha Component", Value::Real(1.0)),
-                ("Green Component", Value::Real(0.9926329255104065)),
+                (crate::tr!("settings", "red-component"), Value::Real(0.3759753108024597)),
+                (crate::tr!("settings", "color-space"), Value::String("sRGB".to_string())),
+                (crate::tr!("settings", "blue-component"), Value::Real(1.0)),
+                (crate::tr!("settings", "alpha-component"), Value::Real(1.0)),
+                (crate::tr!("settings", "green-component"), Value::Real(0.9926329255104065)),
             ])),
             Some(Dictionary::from_iter([
-                ("Red Component", Value::Real(0.9999960064888)),
-                ("Color Space", Value::String("sRGB".to_string())),
-                ("Blue Component", Value::Real(1.0)),
-                ("Alpha Component", Value::Real(1.0)),
-                ("Green Component", Value::Real(1.0)),
+                (crate::tr!("settings", "red-component"), Value::Real(0.9999960064888)),
+                (crate::tr!("settings", "color-space"), Value::String("sRGB".to_string())),
+                (crate::tr!("settings", "blue-component"), Value::Real(1.0)),
+                (crate::tr!("settings", "alpha-component"), Value::Real(1.0)),
+                (crate::tr!("settings", "green-component"), Value::Real(1.0)),
             ])),
         ],
         foreground: Some(Dictionary::from_iter([
-            ("Red Component", Value::Real(0.8619791269302368)),
-            ("Color Space", Value::String("sRGB".to_string())),
-            ("Blue Component", Value::Real(0.8619885444641113)),
-            ("Alpha Component", Value::Real(1.0)),
-            ("Green Component", Value::Real(0.86199951171875)),
+            (crate::tr!("settings", "red-component"), Value::Real(0.8619791269302368)),
+            (crate::tr!("settings", "color-space"), Value::String("sRGB".to_string())),
+            (crate::tr!("settings", "blue-component"), Value::Real(0.8619885444641113)),
+            (crate::tr!("settings", "alpha-component"), Value::Real(1.0)),
+            (crate::tr!("settings", "green-component"), Value::Real(0.86199951171875)),
         ])),
         background: Some(Dictionary::from_iter([
-            ("Red Component", Value::Real(0.0806884765625)),
-            ("Color Space", Value::String("sRGB".to_string())),
-            ("Blue Component", Value::Real(0.12103271484375)),
-            ("Alpha Component", Value::Real(1.0)),
-            ("Green Component", Value::Real(0.09911105036735535)),
+            (crate::tr!("settings", "red-component"), Value::Real(0.0806884765625)),
+            (crate::tr!("settings", "color-space"), Value::String("sRGB".to_string())),
+            (crate::tr!("settings", "blue-component"), Value::Real(0.12103271484375)),
+            (crate::tr!("settings", "alpha-component"), Value::Real(1.0)),
+            (crate::tr!("settings", "green-component"), Value::Real(0.09911105036735535)),
         ])),
         cursor: Some(Dictionary::from_iter([
-            ("Red Component", Value::Real(0.9999763369560242)),
-            ("Color Space", Value::String("sRGB".to_string())),
-            ("Blue Component", Value::Real(0.9999872446060181)),
-            ("Alpha Component", Value::Real(1.0)),
-            ("Green Component", Value::Real(1.0)),
+            (crate::tr!("settings", "red-component"), Value::Real(0.9999763369560242)),
+            (crate::tr!("settings", "color-space"), Value::String("sRGB".to_string())),
+            (crate::tr!("settings", "blue-component"), Value::Real(0.9999872446060181)),
+            (crate::tr!("settings", "alpha-component"), Value::Real(1.0)),
+            (crate::tr!("settings", "green-component"), Value::Real(1.0)),
         ])),
     })
 }

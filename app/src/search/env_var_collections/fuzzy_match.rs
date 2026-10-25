@@ -118,7 +118,7 @@ impl FuzzyMatchEnvVarCollectionResult {
             // This branch should never be executed because a EVC search result should
             // always have some match with the query, otherwise it should not appear as a
             // result.
-            report_error!("EVC has no component which matches the result.");
+            report_error!(crate::tr!("search", "evc-has-no-component-which-matches-the-result"));
             OrderedFloat(f64::MIN)
         } else {
             // All attributes have equal weight, so just take the avg score

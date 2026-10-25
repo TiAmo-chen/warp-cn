@@ -152,7 +152,7 @@ impl FreeAiRemovalModal {
                 height: Some(32.),
                 ..Default::default()
             })
-            .with_centered_text_label("Bring your own AI".to_string())
+            .with_centered_text_label(crate::tr!("workspace", "bring-your-own-ai").to_string())
             .build()
             .with_cursor(Cursor::PointingHand)
             .on_click(|ctx, _, _| {
@@ -171,7 +171,7 @@ impl FreeAiRemovalModal {
                 height: Some(32.),
                 ..Default::default()
             })
-            .with_centered_text_label("View pricing".to_string())
+            .with_centered_text_label(crate::tr!("workspace", "view-pricing").to_string())
             .build()
             .with_cursor(Cursor::PointingHand)
             .on_click(|ctx, _, _| {
@@ -417,9 +417,9 @@ impl TelemetryEventDesc for FreeAiRemovalModalTelemetryEventDiscriminants {
 
     fn description(&self) -> &'static str {
         match self {
-            Self::Shown => "The free AI removal notice modal was shown to the user",
-            Self::Dismissed => "The user dismissed the free AI removal notice modal",
-            Self::CtaClicked => "The user clicked a CTA in the free AI removal notice modal",
+            Self::Shown => crate::tr!("workspace", "the-free-ai-removal-notice-modal-was-shown-to-the-user"),
+            Self::Dismissed => crate::tr!("workspace", "the-user-dismissed-the-free-ai-removal-notice-modal"),
+            Self::CtaClicked => crate::tr!("workspace", "the-user-clicked-a-cta-in-the-free-ai-removal-notice-modal"),
         }
     }
 

@@ -190,7 +190,7 @@ impl ConversationEndedTombstoneView {
             })
             .unwrap_or_default();
         if display_data.is_error && task_id.is_none() && !display_data.conversation_is_transcript {
-            display_data.title = Some("Cloud agent failed to start".to_string());
+            display_data.title = Some(crate::tr!("terminal", "cloud-agent-failed-to-start").to_string());
             display_data.credits = None;
         }
 
@@ -200,7 +200,7 @@ impl ConversationEndedTombstoneView {
             Some(TombstoneCta::ContinueInCloud { task_id }) => {
                 Some(ctx.add_typed_action_view(move |_| {
                     ActionButton::new(crate::tr!("common", "continue-label"), PrimaryTheme)
-                        .with_tooltip("Continue this cloud conversation")
+                        .with_tooltip(crate::tr!("terminal", "continue-this-cloud-conversation"))
                         .on_click(move |ctx| {
                             ctx.dispatch_typed_action(
                                 ConversationEndedTombstoneAction::ContinueInCloud { task_id },
@@ -673,7 +673,7 @@ impl TypedActionView for ConversationEndedTombstoneView {
                         log::warn!("No server conversation token available for conversation");
                     }
                 } else {
-                    warp_errors::report_error!("Conversation not found in history model");
+                    warp_errors::report_error!(crate::tr!("terminal", "conversation-not-found-in-history-model"));
                 }
             }
         }

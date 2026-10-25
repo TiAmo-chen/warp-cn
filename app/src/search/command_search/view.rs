@@ -190,7 +190,7 @@ impl CommandSearchView {
             .as_ref(ctx)
             .get_handle(ctx.window_id(), ModalType::UniversalSearchWidth)
             .unwrap_or_else(|| {
-                report_error!("Couldn't retrieve universal search resizable state handle.");
+                report_error!(crate::tr!("search", "couldn-t-retrieve-universal-search-resizable-state-handle"));
                 resizable_state_handle(DEFAULT_UNIVERSAL_SEARCH_WIDTH)
             });
 
@@ -682,7 +682,7 @@ impl CommandSearchView {
         row.add_child(
             appearance
                 .ui_builder()
-                .span("Looks like you're out of credits. ")
+                .span(crate::tr!("search", "looks-like-you-re-out-of-credits"))
                 .with_style(UiComponentStyles {
                     font_size: Some(appearance.monospace_font_size()),
                     font_family_id: Some(appearance.ui_font_family()),
@@ -760,7 +760,7 @@ impl CommandSearchView {
                 let build_items = move |range: Range<usize>, app: &AppContext| {
                     let command_search_view = view_handle
                         .upgrade(app)
-                        .expect("View handle should upgradeable.")
+                        .expect(crate::tr!("search", "view-handle-should-upgradeable"))
                         .as_ref(app);
                     let query_result_renderers = command_search_view
                         .search_bar_state

@@ -576,7 +576,7 @@ impl History {
             Some(ReadHistoryFileState::Done) => {
                 let Some(history_file_commands) = self.history_file_commands.get(&host) else {
                     report_error!(
-                        "History file commands should exist if history file has been read."
+                        crate::tr!("terminal", "history-file-commands-should-exist-if-history-file-has-bee")
                     );
                     return;
                 };
@@ -734,7 +734,7 @@ impl History {
         match self
             .read_history_file_state
             .get_mut(shell_host)
-            .expect("ReadHistoryFileState should exist for session.")
+            .expect(crate::tr!("terminal", "readhistoryfilestate-should-exist-for-session"))
         {
             ReadHistoryFileState::InProgress {
                 session_commands_to_append,
@@ -900,7 +900,7 @@ impl History {
         let session_commands = match self
             .read_history_file_state
             .get_mut(shell_host)
-            .expect("ReadHistoryFileState should exist for session.")
+            .expect(crate::tr!("terminal", "readhistoryfilestate-should-exist-for-session"))
         {
             ReadHistoryFileState::InProgress {
                 session_commands_to_append,

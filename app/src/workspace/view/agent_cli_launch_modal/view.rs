@@ -70,14 +70,14 @@ struct FeatureItem {
 const FEATURE_ITEMS: &[FeatureItem] = &[
     FeatureItem {
         icon: Icon::LayoutAlt01,
-        label: "What's new:",
-        title: "Use the Warp Agent anywhere",
+        label: crate::tr!("workspace", "what-s-new"),
+        title: crate::tr!("workspace", "use-the-warp-agent-anywhere"),
         description: "Warp's state of the art agent is now available in any terminal through the CLI.",
     },
     FeatureItem {
         icon: Icon::Inbox,
-        label: "What's special:",
-        title: "Built-in terminal multiplexer",
+        label: crate::tr!("workspace", "what-s-special"),
+        title: crate::tr!("workspace", "built-in-terminal-multiplexer"),
         description: "Each Warp Agent creates its own PTY, enabling better behavior for REPLS, ssh, directory switching, and more.",
     },
 ];
@@ -230,7 +230,7 @@ impl AgentCliLaunchModal {
 
     fn render_title(appearance: &Appearance) -> Box<dyn Element> {
         Text::new(
-            "Introducing the Warp Agent CLI: A coding agent that does what others can't",
+            crate::tr!("workspace", "introducing-the-warp-agent-cli-a-coding-agent-that-does-wh"),
             appearance.ui_font_family(),
             20.,
         )

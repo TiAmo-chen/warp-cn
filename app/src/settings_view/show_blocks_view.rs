@@ -762,7 +762,7 @@ impl SettingsWidget for ShowBlocksWidget {
     type View = ShowBlocksView;
 
     fn search_terms(&self) -> &str {
-        "shared blocks"
+        crate::tr!("settings", "shared-blocks-2d8afd")
     }
 
     fn render(

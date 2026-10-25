@@ -84,7 +84,7 @@ impl FuzzyMatchWorkflowResult {
             // This branch should never be executed because a workflows search result should
             // always have some match with the query, otherwise it should not appear as a
             // result.
-            report_error!("Workflow has neither a name nor command match result.");
+            report_error!(crate::tr!("search", "workflow-has-neither-a-name-nor-command-match-result"));
             OrderedFloat(f64::MIN)
         } else {
             // All attributes have equal weight, so just take the avg score

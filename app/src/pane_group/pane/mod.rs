@@ -166,7 +166,7 @@ impl Display for IPaneType {
             IPaneType::Settings => write!(f, "Settings"),
             IPaneType::AIFact => write!(f, "{}", crate::tr!("drive", "ai-fact-type")),
             IPaneType::AIDocument => write!(f, "{}", crate::tr!("pane_group", "pane-type-ai-document")),
-            IPaneType::CustomRouterEditor => write!(f, "Custom Router Editor"),
+            IPaneType::CustomRouterEditor => write!(f, crate::tr!("pane_group", "custom-router-editor"))),
             IPaneType::ExecutionProfileEditor => write!(f, "{}", crate::tr!("pane_group", "pane-type-execution-profile-editor")),
             IPaneType::GetStarted => write!(f, "GetStarted"),
             IPaneType::NetworkLog => write!(f, "{}", crate::tr!("pane_group", "pane-type-network-log")),

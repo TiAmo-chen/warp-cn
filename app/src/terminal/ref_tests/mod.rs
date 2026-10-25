@@ -164,7 +164,7 @@ fn ref_test(dir: &Path) {
     for i in 0..grid.total_rows() {
         let row = term_grid
             .row(i)
-            .expect("should have a row for every row in the test grid");
+            .expect(crate::tr!("terminal", "should-have-a-row-for-every-row-in-the-test-grid"));
         for j in 0..grid.columns() {
             let cell = &row[j];
             let original_cell = &grid[i][j];

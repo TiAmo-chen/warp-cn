@@ -147,7 +147,7 @@ impl EnvironmentSetupModeSelector {
             })
             .finish();
 
-        let esc_keystroke = Keystroke::parse("escape").expect("escape keystroke parses");
+        let esc_keystroke = Keystroke::parse("escape").expect(crate::tr!("terminal", "escape-keystroke-parses"));
         let esc_pill = appearance
             .ui_builder()
             .keyboard_shortcut(&esc_keystroke)

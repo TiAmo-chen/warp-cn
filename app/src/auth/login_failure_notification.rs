@@ -28,7 +28,7 @@ impl LoginFailureReason {
             fragments.extend([
                 FormattedTextFragment::plain_text(" Not the first time? See our "),
                 FormattedTextFragment::hyperlink(
-                    "troubleshooting docs",
+                    crate::tr!("auth", "troubleshooting-docs"),
                     LOGIN_TROUBLESHOOTING_DOCS_URL,
                 ),
                 FormattedTextFragment::plain_text("."),

@@ -154,7 +154,7 @@ impl WorkflowManager {
             });
         } else {
             safe_warn!(
-                safe: ("Ignoring duplicate Workflow pane registration"),
+                safe: (crate::tr!("workflows", "ignoring-duplicate-workflow-pane-registration")),
                 full: ("Ignoring duplicate Workflow pane registration for {workflow_id}")
             );
         }
@@ -191,7 +191,7 @@ impl WorkflowManager {
             return;
         }
         if let ObjectOperation::Create { .. } = result.operation {
-            let server_id = result.server_id.expect("Expect server id on success");
+            let server_id = result.server_id.expect(crate::tr!("notebooks", "expect-server-id-on-success")));
             let Some(server_id) = CloudModel::as_ref(ctx)
                 .get_workflow_by_uid(&server_id.uid())
                 .and_then(|workflow| workflow.id.into_server())

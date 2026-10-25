@@ -21,10 +21,10 @@ impl RendererState {
         // OS. On prior versions, the recommend symbol font is "Segoe MDL2 Assets".
         // See https://learn.microsoft.com/en-us/windows/apps/design/style/segoe-fluent-icons-font.
         let symbol_font = if status.is_ok() && version.dwBuildNumber >= 22000 {
-            Self::load_symbol_font("Segoe Fluent Icons", ctx)
-                .or_else(|| Self::load_symbol_font("Segoe MDL2 Assets", ctx))
+            Self::load_symbol_font(crate::tr!("common", "segoe-fluent-icons"), ctx)
+                .or_else(|| Self::load_symbol_font(crate::tr!("common", "segoe-mdl2-assets"), ctx))
         } else {
-            Self::load_symbol_font("Segoe MDL2 Assets", ctx)
+            Self::load_symbol_font(crate::tr!("common", "segoe-mdl2-assets"), ctx)
         };
 
         Self {

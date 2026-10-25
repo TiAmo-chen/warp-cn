@@ -58,7 +58,7 @@ impl SoftWrapState {
         match &*frame_layouts {
             Some(frame_layouts) => callback(Ok(frame_layouts)),
             None => callback(Err(anyhow!(
-                "No frame layout. This should only happen if we attempt to read before a frame of the editor has been laid out"
+                crate::tr!("editor", "no-frame-layout-this-should-only-happen-if-we-attempt-to-r")
             ))),
         }
     }

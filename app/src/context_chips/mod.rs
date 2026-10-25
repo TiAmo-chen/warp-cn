@@ -171,7 +171,7 @@ impl ChipResult {
     settings_value::SettingsValue,
 )]
 #[schemars(
-    description = "Type of prompt context chip.",
+    description = crate::tr!("context_chips", "type-of-prompt-context-chip")),
     rename_all = "snake_case"
 )]
 pub enum ContextChipKind {
@@ -311,7 +311,7 @@ impl ContextChipKind {
                 GIT_REFRESH_CONFIG,
             )),
             Self::GitBranchStatus => Some(ContextChip::shell_builtin(
-                "Git Branch Status",
+                crate::tr!("context_chips", "git-branch-status")),
                 builtins::shell_git_branch_status(),
                 // Same branch list as ShellGitBranch, so clicking the chip
                 // opens the same branch-switcher menu.
@@ -412,16 +412,16 @@ impl ContextChipKind {
             Self::VirtualEnvironment => ChipValue::Text("pyenv".to_string()),
             Self::CondaEnvironment => ChipValue::Text("condaenv".to_string()),
             Self::NodeVersion => ChipValue::Text("v18.17.0".to_string()),
-            Self::Date => ChipValue::Text("July 12, 2023".to_string()),
+            Self::Date => ChipValue::Text(crate::tr!("context_chips", "july-12-2023")).to_string()),
             Self::Time12 => ChipValue::Text("03:48 pm".to_string()),
             Self::Time24 => ChipValue::Text("15:48".to_string()),
-            Self::Custom { .. } => ChipValue::Text("custom chip".to_string()),
+            Self::Custom { .. } => ChipValue::Text(crate::tr!("context_chips", "custom-chip")).to_string()),
             Self::KubernetesContext => ChipValue::Text("kube-context".to_string()),
             Self::SvnBranch => ChipValue::Text("svn-feature-branch".to_string()),
             Self::SvnDirtyItems => ChipValue::Text("3".to_string()),
             Self::Ssh => ChipValue::Text("alice@127.0.0.1".to_string()),
             Self::Subshell => ChipValue::Text("bash".to_string()),
-            Self::AgentPlanAndTodoList => ChipValue::Text("Plan and Todo List".to_string()),
+            Self::AgentPlanAndTodoList => ChipValue::Text(crate::tr!("context_chips", "plan-and-todo-list")).to_string()),
         }
     }
 

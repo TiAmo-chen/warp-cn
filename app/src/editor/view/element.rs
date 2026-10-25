@@ -470,13 +470,13 @@ impl EditorElement {
         let layout = self
             .layout
             .as_ref()
-            .expect("layout should be set at event handling");
+            .expect(crate::tr!("editor", "layout-should-be-set-at-event-handling"));
         let paint = self
             .paint
             .as_ref()
-            .expect("paint should be set at event handling");
+            .expect(crate::tr!("editor", "paint-should-be-set-at-event-handling"));
 
-        let mut state_guard = self.mouse_state.lock().expect("mouse state lock");
+        let mut state_guard = self.mouse_state.lock().expect(crate::tr!("editor", "mouse-state-lock"));
         if let Some(state) = &mut *state_guard
             && state.user_dismissed
         {
@@ -703,7 +703,7 @@ impl EditorElement {
             Vector2F::zero(),
             self.layout
                 .as_ref()
-                .expect("should have layout")
+                .expect(crate::tr!("editor", "should-have-layout"))
                 .scroll_max(view_snapshot, layout_cache, app),
         );
 
@@ -1304,7 +1304,7 @@ impl EditorElement {
                 RectF::from_points(
                     line_origin,
                     self.bounds()
-                        .expect("layout() should have been called before paint()")
+                        .expect(crate::tr!("editor", "layout-should-have-been-called-before-paint"))
                         .lower_right(),
                 ),
                 &Default::default(),
@@ -1335,7 +1335,7 @@ impl EditorElement {
                     RectF::from_points(
                         line_origin,
                         self.bounds()
-                            .expect("layout() should have been called before paint()")
+                            .expect(crate::tr!("editor", "layout-should-have-been-called-before-paint"))
                             .lower_right(),
                     ),
                     &Default::default(),
@@ -1654,7 +1654,7 @@ impl Element for EditorElement {
             );
         }
         if size.x().is_infinite() {
-            unimplemented!("we don't yet handle an infinite width constraint on buffer elements");
+            unimplemented!(crate::tr!("editor", "we-don-t-yet-handle-an-infinite-width-constraint-on-buffer"));
         }
 
         let top_section_height_lines = top_section_height_px / view_snapshot.line_height;
@@ -1723,7 +1723,7 @@ impl Element for EditorElement {
                 width_with_icons += AUTOSUGGESTION_HINT_PADDING
                     + autosuggestion_shortcut_icon
                         .size()
-                        .expect("should have size")
+                        .expect(crate::tr!("editor", "should-have-size"))
                         .x();
             }
             if let Some(autosuggestion_ignore_icon) = self.autosuggestion_ignore_icon.as_ref() {
@@ -1731,7 +1731,7 @@ impl Element for EditorElement {
                 width_with_icons += AUTOSUGGESTION_HINT_PADDING
                     + autosuggestion_ignore_icon
                         .size()
-                        .expect("should have size")
+                        .expect(crate::tr!("editor", "should-have-size"))
                         .x();
             }
             max_visible_line_width = max_visible_line_width.max(width_with_icons);
@@ -1950,7 +1950,7 @@ impl Element for EditorElement {
                         RectF::from_points(
                             line_origin,
                             self.bounds()
-                                .expect("layout() should have been called before paint()")
+                                .expect(crate::tr!("editor", "layout-should-have-been-called-before-paint"))
                                 .lower_right(),
                         ),
                         &Default::default(),
@@ -1987,7 +1987,7 @@ impl Element for EditorElement {
             {
                 element.paint(position + vec2f(AUTOSUGGESTION_HINT_PADDING, 0.), ctx, app);
                 current_icon_x_offset +=
-                    AUTOSUGGESTION_HINT_PADDING + element.size().expect("should have size").x();
+                    AUTOSUGGESTION_HINT_PADDING + element.size().expect(crate::tr!("editor", "should-have-size")).x();
             }
 
             // Paint the ignore button after the keybinding hint (if it exists)
@@ -2004,7 +2004,7 @@ impl Element for EditorElement {
             if let Some(cycle_next_command_hint) = self.cycle_next_command_hint.as_mut() {
                 let hint_size = cycle_next_command_hint
                     .size()
-                    .expect("should have element size at paint");
+                    .expect(crate::tr!("editor", "should-have-element-size-at-paint"));
 
                 let origin = vec2f(
                     bounds.max_x() - hint_size.x(),
@@ -2234,7 +2234,7 @@ impl LayoutState {
             let row = view_snapshot.rightmost_point(app).row();
             let longest_line_width = view_snapshot
                 .layout_line(row, text_layout_cache, app)
-                .expect("Should have layout line")
+                .expect(crate::tr!("editor", "should-have-layout-line"))
                 .width;
             longest_line_width.max(self.max_visible_line_width) + view_snapshot.em_width
         } else {
@@ -2343,7 +2343,7 @@ impl PaintState {
         let line = layout
             .frame_layouts
             .get_line(row as usize)
-            .expect("Should be clamped to last possible line");
+            .expect(crate::tr!("editor", "should-be-clamped-to-last-possible-line"));
 
         let x = shifted_position.x() + (scroll_position.x() * view_snapshot.em_width);
 

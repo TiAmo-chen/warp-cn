@@ -1179,11 +1179,11 @@ impl TerminalView {
             .text_selection_range(semantic_selection, input_mode.is_inverted_blocklist())
         {
             let Some(start) = start.to_session_sharing_block_point(model_lock.block_list()) else {
-                report_error!("Failed convert start of selection range to BlockPoint");
+                report_error!(crate::tr!("terminal", "failed-convert-start-of-selection-range-to-blockpoint"));
                 return session_sharing_protocol::common::Selection::None;
             };
             let Some(end) = end.to_session_sharing_block_point(model_lock.block_list()) else {
-                report_error!("Failed convert end of selection range to BlockPoint");
+                report_error!(crate::tr!("terminal", "failed-convert-end-of-selection-range-to-blockpoint"));
                 return session_sharing_protocol::common::Selection::None;
             };
             return session_sharing_protocol::common::Selection::BlockText {
@@ -1610,7 +1610,7 @@ impl TerminalView {
         let Some(session_id) = session_id_opt else {
             let window_id = ctx.window_id();
             crate::workspace::ToastStack::handle(ctx).update(ctx, |toast_stack, ctx| {
-                let toast = DismissibleToast::error("Sharing link not yet available".to_string());
+                let toast = DismissibleToast::error(crate::tr!("terminal", "sharing-link-not-yet-available").to_string());
                 toast_stack.add_ephemeral_toast(toast, window_id, ctx);
             });
             return;
@@ -1925,7 +1925,7 @@ impl TerminalView {
                 .is_sharer_or_viewer()
         {
             log::warn!(
-                "Tried to open shared session reconnecting banner for a session that isn't shared"
+                crate::tr!("terminal", "tried-to-open-shared-session-reconnecting-banner-for-a-ses")
             );
             return;
         }

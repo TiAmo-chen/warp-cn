@@ -462,7 +462,7 @@ impl CommentListView {
             let comment_id = self
                 .pending_scroll_to_comment
                 .take()
-                .expect("pending scroll target was verified as present");
+                .expect(crate::tr!("code_review", "pending-scroll-target-was-verified-as-present")));
             self.ensure_outdated_section_expanded(comment_id, ctx);
             self.view_state
                 .scroll_state

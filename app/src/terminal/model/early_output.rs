@@ -148,7 +148,7 @@ impl EarlyOutput {
         if is_typeahead {
             self.typeahead.push(ch);
             safe_debug!(
-                safe: ("Matched PTY output as typeahead"),
+                safe: (crate::tr!("terminal", "matched-pty-output-as-typeahead")),
                 full: ("Matched {ch:?} as typeahead")
             );
 
@@ -191,7 +191,7 @@ impl EarlyOutput {
     pub fn precmd(&mut self) {
         // On precmd, clear accumulated typeahead for the previous command.
         safe_debug!(
-            safe: ("Clearing accumulated typeahead"),
+            safe: (crate::tr!("terminal", "clearing-accumulated-typeahead")),
             full: ("Clearing accumulated typeahead: {:?}", self.typeahead)
         );
         self.typeahead.clear();
@@ -273,7 +273,7 @@ impl EarlyOutputHandler<'_> {
             Some(mut block) => {
                 debug_assert!(
                     !block.started(),
-                    "Started background blocks should be in the block list"
+                    crate::tr!("terminal", "started-background-blocks-should-be-in-the-block-list")
                 );
                 let retval = f(&mut block);
                 store_pending_block(self.block_list, block);
@@ -356,7 +356,7 @@ impl ansi::Handler for EarlyOutputHandler<'_> {
             }
             me.event_proxy.send_app_event(TerminalEvent::Typeahead);
             safe_debug!(
-                safe: ("Received shell input buffer for typeahead"),
+                safe: (crate::tr!("terminal", "received-shell-input-buffer-for-typeahead")),
                 full: ("Received shell input buffer for typeahead: {:?}", me.typeahead)
             );
         }
@@ -377,7 +377,7 @@ impl ansi::Handler for EarlyOutputHandler<'_> {
             if self.inner().mode == TypeaheadMode::InputMatching {
                 let command = mem::take(&mut self.inner().typeahead);
                 safe_debug!(
-                    safe: ("Initializing command grid from matched typeahead"),
+                    safe: (crate::tr!("terminal", "initializing-command-grid-from-matched-typeahead")),
                     full: ("Initializing command grid from matched typeahead: {command:?}")
                 );
                 self.block_list.active_block_mut().init_command(command);

@@ -27,7 +27,7 @@ const LOCAL_CONTROL_MODE_STORAGE_KEY: &str = "LocalControlMode";
     settings_value::SettingsValue,
 )]
 #[schemars(
-    description = "Whether local control is enabled.",
+    description = crate::tr!("settings", "whether-local-control-is-enabled"),
     rename_all = "snake_case"
 )]
 pub enum LocalControlMode {

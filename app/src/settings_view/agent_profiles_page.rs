@@ -1850,7 +1850,7 @@ pub fn init_actions_from_parent_view<T: Action + Clone>(
     ToggleSettingActionPair::add_toggle_setting_action_pairs_as_bindings(
         vec![
             ToggleSettingActionPair::new(
-                "model picker in prompt",
+                crate::tr!("settings", "model-picker-in-prompt"),
                 builder(SettingsAction::AgentProfiles(
                     AgentProfilesPageAction::ToggleShowBaseModelPickerInPrompt,
                 )),
@@ -1864,7 +1864,7 @@ pub fn init_actions_from_parent_view<T: Action + Clone>(
     if !FeatureFlag::FullSourceCodeEmbedding.is_enabled() {
         ToggleSettingActionPair::add_toggle_setting_action_pairs_as_bindings(
             vec![ToggleSettingActionPair::new(
-                "codebase index",
+                crate::tr!("settings", "codebase-index"),
                 builder(SettingsAction::AgentProfiles(
                     AgentProfilesPageAction::ToggleCodebaseContext,
                 )),
@@ -2108,7 +2108,7 @@ impl SettingsWidget for UsageWidget {
     type View = AgentProfilesPageView;
 
     fn search_terms(&self) -> &str {
-        "a.i. ai usage limit plan"
+        crate::tr!("settings", "a-i-ai-usage-limit-plan")
     }
 
     fn render(
@@ -2277,9 +2277,9 @@ impl SettingsWidget for AgentsWidget {
 
     fn search_terms(&self) -> &str {
         if should_show_mcp_servers() {
-            "ai a.i. agent autonomy profiles allowlist denylist autoexecute permissions models llms planning mcp server"
+            crate::tr!("settings", "ai-a-i-agent-autonomy-profiles-allowlist-denylist-autoexec")
         } else {
-            "ai a.i. agent autonomy profiles allowlist denylist autoexecute permissions models llms planning"
+            crate::tr!("settings", "ai-a-i-agent-autonomy-profiles-allowlist-denylist-autoexec-6310af")
         }
     }
 

@@ -96,7 +96,7 @@ impl std::fmt::Display for SettingsFileError {
     fn fmt(&self, f: &mut std::fmt::Formatter<'_>) -> std::fmt::Result {
         match self {
             Self::FileParseFailed(_) => {
-                write!(f, "Couldn't parse due to invalid syntax")
+                write!(f, crate::tr!("settings", "couldn-t-parse-due-to-invalid-syntax"))
             }
             Self::InvalidSettings(keys) => match keys.as_slice() {
                 [key] => write!(f, "Invalid value for '{key}'"),
@@ -390,7 +390,7 @@ impl QuakeModeSettings {
         self.size_percentages_for_pin_position(&self.active_pin_position)
             != *DEFAULT_QUAKE_MODE_SIZE_PERCENTAGES
                 .get(&self.active_pin_position)
-                .expect("Default should have every pin position")
+                .expect(crate::tr!("settings", "default-should-have-every-pin-position"))
     }
 
     pub fn size_percentages_for_pin_position(
@@ -403,7 +403,7 @@ impl QuakeModeSettings {
             .unwrap_or_else(|| {
                 DEFAULT_QUAKE_MODE_SIZE_PERCENTAGES
                     .get(&self.active_pin_position)
-                    .expect("Default should have every pin position")
+                    .expect(crate::tr!("settings", "default-should-have-every-pin-position"))
             })
     }
 
@@ -484,7 +484,7 @@ impl QuakeModeSettings {
     settings_value::SettingsValue,
 )]
 #[schemars(
-    description = "When to adjust foreground color to ensure readability against the background.",
+    description = crate::tr!("settings", "when-to-adjust-foreground-color-to-ensure-readability-agai"),
     rename_all = "snake_case"
 )]
 pub enum EnforceMinimumContrast {

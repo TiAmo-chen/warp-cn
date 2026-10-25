@@ -214,11 +214,11 @@ pub fn prompt_chip_logging_workflow(shell_family: ShellFamily) -> Option<Workflo
     }
     let log_file_path = crate::context_chips::logging::log_file_path().ok()?;
     Some(Workflow::Command {
-        name: "Tail prompt chip log".into(),
+        name: crate::tr!("workflows", "tail-prompt-chip-log").into(),
         command: tail_command_for_shell(shell_family, &log_file_path),
         tags: vec!["warp".into(), "debug".into()],
         description: Some(
-            "Shows the diagnostic log of shell commands run by prompt context chips (dogfood only)"
+            crate::tr!("workflows", "shows-the-diagnostic-log-of-shell-commands-run-by-prompt-c")
                 .into(),
         ),
         arguments: vec![],

@@ -20,7 +20,7 @@ use warpui::clipboard::ClipboardContent;
     settings_value::SettingsValue,
 )]
 #[schemars(
-    description = "What a bare right-click does in the terminal.",
+    description = crate::tr!("settings", "what-a-bare-right-click-does-in-the-terminal"),
     rename_all = "snake_case"
 )]
 pub enum RightClickBehavior {
@@ -34,8 +34,8 @@ pub enum RightClickBehavior {
 impl RightClickBehavior {
     pub fn as_dropdown_label(&self) -> &str {
         match self {
-            Self::ContextMenu => "Open the context menu",
-            Self::Paste => "Paste from the clipboard",
+            Self::ContextMenu => crate::tr!("settings", "open-the-context-menu"),
+            Self::Paste => crate::tr!("settings", "paste-from-the-clipboard"),
         }
     }
 }

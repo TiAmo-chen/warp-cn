@@ -831,7 +831,7 @@ impl GlobalBufferModel {
                         full: ("[remote-buffer] No remote server client for save: host={host_id:?}")
                     );
                     return Err(FileSaveError::RemoteError(
-                        "No remote server client available".to_string(),
+                        crate::tr!("code", "no-remote-server-client-available").to_string(),
                     ));
                 };
                 batch.flush(client, &path);
@@ -1816,7 +1816,7 @@ impl GlobalBufferModel {
                     safe: ("[remote-buffer] No result in OpenBuffer response"),
                     full: ("[remote-buffer] No result in OpenBuffer response for file_id={file_id:?}")
                 );
-                "No result in OpenBuffer response".to_string()
+                crate::tr!("code", "no-result-in-openbuffer-response").to_string()
             })
         });
         match res {
@@ -1977,10 +1977,10 @@ impl GlobalBufferModel {
         ctx: &mut ModelContext<Self>,
     ) -> Result<(), FileSaveError> {
         let Some(state) = self.buffers.get(&file_id) else {
-            return Err(FileSaveError::RemoteError("Buffer not found".to_string()));
+            return Err(FileSaveError::RemoteError(crate::tr!("code", "buffer-not-found").to_string()));
         };
         let Some(buffer) = state.buffer.upgrade(ctx) else {
-            return Err(FileSaveError::RemoteError("Buffer deallocated".to_string()));
+            return Err(FileSaveError::RemoteError(crate::tr!("code", "buffer-deallocated").to_string()));
         };
         let content = buffer.as_ref(ctx).text().into_string();
         let version = buffer.as_ref(ctx).version();
@@ -2004,7 +2004,7 @@ impl GlobalBufferModel {
         ctx: &mut ModelContext<Self>,
     ) -> Result<(), FileSaveError> {
         let Some(state) = self.buffers.get_mut(&file_id) else {
-            return Err(FileSaveError::RemoteError("Buffer not found".to_string()));
+            return Err(FileSaveError::RemoteError(crate::tr!("code", "buffer-not-found").to_string()));
         };
 
         if let BufferSource::ServerLocal { sync_clock, .. } = &mut state.source {
@@ -2013,7 +2013,7 @@ impl GlobalBufferModel {
         }
 
         let Some(buffer) = state.buffer.upgrade(ctx) else {
-            return Err(FileSaveError::RemoteError("Buffer deallocated".to_string()));
+            return Err(FileSaveError::RemoteError(crate::tr!("code", "buffer-deallocated").to_string()));
         };
 
         let new_version = ContentVersion::new();

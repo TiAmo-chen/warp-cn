@@ -85,7 +85,7 @@ const INDEXING_DISABLED_GLOBAL_AI_TEXT: &str =
 const CODEBASE_INDEX_LIMIT_REACHED: &str = "You have reached the maximum number of codebase indices for your plan. Delete existing indices to auto-index new codebases.";
 #[cfg(not(target_family = "wasm"))]
 const REMOTE_CODEBASE_INDEX_LIMIT_REACHED_FAILURE: &str =
-    "maximum number of codebase indexes has been reached";
+    crate::tr!("settings", "maximum-number-of-codebase-indexes-has-been-reached");
 
 const PAGE_TITLE: &str = "Codebase Indexing";
 
@@ -713,7 +713,7 @@ pub fn init_actions_from_parent_view<T: Action + Clone>(
     if FeatureFlag::FullSourceCodeEmbedding.is_enabled() {
         ToggleSettingActionPair::add_toggle_setting_action_pairs_as_bindings(
             vec![ToggleSettingActionPair::new(
-                "codebase index",
+                crate::tr!("settings", "codebase-index"),
                 builder(SettingsAction::CodeIndexing(
                     CodeIndexingPageAction::ToggleCodebaseContext,
                 )),
@@ -747,7 +747,7 @@ impl SettingsWidget for CodePageWidget {
     type View = CodeIndexingPageView;
 
     fn search_terms(&self) -> &str {
-        "code coding codebase repository index indexing indices context path lsp language server"
+        crate::tr!("settings", "code-coding-codebase-repository-index-indexing-indices-con")
     }
 
     fn render(
@@ -2185,7 +2185,7 @@ impl SettingsWidget for CodeIndexingPageWidget {
     type View = CodeIndexingPageView;
 
     fn search_terms(&self) -> &str {
-        "codebase index indexing repository code context embedding auto-index lsp language server"
+        crate::tr!("settings", "codebase-index-indexing-repository-code-context-embedding")
     }
 
     fn render(

@@ -126,7 +126,7 @@ impl<T: Action + Clone> SearchResultsMenuView<T> {
         let build_items = move |range: Range<usize>, app: &AppContext| {
             let search_results_menu = view_handle
                 .upgrade(app)
-                .expect("View handle should be upgradeable.");
+                .expect(crate::tr!("search", "view-handle-should-be-upgradeable"));
             let search_results_menu_ref = search_results_menu.as_ref(app);
             let query_result_renderers = search_results_menu_ref
                 .search_bar_state

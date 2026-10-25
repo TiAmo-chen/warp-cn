@@ -555,7 +555,7 @@ impl RepositoryState {
         let CodeReviewViewState::Loaded(loaded_state) =
             mem::replace(&mut self.state, CodeReviewViewState::None)
         else {
-            unreachable!("state was verified as Loaded");
+            unreachable!(crate::tr!("code_review", "state-was-verified-as-loaded")));
         };
 
         Some(loaded_state)
@@ -1062,7 +1062,7 @@ impl CodeReviewView {
             move |index, scroll_offset, app| {
                 let view_handle = render_handle
                     .upgrade(app)
-                    .expect("CodeReviewView dropped during render");
+                    .expect(crate::tr!("code_review", "codereviewview-dropped-during-render")));
                 view_handle
                     .as_ref(app)
                     .render_diff_at_index(index, scroll_offset, app)
@@ -1719,7 +1719,7 @@ impl CodeReviewView {
 
     #[cfg(target_family = "wasm")]
     fn update_search_decorations(&mut self, _ctx: &mut ViewContext<Self>) {
-        unreachable!("Code review is not available on wasm")
+        unreachable!(crate::tr!("code_review", "code-review-is-not-available-on-wasm")))
     }
 
     fn open_review_comment_composer(
@@ -1803,7 +1803,7 @@ impl CodeReviewView {
 
     fn handle_edit_comment(&mut self, comment_id: &CommentId, ctx: &mut ViewContext<Self>) {
         let Some(comment) = self.get_comment_by_id(*comment_id, ctx) else {
-            report_error!("Couldn't find code review comment by ID");
+            report_error!(crate::tr!("code_review", "couldn-t-find-code-review-comment-by-id")));
             return;
         };
 
@@ -1827,7 +1827,7 @@ impl CodeReviewView {
 
                 let Some(editor_state) = &file_state.editor_state.as_ref() else {
                     report_error!(
-                        "CodeReviewView could not fetch editor for file",
+                        crate::tr!("code_review", "codereviewview-could-not-fetch-editor-for-file")),
                         extra: { "file_path" => ?file_state.file_diff.file_path }
                     );
                     return;
@@ -2492,7 +2492,7 @@ impl CodeReviewView {
             DiffState::Loading => {
                 if let Some(repo) = self.active_repo.as_mut() {
                     log::info!(
-                        "Code Review Panel: Setting state to loading after receiving 'loading' message."
+                        crate::tr!("code_review", "code-review-panel-setting-state-to-loading-after-receiving"))
                     );
                     repo.state = CodeReviewViewState::None;
                 }
@@ -2506,7 +2506,7 @@ impl CodeReviewView {
                 // the loading spinner.
                 if let Some(repo) = self.active_repo.as_mut() {
                     log::info!(
-                        "Code Review Panel: Setting state to no repo found after receiving 'not in repository' message."
+                        crate::tr!("code_review", "code-review-panel-setting-state-to-no-repo-found-after-rec"))
                     );
                     repo.state = CodeReviewViewState::NoRepoFound;
                 }
@@ -2534,7 +2534,7 @@ impl CodeReviewView {
             // before this earlier NewDiffsComputed(None) was processed.
             // Preserve the existing view state rather than clobbering it.
             log::info!(
-                "Code Review Panel: Ignoring NewDiffsComputed(None) for already-loaded model"
+                crate::tr!("code_review", "code-review-panel-ignoring-newdiffscomputed-none-for-alrea"))
             );
             return;
         };
@@ -3255,7 +3255,7 @@ impl CodeReviewView {
                 // honest.
                 let Some(file_location) = editor.as_ref(ctx).file_location().cloned() else {
                     report_error!(
-                        "Attempted to attach code review comment to a LocalCodeEditorView without a file path"
+                        crate::tr!("code_review", "attempted-to-attach-code-review-comment-to-a-localcodeedit"))
                     );
                     return;
                 };
@@ -3296,7 +3296,7 @@ impl CodeReviewView {
                     }
                     AttachedReviewCommentTarget::File { .. }
                     | AttachedReviewCommentTarget::General => {
-                        report_error!("Tried to reopen a non-line review comment.");
+                        report_error!(crate::tr!("code_review", "tried-to-reopen-a-non-line-review-comment")));
                     }
                 }
             }
@@ -5932,7 +5932,7 @@ impl CodeReviewView {
                     Ok(base) => base,
                     Err(err) => {
                         report_error!(err.context(
-                            "CodeReviewView could not find diff base when attaching diff as context"
+                            crate::tr!("code_review", "codereviewview-could-not-find-diff-base-when-attaching-dif"))
                         ));
                         return;
                     }
@@ -6616,7 +6616,7 @@ impl CodeReviewView {
                         Some(if disabled {
                             crate::tr!("code_review", "no-changes-to-commit")
                         } else {
-                            "Commit changes locally"
+                            crate::tr!("code_review", "commit-changes-locally"))
                         }),
                         ctx,
                     );
@@ -6639,7 +6639,7 @@ impl CodeReviewView {
                     button.set_label("Push", ctx);
                     button.set_icon(Some(Icon::ArrowUp), ctx);
                     button.set_disabled(false, ctx);
-                    button.set_tooltip(Some("Push commits to remote"), ctx);
+                    button.set_tooltip(Some(crate::tr!("code_review", "push-commits-to-remote"))), ctx);
                     button.set_on_click(
                         |ctx| ctx.dispatch_typed_action(CodeReviewAction::OpenPushDialog),
                         ctx,
@@ -6655,7 +6655,7 @@ impl CodeReviewView {
                     button.set_label(crate::tr!("code_editor", "code-review-create-pr"), ctx);
                     button.set_icon(Some(Icon::Github), ctx);
                     button.set_disabled(false, ctx);
-                    button.set_tooltip(Some("Create a pull request"), ctx);
+                    button.set_tooltip(Some(crate::tr!("code_review", "create-a-pull-request"))), ctx);
                     button.set_on_click(
                         |ctx| ctx.dispatch_typed_action(CodeReviewAction::OpenCreatePrDialog),
                         ctx,
@@ -6678,7 +6678,7 @@ impl CodeReviewView {
                             Some(if is_pr_info_refreshing {
                                 crate::tr!("code_review", "refreshing-pr-info")
                             } else {
-                                "View pull request on GitHub"
+                                crate::tr!("code_review", "view-pull-request-on-github"))
                             }),
                             ctx,
                         );
@@ -6697,7 +6697,7 @@ impl CodeReviewView {
                     button.set_label("Publish", ctx);
                     button.set_icon(Some(Icon::UploadCloud), ctx);
                     button.set_disabled(false, ctx);
-                    button.set_tooltip(Some("Publish branch to remote"), ctx);
+                    button.set_tooltip(Some(crate::tr!("code_review", "publish-branch-to-remote"))), ctx);
                     button.set_on_click(
                         |ctx| ctx.dispatch_typed_action(CodeReviewAction::PublishBranch),
                         ctx,

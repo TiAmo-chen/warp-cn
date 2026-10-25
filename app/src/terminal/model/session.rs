@@ -765,7 +765,7 @@ impl SessionInfo {
             Some(value) => {
                 if value != self.shell.shell_type() {
                     report_error!(
-                        "Received ShellType in BootstrappedValue that conflicts with pending ShellType",
+                        crate::tr!("terminal", "received-shelltype-in-bootstrappedvalue-that-conflicts-wit"),
                         extra: { "value" => ?value, "pending" => ?self.shell.shell_type() }
                     );
                 }
@@ -1634,7 +1634,7 @@ impl Session {
 
         let output = self
             .execute_command(
-                "git --no-optional-locks branch --no-color",
+                crate::tr!("terminal", "git-no-optional-locks-branch-no-color"),
                 Some(working_dir),
                 env_vars,
                 ExecuteCommandOptions::default(),

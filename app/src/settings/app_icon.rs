@@ -21,7 +21,7 @@ use warp_core::settings::{SupportedPlatforms, SyncToCloud};
     settings_value::SettingsValue,
 )]
 #[schemars(
-    description = "The app icon displayed in the dock.",
+    description = crate::tr!("settings", "the-app-icon-displayed-in-the-dock"),
     rename_all = "snake_case"
 )]
 pub enum AppIcon {

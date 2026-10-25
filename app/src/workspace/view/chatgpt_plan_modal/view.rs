@@ -136,7 +136,7 @@ impl ChatGPTPlanModal {
         });
 
         let manage_usage_button = ctx.add_view(|_ctx| {
-            ActionButton::new("Manage usage", ManageUsageButtonTheme)
+            ActionButton::new(crate::tr!("settings", "manage-usage")), ManageUsageButtonTheme)
                 .with_icon(Icon::LinkExternal)
                 .with_full_width(true)
                 .on_click(|ctx| ctx.dispatch_typed_action(ChatGPTPlanModalAction::ManageUsage))
@@ -168,7 +168,7 @@ impl ChatGPTPlanModal {
 
     fn render_title(appearance: &Appearance) -> Box<dyn Element> {
         Text::new(
-            "You're using your ChatGPT plan",
+            crate::tr!("workspace", "you-re-using-your-chatgpt-plan"),
             appearance.ui_font_family(),
             20.,
         )

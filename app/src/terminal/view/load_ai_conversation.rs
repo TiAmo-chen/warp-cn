@@ -860,14 +860,14 @@ impl TerminalView {
         match &restore_context_state {
             RestorationDirState::MissingOriginalDir => {
                 items.push(MessageItem::text(
-                    "couldn't find original conversation directory ",
+                    crate::tr!("terminal", "couldn-t-find-original-conversation-directory"),
                 ));
                 items.push(open_repo_hint.clone());
                 items.push(MessageItem::text(" change repos"));
             }
             RestorationDirState::NeedsCd { .. } => {
                 items.push(MessageItem::text(
-                    "changed directory to continue conversation ",
+                    crate::tr!("terminal", "changed-directory-to-continue-conversation"),
                 ));
                 items.push(open_repo_hint.clone());
                 items.push(MessageItem::text(" change repos"));
@@ -1105,7 +1105,7 @@ impl TerminalView {
                 .not()
                 .then_some(content.plain_text))
         else {
-            report_error!("Clipboard contents are not a conversation debug link");
+            report_error!(crate::tr!("terminal", "clipboard-contents-are-not-a-conversation-debug-link"));
             return;
         };
 

@@ -280,7 +280,7 @@ impl CLIAgent {
 
     pub fn display_name(&self) -> &'static str {
         match self {
-            CLIAgent::Claude => "Claude Code",
+            CLIAgent::Claude => crate::tr!("terminal", "claude-code"),
             CLIAgent::Gemini => "Gemini",
             CLIAgent::Codex => "Codex",
             CLIAgent::Amp => "Amp",
@@ -293,13 +293,13 @@ impl CLIAgent {
             CLIAgent::CursorCli => "Cursor",
             CLIAgent::Goose => "Goose",
             CLIAgent::Hermes => "Hermes",
-            CLIAgent::Vibe => "Mistral Vibe",
+            CLIAgent::Vibe => crate::tr!("terminal", "mistral-vibe"),
             CLIAgent::Antigravity => "Antigravity",
-            CLIAgent::Grok => "Grok Build",
-            CLIAgent::Kiro => "Kiro CLI",
-            CLIAgent::Muse => "Muse Code",
-            CLIAgent::WarpTui => "Warp TUI",
-            CLIAgent::Unknown => "CLI Agent",
+            CLIAgent::Grok => crate::tr!("terminal", "grok-build"),
+            CLIAgent::Kiro => crate::tr!("terminal", "kiro-cli"),
+            CLIAgent::Muse => crate::tr!("terminal", "muse-code"),
+            CLIAgent::WarpTui => crate::tr!("terminal", "warp-tui"),
+            CLIAgent::Unknown => crate::tr!("terminal", "cli-agent"),
         }
     }
 
@@ -515,7 +515,7 @@ impl CLIAgent {
     /// We special-case this so Uber employees get the toolbar without needing
     /// to configure anything.
     fn is_aifx_agent_run_claude(resolved_command: &str, ctx: &AppContext) -> bool {
-        resolved_command.starts_with("aifx agent run claude")
+        resolved_command.starts_with(crate::tr!("terminal", "aifx-agent-run-claude"))
             && Self::is_on_uber_team(UserWorkspaces::as_ref(ctx))
     }
 

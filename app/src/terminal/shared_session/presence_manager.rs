@@ -542,7 +542,7 @@ impl PresenceManager {
         let Some(participant) = participant else {
             if self.id != update.participant_id {
                 log::warn!(
-                    "Received shared session participant presence update for participant that doesn't exist"
+                    crate::tr!("terminal", "received-shared-session-participant-presence-update-for-pa")
                 );
             }
             return;
@@ -565,7 +565,7 @@ impl PresenceManager {
         } else {
             let Some(participant) = self.present_viewers.get_mut(participant_id) else {
                 log::warn!(
-                    "Received shared session participant role update for participant that doesn't exist"
+                    crate::tr!("terminal", "received-shared-session-participant-role-update-for-partic")
                 );
                 return;
             };
@@ -649,7 +649,7 @@ impl PresenceManager {
         self.block_id_to_participants_selected.clear();
         let participants = if self.sharer.is_some() {
             Either::Left(
-                iter::once(self.sharer.as_ref().expect("sharer should exist"))
+                iter::once(self.sharer.as_ref().expect(crate::tr!("terminal", "sharer-should-exist")))
                     .chain(self.present_viewers.values()),
             )
         } else {

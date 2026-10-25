@@ -77,7 +77,7 @@ impl<A: InlineMenuAction, T: 'static + Send + Sync> View for InlineMenuMessageBa
                     app,
                 })
             })
-            .expect("Empty message producer always returns Some().");
+            .expect(crate::tr!("terminal", "empty-message-producer-always-returns-some"));
 
         let message_bar = render_standard_message_bar(message, None, app);
         if !self.agent_view_controller.as_ref(app).is_active() {

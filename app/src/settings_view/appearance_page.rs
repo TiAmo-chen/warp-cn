@@ -140,7 +140,7 @@ pub fn init_actions_from_parent_view<T: Action + Clone>(
             flags::COMPACT_MODE_CONTEXT_FLAG,
         ),
         ToggleSettingActionPair::new(
-            "themes: sync with OS",
+            crate::tr!("settings", "themes-sync-with-os"),
             builder(SettingsAction::AppearancePageToggle(
                 AppearancePageAction::ToggleRespectSystemTheme,
             )),
@@ -266,7 +266,7 @@ pub fn init_actions_from_parent_view<T: Action + Clone>(
     ));
 
     toggle_binding_pairs.push(ToggleSettingActionPair::new(
-        "tools panel visibility across tabs",
+        crate::tr!("settings", "tools-panel-visibility-across-tabs"),
         builder(SettingsAction::AppearancePageToggle(
             AppearancePageAction::ToggleLeftPanelVisibility,
         )),
@@ -275,7 +275,7 @@ pub fn init_actions_from_parent_view<T: Action + Clone>(
     ));
 
     toggle_binding_pairs.push(ToggleSettingActionPair::new(
-        "agent font matching terminal font",
+        crate::tr!("settings", "agent-font-matching-terminal-font"),
         builder(SettingsAction::AppearancePageToggle(
             AppearancePageAction::ToggleMatchAIToTerminalFontFamily,
         )),
@@ -284,7 +284,7 @@ pub fn init_actions_from_parent_view<T: Action + Clone>(
     ));
 
     toggle_binding_pairs.push(ToggleSettingActionPair::new(
-        "notebook font size matching terminal font size",
+        crate::tr!("settings", "notebook-font-size-matching-terminal-font-size"),
         builder(SettingsAction::AppearancePageToggle(
             AppearancePageAction::ToggleMatchNotebookToMonospaceFontSize,
         )),
@@ -395,7 +395,7 @@ pub fn init_actions_from_parent_view<T: Action + Clone>(
             flags::SHOW_VERTICAL_TAB_PANEL_IN_RESTORED_WINDOWS_FLAG,
         ));
         toggle_binding_pairs.push(ToggleSettingActionPair::new(
-            "latest user prompt as conversation title in tab names",
+            crate::tr!("settings", "latest-user-prompt-as-conversation-title-in-tab-names"),
             builder(SettingsAction::AppearancePageToggle(
                 AppearancePageAction::ToggleUseLatestUserPromptAsConversationTitleInTabNames,
             )),
@@ -425,7 +425,7 @@ pub fn init_actions_from_parent_view<T: Action + Clone>(
     ));
 
     toggle_binding_pairs.push(ToggleSettingActionPair::new(
-        "custom padding in alt-screen",
+        crate::tr!("settings", "custom-padding-in-alt-screen"),
         builder(SettingsAction::AppearancePageToggle(
             AppearancePageAction::ToggleAltScreenPadding,
         )),
@@ -2817,7 +2817,7 @@ impl SettingsWidget for CreateCustomThemeWidget {
     type View = AppearanceSettingsPageView;
 
     fn search_terms(&self) -> &str {
-        "create theme create custom theme"
+        crate::tr!("settings", "create-theme-create-custom-theme")
     }
 
     fn render(
@@ -2944,7 +2944,7 @@ impl SettingsWidget for ThemeSelectWidget {
     type View = AppearanceSettingsPageView;
 
     fn search_terms(&self) -> &str {
-        "sync with os theme themes background backgrounds color colors customize"
+        crate::tr!("settings", "sync-with-os-theme-themes-background-backgrounds-color-col")
     }
 
     fn render(
@@ -3041,7 +3041,7 @@ impl SettingsWidget for CustomAppIconWidget {
     type View = AppearanceSettingsPageView;
 
     fn search_terms(&self) -> &str {
-        "customize custom app icon icons dock cmd tab app switcher"
+        crate::tr!("settings", "customize-custom-app-icon-icons-dock-cmd-tab-app-switcher")
     }
 
     fn render(
@@ -3160,7 +3160,7 @@ impl SettingsWidget for CustomWindowSizeWidget {
     type View = AppearanceSettingsPageView;
 
     fn search_terms(&self) -> &str {
-        "open windows with custom size"
+        crate::tr!("settings", "open-windows-with-custom-size")
     }
 
     fn render(
@@ -3283,7 +3283,7 @@ impl SettingsWidget for WindowOpacityWidget {
     type View = AppearanceSettingsPageView;
 
     fn search_terms(&self) -> &str {
-        "window opacity transparency"
+        crate::tr!("settings", "window-opacity-transparency")
     }
 
     fn render(
@@ -3413,7 +3413,7 @@ impl SettingsWidget for WindowBlurWidget {
     type View = AppearanceSettingsPageView;
 
     fn search_terms(&self) -> &str {
-        "window blur radius"
+        crate::tr!("settings", "window-blur-radius")
     }
 
     fn render(
@@ -3477,7 +3477,7 @@ impl SettingsWidget for WindowBackdropWidget {
     type View = AppearanceSettingsPageView;
 
     fn search_terms(&self) -> &str {
-        "window backdrop material blur acrylic mica"
+        crate::tr!("settings", "window-backdrop-material-blur-acrylic-mica")
     }
 
     fn render(
@@ -3490,7 +3490,7 @@ impl SettingsWidget for WindowBackdropWidget {
             appearance,
             &crate::tr!("settings", "window-backdrop"),
             (*WindowSettings::as_ref(app).background_opacity == BackgroundOpacity::MAX)
-                .then_some("Backdrop is not visible at opacity 100%"),
+                .then_some(crate::tr!("settings", "backdrop-is-not-visible-at-opacity-100")),
             None,
             LocalOnlyIconState::for_setting(
                 BackgroundBackdrop::storage_key(),
@@ -3535,7 +3535,7 @@ impl SettingsWidget for ToolsPanelStateScopeWidget {
     type View = AppearanceSettingsPageView;
 
     fn search_terms(&self) -> &str {
-        "left tools panel open closed across tabs file tree project explorer global search warp drive conversation list"
+        crate::tr!("settings", "left-tools-panel-open-closed-across-tabs-file-tree-project")
     }
 
     fn render(
@@ -3589,7 +3589,7 @@ impl SettingsWidget for ToolsPanelProjectExplorerWidget {
     type View = AppearanceSettingsPageView;
 
     fn search_terms(&self) -> &str {
-        "tools panel tabs file explorer project explorer file tree left panel visibility"
+        crate::tr!("settings", "tools-panel-tabs-file-explorer-project-explorer-file-tree")
     }
 
     fn render(
@@ -3635,7 +3635,7 @@ impl SettingsWidget for ToolsPanelConversationHistoryWidget {
     type View = AppearanceSettingsPageView;
 
     fn search_terms(&self) -> &str {
-        "tools panel tabs conversation history agent conversations left panel visibility"
+        crate::tr!("settings", "tools-panel-tabs-conversation-history-agent-conversations")
     }
 
     fn render(
@@ -3681,7 +3681,7 @@ impl SettingsWidget for ToolsPanelGlobalSearchWidget {
     type View = AppearanceSettingsPageView;
 
     fn search_terms(&self) -> &str {
-        "tools panel tabs global file search left panel visibility"
+        crate::tr!("settings", "tools-panel-tabs-global-file-search-left-panel-visibility")
     }
 
     fn render(
@@ -3726,7 +3726,7 @@ impl SettingsWidget for ToolsPanelWarpDriveWidget {
     type View = AppearanceSettingsPageView;
 
     fn search_terms(&self) -> &str {
-        "tools panel tabs warp drive left panel visibility"
+        crate::tr!("settings", "tools-panel-tabs-warp-drive-left-panel-visibility")
     }
 
     fn render(
@@ -3771,7 +3771,7 @@ impl SettingsWidget for InputTypeWidget {
     type View = AppearanceSettingsPageView;
 
     fn search_terms(&self) -> &str {
-        "input type warp universal classic style prompt terminal ai developer mode interface shell chips ps1"
+        crate::tr!("settings", "input-type-warp-universal-classic-style-prompt-terminal-ai")
     }
 
     fn render(
@@ -3825,7 +3825,7 @@ impl SettingsWidget for InputModeWidget {
     type View = AppearanceSettingsPageView;
 
     fn search_terms(&self) -> &str {
-        "input mode input position pinned top bottom classic waterfall reverse"
+        crate::tr!("settings", "input-mode-input-position-pinned-top-bottom-classic-waterf")
     }
 
     fn render(
@@ -3860,7 +3860,7 @@ impl SettingsWidget for PromptWidget {
     type View = AppearanceSettingsPageView;
 
     fn search_terms(&self) -> &str {
-        "prompt ps1 terminal warp shell custom"
+        crate::tr!("settings", "prompt-ps1-terminal-warp-shell-custom")
     }
 
     fn render(
@@ -4034,7 +4034,7 @@ impl SettingsWidget for CompactModeWidget {
     type View = AppearanceSettingsPageView;
 
     fn search_terms(&self) -> &str {
-        "compact mode spacing padding"
+        crate::tr!("settings", "compact-mode-spacing-padding")
     }
 
     fn render(
@@ -4131,7 +4131,7 @@ impl SettingsWidget for ShowBlockDividersWidget {
     type View = AppearanceSettingsPageView;
 
     fn search_terms(&self) -> &str {
-        "show block dividers"
+        crate::tr!("settings", "show-block-dividers-271c64")
     }
 
     fn render(
@@ -4176,7 +4176,7 @@ impl SettingsWidget for AIFontWidget {
     type View = AppearanceSettingsPageView;
 
     fn search_terms(&self) -> &str {
-        "text agent ai font family font size monospace"
+        crate::tr!("settings", "text-agent-ai-font-family-font-size-monospace")
     }
 
     fn render(
@@ -4337,7 +4337,7 @@ impl SettingsWidget for TerminalFontWidget {
     type View = AppearanceSettingsPageView;
 
     fn search_terms(&self) -> &str {
-        "text terminal font family font size line height monospace"
+        crate::tr!("settings", "text-terminal-font-family-font-size-line-height-monospace")
     }
 
     fn render(
@@ -4506,7 +4506,7 @@ impl SettingsWidget for NotebookFontSizeWidget {
     type View = AppearanceSettingsPageView;
 
     fn search_terms(&self) -> &str {
-        "text notebook font size"
+        crate::tr!("settings", "text-notebook-font-size")
     }
 
     fn render(
@@ -4598,7 +4598,7 @@ impl SettingsWidget for ThinStrokesWidget {
     type View = AppearanceSettingsPageView;
 
     fn search_terms(&self) -> &str {
-        "text thin strokes high dpi"
+        crate::tr!("settings", "text-thin-strokes-high-dpi")
     }
 
     fn render(
@@ -4631,7 +4631,7 @@ impl SettingsWidget for MinimumContrastWidget {
     type View = AppearanceSettingsPageView;
 
     fn search_terms(&self) -> &str {
-        "text minimum contrast high"
+        crate::tr!("settings", "text-minimum-contrast-high")
     }
 
     fn render(
@@ -4667,7 +4667,7 @@ impl SettingsWidget for LigaturesWidget {
     type View = AppearanceSettingsPageView;
 
     fn search_terms(&self) -> &str {
-        "text font ligatures"
+        crate::tr!("settings", "text-font-ligatures")
     }
 
     fn render(
@@ -4731,7 +4731,7 @@ impl SettingsWidget for CursorTypeWidget {
     type View = AppearanceSettingsPageView;
 
     fn search_terms(&self) -> &str {
-        "cursor shape cursor type block bar beam underline"
+        crate::tr!("settings", "cursor-shape-cursor-type-block-bar-beam-underline")
     }
 
     fn render(
@@ -4808,7 +4808,7 @@ impl SettingsWidget for BlinkingCursorWidget {
     type View = AppearanceSettingsPageView;
 
     fn search_terms(&self) -> &str {
-        "blinking cursor"
+        crate::tr!("settings", "blinking-cursor-21377a")
     }
 
     fn render(
@@ -4851,7 +4851,7 @@ impl SettingsWidget for TabCloseButtonPositionWidget {
     type View = AppearanceSettingsPageView;
 
     fn search_terms(&self) -> &str {
-        "tab bar close button position left right"
+        crate::tr!("settings", "tab-bar-close-button-position-left-right")
     }
 
     fn render(
@@ -4886,7 +4886,7 @@ impl SettingsWidget for TabIndicatorWidget {
     type View = AppearanceSettingsPageView;
 
     fn search_terms(&self) -> &str {
-        "tab indicator"
+        crate::tr!("settings", "tab-indicator")
     }
 
     fn render(
@@ -4931,7 +4931,7 @@ impl SettingsWidget for PreserveActiveTabColorWidget {
     type View = AppearanceSettingsPageView;
 
     fn search_terms(&self) -> &str {
-        "tab color preserve new inherit active"
+        crate::tr!("settings", "tab-color-preserve-new-inherit-active")
     }
 
     fn render(
@@ -4976,7 +4976,7 @@ impl SettingsWidget for VerticalTabsWidget {
     type View = AppearanceSettingsPageView;
 
     fn search_terms(&self) -> &str {
-        "vertical tabs sidebar layout"
+        crate::tr!("settings", "vertical-tabs-sidebar-layout")
     }
 
     fn render(
@@ -5021,7 +5021,7 @@ impl SettingsWidget for ShowVerticalTabPanelInRestoredWindowsWidget {
     type View = AppearanceSettingsPageView;
 
     fn search_terms(&self) -> &str {
-        "vertical tabs panel restore window session snapshot"
+        crate::tr!("settings", "vertical-tabs-panel-restore-window-session-snapshot")
     }
 
     fn render(
@@ -5071,7 +5071,7 @@ impl SettingsWidget for HideTitleBarSearchBarInVerticalTabsWidget {
     type View = AppearanceSettingsPageView;
 
     fn search_terms(&self) -> &str {
-        "hide title bar search bar vertical tabs chrome minimal"
+        crate::tr!("settings", "hide-title-bar-search-bar-vertical-tabs-chrome-minimal")
     }
 
     fn render(
@@ -5121,7 +5121,7 @@ impl SettingsWidget for UseLatestUserPromptAsConversationTitleInTabNamesWidget {
     type View = AppearanceSettingsPageView;
 
     fn search_terms(&self) -> &str {
-        "latest user prompt conversation title tab names vertical tabs oz third-party agent"
+        crate::tr!("settings", "latest-user-prompt-conversation-title-tab-names-vertical-t")
     }
 
     fn render(
@@ -5172,7 +5172,7 @@ impl SettingsWidget for EditToolbarWidget {
     type View = AppearanceSettingsPageView;
 
     fn search_terms(&self) -> &str {
-        "edit toolbar header panel buttons configure arrange layout chip chips rearrange re-arrange customize"
+        crate::tr!("settings", "edit-toolbar-header-panel-buttons-configure-arrange-layout")
     }
 
     fn render(
@@ -5272,7 +5272,7 @@ impl SettingsWidget for DirectoryTabColorsWidget {
     type View = AppearanceSettingsPageView;
 
     fn search_terms(&self) -> &str {
-        "directory tab color folder codebase repo"
+        crate::tr!("settings", "directory-tab-color-folder-codebase-repo")
     }
 
     fn render(
@@ -5430,7 +5430,7 @@ impl SettingsWidget for ZenModeWidget {
     type View = AppearanceSettingsPageView;
 
     fn search_terms(&self) -> &str {
-        "zen mode minimal tab bar window decoration"
+        crate::tr!("settings", "zen-mode-minimal-tab-bar-window-decoration")
     }
 
     fn render(
@@ -5466,7 +5466,7 @@ impl SettingsWidget for AltScreenPaddingWidget {
     type View = AppearanceSettingsPageView;
 
     fn search_terms(&self) -> &str {
-        "alt screen padding border space vim"
+        crate::tr!("settings", "alt-screen-padding-border-space-vim")
     }
 
     fn render(
@@ -5572,7 +5572,7 @@ impl SettingsWidget for ZoomLevelWidget {
     type View = AppearanceSettingsPageView;
 
     fn search_terms(&self) -> &str {
-        "zoom level zoom size scale"
+        crate::tr!("settings", "zoom-level-zoom-size-scale")
     }
 
     fn render(

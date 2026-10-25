@@ -143,7 +143,7 @@ impl View for WorkingDirectoryView {
             let items = Flex::column()
                 .with_cross_axis_alignment(CrossAxisAlignment::Stretch)
                 .with_children([
-                    ui_builder.label("New window").build().finish(),
+                    ui_builder.label(crate::tr!("settings", "new-window-e5dc8e")).build().finish(),
                     render_row(
                         &self.new_window_working_directory_dropdown,
                         &self.new_window_working_directory_editor,
@@ -160,7 +160,7 @@ impl View for WorkingDirectoryView {
                         config.new_tab.mode == WorkingDirectoryMode::CustomDir,
                         appearance,
                     ),
-                    ui_builder.label("Split pane").build().finish(),
+                    ui_builder.label(crate::tr!("settings", "split-pane-50e333")).build().finish(),
                     render_row(
                         &self.split_pane_working_directory_dropdown,
                         &self.split_pane_working_directory_editor,

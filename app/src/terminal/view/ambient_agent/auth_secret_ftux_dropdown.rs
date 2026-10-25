@@ -435,8 +435,8 @@ impl AuthSecretFtuxDropdown {
 
         items.push(MenuItem::Item(
             MenuItemFields::new_with_label(
-                "Skip (advanced)",
-                "Only if your key is already set in the environment (e.g. injected as a Kubernetes secret)",
+                crate::tr!("terminal", "skip-advanced"),
+                crate::tr!("terminal", "only-if-your-key-is-already-set-in-the-environment-e-g-inj"),
             )
             .with_font_size_override(FONT_SIZE)
             .with_padding_override(MENU_ITEM_VERTICAL_PADDING, MENU_HORIZONTAL_PADDING)

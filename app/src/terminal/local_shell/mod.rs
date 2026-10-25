@@ -344,7 +344,7 @@ async fn capture_interactive_shell_env(
     };
 
     if path.is_empty() {
-        Err(anyhow!("Interactive shell returned empty PATH"))
+        Err(anyhow!(crate::tr!("terminal", "interactive-shell-returned-empty-path")))
     } else {
         Ok(path.to_string())
     }

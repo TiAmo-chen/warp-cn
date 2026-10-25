@@ -681,7 +681,7 @@ impl Element for AltScreenElement {
         start_trace!("alt_screen_element:paint");
         self.bounds = Some(RectF::new(
             origin,
-            self.size.expect("Size should be set before paint"),
+            self.size.expect(crate::tr!("terminal", "size-should-be-set-before-paint")),
         ));
         self.origin = Some(UiPoint::from_vec2f(origin, ctx.scene.z_index()));
 
@@ -722,7 +722,7 @@ impl Element for AltScreenElement {
         let end_row = (start_row
             + self
                 .visible_lines
-                .expect("should be set after layout")
+                .expect(crate::tr!("terminal", "should-be-set-after-layout"))
                 .as_f64())
         .min(grid.visible_rows() as f64);
         let adjusted_grid_origin = origin - self.vertical_scroll_pixels();
@@ -797,13 +797,13 @@ impl Element for AltScreenElement {
             ctx.scene.start_layer(ClipBounds::ActiveLayer);
             let size = cli_subagent_view
                 .size()
-                .expect("Subagent output was laid out already.");
+                .expect(crate::tr!("terminal", "subagent-output-was-laid-out-already"));
             cli_subagent_view.paint(
                 vec2f(
-                    self.bounds.expect("bounds set during paint.").max_x()
+                    self.bounds.expect(crate::tr!("terminal", "bounds-set-during-paint")).max_x()
                         - CLI_SUBAGENT_HORIZONTAL_MARGIN
                         - size.x(),
-                    self.bounds.expect("bounds set during paint.").max_y()
+                    self.bounds.expect(crate::tr!("terminal", "bounds-set-during-paint")).max_y()
                         - CLI_SUBAGENT_VERTICAL_MARGIN
                         - size.y(),
                 ),
@@ -835,14 +835,14 @@ impl Element for AltScreenElement {
 
         let bounds = self
             .bounds
-            .expect("Bounds should be set before event dispatching");
+            .expect(crate::tr!("terminal", "bounds-should-be-set-before-event-dispatching"));
         let in_bounds = event.raw_event().in_bounds(bounds);
         let vertical_scroll_pixels = self.vertical_scroll_pixels();
         // Helper function to convert a global (window-space) position to a
         // local (element-space) one.
         let to_local = |position| position - bounds.origin() + vertical_scroll_pixels;
 
-        let z_index = self.z_index().expect("Z-index should exist.");
+        let z_index = self.z_index().expect(crate::tr!("terminal", "z-index-should-exist"));
         let Some(event_at_z_index) = event.at_z_index(z_index, ctx) else {
             // Only proceed if there's a relevant event at this z-index.
             return false;
@@ -1000,7 +1000,7 @@ impl NewScrollableElement for AltScreenElement {
 impl ScrollableElement for AltScreenElement {
     fn scroll_data(&self, _app: &AppContext) -> Option<ScrollData> {
         let line_height = self.line_height();
-        let visible_lines = self.visible_lines.expect("should be set after layout");
+        let visible_lines = self.visible_lines.expect(crate::tr!("terminal", "should-be-set-after-layout"));
         let total_lines = self.total_lines();
         // If the number of visible_lines is within a rounding error of total
         // lines, just set them to be exactly equal so the scrollable element

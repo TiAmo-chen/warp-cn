@@ -140,7 +140,7 @@ impl Slide for OzLaunchSlide {
             OzLaunchSlide::CloudAgents
             | OzLaunchSlide::AgentAutomations
             | OzLaunchSlide::AgentManagement => {
-                let next = self.next().expect("Non-final slides should have a next");
+                let next = self.next().expect(crate::tr!("workspace", "non-final-slides-should-have-a-next"));
                 CTAButton::next_slide(next, format!("Next: {}", next.short_label()))
             }
             OzLaunchSlide::LaunchCredits => CTAButton::custom(crate::tr!("workspace", "try-it-out"), |ctx| {

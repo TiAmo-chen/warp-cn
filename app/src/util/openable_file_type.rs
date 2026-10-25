@@ -23,7 +23,7 @@ use crate::util::file::external_editor::{Editor, EditorSettings, settings::Edito
     settings_value::SettingsValue,
 )]
 #[schemars(
-    description = "Layout used when opening files in the editor.",
+    description = crate::tr!("common", "layout-used-when-opening-files-in-the-editor"),
     rename_all = "snake_case"
 )]
 pub enum EditorLayout {

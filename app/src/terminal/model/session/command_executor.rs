@@ -248,7 +248,7 @@ fn new_command_executor_for_local_tty_session(
                 Some(ShellLaunchData::DockerSandbox { .. }) => {
                     debug_assert!(
                         false,
-                        "Docker sandbox sessions should be routed through the in-band executor"
+                        crate::tr!("terminal", "docker-sandbox-sessions-should-be-routed-through-the-in-ba")
                     );
                     report_error!(
                         "Docker sandbox session reached the local-executor branch; \
@@ -306,7 +306,7 @@ fn new_command_executor_for_local_tty_session(
                 Arc::new(RemoteCommandExecutor::new(socket_path.clone(), wsl_distro))
             } else {
                 unreachable!(
-                    "Unreachable because of match! above. Unfortunately if let guards in rust are still experimental."
+                    crate::tr!("terminal", "unreachable-because-of-match-above-unfortunately-if-let-gu")
                 )
             }
         }

@@ -957,7 +957,7 @@ impl CategoriesView {
             move |range, app| {
                 let view = handle
                     .upgrade(app)
-                    .expect("view handle should upgradeable")
+                    .expect(crate::tr!("workflows", "view-handle-should-upgradeable"))
                     .as_ref(app);
                 let appearance = Appearance::as_ref(app);
 

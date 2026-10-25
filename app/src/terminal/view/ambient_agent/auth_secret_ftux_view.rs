@@ -145,7 +145,7 @@ pub struct AuthSecretFtuxView {
 
 impl AuthSecretFtuxView {
     pub fn new(harness: Harness, ctx: &mut ViewContext<Self>) -> Self {
-        let name_editor = make_single_line_editor(Some("e.g. My API Key"), false, ctx);
+        let name_editor = make_single_line_editor(Some(crate::tr!("terminal", "e-g-my-api-key")), false, ctx);
 
         ctx.subscribe_to_view(&name_editor, |me, _, event, ctx| {
             me.handle_form_editor_event(0, event, ctx);
@@ -756,7 +756,7 @@ impl AuthSecretFtuxView {
 
         let main_text = {
             let description = if self.current_type_info().is_some() {
-                "Enter your credentials below.".to_string()
+                crate::tr!("terminal", "enter-your-credentials-below").to_string()
             } else {
                 let display_name = harness_display::display_name(self.harness);
                 format!("Select an API key type to use {display_name} in the cloud with Oz.")
@@ -768,7 +768,7 @@ impl AuthSecretFtuxView {
         };
 
         let privacy_text = Text::new_inline(
-            "Your credentials are encrypted end-to-end. ".to_string(),
+            crate::tr!("terminal", "your-credentials-are-encrypted-end-to-end").to_string(),
             font_family,
             TYPE_DESCRIPTION_FONT_SIZE,
         )

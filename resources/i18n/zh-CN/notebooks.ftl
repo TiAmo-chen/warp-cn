@@ -330,3 +330,26 @@ notebooks-ruby-lang = Ruby on Rails
 
 ## -- 链接和代码块已迁移字符串的双前缀别名 --
 
+
+## zh: auto-extracted entries
+notebooks-expect-server-id-on-success = Expect server id on success
+notebooks-expect-server-id-on-update-rejection = Expect server id on update rejection
+notebooks-expect-server-id-on-update-failure = Expect server id on update failure
+notebooks-session-launch-data-should-exist = Session launch data should exist
+notebooks-cached-notebook-raw-text-failed-to-parse = Cached Notebook raw text failed to parse
+notebooks-ignoring-duplicate-notebook-pane-registration = Ignoring duplicate notebook pane registration
+notebooks-new-notebook-was-already-open = New notebook was already open
+notebooks-closing-notebook-on-termination = Closing notebook on termination
+notebooks-tried-to-save-notebook-but-none-were-active = Tried to save notebook, but none were active
+notebooks-optimistically-grabbing-edit-access-already-the-editor = Optimistically grabbing edit access, already the editor
+notebooks-optimistically-grabbing-edit-access-editor-is-idle = Optimistically grabbing edit access, editor is idle
+notebooks-should-be-a-workflow = Should be a workflow
+notebooks-should-exist = Should exist
+notebooks-footer-should-be-laid-out = Footer should be laid out
+notebooks-child-model-has-end-offset-with-value-none = Child model has end offset with value None
+notebooks-open-full-screen = Open full screen
+notebooks-just-checked-above = Just checked above
+notebooks-toggle-markdown-rendered-raw-view = Toggle Markdown rendered/raw view
+notebooks-local-filesystem-access-is-not-available-in-this-build = Local filesystem access is not available in this build
+notebooks-unknown-error = unknown error
+notebooks-remote-server-error-reading-markdown-file = Remote server error reading markdown file

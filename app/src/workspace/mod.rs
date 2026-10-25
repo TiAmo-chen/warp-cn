@@ -334,7 +334,7 @@ pub fn init(app: &mut AppContext) {
     {
         app.register_editable_bindings([EditableBinding::new(
             "workspace:dump_heap_profile",
-            "Write heap profile to disk",
+            crate::tr!("workspace", "write-heap-profile-to-disk"),
             WorkspaceAction::DumpHeapProfile,
         )
         .with_context_predicate(id!("Workspace"))]);
@@ -657,7 +657,7 @@ pub fn init(app: &mut AppContext) {
         EditableBinding::new(
             "workspace:create_team_notebook",
             BindingDescription::new(crate::tr!("workspace", "create-team-notebook"))
-                .with_custom_description(bindings::MAC_MENUS_CONTEXT, "New Team Notebook"),
+                .with_custom_description(bindings::MAC_MENUS_CONTEXT, crate::tr!("workspace", "new-team-notebook")),
             WorkspaceAction::CreateTeamNotebook,
         )
         .with_custom_action(CustomAction::NewTeamNotebook)
@@ -671,7 +671,7 @@ pub fn init(app: &mut AppContext) {
         EditableBinding::new(
             "workspace:create_personal_notebook",
             BindingDescription::new(crate::tr!("workspace", "create-personal-notebook"))
-                .with_custom_description(bindings::MAC_MENUS_CONTEXT, "New Personal Notebook"),
+                .with_custom_description(bindings::MAC_MENUS_CONTEXT, crate::tr!("workspace", "new-personal-notebook")),
             WorkspaceAction::CreatePersonalNotebook,
         )
         .with_group(bindings::BindingGroup::Notebooks.as_str())
@@ -680,7 +680,7 @@ pub fn init(app: &mut AppContext) {
         EditableBinding::new(
             "workspace:create_team_workflow",
             BindingDescription::new(crate::tr!("workspace", "create-team-workflow"))
-                .with_custom_description(bindings::MAC_MENUS_CONTEXT, "New Team Workflow"),
+                .with_custom_description(bindings::MAC_MENUS_CONTEXT, crate::tr!("workspace", "new-team-workflow")),
             WorkspaceAction::CreateTeamWorkflow,
         )
         .with_custom_action(CustomAction::NewTeamWorkflow)
@@ -694,7 +694,7 @@ pub fn init(app: &mut AppContext) {
         EditableBinding::new(
             "workspace:create_personal_workflow",
             BindingDescription::new(crate::tr!("workspace", "create-personal-workflow"))
-                .with_custom_description(bindings::MAC_MENUS_CONTEXT, "New Personal Workflow"),
+                .with_custom_description(bindings::MAC_MENUS_CONTEXT, crate::tr!("workspace", "new-personal-workflow")),
             WorkspaceAction::CreatePersonalWorkflow,
         )
         .with_group(bindings::BindingGroup::Workflow.as_str())
@@ -703,7 +703,7 @@ pub fn init(app: &mut AppContext) {
         EditableBinding::new(
             "workspace:create_team_folder",
             BindingDescription::new(crate::tr!("workspace", "create-team-folder"))
-                .with_custom_description(bindings::MAC_MENUS_CONTEXT, "New Team Folder"),
+                .with_custom_description(bindings::MAC_MENUS_CONTEXT, crate::tr!("workspace", "new-team-folder")),
             WorkspaceAction::CreateTeamFolder,
         )
         .with_context_predicate(
@@ -716,7 +716,7 @@ pub fn init(app: &mut AppContext) {
         EditableBinding::new(
             "workspace:create_personal_folder",
             BindingDescription::new(crate::tr!("workspace", "create-personal-folder"))
-                .with_custom_description(bindings::MAC_MENUS_CONTEXT, "New Personal Folder"),
+                .with_custom_description(bindings::MAC_MENUS_CONTEXT, crate::tr!("workspace", "new-personal-folder")),
             WorkspaceAction::CreatePersonalFolder,
         )
         .with_group(bindings::BindingGroup::Folders.as_str())
@@ -816,7 +816,7 @@ pub fn init(app: &mut AppContext) {
         .with_custom_action(CustomAction::ToggleGlobalSearch),
         EditableBinding::new(
             "file_tree:toggle_hidden_files",
-            BindingDescription::new("Toggle hidden files in Project Explorer"),
+            BindingDescription::new(crate::tr!("workspace", "toggle-hidden-files-in-project-explorer")),
             WorkspaceAction::ToggleHiddenFiles,
         )
         .with_group(bindings::BindingGroup::Navigation.as_str())
@@ -835,7 +835,7 @@ pub fn init(app: &mut AppContext) {
         EditableBinding::new(
             TOGGLE_PROJECT_EXPLORER_BINDING_NAME,
             BindingDescription::new(crate::tr!("workspace", "toggle-project-explorer"))
-                .with_custom_description(bindings::MAC_MENUS_CONTEXT, "Project Explorer"),
+                .with_custom_description(bindings::MAC_MENUS_CONTEXT, crate::tr!("workspace", "project-explorer-74e268")),
             WorkspaceAction::ToggleProjectExplorer,
         )
         .with_context_predicate(id!("Workspace") & id!(flags::SHOW_PROJECT_EXPLORER)),
@@ -868,7 +868,7 @@ pub fn init(app: &mut AppContext) {
                 "workspace",
                 "toggle-agent-conversation-list-view"
             ))
-            .with_custom_description(bindings::MAC_MENUS_CONTEXT, "Agent conversation list view"),
+            .with_custom_description(bindings::MAC_MENUS_CONTEXT, crate::tr!("workspace", "agent-conversation-list-view")),
             WorkspaceAction::ToggleConversationListView,
         )
         .with_enabled(|| FeatureFlag::AgentViewConversationListView.is_enabled())
@@ -905,7 +905,7 @@ pub fn init(app: &mut AppContext) {
         EditableBinding::new(
             "workspace:move_tab_left",
             BindingDescription::new(crate::tr!("workspace", "move-tab-left"))
-                .with_dynamic_override(|ctx| uses_vertical_tabs(ctx).then(|| "move tab up".into())),
+                .with_dynamic_override(|ctx| uses_vertical_tabs(ctx).then(|| crate::tr!("workspace", "move-tab-up").into())),
             WorkspaceAction::MoveActiveTabLeft,
         )
         .with_group(bindings::BindingGroup::Navigation.as_str())
@@ -920,7 +920,7 @@ pub fn init(app: &mut AppContext) {
             "workspace:move_tab_right",
             BindingDescription::new(crate::tr!("workspace", "move-tab-right"))
                 .with_dynamic_override(|ctx| {
-                    uses_vertical_tabs(ctx).then(|| "move tab down".into())
+                    uses_vertical_tabs(ctx).then(|| crate::tr!("workspace", "move-tab-down").into())
                 }),
             WorkspaceAction::MoveActiveTabRight,
         )
@@ -1003,7 +1003,7 @@ pub fn init(app: &mut AppContext) {
 
     app.register_editable_bindings([EditableBinding::new(
         "workspace:cycle_active_tab_color",
-        "Cycle current tab color",
+        crate::tr!("workspace", "cycle-current-tab-color"),
         WorkspaceAction::CycleActiveTabColor,
     )
     .with_group(bindings::BindingGroup::Settings.as_str())
@@ -1013,7 +1013,7 @@ pub fn init(app: &mut AppContext) {
     app.register_editable_bindings([
         EditableBinding::new(
             "workspace:new_tab_group",
-            "Create new tab group",
+            crate::tr!("workspace", "create-new-tab-group"),
             // Reuse the new-session dropdown's action, not a dedicated variant.
             WorkspaceAction::SelectNewSessionMenuItem(NewSessionMenuItem::CreateNewTabGroup),
         )
@@ -1022,7 +1022,7 @@ pub fn init(app: &mut AppContext) {
         .with_context_predicate(id!("Workspace") & !id!("Workspace_PaneDragging")),
         EditableBinding::new(
             "workspace:new_tab_group_from_active_or_selected_tabs",
-            "Create tab group from active or selected tab(s)",
+            crate::tr!("workspace", "create-tab-group-from-active-or-selected-tab-s"),
             WorkspaceAction::NewTabGroupFromActiveOrSelectedTabs,
         )
         .with_enabled(|| FeatureFlag::GroupedTabs.is_enabled())
@@ -1034,7 +1034,7 @@ pub fn init(app: &mut AppContext) {
         // offered, matching the multi-tab right-click menu.
         EditableBinding::new(
             "workspace:remove_active_or_selected_tabs_from_group",
-            "Remove active or selected tab(s) from group",
+            crate::tr!("workspace", "remove-active-or-selected-tab-s-from-group"),
             WorkspaceAction::RemoveActiveOrSelectedTabsFromGroup,
         )
         .with_enabled(|| FeatureFlag::GroupedTabs.is_enabled())
@@ -1052,7 +1052,7 @@ pub fn init(app: &mut AppContext) {
     app.register_editable_bindings([
         EditableBinding::new(
             "workspace:pin_active_tab",
-            "Pin current tab",
+            crate::tr!("workspace", "pin-current-tab"),
             WorkspaceAction::PinActiveTab,
         )
         .with_enabled(|| FeatureFlag::PinnedTabs.is_enabled())
@@ -1062,7 +1062,7 @@ pub fn init(app: &mut AppContext) {
         ),
         EditableBinding::new(
             "workspace:unpin_active_tab",
-            "Unpin current tab",
+            crate::tr!("workspace", "unpin-current-tab"),
             WorkspaceAction::UnpinActiveTab,
         )
         .with_enabled(|| FeatureFlag::PinnedTabs.is_enabled())
@@ -1072,7 +1072,7 @@ pub fn init(app: &mut AppContext) {
         ),
         EditableBinding::new(
             "workspace:pin_active_tab_group",
-            "Pin current tab group",
+            crate::tr!("workspace", "pin-current-tab-group"),
             WorkspaceAction::PinActiveTabGroup,
         )
         .with_enabled(|| {
@@ -1087,7 +1087,7 @@ pub fn init(app: &mut AppContext) {
         ),
         EditableBinding::new(
             "workspace:unpin_active_tab_group",
-            "Unpin current tab group",
+            crate::tr!("workspace", "unpin-current-tab-group"),
             WorkspaceAction::UnpinActiveTabGroup,
         )
         .with_enabled(|| {
@@ -1147,7 +1147,7 @@ pub fn init(app: &mut AppContext) {
             "workspace:close_tabs_right_active_tab",
             BindingDescription::new(crate::tr!("workspace", "close-tabs-to-right"))
                 .with_dynamic_override(|ctx| {
-                    uses_vertical_tabs(ctx).then(|| "close tabs below".into())
+                    uses_vertical_tabs(ctx).then(|| crate::tr!("workspace", "close-tabs-below").into())
                 }),
             WorkspaceAction::CloseTabsRightActiveTab,
         )
@@ -1173,7 +1173,7 @@ pub fn init(app: &mut AppContext) {
         EditableBinding::new(
             "workspace:toggle_navigation_palette",
             BindingDescription::new(crate::tr!("workspace", "toggle-navigation-palette"))
-                .with_custom_description(bindings::MAC_MENUS_CONTEXT, "Navigation Palette"),
+                .with_custom_description(bindings::MAC_MENUS_CONTEXT, crate::tr!("workspace", "navigation-palette")),
             WorkspaceAction::TogglePalette {
                 mode: PaletteMode::Navigation,
                 source: PaletteSource::Keybinding,
@@ -1282,14 +1282,14 @@ pub fn init(app: &mut AppContext) {
         app.register_editable_bindings([
             EditableBinding::new(
                 "workspace:install_cli",
-                "Install Oz CLI globally for use outside of Warp",
+                crate::tr!("workspace", "install-oz-cli-globally-for-use-outside-of-warp"),
                 WorkspaceAction::InstallOz,
             )
             .with_group(bindings::BindingGroup::Settings.as_str())
             .with_context_predicate(id!("Workspace")),
             EditableBinding::new(
                 "workspace:uninstall_cli",
-                "Undo global Oz CLI installation (oz will still work within Warp)",
+                crate::tr!("workspace", "undo-global-oz-cli-installation-oz-will-still-work-within"),
                 WorkspaceAction::UninstallOz,
             )
             .with_group(bindings::BindingGroup::Settings.as_str())
@@ -1299,14 +1299,14 @@ pub fn init(app: &mut AppContext) {
             app.register_editable_bindings([
                 EditableBinding::new(
                     "workspace:install_warpctrl",
-                    "Install Warp Control CLI globally for use outside of Warp",
+                    crate::tr!("workspace", "install-warp-control-cli-globally-for-use-outside-of-warp"),
                     WorkspaceAction::InstallWarpctrl,
                 )
                 .with_group(bindings::BindingGroup::Settings.as_str())
                 .with_context_predicate(id!("Workspace")),
                 EditableBinding::new(
                     "workspace:uninstall_warpctrl",
-                    "Undo global Warp Control CLI installation (warpctrl will still work within Warp)",
+                    crate::tr!("workspace", "undo-global-warp-control-cli-installation-warpctrl-will-st"),
                     WorkspaceAction::UninstallWarpctrl,
                 )
                 .with_group(bindings::BindingGroup::Settings.as_str())
@@ -1377,7 +1377,7 @@ pub fn init(app: &mut AppContext) {
             BindingDescription::new(crate::tr!("workspace", "create-team-env-vars"))
                 .with_custom_description(
                     bindings::MAC_MENUS_CONTEXT,
-                    "New Team Environment Variables",
+                    crate::tr!("workspace", "new-team-environment-variables"),
                 ),
             WorkspaceAction::CreateTeamEnvVarCollection,
         )
@@ -1394,7 +1394,7 @@ pub fn init(app: &mut AppContext) {
             BindingDescription::new(crate::tr!("workspace", "create-personal-env-vars"))
                 .with_custom_description(
                     bindings::MAC_MENUS_CONTEXT,
-                    "New Personal Environment Variables",
+                    crate::tr!("workspace", "new-personal-environment-variables"),
                 ),
             WorkspaceAction::CreatePersonalEnvVarCollection,
         )
@@ -1404,7 +1404,7 @@ pub fn init(app: &mut AppContext) {
         EditableBinding::new(
             "workspace:create_personal_ai_prompt",
             BindingDescription::new(crate::tr!("workspace", "create-personal-prompt"))
-                .with_custom_description(bindings::MAC_MENUS_CONTEXT, "New Personal Prompt"),
+                .with_custom_description(bindings::MAC_MENUS_CONTEXT, crate::tr!("workspace", "new-personal-prompt")),
             WorkspaceAction::CreatePersonalAIPrompt,
         )
         .with_group(bindings::BindingGroup::WarpAi.as_str())
@@ -1415,7 +1415,7 @@ pub fn init(app: &mut AppContext) {
         EditableBinding::new(
             "workspace:create_team_ai_prompt",
             BindingDescription::new(crate::tr!("workspace", "create-team-prompt"))
-                .with_custom_description(bindings::MAC_MENUS_CONTEXT, "New Team Prompt"),
+                .with_custom_description(bindings::MAC_MENUS_CONTEXT, crate::tr!("workspace", "new-team-prompt")),
             WorkspaceAction::CreateTeamAIPrompt,
         )
         .with_group(bindings::BindingGroup::WarpAi.as_str())
@@ -1478,15 +1478,15 @@ pub fn init(app: &mut AppContext) {
     app.register_editable_bindings([
         EditableBinding::new(
             "workspace:copy_current_path",
-            BindingDescription::new("Copy current path")
-                .with_custom_description(bindings::MAC_MENUS_CONTEXT, "Copy Current Path"),
+            BindingDescription::new(crate::tr!("workspace", "copy-current-path"))
+                .with_custom_description(bindings::MAC_MENUS_CONTEXT, crate::tr!("workspace", "copy-current-path-22a54c")),
             WorkspaceAction::CopyCurrentPath,
         )
         .with_context_predicate(id!("Workspace")),
         EditableBinding::new(
             "workspace:open_repository",
             BindingDescription::new(crate::tr!("code_editor", "code-review-open-repository"))
-                .with_custom_description(bindings::MAC_MENUS_CONTEXT, "Open Repository"),
+                .with_custom_description(bindings::MAC_MENUS_CONTEXT, crate::tr!("workspace", "open-repository-2edd85")),
             WorkspaceAction::OpenRepository { path: None },
         )
         .with_context_predicate(id!("Workspace"))
@@ -1601,7 +1601,7 @@ fn add_open_setting_pages_as_editable_binding(app: &mut AppContext) {
         EditableBinding::new(
             "workspace:show_settings_shared_blocks_page",
             BindingDescription::new(crate::tr!("workspace", "open-settings-shared-blocks"))
-                .with_custom_description(bindings::MAC_MENUS_CONTEXT, "View Shared Blocks..."),
+                .with_custom_description(bindings::MAC_MENUS_CONTEXT, crate::tr!("workspace", "view-shared-blocks")),
             WorkspaceAction::ShowSettingsPage(SettingsSection::SharedBlocks),
         )
         .with_group(bindings::BindingGroup::Settings.as_str())
@@ -1653,7 +1653,7 @@ fn add_open_setting_pages_as_editable_binding(app: &mut AppContext) {
         EditableBinding::new(
             "workspace:show_settings_warpify_page",
             BindingDescription::new(crate::tr!("workspace", "open-settings-warpify"))
-                .with_custom_description(bindings::MAC_MENUS_CONTEXT, "Configure Warpify..."),
+                .with_custom_description(bindings::MAC_MENUS_CONTEXT, crate::tr!("workspace", "configure-warpify")),
             WorkspaceAction::ShowSettingsPage(SettingsSection::Warpify),
         )
         .with_group(bindings::BindingGroup::Settings.as_str())

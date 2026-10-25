@@ -94,7 +94,7 @@ impl Block {
             Ok(())
         } else {
             Err(anyhow!(
-                "Tried to upgrade CLI subagent task ID for block with no prior CLI subagent task ID."
+                crate::tr!("terminal", "tried-to-upgrade-cli-subagent-task-id-for-block-with-no-pr")
             ))
         }
     }

@@ -214,7 +214,7 @@ impl ExternalSecretsMenu {
         let build_items = move |range: Range<usize>, app: &AppContext| {
             let secrets_view = view_handle
                 .upgrade(app)
-                .expect("View handle should upgradeable.")
+                .expect(crate::tr!("search", "view-handle-should-upgradeable"))
                 .as_ref(app);
             let query_result_renderers = secrets_view
                 .search_bar_state

@@ -267,7 +267,7 @@ impl InlineHistoryMenuView {
                     .with_size(ButtonSize::Small)
                     .on_click(|ctx| {
                         ctx.dispatch_typed_action(WorkspaceAction::ShowSettingsPageWithSearch {
-                            search_query: "commands history".into(),
+                            search_query: crate::tr!("terminal", "commands-history").into(),
                             section: Some(SettingsSection::WarpAgent),
                         });
                     })

@@ -1515,7 +1515,7 @@ impl CodeFooterView {
             let root_name = root_path
                 .file_name()
                 .and_then(|s| s.to_str())
-                .unwrap_or("this workspace");
+                .unwrap_or(crate::tr!("code", "this-workspace"));
             Some((
                 Some(format!(
                     "Language support is not currently enabled for {root_name}"
@@ -1630,7 +1630,7 @@ impl CodeFooterView {
                 let root_name = root_path
                     .file_name()
                     .and_then(|s| s.to_str())
-                    .unwrap_or("this workspace");
+                    .unwrap_or(crate::tr!("code", "this-workspace"));
 
                 // Check if any server has a CTA-worthy status
                 if let Some(cta) = self.workspace_cta_message() {
@@ -1729,7 +1729,7 @@ impl View for CodeFooterView {
                     Self::render_status_text(
                         theme,
                         appearance,
-                        "Use the Warp Agent to update this config".to_string(),
+                        crate::tr!("code", "use-the-warp-agent-to-update-this-config").to_string(),
                     ),
                 )
                 .finish(),

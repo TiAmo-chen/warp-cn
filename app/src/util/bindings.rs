@@ -215,9 +215,9 @@ lazy_static! {
         // Windows users expect ctrl-c to copy any selected text to the clipboard. To avoid
         // introducing multiple codepaths for handling ctrl-c, we register ctrl-c as a binding
         // on TerminalView on all platforms.
-        Keystroke::parse("ctrl-c").expect("should be able to construct ctrl-c keystroke"),
+        Keystroke::parse("ctrl-c").expect(crate::tr!("common", "should-be-able-to-construct-ctrl-c-keystroke")),
         // The resume conversation binding uses cmd-shift-R on Mac and should be allowed
-        Keystroke::parse("cmd-shift-R").expect("should be able to construct cmd-shift-R keystroke")
+        Keystroke::parse("cmd-shift-R").expect(crate::tr!("common", "should-be-able-to-construct-cmd-shift-r-keystroke"))
     ]);
 }
 
@@ -231,7 +231,7 @@ impl From<CustomTag> for CustomAction {
     fn from(tag: CustomTag) -> Self {
         *CUSTOM_TAG_TO_ACTION
             .get(&tag)
-            .expect("All custom actions are handled.")
+            .expect(crate::tr!("common", "all-custom-actions-are-handled"))
     }
 }
 
@@ -871,7 +871,7 @@ pub fn cmd_or_ctrl_shift(key: &str) -> String {
             Cow::Borrowed(key)
         } else {
             if cfg!(debug_assertions) {
-                let stroke = key.chars().next().expect("Character should exist");
+                let stroke = key.chars().next().expect(crate::tr!("common", "character-should-exist"));
 
                 if !stroke.is_ascii_lowercase() {
                     panic!(

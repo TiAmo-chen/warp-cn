@@ -1033,7 +1033,7 @@ impl KeybindingsWidget {
                     )
                     .with_child(
                         Container::new(render_text(
-                            "to reference these keybindings in a side pane at anytime.",
+                            crate::tr!("settings", "to-reference-these-keybindings-in-a-side-pane-at-anytime"),
                             Some(UiComponentStyles {
                                 font_size: Some(font_size),
                                 font_color: Some(
@@ -1100,7 +1100,7 @@ impl SettingsWidget for KeybindingsWidget {
     type View = KeybindingsView;
 
     fn search_terms(&self) -> &str {
-        "keybindings keyboard shortcuts hotkeys"
+        crate::tr!("settings", "keybindings-keyboard-shortcuts-hotkeys")
     }
 
     fn render(

@@ -248,7 +248,7 @@ pub fn shell_git_line_changes() -> ShellCommandGenerator {
 
 pub fn kubernetes_current_context() -> ShellCommandGenerator {
     ShellCommandGenerator::new(
-        ShellCommand::portable("kubectl config current-context"),
+        ShellCommand::portable(crate::tr!("context_chips", "kubectl-config-current-context"))),
         Some(vec!["kubectl".to_owned()]),
     )
 }

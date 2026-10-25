@@ -514,7 +514,7 @@ impl RenderableBlock for RenderableEmbeddedWorkflow {
             .item
             .as_any()
             .downcast_ref()
-            .expect("Should be a workflow");
+            .expect(crate::tr!("notebooks", "should-be-a-workflow"));
 
         // Check if any of the active selections overlap with the embedded workflow.
         let selected = model.offset_in_active_selection(embedded_workflow.start_char_offset);
@@ -570,7 +570,7 @@ impl RenderableBlock for RenderableEmbeddedWorkflow {
 
             content_origin += vec2f(
                 0.,
-                workflow.description_height.expect("Should exist").as_f32(),
+                workflow.description_height.expect(crate::tr!("notebooks", "should-exist")).as_f32(),
             )
         }
 
@@ -618,7 +618,7 @@ impl RenderableBlock for RenderableEmbeddedWorkflow {
         let content_rect = self.viewport_item.content_bounds(ctx);
         let button_origin = content_rect.lower_right()
             - vec2f(
-                self.footer.size().expect("Footer should be laid out").x(),
+                self.footer.size().expect(crate::tr!("notebooks", "footer-should-be-laid-out")).x(),
                 0.,
             );
         self.footer.paint(button_origin, ctx.paint, app);

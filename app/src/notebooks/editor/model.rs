@@ -1449,7 +1449,7 @@ impl NotebooksEditorModel {
             }
             None => {
                 report_error!(
-                    "Child model has end offset with value None",
+                    crate::tr!("notebooks", "child-model-has-end-offset-with-value-none"),
                     extra: { "block_start" => %block_start }
                 );
             }

@@ -279,7 +279,7 @@ impl CLIAgentSession {
                     .payload
                     .summary
                     .clone()
-                    .or_else(|| Some("Waiting for your answer".to_owned())),
+                    .or_else(|| Some(crate::tr!("terminal", "waiting-for-your-answer").to_owned())),
                 source: BlockedSource::QuestionAsked,
             },
             CLIAgentEventType::NeedsInput => CLIAgentSessionStatus::Blocked {
@@ -545,7 +545,7 @@ impl CLIAgentSessionsModel {
         let session = self
             .sessions
             .get_mut(&terminal_view_id)
-            .expect("session presence checked above");
+            .expect(crate::tr!("terminal", "session-presence-checked-above"));
 
         if event.source == CLIAgentEventSource::RichPlugin {
             session.received_rich_notification = true;

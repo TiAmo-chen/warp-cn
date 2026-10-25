@@ -150,7 +150,7 @@ impl KeysSettings {
         let current_pin_position = quake_mode_settings.active_pin_position;
         let default_percentages = DEFAULT_QUAKE_MODE_SIZE_PERCENTAGES
             .get(&current_pin_position)
-            .expect("should exist");
+            .expect(crate::tr!("terminal", "should-exist"));
 
         quake_mode_settings
             .pin_position_to_size_percentages
@@ -203,7 +203,7 @@ impl KeysSettings {
 
         if *self.quake_mode_enabled && *self.activation_hotkey_enabled {
             report_error!(
-                "Both quake mode AND activation hotkey enabled. Either one or the other should be active."
+                crate::tr!("terminal", "both-quake-mode-and-activation-hotkey-enabled-either-one-o")
             );
             // Quake mode takes precedence
             selected = GlobalHotkeyMode::QuakeMode;

@@ -137,7 +137,7 @@ impl CliAgentPluginManager for ClaudeCodePluginManager {
         if still_outdated {
             log.push_str("Post-update version check: plugin is still outdated\n");
             return Err(PluginInstallError {
-                message: "Plugin update did not take effect".to_owned(),
+                message: crate::tr!("terminal", "plugin-update-did-not-take-effect").to_owned(),
                 log,
             });
         }
@@ -201,7 +201,7 @@ impl CliAgentPluginManager for ClaudeCodePluginManager {
         if still_outdated {
             log.push_str("Post-update version check: platform plugin is still outdated\n");
             return Err(PluginInstallError {
-                message: "Platform plugin update did not take effect".to_owned(),
+                message: crate::tr!("terminal", "platform-plugin-update-did-not-take-effect").to_owned(),
                 log,
             });
         }
@@ -215,7 +215,7 @@ static INSTALL_INSTRUCTIONS: LazyLock<PluginInstructions> = LazyLock::new(|| Plu
     steps: &[
         PluginInstructionStep {
             description: "Add the Warp plugin marketplace repository",
-            command: "claude plugin marketplace add warpdotdev/claude-code-warp",
+            command: crate::tr!("terminal", "claude-plugin-marketplace-add-warpdotdev-claude-code-warp"),
             executable: true,
             link: None,
         },
@@ -239,13 +239,13 @@ static UPDATE_INSTRUCTIONS: LazyLock<PluginInstructions> = LazyLock::new(|| Plug
     steps: &[
         PluginInstructionStep {
             description: "Remove the existing marketplace (if present)",
-            command: "claude plugin marketplace remove claude-code-warp",
+            command: crate::tr!("terminal", "claude-plugin-marketplace-remove-claude-code-warp"),
             executable: true,
             link: None,
         },
         PluginInstructionStep {
             description: "Re-add the marketplace",
-            command: "claude plugin marketplace add warpdotdev/claude-code-warp",
+            command: crate::tr!("terminal", "claude-plugin-marketplace-add-warpdotdev-claude-code-warp"),
             executable: true,
             link: None,
         },

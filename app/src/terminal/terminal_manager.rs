@@ -46,7 +46,7 @@ pub trait TerminalManager: Any {
         _request: ShellReplacementRequest,
         _ctx: &mut ModelContext<Box<dyn TerminalManager>>,
     ) -> anyhow::Result<()> {
-        anyhow::bail!("this terminal does not support shell replacement")
+        anyhow::bail!(crate::tr!("terminal", "this-terminal-does-not-support-shell-replacement"))
     }
 
     fn on_session_bootstrapped(

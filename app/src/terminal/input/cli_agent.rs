@@ -52,7 +52,7 @@ impl Input {
                     }
                     let input_rect = ctx
                         .element_position_by_id(input_editor_save_position_id.clone())
-                        .expect("input editor position id should be saved");
+                        .expect(crate::tr!("terminal", "input-editor-position-id-should-be-saved"));
                     let offset_position = position - input_rect.origin();
                     ctx.dispatch_typed_action(TerminalAction::OpenInputContextMenu {
                         position: offset_position,

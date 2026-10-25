@@ -32,7 +32,7 @@ mod mac {
     }
 
     pub fn set_locale_environment() {
-        let env_locale_c = CString::new("").expect("Should never fail to create empty CString");
+        let env_locale_c = CString::new("").expect(crate::tr!("terminal", "should-never-fail-to-create-empty-cstring"));
         let env_locale_ptr = unsafe { setlocale(LC_ALL, env_locale_c.as_ptr()) };
         if !env_locale_ptr.is_null() {
             let env_locale = unsafe { CStr::from_ptr(env_locale_ptr).to_string_lossy() };

@@ -605,8 +605,8 @@ impl BuyCreditsBanner {
     ) -> Box<dyn Element> {
         let theme = appearance.theme();
         let description = match unit {
-            UsageDisplayUnit::Credits => "Credits will be added to your account after checkout.",
-            UsageDisplayUnit::Dollars => "Usage will be added to your account after checkout.",
+            UsageDisplayUnit::Credits => crate::tr!("terminal", "credits-will-be-added-to-your-account-after-checkout"),
+            UsageDisplayUnit::Dollars => crate::tr!("terminal", "usage-will-be-added-to-your-account-after-checkout"),
         };
 
         let alert_icon = Container::new(
@@ -626,7 +626,7 @@ impl BuyCreditsBanner {
             .with_children([
                 appearance
                     .ui_builder()
-                    .paragraph("Finish your purchase in the browser")
+                    .paragraph(crate::tr!("terminal", "finish-your-purchase-in-the-browser"))
                     .with_style(UiComponentStyles {
                         font_size: Some(14.),
                         ..Default::default()
@@ -716,14 +716,14 @@ impl BuyCreditsBanner {
             UsageDisplayUnit::Credits => (
                 "Out of credits",
                 crate::tr!("terminal", "purchase-exceeds-limit"),
-                "Add more credits to your account to continue using the Warp Agent.",
+                crate::tr!("terminal", "add-more-credits-to-your-account-to-continue-using-the-war"),
                 crate::tr!("terminal", "out-of-credits-non-admin"),
             ),
             UsageDisplayUnit::Dollars => (
                 "Out of usage",
-                "This purchase would take you over your monthly spend limit. ",
-                "Add more usage to your account to continue using the Warp Agent.",
-                "Contact a team admin to purchase more usage to continue.",
+                crate::tr!("terminal", "this-purchase-would-take-you-over-your-monthly-spend-limit"),
+                crate::tr!("terminal", "add-more-usage-to-your-account-to-continue-using-the-warp"),
+                crate::tr!("terminal", "contact-a-team-admin-to-purchase-more-usage-to-continue"),
             ),
         };
 

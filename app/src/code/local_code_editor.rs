@@ -2500,7 +2500,7 @@ pub fn render_unsaved_changes_banner(
             Shrinkable::new(
                 1.,
                 Text::new(
-                    "This file has saved changes that are not reflected here.",
+                    crate::tr!("code", "this-file-has-saved-changes-that-are-not-reflected-here"),
                     appearance.ui_font_family(),
                     appearance.ui_font_size(),
                 )
@@ -2597,7 +2597,7 @@ pub fn render_remote_disconnected_banner(appearance: &Appearance) -> Box<dyn Ele
             Shrinkable::new(
                 1.,
                 Text::new(
-                    "Remote host disconnected. You will not be able to see updates and save changes.",
+                    crate::tr!("code", "remote-host-disconnected-you-will-not-be-able-to-see-updat"),
                     appearance.ui_font_family(),
                     appearance.ui_font_size(),
                 )

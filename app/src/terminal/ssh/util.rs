@@ -49,7 +49,7 @@ pub fn check_ssh_login_state(block_output: &str) -> SshLoginState {
     let mut last_line = None;
 
     for line in block_output.lines() {
-        if line.starts_with("Last login:") {
+        if line.starts_with(crate::tr!("terminal", "last-login")) {
             return SshLoginState::LastLogin;
         }
         // With an iterator, there's no way to know if it's the last element so
@@ -62,10 +62,10 @@ pub fn check_ssh_login_state(block_output: &str) -> SshLoginState {
             || line.contains("Password")
             || line.contains("passphrase")
             || line.contains("yes/no")
-            || line.contains("Please type")
+            || line.contains(crate::tr!("terminal", "please-type"))
             || line.contains("'yes'")
-            || line.contains("Confirm user presence")
-            || line.starts_with("Enter ")
+            || line.contains(crate::tr!("terminal", "confirm-user-presence"))
+            || line.starts_with(crate::tr!("terminal", "enter"))
             || line.starts_with(crate::tr!("ai_assistant", "ai-allow-btn"))
         {
             SshLoginState::Authenticating
@@ -92,7 +92,7 @@ impl InteractiveSshCommand {
     /// Parses ssh commands of the form `ssh ...`.
     /// Only returns an `InteractiveSshCommand` if we determine the command is interactive.
     fn parse_ssh_command(command: &str) -> Option<InteractiveSshCommand> {
-        let command = if let Some(suffix) = command.strip_prefix("command ") {
+        let command = if let Some(suffix) = command.strip_prefix(crate::tr!("terminal", "command-c63096")) {
             suffix
         } else {
             command
@@ -178,7 +178,7 @@ lazy_static! {
 
 impl SshWarpifyCommand {
     pub fn matches(command: &str) -> Option<SshWarpifyCommand> {
-        let command = if let Some(suffix) = command.strip_prefix("command ") {
+        let command = if let Some(suffix) = command.strip_prefix(crate::tr!("terminal", "command-c63096")) {
             suffix
         } else {
             command
@@ -235,7 +235,7 @@ pub fn transfer_file_sftp_command(
     pwd: Option<String>,
 ) -> Option<String> {
     // "sftp "
-    let mut command = String::from("sftp ");
+    let mut command = String::from(crate::tr!("terminal", "sftp"));
 
     // "sftp -P 2222"
     if let Some(port) = ssh_port {

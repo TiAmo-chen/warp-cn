@@ -2484,7 +2484,7 @@ pub fn render_cursor(
                 cursor_top_origin.y() + cursor_block_size.y()
                     - hint_text
                         .size()
-                        .expect("Text is laid out prior to paint")
+                        .expect(crate::tr!("terminal", "text-is-laid-out-prior-to-paint"))
                         .y(),
             ),
             ctx,

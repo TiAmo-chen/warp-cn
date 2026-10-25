@@ -101,7 +101,7 @@ impl View for RewindConfirmationDialog {
         };
 
         // Build rewind button label with Enter keyboard shortcut indicator
-        let enter_keystroke = Keystroke::parse("enter").expect("Valid keystroke");
+        let enter_keystroke = Keystroke::parse("enter").expect(crate::tr!("workspace", "valid-keystroke"));
         let text_color = theme.main_text_color(theme.accent()).into_solid();
         let rewind_button_label = Flex::row()
             .with_cross_axis_alignment(CrossAxisAlignment::Center)
@@ -264,7 +264,7 @@ impl TypedActionView for RewindConfirmationDialog {
         match action {
             RewindConfirmationAction::Confirm => {
                 let Some(rewind_source) = self.rewind_source.clone() else {
-                    report_error!("Rewind confirm button pressed with no rewind source");
+                    report_error!(crate::tr!("workspace", "rewind-confirm-button-pressed-with-no-rewind-source"));
                     return;
                 };
                 ctx.emit(RewindConfirmationEvent::Confirm { rewind_source });

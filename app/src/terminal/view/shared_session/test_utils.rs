@@ -45,7 +45,7 @@ pub fn terminal_view_for_viewer(app: &mut App) -> ViewHandle<TerminalView> {
     let terminal = pane_group.read(app, |pane_group, ctx| {
         pane_group
             .terminal_view_at_pane_index(0, ctx)
-            .expect("TerminalView exists at pane index 0")
+            .expect(crate::tr!("terminal", "terminalview-exists-at-pane-index-0"))
             .to_owned()
     });
 

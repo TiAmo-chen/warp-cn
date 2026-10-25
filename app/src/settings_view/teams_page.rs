@@ -3660,7 +3660,7 @@ impl TeamsWidget {
                     fragments.extend([
                         FormattedTextFragment::plain_text(" Update team visibility in the "),
                         FormattedTextFragment::hyperlink(
-                            "workspace admin panel",
+                            crate::tr!("settings", "workspace-admin-panel"),
                             AdminActions::workspace_teams_admin_panel_link(),
                         ),
                         FormattedTextFragment::plain_text("."),
@@ -5706,7 +5706,7 @@ impl SettingsWidget for TeamsWidget {
     type View = TeamsPageView;
 
     fn search_terms(&self) -> &str {
-        "invites teams team members"
+        crate::tr!("settings", "invites-teams-team-members")
     }
 
     fn render(

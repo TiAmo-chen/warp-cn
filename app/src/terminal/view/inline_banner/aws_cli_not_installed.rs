@@ -46,7 +46,7 @@ pub fn render_aws_cli_not_installed_banner(
 ) -> Box<dyn Element> {
     let active_ui_text_color = appearance.theme().active_ui_text_color().into_solid();
     let buttons = vec![InlineBannerTextButton {
-        text: "Learn More".to_owned(),
+        text: crate::tr!("terminal", "learn-more").to_owned(),
         text_color: active_ui_text_color,
         button_state: InlineBannerButtonState {
             on_click_event: TerminalAction::AwsCliNotInstalledBanner(

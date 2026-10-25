@@ -264,13 +264,13 @@ pub struct EnvironmentFormCopy {
 impl EnvironmentFormCopy {
     pub fn orchestration_modal() -> Self {
         Self {
-            name_placeholder: "e.g., dev-env",
+            name_placeholder: crate::tr!("settings", "e-g-dev-env"),
             repos_placeholder_authed: crate::tr!("settings", "browse-github-repos"),
             repos_placeholder_unauthed: REPOS_PLACEHOLDER_UNAUTHED,
             docker_image_label: crate::tr!("settings", "docker-image"),
-            docker_image_placeholder: "e.g., node:20-alpine",
+            docker_image_placeholder: crate::tr!("settings", "e-g-node-20-alpine"),
             description_placeholder: DESCRIPTION_PLACEHOLDER,
-            setup_commands_placeholder: "e.g., node start",
+            setup_commands_placeholder: crate::tr!("settings", "e-g-node-start"),
             setup_commands_helper: crate::tr!("settings", "press-enter-or-click-the-submit-button-to-add-each-command"),
             show_description_character_count: false,
         }
@@ -284,9 +284,9 @@ impl Default for EnvironmentFormCopy {
             repos_placeholder_authed: REPOS_PLACEHOLDER_AUTHED,
             repos_placeholder_unauthed: REPOS_PLACEHOLDER_UNAUTHED,
             docker_image_label: crate::tr!("settings", "docker-image-reference"),
-            docker_image_placeholder: "e.g. python:3.11, node:20-alpine",
+            docker_image_placeholder: crate::tr!("settings", "e-g-python-3-11-node-20-alpine"),
             description_placeholder: DESCRIPTION_PLACEHOLDER,
-            setup_commands_placeholder: "e.g. cd my-repo && pip install -r requirements.txt",
+            setup_commands_placeholder: crate::tr!("settings", "e-g-cd-my-repo-pip-install-r-requirements-txt"),
             setup_commands_helper: "Setup commands run independently. Each command runs from the workspace root (/workspace). If a command depends on the previous one, combine them with &&.",
             show_description_character_count: true,
         }
@@ -1176,7 +1176,7 @@ impl UpdateEnvironmentForm {
         let next_index = match (self.github_dropdown_state.selected_index, direction) {
             (None, RepoDropdownSelectionDirection::Down) => filtered_indices[0],
             (None, RepoDropdownSelectionDirection::Up) => {
-                *filtered_indices.last().expect("filtered indices non-empty")
+                *filtered_indices.last().expect(crate::tr!("settings", "filtered-indices-non-empty"))
             }
             (Some(current), RepoDropdownSelectionDirection::Down) => {
                 let current_pos = filtered_indices

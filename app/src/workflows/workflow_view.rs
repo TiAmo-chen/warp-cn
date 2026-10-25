@@ -561,7 +561,7 @@ impl WorkflowView {
         {
             let server_id = result
                 .server_id
-                .expect("Expect server id on success creation");
+                .expect(crate::tr!("workflows", "expect-server-id-on-success-creation"));
 
             // The aliases were created with the old client sync id.  Update them to the new server id.
             WorkflowAliases::handle(ctx).update(ctx, |aliases, ctx| {
@@ -1653,10 +1653,10 @@ impl WorkflowView {
                     self.try_set_view_mode(ctx);
                     ctx.emit(WorkflowViewEvent::CreatedWorkflow(self.workflow_id));
                 } else {
-                    report_error!("Attempting to create workflow but now space found");
+                    report_error!(crate::tr!("workflows", "attempting-to-create-workflow-but-now-space-found"));
                 }
             }
-            _ => report_error!("Did not match conditions to either create or save the workflow"),
+            _ => report_error!(crate::tr!("workflows", "did-not-match-conditions-to-either-create-or-save-the-work")),
         }
     }
 

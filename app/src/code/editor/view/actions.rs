@@ -839,12 +839,12 @@ impl TypedActionView for CodeEditorView {
             }
             ToggleDiffNav(line_range) => self.toggle_diff_nav(line_range.clone(), ctx),
             Enter => self.model.update(ctx, |model, ctx| model.enter(ctx)),
-            VimEnter => self.vim_keystroke(&Keystroke::parse("enter").expect("enter parses"), ctx),
+            VimEnter => self.vim_keystroke(&Keystroke::parse("enter").expect(crate::tr!("code", "enter-parses")), ctx),
             Delete => self.model.update(ctx, |model, ctx| {
                 model.delete(TextDirection::Forwards, TextUnit::Character, false, ctx);
             }),
             VimDelete => {
-                self.vim_keystroke(&Keystroke::parse("delete").expect("delete parses"), ctx)
+                self.vim_keystroke(&Keystroke::parse("delete").expect(crate::tr!("code", "delete-parses")), ctx)
             }
             Backspace => {
                 self.model.update(ctx, |model, ctx| {
@@ -853,7 +853,7 @@ impl TypedActionView for CodeEditorView {
             }
             VimBackspace => {
                 self.vim_keystroke(
-                    &Keystroke::parse("backspace").expect("backspace parses"),
+                    &Keystroke::parse("backspace").expect(crate::tr!("code", "backspace-parses")),
                     ctx,
                 );
             }
@@ -884,10 +884,10 @@ impl TypedActionView for CodeEditorView {
                 })
             }),
             ScrollHalfPageDown => {
-                self.vim_keystroke(&Keystroke::parse("ctrl-d").expect("ctrl-d parses"), ctx)
+                self.vim_keystroke(&Keystroke::parse("ctrl-d").expect(crate::tr!("code", "ctrl-d-parses")), ctx)
             }
             ScrollHalfPageUp => {
-                self.vim_keystroke(&Keystroke::parse("ctrl-u").expect("ctrl-u parses"), ctx)
+                self.vim_keystroke(&Keystroke::parse("ctrl-u").expect(crate::tr!("code", "ctrl-u-parses")), ctx)
             }
             SelectUp => self.model.update(ctx, |model, ctx| {
                 model.select_up(ctx);
@@ -1026,20 +1026,20 @@ impl TypedActionView for CodeEditorView {
             Tab => self.model.update(ctx, |model, ctx| {
                 model.indent(false, ctx);
             }),
-            VimTab => self.vim_keystroke(&Keystroke::parse("tab").expect("tab parses"), ctx),
+            VimTab => self.vim_keystroke(&Keystroke::parse("tab").expect(crate::tr!("code", "tab-parses")), ctx),
             ShiftTab => self.model.update(ctx, |model, ctx| {
                 model.indent(true, ctx);
             }),
             VimShiftTab => self.vim_keystroke(
-                &Keystroke::parse("shift-tab").expect("shift-tab parses"),
+                &Keystroke::parse("shift-tab").expect(crate::tr!("code", "shift-tab-parses")),
                 ctx,
             ),
             VimShiftEnter => self.vim_keystroke(
-                &Keystroke::parse("shift-enter").expect("shift-enter parses"),
+                &Keystroke::parse("shift-enter").expect(crate::tr!("code", "shift-enter-parses")),
                 ctx,
             ),
             VimEscape => {
-                self.vim_keystroke(&Keystroke::parse("escape").expect("escape parses"), ctx)
+                self.vim_keystroke(&Keystroke::parse("escape").expect(crate::tr!("code", "escape-parses")), ctx)
             }
 
             ShowFindBar => self.show_find_bar(ctx),

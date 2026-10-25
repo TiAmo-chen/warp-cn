@@ -204,7 +204,7 @@ impl SettingsWidget for RulesWidget {
     type View = KnowledgePageView;
 
     fn search_terms(&self) -> &str {
-        "fact memory memories rules conventions"
+        crate::tr!("settings", "fact-memory-memories-rules-conventions")
     }
 
     fn render(
@@ -267,7 +267,7 @@ impl SettingsWidget for SuggestedRulesWidget {
     type View = KnowledgePageView;
 
     fn search_terms(&self) -> &str {
-        "suggested rules suggest save"
+        crate::tr!("settings", "suggested-rules-suggest-save")
     }
 
     fn render(
@@ -312,7 +312,7 @@ impl SettingsWidget for ManageRulesWidget {
     type View = KnowledgePageView;
 
     fn search_terms(&self) -> &str {
-        "manage rules rule collection"
+        crate::tr!("settings", "manage-rules-rule-collection")
     }
 
     fn render(
@@ -340,7 +340,7 @@ impl SettingsWidget for WarpDriveContextWidget {
     type View = KnowledgePageView;
 
     fn search_terms(&self) -> &str {
-        "warp drive agent context contents personal team developer workflows environments notebooks environment variables"
+        crate::tr!("settings", "warp-drive-agent-context-contents-personal-team-developer")
     }
 
     fn render(

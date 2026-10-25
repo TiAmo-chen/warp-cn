@@ -737,7 +737,7 @@ const MAX_WINDOW_TITLE_LENGTH: usize = 80;
 
 #[cfg(all(feature = "local_fs", not(target_family = "wasm")))]
 const AUTO_CLOUD_HANDOFF_PROMPT: &str =
-    "Continue this local Warp Agent task in the cloud from the current conversation state.";
+    crate::tr!("workspace", "continue-this-local-warp-agent-task-in-the-cloud-from-the");
 
 /// The default display name used for the user if they have no associated display name.
 pub const DEFAULT_USER_DISPLAY_NAME: &str = "User";
@@ -1433,7 +1433,7 @@ impl Workspace {
             EditorView::single_line(options, ctx)
         });
         editor.update(ctx, |editor, ctx| {
-            editor.set_placeholder_text("Search tabs...", ctx);
+            editor.set_placeholder_text(crate::tr!("workspace", "search-tabs-fb0e46"), ctx);
         });
         ctx.subscribe_to_view(&editor, |me, editor_view, event, ctx| match event {
             EditorEvent::Edited(_) => {
@@ -2684,7 +2684,7 @@ impl Workspace {
                 me.shown_staging_banner_count += 1;
                 me.toast_stack.update(ctx, |toast_stack, ctx| {
                     let toast = DismissibleToast::error(
-                        "Staging API call failed. Did your IP address change?".to_string(),
+                        crate::tr!("workspace", "staging-api-call-failed-did-your-ip-address-change").to_string(),
                     )
                     .with_object_id("staging_access_blocked_toast".to_string());
                     toast_stack.add_ephemeral_toast(toast, ctx);
@@ -2872,7 +2872,7 @@ impl Workspace {
                 ctx.open_file_path_in_explorer(&path);
                 DismissibleToast::success(format!("Wrote heap profile to {}", path.display()))
                     .with_link(
-                        ToastLink::new("Show in file explorer".to_string())
+                        ToastLink::new(crate::tr!("workspace", "show-in-file-explorer").to_string())
                             .with_onclick_action(WorkspaceAction::OpenInExplorer { path }),
                     )
             }
@@ -2929,7 +2929,7 @@ impl Workspace {
             model.insert(window_id, new_resizable_modal_sizes)
         });
 
-        terminal::platform::init().expect("Terminal platform initialized");
+        terminal::platform::init().expect(crate::tr!("workspace", "terminal-platform-initialized"));
 
         let tab_bar_overflow_menu = Self::build_tab_bar_overflow_menu(ctx);
         let (
@@ -4311,7 +4311,7 @@ impl Workspace {
 
         debug_assert!(
             self.tab_count() > 0,
-            "Workspace should have at least one tab upon configuration"
+            crate::tr!("workspace", "workspace-should-have-at-least-one-tab-upon-configuration")
         );
 
         if self.left_panel_visibility_across_tabs_enabled(ctx) {
@@ -5492,7 +5492,7 @@ impl Workspace {
     /// Returns the PaneGroup view handle for the currently active tab.
     pub fn active_tab_pane_group(&self) -> &ViewHandle<PaneGroup> {
         self.get_pane_group_view(self.active_tab_index)
-            .expect("Active tab index entry should exist")
+            .expect(crate::tr!("workspace", "active-tab-index-entry-should-exist"))
     }
 
     /// Attempts to get selected text from the focused pane.
@@ -7148,7 +7148,7 @@ impl Workspace {
         if FeatureFlag::GroupedTabs.is_enabled() {
             menu_items.push(MenuItem::Separator);
             menu_items.push(
-                MenuItemFields::new("New tab group")
+                MenuItemFields::new(crate::tr!("workspace", "new-tab-group"))
                     .with_on_select_action(WorkspaceAction::SelectNewSessionMenuItem(
                         NewSessionMenuItem::CreateNewTabGroup,
                     ))
@@ -7573,7 +7573,7 @@ impl Workspace {
         let seed_text = group
             .name
             .clone()
-            .unwrap_or_else(|| "New Group".to_string());
+            .unwrap_or_else(|| crate::tr!("workspace", "new-group").to_string());
 
         self.current_workspace_state
             .set_tab_group_being_renamed(group_id);
@@ -8458,7 +8458,7 @@ impl Workspace {
 
     fn trigger_agent_onboarding(&self, ctx: &mut ViewContext<Self>) {
         report_error!(
-            "Triggering agent onboarding callout flow but not during initial login. This should not normally happen."
+            crate::tr!("workspace", "triggering-agent-onboarding-callout-flow-but-not-during-in")
         );
         let version = if FeatureFlag::AgentView.is_enabled() {
             AgentOnboardingVersion::AgentModality {
@@ -10096,7 +10096,7 @@ impl Workspace {
         );
 
         items.extend([
-            MenuItemFields::new("Join our Slack community")
+            MenuItemFields::new(crate::tr!("workspace", "join-our-slack-community"))
                 .with_on_select_action(WorkspaceAction::JoinSlack)
                 .into_item(),
             MenuItem::Separator,
@@ -10282,9 +10282,9 @@ impl Workspace {
             let mut items = vec![];
             if can_move_up {
                 let label = if is_vertical {
-                    "Move group up"
+                    crate::tr!("workspace", "move-group-up")
                 } else {
-                    "Move group left"
+                    crate::tr!("workspace", "move-group-left")
                 };
                 items.push(
                     MenuItemFields::new(label)
@@ -10294,9 +10294,9 @@ impl Workspace {
             }
             if can_move_down {
                 let label = if is_vertical {
-                    "Move group down"
+                    crate::tr!("workspace", "move-group-down")
                 } else {
-                    "Move group right"
+                    crate::tr!("workspace", "move-group-right")
                 };
                 items.push(
                     MenuItemFields::new(label)
@@ -10309,7 +10309,7 @@ impl Workspace {
 
         let close_section = {
             let mut items = vec![
-                MenuItemFields::new("Close all tabs in group")
+                MenuItemFields::new(crate::tr!("workspace", "close-all-tabs-in-group"))
                     .with_on_select_action(WorkspaceAction::CloseTabGroup(group_id))
                     .into_item(),
             ];
@@ -10322,9 +10322,9 @@ impl Workspace {
             }
             if has_tabs_above {
                 let label = if is_vertical {
-                    "Close tabs above"
+                    crate::tr!("workspace", "close-tabs-above")
                 } else {
-                    "Close tabs to the left"
+                    crate::tr!("workspace", "close-tabs-to-the-left")
                 };
                 items.push(
                     MenuItemFields::new(label)
@@ -10334,7 +10334,7 @@ impl Workspace {
             }
             if has_tabs_below {
                 let label = if is_vertical {
-                    "Close tabs below"
+                    crate::tr!("workspace", "close-tabs-below-accf94")
                 } else {
                     &crate::tr!("workspace", "close-tabs-to-right")
                 };
@@ -10349,9 +10349,9 @@ impl Workspace {
 
         let pin_section = if FeatureFlag::PinnedTabs.is_enabled() {
             let (label, action) = if self.tab_groups.get(&group_id).is_some_and(|g| g.pinned) {
-                ("Unpin group", WorkspaceAction::UnpinTabGroup(group_id))
+                (crate::tr!("workspace", "unpin-group"), WorkspaceAction::UnpinTabGroup(group_id))
             } else {
-                ("Pin group", WorkspaceAction::PinTabGroup(group_id))
+                (crate::tr!("workspace", "pin-group"), WorkspaceAction::PinTabGroup(group_id))
             };
             vec![
                 MenuItemFields::new(label)
@@ -10380,10 +10380,10 @@ impl Workspace {
         for section_items in [
             pin_section,
             vec![
-                MenuItemFields::new("Ungroup tabs")
+                MenuItemFields::new(crate::tr!("workspace", "ungroup-tabs"))
                     .with_on_select_action(WorkspaceAction::UngroupTabs(group_id))
                     .into_item(),
-                MenuItemFields::new("New tab in group")
+                MenuItemFields::new(crate::tr!("workspace", "new-tab-in-group"))
                     .with_on_select_action(WorkspaceAction::NewTabInGroup(group_id))
                     .into_item(),
             ],
@@ -11926,14 +11926,14 @@ impl Workspace {
                 let left_panel_width = modal_sizes.map(|ms| {
                     ms.left_panel_width
                         .lock()
-                        .expect("should be able to lock left panel handle")
+                        .expect(crate::tr!("workspace", "should-be-able-to-lock-left-panel-handle"))
                         .size()
                 });
 
                 let right_panel_width = modal_sizes.map(|ms| {
                     ms.right_panel_width
                         .lock()
-                        .expect("should be able to lock right panel handle")
+                        .expect(crate::tr!("workspace", "should-be-able-to-lock-right-panel-handle"))
                         .size()
                 });
 
@@ -12010,7 +12010,7 @@ impl Workspace {
         let universal_search_width = modal_sizes.map(|ms| {
             ms.universal_search_width
                 .lock()
-                .expect("should be able to lock universal search resizable state handle")
+                .expect(crate::tr!("workspace", "should-be-able-to-lock-universal-search-resizable-state-ha"))
                 .size()
         });
 
@@ -12024,14 +12024,14 @@ impl Workspace {
         let voltron_width = modal_sizes.map(|ms| {
             ms.voltron_width
                 .lock()
-                .expect("should be able to lock voltron resizable state handle")
+                .expect(crate::tr!("workspace", "should-be-able-to-lock-voltron-resizable-state-handle"))
                 .size()
         });
 
         let warp_drive_index_width = modal_sizes.map(|ms| {
             ms.warp_drive_index_width
                 .lock()
-                .expect("should be able to lock warp drive resizable state handle")
+                .expect(crate::tr!("workspace", "should-be-able-to-lock-warp-drive-resizable-state-handle"))
                 .size()
         });
 
@@ -12812,7 +12812,7 @@ impl Workspace {
         #[cfg(feature = "local_tty")]
         {
             let shell =
-                AvailableShell::try_from("/bin/bash").expect("bash is required for this test");
+                AvailableShell::try_from("/bin/bash").expect(crate::tr!("workspace", "bash-is-required-for-this-test"));
             let startup_directory = self.get_new_tab_startup_directory(
                 NewSessionSource::Tab,
                 Some(ctx.window_id()),
@@ -13314,7 +13314,7 @@ impl Workspace {
         self.add_tab_with_pane_layout(
             Default::default(),
             Arc::new(HashMap::new()),
-            Some("Install Update".to_owned()),
+            Some(crate::tr!("workspace", "install-update-e71c71").to_owned()),
             ctx,
         );
 
@@ -13933,7 +13933,7 @@ impl Workspace {
                         })
                     }
                     _ => anyhow::bail!(
-                        "Local continuation is not supported for this harness"
+                        crate::tr!("workspace", "local-continuation-is-not-supported-for-this-harness")
                     ),
                 }
             },
@@ -13946,7 +13946,7 @@ impl Workspace {
                         );
                         WorkspaceToastStack::handle(ctx).update(ctx, |toast_stack, ctx| {
                             let toast = DismissibleToast::error(
-                                "Couldn't continue this conversation locally. Check the logs for details."
+                                crate::tr!("workspace", "couldn-t-continue-this-conversation-locally-check-the-logs")
                                     .to_owned(),
                             );
                             toast_stack.add_ephemeral_toast(toast, window_id, ctx);
@@ -14680,7 +14680,7 @@ impl Workspace {
                         let url = NOTIFICATIONS_TROUBLESHOOT_URL.to_string();
                         view.toast_stack.update(ctx, |toast_stack, ctx| {
                             let toast = DismissibleToast::error(
-                                "Warp doesn't have permission to send desktop notifications."
+                                crate::tr!("workspace", "warp-doesn-t-have-permission-to-send-desktop-notifications")
                                     .to_string(),
                             )
                             .with_link(
@@ -14696,7 +14696,7 @@ impl Workspace {
                     RequestPermissionsOutcome::OtherError { error_message } => {
                         report_error!(
                             anyhow::anyhow!("{error_message}")
-                                .context("Unknown error when requesting notification permissions")
+                                .context(crate::tr!("terminal", "unknown-error-when-requesting-notification-permissions")))
                         );
                     }
                 }
@@ -15927,7 +15927,7 @@ impl Workspace {
             WorkspaceToastStack::handle(ctx).update(ctx, |toast_stack, ctx| {
                 toast_stack.add_ephemeral_toast(
                     DismissibleToast::error(
-                        "No active terminal session to hand off. Focus a pane and try again."
+                        crate::tr!("workspace", "no-active-terminal-session-to-hand-off-focus-a-pane-and-tr")
                             .to_owned(),
                     ),
                     window_id,
@@ -16248,16 +16248,16 @@ impl Workspace {
         Self::restore_source_handoff_draft(source_view, launch, environment_id, ctx);
         let message = match error {
             HandoffPrepareError::LongRunningCommand => {
-                "Can't hand off while a command is running. Cancel the command or wait for it to finish."
+                crate::tr!("workspace", "can-t-hand-off-while-a-command-is-running-cancel-the-comma")
             }
             HandoffPrepareError::ActiveOrBlockedChild => {
-                "Can't hand off while a child agent is running or blocked."
+                crate::tr!("workspace", "can-t-hand-off-while-a-child-agent-is-running-or-blocked")
             }
             HandoffPrepareError::MissingServerConversationToken => {
-                "Your conversation hasn't synced to the cloud yet. Try sending another message, then hand off again."
+                crate::tr!("workspace", "your-conversation-hasn-t-synced-to-the-cloud-yet-try-sendi")
             }
             HandoffPrepareError::InvalidModel => {
-                "Custom models can't run in the cloud. Switch to a Warp model to hand off."
+                crate::tr!("terminal", "custom-models-can-t-run-in-the-cloud-switch-to-a-warp-mode"))
             }
             HandoffPrepareError::EmptySourceAndPrompt => {
                 "Nothing to hand off — start a conversation first."
@@ -16267,7 +16267,7 @@ impl Workspace {
             | HandoffPrepareError::HandoffDisabled
             | HandoffPrepareError::MissingRequiredEnvironment
             | HandoffPrepareError::InvalidEnvironment => {
-                "Couldn't start the handoff. Check your selection and try again."
+                crate::tr!("workspace", "couldn-t-start-the-handoff-check-your-selection-and-try-ag")
             }
         };
         let window_id = ctx.window_id();
@@ -16309,9 +16309,9 @@ impl Workspace {
             );
         }
         let message = if prepare_error.is_some() {
-            "The handoff settings changed before it started. Review them and try again."
+            crate::tr!("workspace", "the-handoff-settings-changed-before-it-started-review-them")
         } else {
-            "Couldn't start the handoff. Check your network connection and try again."
+            crate::tr!("workspace", "couldn-t-start-the-handoff-check-your-network-connection-a")
         };
         let window_id = ctx.window_id();
         WorkspaceToastStack::handle(ctx).update(ctx, |toast_stack, ctx| {
@@ -16413,7 +16413,7 @@ impl Workspace {
                             {
                                 report_error!(
                                     anyhow::anyhow!("{error_message}")
-                                        .context("Unknown error when sending notification")
+                                        .context(crate::tr!("workspace", "unknown-error-when-sending-notification"))
                                 );
                             }
                             send_telemetry_from_ctx!(
@@ -17230,13 +17230,13 @@ impl Workspace {
                         .file_upload_sessions
                         .local_to_upload_id_map
                         .get(local_pane_id)
-                        .expect("Local session should map to upload ID");
+                        .expect(crate::tr!("workspace", "local-session-should-map-to-upload-id"));
 
                     let terminal_view =
                         self.active_tab_pane_group().read(ctx, |pane_group, ctx| {
                             pane_group
                                 .terminal_view_from_pane_id(*remote_pane_id, ctx)
-                                .expect("PaneGroup should find remote pane ID")
+                                .expect(crate::tr!("workspace", "panegroup-should-find-remote-pane-id"))
                         });
                     terminal_view.update(ctx, |terminal_view, ctx| {
                         terminal_view
@@ -17260,13 +17260,13 @@ impl Workspace {
                         .file_upload_sessions
                         .local_to_upload_id_map
                         .get(local_pane_id)
-                        .expect("Local session should map to upload ID");
+                        .expect(crate::tr!("workspace", "local-session-should-map-to-upload-id"));
 
                     let terminal_view =
                         self.active_tab_pane_group().read(ctx, |pane_group, ctx| {
                             pane_group
                                 .terminal_view_from_pane_id(*remote_pane_id, ctx)
-                                .expect("PaneGroup should find remote pane ID")
+                                .expect(crate::tr!("workspace", "panegroup-should-find-remote-pane-id"))
                         });
 
                     terminal_view.update(ctx, |terminal_view, ctx| {
@@ -17287,7 +17287,7 @@ impl Workspace {
                     .file_upload_sessions
                     .upload_id_to_local_map
                     .get(&(*remote_pane_id, *upload_id))
-                    .expect("Upload ID should map to a local session");
+                    .expect(crate::tr!("workspace", "upload-id-should-map-to-a-local-session"));
 
                 // Toggle the visibility of the local pane.
                 let local_pane_open =
@@ -17299,7 +17299,7 @@ impl Workspace {
                 let terminal_view = self.active_tab_pane_group().read(ctx, |pane_group, ctx| {
                     pane_group
                         .terminal_view_from_pane_id(*remote_pane_id, ctx)
-                        .expect("PaneGroup should find remote pane ID")
+                        .expect(crate::tr!("workspace", "panegroup-should-find-remote-pane-id"))
                 });
                 terminal_view.update(ctx, |terminal_view, ctx| {
                     terminal_view
@@ -17322,7 +17322,7 @@ impl Workspace {
                     .file_upload_sessions
                     .upload_id_to_local_map
                     .get(&(*remote_pane_id, *upload_id))
-                    .expect("Upload ID should map to a local session");
+                    .expect(crate::tr!("workspace", "upload-id-should-map-to-a-local-session"));
 
                 // Close the local pane.
                 self.active_tab_pane_group().update(ctx, |pane_group, ctx| {
@@ -17694,7 +17694,7 @@ impl Workspace {
             ctx.notify();
             ctx.focus(&self.command_search_view);
         } else {
-            report_error!("Command search keybinding triggered but no session is active!");
+            report_error!(crate::tr!("workspace", "command-search-keybinding-triggered-but-no-session-is-acti"));
         }
     }
 
@@ -18471,7 +18471,7 @@ impl Workspace {
                         }
 
                         if FeatureFlag::AgentMode.is_enabled() {
-                            let active_terminal_view = self.active_session_view(ctx).expect("There must be an active terminal view if the user selected a command search result");
+                            let active_terminal_view = self.active_session_view(ctx).expect(crate::tr!("workspace", "there-must-be-an-active-terminal-view-if-the-user-selected"));
 
                             active_terminal_view.update(ctx, |terminal_view, ctx| {
                                 terminal_view.ask_blocklist_ai(
@@ -18495,14 +18495,14 @@ impl Workspace {
                         }
                     }
                     AcceptAIQuery(ai_query) => {
-                        let active_terminal_view = self.active_session_view(ctx).expect("There must be an active terminal view if the user selected a command search result");
+                        let active_terminal_view = self.active_session_view(ctx).expect(crate::tr!("workspace", "there-must-be-an-active-terminal-view-if-the-user-selected"));
 
                         active_terminal_view.update(ctx, |terminal_view, ctx| {
                             terminal_view.set_ai_input_mode_with_query(Some(ai_query), ctx);
                         });
                     }
                     RunAIQuery(ai_query) => {
-                        let active_terminal_view = self.active_session_view(ctx).expect("There must be an active terminal view if the user selected a command search result");
+                        let active_terminal_view = self.active_session_view(ctx).expect(crate::tr!("workspace", "there-must-be-an-active-terminal-view-if-the-user-selected"));
 
                         active_terminal_view.update(ctx, |terminal_view, ctx| {
                             terminal_view.set_ai_input_mode_with_query(Some(ai_query), ctx);
@@ -18706,7 +18706,7 @@ impl Workspace {
                         OperationSuccessType::FeatureNotAvailable => {
                             if cloned_workflow.is_some() {
                                 report_error!(
-                                    "Getting feature not available message for workflows"
+                                    crate::tr!("workspace", "getting-feature-not-available-message-for-workflows")
                                 );
                             }
                         }
@@ -18744,7 +18744,7 @@ impl Workspace {
                         }
                         OperationSuccessType::FeatureNotAvailable => {
                             report_error!(
-                                "Should not get deletion confirmation message when feature is not available",
+                                crate::tr!("workspace", "should-not-get-deletion-confirmation-message-when-feature"),
                                 extra: { "operation" => ?result.operation }
                             );
                         }
@@ -18762,7 +18762,7 @@ impl Workspace {
         {
             let cloud_model = CloudModel::as_ref(ctx);
             let updated_object = cloud_model
-                .get_by_uid(&result.server_id.expect("Expect server id on success").uid());
+                .get_by_uid(&result.server_id.expect(crate::tr!("notebooks", "expect-server-id-on-success"))).uid());
             if let Some(CloudObjectTypeAndId::Workflow(workflow_id)) =
                 updated_object.map(|o| o.cloud_object_type_and_id())
             {
@@ -19655,7 +19655,7 @@ impl Workspace {
                     .as_ref(ctx)
                     .active_session_view(ctx)
                 else {
-                    report_error!("No active terminal view after adding tab for Codex session");
+                    report_error!(crate::tr!("workspace", "no-active-terminal-view-after-adding-tab-for-codex-session"));
                     return;
                 };
 
@@ -19667,7 +19667,7 @@ impl Workspace {
                     .get_preferred_codex_model(&scope, ctx)
                     .map(|info| info.id.clone())
                 else {
-                    report_error!("No preferred codex model found");
+                    report_error!(crate::tr!("workspace", "no-preferred-codex-model-found"));
                     return;
                 };
 
@@ -19679,7 +19679,7 @@ impl Workspace {
                 });
 
                 // Enter agent view and submit the initial prompt
-                let initial_prompt = "Hello, Agent Mode x Codex!".to_string();
+                let initial_prompt = crate::tr!("workspace", "hello-agent-mode-x-codex").to_string();
                 terminal_view.update(ctx, |terminal_view, ctx| {
                     terminal_view.enter_agent_view_for_new_conversation(
                         Some(initial_prompt),
@@ -19805,7 +19805,7 @@ impl Workspace {
             .as_ref(ctx)
             .active_session_view(ctx)
         else {
-            report_error!("No active terminal view after adding tab for Linear issue work");
+            report_error!(crate::tr!("workspace", "no-active-terminal-view-after-adding-tab-for-linear-issue"));
             return;
         };
 
@@ -19827,7 +19827,7 @@ impl Workspace {
         {
             BlocklistAIHistoryModel::handle(ctx).update(ctx, |history, _ctx| {
                 if let Some(conversation) = history.conversation_mut(&conversation_id) {
-                    conversation.set_fallback_display_title("Linear Issue".to_string());
+                    conversation.set_fallback_display_title(crate::tr!("workspace", "linear-issue-f43936").to_string());
                 }
             });
         }
@@ -20186,7 +20186,7 @@ impl Workspace {
         let body = appearance
             .ui_builder()
             .wrappable_text(
-                "Ask Warp AI to explain errors, suggest commands or write scripts.".to_owned(),
+                crate::tr!("workspace", "ask-warp-ai-to-explain-errors-suggest-commands-or-write-sc").to_owned(),
                 true,
             )
             .with_style(UiComponentStyles {
@@ -20525,7 +20525,7 @@ impl Workspace {
         let title = group
             .name
             .clone()
-            .unwrap_or_else(|| "New Group".to_string());
+            .unwrap_or_else(|| crate::tr!("workspace", "new-group").to_string());
         let show_header_pin = FeatureFlag::PinnedTabs.is_enabled() && group.pinned;
         let normal_right_pad = if is_collapsed { 8. } else { 9. };
 
@@ -20817,7 +20817,7 @@ impl Workspace {
                         icons::Icon::Grid,
                         &self.mouse_states.agent_management_view_button,
                         WorkspaceAction::ToggleAgentManagementView,
-                        "Agent management panel".to_string(),
+                        crate::tr!("workspace", "agent-management-panel").to_string(),
                         keybinding_name_to_display_string(
                             "workspace:toggle_agent_management_view",
                             ctx,
@@ -21077,7 +21077,7 @@ impl Workspace {
             button
                 .with_tooltip(self.render_tab_bar_icon_button_tooltip(
                     appearance,
-                    "Code review panel".to_string(),
+                    crate::tr!("workspace", "code-review-panel-f630f0").to_string(),
                     keybinding_name_to_display_string("workspace:toggle_right_panel", ctx),
                 ))
                 .build()
@@ -26445,7 +26445,7 @@ impl TypedActionView for Workspace {
                                 let stderr = String::from_utf8_lossy(&output.stderr);
                                 log::error!("sample command failed with stderr: {stderr}");
                                 report_error!(
-                                    "sample command failed",
+                                    crate::tr!("workspace", "sample-command-failed"),
                                     extra: { "status" => %output.status }
                                 );
                                 crate::tr!("workspace", "failed-to-sample-process").to_string()
@@ -26458,7 +26458,7 @@ impl TypedActionView for Workspace {
                             }
                             Err(join_err) => {
                                 report_error!(
-                                    anyhow::Error::new(join_err).context("Sample task panicked")
+                                    anyhow::Error::new(join_err).context(crate::tr!("workspace", "sample-task-panicked"))
                                 );
                                 crate::tr!("workspace", "failed-to-sample-process").to_string()
                             }

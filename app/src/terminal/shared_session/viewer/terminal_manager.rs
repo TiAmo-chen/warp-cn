@@ -1447,10 +1447,10 @@ impl TerminalManager {
                     view.update(ctx, |terminal_view, ctx| {
                         let reason_string = match reason {
                             session_sharing_protocol::common::FailedToAddGuestsReason::NotWarpUsers => {
-                                "One or more of the emails are not Warp users.".to_owned()
+                                crate::tr!("terminal", "one-or-more-of-the-emails-are-not-warp-users").to_owned()
                             }
                             session_sharing_protocol::common::FailedToAddGuestsReason::GuestAlreadyAdded => {
-                                "One or more of the guests has already been added.".to_owned()
+                                crate::tr!("terminal", "one-or-more-of-the-guests-has-already-been-added").to_owned()
                             }
                             _ => crate::tr!("ai_assistant", "ai-chat-error-label").to_owned(),
                         };

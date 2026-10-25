@@ -178,7 +178,7 @@ pub fn render_lsp_selector_block(
     };
 
     // Create keyboard shortcut for Enter
-    let submit_keystroke = Keystroke::parse("enter").expect("can parse enter");
+    let submit_keystroke = Keystroke::parse("enter").expect(crate::tr!("terminal", "can-parse-enter"));
 
     let submit_shortcut = KeyboardShortcut::new(
         &submit_keystroke,

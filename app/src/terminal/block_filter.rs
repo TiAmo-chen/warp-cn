@@ -547,7 +547,7 @@ impl View for BlockFilterEditor {
         let clear_filter_icon = self.render_hoverable_icon(
             appearance,
             Icon::XCircle,
-            false, // The "clear filter" icon should never be selected.
+            false, // The crate::tr!("terminal", "clear-filter") icon should never be selected.
             self.mouse_state_handles
                 .clear_filter_mouse_state_handle
                 .clone(),

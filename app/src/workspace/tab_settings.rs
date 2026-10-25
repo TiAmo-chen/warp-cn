@@ -143,7 +143,7 @@ impl WorkspaceDecorationVisibility {
     settings_value::SettingsValue,
 )]
 #[schemars(
-    description = "Color assignment state for a directory's tab.",
+    description = crate::tr!("workspace", "color-assignment-state-for-a-directory-s-tab"),
     rename_all = "snake_case"
 )]
 pub enum DirectoryTabColor {
@@ -402,7 +402,7 @@ settings::macros::implement_setting_for_enum!(
     settings_value::SettingsValue,
 )]
 #[schemars(
-    description = "Primary information displayed on vertical tabs.",
+    description = crate::tr!("workspace", "primary-information-displayed-on-vertical-tabs"),
     rename_all = "snake_case"
 )]
 pub enum VerticalTabsPrimaryInfo {

@@ -115,7 +115,7 @@ impl ActiveNotebookData {
                 if let Some(current_id) = self.id()
                     && current_id.into_client() == result.client_id
                 {
-                    let server_id = result.server_id.expect("Expect server id on success");
+                    let server_id = result.server_id.expect(crate::tr!("notebooks", "expect-server-id-on-success"));
                     let notebook_id: NotebookId = server_id.into();
                     self.feature_not_available = false;
                     self.saving_status = SavingStatus::Saved;
@@ -128,7 +128,7 @@ impl ActiveNotebookData {
             }
             (ObjectOperation::Update, OperationSuccessType::Success) => {
                 if let Some(current_id) = self.id() {
-                    let server_id = result.server_id.expect("Expect server id on success");
+                    let server_id = result.server_id.expect(crate::tr!("notebooks", "expect-server-id-on-success"));
                     if current_id.into_server() == Some(server_id) {
                         self.feature_not_available = false;
                         self.saving_status = SavingStatus::Saved;
@@ -141,7 +141,7 @@ impl ActiveNotebookData {
                 if let Some(id) = current_id {
                     let server_id = result
                         .server_id
-                        .expect("Expect server id on update rejection");
+                        .expect(crate::tr!("notebooks", "expect-server-id-on-update-rejection"));
                     if id.into_server() == Some(server_id) {
                         self.feature_not_available = false;
                         ctx.emit(ActiveNotebookDataEvent::EditRejected);
@@ -154,7 +154,7 @@ impl ActiveNotebookData {
                 if let Some(id) = current_id {
                     let server_id = result
                         .server_id
-                        .expect("Expect server id on update failure");
+                        .expect(crate::tr!("notebooks", "expect-server-id-on-update-failure"));
                     if id.into_server() == Some(server_id) {
                         self.feature_not_available = true;
                         ctx.emit(ActiveNotebookDataEvent::EditRejected);
@@ -164,7 +164,7 @@ impl ActiveNotebookData {
             }
             (ObjectOperation::TakeEditAccess, OperationSuccessType::Success) => {
                 let current_id = self.id();
-                let server_id = result.server_id.expect("Expect server id on success");
+                let server_id = result.server_id.expect(crate::tr!("notebooks", "expect-server-id-on-success"));
                 if let Some(id) = current_id
                     && id.into_server() == Some(server_id)
                 {
@@ -176,7 +176,7 @@ impl ActiveNotebookData {
             (ObjectOperation::Trash, OperationSuccessType::Success)
             | (ObjectOperation::Untrash, OperationSuccessType::Success) => {
                 let current_id = self.id();
-                let server_id = result.server_id.expect("Expect server id on success");
+                let server_id = result.server_id.expect(crate::tr!("notebooks", "expect-server-id-on-success"));
                 if let Some(id) = current_id
                     && id.into_server() == Some(server_id)
                 {
@@ -185,7 +185,7 @@ impl ActiveNotebookData {
             }
             (ObjectOperation::MoveToDrive, OperationSuccessType::Success) => {
                 let current_id = self.id();
-                let server_id = result.server_id.expect("Expect server id on success");
+                let server_id = result.server_id.expect(crate::tr!("notebooks", "expect-server-id-on-success"));
                 if let Some(id) = current_id
                     && id.into_server() == Some(server_id)
                 {

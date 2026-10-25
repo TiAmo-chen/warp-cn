@@ -1058,7 +1058,7 @@ impl SettingsWidget for EnvironmentsPageWidget {
     type View = EnvironmentsPageView;
 
     fn search_terms(&self) -> &str {
-        "environments environment ambient agents github warp assisted manual configuration"
+        crate::tr!("settings", "environments-environment-ambient-agents-github-warp-assist")
     }
 
     fn render(

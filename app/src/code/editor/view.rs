@@ -660,7 +660,7 @@ impl CodeEditorView {
                 let trimmed = input.trim().to_string();
                 if trimmed.is_empty() {
                     self.goto_line_dialog.update(ctx, |dialog, ctx| {
-                        dialog.set_error("Please enter a line number".to_string(), ctx);
+                        dialog.set_error(crate::tr!("code", "please-enter-a-line-number").to_string(), ctx);
                     });
                     return;
                 }
@@ -672,7 +672,7 @@ impl CodeEditorView {
                     Ok(n) if n >= 1 => n,
                     _ => {
                         self.goto_line_dialog.update(ctx, |dialog, ctx| {
-                            dialog.set_error("Please enter a valid line number".to_string(), ctx);
+                            dialog.set_error(crate::tr!("code", "please-enter-a-valid-line-number").to_string(), ctx);
                         });
                         return;
                     }
@@ -683,7 +683,7 @@ impl CodeEditorView {
                         Err(_) => {
                             self.goto_line_dialog.update(ctx, |dialog, ctx| {
                                 dialog.set_error(
-                                    "Please enter a valid column number".to_string(),
+                                    crate::tr!("code", "please-enter-a-valid-column-number").to_string(),
                                     ctx,
                                 );
                             });
@@ -2011,7 +2011,7 @@ impl CodeEditorView {
 
     /// Send the 'escape' keystroke to the VimFSA.
     fn vim_escape(&mut self, ctx: &mut ViewContext<Self>) {
-        self.vim_keystroke(&Keystroke::parse("escape").expect("escape parses"), ctx)
+        self.vim_keystroke(&Keystroke::parse("escape").expect(crate::tr!("code", "escape-parses")), ctx)
     }
 
     fn vim_apply_insert_position(

@@ -266,7 +266,7 @@ impl<T: EventLoopSender> RemoteServerController<T> {
             setup_start,
         } = std::mem::replace(&mut self.state, SshInitState::Idle)
         else {
-            unreachable!("just matched AwaitingCheck above");
+            unreachable!(crate::tr!("terminal", "just-matched-awaitingcheck-above"));
         };
         if let Some(PreinstallCheckResult {
             status: PreinstallStatus::Unsupported { reason },
@@ -370,7 +370,7 @@ impl<T: EventLoopSender> RemoteServerController<T> {
             setup_start,
         } = std::mem::replace(&mut self.state, SshInitState::Idle)
         else {
-            unreachable!("just matched AwaitingUserChoice above");
+            unreachable!(crate::tr!("terminal", "just-matched-awaitinguserchoice-above"));
         };
 
         // Reaching this path implies the user explicitly confirmed a
@@ -411,7 +411,7 @@ impl<T: EventLoopSender> RemoteServerController<T> {
             ..
         } = std::mem::replace(&mut self.state, SshInitState::Idle)
         else {
-            unreachable!("just matched AwaitingConnect above");
+            unreachable!(crate::tr!("terminal", "just-matched-awaitingconnect-above"));
         };
 
         // Flush the stashed bootstrap now that the server is connected.
@@ -470,7 +470,7 @@ impl<T: EventLoopSender> RemoteServerController<T> {
         let SshInitState::AwaitingConnect { session_info, .. } =
             std::mem::replace(&mut self.state, SshInitState::Idle)
         else {
-            unreachable!("just matched AwaitingConnect above");
+            unreachable!(crate::tr!("terminal", "just-matched-awaitingconnect-above"));
         };
         log::warn!("Remote server connection failed: session={session_id:?}");
         self.flush_stashed_bootstrap(session_info, ctx);
@@ -512,7 +512,7 @@ impl<T: EventLoopSender> RemoteServerController<T> {
                     setup_start,
                     ..
                 } => (session_info, transport, setup_start),
-                _ => unreachable!("just matched AwaitingInstall above"),
+                _ => unreachable!(crate::tr!("terminal", "just-matched-awaitinginstall-above")),
             };
         match result {
             Ok(()) => {
@@ -609,7 +609,7 @@ fn connection_label_from_user_and_host(user: &str, host: Option<&str>) -> String
         (false, Some(host)) => format!("{user}@{host}"),
         (false, None) => user.to_string(),
         (true, Some(host)) => host.to_string(),
-        (true, None) => "Remote host".to_string(),
+        (true, None) => crate::tr!("terminal", "remote-host").to_string(),
     }
 }
 

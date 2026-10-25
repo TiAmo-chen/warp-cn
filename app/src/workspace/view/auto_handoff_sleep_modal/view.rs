@@ -145,7 +145,7 @@ impl AutoHandoffSleepModal {
         let text_color: ColorU = red.into();
         let background_color = appearance.theme().ansi_overlay_2(red);
         let text = Text::new_inline(
-            "Run Connection Lost".to_string(),
+            crate::tr!("workspace", "run-connection-lost").to_string(),
             appearance.ui_font_family(),
             14.,
         )
@@ -169,7 +169,7 @@ impl AutoHandoffSleepModal {
     }
 
     fn render_title(appearance: &Appearance) -> Box<dyn Element> {
-        Text::new("Enable auto-handoff?", appearance.ui_font_family(), 20.)
+        Text::new(crate::tr!("workspace", "enable-auto-handoff"), appearance.ui_font_family(), 20.)
             .with_color(
                 appearance
                     .theme()

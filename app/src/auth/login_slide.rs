@@ -102,19 +102,19 @@ impl LoginPurpose {
             ),
             LoginPurpose::ThirdParty => (
                 crate::tr!("settings", "create-an-account"),
-                "Create a Warp account to enable AI-powered planning, coding, and automations.",
+                crate::tr!("auth", "create-a-warp-account-to-enable-ai-powered-planning-coding"),
             ),
             LoginPurpose::AccountFirst => (
                 crate::tr!("settings", "create-an-account"),
-                "Access AI, run cloud agents, collaborate with teammates, and sync settings across devices.",
+                crate::tr!("auth", "access-ai-run-cloud-agents-collaborate-with-teammates-and"),
             ),
         }
     }
 
     fn work_email_callout_copy(self) -> Option<(&'static str, &'static str)> {
         matches!(self, LoginPurpose::AccountFirst).then_some((
-            "Use a work email to find teammates",
-            "Signing in with a work email helps us find your teammates and may unlock special offers.",
+            crate::tr!("auth", "use-a-work-email-to-find-teammates"),
+            crate::tr!("auth", "signing-in-with-a-work-email-helps-us-find-your-teammates"),
         ))
     }
 }
@@ -1116,8 +1116,8 @@ impl LoginSlideView {
                 crate::tr!("auth", "enable-warp-drive"),
             ),
             LoginPurpose::WarpAgent | LoginPurpose::ThirdParty | LoginPurpose::AccountFirst => (
-                "Continue without signing in?",
-                "Without an account, you won't have access to Warp's AI features. Sign in anytime to unlock agents and other AI features.",
+                crate::tr!("auth", "continue-without-signing-in"),
+                crate::tr!("auth", "without-an-account-you-won-t-have-access-to-warp-s-ai-feat"),
                 &[],
                 crate::tr!("workspace", "sign-in"),
             ),

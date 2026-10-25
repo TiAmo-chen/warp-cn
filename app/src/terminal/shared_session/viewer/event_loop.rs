@@ -203,7 +203,7 @@ impl EventLoop {
                 OrderedTerminalEventType::PtyBytesRead { bytes } => {
                     let mut model = self.terminal_model.lock();
                     let decompressed = lz4_flex::block::decompress_size_prepended(&bytes)
-                        .expect("Should be able to decompress the PtyBytesRead event");
+                        .expect(crate::tr!("terminal", "should-be-able-to-decompress-the-ptybytesread-event"));
                     self.parser
                         .parse_bytes(&mut *model, &decompressed, &mut self.sink);
                 }

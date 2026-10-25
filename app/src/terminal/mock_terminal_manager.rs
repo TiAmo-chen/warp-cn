@@ -202,9 +202,9 @@ mod testing {
             });
 
             app.views_of_type::<TerminalView>(window_id)
-                .expect("just created window")
+                .expect(crate::tr!("terminal", "just-created-window"))
                 .first()
-                .expect("window should have a TerminalView")
+                .expect(crate::tr!("terminal", "window-should-have-a-terminalview"))
                 .clone()
         }
     }

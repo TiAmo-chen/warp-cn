@@ -119,7 +119,7 @@ impl NotebookManager {
                     manager
                         .raw_text_by_hashed_id
                         .insert(hashed_id, NotebookRawTextStatus::ParseError);
-                    report_error!(err.context("Cached Notebook raw text failed to parse"));
+                    report_error!(err.context(crate::tr!("notebooks", "cached-notebook-raw-text-failed-to-parse")));
                 }
             },
         )
@@ -227,7 +227,7 @@ impl NotebookManager {
             });
         } else {
             safe_warn!(
-                safe: ("Ignoring duplicate notebook pane registration"),
+                safe: (crate::tr!("notebooks", "ignoring-duplicate-notebook-pane-registration")),
                 full: ("Ignoring duplicate notebook pane registration for {notebook_id}")
             );
         }
@@ -293,7 +293,7 @@ impl NotebookManager {
             return;
         }
         if let ObjectOperation::Create { .. } = result.operation {
-            let server_id = result.server_id.expect("Expect server id on success");
+            let server_id = result.server_id.expect(crate::tr!("notebooks", "expect-server-id-on-success"));
             let Some(server_id) = CloudModel::as_ref(ctx)
                 .get_notebook_by_uid(&server_id.uid())
                 .and_then(|notebook| notebook.id.into_server())
@@ -326,7 +326,7 @@ impl NotebookManager {
                 self.panes_by_hashed_id
                     .insert(new_id.uid(), pane_data)
                     .is_none(),
-                "New notebook was already open"
+                crate::tr!("notebooks", "new-notebook-was-already-open")
             );
         } else {
             log::warn!("Tried to swap notebooks, but the old one was not open");
@@ -339,7 +339,7 @@ impl NotebookManager {
         for pane in self.panes_by_hashed_id.values() {
             if let Some(notebook_view) = pane.handle.upgrade(ctx) {
                 safe_debug!(
-                    safe : ("Closing notebook on termination"),
+                    safe : (crate::tr!("notebooks", "closing-notebook-on-termination")),
                     full: ("Closing notebook {} on termination", pane.notebook_id)
                 );
                 notebook_view.update(ctx, |view, ctx| view.on_detach(ctx));

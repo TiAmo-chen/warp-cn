@@ -679,13 +679,13 @@ impl SearchItem for ModelSearchItem {
                 {
                     AUTO_HOSTED_INFERENCE_LABEL
                 } else if self.is_using_bedrock {
-                    "Inference via Bedrock"
+                    crate::tr!("terminal", "inference-via-bedrock")
                 } else if self.is_using_gemini_enterprise_agent_platform {
-                    "Inference via Gemini Enterprise Agent Platform"
+                    crate::tr!("terminal", "inference-via-gemini-enterprise-agent-platform")
                 } else if let Some(source) = self.byo_key_source {
                     source.inference_label()
                 } else {
-                    "Inference via API key"
+                    crate::tr!("terminal", "inference-via-api-key")
                 },
                 manage_button: Container::new(manage_button).finish(),
             }

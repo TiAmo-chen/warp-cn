@@ -716,7 +716,7 @@ impl HeaderGrid {
                 }
                 None => {
                     log::warn!(
-                        "Prompt end point should not be None after resize, if Some previously!"
+                        crate::tr!("terminal", "prompt-end-point-should-not-be-none-after-resize-if-some-p")
                     );
                     // TODO(CORE-2241): Root-cause why we're ever reaching this code block.
                     self.cached_prompt_end_point = None;
@@ -1104,7 +1104,7 @@ impl ansi::Handler for HeaderGrid {
                         }
                     }
                     ansi::PromptKind::Right => {
-                        report_error!("Right prompt marker should be handled by Block.");
+                        report_error!(crate::tr!("terminal", "right-prompt-marker-should-be-handled-by-block"));
                     }
                 };
                 self.receiving_chars_for_prompt = Some(kind);
@@ -1133,7 +1133,7 @@ impl ansi::Handler for HeaderGrid {
                         }
                     }
                     ansi::PromptKind::Right => {
-                        report_error!("Right prompt marker should be handled by Block.");
+                        report_error!(crate::tr!("terminal", "right-prompt-marker-should-be-handled-by-block"));
                     }
                 }
             }

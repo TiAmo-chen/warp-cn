@@ -285,7 +285,7 @@ impl InlineDiffView {
         let future = async move {
             rx.await.unwrap_or_else(|_| {
                 Err(Arc::new(FileSaveError::Other(
-                    "File operation completion was cancelled".to_owned(),
+                    crate::tr!("code", "file-operation-completion-was-cancelled").to_owned(),
                 )))
             })
         }
@@ -331,7 +331,7 @@ impl InlineDiffView {
                     return Ok(futures::future::ready(Ok(())).boxed());
                 }
                 PersistenceState::Persisting(_) => {
-                    return Err("File operation is still in flight".to_owned());
+                    return Err(crate::tr!("code", "file-operation-is-still-in-flight").to_owned());
                 }
                 PersistenceState::Persisted => {}
             }
@@ -355,7 +355,7 @@ impl InlineDiffView {
                             // Local IDs cache canonical paths, so reuse could write a deleted
                             // symlink's referent. Remote IDs already preserve the requested path.
                             let original_path =
-                                self.file_path.as_ref().expect("registered file has a path");
+                                self.file_path.as_ref().expect(crate::tr!("code", "registered-file-has-a-path"));
                             file_model.update(ctx, |model, ctx| {
                                 let restored_id = model.register_file_path(
                                     &PathBuf::from(original_path.as_str()),
@@ -378,7 +378,7 @@ impl InlineDiffView {
                                 match self
                                     .session_type
                                     .as_ref()
-                                    .expect("registered file has a session")
+                                    .expect(crate::tr!("code", "registered-file-has-a-session"))
                                 {
                                     DiffSessionType::Local => {
                                         Ok::<_, String>(model.register_file_path(to, false, ctx))
@@ -391,7 +391,7 @@ impl InlineDiffView {
                                 }
                             })?;
                             let original_path =
-                                self.file_path.as_ref().expect("registered file has a path");
+                                self.file_path.as_ref().expect(crate::tr!("code", "registered-file-has-a-path"));
                             file_model.update(ctx, |model, ctx| {
                                 let result = model.rename_and_save(
                                     target_id,

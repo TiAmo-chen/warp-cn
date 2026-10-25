@@ -57,9 +57,9 @@ const MAX_PROMPT_LINES: f32 = 5.;
 const PROMPT_PREVIEW_MAX_CHARS: usize = 500;
 const INITIAL_CLOUD_MODE_PROMPT_TOOLTIP: &str = "The first cloud-mode prompt cannot be changed.";
 const SEND_NOW_DURING_CLOUD_SETUP_TOOLTIP: &str =
-    "Prompts cannot be sent until environment setup is complete.";
+    crate::tr!("terminal", "prompts-cannot-be-sent-until-environment-setup-is-complete");
 const SEND_NOW_PENDING_LRC_TOOLTIP: &str =
-    "Prompts cannot be sent until the full terminal use agent is initialized.";
+    crate::tr!("terminal", "prompts-cannot-be-sent-until-the-full-terminal-use-agent-i");
 const SEND_NOW_TO_FULL_TERMINAL_USE_AGENT_TOOLTIP: &str = "Send to full terminal use agent";
 const SEND_NOW_AS_READ_ONLY_VIEWER_TOOLTIP: &str = "Read-only viewers cannot send prompts.";
 /// Suffix on rows auto-queued during an agent-requested long-running command, which fire
@@ -453,7 +453,7 @@ impl QueuedPromptsPanelView {
             } else if !self.can_send_prompt {
                 SEND_NOW_AS_READ_ONLY_VIEWER_TOOLTIP
             } else if !ready {
-                "Downloading attachments"
+                crate::tr!("terminal", "downloading-attachments")
             } else if lrc_subagent_in_progress {
                 SEND_NOW_TO_FULL_TERMINAL_USE_AGENT_TOOLTIP
             } else {
@@ -941,7 +941,7 @@ impl View for QueuedPromptsPanelView {
                 let row_state = self
                     .row_states
                     .get(&query.id())
-                    .expect("queued row state should be seeded by model event")
+                    .expect(crate::tr!("terminal", "queued-row-state-should-be-seeded-by-model-event"))
                     .clone();
                 let is_in_edit_mode = editing_row_id == Some(query.id());
                 let is_being_dragged = self.dragging_query_id == Some(query.id());
@@ -1094,7 +1094,7 @@ fn render_header(
             );
             row.add_child(Container::new(keycap).with_margin_left(4.).finish());
             row.add_child(
-                Text::new("to send", ui_font_family, ui_font_size)
+                Text::new(crate::tr!("terminal", "to-send"), ui_font_family, ui_font_size)
                     .with_style(Properties {
                         style: Style::Normal,
                         weight: Weight::Normal,

@@ -17,7 +17,7 @@ use warpui::platform::OperatingSystem;
     settings_value::SettingsValue,
 )]
 #[schemars(
-    description = "Shell to use when opening new sessions.",
+    description = crate::tr!("terminal", "shell-to-use-when-opening-new-sessions"),
     rename_all = "snake_case"
 )]
 pub enum NewSessionShell {

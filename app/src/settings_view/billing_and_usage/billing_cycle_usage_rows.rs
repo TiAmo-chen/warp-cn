@@ -102,7 +102,7 @@ fn viewer_identity(app: &AppContext) -> (Option<String>, String) {
         .display_name()
         .or_else(|| auth_state.username_for_display())
         .or_else(|| auth_state.user_email())
-        .unwrap_or_else(|| "Your usage".to_string());
+        .unwrap_or_else(|| crate::tr!("settings", "your-usage").to_string());
     (viewer_uid, display_name)
 }
 
@@ -189,7 +189,7 @@ impl MemberUsageRow {
             subject_type: AiCreditsUsageAndCostSubjectType::Team,
             subject_key: OTHER_MEMBERS_KEY.to_string(),
             subject_uid: None,
-            display_name: "Other members".to_string(),
+            display_name: crate::tr!("settings", "other-members").to_string(),
             total_credits,
             total_cost_cents,
             segments,
@@ -460,7 +460,7 @@ fn render_usage_tooltip_content(row: &MemberUsageRow, appearance: &Appearance) -
 fn render_service_account_info_tooltip(appearance: &Appearance) -> Box<dyn Element> {
     let theme = appearance.theme();
     let text = Text::new_inline(
-        "This is an automated agent on your team.".to_string(),
+        crate::tr!("settings", "this-is-an-automated-agent-on-your-team").to_string(),
         appearance.ui_font_family(),
         12.,
     )
@@ -577,7 +577,7 @@ fn render_row_card(
         name_row.add_child(
             Container::new(
                 Text::new_inline(
-                    "Former member",
+                    crate::tr!("settings", "former-member"),
                     appearance.ui_font_family(),
                     appearance.ui_font_size() - 1.,
                 )

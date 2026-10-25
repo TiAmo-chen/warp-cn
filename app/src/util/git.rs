@@ -319,7 +319,7 @@ pub async fn get_file_change_entries(
     _repo_path: &Path,
     _include_unstaged: bool,
 ) -> Result<Vec<FileChangeEntry>> {
-    Err(anyhow!("Not supported on wasm"))
+    Err(anyhow!(crate::tr!("common", "not-supported-on-wasm")))
 }
 
 /// Returns per-file change entries for the **committed** branch diff
@@ -371,7 +371,7 @@ pub async fn get_committed_branch_file_entries(repo_path: &Path) -> Result<Vec<F
 
 #[cfg(not(feature = "local_fs"))]
 pub async fn get_committed_branch_file_entries(_repo_path: &Path) -> Result<Vec<FileChangeEntry>> {
-    Err(anyhow!("Not supported on wasm"))
+    Err(anyhow!(crate::tr!("common", "not-supported-on-wasm")))
 }
 
 /// Unpushed commits: `<upstream>..HEAD`, or `<fork_point>..HEAD` if no upstream.
@@ -466,7 +466,7 @@ pub async fn get_unpushed_commits(
     _current_branch_name: Option<&str>,
     _upstream_ref: Option<&str>,
 ) -> Result<Vec<Commit>> {
-    Err(anyhow!("Not supported on wasm"))
+    Err(anyhow!(crate::tr!("common", "not-supported-on-wasm")))
 }
 
 /// Computes the branch's unpushed commits together with its upstream
@@ -656,7 +656,7 @@ pub async fn get_diff_for_commit_message(
     _repo_path: &Path,
     _include_unstaged: bool,
 ) -> Result<String> {
-    Err(anyhow!("Not supported on wasm"))
+    Err(anyhow!(crate::tr!("common", "not-supported-on-wasm")))
 }
 
 /// Commits changes. If `include_unstaged` is true, stages all changes first via `git add -A`.
@@ -685,9 +685,9 @@ pub async fn run_commit(
     .await?;
     if staged.trim().is_empty() {
         if include_unstaged {
-            anyhow::bail!("nothing to commit, working tree clean");
+            anyhow::bail!(crate::tr!("common", "nothing-to-commit-working-tree-clean"));
         }
-        anyhow::bail!("no changes added to commit");
+        anyhow::bail!(crate::tr!("code", "review-no-changes-added-to-commit")));
     }
     run_git_command_with_env(repo_path, &["commit", "-m", message], path_env).await
 }
@@ -699,7 +699,7 @@ pub async fn run_commit(
     _include_unstaged: bool,
     _path_env: Option<&str>,
 ) -> Result<String> {
-    Err(anyhow!("Not supported on wasm"))
+    Err(anyhow!(crate::tr!("common", "not-supported-on-wasm")))
 }
 
 /// Pushes the given branch to origin, setting upstream tracking if not already configured.
@@ -716,7 +716,7 @@ pub async fn run_push(repo_path: &Path, branch: &str, path_env: Option<&str>) ->
 
 #[cfg(not(feature = "local_fs"))]
 pub async fn run_push(_repo_path: &Path, _branch: &str, _path_env: Option<&str>) -> Result<String> {
-    Err(anyhow!("Not supported on wasm"))
+    Err(anyhow!(crate::tr!("common", "not-supported-on-wasm")))
 }
 
 // ── gh CLI helpers ───────────────────────────────────────────────────────────
@@ -919,14 +919,14 @@ pub async fn get_pr_for_branch(
     _repo_path: &Path,
     _path_env: Option<&str>,
 ) -> Result<Option<PrInfo>> {
-    Err(anyhow!("Not supported on wasm"))
+    Err(anyhow!(crate::tr!("common", "not-supported-on-wasm")))
 }
 
 #[cfg(feature = "local_fs")]
 fn is_no_pr_for_branch_error(error_msg: &str) -> bool {
     let lower = error_msg.to_lowercase();
-    lower.contains("no pull requests found for branch")
-        || lower.contains("no open pull requests found for branch")
+    lower.contains(crate::tr!("common", "no-pull-requests-found-for-branch"))
+        || lower.contains(crate::tr!("common", "no-open-pull-requests-found-for-branch"))
 }
 
 #[cfg(feature = "local_fs")]
@@ -934,10 +934,10 @@ fn is_pr_lookup_not_applicable_error(error_msg: &str) -> bool {
     let lower = error_msg.to_lowercase();
     is_no_pr_for_branch_error(error_msg)
         || lower.contains(
-            "none of the git remotes configured for this repository point to a known github host",
+            crate::tr!("common", "none-of-the-git-remotes-configured-for-this-repository-poi"),
         )
-        || lower.contains("no github remotes")
-        || lower.contains("not a github repository")
+        || lower.contains(crate::tr!("common", "no-github-remotes"))
+        || lower.contains(crate::tr!("common", "not-a-github-repository"))
         || lower.contains("could not determine base repo")
 }
 
@@ -948,9 +948,9 @@ fn is_pr_lookup_not_applicable_error(error_msg: &str) -> bool {
 fn is_repository_lookup_not_applicable_error(error_msg: &str) -> bool {
     let lower = error_msg.to_lowercase();
     lower.contains(
-        "none of the git remotes configured for this repository point to a known github host",
-    ) || lower.contains("no github remotes")
-        || lower.contains("not a github repository")
+        crate::tr!("common", "none-of-the-git-remotes-configured-for-this-repository-poi"),
+    ) || lower.contains(crate::tr!("common", "no-github-remotes"))
+        || lower.contains(crate::tr!("common", "not-a-github-repository"))
         || lower.contains("could not determine base repo")
 }
 
@@ -958,8 +958,8 @@ fn is_repository_lookup_not_applicable_error(error_msg: &str) -> bool {
 pub fn is_gh_auth_error(error_msg: &str) -> bool {
     let lower = error_msg.to_lowercase();
     lower.contains(crate::tr!("settings", "not-logged-in"))
-        || lower.contains("authentication required")
-        || lower.contains("gh auth login")
+        || lower.contains(crate::tr!("code", "review-authentication-required")))
+        || lower.contains(crate::tr!("code", "review-gh-auth-login")))
 }
 
 /// Heuristic check for errors caused by `gh` not being executable from `PATH`.
@@ -1003,7 +1003,7 @@ pub async fn get_diff_for_pr(repo_path: &Path) -> Result<String> {
 
 #[cfg(not(feature = "local_fs"))]
 pub async fn get_diff_for_pr(_repo_path: &Path) -> Result<String> {
-    Err(anyhow!("Not supported on wasm"))
+    Err(anyhow!(crate::tr!("common", "not-supported-on-wasm")))
 }
 
 /// Commit subject lines on the current branch since the default branch.
@@ -1022,7 +1022,7 @@ pub async fn get_branch_commit_messages(repo_path: &Path) -> Result<Vec<String>>
 
 #[cfg(not(feature = "local_fs"))]
 pub async fn get_branch_commit_messages(_repo_path: &Path) -> Result<Vec<String>> {
-    Err(anyhow!("Not supported on wasm"))
+    Err(anyhow!(crate::tr!("common", "not-supported-on-wasm")))
 }
 
 /// Creates a PR for the current branch (must already be pushed). Falls back
@@ -1087,7 +1087,7 @@ pub async fn create_pr(
     _body: Option<&str>,
     _path_env: Option<&str>,
 ) -> Result<PrInfo> {
-    Err(anyhow!("Not supported on wasm"))
+    Err(anyhow!(crate::tr!("common", "not-supported-on-wasm")))
 }
 
 /// A single branch entry returned by [`get_all_branches`].

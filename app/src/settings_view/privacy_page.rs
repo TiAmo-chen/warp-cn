@@ -1164,7 +1164,7 @@ impl SettingsWidget for SecretRedactionWidget {
     type View = PrivacyPageView;
 
     fn search_terms(&self) -> &str {
-        "secret redaction safe mode hide"
+        crate::tr!("settings", "secret-redaction-safe-mode-hide")
     }
 
     fn render(
@@ -1445,7 +1445,7 @@ impl SettingsWidget for AppAnalyticsWidget {
     type View = PrivacyPageView;
 
     fn search_terms(&self) -> &str {
-        "telemetry usage analytics data collection"
+        crate::tr!("settings", "telemetry-usage-analytics-data-collection")
     }
 
     fn should_render(&self, app: &AppContext) -> bool {
@@ -1590,7 +1590,7 @@ impl SettingsWidget for CrashReportsWidget {
     type View = PrivacyPageView;
 
     fn search_terms(&self) -> &str {
-        "telemetry crash reports stability data collection"
+        crate::tr!("settings", "telemetry-crash-reports-stability-data-collection")
     }
 
     fn should_render(&self, app: &AppContext) -> bool {
@@ -1668,7 +1668,7 @@ impl SettingsWidget for CloudConversationStorageWidget {
     type View = PrivacyPageView;
 
     fn search_terms(&self) -> &str {
-        "sync cloud conversation store storage ai agent"
+        crate::tr!("settings", "sync-cloud-conversation-store-storage-ai-agent")
     }
 
     fn should_render(&self, app: &AppContext) -> bool {
@@ -1783,7 +1783,7 @@ impl SettingsWidget for NetworkLogWidget {
     type View = PrivacyPageView;
 
     fn search_terms(&self) -> &str {
-        "network log audit console data collection"
+        crate::tr!("settings", "network-log-audit-console-data-collection")
     }
 
     fn render(
@@ -1861,7 +1861,7 @@ impl SettingsWidget for DataManagementWidget {
     type View = PrivacyPageView;
 
     fn search_terms(&self) -> &str {
-        "data management delete account"
+        crate::tr!("settings", "data-management-delete-account")
     }
 
     fn render(
@@ -1937,7 +1937,7 @@ impl SettingsWidget for PrivacyPolicyWidget {
     type View = PrivacyPageView;
 
     fn search_terms(&self) -> &str {
-        "privacy policy terms"
+        crate::tr!("settings", "privacy-policy-terms")
     }
 
     fn render(
@@ -1986,7 +1986,7 @@ pub fn init_actions_from_parent_view<T: Action + Clone>(
 ) {
     let mut toggle_binding_pairs = vec![
         ToggleSettingActionPair::new(
-            "app analytics",
+            crate::tr!("settings", "app-analytics"),
             builder(SettingsAction::PrivacyPageToggle(
                 PrivacyPageAction::ToggleTelemetry,
             )),
@@ -1994,7 +1994,7 @@ pub fn init_actions_from_parent_view<T: Action + Clone>(
             flags::TELEMETRY_FLAG,
         ),
         ToggleSettingActionPair::new(
-            "crash reporting",
+            crate::tr!("settings", "crash-reporting"),
             builder(SettingsAction::PrivacyPageToggle(
                 PrivacyPageAction::ToggleCrashReporting,
             )),
@@ -2004,7 +2004,7 @@ pub fn init_actions_from_parent_view<T: Action + Clone>(
     ];
 
     toggle_binding_pairs.push(ToggleSettingActionPair::new(
-        "secret redaction",
+        crate::tr!("settings", "secret-redaction-8b7333"),
         builder(SettingsAction::PrivacyPageToggle(
             PrivacyPageAction::ToggleSafeMode,
         )),
@@ -2014,7 +2014,7 @@ pub fn init_actions_from_parent_view<T: Action + Clone>(
 
     toggle_binding_pairs.push(
         ToggleSettingActionPair::new(
-            "cloud AI conversation storage",
+            crate::tr!("settings", "cloud-ai-conversation-storage"),
             builder(SettingsAction::PrivacyPageToggle(
                 PrivacyPageAction::ToggleCloudConversationStorage,
             )),

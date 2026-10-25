@@ -145,7 +145,7 @@ fn rich_input_submit_strategy(agent: CLIAgent) -> RichInputSubmitStrategy {
 }
 
 static USE_AGENT_KEYSTROKE: LazyLock<Keystroke> =
-    LazyLock::new(|| Keystroke::parse(cmd_or_ctrl_shift("enter")).expect("valid keystroke"));
+    LazyLock::new(|| Keystroke::parse(cmd_or_ctrl_shift("enter")).expect(crate::tr!("settings", "valid-keystroke"))));
 
 impl TerminalView {
     pub(super) fn register_subscriptions_for_use_agent_footer(

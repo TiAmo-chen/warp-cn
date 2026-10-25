@@ -265,18 +265,18 @@ impl TerminalView {
                     .await
                     .is_err()
                 {
-                    return Err("Timed out waiting for Warp Drive to sync for docker sandbox");
+                    return Err(crate::tr!("terminal", "timed-out-waiting-for-warp-drive-to-sync-for-docker-sandbo"));
                 }
 
                 // Wait for the terminal session to bootstrap.
                 let bootstrap_future = spawner
                     .spawn(move |driver, _| driver.wait_for_session_bootstrapped())
                     .await
-                    .map_err(|_| "view dropped")?;
+                    .map_err(|_| crate::tr!("terminal", "view-dropped"))?;
 
                 if let Err(e) = bootstrap_future.await {
-                    report_error!(anyhow::Error::new(e).context("Docker sandbox bootstrap failed"));
-                    return Err("terminal bootstrap failed");
+                    report_error!(anyhow::Error::new(e).context(crate::tr!("terminal", "docker-sandbox-bootstrap-failed")));
+                    return Err(crate::tr!("terminal", "terminal-bootstrap-failed"));
                 }
 
                 // Look up the environment by hardcoded ID.
@@ -290,8 +290,8 @@ impl TerminalView {
                             .map(|env| env.model().string_model.clone())
                     })
                     .await
-                    .map_err(|_| "view dropped")?
-                    .ok_or("environment not found")?;
+                    .map_err(|_| crate::tr!("terminal", "view-dropped"))?
+                    .ok_or(crate::tr!("terminal", "environment-not-found"))?;
 
                 // Prepare the environment (clone repos, run setup commands, index codebases).
                 let workspace = WorkspaceConfiguration::from_legacy(
@@ -303,7 +303,7 @@ impl TerminalView {
                 .map_err(|e| {
                     report_error!(
                         anyhow::Error::new(e)
-                            .context("Docker sandbox environment preparation failed")
+                            .context(crate::tr!("terminal", "docker-sandbox-environment-preparation-failed"))
                     );
                     "invalid environment repositories"
                 })?;
@@ -320,14 +320,14 @@ impl TerminalView {
                         )
                     })
                     .await
-                    .map_err(|_| "view dropped")?;
+                    .map_err(|_| crate::tr!("terminal", "view-dropped"))?;
 
                 prepare_future.await.map_err(|e| {
                     report_error!(
                         anyhow::Error::new(e)
-                            .context("Docker sandbox environment preparation failed")
+                            .context(crate::tr!("terminal", "docker-sandbox-environment-preparation-failed"))
                     );
-                    "environment preparation failed"
+                    crate::tr!("terminal", "environment-preparation-failed")
                 })?;
 
                 // Keep the TerminalDriver model alive for the entire duration of

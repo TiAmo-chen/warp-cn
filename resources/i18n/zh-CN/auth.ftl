@@ -155,3 +155,21 @@ auth-error-authenticating = 认证错误 - 请刷新页面
 
 ## -- Double-prefix aliases for privacy settings strings --
 
+
+## zh: auto-extracted entries
+auth-device-code-request-requires-at-least-one-attempt = device code request requires at least one attempt
+auth-dropping-auth-redirect-with-stale-state-for-already-logged = Dropping auth redirect with stale state for already-logged-in user
+auth-ignoring-login-handoff-for-a-different-user-while-a-chatgp = Ignoring login handoff for a different user while a ChatGPT connect is pending
+auth-encountered-an-error-trying-to-create-anonymous-users = Encountered an error trying to create anonymous users
+auth-warp-has-detected-a-new-login-from-a-web-browser-press-esc = Warp has detected a new login from a web browser. Press escape to cancel and continue using Warp without login.
+auth-anonymous-user-initiated-sign-up-from-unexpected-authview = Anonymous user initiated sign-up from unexpected AuthView variant
+auth-auth-redirect-url-has-unexpected-host = Auth redirect URL has unexpected host
+auth-auth-redirect-url-is-missing-required-credential = Auth redirect URL is missing required credential
+auth-troubleshooting-docs = troubleshooting docs
+auth-create-a-warp-account-to-enable-ai-powered-planning-coding = Create a Warp account to enable AI-powered planning, coding, and automations.
+auth-access-ai-run-cloud-agents-collaborate-with-teammates-and = Access AI, run cloud agents, collaborate with teammates, and sync settings across devices.
+auth-use-a-work-email-to-find-teammates = Use a work email to find teammates
+auth-signing-in-with-a-work-email-helps-us-find-your-teammates = Signing in with a work email helps us find your teammates and may unlock special offers.
+auth-continue-without-signing-in = Continue without signing in?
+auth-without-an-account-you-won-t-have-access-to-warp-s-ai-feat = Without an account, you won't have access to Warp's AI features. Sign in anytime to unlock agents and other AI features.
+auth-configured-warp-web-logout-url-must-be-valid = configured Warp web logout URL must be valid

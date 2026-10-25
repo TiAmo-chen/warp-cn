@@ -395,7 +395,7 @@ impl InitStepBlock {
                 false,
             ),
             simple_navigation_button(
-                "Skip for now.".to_string(),
+                crate::tr!("terminal", "skip-for-now").to_string(),
                 mouse_states.skip_button.clone(),
                 InitProjectBlockAction::SkipLanguageServers,
                 false,
@@ -409,13 +409,13 @@ impl InitStepBlock {
     ) -> Vec<KeyboardNavigableButtonBuilder> {
         vec![
             simple_navigation_button(
-                "Yes, index this codebase.".to_string(),
+                crate::tr!("terminal", "yes-index-this-codebase").to_string(),
                 mouse_states.index_button.clone(),
                 InitProjectBlockAction::IndexCodebase(pwd_path.to_path_buf()),
                 false,
             ),
             simple_navigation_button(
-                "Skip for now.".to_string(),
+                crate::tr!("terminal", "skip-for-now").to_string(),
                 mouse_states.skip_button.clone(),
                 InitProjectBlockAction::SkipIndex,
                 false,
@@ -441,13 +441,13 @@ impl InitStepBlock {
         }
 
         buttons.push(simple_navigation_button(
-            "Generate AGENTS.md file".to_string(),
+            crate::tr!("terminal", "generate-agents-md-file").to_string(),
             mouse_states.generate_button.clone(),
             InitProjectBlockAction::GenerateRules,
             false,
         ));
         buttons.push(simple_navigation_button(
-            "Skip AGENTS.md generation for now".to_string(),
+            crate::tr!("terminal", "skip-agents-md-generation-for-now").to_string(),
             mouse_states.skip_button.clone(),
             InitProjectBlockAction::SkipRules,
             false,
@@ -544,7 +544,7 @@ impl InitStepBlock {
         if agents_md_path.exists() {
             return Err(std::io::Error::new(
                 std::io::ErrorKind::AlreadyExists,
-                "AGENTS.md already exists",
+                crate::tr!("terminal", "agents-md-already-exists"),
             ));
         }
 
@@ -552,7 +552,7 @@ impl InitStepBlock {
         let relative_path = source_path.file_name().ok_or_else(|| {
             std::io::Error::new(
                 std::io::ErrorKind::InvalidInput,
-                "Source file has no filename",
+                crate::tr!("terminal", "source-file-has-no-filename"),
             )
         })?;
 
@@ -636,7 +636,7 @@ impl InitStepBlock {
                 )
                 .with_header(
                     HeaderConfig::new(
-                        "Would you like the Agent to index this codebase? This will lead to more efficient and tailored help.",
+                        crate::tr!("terminal", "would-you-like-the-agent-to-index-this-codebase-this-will"),
                         app,
                     )
                     .with_icon(yellow_stop_icon(appearance))
@@ -672,7 +672,7 @@ impl InitStepBlock {
 
         match indexing_result {
             CodebaseIndexingResult::Accepted => {
-                RenderableAction::new("Codebase index started", app)
+                RenderableAction::new(crate::tr!("terminal", "codebase-index-started"), app)
                     .with_icon(Icon::Check.to_warpui_icon(Fill::success()).finish())
                     .with_action_button(
                         Appearance::as_ref(app)
@@ -697,7 +697,7 @@ impl InitStepBlock {
                     .finish()
             }
             CodebaseIndexingResult::Skipped => {
-                Self::render_skipped_completion("Codebase index cancelled", app)
+                Self::render_skipped_completion(crate::tr!("terminal", "codebase-index-cancelled"), app)
             }
         }
     }
@@ -792,19 +792,19 @@ impl InitStepBlock {
                 servers_to_install,
             } => {
                 let label = if !servers_to_install.is_empty() {
-                    "Started installation for language support".to_string()
+                    crate::tr!("terminal", "started-installation-for-language-support").to_string()
                 } else if enabled_servers.len() == 1 {
                     format!(
                         "{} language support enabled",
                         enabled_servers[0].language_name()
                     )
                 } else {
-                    "Language support enabled".to_string()
+                    crate::tr!("terminal", "language-support-enabled").to_string()
                 };
                 Self::render_success_completion(&label, app)
             }
             LanguageServersResult::Skipped => {
-                Self::render_skipped_completion("Language support skipped", app)
+                Self::render_skipped_completion(crate::tr!("terminal", "language-support-skipped"), app)
             }
         }
     }
@@ -838,7 +838,7 @@ impl InitStepBlock {
             InitStepStatus::Running => {
                 // AI is generating AGENTS.md - show in-progress state
                 let appearance = Appearance::as_ref(app);
-                RenderableAction::new("Generating AGENTS.md...", app)
+                RenderableAction::new(crate::tr!("terminal", "generating-agents-md"), app)
                     .with_icon(in_progress_icon(appearance).finish())
                     .with_content_item_spacing()
                     .render(app)
@@ -876,7 +876,7 @@ impl InitStepBlock {
             }
             InitStepStatus::Running => {
                 let appearance = Appearance::as_ref(app);
-                RenderableAction::new("Creating environment...", app)
+                RenderableAction::new(crate::tr!("terminal", "creating-environment"), app)
                     .with_icon(in_progress_icon(appearance).finish())
                     .with_content_item_spacing()
                     .render(app)
@@ -899,10 +899,10 @@ impl InitStepBlock {
 
         match env_result {
             CreateEnvironmentResult::Created => {
-                Self::render_success_completion("Environment created", app)
+                Self::render_success_completion(crate::tr!("terminal", "environment-created"), app)
             }
             CreateEnvironmentResult::Skipped => {
-                Self::render_skipped_completion("Environment creation skipped", app)
+                Self::render_skipped_completion(crate::tr!("terminal", "environment-creation-skipped"), app)
             }
         }
     }
@@ -930,7 +930,7 @@ impl InitStepBlock {
             ProjectScopedRulesResult::GenerateNew {
                 button_disabled, ..
             } => {
-                let mut action = RenderableAction::new("Project rules configured", app)
+                let mut action = RenderableAction::new(crate::tr!("terminal", "project-rules-configured"), app)
                     .with_icon(Icon::Check.to_warpui_icon(Fill::success()).finish());
                 if init_completed {
                     action = action.with_action_button(Self::regenerate_button(
@@ -942,7 +942,7 @@ impl InitStepBlock {
                 action.with_content_item_spacing().render(app).finish()
             }
             ProjectScopedRulesResult::AlreadyExists { button_disabled } => {
-                let mut action = RenderableAction::new("Project rules already configured", app)
+                let mut action = RenderableAction::new(crate::tr!("terminal", "project-rules-already-configured"), app)
                     .with_icon(Icon::Check.to_warpui_icon(Fill::success()).finish());
                 if init_completed {
                     action = action.with_action_button(Self::regenerate_button(
@@ -954,7 +954,7 @@ impl InitStepBlock {
                 action.with_content_item_spacing().render(app).finish()
             }
             ProjectScopedRulesResult::Skipped => {
-                Self::render_skipped_completion("Project rules skipped", app)
+                Self::render_skipped_completion(crate::tr!("terminal", "project-rules-skipped"), app)
             }
         }
     }

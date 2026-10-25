@@ -1109,7 +1109,7 @@ impl SettingsWidget for ReferralsWidget {
     type View = ReferralsPageView;
 
     fn search_terms(&self) -> &str {
-        "referrals invites"
+        crate::tr!("settings", "referrals-invites")
     }
 
     fn render(

@@ -149,7 +149,7 @@ impl MCPServersEditPageView {
         });
 
         let delete_button = ctx.add_typed_action_view(|_| {
-            ActionButton::new("Delete MCP", DangerSecondaryTheme)
+            ActionButton::new(crate::tr!("settings", "delete-mcp-eb3c39"), DangerSecondaryTheme)
                 .with_icon(Icon::Trash)
                 .on_click(|ctx| {
                     ctx.dispatch_typed_action(MCPServersEditPageViewAction::Delete);
@@ -614,13 +614,13 @@ impl MCPServersEditPageView {
             let window_id = ctx.window_id();
             ToastStack::handle(ctx).update(ctx, |toast_stack, ctx| {
                 toast_stack.add_ephemeral_toast(
-                    DismissibleToast::error("No MCP Server specified.".to_string()),
+                    DismissibleToast::error(crate::tr!("settings", "no-mcp-server-specified").to_string()),
                     window_id,
                     ctx,
                 );
             });
 
-            return Err("No MCP Server specified.".to_string());
+            return Err(crate::tr!("settings", "no-mcp-server-specified").to_string());
         }
 
         if parsed_templatable_mcp_servers.len() > 1 {
@@ -691,7 +691,7 @@ impl MCPServersEditPageView {
                                 }
                                 _ => {
                                     log::warn!(
-                                        "This server is not an installation and cannot be unshared"
+                                        crate::tr!("settings", "this-server-is-not-an-installation-and-cannot-be-unshared")
                                     );
                                 }
                             }
@@ -913,7 +913,7 @@ impl TypedActionView for MCPServersEditPageView {
                         let window_id = ctx.window_id();
                         ToastStack::handle(ctx).update(ctx, |toast_stack, ctx| {
                             toast_stack.add_ephemeral_toast(
-                                DismissibleToast::error("No MCP Server specified.".to_string()),
+                                DismissibleToast::error(crate::tr!("settings", "no-mcp-server-specified").to_string()),
                                 window_id,
                                 ctx,
                             );

@@ -222,3 +222,48 @@ code-server-error-detail = { $name }：{ $error }
 
 ## -- 查找引用和页脚字符串的双前缀别名 ---------------------------------------------
 
+
+## zh: auto-extracted entries
+code-this-workspace = this workspace
+code-use-the-warp-agent-to-update-this-config = Use the Warp Agent to update this config
+code-no-remote-server-client-available = No remote server client available
+code-no-result-in-openbuffer-response = No result in OpenBuffer response
+code-buffer-not-found = Buffer not found
+code-buffer-deallocated = Buffer deallocated
+code-file-operation-completion-was-cancelled = File operation completion was cancelled
+code-file-operation-is-still-in-flight = File operation is still in flight
+code-registered-file-has-a-path = registered file has a path
+code-registered-file-has-a-session = registered file has a session
+code-this-file-has-saved-changes-that-are-not-reflected-here = This file has saved changes that are not reflected here.
+code-remote-host-disconnected-you-will-not-be-able-to-see-updat = Remote host disconnected. You will not be able to see updates and save changes.
+code-user-enabled-an-lsp-server-for-a-workspace = User enabled an LSP server for a workspace
+code-user-skipped-lsp-enablement-during-init = User skipped LSP enablement during /init
+code-an-lsp-server-installation-finished = An LSP server installation finished
+code-user-removed-an-lsp-server = User removed an LSP server
+code-hover-tooltip-displayed-with-lsp-content-or-diagnostics = Hover tooltip displayed with LSP content or diagnostics
+code-user-triggered-goto-definition-via-lsp = User triggered goto definition via LSP
+code-find-references-card-displayed-via-lsp = Find references card displayed via LSP
+code-user-performed-an-lsp-control-action-from-the-footer-menu = User performed an LSP control action from the footer menu
+code-lsp-server-successfully-started-and-is-available = LSP server successfully started and is available
+code-lsp-server-failed-to-start = LSP server failed to start
+code-cmdorctrl-r-w = cmdorctrl-r w
+code-cmdorctrl-r-u = cmdorctrl-r u
+code-reveal-in-finder-requested-but-the-active-code-tab-has-no = Reveal in Finder requested, but the active code tab has no local file path
+code-embeddedcomment-can-t-layout-missing-comment-editor = EmbeddedComment can't layout missing comment editor
+code-didn-t-find-laid-out-size-for-editor = Didn't find laid out size for editor
+code-we-don-t-support-converting-from-collapsed-line-location-t = We don't support converting from collapsed line location to render line location yet
+code-checked-above = Checked above
+code-please-enter-a-line-number = Please enter a line number
+code-please-enter-a-valid-line-number = Please enter a valid line number
+code-please-enter-a-valid-column-number = Please enter a valid column number
+code-escape-parses = escape parses
+code-enter-parses = enter parses
+code-delete-parses = delete parses
+code-backspace-parses = backspace parses
+code-ctrl-d-parses = ctrl-d parses
+code-ctrl-u-parses = ctrl-u parses
+code-tab-parses = tab parses
+code-shift-tab-parses = shift-tab parses
+code-shift-enter-parses = shift-enter parses
+code-new-file-681e10 = New file
+code-view-handle-should-be-valid = view handle should be valid

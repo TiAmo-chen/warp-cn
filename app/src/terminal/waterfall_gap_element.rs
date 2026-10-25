@@ -100,7 +100,7 @@ impl WaterfallGapElement {
     ) -> bool {
         if self
             .bounds()
-            .expect("Bounds should be set before event dispatching")
+            .expect(crate::tr!("terminal", "bounds-should-be-set-before-event-dispatching"))
             .contains_point(position)
         {
             if precise {
@@ -123,7 +123,7 @@ impl WaterfallGapElement {
     fn mouse_down(&self, position: Vector2F, ctx: &mut EventContext) -> bool {
         if self
             .bounds()
-            .expect("Bounds should be set before event dispatching")
+            .expect(crate::tr!("terminal", "bounds-should-be-set-before-event-dispatching"))
             .contains_point(position)
         {
             ctx.dispatch_typed_action(TerminalAction::Focus);
@@ -203,7 +203,7 @@ impl Element for WaterfallGapElement {
                 + vec2f(
                     0.,
                     self.laid_out_block_list_size_px
-                        .expect("block list size set during layout")
+                        .expect(crate::tr!("terminal", "block-list-size-set-during-layout"))
                         .y(),
                 ),
             ctx,
@@ -232,7 +232,7 @@ impl Element for WaterfallGapElement {
         handled |= self.block_list_element.dispatch_event(event, ctx, app);
         if !handled {
             let event_at_z_index = event.at_z_index(
-                self.child_max_z_index.expect("waterfall gap z-index set"),
+                self.child_max_z_index.expect(crate::tr!("terminal", "waterfall-gap-z-index-set")),
                 ctx,
             );
             handled |= match event_at_z_index {
@@ -241,7 +241,7 @@ impl Element for WaterfallGapElement {
                 }
                 Some(warpui::Event::RightMouseDown { position, .. }) => {
                     let position_in_terminal_view =
-                        *position - self.origin().expect("origin set after paint").xy();
+                        *position - self.origin().expect(crate::tr!("terminal", "origin-set-after-paint")).xy();
                     ctx.dispatch_typed_action(TerminalAction::BlockListContextMenu(
                         BlockListMenuSource::OutsideBlockRightClick {
                             position_in_terminal_view,

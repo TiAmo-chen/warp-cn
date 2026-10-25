@@ -44,7 +44,7 @@ impl FuzzyMatchEmbeddedObjectResult {
         if count == 0 {
             // This branch should never be executed because an embedded object search result should
             // always have some match with the query, otherwise it should not appear as a result.
-            report_error!("Embedded object has neither a name nor breadcrumb match result.");
+            report_error!(crate::tr!("search", "embedded-object-has-neither-a-name-nor-breadcrumb-match-re"));
             OrderedFloat(f64::MIN)
         } else {
             // All attributes have equal weight, so just take the avg score

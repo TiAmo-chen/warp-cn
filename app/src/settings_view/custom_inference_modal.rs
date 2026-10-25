@@ -131,7 +131,7 @@ impl CustomEndpointModal {
                 ..Default::default()
             };
             let mut editor = EditorView::single_line(options, ctx);
-            editor.set_placeholder_text("e.g., Zach's external models", ctx);
+            editor.set_placeholder_text(crate::tr!("settings", "e-g-zach-s-external-models"), ctx);
             if let Some(ep) = endpoint {
                 editor.set_buffer_text(&ep.name, ctx);
             }
@@ -172,7 +172,7 @@ impl CustomEndpointModal {
                 ..Default::default()
             };
             let mut editor = EditorView::single_line(options, ctx);
-            editor.set_placeholder_text("e.g., sk-...", ctx);
+            editor.set_placeholder_text(crate::tr!("settings", "e-g-sk"), ctx);
             if let Some(ep) = endpoint {
                 editor.set_buffer_text(&ep.api_key, ctx);
             }
@@ -304,7 +304,7 @@ impl CustomEndpointModal {
                 ..Default::default()
             };
             let mut editor = EditorView::single_line(options, ctx);
-            editor.set_placeholder_text("e.g., GLM-5-FP8", ctx);
+            editor.set_placeholder_text(crate::tr!("settings", "e-g-glm-5-fp8"), ctx);
             if let Some(n) = name {
                 editor.set_buffer_text(n, ctx);
             }
@@ -324,7 +324,7 @@ impl CustomEndpointModal {
                 ..Default::default()
             };
             let mut editor = EditorView::single_line(options, ctx);
-            editor.set_placeholder_text("e.g., GLM-5", ctx);
+            editor.set_placeholder_text(crate::tr!("settings", "e-g-glm-5"), ctx);
             if let Some(a) = alias {
                 editor.set_buffer_text(a, ctx);
             }

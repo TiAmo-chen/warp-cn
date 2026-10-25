@@ -204,7 +204,7 @@ impl LocalGitHubRepoModel {
                 match futures::future::select(fetch, timeout).await {
                     futures::future::Either::Left((result, _)) => result,
                     futures::future::Either::Right((_, _)) => {
-                        Err(anyhow::anyhow!("PR info fetch timed out"))
+                        Err(anyhow::anyhow!(crate::tr!("code_review", "pr-info-fetch-timed-out"))))
                     }
                 }
             },
@@ -245,7 +245,7 @@ impl LocalGitHubRepoModel {
                 match futures::future::select(fetch, timeout).await {
                     futures::future::Either::Left((result, _)) => result,
                     futures::future::Either::Right((_, _)) => {
-                        Err(anyhow::anyhow!("Repository info fetch timed out"))
+                        Err(anyhow::anyhow!(crate::tr!("code_review", "repository-info-fetch-timed-out"))))
                     }
                 }
             },

@@ -96,7 +96,7 @@ impl SelectedWorkflowState {
             self.currently_selected_argument = index;
         } else {
             report_error!(
-                "Tried to set the argument index beyond the number of arguments",
+                crate::tr!("workflows", "tried-to-set-the-argument-index-beyond-the-number-of-argum"),
                 extra: { "index" => ?*index, "len" => ?*self.num_arguments }
             );
         }

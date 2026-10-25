@@ -132,7 +132,7 @@ impl TerminalView {
         });
         if has_query_timestamp {
             items.push(
-                MenuItemFields::new("Copy timestamp")
+                MenuItemFields::new(crate::tr!("terminal", "copy-timestamp"))
                     .with_on_select_action(TerminalAction::ContextMenu(
                         ContextMenuAction::CopyAIBlockTimestamp { ai_block_view_id },
                     ))
@@ -153,7 +153,7 @@ impl TerminalView {
             let history_model = BlocklistAIHistoryModel::as_ref(ctx);
             if history_model.can_conversation_be_shared(&ai_conversation_id) {
                 items.push(
-                    MenuItemFields::new("Copy share link")
+                    MenuItemFields::new(crate::tr!("terminal", "copy-share-link"))
                         .with_on_select_action(TerminalAction::ContextMenu(
                             ContextMenuAction::CopyConversationShareLink {
                                 conversation_id: ai_conversation_id,
@@ -337,7 +337,7 @@ impl TerminalView {
                 .is_some()
         {
             items.push(
-                MenuItemFields::new("Copy share link")
+                MenuItemFields::new(crate::tr!("terminal", "copy-share-link"))
                     .with_on_select_action(TerminalAction::ContextMenu(
                         ContextMenuAction::CopyConversationShareLink { conversation_id },
                     ))
@@ -449,7 +449,7 @@ impl TerminalView {
 
             if ChannelState::channel().is_dogfood() {
                 menu_items.push(
-                    MenuItemFields::new("Fork from here")
+                    MenuItemFields::new(crate::tr!("terminal", "fork-from-here"))
                         .with_on_select_action(TerminalAction::ContextMenu(
                             ContextMenuAction::ForkAIConversationFromExactExchange {
                                 ai_block_view_id,

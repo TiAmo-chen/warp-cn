@@ -939,7 +939,7 @@ impl BlockList {
                 let original_selection = self
                     .selection
                     .as_ref()
-                    .expect("Selection should exist if it can be expanded");
+                    .expect(crate::tr!("terminal", "selection-should-exist-if-it-can-be-expanded"));
                 let mut top_row = original_selection.head.point.row;
                 let mut bottom_row = original_selection.tail.point.row;
 
@@ -1031,7 +1031,7 @@ impl BlockList {
                 let original_selection = self
                     .selection
                     .as_ref()
-                    .expect("Selection should exist if it can be expanded");
+                    .expect(crate::tr!("terminal", "selection-should-exist-if-it-can-be-expanded"));
 
                 let head_row = original_selection.head.point.row;
                 let tail_row = original_selection.tail.point.row;
@@ -1526,7 +1526,7 @@ impl BlockList {
         let within_grid_point = start.within_grid_point;
         let block = self
             .block_at(within_grid_point.block_index)
-            .expect("Block index should be valid.");
+            .expect(crate::tr!("terminal", "block-index-should-be-valid"));
         let point = within_grid_point.get();
 
         let cell_type = block
@@ -1549,7 +1549,7 @@ impl BlockList {
         let within_grid_point = end.within_grid_point;
         let block = self
             .block_at(end.within_grid_point.block_index)
-            .expect("Block index should be valid.");
+            .expect(crate::tr!("terminal", "block-index-should-be-valid"));
 
         let point = end.within_grid_point.get();
 

@@ -143,7 +143,7 @@ impl ExternalEditorView {
         mut make_action: impl FnMut(EditorChoice) -> ExternalEditorAction,
         ctx: &mut ViewContext<Dropdown<ExternalEditorAction>>,
     ) {
-        let default_option_text = "Default App";
+        let default_option_text = crate::tr!("settings", "default-app-6292b3");
         let default_app = DropdownItem::new(
             default_option_text,
             make_action(EditorChoice::SystemDefault),
@@ -279,7 +279,7 @@ impl View for ExternalEditorView {
 
         let default_editor = render_dropdown_item(
             appearance,
-            "Choose an editor to open file links",
+            crate::tr!("settings", "choose-an-editor-to-open-file-links"),
             None,
             None,
             LocalOnlyIconState::for_setting(
@@ -294,7 +294,7 @@ impl View for ExternalEditorView {
 
         let code_panels_editor = render_dropdown_item(
             appearance,
-            "Choose an editor to open files from the code review panel, project explorer, and global search",
+            crate::tr!("settings", "choose-an-editor-to-open-files-from-the-code-review-panel"),
             None,
             None,
             LocalOnlyIconState::for_setting(
@@ -309,7 +309,7 @@ impl View for ExternalEditorView {
 
         let default_layout = render_dropdown_item(
             appearance,
-            "Choose a layout to open files in Warp",
+            crate::tr!("settings", "choose-a-layout-to-open-files-in-warp"),
             None,
             None,
             LocalOnlyIconState::for_setting(
@@ -357,7 +357,7 @@ impl View for ExternalEditorView {
         }
 
         column.add_child(render_body_item::<ExternalEditorAction>(
-            "Open Markdown files in Warp's Markdown Viewer by default".to_string(),
+            crate::tr!("settings", "open-markdown-files-in-warp-s-markdown-viewer-by-default").to_string(),
             Some(AdditionalInfo {
                 mouse_state: self.markdown_viewer_mouse_state.clone(),
                 on_click_action: Some(ExternalEditorAction::OpenUrl(

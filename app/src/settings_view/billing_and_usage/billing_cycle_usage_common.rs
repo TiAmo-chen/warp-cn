@@ -107,7 +107,7 @@ fn bucket_label(bucket: &AiCreditsUsageBucket) -> &'static str {
         AiCreditsUsageBucket::Ai => "AI",
         AiCreditsUsageBucket::Compute => "Compute",
         AiCreditsUsageBucket::Platform => "Platform",
-        AiCreditsUsageBucket::SuggestedCodeDiffs => "Suggested code diffs",
+        AiCreditsUsageBucket::SuggestedCodeDiffs => crate::tr!("settings", "suggested-code-diffs"),
         AiCreditsUsageBucket::Voice => "Voice",
         AiCreditsUsageBucket::Aggregate => "Total",
         AiCreditsUsageBucket::Other(_) => "Other",
@@ -330,7 +330,7 @@ pub fn render_breakdown_tooltip(
 
     column.add_child(render_tooltip_row(
         /* no swatch on the total row */ None,
-        "Total usage".to_string(),
+        crate::tr!("settings", "total-usage").to_string(),
         total_credits,
         total_cost_cents,
         main,

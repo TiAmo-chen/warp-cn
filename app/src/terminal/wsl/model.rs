@@ -40,7 +40,7 @@ impl WslInfo {
                 Vec::new()
             }
             Err(err @ Error::DistributionIterator(_)) => {
-                report_error!(anyhow::Error::new(err).context("WSL registry error"));
+                report_error!(anyhow::Error::new(err).context(crate::tr!("terminal", "wsl-registry-error")));
                 Vec::new()
             }
         };

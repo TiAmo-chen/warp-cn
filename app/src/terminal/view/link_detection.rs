@@ -189,7 +189,7 @@ impl TryFrom<GridHighlightedLink> for Link {
                 ..
             } => Ok(link),
             _ => Err(anyhow::anyhow!(
-                "HighlightedLink is not within the alt screen"
+                crate::tr!("terminal", "highlightedlink-is-not-within-the-alt-screen")
             )),
         }
     }
@@ -210,7 +210,7 @@ impl TryFrom<GridHighlightedLink> for WithinBlock<Link> {
                 ..
             } => Ok(link),
             _ => Err(anyhow::anyhow!(
-                "HighlightedLink is not within the block list"
+                crate::tr!("terminal", "highlightedlink-is-not-within-the-block-list")
             )),
         }
     }
@@ -597,7 +597,7 @@ impl super::TerminalView {
                 // scanning job will be dropped once there is a new scanning job created.
                 let (tx, rx) = futures::channel::oneshot::channel();
                 self.file_link_scanning_join_handle = std::thread::Builder::new()
-                    .name("Compute file paths".into())
+                    .name(crate::tr!("terminal", "compute-file-paths").into())
                     .spawn(move || {
                         let paths = Self::compute_valid_paths(
                             &path,

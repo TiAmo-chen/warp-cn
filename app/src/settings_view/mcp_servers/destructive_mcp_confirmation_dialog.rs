@@ -57,20 +57,20 @@ impl From<&DestructiveMCPConfirmationDialogVariant>
     fn from(variant: &DestructiveMCPConfirmationDialogVariant) -> Self {
         match *variant {
             DestructiveMCPConfirmationDialogVariant::DeleteLocal => DestructiveMCPConfirmationDialogDisplayOptions::new(
-                "Delete MCP server?".to_string(),
-                "This will uninstall and remove this MCP server from all your devices.".to_string(),
-                "Delete MCP".to_string(),
+                crate::tr!("settings", "delete-mcp-server").to_string(),
+                crate::tr!("settings", "this-will-uninstall-and-remove-this-mcp-server-from-all-yo").to_string(),
+                crate::tr!("settings", "delete-mcp-eb3c39").to_string(),
                 "Cancel".to_string(),
             ),
             DestructiveMCPConfirmationDialogVariant::DeleteShared => DestructiveMCPConfirmationDialogDisplayOptions::new(
-                "Delete shared MCP server?".to_string(),
+                crate::tr!("settings", "delete-shared-mcp-server").to_string(),
                 "This will not only delete this MCP server for yourself, but also uninstall and remove this MCP server from Warp and across all of your teammates' devices.".to_string(),
-                "Delete MCP".to_string(),
+                crate::tr!("settings", "delete-mcp-eb3c39").to_string(),
                 "Cancel".to_string(),
             ),
             DestructiveMCPConfirmationDialogVariant::Unshare => DestructiveMCPConfirmationDialogDisplayOptions::new(
-                "Remove shared MCP server from team?".to_string(),
-                "This will uninstall and remove this MCP server from Warp and across all of your teammates' devices.".to_string(),
+                crate::tr!("settings", "remove-shared-mcp-server-from-team").to_string(),
+                crate::tr!("settings", "this-will-uninstall-and-remove-this-mcp-server-from-warp-a").to_string(),
                 crate::tr!("settings", "remove-from-team").to_string(),
                 "Cancel".to_string(),
             ),

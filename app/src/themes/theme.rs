@@ -132,7 +132,7 @@ impl std::fmt::Display for ThemeKind {
             ThemeKind::SolarFlare => crate::tr!("appearance", "theme-solar-flare"),
             ThemeKind::Adeberry => "Adeberry",
             ThemeKind::SentReferralReward => crate::tr!("appearance", "theme-warp-referral"),
-            ThemeKind::ReceivedReferralReward => "Referred to Warp",
+            ThemeKind::ReceivedReferralReward => crate::tr!("appearance", "referred-to-warp"),
             ThemeKind::Custom(custom_theme) => custom_theme.name.as_str(),
             ThemeKind::CustomBase16(custom_theme) => custom_theme.name.as_str(),
             ThemeKind::InMemory(in_memory_theme) => in_memory_theme.name.as_str(),
@@ -625,12 +625,12 @@ pub fn render_preview(
     let text_line_2 = Container::new(
         Flex::row()
             .with_child(
-                Text::new_inline("dir   ", font_family, text_size)
+                Text::new_inline(crate::tr!("appearance", "dir"), font_family, text_size)
                     .with_color(theme.terminal_colors().normal.blue.into())
                     .finish(),
             )
             .with_child(
-                Text::new_inline("executable   ", font_family, text_size)
+                Text::new_inline(crate::tr!("appearance", "executable"), font_family, text_size)
                     .with_color(theme.terminal_colors().normal.red.into())
                     .finish(),
             )

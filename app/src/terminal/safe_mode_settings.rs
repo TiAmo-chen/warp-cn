@@ -19,7 +19,7 @@ use crate::workspaces::user_workspaces::UserWorkspaces;
     settings_value::SettingsValue,
 )]
 #[schemars(
-    description = "How detected secrets are visually displayed.",
+    description = crate::tr!("terminal", "how-detected-secrets-are-visually-displayed"),
     rename_all = "snake_case"
 )]
 pub enum SecretDisplayMode {
@@ -56,7 +56,7 @@ impl SecretDisplayMode {
         match self {
             SecretDisplayMode::Asterisks => "Asterisks",
             SecretDisplayMode::Strikethrough => "Strikethrough",
-            SecretDisplayMode::AlwaysShow => "Always show secrets",
+            SecretDisplayMode::AlwaysShow => crate::tr!("terminal", "always-show-secrets"),
         }
     }
 

@@ -225,7 +225,7 @@ impl Network {
         let session_id = SessionId::new();
         let viewer_id = ParticipantId::new();
         let viewer_firebase_uid = UserUid::new("mock_firebase_uid");
-        let active_prompt = ActivePrompt::WarpPrompt("test warp prompt".to_owned());
+        let active_prompt = ActivePrompt::WarpPrompt(crate::tr!("terminal", "test-warp-prompt").to_owned());
 
         let model = Network {
             session_id,
@@ -300,7 +300,7 @@ impl Network {
         iap_headers: Vec<(&'static str, String)>,
     ) -> anyhow::Result<((impl Sink, impl Stream), UserID)> {
         let Some(join_endpoint) = connect_endpoint(format!("/sessions/join/{session_id}")) else {
-            bail!("This channel does not support session-sharing.");
+            bail!(crate::tr!("terminal", "this-channel-does-not-support-session-sharing"));
         };
         let user_id = Self::get_user_id(auth_client, &auth_state).await?;
         let socket =
@@ -326,7 +326,7 @@ impl Network {
                 Err(e) => {
                     report_error!(
                         anyhow::Error::new(e)
-                            .context("Got error from shared session viewer websocket")
+                            .context(crate::tr!("terminal", "got-error-from-shared-session-viewer-websocket"))
                     );
                 }
             },
@@ -573,7 +573,7 @@ impl Network {
                 };
                 if matches!(self.stage, Stage::JoinedSuccessfully) {
                     log::warn!(
-                        "Received unexpected JoinedSuccessfully message when we've already joined"
+                        crate::tr!("terminal", "received-unexpected-joinedsuccessfully-message-when-we-ve")
                     );
                     return;
                 }
@@ -613,7 +613,7 @@ impl Network {
             DownstreamMessage::RejoinedSuccessfully { participant_list } => {
                 if matches!(self.stage, Stage::JoinedSuccessfully) {
                     log::warn!(
-                        "Received unexpected RejoinedSuccessfully message when we've already joined"
+                        crate::tr!("terminal", "received-unexpected-rejoinedsuccessfully-message-when-we-v")
                     );
                     return;
                 }
@@ -784,7 +784,7 @@ impl Network {
                         // Start batching
                         let next_send_time = last_sent_at
                             .checked_add(PTY_WRITES_BATCH_THRESHOLD)
-                            .expect("Can add durations");
+                            .expect(crate::tr!("terminal", "can-add-durations"));
                         let wait_time = next_send_time.saturating_duration_since(Instant::now());
                         let abort_handle = ctx.spawn_abortable(
                             async move {
@@ -1094,12 +1094,12 @@ impl FailedToJoinReason {
             FailedToJoinReason::FailedToConnectToServer => {
                 "Failed to connect. Please try again later."
             }
-            FailedToJoinReason::SessionNotFound => "Shared session not found.",
+            FailedToJoinReason::SessionNotFound => crate::tr!("terminal", "shared-session-not-found"),
             FailedToJoinReason::WrongPassword => "Invalid session sharing link.",
             FailedToJoinReason::MaxNumberOfParticipantsReached => {
-                "The maximum number of participants for this shared session has been reached."
+                crate::tr!("terminal", "the-maximum-number-of-participants-for-this-shared-session")
             }
-            FailedToJoinReason::SessionNotAccessible => "You don't have access to this link.",
+            FailedToJoinReason::SessionNotAccessible => crate::tr!("terminal", "you-don-t-have-access-to-this-link"),
         }
     }
 }
@@ -1121,19 +1121,19 @@ impl From<session_sharing_protocol::viewer::FailedToJoinReason> for FailedToJoin
 pub fn session_ended_reason_string(reason: &SessionEndedReason) -> String {
     match reason {
         SessionEndedReason::InternalServerError => {
-            "Something went wrong. Please ask sharer to reshare to continue.".to_owned()
+            crate::tr!("terminal", "something-went-wrong-please-ask-sharer-to-reshare-to-conti").to_owned()
         }
         SessionEndedReason::InactivityLimitReached => {
-            "Sharing ended due to sharer inactivity".to_owned()
+            crate::tr!("terminal", "sharing-ended-due-to-sharer-inactivity").to_owned()
         }
-        _ => "Session ended.".to_owned(),
+        _ => crate::tr!("terminal", "session-ended").to_owned(),
     }
 }
 
 pub fn viewer_removed_reason_string(reason: &ViewerRemovedReason) -> String {
     match reason {
         ViewerRemovedReason::LostAccess => {
-            "Your access to the session was removed. Please ask sharer to reshare to continue."
+            crate::tr!("terminal", "your-access-to-the-session-was-removed-please-ask-sharer-t")
                 .to_owned()
         }
     }
@@ -1143,7 +1143,7 @@ pub fn viewer_removed_reason_string(reason: &ViewerRemovedReason) -> String {
 pub fn command_execution_failure_reason_string(reason: &CommandExecutionFailureReason) -> String {
     match reason {
         CommandExecutionFailureReason::InsufficientPermissions => {
-            "Insufficient permissions. Please request edit access.".to_owned()
+            crate::tr!("terminal", "insufficient-permissions-please-request-edit-access").to_owned()
         }
         _ => "Failed to execute command. Please try again.".to_owned(),
     }
@@ -1153,7 +1153,7 @@ pub fn command_execution_failure_reason_string(reason: &CommandExecutionFailureR
 pub fn write_to_pty_failure_reason_string(reason: &WriteToPtyFailureReason) -> String {
     match reason {
         WriteToPtyFailureReason::InsufficientPermissions => {
-            "Insufficient permissions. Please request edit access.".to_owned()
+            crate::tr!("terminal", "insufficient-permissions-please-request-edit-access").to_owned()
         }
         _ => "Failed to make edit. Please try again.".to_owned(),
     }
@@ -1163,13 +1163,13 @@ pub fn write_to_pty_failure_reason_string(reason: &WriteToPtyFailureReason) -> S
 pub fn agent_prompt_failure_reason_string(reason: &AgentPromptFailureReason) -> String {
     match reason {
         AgentPromptFailureReason::InsufficientPermissions => {
-            "Insufficient permissions. Please request edit access.".to_owned()
+            crate::tr!("terminal", "insufficient-permissions-please-request-edit-access").to_owned()
         }
         AgentPromptFailureReason::InvalidConversation => {
             "Invalid conversation. Please try again.".to_owned()
         }
         AgentPromptFailureReason::CommandInProgress => {
-            "A long running command is currently in progress. Please wait for it to complete before sending an agent prompt.".to_owned()
+            crate::tr!("terminal", "a-long-running-command-is-currently-in-progress-please-wai").to_owned()
         }
     }
 }
@@ -1178,7 +1178,7 @@ pub fn agent_prompt_failure_reason_string(reason: &AgentPromptFailureReason) -> 
 pub fn control_action_failure_reason_string(reason: &ControlActionFailureReason) -> String {
     match reason {
         ControlActionFailureReason::InsufficientPermissions => {
-            "Insufficient permissions. Please request edit access.".to_owned()
+            crate::tr!("terminal", "insufficient-permissions-please-request-edit-access").to_owned()
         }
         _ => "Failed to perform action. Please try again.".to_owned(),
     }

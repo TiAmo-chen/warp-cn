@@ -8,7 +8,7 @@ pub const PRIVACY_POLICY_URL: &str = "https://www.warp.dev/privacy";
 
 pub fn feedback_form_url() -> String {
     let mut url = url::Url::parse("https://github.com/warpdotdev/Warp/issues/new/choose")
-        .expect("Should not fail to parse");
+        .expect(crate::tr!("common", "should-not-fail-to-parse"));
     if let Some(version) = ChannelState::app_version() {
         url.query_pairs_mut().append_pair("warp-version", version);
     }

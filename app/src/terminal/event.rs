@@ -442,10 +442,10 @@ impl Debug for Event {
             Event::ShellExitObserved { status } => write!(f, "ShellExitObserved({status:?})"),
             Event::Exit { reason } => write!(f, "Exit({reason:?})"),
             Event::CursorBlinkingChange(blinking) => write!(f, "CursorBlinking({blinking})"),
-            Event::PreInteractiveSSHSession => write!(f, "Pre-Interactive SSH Session"),
+            Event::PreInteractiveSSHSession => write!(f, crate::tr!("terminal", "pre-interactive-ssh-session")),
             Event::SSH(remote_shell) => write!(f, "SSH(remote shell: {remote_shell}"),
-            Event::SSHControlMasterError => write!(f, "SSH ControlMaster error"),
-            Event::TerminalModeSwapped(_) => write!(f, "Terminal mode swapped"),
+            Event::SSHControlMasterError => write!(f, crate::tr!("terminal", "ssh-controlmaster-error")),
+            Event::TerminalModeSwapped(_) => write!(f, crate::tr!("terminal", "terminal-mode-swapped")),
             Event::DetectedEndOfSshLogin(check_type) => {
                 write!(f, "DetectedEndOfSshLogin: {check_type:?}")
             }

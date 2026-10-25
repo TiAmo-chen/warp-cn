@@ -249,7 +249,7 @@ pub enum ScrollPositionUpdate {
     settings_value::SettingsValue,
 )]
 #[schemars(
-    description = "Direction that blocks flow in the terminal viewport.",
+    description = crate::tr!("terminal", "direction-that-blocks-flow-in-the-terminal-viewport"),
     rename_all = "snake_case"
 )]
 pub enum InputMode {
@@ -467,7 +467,7 @@ impl<'a> ViewportState<'a> {
         self.snackbar_header_state
             .state_handle
             .lock()
-            .expect("locking snackbar header state")
+            .expect(crate::tr!("terminal", "locking-snackbar-header-state"))
     }
 
     fn content_element_height_lines(&self) -> Lines {
@@ -595,7 +595,7 @@ impl<'a> ViewportState<'a> {
             }
         } else {
             let mut viewport_iter = self.iter();
-            let top_item = viewport_iter.next().expect("should be a top item to paint");
+            let top_item = viewport_iter.next().expect(crate::tr!("terminal", "should-be-a-top-item-to-paint"));
             top_item.top_of_current_block
         };
         let content_element_lines = self.content_element_height_lines();

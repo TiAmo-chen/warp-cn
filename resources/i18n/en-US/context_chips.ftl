@@ -67,3 +67,20 @@ context-chips-sidecar-repos = Repos:
 context-chips-sidecar-none = (none)
 
 ## -- Double-prefix aliases for tr!() calls that include domain prefix ----------
+
+## zh: auto-extracted entries
+context-chips-kubectl-config-current-context = kubectl config current-context
+context-chips-undefined-chip = Undefined chip
+context-chips-no-upstream-configured = No upstream configured
+context-chips-the-branch-is-already-checked-out-in-another-worktree-but = The branch is already checked out in another worktree, but Warp couldn't find its path.
+context-chips-search-input-should-not-be-constructed = search input should not be constructed
+context-chips-worktree = worktree 
+context-chips-branch = branch 
+context-chips-resolved-log-path-has-no-filename = Resolved log path has no filename
+context-chips-type-of-prompt-context-chip = Type of prompt context chip.
+context-chips-git-branch-status = Git Branch Status
+context-chips-july-12-2023 = July 12, 2023
+context-chips-custom-chip = custom chip
+context-chips-plan-and-todo-list = Plan and Todo List
+context-chips-application-support = Application Support
+context-chips-whether-using-the-default-or-a-custom-prompt-layout = Whether using the default or a custom prompt layout.

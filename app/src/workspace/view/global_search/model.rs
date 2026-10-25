@@ -386,7 +386,7 @@ impl GlobalSearch {
         let active = self
             .active_search
             .take()
-            .expect("active search was checked above");
+            .expect(crate::tr!("workspace", "active-search-was-checked-above"));
         if active.completed_sources == 0 {
             ctx.emit(GlobalSearchEvent::Failed {
                 search_id,

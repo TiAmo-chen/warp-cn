@@ -4001,8 +4001,8 @@ impl TerminalView {
 
         let control_master_error_banner = ctx.add_typed_action_view(|_| {
             Banner::new_permanently_dismissible(BannerTextContent::formatted_text(vec![
-                FormattedTextFragment::plain_text("Seems like your completions are not working ("),
-                FormattedTextFragment::hyperlink("more info", CONTROLMASTER_ISSUES_URL),
+                FormattedTextFragment::plain_text(crate::tr!("terminal", "seems-like-your-completions-are-not-working")),
+                FormattedTextFragment::hyperlink(crate::tr!("terminal", "more-info-5d3ee0"), CONTROLMASTER_ISSUES_URL),
                 FormattedTextFragment::plain_text("). Enabling the SSH extension in "),
                 FormattedTextFragment::hyperlink_action(
                     "settings",
@@ -4019,7 +4019,7 @@ impl TerminalView {
         let incompatible_configuration_banner = ctx.add_typed_action_view(|_| {
             Banner::new(BannerTextContent::formatted_text(vec![
                 FormattedTextFragment::plain_text(
-                    "Your shell configuration is incompatible with Warp...  ",
+                    crate::tr!("terminal", "your-shell-configuration-is-incompatible-with-warp"),
                 ),
                 FormattedTextFragment::hyperlink(
                     crate::tr!("terminal", "more-info"),
@@ -4076,7 +4076,7 @@ impl TerminalView {
         let osc52_clipboard_blocked_banner = ctx.add_typed_action_view(|_| {
             Banner::<TerminalAction>::new_with_buttons(
                 BannerTextContent::plain_text(
-                    "A terminal program tried to access your clipboard. This is disabled by default for security reasons.",
+                    crate::tr!("terminal", "a-terminal-program-tried-to-access-your-clipboard-this-is"),
                 ),
                 vec![
                     BannerTextButton::new(
@@ -4336,7 +4336,7 @@ impl TerminalView {
         ctx.subscribe_to_view(&orchestration_pill_bar, |_, _, _, ctx| ctx.notify());
 
         let agent_view_back_button = ctx.add_typed_action_view(|ctx| {
-            ActionButton::new("for terminal", AgentViewHeaderTheme)
+            ActionButton::new(crate::tr!("terminal", "for-terminal-0a0f8d"), AgentViewHeaderTheme)
                 .with_icon(icons::Icon::ArrowLeft)
                 .with_size(ButtonSize::Small)
                 .with_max_label_width(BACK_BUTTON_LABEL_MAX_WIDTH)
@@ -5529,8 +5529,8 @@ impl TerminalView {
                 let block_id = BlockId::from(block.id().to_string());
                 let suggestion = AgentModePromptSuggestion::Success(PromptSuggestion {
                     id: Uuid::new_v4().to_string(),
-                    label: Some("Execute this plan".to_string()),
-                    prompt: "Execute this plan".to_string(),
+                    label: Some(crate::tr!("terminal", "execute-this-plan").to_string()),
+                    prompt: crate::tr!("terminal", "execute-this-plan").to_string(),
                     coding_query_context: None,
                     static_prompt_suggestion_name: Some("EXECUTE_CREATED_PLAN".to_string()),
                     should_start_new_conversation: false,
@@ -8093,21 +8093,21 @@ impl TerminalView {
                         format!("Warp Agent needs your permission to run `{command}`")
                     }
                     AIAgentActionType::ReadFiles(..) => {
-                        "Warp Agent needs your permission to read files".to_string()
+                        crate::tr!("terminal", "warp-agent-needs-your-permission-to-read-files").to_string()
                     }
                     AIAgentActionType::SearchCodebase(..) => {
-                        "Warp Agent needs your permission to search your codebase".to_string()
+                        crate::tr!("terminal", "warp-agent-needs-your-permission-to-search-your-codebase").to_string()
                     }
                     AIAgentActionType::RequestFileEdits { .. } => {
-                        "Warp Agent needs your permission to edit a file".to_string()
+                        crate::tr!("terminal", "warp-agent-needs-your-permission-to-edit-a-file").to_string()
                     }
                     AIAgentActionType::WriteToLongRunningShellCommand { .. } => {
-                        "Warp Agent needs your permission to interact with a running shell command"
+                        crate::tr!("terminal", "warp-agent-needs-your-permission-to-interact-with-a-runnin")
                             .to_string()
                     }
-                    _ => "Warp Agent needs your confirmation to continue".to_string(),
+                    _ => crate::tr!("terminal", "warp-agent-needs-your-confirmation-to-continue").to_string(),
                 })
-                .unwrap_or("Warp Agent needs your confirmation to continue".to_string());
+                .unwrap_or(crate::tr!("terminal", "warp-agent-needs-your-confirmation-to-continue").to_string());
             return Some(AIBlockNotificationSummary {
                 success: false,
                 title,
@@ -9785,7 +9785,7 @@ impl TerminalView {
             self.write_user_bytes_to_pty(bytes.to_owned(), ctx);
         } else {
             safe_warn!(
-                safe: ("command not long-running. ignoring control seq on terminal."),
+                safe: (crate::tr!("terminal", "command-not-long-running-ignoring-control-seq-on-terminal")),
                 full: ("command not long-running. ignoring control seq on terminal: {:?}", bytes)
             )
         }
@@ -10729,7 +10729,7 @@ impl TerminalView {
 
         let a11y_content = AccessibilityContent::new(
             banner_title,
-            "Make sure you have enabled access for Warp notifications in System Preferences.",
+            crate::tr!("terminal", "make-sure-you-have-enabled-access-for-warp-notifications-i"),
             WarpA11yRole::TextRole,
         );
         ctx.emit_a11y_content(a11y_content);
@@ -11921,7 +11921,7 @@ impl TerminalView {
             });
         if has_other_blocks_in_same_conversation {
             report_error!(
-                "Attempted to clean up and delete conversation for block with other blocks in the same conversation"
+                crate::tr!("terminal", "attempted-to-clean-up-and-delete-conversation-for-block-wi")
             );
             return;
         }
@@ -11971,7 +11971,7 @@ impl TerminalView {
                 view.complete_shell_replacement(
                     id,
                     Err(anyhow::anyhow!(
-                        "shell replacement did not complete before timeout"
+                        crate::tr!("terminal", "shell-replacement-did-not-complete-before-timeout")
                     )),
                     ctx,
                 );
@@ -11984,19 +11984,19 @@ impl TerminalView {
     fn shell_replacement_refusal(&self) -> Option<&'static str> {
         let model = self.model.lock();
         if self.pending_shell_replacement.is_some() || self.pending_cloud_shell_recovery.is_some() {
-            Some("another shell replacement is in progress")
+            Some(crate::tr!("terminal", "another-shell-replacement-is-in-progress"))
         } else if self.manual_pty_shutdown_requested {
-            Some("the shell is shutting down")
+            Some(crate::tr!("terminal", "the-shell-is-shutting-down"))
         } else if !self.is_login_shell_bootstrapped {
-            Some("the shell has not bootstrapped")
+            Some(crate::tr!("terminal", "the-shell-has-not-bootstrapped"))
         } else if model.is_read_only() {
-            Some("the terminal is read-only")
+            Some(crate::tr!("terminal", "the-terminal-is-read-only"))
         } else if model.shared_session_status().is_viewer() {
-            Some("the terminal is a shared-session viewer")
+            Some(crate::tr!("terminal", "the-terminal-is-a-shared-session-viewer"))
         } else if model.block_list().active_block().is_executing() {
-            Some("a command is running")
+            Some(crate::tr!("terminal", "a-command-is-running"))
         } else if model.is_alt_screen_active() {
-            Some("a full-screen program is running")
+            Some(crate::tr!("terminal", "a-full-screen-program-is-running"))
         } else {
             None
         }
@@ -12257,7 +12257,7 @@ impl TerminalView {
         let label = agent_view_back_button_label(history, active_conv_id);
         // The label is "for terminal" exactly when no parent resolved, so
         // it doubles as the child-agent signal.
-        let is_child_agent = label != "for terminal";
+        let is_child_agent = label != crate::tr!("terminal", "for-terminal-0a0f8d");
 
         // Never disable for child agents: the swap-back path can't be blocked.
         let disabled_reason = if is_child_agent {
@@ -12632,7 +12632,7 @@ impl TerminalView {
                 } else if self.pending_cloud_shell_recovery.is_some() {
                     self.fail_cloud_shell_recovery(
                         CloudAgentShellRecoveryFailureClass::ReplacementShellExit,
-                        anyhow::anyhow!("replacement shell exited before bootstrap"),
+                        anyhow::anyhow!(crate::tr!("terminal", "replacement-shell-exited-before-bootstrap")),
                         ctx,
                     );
                 } else if !self.try_begin_cloud_shell_recovery(*status, ctx) {
@@ -13688,7 +13688,7 @@ impl TerminalView {
                 } = get_update_state(ctx)
                 else {
                     log::warn!(
-                        "Got a FinishUpdate event without AutoupdateState being UpdateReady!"
+                        crate::tr!("terminal", "got-a-finishupdate-event-without-autoupdatestate-being-upd")
                     );
                     return;
                 };
@@ -14997,7 +14997,7 @@ impl TerminalView {
         // Set fallback title since /init may have no initial query
         BlocklistAIHistoryModel::handle(ctx).update(ctx, |history, _ctx| {
             if let Some(conversation) = history.conversation_mut(&conversation_id) {
-                conversation.set_fallback_display_title("Project setup".to_string());
+                conversation.set_fallback_display_title(crate::tr!("terminal", "project-setup").to_string());
             }
         });
 
@@ -15284,11 +15284,11 @@ impl TerminalView {
 
             if is_repo {
                 (
-                    "Create environment using the current working dir as repo".to_string(),
+                    crate::tr!("terminal", "create-environment-using-the-current-working-dir-as-repo").to_string(),
                     true,
                 )
             } else {
-                ("Create environment without any repos".to_string(), false)
+                (crate::tr!("terminal", "create-environment-without-any-repos").to_string(), false)
             }
         };
 
@@ -16075,7 +16075,7 @@ impl TerminalView {
 
             let a11y_content = AccessibilityContent::new(
                 format!("Suggested corrected command: {}", correction.command),
-                "Press right arrow to insert or keep editing to ignore",
+                crate::tr!("terminal", "press-right-arrow-to-insert-or-keep-editing-to-ignore"),
                 WarpA11yRole::HelpRole,
             );
             ctx.emit_a11y_content(a11y_content);
@@ -18919,7 +18919,7 @@ impl TerminalView {
         else {
             debug_assert!(
                 false,
-                "Attempted to open attachments menu for AI block with unknown conversation."
+                crate::tr!("terminal", "attempted-to-open-attachments-menu-for-ai-block-with-unkno")
             );
             return;
         };
@@ -22286,7 +22286,7 @@ impl TerminalView {
         {
             AuthManager::handle(ctx).update(ctx, |auth_manager, ctx| {
                 auth_manager.attempt_login_gated_feature(
-                    "Share Block",
+                    crate::tr!("terminal", "share-block"),
                     AuthViewVariant::ShareRequirementCloseable,
                     ctx,
                 )
@@ -22516,7 +22516,7 @@ impl TerminalView {
                     let password_trigger = NotificationsTrigger::NeedsAttention;
                     let notification_content = password_trigger.create_notification_content(
                         active_block.command_to_string(),
-                        "Command is waiting for a password".to_string(),
+                        crate::tr!("terminal", "command-is-waiting-for-a-password").to_string(),
                     );
                     ctx.emit(Event::SendNotification(notification_content));
                     send_telemetry_from_ctx!(
@@ -22743,7 +22743,7 @@ impl TerminalView {
             InputEvent::SubmitSetupFailureDebugFollowup { task_id, prompt } => {
                 if !self.try_submit_setup_failure_debug_followup(*task_id, prompt.clone(), ctx) {
                     self.show_error_toast(
-                        "Couldn't reach the retained session to debug it.".to_string(),
+                        crate::tr!("terminal", "couldn-t-reach-the-retained-session-to-debug-it").to_string(),
                         ctx,
                     );
                 }
@@ -22848,7 +22848,7 @@ impl TerminalView {
                         // pane stack and has no parent terminal to host a local agent conversation.
                         if active_view.id() == self.id() {
                             log::warn!(
-                                "ExitCloudModeAndStartLocalAgent received but cloud-mode pane has no parent terminal"
+                                crate::tr!("terminal", "exitcloudmodeandstartlocalagent-received-but-cloud-mode-pa")
                             );
                         } else {
                             active_view.update(ctx, |view, ctx| {
@@ -23519,8 +23519,8 @@ impl TerminalView {
             }
         };
         let button_label = match blocked_type {
-            Osc52ClipboardBlockedType::Write => "Allow clipboard writes",
-            Osc52ClipboardBlockedType::Read => "Allow clipboard reads and writes",
+            Osc52ClipboardBlockedType::Write => crate::tr!("terminal", "allow-clipboard-writes"),
+            Osc52ClipboardBlockedType::Read => crate::tr!("terminal", "allow-clipboard-reads-and-writes"),
         };
         self.osc52_clipboard_blocked_banner
             .update(ctx, |banner, ctx| {
@@ -23632,12 +23632,12 @@ impl TerminalView {
         let show_banner = if honor_ps1 {
             let banner_content = if shell_plugins.contains("p10k_unsupported") {
                 Some(BannerTextContent::formatted_text(vec![
-                    FormattedTextFragment::bold("Powerlevel10k now supports Warp!  "),
+                    FormattedTextFragment::bold(crate::tr!("terminal", "powerlevel10k-now-supports-warp")),
                     FormattedTextFragment::plain_text(
-                        "You seem to be running an older (unsupported) version, please follow ",
+                        crate::tr!("terminal", "you-seem-to-be-running-an-older-unsupported-version-please"),
                     ),
                     FormattedTextFragment::hyperlink(
-                        "these instructions",
+                        crate::tr!("terminal", "these-instructions"),
                         P10K_UPDATE_INSTRUCTIONS_URL,
                     ),
                     FormattedTextFragment::plain_text(" to update to the latest version."),
@@ -23697,7 +23697,7 @@ impl TerminalView {
             BannerEvent::Action(_) => {
                 #[cfg(debug_assertions)]
                 unimplemented!(
-                    "Control master error banner does not yet support handling terminal actions"
+                    crate::tr!("terminal", "control-master-error-banner-does-not-yet-support-handling")
                 );
             }
         }
@@ -24168,7 +24168,7 @@ impl TerminalView {
         let request = RunAgentsRequest {
             metadata: Default::default(),
             summary: summary.clone(),
-            base_prompt: "Shared instructions for every child agent.".to_owned(),
+            base_prompt: crate::tr!("terminal", "shared-instructions-for-every-child-agent").to_owned(),
             skills: vec![],
             model_id: "auto".to_owned(),
             harness_type: "oz".to_owned(),
@@ -24178,7 +24178,7 @@ impl TerminalView {
                 .map(|name| RunAgentsAgentRunConfig {
                     metadata: Default::default(),
                     name,
-                    prompt: "Do the work.".to_owned(),
+                    prompt: crate::tr!("terminal", "do-the-work").to_owned(),
                     title: String::new(),
                     agent_identity_uid: String::new(),
                     model_id: String::new(),
@@ -24262,7 +24262,7 @@ impl TerminalView {
             history.set_active_conversation_id(id, terminal_view_id, model_ctx);
             new_conversation_id = Some(id);
         });
-        let conversation_id = new_conversation_id.expect("conversation created for dummy AI block");
+        let conversation_id = new_conversation_id.expect(crate::tr!("terminal", "conversation-created-for-dummy-ai-block"));
 
         let ai_block_model = Rc::new(match output {
             DummyAIBlockOutput::Complete(output) => FakeAIBlockModel::new(inputs, output),
@@ -24783,7 +24783,7 @@ impl TerminalView {
             is_terminal_focused: self
                 .view_handle
                 .upgrade(app)
-                .expect("terminal should upgrade")
+                .expect(crate::tr!("terminal", "terminal-should-upgrade"))
                 .is_focused(app),
             is_terminal_selecting: self.is_selecting(),
             is_context_menu_open: self.is_context_menu_open(),
@@ -24866,7 +24866,7 @@ impl TerminalView {
                 Flex::column()
                     .with_child(
                         Text::new_inline(
-                            "Live session unavailable",
+                            crate::tr!("terminal", "live-session-unavailable"),
                             appearance.ui_font_family(),
                             14.,
                         )
@@ -24875,7 +24875,7 @@ impl TerminalView {
                     )
                     .with_child(
                         Text::new_inline(
-                            "The transcript will appear when this child finishes.",
+                            crate::tr!("terminal", "the-transcript-will-appear-when-this-child-finishes"),
                             appearance.ui_font_family(),
                             12.,
                         )
@@ -24922,7 +24922,7 @@ impl TerminalView {
         render_hoverable_block_button(
             icon,
             Some(ToolbeltButtonTooltip {
-                label: "Bookmark this block to quickly scroll to it".to_string(),
+                label: crate::tr!("terminal", "bookmark-this-block-to-quickly-scroll-to-it").to_string(),
                 tool_tip_below_button,
             }),
             false,
@@ -24982,9 +24982,9 @@ impl TerminalView {
                         && input_mode.is_inverted_blocklist()
                         && is_long_running_command
                     {
-                        "Lock scrolling at bottom of block".to_string()
+                        crate::tr!("terminal", "lock-scrolling-at-bottom-of-block").to_string()
                     } else {
-                        "Jump to the bottom of this block".to_string()
+                        crate::tr!("terminal", "jump-to-the-bottom-of-this-block").to_string()
                     };
 
                     let tool_tip = appearance
@@ -26045,7 +26045,7 @@ impl TerminalView {
 
             let hovered = handle
                 .lock()
-                .expect("Handle should be available")
+                .expect(crate::tr!("terminal", "handle-should-be-available"))
                 .is_hovered();
 
             if hovered && let Some(block) = model.block_list().block_at(*index) {
@@ -26631,7 +26631,7 @@ impl TerminalView {
                     if let RequestPermissionsOutcome::OtherError { error_message } = &outcome {
                         report_error!(
                             anyhow::anyhow!("{error_message}")
-                                .context("Unknown error when requesting notification permissions")
+                                .context(crate::tr!("terminal", "unknown-error-when-requesting-notification-permissions"))
                         );
                     }
 
@@ -27435,7 +27435,7 @@ impl TerminalSurface for TerminalView {
         if !self.model.lock().shared_session_status().is_active_sharer() {
             self.fail_cloud_shell_recovery(
                 CloudAgentShellRecoveryFailureClass::SharedSessionRebind,
-                anyhow::anyhow!("shared session was no longer active after shell recovery"),
+                anyhow::anyhow!(crate::tr!("terminal", "shared-session-was-no-longer-active-after-shell-recovery")),
                 ctx,
             );
             return;
@@ -27663,7 +27663,7 @@ impl TypedActionView for TerminalView {
             }
             BookmarkBlock(_) | BookmarkSelectedBlock => {
                 Custom(AccessibilityContent::new_without_help(
-                    "Toggle Bookmark block",
+                    crate::tr!("terminal", "toggle-bookmark-block"),
                     WarpA11yRole::TextRole,
                 ))
             }
@@ -27693,11 +27693,11 @@ impl TypedActionView for TerminalView {
                 WarpA11yRole::TextRole,
             )),
             ScrollToTopOfSelectedBlocks => Custom(AccessibilityContent::new_without_help(
-                "Scrolled to top of selected block".to_string(),
+                crate::tr!("terminal", "scrolled-to-top-of-selected-block").to_string(),
                 WarpA11yRole::TextRole,
             )),
             ScrollToBottomOfOverhangingBlock(_) => Custom(AccessibilityContent::new_without_help(
-                "Scrolled to bottom of bottommost visible block".to_string(),
+                crate::tr!("terminal", "scrolled-to-bottom-of-bottommost-visible-block").to_string(),
                 WarpA11yRole::TextRole,
             )),
             CopyOutputs => {
@@ -27765,15 +27765,15 @@ impl TypedActionView for TerminalView {
                 WarpA11yRole::TextRole,
             )),
             ShowInitializationBlock => Custom(AccessibilityContent::new_without_help(
-                "Showed initialization block",
+                crate::tr!("terminal", "showed-initialization-block"),
                 WarpA11yRole::TextareaRole,
             )),
             ShowWarpifySettings => Custom(AccessibilityContent::new_without_help(
-                "Opened Warpify Settings",
+                crate::tr!("terminal", "opened-warpify-settings"),
                 WarpA11yRole::ButtonRole,
             )),
             OpenFilesPalette { .. } => Custom(AccessibilityContent::new_without_help(
-                "Opened file search palette",
+                crate::tr!("terminal", "opened-file-search-palette"),
                 WarpA11yRole::ButtonRole,
             )),
             InsertCommandCorrection { .. }
@@ -27839,28 +27839,28 @@ impl TypedActionView for TerminalView {
             OpenCodeInWarp { .. } => ActionAccessibilityContent::from_debug(),
             OpenInWarpBanner(action) => self.open_in_warp_banner_accessibility_content(*action),
             OpenAIBlockAttachedBlocksMenu { .. } => Custom(AccessibilityContent::new_without_help(
-                "Open list of blocks attached as context to this AI query.".to_owned(),
+                crate::tr!("terminal", "open-list-of-blocks-attached-as-context-to-this-ai-query").to_owned(),
                 WarpA11yRole::PopoverRole,
             )),
             OpenAIBlockOverflowMenu { .. } => Custom(AccessibilityContent::new_without_help(
-                "Open overflow menu with copy options for this AI block.".to_owned(),
+                crate::tr!("terminal", "open-overflow-menu-with-copy-options-for-this-ai-block").to_owned(),
                 WarpA11yRole::PopoverRole,
             )),
             RewindAIConversation { .. } => Custom(AccessibilityContent::new_without_help(
-                "Show confirmation dialog to rewind to before this point in the AI conversation."
+                crate::tr!("terminal", "show-confirmation-dialog-to-rewind-to-before-this-point-in")
                     .to_owned(),
                 WarpA11yRole::ButtonRole,
             )),
             ExecuteRewindAIConversation { .. } => Custom(AccessibilityContent::new_without_help(
-                "Execute rewind to before this point in the AI conversation.".to_owned(),
+                crate::tr!("terminal", "execute-rewind-to-before-this-point-in-the-ai-conversation").to_owned(),
                 WarpA11yRole::ButtonRole,
             )),
             SelectAIAttachedBlock(_) => Custom(AccessibilityContent::new_without_help(
-                "Click on a block attached as context to this AI query.".to_owned(),
+                crate::tr!("terminal", "click-on-a-block-attached-as-context-to-this-ai-query").to_owned(),
                 WarpA11yRole::ButtonRole,
             )),
             PickRepoToOpen => Custom(AccessibilityContent::new_without_help(
-                "Use file picker to select a git repository".to_owned(),
+                crate::tr!("terminal", "use-file-picker-to-select-a-git-repository").to_owned(),
                 WarpA11yRole::PopoverRole,
             )),
             #[cfg(feature = "voice_input")]
@@ -29091,7 +29091,7 @@ impl TypedActionView for TerminalView {
                         OrchestrationNavigationDirection::Previous
                     }
                     CycleNextOrchestrationChildAgent => OrchestrationNavigationDirection::Next,
-                    _ => unreachable!("matched orchestration cycle action"),
+                    _ => unreachable!(crate::tr!("terminal", "matched-orchestration-cycle-action")),
                 };
                 if let Some(conversation_id) = self
                     .agent_view_controller
@@ -30309,7 +30309,7 @@ fn agent_view_back_button_label(
         .and_then(|id| history.conversation(&id))
         .and_then(|c| history.resolved_parent_conversation_id_for_conversation(c));
     let Some(parent_id) = parent_id else {
-        return Cow::Borrowed("for terminal");
+        return Cow::Borrowed(crate::tr!("terminal", "for-terminal-0a0f8d"));
     };
     let parent = history.conversation(&parent_id);
     // An unloaded parent can't be classified; keep the classic wording.
@@ -30319,14 +30319,14 @@ fn agent_view_back_button_label(
             .is_none()
     });
     if parent_is_root {
-        return Cow::Borrowed("for Orchestrator");
+        return Cow::Borrowed(crate::tr!("terminal", "for-orchestrator"));
     }
     match parent
         .and_then(|parent| parent.agent_name())
         .filter(|name| !name.is_empty())
     {
         Some(name) => Cow::Owned(format!("for {name}")),
-        None => Cow::Borrowed("for parent agent"),
+        None => Cow::Borrowed(crate::tr!("terminal", "for-parent-agent")),
     }
 }
 

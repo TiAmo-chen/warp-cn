@@ -498,7 +498,7 @@ fn detect_nvm_installed() -> bool {
             // macOS possible alt path for fish conf sometimes under Library
             let fish_alt = home
                 .join("Library")
-                .join("Application Support")
+                .join(crate::tr!("context_chips", "application-support")))
                 .join("fish")
                 .join("functions")
                 .join("nvm.fish");

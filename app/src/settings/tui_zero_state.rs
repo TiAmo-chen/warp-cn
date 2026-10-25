@@ -48,7 +48,7 @@ impl<'de> Deserialize<'de> for TuiZeroStateRotationPeriodSeconds {
     {
         deserialize_bounded_f64(
             deserializer,
-            "rotation period",
+            crate::tr!("settings", "rotation-period"),
             MIN_TUI_ZERO_STATE_ROTATION_PERIOD_SECONDS,
             MAX_TUI_ZERO_STATE_ROTATION_PERIOD_SECONDS,
         )
@@ -82,7 +82,7 @@ impl<'de> Deserialize<'de> for TuiZeroStateExtrusionDepth {
     {
         deserialize_bounded_f64(
             deserializer,
-            "extrusion depth",
+            crate::tr!("settings", "extrusion-depth"),
             MIN_TUI_ZERO_STATE_EXTRUSION_DEPTH,
             MAX_TUI_ZERO_STATE_EXTRUSION_DEPTH,
         )

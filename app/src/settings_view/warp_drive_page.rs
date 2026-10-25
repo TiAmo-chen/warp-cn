@@ -156,7 +156,7 @@ impl SettingsWidget for WarpDriveHeaderWidget {
     type View = WarpDriveSettingsPageView;
 
     fn search_terms(&self) -> &str {
-        "warp drive sign up"
+        crate::tr!("settings", "warp-drive-sign-up")
     }
 
     fn should_render(&self, app: &AppContext) -> bool {
@@ -239,7 +239,7 @@ impl SettingsWidget for WarpDriveToggleWidget {
     type View = WarpDriveSettingsPageView;
 
     fn search_terms(&self) -> &str {
-        "warp drive tools panel command palette search workflows prompts notebooks environment variables"
+        crate::tr!("settings", "warp-drive-tools-panel-command-palette-search-workflows-pr")
     }
 
     fn should_render(&self, app: &AppContext) -> bool {

@@ -222,7 +222,7 @@ pub const MARKDOWN_DISPLAY_MODE_TOGGLE_CONTEXT: &str = "MarkdownDisplayModeToggl
 // rebindable entry in settings.
 pub const TOGGLE_MARKDOWN_DISPLAY_MODE_BINDING_NAME: &str = "markdown:toggle_display_mode";
 pub const TOGGLE_MARKDOWN_DISPLAY_MODE_BINDING_DESCRIPTION: &str =
-    "Toggle Markdown rendered/raw view";
+    crate::tr!("notebooks", "toggle-markdown-rendered-raw-view");
 pub const TOGGLE_MARKDOWN_DISPLAY_MODE_KEY_BINDING: &str = "cmdorctrl-e";
 
 pub fn init(app: &mut AppContext) {
@@ -552,7 +552,7 @@ impl FileNotebookView {
         {
             // WASM builds should never call `open_local`, so we should never get here!
             safe_warn!(
-                safe: ("Local filesystem access is not available in this build"),
+                safe: (crate::tr!("notebooks", "local-filesystem-access-is-not-available-in-this-build")),
                 full: ("Local filesystem access is not available in this build (feature \"local_fs\" disabled)")
             );
             self.file_state = FileState::Error(SourceFile::FileBased {
@@ -707,7 +707,7 @@ impl FileNotebookView {
                             .error
                             .as_ref()
                             .map(|e| e.message.as_str())
-                            .unwrap_or("unknown error");
+                            .unwrap_or(crate::tr!("notebooks", "unknown-error"));
                         safe_warn!(
                             safe: ("Failed to read remote markdown file"),
                             full: ("Failed to read remote markdown file: {error_msg}")
@@ -721,7 +721,7 @@ impl FileNotebookView {
                 }
                 Err(err) => {
                     safe_warn!(
-                        safe: ("Remote server error reading markdown file"),
+                        safe: (crate::tr!("notebooks", "remote-server-error-reading-markdown-file")),
                         full: ("Remote server error reading markdown file: {err}")
                     );
                     me.file_state = match mem::replace(&mut me.file_state, FileState::NoFile) {

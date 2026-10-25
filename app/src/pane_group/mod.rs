@@ -1069,7 +1069,7 @@ impl InitialFocus {
     fn merge(&mut self, other: InitialFocus) {
         if self.focused_pane.is_some() {
             if other.focused_pane.is_some() {
-                report_error!("Restored pane tree has more than one focused pane");
+                report_error!(crate::tr!("pane_group", "restored-pane-tree-has-more-than-one-focused-pane")));
             }
         } else {
             self.focused_pane = other.focused_pane;
@@ -1077,7 +1077,7 @@ impl InitialFocus {
 
         if self.active_session.is_some() {
             if other.active_session.is_some() {
-                report_error!("Restored pane tree has more than one active session");
+                report_error!(crate::tr!("pane_group", "restored-pane-tree-has-more-than-one-active-session")));
             }
         } else {
             self.active_session = other.active_session;
@@ -1583,7 +1583,7 @@ impl PaneGroup {
                 }
 
                 if nodes.is_empty() {
-                    anyhow::bail!("All child panes were invalid");
+                    anyhow::bail!(crate::tr!("pane_group", "all-child-panes-were-invalid")));
                 }
 
                 let axis = pane.direction;
@@ -1804,7 +1804,7 @@ impl PaneGroup {
 
                 let Some(source) = source.filter(|s: &CodeSource| s.is_restorable()) else {
                     return Err(anyhow::anyhow!(
-                        "Skipping code pane with non-restorable source"
+                        crate::tr!("pane_group", "skipping-code-pane-with-non-restorable-source"))
                     ));
                 };
 
@@ -1822,7 +1822,7 @@ impl PaneGroup {
             }
             #[cfg(not(feature = "local_fs"))]
             LeafContents::Code(_) => Err(anyhow::anyhow!(
-                "Code pane restoration not supported on this platform"
+                crate::tr!("pane_group", "code-pane-restoration-not-supported-on-this-platform"))
             )),
             LeafContents::EnvVarCollection(snapshot) => {
                 let pane: Box<dyn AnyPaneContent + 'static> = match snapshot {
@@ -1880,7 +1880,7 @@ impl PaneGroup {
             }
             LeafContents::AIFact(snapshot) => {
                 if !FeatureFlag::AIRules.is_enabled() {
-                    return Err(anyhow::anyhow!("AI fact pane not enabled"));
+                    return Err(anyhow::anyhow!(crate::tr!("pane_group", "ai-fact-pane-not-enabled"))));
                 }
                 let pane: Box<dyn AnyPaneContent + 'static> = match snapshot {
                     AIFactPaneSnapshot::Personal => Box::new(AIFactPane::new(ctx)),
@@ -1979,11 +1979,11 @@ impl PaneGroup {
                 Ok((PaneData::new(pane_id), focus))
             }
             LeafContents::CodeReview(_) => {
-                Err(anyhow::anyhow!("Code review panes are no longer supported"))
+                Err(anyhow::anyhow!(crate::tr!("pane_group", "code-review-panes-are-no-longer-supported"))))
             }
             LeafContents::ExecutionProfileEditor | LeafContents::CustomRouterEditor => {
                 // Editor panes are not restored from persistence.
-                Err(anyhow::anyhow!("Can't restore editor panes"))
+                Err(anyhow::anyhow!(crate::tr!("pane_group", "can-t-restore-editor-panes"))))
             }
             LeafContents::NetworkLog => {
                 // Network log panes are intentionally not restored. Two
@@ -2002,12 +2002,12 @@ impl PaneGroup {
                 // programmer error on the persistence side. Users reopen the
                 // pane on demand via Privacy settings or the keybinding.
                 Err(anyhow::anyhow!(
-                    "Network log pane should not have been persisted, as it cannot be restored"
+                    crate::tr!("pane_group", "network-log-pane-should-not-have-been-persisted-as-it-cann"))
                 ))
             }
             LeafContents::GetStarted => {
                 if !FeatureFlag::GetStartedTab.is_enabled() {
-                    Err(anyhow::anyhow!("GetStarted pane not supported"))
+                    Err(anyhow::anyhow!(crate::tr!("pane_group", "getstarted-pane-not-supported"))))
                 } else {
                     let pane: Box<dyn AnyPaneContent + 'static> =
                         Box::new(GetStartedPane::new(ctx));
@@ -2024,7 +2024,7 @@ impl PaneGroup {
                 // Environment management panes are not restored from persistence.
                 // They are opened on-demand via workspace actions.
                 Err(anyhow::anyhow!(
-                    "Environment management panes are not restored"
+                    crate::tr!("pane_group", "environment-management-panes-are-not-restored"))
                 ))
             }
         };
@@ -2992,7 +2992,7 @@ impl PaneGroup {
 
                 let Some(terminal_view) = self.terminal_view_from_pane_id(*terminal_pane_id, ctx)
                 else {
-                    report_error!("Tried to grant role for non existent terminal pane");
+                    report_error!(crate::tr!("pane_group", "tried-to-grant-role-for-non-existent-terminal-pane")));
                     return;
                 };
 
@@ -3068,7 +3068,7 @@ impl PaneGroup {
         let focused_pane = initial_focus
             .focused_pane
             .or_else(|| pane_contents.keys().min().copied())
-            .expect("At least one pane should have been created");
+            .expect(crate::tr!("pane_group", "at-least-one-pane-should-have-been-created")));
 
         let active_session_id = initial_focus.active_session.or_else(|| {
             pane_contents
@@ -3715,7 +3715,7 @@ impl PaneGroup {
     ) {
         // Get the active terminal view
         let Some(terminal_view) = self.active_session_view(ctx) else {
-            report_error!("No active terminal view to load conversation into");
+            report_error!(crate::tr!("pane_group", "no-active-terminal-view-to-load-conversation-into")));
             return;
         };
         self.load_data_into_transcript_viewer(
@@ -4206,7 +4206,7 @@ impl PaneGroup {
         let pane = self
             .pane_contents
             .get(&pane_id)
-            .expect("Just inserted pane");
+            .expect(crate::tr!("pane_group", "just-inserted-pane")));
         if !self.try_attach_pane(pane.as_ref(), ctx) {
             self.pane_contents.remove(&pane_id);
             return None;
@@ -4388,7 +4388,7 @@ impl PaneGroup {
         };
 
         if !self.panes.remove(*pane_id) {
-            report_error!("Pane not found");
+            report_error!(crate::tr!("pane_group", "pane-not-found")));
         }
 
         let pane_content = self.pane_contents.remove(pane_id);
@@ -4901,7 +4901,7 @@ impl PaneGroup {
             // We should only remove the session id from the tree after we queried
             // and got the previous session id.
             if !self.panes.remove(pane_id) {
-                report_error!("Pane not found");
+                report_error!(crate::tr!("pane_group", "pane-not-found")));
             }
 
             // Mirror cleanup_closed_pane's transitive-share map cleanup so
@@ -5004,7 +5004,7 @@ impl PaneGroup {
         // Ensure original pane exists before attempting replacement
         if !self.pane_contents.contains_key(&original_pane_id) {
             report_error!(
-                "Attempted to replace pane that doesn't exist in contents",
+                crate::tr!("pane_group", "attempted-to-replace-pane-that-doesn-t-exist-in-contents")),
                 extra: { "original_pane_id" => ?original_pane_id }
             );
             return false;
@@ -5650,7 +5650,7 @@ impl PaneGroup {
         self.clear_hidden_closed_panes(ctx);
 
         if !self.panes.remove(id) {
-            report_error!("Pane not found when attempting to move");
+            report_error!(crate::tr!("pane_group", "pane-not-found-when-attempting-to-move")));
             return;
         }
 
@@ -6072,7 +6072,7 @@ impl PaneGroup {
             }
             BannerEvent::Action(_) => {
                 #[cfg(debug_assertions)]
-                unimplemented!("User default shell change banner doesn't support actions");
+                unimplemented!(crate::tr!("pane_group", "user-default-shell-change-banner-doesn-t-support-actions")));
             }
         }
         ctx.notify();
@@ -6788,7 +6788,7 @@ impl PaneGroup {
         let pane = self
             .pane_contents
             .get(&pane_id)
-            .expect("Just inserted pane");
+            .expect(crate::tr!("pane_group", "just-inserted-pane")));
 
         if !self.try_attach_pane(pane.as_ref(), ctx) {
             // Remove the pane we didn't end up attaching the pane.

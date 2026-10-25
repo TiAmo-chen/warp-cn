@@ -2129,7 +2129,7 @@ impl RichTextEditorView {
                 Some(BlockInsertionSource::BlockInsertionButton)
                     if self.hovered_block.is_some() =>
                 {
-                    InsertionMode::InsertAfter(self.hovered_block.expect("Just checked above"))
+                    InsertionMode::InsertAfter(self.hovered_block.expect(crate::tr!("notebooks", "just-checked-above")))
                 }
                 _ => return,
             };

@@ -161,7 +161,7 @@ impl SearchItem for MatchedBinding {
         self.binding
             .trigger
             .as_ref()
-            .map_or("Press enter to confirm.".into(), |trigger| {
+            .map_or(crate::tr!("search", "press-enter-to-confirm").into(), |trigger| {
                 format!(
                     "Press enter to confirm. Use {} binding to run this action in the future.",
                     trigger.normalized()

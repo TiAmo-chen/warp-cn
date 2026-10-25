@@ -135,9 +135,9 @@ where
                 redaction,
                 TooltipRedaction::SecretNotSentToLLMMessaging { .. }
             ) {
-                "This wasn't included in the AI conversation."
+                crate::tr!("common", "this-wasn-t-included-in-the-ai-conversation")
             } else {
-                "This won't be included in any AI conversations or shared blocks."
+                crate::tr!("common", "this-won-t-be-included-in-any-ai-conversations-or-shared-b")
             };
 
             // Generate the appropriate message based on secret level

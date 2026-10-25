@@ -1659,7 +1659,7 @@ impl GlobalSearchView {
             {
                 let view_handle = handle
                     .upgrade(app)
-                    .expect("GlobalSearchView handle should be upgradeable");
+                    .expect(crate::tr!("workspace", "globalsearchview-handle-should-be-upgradeable"));
                 let view = view_handle.as_ref(app);
 
                 (range.start..range.end).map(|idx| view.render_row_at_index(idx, app))
@@ -2342,15 +2342,15 @@ impl GlobalSearchView {
         self.render_zero_state(
             Icon::AlertTriangle,
             crate::tr!("workspace", "global-search-unavailable"),
-            "Global search isn't available for this remote session.",
+            crate::tr!("workspace", "global-search-isn-t-available-for-this-remote-session"),
             app,
         )
     }
     fn render_remote_loading_state(&self, app: &AppContext) -> Box<dyn Element> {
         self.render_zero_state(
             Icon::Loading,
-            "Connecting to remote session",
-            "Global search will be available once the connection is ready.",
+            crate::tr!("workspace", "connecting-to-remote-session"),
+            crate::tr!("workspace", "global-search-will-be-available-once-the-connection-is-rea"),
             app,
         )
     }

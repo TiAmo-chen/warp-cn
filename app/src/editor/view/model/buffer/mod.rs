@@ -214,7 +214,7 @@ impl BatchState {
         let res = match self {
             Self::Inactive => Err(anyhow!("Cannot edit outside of a batch")),
             Self::SelectionChangesOnly { .. } | Self::UndoRedo { .. } => {
-                Err(anyhow!("Batch does not support edits"))
+                Err(anyhow!(crate::tr!("editor", "batch-does-not-support-edits")))
             }
             Self::EditsAndSelectionChanges { .. } => Ok(()),
         };
@@ -232,7 +232,7 @@ impl BatchState {
         let res = match self {
             Self::Inactive => Err(anyhow!("Cannot undo outside of a batch")),
             Self::SelectionChangesOnly { .. } | Self::EditsAndSelectionChanges { .. } => {
-                Err(anyhow!("Batch does not support undo / redo"))
+                Err(anyhow!(crate::tr!("editor", "batch-does-not-support-undo-redo")))
             }
             Self::UndoRedo { .. } => Ok(()),
         };
@@ -1172,7 +1172,7 @@ impl Buffer {
 
     pub fn stylized_chars(&self) -> CharsWithStyle<'_> {
         self.stylized_chars_at(CharOffset::from(0))
-            .expect("offset 0 should exist")
+            .expect(crate::tr!("editor", "offset-0-should-exist"))
     }
 
     pub fn chars_at<T: ToCharOffset>(&self, position: T) -> Result<Chars<'_>> {
@@ -1371,7 +1371,7 @@ impl Buffer {
         } else {
             debug_assert!(
                 false,
-                "Tried to record edits in an insufficient batch state"
+                crate::tr!("editor", "tried-to-record-edits-in-an-insufficient-batch-state")
             );
         }
     }
@@ -1619,9 +1619,9 @@ impl Buffer {
             .map(|r| {
                 LocalSelection::new_for_test(
                     self.anchor_before(r.start)
-                        .expect("start of range should be valid"),
+                        .expect(crate::tr!("editor", "start-of-range-should-be-valid")),
                     self.anchor_before(r.end)
-                        .expect("end of range should be valid"),
+                        .expect(crate::tr!("editor", "end-of-range-should-be-valid")),
                 )
             })
             .collect();
@@ -2125,7 +2125,7 @@ impl Buffer {
                 // our edit operation's end should be the end of the current fragment.
                 if range.end == chars_to_fragment_start {
                     let last_fragment = new_fragments.last().ok_or_else(|| {
-                        anyhow!("New fragment tree should have at least one item")
+                        anyhow!(crate::tr!("editor", "new-fragment-tree-should-have-at-least-one-item"))
                     })?;
                     operation_edit_args.update_end(
                         last_fragment.insertion.id.clone(),
@@ -2142,7 +2142,7 @@ impl Buffer {
                 // current fragment.
                 if range.start == chars_to_fragment_start {
                     let last_fragment = new_fragments.last().ok_or_else(|| {
-                        anyhow!("New fragment tree should have at least one item")
+                        anyhow!(crate::tr!("editor", "new-fragment-tree-should-have-at-least-one-item"))
                     })?;
                     // The start point for our edit operation is the end of the last fragment.
                     operation_edit_args.update_start(
@@ -2175,7 +2175,7 @@ impl Buffer {
                         });
                         let new_fragment = self.build_fragment_to_insert(
                             new_fragments.last().ok_or_else(|| {
-                                anyhow!("New fragment tree should have at least one item")
+                                anyhow!(crate::tr!("editor", "new-fragment-tree-should-have-at-least-one-item"))
                             })?,
                             Some(&current_fragment),
                             new_text,
@@ -2191,7 +2191,7 @@ impl Buffer {
                     chars_to_fragment_start,
                     chars_to_fragment_end,
                     new_fragments.last().ok_or_else(|| {
-                        anyhow!("New fragment tree should have at least one item")
+                        anyhow!(crate::tr!("editor", "new-fragment-tree-should-have-at-least-one-item"))
                     })?,
                     range,
                     &mut operation_edit_args,
@@ -2292,7 +2292,7 @@ impl Buffer {
             debug_assert_eq!(old_ranges.next(), None);
             let last_fragment = new_fragments
                 .last()
-                .ok_or_else(|| anyhow!("New fragment tree should have at least one item"))?;
+                .ok_or_else(|| anyhow!(crate::tr!("editor", "new-fragment-tree-should-have-at-least-one-item")))?;
             operation_edit_args = OperationEditArgs::new(
                 new_text.clone(),
                 self.lamport_clock.clone(),
@@ -2318,7 +2318,7 @@ impl Buffer {
                 });
                 let last_fragment = new_fragments
                     .last()
-                    .ok_or_else(|| anyhow!("New fragment tree should have at least one item"))?;
+                    .ok_or_else(|| anyhow!(crate::tr!("editor", "new-fragment-tree-should-have-at-least-one-item")))?;
                 let new_fragment = self.build_fragment_to_insert(
                     last_fragment,
                     None,
@@ -2512,7 +2512,7 @@ impl Buffer {
                 fragment,
                 new_fragments
                     .last()
-                    .ok_or_else(|| anyhow!("New fragment tree should have at least one item"))?,
+                    .ok_or_else(|| anyhow!(crate::tr!("editor", "new-fragment-tree-should-have-at-least-one-item")))?,
                 *chars_to_fragment_start,
                 range.start,
             );
@@ -2607,7 +2607,7 @@ impl Buffer {
                 let mut spliced_fragment = Self::splice_fragment_at_char_offset(
                     fragment,
                     new_fragments.last().ok_or_else(|| {
-                        anyhow!("New fragment tree should have at least one item")
+                        anyhow!(crate::tr!("editor", "new-fragment-tree-should-have-at-least-one-item"))
                     })?,
                     chars_to_fragment_start,
                     range.end,
@@ -2963,7 +2963,7 @@ impl Buffer {
         let offset = position.to_char_offset(self)?;
         let max_offset = self.len();
         if offset > max_offset {
-            return Err(anyhow!("offset is out of range"));
+            return Err(anyhow!(crate::tr!("editor", "offset-is-out-of-range")));
         }
 
         let seek_bias;
@@ -3015,12 +3015,12 @@ impl Buffer {
                 let splits = self
                     .insertion_splits
                     .get(insertion_id)
-                    .ok_or_else(|| anyhow!("split does not exist for insertion id"))?;
+                    .ok_or_else(|| anyhow!(crate::tr!("editor", "split-does-not-exist-for-insertion-id")))?;
                 let mut splits_cursor = splits.cursor::<CharOffset, ()>();
                 splits_cursor.seek(offset, seek_bias);
                 splits_cursor
                     .item()
-                    .ok_or_else(|| anyhow!("split offset is out of range"))
+                    .ok_or_else(|| anyhow!(crate::tr!("editor", "split-offset-is-out-of-range")))
                     .map(|split| &split.fragment_id)
             }
         }
@@ -3043,18 +3043,18 @@ impl Buffer {
                 let splits = self
                     .insertion_splits
                     .get(insertion_id)
-                    .ok_or_else(|| anyhow!("split does not exist for insertion id"))?;
+                    .ok_or_else(|| anyhow!(crate::tr!("editor", "split-does-not-exist-for-insertion-id")))?;
                 let mut splits_cursor = splits.cursor::<CharOffset, ()>();
                 splits_cursor.seek(offset, seek_bias);
                 let split = splits_cursor
                     .item()
-                    .ok_or_else(|| anyhow!("split offset is out of range"))?;
+                    .ok_or_else(|| anyhow!(crate::tr!("editor", "split-offset-is-out-of-range")))?;
 
                 let mut fragments_cursor = self.fragments.cursor::<FragmentIdRef, TextSummary>();
                 fragments_cursor.seek(&FragmentIdRef::new(&split.fragment_id), SeekBias::Left);
                 let fragment = fragments_cursor
                     .item()
-                    .ok_or_else(|| anyhow!("fragment id does not exist"))?;
+                    .ok_or_else(|| anyhow!(crate::tr!("editor", "fragment-id-does-not-exist")))?;
 
                 let mut summary = fragments_cursor.start().clone();
                 if fragment.is_visible(&self.undo_history) {
@@ -3074,7 +3074,7 @@ impl Buffer {
         fragments_cursor.seek(&offset, SeekBias::Left);
         fragments_cursor
             .item()
-            .ok_or_else(|| anyhow!("offset is out of range"))
+            .ok_or_else(|| anyhow!(crate::tr!("editor", "offset-is-out-of-range")))
             .map(|fragment| {
                 let overshoot = fragment.point_for_offset(offset - fragments_cursor.start().chars);
                 fragments_cursor.start().lines + overshoot
@@ -3770,7 +3770,7 @@ impl ToCharOffset for Point {
         fragments_cursor.seek(self, SeekBias::Left);
         fragments_cursor
             .item()
-            .ok_or_else(|| anyhow!("point is out of range"))
+            .ok_or_else(|| anyhow!(crate::tr!("editor", "point-is-out-of-range")))
             .map(|fragment| {
                 let overshoot = fragment.offset_for_point(*self - fragments_cursor.start().lines);
                 fragments_cursor.start().chars + overshoot
@@ -3802,7 +3802,7 @@ impl ToCharOffset for ByteOffset {
         fragments_cursor.seek(self, SeekBias::Left);
         fragments_cursor
             .item()
-            .ok_or_else(|| anyhow!("byte index is out of range"))
+            .ok_or_else(|| anyhow!(crate::tr!("editor", "byte-index-is-out-of-range")))
             .map(|fragment| {
                 let chars_to_start_of_fragment = fragments_cursor.start().chars;
 
@@ -3821,7 +3821,7 @@ impl ToBufferOffset for Point {
         fragments_cursor.seek(self, SeekBias::Left);
         fragments_cursor
             .item()
-            .ok_or_else(|| anyhow!("point is out of range"))
+            .ok_or_else(|| anyhow!(crate::tr!("editor", "point-is-out-of-range")))
             .map(|fragment| {
                 let overshoot =
                     fragment.byte_offset_for_point(*self - fragments_cursor.start().lines);
@@ -3871,7 +3871,7 @@ impl ToPoint for CharOffset {
         fragments_cursor.seek(self, SeekBias::Left);
         fragments_cursor
             .item()
-            .ok_or_else(|| anyhow!("offset is out of range"))
+            .ok_or_else(|| anyhow!(crate::tr!("editor", "offset-is-out-of-range")))
             .map(|fragment| {
                 let overshoot = fragment.point_for_offset(*self - fragments_cursor.start().chars);
                 fragments_cursor.start().lines + overshoot

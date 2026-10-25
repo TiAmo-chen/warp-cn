@@ -158,12 +158,12 @@ fn parse_git_worktree_paths(lines: &[String]) -> HashMap<String, String> {
             continue;
         }
 
-        if let Some(path) = trimmed.strip_prefix("worktree ") {
+        if let Some(path) = trimmed.strip_prefix(crate::tr!("context_chips", "worktree"))) {
             current_worktree_path = Some(path.to_string());
             continue;
         }
 
-        let Some(branch_ref) = trimmed.strip_prefix("branch ") else {
+        let Some(branch_ref) = trimmed.strip_prefix(crate::tr!("context_chips", "branch"))) else {
             continue;
         };
         let Some(branch_name) = branch_ref.strip_prefix(GIT_BRANCH_REF_PREFIX) else {

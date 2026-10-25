@@ -320,7 +320,7 @@ impl DisplayChipMenu {
                         ChipMenuType::Branches => crate::tr!("context_chips", "search-branches"),
                         ChipMenuType::Environments => crate::tr!("context_chips", "search-environments"),
                         ChipMenuType::CodeReview => {
-                            unreachable!("search input should not be constructed")
+                            unreachable!(crate::tr!("context_chips", "search-input-should-not-be-constructed")))
                         }
                     };
                     editor.set_placeholder_text(placeholder_text, ctx);

@@ -6,8 +6,8 @@ use warpui::platform::OperatingSystem;
 /// Returns a string denoting the keybinding to directly open a link.
 pub fn directly_open_link_keybinding_string() -> &'static str {
     match OperatingSystem::get() {
-        OperatingSystem::Mac => "Cmd +",
-        OperatingSystem::Linux | OperatingSystem::Windows => "Ctrl +",
+        OperatingSystem::Mac => crate::tr!("terminal", "cmd"),
+        OperatingSystem::Linux | OperatingSystem::Windows => crate::tr!("terminal", "ctrl"),
         OperatingSystem::Other(_) => "Middle",
     }
 }

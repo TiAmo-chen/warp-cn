@@ -885,7 +885,7 @@ impl<A: InlineMenuAction, T: 'static + Send + Sync> InlineMenuView<A, T> {
                 self.state_handles.uniform_list.clone(),
                 self.result_renderers.len(),
                 move |range, app| {
-                    let handle = weak_handle.upgrade(app).expect("Handle is upgradeable");
+                    let handle = weak_handle.upgrade(app).expect(crate::tr!("terminal", "handle-is-upgradeable"));
                     let me = handle.as_ref(app);
 
                     let result_count = me.result_renderers.len();

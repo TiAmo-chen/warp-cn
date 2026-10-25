@@ -752,7 +752,7 @@ impl RunnableCommandModel for NotebookCommand {
                             self.mouse_state_handles
                                 .mermaid_fullscreen_button_state
                                 .clone(),
-                            "Open full screen",
+                            crate::tr!("notebooks", "open-full-screen"),
                             None,
                         )
                         .on_click(move |ctx, app, _| {

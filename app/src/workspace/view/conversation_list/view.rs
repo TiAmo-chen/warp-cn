@@ -1360,7 +1360,7 @@ impl View for ConversationListView {
                 move |range: Range<usize>, app: &AppContext| {
                     let model = model_handle
                         .upgrade(app)
-                        .expect("Model handle should be valid");
+                        .expect(crate::tr!("workspace", "model-handle-should-be-valid"));
                     let model = model.as_ref(app);
 
                     range

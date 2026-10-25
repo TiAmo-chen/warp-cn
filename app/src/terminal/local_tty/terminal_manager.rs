@@ -260,7 +260,7 @@ async fn join_event_loop(
     while !handle.is_finished() {
         anyhow::ensure!(
             Instant::now() < deadline,
-            "PTY event loop did not stop before timeout"
+            crate::tr!("terminal", "pty-event-loop-did-not-stop-before-timeout")
         );
         Timer::after(Duration::from_millis(10)).await;
     }
@@ -692,32 +692,32 @@ impl<S> TerminalManager<S> {
         // Windows would also need its child exit watcher to wait for an in-flight exit callback.
         anyhow::ensure!(
             !cfg!(windows),
-            "shell replacement is not supported on Windows"
+            crate::tr!("terminal", "shell-replacement-is-not-supported-on-windows")
         );
         anyhow::ensure!(
             self.pending_shell_recovery.is_none(),
-            "shell replacement is already pending"
+            crate::tr!("terminal", "shell-replacement-is-already-pending")
         );
         let mut resources = self
             .recovery_resources
             .clone()
-            .context("shell has not started")?;
+            .context(crate::tr!("terminal", "shell-has-not-started"))?;
         let starter = resources
             .starter
             .replacement()
-            .context("this shell cannot be replaced")?;
+            .context(crate::tr!("terminal", "this-shell-cannot-be-replaced"))?;
         anyhow::ensure!(
             request.working_directory.is_absolute() && request.working_directory.is_dir(),
-            "shell replacement requires an accessible absolute working directory"
+            crate::tr!("terminal", "shell-replacement-requires-an-accessible-absolute-working")
         );
         anyhow::ensure!(
             self.event_loop_handle.is_some(),
-            "no PTY event loop to replace"
+            crate::tr!("terminal", "no-pty-event-loop-to-replace")
         );
         self.model.lock().prepare_shell_replacement();
         self.event_loop_tx
             .send(Message::ShutdownForReplacement)
-            .map_err(|_| anyhow::anyhow!("PTY event loop is disconnected"))?;
+            .map_err(|_| anyhow::anyhow!(crate::tr!("terminal", "pty-event-loop-is-disconnected")))?;
         let pending = PendingShellRecovery {
             restored_working_directory: request.working_directory.to_string_lossy().into_owned(),
             used_fallback_directory: false,
@@ -825,7 +825,7 @@ impl<S> TerminalManager<S> {
         let Some(handle) = self.event_loop_handle.take() else {
             self.fail_pending_shell_recovery(
                 CloudAgentShellRecoveryFailureClass::EventLoopJoin,
-                anyhow::anyhow!("no PTY event loop to replace"),
+                anyhow::anyhow!(crate::tr!("terminal", "no-pty-event-loop-to-replace")),
                 ctx,
             );
             return;
@@ -973,7 +973,7 @@ impl<S> TerminalManager<S> {
                 manager.event_loop_handle.take();
                 manager.fail_pending_shell_recovery(
                     CloudAgentShellRecoveryFailureClass::BootstrapTimeout,
-                    anyhow::anyhow!("replacement shell did not bootstrap before timeout"),
+                    anyhow::anyhow!(crate::tr!("terminal", "replacement-shell-did-not-bootstrap-before-timeout")),
                     ctx,
                 );
             },

@@ -172,9 +172,9 @@ pub fn init_actions_from_parent_view<T: Action + Clone>(
         vec![
             ToggleSettingActionPair::new(
                 if FeatureFlag::AgentView.is_enabled() {
-                    "terminal command autodetection in agent input"
+                    crate::tr!("settings", "terminal-command-autodetection-in-agent-input")
                 } else {
-                    "natural language detection"
+                    crate::tr!("settings", "natural-language-detection-22ed2f")
                 },
                 builder(SettingsAction::WarpAgent(
                     WarpAgentPageAction::ToggleAIInputAutoDetection,
@@ -190,7 +190,7 @@ pub fn init_actions_from_parent_view<T: Action + Clone>(
     ToggleSettingActionPair::add_toggle_setting_action_pairs_as_bindings(
         vec![
             ToggleSettingActionPair::new(
-                "agent prompt autodetection in terminal input",
+                crate::tr!("settings", "agent-prompt-autodetection-in-terminal-input"),
                 builder(SettingsAction::WarpAgent(
                     WarpAgentPageAction::ToggleNLDInTerminal,
                 )),
@@ -453,7 +453,7 @@ pub fn init_actions_from_parent_view<T: Action + Clone>(
     ToggleSettingActionPair::add_toggle_setting_action_pairs_as_bindings(
         vec![
             ToggleSettingActionPair::new(
-                "commit and pull request generation",
+                crate::tr!("settings", "commit-and-pull-request-generation"),
                 builder(SettingsAction::WarpAgent(
                     WarpAgentPageAction::ToggleGitOperationsAutogen,
                 )),
@@ -473,7 +473,7 @@ pub fn init_actions_from_parent_view<T: Action + Clone>(
     ToggleSettingActionPair::add_toggle_setting_action_pairs_as_bindings(
         vec![
             ToggleSettingActionPair::new(
-                "voice input",
+                crate::tr!("settings", "voice-input-040b6d"),
                 builder(SettingsAction::WarpAgent(
                     WarpAgentPageAction::ToggleVoiceInput,
                 )),
@@ -543,7 +543,7 @@ pub fn init_actions_from_parent_view<T: Action + Clone>(
             )
             .with_group(bindings::BindingGroup::WarpAi),
             ToggleSettingActionPair::new(
-                "conversation history in tools panel",
+                crate::tr!("settings", "conversation-history-in-tools-panel"),
                 builder(SettingsAction::WarpAgent(
                     WarpAgentPageAction::ToggleShowConversationHistory,
                 )),
@@ -3426,7 +3426,7 @@ impl SettingsWidget for NextCommandWidget {
     type View = WarpAgentPageView;
 
     fn search_terms(&self) -> &str {
-        "active ai a.i. next command suggestions"
+        crate::tr!("settings", "active-ai-a-i-next-command-suggestions")
     }
 
     fn should_render(&self, app: &AppContext) -> bool {
@@ -3472,7 +3472,7 @@ impl SettingsWidget for PromptSuggestionsWidget {
     type View = WarpAgentPageView;
 
     fn search_terms(&self) -> &str {
-        "active ai a.i. prompt suggestions"
+        crate::tr!("settings", "active-ai-a-i-prompt-suggestions")
     }
 
     fn should_render(&self, app: &AppContext) -> bool {
@@ -3517,7 +3517,7 @@ impl SettingsWidget for SuggestedCodeBannersWidget {
     type View = WarpAgentPageView;
 
     fn search_terms(&self) -> &str {
-        "active ai a.i. code diffs suggested banners"
+        crate::tr!("settings", "active-ai-a-i-code-diffs-suggested-banners")
     }
 
     fn should_render(&self, app: &AppContext) -> bool {
@@ -3562,7 +3562,7 @@ impl SettingsWidget for NaturalLanguageAutosuggestionsWidget {
     type View = WarpAgentPageView;
 
     fn search_terms(&self) -> &str {
-        "active ai a.i. natural language autosuggestions passive"
+        crate::tr!("settings", "active-ai-a-i-natural-language-autosuggestions-passive")
     }
 
     fn should_render(&self, app: &AppContext) -> bool {
@@ -3616,7 +3616,7 @@ impl SettingsWidget for SharedBlockTitleGenerationWidget {
     type View = WarpAgentPageView;
 
     fn search_terms(&self) -> &str {
-        "active ai a.i. shared block title generation"
+        crate::tr!("settings", "active-ai-a-i-shared-block-title-generation")
     }
 
     fn should_render(&self, app: &AppContext) -> bool {
@@ -3661,7 +3661,7 @@ impl SettingsWidget for GitOperationsAutogenWidget {
     type View = WarpAgentPageView;
 
     fn search_terms(&self) -> &str {
-        "active ai a.i. unit tests commit pull request pr git code review autogen generate"
+        crate::tr!("settings", "active-ai-a-i-unit-tests-commit-pull-request-pr-git-code-r")
     }
 
     fn should_render(&self, app: &AppContext) -> bool {
@@ -3706,7 +3706,7 @@ impl SettingsWidget for NaturalLanguageDetectionWidget {
     type View = WarpAgentPageView;
 
     fn search_terms(&self) -> &str {
-        "oz agent ai natural language detection autodetection prompt terminal command denylist permissions"
+        crate::tr!("settings", "oz-agent-ai-natural-language-detection-autodetection-promp")
     }
 
     fn render(
@@ -3737,7 +3737,7 @@ impl SettingsWidget for ShowInputHintTextWidget {
     type View = WarpAgentPageView;
 
     fn search_terms(&self) -> &str {
-        "oz agent ai input show hint text"
+        crate::tr!("settings", "oz-agent-ai-input-show-hint-text")
     }
 
     fn render(
@@ -3799,7 +3799,7 @@ impl SettingsWidget for ShowAgentTipsWidget {
     type View = WarpAgentPageView;
 
     fn search_terms(&self) -> &str {
-        "oz agent ai show agent tips"
+        crate::tr!("settings", "oz-agent-ai-show-agent-tips")
     }
 
     fn should_render(&self, _app: &AppContext) -> bool {
@@ -3834,7 +3834,7 @@ impl SettingsWidget for IncludeAgentCommandsInHistoryWidget {
     type View = WarpAgentPageView;
 
     fn search_terms(&self) -> &str {
-        "oz agent ai include agent-executed commands in history shell"
+        crate::tr!("settings", "oz-agent-ai-include-agent-executed-commands-in-history-she")
     }
 
     fn render(
@@ -3866,7 +3866,7 @@ impl SettingsWidget for AutoApproveBypassesCommandDenylistWidget {
     type View = WarpAgentPageView;
 
     fn search_terms(&self) -> &str {
-        "oz agent ai auto-approve fast forward bypass denylist permissions"
+        crate::tr!("settings", "oz-agent-ai-auto-approve-fast-forward-bypass-denylist-perm")
     }
 
     fn render(
@@ -3903,7 +3903,7 @@ impl SettingsWidget for PromptSubmissionModeWidget {
     type View = WarpAgentPageView;
 
     fn search_terms(&self) -> &str {
-        "oz agent ai default prompt submission mode queue interrupt steer next turn auto-queue long-running long running lrc"
+        crate::tr!("settings", "oz-agent-ai-default-prompt-submission-mode-queue-interrupt")
     }
 
     fn should_render(&self, _app: &AppContext) -> bool {
@@ -4233,7 +4233,7 @@ impl SettingsWidget for VoiceWidget {
     type View = WarpAgentPageView;
 
     fn search_terms(&self) -> &str {
-        "voice agent oz ai a.i. speech input natural language talk english spanish french german estonian finnish"
+        crate::tr!("settings", "voice-agent-oz-ai-a-i-speech-input-natural-language-talk-e")
     }
 
     fn should_render(&self, app: &AppContext) -> bool {
@@ -4352,7 +4352,7 @@ impl SettingsWidget for ShowOzUpdatesInZeroStateWidget {
     type View = WarpAgentPageView;
 
     fn search_terms(&self) -> &str {
-        "other oz updates zero state empty changelog new conversation agent what's new"
+        crate::tr!("settings", "other-oz-updates-zero-state-empty-changelog-new-conversati")
     }
 
     fn should_render(&self, _app: &AppContext) -> bool {
@@ -4391,7 +4391,7 @@ impl SettingsWidget for UseAgentFooterWidget {
     type View = WarpAgentPageView;
 
     fn search_terms(&self) -> &str {
-        "other use agent footer full terminal use long running commands"
+        crate::tr!("settings", "other-use-agent-footer-full-terminal-use-long-running-comm")
     }
 
     fn should_render(&self, _app: &AppContext) -> bool {
@@ -4435,7 +4435,7 @@ impl SettingsWidget for AgentToolbarLayoutEditorWidget {
     type View = WarpAgentPageView;
 
     fn search_terms(&self) -> &str {
-        "other agent toolbar layout chip chips rearrange re-arrange"
+        crate::tr!("settings", "other-agent-toolbar-layout-chip-chips-rearrange-re-arrange")
     }
 
     fn should_render(&self, app: &AppContext) -> bool {
@@ -4463,7 +4463,7 @@ impl SettingsWidget for ShowConversationHistoryWidget {
     type View = WarpAgentPageView;
 
     fn search_terms(&self) -> &str {
-        "other conversation history tools panel collapse expand hide"
+        crate::tr!("settings", "other-conversation-history-tools-panel-collapse-expand-hid")
     }
 
     fn render(
@@ -4493,7 +4493,7 @@ impl SettingsWidget for ThinkingDisplayModeWidget {
     type View = WarpAgentPageView;
 
     fn search_terms(&self) -> &str {
-        "other agent thinking display reasoning collapse never show expanded"
+        crate::tr!("settings", "other-agent-thinking-display-reasoning-collapse-never-show")
     }
 
     fn render(
@@ -4530,7 +4530,7 @@ impl SettingsWidget for OrchestrationMessageDisplayModeWidget {
     type View = WarpAgentPageView;
 
     fn search_terms(&self) -> &str {
-        "other orchestration messages child agents collapse expand hide display"
+        crate::tr!("settings", "other-orchestration-messages-child-agents-collapse-expand")
     }
 
     fn render(
@@ -4572,7 +4572,7 @@ impl SettingsWidget for ConversationLayoutPreferenceWidget {
     type View = WarpAgentPageView;
 
     fn search_terms(&self) -> &str {
-        "other preferred layout opening existing agent conversations new tab split pane"
+        crate::tr!("settings", "other-preferred-layout-opening-existing-agent-conversation")
     }
 
     fn render(
@@ -4649,7 +4649,7 @@ impl SettingsWidget for AgentAttributionWidget {
     type View = WarpAgentPageView;
 
     fn search_terms(&self) -> &str {
-        "agent attribution commit pull request co-author author credit oz warp"
+        crate::tr!("settings", "agent-attribution-commit-pull-request-co-author-author-cre")
     }
 
     fn render(
@@ -4741,7 +4741,7 @@ impl SettingsWidget for CloudAgentComputerUseWidget {
     type View = WarpAgentPageView;
 
     fn search_terms(&self) -> &str {
-        "oz cloud agent computer use orchestration multi-agent"
+        crate::tr!("settings", "oz-cloud-agent-computer-use-orchestration-multi-agent")
     }
 
     fn render(
@@ -4838,7 +4838,7 @@ impl SettingsWidget for CloudHandoffWidget {
     type View = WarpAgentPageView;
 
     fn search_terms(&self) -> &str {
-        "cloud handoff move to cloud local"
+        crate::tr!("settings", "cloud-handoff-move-to-cloud-local")
     }
 
     fn should_render(&self, _app: &AppContext) -> bool {
@@ -4929,7 +4929,7 @@ impl SettingsWidget for AutoHandoffOnSleepWidget {
     type View = WarpAgentPageView;
 
     fn search_terms(&self) -> &str {
-        "cloud handoff auto sleep before macos"
+        crate::tr!("settings", "cloud-handoff-auto-sleep-before-macos")
     }
 
     fn should_render(&self, app: &AppContext) -> bool {
@@ -4992,7 +4992,7 @@ impl SettingsWidget for AmpersandHandoffWidget {
     type View = WarpAgentPageView;
 
     fn search_terms(&self) -> &str {
-        "cloud handoff ampersand & trigger compose"
+        crate::tr!("settings", "cloud-handoff-ampersand-trigger-compose")
     }
 
     fn should_render(&self, app: &AppContext) -> bool {
@@ -5021,7 +5021,7 @@ impl SettingsWidget for AmpersandHandoffWidget {
 
         let ampersand_row = build_toggle_element(
             render_body_item_label::<WarpAgentPageAction>(
-                "Use & to trigger handoff".to_string(),
+                crate::tr!("settings", "use-to-trigger-handoff").to_string(),
                 Some(styles::header_font_color(true, app)),
                 None,
                 LocalOnlyIconState::Hidden,
@@ -5036,7 +5036,7 @@ impl SettingsWidget for AmpersandHandoffWidget {
         Flex::column()
             .with_child(ampersand_row)
             .with_child(render_ai_setting_description(
-                "Type & as the first character to enter cloud handoff compose mode.",
+                crate::tr!("settings", "type-as-the-first-character-to-enter-cloud-handoff-compose"),
                 true,
                 app,
             ))
@@ -6631,7 +6631,7 @@ impl SettingsWidget for AwsBedrockWidget {
     type View = WarpAgentPageView;
 
     fn search_terms(&self) -> &str {
-        "aws bedrock amazon credentials login command profile auto refresh"
+        crate::tr!("settings", "aws-bedrock-amazon-credentials-login-command-profile-auto")
     }
 
     fn should_render(&self, app: &AppContext) -> bool {
@@ -6869,7 +6869,7 @@ impl SettingsWidget for GeminiEnterpriseWidget {
     type View = WarpAgentPageView;
 
     fn search_terms(&self) -> &str {
-        "gemini enterprise geap google vertex credentials refresh"
+        crate::tr!("settings", "gemini-enterprise-geap-google-vertex-credentials-refresh")
     }
 
     fn should_render(&self, app: &AppContext) -> bool {
@@ -6914,7 +6914,7 @@ impl SettingsWidget for AddCustomRouterWidget {
     type View = WarpAgentPageView;
 
     fn search_terms(&self) -> &str {
-        "add new custom model router create"
+        crate::tr!("settings", "add-new-custom-model-router-create")
     }
 
     fn should_render(&self, _app: &AppContext) -> bool {
@@ -6940,7 +6940,7 @@ impl SettingsWidget for CustomModelRoutersWidget {
     type View = WarpAgentPageView;
 
     fn search_terms(&self) -> &str {
-        "custom model router complexity prompt auto model routing"
+        crate::tr!("settings", "custom-model-router-complexity-prompt-auto-model-routing")
     }
 
     fn should_render(&self, _app: &AppContext) -> bool {

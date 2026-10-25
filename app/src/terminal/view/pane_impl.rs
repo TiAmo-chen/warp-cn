@@ -1038,7 +1038,7 @@ impl TerminalView {
         } else {
             conversation
                 .title()
-                .expect("checked above that title exists")
+                .expect(crate::tr!("terminal", "checked-above-that-title-exists"))
         }
     }
 

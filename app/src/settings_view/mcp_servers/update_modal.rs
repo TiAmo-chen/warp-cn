@@ -62,7 +62,7 @@ impl UpdateModalBody {
             })
         });
 
-        let enter_keystroke = Keystroke::parse("enter").expect("valid keystroke");
+        let enter_keystroke = Keystroke::parse("enter").expect(crate::tr!("settings", "valid-keystroke"));
         let update_button = ctx.add_typed_action_view(|ctx| {
             let mut button = ActionButton::new(crate::tr!("common", "update-label"), PrimaryTheme)
                 .with_keybinding(KeystrokeSource::Fixed(enter_keystroke), ctx)

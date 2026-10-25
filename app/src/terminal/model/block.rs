@@ -540,7 +540,7 @@ macro_rules! lazy_block_field {
                 Some(block) => $body(block),
                 None => {
                     report_error!(
-                        "Tried to lazily compute a UserBlockCompleted field for a block that no longer exists",
+                        crate::tr!("terminal", "tried-to-lazily-compute-a-userblockcompleted-field-for-a-b"),
                         extra: {
                             "block_id" => ?id,
                             "compute_call" => stringify!($body),
@@ -2167,19 +2167,19 @@ impl Block {
 
     pub(super) fn grid_handler(&self) -> &GridHandler {
         self.grid_of_type(self.active_grid_type())
-            .expect("Active grid should exist")
+            .expect(crate::tr!("terminal", "active-grid-should-exist"))
             .grid_handler()
     }
 
     pub(super) fn grid_storage(&self) -> &GridStorage {
         self.grid_of_type(self.active_grid_type())
-            .expect("Active grid should exist")
+            .expect(crate::tr!("terminal", "active-grid-should-exist"))
             .grid_storage()
     }
 
     pub fn grid_handler_mut(&mut self) -> &mut GridHandler {
         self.grid_of_type_mut(self.active_grid_type())
-            .expect("Active grid should exist")
+            .expect(crate::tr!("terminal", "active-grid-should-exist"))
             .grid_handler_mut()
     }
 
@@ -2330,7 +2330,7 @@ impl Block {
                     // The last row of the lprompt (which also includes the first row of the command), is the last row of the "top section" of the combined grid.
                     // This is used to determine whether the selection spans across the top/bottom portions of the combined grid.
                     let first_row_of_command_index =
-                        first_row_of_command_index.expect("Prompt end point should be defined.");
+                        first_row_of_command_index.expect(crate::tr!("terminal", "prompt-end-point-should-be-defined"));
                     // Whether the selection expands across the rprompt (if points are in combined prompt/command grid).
                     let start_is_after_rprompt = start_point.row > first_row_of_command_index;
                     let end_is_before_rprompt = end_point.row <= first_row_of_command_index;
@@ -2589,7 +2589,7 @@ impl Block {
                     + self.padding_bottom()
             }
             BlockSection::NotContained => {
-                unreachable!("Attempt to calculate offset for section not within block.")
+                unreachable!(crate::tr!("terminal", "attempt-to-calculate-offset-for-section-not-within-block"))
             }
         }
     }

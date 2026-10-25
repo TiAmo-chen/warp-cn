@@ -1524,7 +1524,7 @@ impl CodeEditorModel {
                     .map(|delay_rendering| delay_rendering.should_render_for_diff_update(*version))
                     .unwrap_or(false)
                 {
-                    let delay_rendering = self.delay_rendering.take().expect("Checked above");
+                    let delay_rendering = self.delay_rendering.take().expect(crate::tr!("code", "checked-above"));
                     if will_rebuild_layout {
                         // Full rebuild will supersede pending edits — skip the expensive render state update.
                         delay_rendering.skip(ctx);
@@ -1569,7 +1569,7 @@ impl CodeEditorModel {
                     })
                     .unwrap_or(false)
                 {
-                    let delay_rendering = self.delay_rendering.take().expect("Checked above");
+                    let delay_rendering = self.delay_rendering.take().expect(crate::tr!("code", "checked-above"));
                     delay_rendering.flush_render(self, ctx);
                 }
                 ctx.emit(CodeEditorModelEvent::SyntaxHighlightingUpdated);

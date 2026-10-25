@@ -278,7 +278,7 @@ where
                 type Value = Field;
 
                 fn expecting(&self, formatter: &mut fmt::Formatter) -> fmt::Result {
-                    formatter.write_str("workflow identifier")
+                    formatter.write_str(crate::tr!("workflows", "workflow-identifier"))
                 }
 
                 fn visit_str<E>(self, value: &str) -> Result<Field, E>
@@ -302,7 +302,7 @@ where
         type Value = (Workflow, HashMap<ClientId, WorkflowEnum>);
 
         fn expecting(&self, formatter: &mut fmt::Formatter) -> fmt::Result {
-            formatter.write_str("struct Workflow")
+            formatter.write_str(crate::tr!("workflows", "struct-workflow"))
         }
 
         fn visit_map<V>(

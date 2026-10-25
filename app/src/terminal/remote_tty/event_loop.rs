@@ -99,7 +99,7 @@ impl EventLoop {
                 };
 
                 let Some(bytes) = message.binary() else {
-                    report_error!("Received non binary message");
+                    report_error!(crate::tr!("terminal", "received-non-binary-message"));
                     return;
                 };
 

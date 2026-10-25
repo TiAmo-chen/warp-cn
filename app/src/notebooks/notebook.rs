@@ -845,7 +845,7 @@ impl NotebookView {
                 }
             }
             ActiveNotebook::None => {
-                report_error!("Tried to save notebook, but none were active")
+                report_error!(crate::tr!("notebooks", "tried-to-save-notebook-but-none-were-active"))
             }
         }
     }
@@ -1641,14 +1641,14 @@ impl NotebookView {
                             }
                             EditorState::CurrentUser => {
                                 safe_info!(
-                                    safe: ("Optimistically grabbing edit access, already the editor"),
+                                    safe: (crate::tr!("notebooks", "optimistically-grabbing-edit-access-already-the-editor")),
                                     full: ("Optmisitically grabbing edit access, user {email} is already the editor")
                                 );
                                 me.grab_edit_access(true, ctx);
                             }
                             EditorState::OtherUserIdle => {
                                     safe_info!(
-                                        safe: ("Optimistically grabbing edit access, editor is idle"),
+                                        safe: (crate::tr!("notebooks", "optimistically-grabbing-edit-access-editor-is-idle")),
                                         full: ("Optmisitically grabbing edit access, editor {email} is idle")
                                     );
                                     me.grab_edit_access(true, ctx);
@@ -1778,7 +1778,7 @@ impl NotebookView {
                 }
             }
             ActiveNotebook::None => {
-                report_error!("Tried to save notebook, but none were active")
+                report_error!(crate::tr!("notebooks", "tried-to-save-notebook-but-none-were-active"))
             }
         }
     }

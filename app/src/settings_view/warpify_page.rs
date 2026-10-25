@@ -535,7 +535,7 @@ impl SettingsWidget for TitleWidget {
     type View = WarpifyPageView;
 
     fn search_terms(&self) -> &str {
-        "ssh subshell warpify session"
+        crate::tr!("settings", "ssh-subshell-warpify-session")
     }
 
     fn render(
@@ -623,7 +623,7 @@ impl SettingsWidget for SSHWidget {
     type View = WarpifyPageView;
 
     fn search_terms(&self) -> &str {
-        "warpify ssh"
+        crate::tr!("settings", "warpify-ssh")
     }
 
     fn render(

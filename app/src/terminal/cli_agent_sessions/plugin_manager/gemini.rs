@@ -98,7 +98,7 @@ impl CliAgentPluginManager for GeminiPluginManager {
         if still_outdated {
             log.push_str("Post-update version check: plugin is still outdated\n");
             return Err(PluginInstallError {
-                message: "Plugin update did not take effect".to_owned(),
+                message: crate::tr!("terminal", "plugin-update-did-not-take-effect").to_owned(),
                 log,
             });
         }
@@ -127,7 +127,7 @@ static INSTALL_INSTRUCTIONS: LazyLock<PluginInstructions> = LazyLock::new(|| Plu
     subtitle: crate::tr!("terminal", "plugin-install-gemini-subtitle"),
     steps: &[PluginInstructionStep {
         description: "Install the Warp extension",
-        command: "gemini extensions install https://github.com/warpdotdev/gemini-cli-warp --consent",
+        command: crate::tr!("terminal", "gemini-extensions-install-https-github-com-warpdotdev-gemi"),
         executable: true,
         link: None,
     }],
@@ -139,7 +139,7 @@ static UPDATE_INSTRUCTIONS: LazyLock<PluginInstructions> = LazyLock::new(|| Plug
     subtitle: crate::tr!("terminal", "plugin-install-gemini-subtitle"),
     steps: &[PluginInstructionStep {
         description: "Update the Warp extension",
-        command: "gemini extensions update gemini-warp",
+        command: crate::tr!("terminal", "gemini-extensions-update-gemini-warp"),
         executable: true,
         link: None,
     }],

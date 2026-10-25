@@ -65,3 +65,17 @@ workflows-moved-to-trash = 工作流已移至回收站
 
 workflows-tab-key = Tab
 
+
+## zh: auto-extracted entries
+workflows-view-handle-should-upgradeable = view handle should upgradeable
+workflows-workflow-identifier = workflow identifier
+workflows-struct-workflow = struct Workflow
+workflows-tried-to-set-the-argument-index-beyond-the-number-of-argum = Tried to set the argument index beyond the number of arguments
+workflows-tail-prompt-chip-log = Tail prompt chip log
+workflows-shows-the-diagnostic-log-of-shell-commands-run-by-prompt-c = Shows the diagnostic log of shell commands run by prompt context chips (dogfood only)
+workflows-ignoring-duplicate-workflow-pane-registration = Ignoring duplicate Workflow pane registration
+workflows-expect-server-id-on-success-creation = Expect server id on success creation
+workflows-attempting-to-create-workflow-but-now-space-found = Attempting to create workflow but now space found
+workflows-did-not-match-conditions-to-either-create-or-save-the-work = Did not match conditions to either create or save the workflow
+workflows-alias-name = alias name
+workflows-add-alias = Add alias

@@ -3671,7 +3671,7 @@ impl EditorView {
         let state = &mut *self
             .command_x_ray_mouse_handle
             .lock()
-            .expect("should get mouse handle lock");
+            .expect(crate::tr!("editor", "should-get-mouse-handle-lock"));
         if let Some(state) = state {
             state.user_dismissed = true;
         }
@@ -3956,12 +3956,12 @@ impl EditorView {
                     // Variables used to compare position of current cursor relative to starting_selection
                     let ordering = cursor
                         .cmp(starting_selection.head(), buffer)
-                        .expect("Anchors should be comparable");
+                        .expect(crate::tr!("editor", "anchors-should-be-comparable"));
 
                     let is_cursor_in_range = starting_selection.range(buffer).contains(
                         &cursor
                             .to_point(buffer)
-                            .expect("Should be able to get point from cursor"),
+                            .expect(crate::tr!("editor", "should-be-able-to-get-point-from-cursor")),
                     );
 
                     // Update current selection based on head and tails of cursor and starting_selection,
@@ -3977,10 +3977,10 @@ impl EditorView {
                                     Ok(end_col) => {
                                         head = buffer
                                             .anchor_before(Point::new(position.row(), end_col))
-                                            .expect("Anchor should exist")
+                                            .expect(crate::tr!("editor", "anchor-should-exist"))
                                     }
                                     Err(_) => report_error!(
-                                        "Update selection is called with invalid position"
+                                        crate::tr!("editor", "update-selection-is-called-with-invalid-position")
                                     ),
                                 }
                             } else if is_cursor_in_range || ordering == Ordering::Equal {
@@ -3990,7 +3990,7 @@ impl EditorView {
                                 tail = starting_selection.head().clone();
                                 head = buffer
                                     .anchor_before(Point::new(position.row(), 0))
-                                    .expect("Anchor should exist");
+                                    .expect(crate::tr!("editor", "anchor-should-exist"));
                             }
                         }
                         SelectionMode::Words => {
@@ -4116,10 +4116,10 @@ impl EditorView {
                         selection: Selection {
                             start: buffer
                                 .anchor_after(Point::new(row, 0))
-                                .expect("Anchor should exist"),
+                                .expect(crate::tr!("editor", "anchor-should-exist")),
                             end: buffer
                                 .anchor_before(Point::new(row, end_col))
-                                .expect("Anchor should exist"),
+                                .expect(crate::tr!("editor", "anchor-should-exist")),
                             reversed: false,
                         },
                         clamp_direction: Default::default(),
@@ -4366,7 +4366,7 @@ impl EditorView {
             .first_selection(ctx)
             .head()
             .to_byte_offset(buffer)
-            .expect("Selection must be convertible to byte offset")
+            .expect(crate::tr!("editor", "selection-must-be-convertible-to-byte-offset"))
     }
 
     /// Finds the start byte of the token under the given point (the offset at
@@ -4880,7 +4880,7 @@ impl EditorView {
                 .with_change_selections(|editor_model, ctx| {
                     editor_model
                         .select_ranges_by_offset(selection_ranges, ctx)
-                        .expect("byte index selection should be insertable")
+                        .expect(crate::tr!("editor", "byte-index-selection-should-be-insertable"))
                 }),
         );
     }
@@ -4959,7 +4959,7 @@ impl EditorView {
         self.change_selections(ctx, |editor_model, ctx| {
             editor_model
                 .select_ranges_by_offset(selection_ranges, ctx)
-                .expect("byte index selection should be insertable");
+                .expect(crate::tr!("editor", "byte-index-selection-should-be-insertable"));
         });
     }
 
@@ -5212,7 +5212,7 @@ impl EditorView {
                 ToastStack::handle(ctx).update(ctx, |toast_stack, ctx| {
                     toast_stack.add_ephemeral_toast(
                         DismissibleToast::error(
-                            "The selected model does not support images as context".to_owned(),
+                            crate::tr!("editor", "the-selected-model-does-not-support-images-as-context").to_owned(),
                         ),
                         window_id,
                         ctx,
@@ -5327,7 +5327,7 @@ impl EditorView {
                 ToastStack::handle(ctx).update(ctx, |toast_stack, ctx| {
                     toast_stack.add_ephemeral_toast(
                         DismissibleToast::error(
-                            "The selected model does not support images as context".to_owned(),
+                            crate::tr!("editor", "the-selected-model-does-not-support-images-as-context").to_owned(),
                         ),
                         window_id,
                         ctx,
@@ -5710,7 +5710,7 @@ impl EditorView {
             .to_offset(buffer)
             .end
             .to_point(buffer)
-            .expect("Last selection's end must be a valid Point");
+            .expect(crate::tr!("editor", "last-selection-s-end-must-be-a-valid-point"));
         let line_end = buffer.line_len(current_position.row).unwrap_or_default();
         line_end.saturating_sub(current_position.column)
     }
@@ -5784,11 +5784,11 @@ impl EditorView {
                     let cursor = map
                         .anchor_before(
                             movement::left(map, start, ctx, stop_at_line_start)
-                                .expect("moving left should return a valid DisplayPoint"),
+                                .expect(crate::tr!("editor", "moving-left-should-return-a-valid-displaypoint")),
                             Bias::Left,
                             ctx,
                         )
-                        .expect("DisplayPoint should convert to an Anchor");
+                        .expect(crate::tr!("editor", "displaypoint-should-convert-to-an-anchor"));
                     selection.set_start(cursor.clone());
                     selection.set_end(cursor);
                 }
@@ -6121,7 +6121,7 @@ impl EditorView {
                     let end = selection
                         .end()
                         .to_display_point(map, ctx)
-                        .expect("Should be able to get end point of selection.");
+                        .expect(crate::tr!("editor", "should-be-able-to-get-end-point-of-selection"));
                     // Use the end of the current visual (soft-wrapped) row,
                     // falling back to the logical line end when the soft-wrap
                     // layout isn't available.
@@ -6130,7 +6130,7 @@ impl EditorView {
                         .map(|bounds| bounds.end)
                         .unwrap_or_else(|| {
                             map.line_len(end.row(), ctx)
-                                .expect("Should be able to get length of line at selection end.")
+                                .expect(crate::tr!("editor", "should-be-able-to-get-length-of-line-at-selection-end"))
                         });
                     let cursor = map
                         .anchor_before(
@@ -6191,11 +6191,11 @@ impl EditorView {
                         let cursor = map
                             .anchor_before(
                                 movement::right(map, end, ctx, stop_at_line_end)
-                                    .expect("moving right should return a valid DisplayPoint"),
+                                    .expect(crate::tr!("editor", "moving-right-should-return-a-valid-displaypoint")),
                                 Bias::Right,
                                 ctx,
                             )
-                            .expect("DisplayPoint should convert to an Anchor");
+                            .expect(crate::tr!("editor", "displaypoint-should-convert-to-an-anchor"));
                         selection.set_start(cursor.clone());
                         selection.set_end(cursor);
                     }
@@ -6260,9 +6260,9 @@ impl EditorView {
                             start = head
                                 .saturating_sub(&1.into())
                                 .to_point(buffer)
-                                .expect("Head offset should exist")
+                                .expect(crate::tr!("editor", "head-offset-should-exist"))
                                 .to_display_point(map, ctx)
-                                .expect("points should exist");
+                                .expect(crate::tr!("editor", "points-should-exist"));
                         };
                         start..end
                     }
@@ -6284,7 +6284,7 @@ impl EditorView {
                     .with_change_selections(move |editor_model, ctx| {
                         editor_model
                             .select_ranges_by_display_point(ranges, ctx)
-                            .expect("points should exist");
+                            .expect(crate::tr!("editor", "points-should-exist"));
                     }),
             );
         } else {
@@ -6356,7 +6356,7 @@ impl EditorView {
 
                     editor_model
                         .select_ranges_by_display_point(ranges, ctx)
-                        .expect("range should exist");
+                        .expect(crate::tr!("editor", "range-should-exist"));
                 }),
         );
     }
@@ -6517,12 +6517,12 @@ impl EditorView {
                         selection
                             .head()
                             .to_point(buffer)
-                            .expect("Selection head must be convertible to a Point")
+                            .expect(crate::tr!("editor", "selection-head-must-be-convertible-to-a-point"))
                     } else {
                         selection
                             .end()
                             .to_point(buffer)
-                            .expect("Selection end must be convertible to a Point")
+                            .expect(crate::tr!("editor", "selection-end-must-be-convertible-to-a-point"))
                     };
                     if let Ok(mut boundaries) =
                         buffer.subword_ends_from_offset_exclusive(end_position)
@@ -6532,7 +6532,7 @@ impl EditorView {
                             .anchor_before(
                                 subword_start
                                     .to_display_point(map, ctx)
-                                    .expect("Subword start must be convertible to a DisplayPoint"),
+                                    .expect(crate::tr!("editor", "subword-start-must-be-convertible-to-a-displaypoint")),
                                 Bias::Right,
                                 ctx,
                             )
@@ -6565,12 +6565,12 @@ impl EditorView {
                     selection
                         .head()
                         .to_point(buffer)
-                        .expect("Selection head must be convertible to a Point")
+                        .expect(crate::tr!("editor", "selection-head-must-be-convertible-to-a-point"))
                 } else {
                     selection
                         .start()
                         .to_point(buffer)
-                        .expect("Selection start must be convertible to a Point")
+                        .expect(crate::tr!("editor", "selection-start-must-be-convertible-to-a-point"))
                 };
                 if let Ok(mut boundaries) =
                     buffer.subword_backward_starts_from_offset_exclusive(start_position)
@@ -6580,7 +6580,7 @@ impl EditorView {
                         .anchor_before(
                             subword_start
                                 .to_display_point(map, ctx)
-                                .expect("Subword start must be convertible to a DisplayPoint"),
+                                .expect(crate::tr!("editor", "subword-start-must-be-convertible-to-a-displaypoint")),
                             Bias::Left,
                             ctx,
                         )
@@ -6752,7 +6752,7 @@ impl EditorView {
             .first_selection(ctx)
             .end()
             .to_point(buffer)
-            .expect("There is always at least one selection");
+            .expect(crate::tr!("editor", "there-is-always-at-least-one-selection"));
         let at_max_row = max_point.row == cursor.row;
         let at_max_col = if self.vim_mode(ctx) == Some(VimMode::Normal)
             && respect_line_cap
@@ -6774,7 +6774,7 @@ impl EditorView {
             let display_point = selection
                 .start()
                 .to_display_point(map, ctx)
-                .expect("Should be able to convert selection to display point");
+                .expect(crate::tr!("editor", "should-be-able-to-convert-selection-to-display-point"));
             map.to_soft_wrap_point(display_point, selection.clamp_direction)
                 .map(|soft_wrap_point| soft_wrap_point.row() == 0)
                 .unwrap_or(false)
@@ -6792,7 +6792,7 @@ impl EditorView {
             let point = selection
                 .start()
                 .to_point(buffer)
-                .expect("Should be able to convert selection to point");
+                .expect(crate::tr!("editor", "should-be-able-to-convert-selection-to-point"));
             point.row == 0
         } else {
             false
@@ -6808,7 +6808,7 @@ impl EditorView {
                 .first_selection(ctx)
                 .start()
                 .to_display_point(map, ctx)
-                .expect("Should be able to convert selection to display point")
+                .expect(crate::tr!("editor", "should-be-able-to-convert-selection-to-display-point"))
                 .row()
                 == map.max_point(ctx).row()
     }
@@ -6822,7 +6822,7 @@ impl EditorView {
                 .first_selection(ctx)
                 .start()
                 .to_point(buffer)
-                .expect("Should be able to convert selection to point")
+                .expect(crate::tr!("editor", "should-be-able-to-convert-selection-to-point"))
                 .row
                 == buffer.max_point().row
     }
@@ -6841,12 +6841,12 @@ impl EditorView {
                         let buffer = self.editor_model.as_ref(ctx).buffer(ctx);
                         let line_length = buffer
                             .line_len(line_ix as u32)
-                            .expect("line should contain a length");
+                            .expect(crate::tr!("editor", "line-should-contain-a-length"));
                         let cursor = self
                             .first_selection(ctx)
                             .end()
                             .to_point(buffer)
-                            .expect("selection anchor should convert to point");
+                            .expect(crate::tr!("editor", "selection-anchor-should-convert-to-point"));
                         cursor.row == line_ix as u32 && cursor.column == line_length
                     } else {
                         false
@@ -6869,7 +6869,7 @@ impl EditorView {
                 let cursor = selection.end();
                 cursor
                     .to_point(buffer)
-                    .expect("cursor should convert to point")
+                    .expect(crate::tr!("editor", "cursor-should-convert-to-point"))
                     .row
             })
         } else {
@@ -6939,7 +6939,7 @@ impl EditorView {
                     let head = selection
                         .head()
                         .to_display_point(map, ctx)
-                        .expect("Should be able to convert Anchor to DisplayPoint");
+                        .expect(crate::tr!("editor", "should-be-able-to-convert-anchor-to-displaypoint"));
 
                     match map.up(head, selection.goal_end_column, selection.clamp_direction) {
                         Ok(result) => {
@@ -7039,7 +7039,7 @@ impl EditorView {
                     let head = selection
                         .head()
                         .to_display_point(map, ctx)
-                        .expect("Should be able to convert Anchor to DisplayPoint");
+                        .expect(crate::tr!("editor", "should-be-able-to-convert-anchor-to-displaypoint"));
                     match map.down(head, selection.goal_end_column, selection.clamp_direction) {
                         Ok(result) => {
                             // We can't assume the display point is always valid because in the very rare case,
@@ -7273,11 +7273,11 @@ impl EditorView {
                 let start = selection
                     .start()
                     .to_display_point(map, ctx)
-                    .expect("Should be able to get start point of selection.");
+                    .expect(crate::tr!("editor", "should-be-able-to-get-start-point-of-selection"));
                 let end = selection
                     .end()
                     .to_display_point(map, ctx)
-                    .expect("Should be able to get end point of selection");
+                    .expect(crate::tr!("editor", "should-be-able-to-get-end-point-of-selection-ffba4c"));
 
                 // Determine the new start and end cursors after the vertical move.
                 let start_result = match direction.move_cursor(
@@ -7305,10 +7305,10 @@ impl EditorView {
                         Bias::Left,
                         ctx,
                     )
-                    .expect("Should be able to get new start cursor based on new start point.");
+                    .expect(crate::tr!("editor", "should-be-able-to-get-new-start-cursor-based-on-new-start"));
                 let new_end_cursor = map
                     .anchor_before(end_result.point_and_clamp_direction.point, Bias::Left, ctx)
-                    .expect("Should be able to get new end cursor based on new end point");
+                    .expect(crate::tr!("editor", "should-be-able-to-get-new-end-cursor-based-on-new-end-poin"));
 
                 // Create a new selection at (new_start, new_end).
                 new_selections.push(LocalSelection {
@@ -7748,7 +7748,7 @@ impl EditorView {
                 return;
             }
             let current_buffer_text_for_autosuggestion =
-                autosuggestion_basis.expect("autosuggestion basis should exist");
+                autosuggestion_basis.expect(crate::tr!("editor", "autosuggestion-basis-should-exist"));
 
             // Ensure the buffer text at the time the autosuggestion was sent is still in the
             // buffer.
@@ -7825,7 +7825,7 @@ impl EditorView {
 
     /// Send the 'escape' keystroke to the VimFSA.
     fn vim_escape(&mut self, ctx: &mut ViewContext<Self>) {
-        self.vim_keystroke(&Keystroke::parse("escape").expect("escape parses"), ctx)
+        self.vim_keystroke(&Keystroke::parse("escape").expect(crate::tr!("code", "escape-parses"))), ctx)
     }
 
     fn vim_apply_insert_position(
@@ -8725,7 +8725,7 @@ impl TypedActionView for EditorView {
             InsertAutosuggestion => self.insert_autosuggestion_from_action(ctx),
             VimUserInsert(text) => self.vim_user_insert(text.as_ref(), ctx),
             VimBackspace => self.vim_keystroke(
-                &Keystroke::parse("backspace").expect("backspace parses"),
+                &Keystroke::parse("backspace").expect(crate::tr!("code", "backspace-parses"))),
                 ctx,
             ),
             VimEscape => self.vim_escape(ctx),

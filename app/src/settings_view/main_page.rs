@@ -80,7 +80,7 @@ fn maybe_add_settings_sync_toggle_binding<T: Action + Clone>(
 ) {
     let mut lock = SETTINGS_SYNC_BINDINGS_ADDED
         .lock()
-        .expect("settings sync bindings lock poisoned");
+        .expect(crate::tr!("settings", "settings-sync-bindings-lock-poisoned"));
     if !*lock {
         *lock = true;
         toggle_binding_pairs.push(
@@ -633,7 +633,7 @@ impl SettingsWidget for AccountWidget {
     type View = MainSettingsPageView;
 
     fn search_terms(&self) -> &str {
-        "account sign up"
+        crate::tr!("settings", "account-sign-up")
     }
 
     fn render(
@@ -698,7 +698,7 @@ impl SettingsWidget for SettingsSyncWidget {
     type View = MainSettingsPageView;
 
     fn search_terms(&self) -> &str {
-        "settings sync"
+        crate::tr!("settings", "settings-sync-5d7546")
     }
 
     fn should_render(&self, app: &AppContext) -> bool {
@@ -787,7 +787,7 @@ impl SettingsWidget for EarnRewardsWidget {
     type View = MainSettingsPageView;
 
     fn search_terms(&self) -> &str {
-        "earn rewards referral share friends"
+        crate::tr!("settings", "earn-rewards-referral-share-friends")
     }
 
     fn should_render(&self, app: &AppContext) -> bool {
@@ -869,14 +869,14 @@ impl VersionInfoWidget {
                     ),
                     AutoupdateStage::CheckingForUpdate => (
                         Some(StatusContent {
-                            text: "checking for update...",
+                            text: crate::tr!("settings", "checking-for-update-f0fa89"),
                             color: faded_text_color,
                         }),
                         None,
                     ),
                     AutoupdateStage::DownloadingUpdate => (
                         Some(StatusContent {
-                            text: "downloading update...",
+                            text: crate::tr!("settings", "downloading-update-8786cc"),
                             color: faded_text_color,
                         }),
                         None,
@@ -1040,7 +1040,7 @@ impl SettingsWidget for VersionInfoWidget {
     type View = MainSettingsPageView;
 
     fn search_terms(&self) -> &str {
-        "version update"
+        crate::tr!("settings", "version-update")
     }
 
     fn render(
@@ -1097,7 +1097,7 @@ impl SettingsWidget for IapCredentialsWidget {
     type View = MainSettingsPageView;
 
     fn search_terms(&self) -> &str {
-        "iap staging gcloud proxy credentials"
+        crate::tr!("settings", "iap-staging-gcloud-proxy-credentials")
     }
 
     fn render(
@@ -1202,7 +1202,7 @@ impl SettingsWidget for LogoutWidget {
     type View = MainSettingsPageView;
 
     fn search_terms(&self) -> &str {
-        "sign out log out logout"
+        crate::tr!("settings", "sign-out-log-out-logout")
     }
 
     fn should_render(&self, app: &AppContext) -> bool {

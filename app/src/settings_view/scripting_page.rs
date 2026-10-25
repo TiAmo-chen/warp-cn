@@ -219,7 +219,7 @@ impl SettingsWidget for WarpControlCliInstallWidget {
     type View = ScriptingSettingsPageView;
 
     fn search_terms(&self) -> &str {
-        "warp control cli command warpctrl install scripting"
+        crate::tr!("settings", "warp-control-cli-command-warpctrl-install-scripting")
     }
 
     fn render(
@@ -281,7 +281,7 @@ impl SettingsWidget for LocalControlModeWidget {
     type View = ScriptingSettingsPageView;
 
     fn search_terms(&self) -> &str {
-        "scripting warp control automation warpctrl local cli scripts disabled enabled"
+        crate::tr!("settings", "scripting-warp-control-automation-warpctrl-local-cli-scrip")
     }
 
     fn render(
@@ -291,7 +291,7 @@ impl SettingsWidget for LocalControlModeWidget {
         app: &AppContext,
     ) -> Box<dyn Element> {
         render_body_item::<ScriptingSettingsPageAction>(
-            "warpctrl CLI".into(),
+            crate::tr!("settings", "warpctrl-cli").into(),
             None,
             LocalOnlyIconState::for_setting(
                 LocalControlModeSetting::storage_key(),
@@ -302,7 +302,7 @@ impl SettingsWidget for LocalControlModeWidget {
             ToggleState::Enabled,
             appearance,
             ChildView::new(&view.local_control_mode_dropdown).finish(),
-            Some("warpctrl allows for scripting Warp's UI. Use with care.".to_owned()),
+            Some(crate::tr!("settings", "warpctrl-allows-for-scripting-warp-s-ui-use-with-care").to_owned()),
         )
     }
 }

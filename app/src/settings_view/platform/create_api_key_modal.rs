@@ -705,7 +705,7 @@ impl View for CreateApiKeyModal {
                     .with_text_label(if is_pending {
                         "Creating…".to_string()
                     } else {
-                        "Create key".to_string()
+                        crate::tr!("settings", "create-key-27d38f").to_string()
                     })
                     .with_style(button_style)
                     .build()

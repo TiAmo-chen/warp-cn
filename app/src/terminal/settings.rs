@@ -20,7 +20,7 @@ use crate::settings::{AISettings, InputSettings, TerminalSpacing};
     settings_value::SettingsValue,
 )]
 #[schemars(
-    description = "Controls whether terminal programs can access the system clipboard via OSC 52 escape sequences.",
+    description = crate::tr!("terminal", "controls-whether-terminal-programs-can-access-the-system-c"),
     rename_all = "snake_case"
 )]
 pub enum Osc52ClipboardAccess {
@@ -45,8 +45,8 @@ impl Osc52ClipboardAccess {
     pub fn as_dropdown_label(self) -> &'static str {
         match self {
             Self::Deny => "Deny",
-            Self::WriteOnly => "Write only",
-            Self::ReadWrite => "Read and write",
+            Self::WriteOnly => crate::tr!("terminal", "write-only"),
+            Self::ReadWrite => crate::tr!("terminal", "read-and-write"),
         }
     }
 }
@@ -92,7 +92,7 @@ impl SpacingMode {
     settings_value::SettingsValue,
 )]
 #[schemars(
-    description = "How padding is applied in full-screen terminal apps.",
+    description = crate::tr!("terminal", "how-padding-is-applied-in-full-screen-terminal-apps"),
     rename_all = "snake_case"
 )]
 pub enum AltScreenPaddingMode {

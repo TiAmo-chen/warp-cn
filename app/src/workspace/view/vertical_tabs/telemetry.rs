@@ -149,13 +149,13 @@ impl TelemetryEventDesc for VerticalTabsTelemetryEventDiscriminants {
     fn description(&self) -> &'static str {
         match self {
             Self::DisplayOptionChanged => {
-                "User updated a display option in the vertical tabs settings popup"
+                crate::tr!("workspace", "user-updated-a-display-option-in-the-vertical-tabs-setting")
             }
             Self::DiffStatsChipClicked => {
-                "User clicked a diff stats chip in the vertical tabs panel or detail sidecar"
+                crate::tr!("workspace", "user-clicked-a-diff-stats-chip-in-the-vertical-tabs-panel")
             }
             Self::PrChipClicked => {
-                "User clicked a GitHub PR chip in the vertical tabs panel or detail sidecar"
+                crate::tr!("workspace", "user-clicked-a-github-pr-chip-in-the-vertical-tabs-panel-o")
             }
         }
     }

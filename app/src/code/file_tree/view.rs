@@ -2367,7 +2367,7 @@ impl FileTreeView {
                 }
                 FileTreeItem::DirectoryHeader { .. } => {
                     items.push(
-                        MenuItemFields::new("New file")
+                        MenuItemFields::new(crate::tr!("code", "new-file-681e10"))
                             .with_on_select_action(FileTreeAction::NewFileBelowDirectory {
                                 id: id.clone(),
                             })
@@ -2674,7 +2674,7 @@ impl FileTreeView {
                 let appearance = Appearance::as_ref(app);
                 let view_handle = view_handle
                     .upgrade(app)
-                    .expect("view handle should be valid");
+                    .expect(crate::tr!("code", "view-handle-should-be-valid"));
                 let view = view_handle.as_ref(app);
 
                 range

@@ -741,7 +741,7 @@ impl BlockList {
                             );
                         } else {
                             log::warn!(
-                                "Tried to restore a block that was either not started or not completed"
+                                crate::tr!("terminal", "tried-to-restore-a-block-that-was-either-not-started-or-no")
                             );
                         }
                     }
@@ -799,7 +799,7 @@ impl BlockList {
                 self.restore_block(block, BootstrapStage::PostBootstrapPrecmd, &mut processor);
             } else {
                 log::warn!(
-                    "A non-active follow-up scrollback block was either not started or not completed"
+                    crate::tr!("terminal", "a-non-active-follow-up-scrollback-block-was-either-not-sta")
                 );
             }
         }
@@ -905,7 +905,7 @@ impl BlockList {
     }
 
     pub fn active_block(&self) -> &Block {
-        self.blocks.last().expect("at least one block should exist")
+        self.blocks.last().expect(crate::tr!("terminal", "at-least-one-block-should-exist"))
     }
 
     pub fn active_block_id(&self) -> &BlockId {
@@ -1664,7 +1664,7 @@ impl BlockList {
     pub fn active_block_mut(&mut self) -> &mut Block {
         self.blocks
             .last_mut()
-            .expect("Blocklist should not be empty")
+            .expect(crate::tr!("terminal", "blocklist-should-not-be-empty"))
     }
 
     /// Returns a mutable reference to the active block. The active block should
@@ -1897,7 +1897,7 @@ impl BlockList {
                 || self
                     .block_at(block_index)
                     .is_some_and(|block| block.is_background()),
-            "Can only update height for the active block and latest background block"
+            crate::tr!("terminal", "can-only-update-height-for-the-active-block-and-latest-bac")
         );
 
         // Gaps are created via ctrl-l binding or `clear`, and shrink as more blocks are executed after.
@@ -1927,7 +1927,7 @@ impl BlockList {
             block.height(&self.transcript_scope).into()
         } else {
             report_error!(
-                "Tried to update height of block, but no such block exists",
+                crate::tr!("terminal", "tried-to-update-height-of-block-but-no-such-block-exists"),
                 extra: { "block_index" => ?block_index }
             );
             return;
@@ -1986,7 +1986,7 @@ impl BlockList {
 
                 Some(tree_before_gap)
             } else {
-                report_error!("a gap is not contained at the active gap index");
+                report_error!(crate::tr!("terminal", "a-gap-is-not-contained-at-the-active-gap-index"));
                 None
             }
         });
@@ -2379,11 +2379,11 @@ impl BlockList {
                         }
                     }
                     BlockHeightItem::Gap(_) => {
-                        gap_update_fn(self.active_gap.as_mut().expect("Active gap should exist"));
+                        gap_update_fn(self.active_gap.as_mut().expect(crate::tr!("terminal", "active-gap-should-exist")));
                         new_sum_tree.push(BlockHeightItem::Gap(
                             self.active_gap
                                 .as_ref()
-                                .expect("Active gap should exist")
+                                .expect(crate::tr!("terminal", "active-gap-should-exist"))
                                 .current_height
                                 .into(),
                         ));
@@ -2573,7 +2573,7 @@ impl BlockList {
         let block = &self.blocks[location.block_index.0];
         block
             .grid_of_type(location.grid)
-            .expect("Grid for location should exist")
+            .expect(crate::tr!("terminal", "grid-for-location-should-exist"))
     }
 
     /// Finds the next visible Command or Output grid in the blocklist above a given grid
@@ -2997,7 +2997,7 @@ impl BlockList {
         log::debug!("Adding background block to blocklist");
         debug_assert!(
             block.is_background(),
-            "Tried to insert a non-background block"
+            crate::tr!("terminal", "tried-to-insert-a-non-background-block")
         );
 
         let background_block_index = self.active_block_index();

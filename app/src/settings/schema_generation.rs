@@ -45,7 +45,7 @@ fn settings_schema_json(is_flag_enabled: impl Fn(FeatureFlag) -> bool) -> Result
         let mut schema_value = type_schema.to_value();
         schema_value
             .as_object_mut()
-            .expect("setting schema should be an object")
+            .expect(crate::tr!("settings", "setting-schema-should-be-an-object"))
             .insert(
                 "x-warp-surfaces".to_string(),
                 Value::Array(setting_surface_names((entry.surfaces_fn)())),
@@ -85,7 +85,7 @@ fn settings_schema_json(is_flag_enabled: impl Fn(FeatureFlag) -> bool) -> Result
     );
     root.insert(
         "title".to_string(),
-        Value::String("Warp Settings".to_string()),
+        Value::String(crate::tr!("settings", "warp-settings").to_string()),
     );
     root.insert(
         "description".to_string(),
@@ -134,11 +134,11 @@ fn ensure_hierarchy<'a>(
 
         current = entry
             .as_object_mut()
-            .expect("hierarchy node should be an object")
+            .expect(crate::tr!("settings", "hierarchy-node-should-be-an-object"))
             .entry("properties")
             .or_insert_with(|| Value::Object(Map::new()))
             .as_object_mut()
-            .expect("properties should be an object");
+            .expect(crate::tr!("settings", "properties-should-be-an-object"));
     }
 
     current

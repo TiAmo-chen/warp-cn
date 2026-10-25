@@ -23,7 +23,7 @@ use crate::themes::default_themes::{dark_theme, light_theme};
     settings_value::SettingsValue,
 )]
 #[schemars(
-    description = "The color theme used by Warp Agent CLI.",
+    description = crate::tr!("settings", "the-color-theme-used-by-warp-agent-cli"),
     rename_all = "snake_case"
 )]
 pub enum TuiTheme {

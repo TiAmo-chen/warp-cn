@@ -317,7 +317,7 @@ impl ShareBlockModal {
             let model = match &self.model {
                 Some(model) => model.lock(),
                 None => {
-                    report_error!("Opened share modal without a model");
+                    report_error!(crate::tr!("terminal", "opened-share-modal-without-a-model"));
                     self.request_state = ShareRequestState::Failed;
                     ctx.notify();
                     return;
@@ -436,13 +436,13 @@ impl ShareBlockModal {
 
         // Scope to release the mutex.
         let request = {
-            let model = self.model.as_ref().expect("Model should be set").lock();
+            let model = self.model.as_ref().expect(crate::tr!("terminal", "model-should-be-set")).lock();
             let block = match self
                 .selected_block
                 .and_then(|block_index| model.block_list().block_at(block_index))
             {
                 None => {
-                    report_error!("Opened block share modal without block");
+                    report_error!(crate::tr!("terminal", "opened-block-share-modal-without-block"));
                     return;
                 }
                 Some(block) => block,
@@ -1250,9 +1250,9 @@ impl SingleBlock {
         ctx.scene.start_layer(ClipBounds::BoundedBy(RectF::new(
             origin,
             self.size()
-                .expect("SingleBlock size should be set in layout"),
+                .expect(crate::tr!("terminal", "singleblock-size-should-be-set-in-layout")),
         )));
-        let size = self.size.expect("SingleBlock size should be set in layout");
+        let size = self.size.expect(crate::tr!("terminal", "singleblock-size-should-be-set-in-layout"));
         self.origin = Some(Point::from_vec2f(origin, ctx.scene.z_index()));
 
         ctx.scene
@@ -1265,13 +1265,13 @@ impl SingleBlock {
         let colors = model.colors();
         let selected_block = self
             .selected_block
-            .expect("SingleBlock should not be trying to paint with no block selected");
+            .expect(crate::tr!("terminal", "singleblock-should-not-be-trying-to-paint-with-no-block-se"));
 
         // TODO(alokedesai): Make this more resilient to the block not existing in the model.
         let block = model
             .block_list()
             .block_at(selected_block)
-            .expect("block should exist in model");
+            .expect(crate::tr!("terminal", "block-should-exist-in-model"));
         let override_colors = model.override_colors();
 
         let cell_size = Vector2F::new(
@@ -1463,13 +1463,13 @@ impl Element for SingleBlock {
         let model = self.terminal_model.lock();
         let selected_block = self
             .selected_block
-            .expect("SingleBlock should not be trying to layout with no block selected");
+            .expect(crate::tr!("terminal", "singleblock-should-not-be-trying-to-layout-with-no-block-s"));
 
         // TODO(alokedesai): Make this more resilient to the block not existing in the model.
         let block = model
             .block_list()
             .block_at(selected_block)
-            .expect("Block should exist in model");
+            .expect(crate::tr!("terminal", "block-should-exist-in-model-042ffa"));
         let size_info = model.block_list().size();
 
         if self.show_prompt && !block.honor_ps1() {

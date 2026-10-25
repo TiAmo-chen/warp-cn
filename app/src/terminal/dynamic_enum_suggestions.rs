@@ -27,7 +27,7 @@ fn parse_dynamic_command(output: &CommandOutput) -> anyhow::Result<Vec<String>> 
             Ok(cleaned_output)
         }
         warp_completer::completer::CommandExitStatus::Failure => {
-            Err(anyhow::anyhow!("Command exited with failure code"))
+            Err(anyhow::anyhow!(crate::tr!("terminal", "command-exited-with-failure-code")))
         }
     }
 }

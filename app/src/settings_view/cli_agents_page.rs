@@ -355,7 +355,7 @@ pub fn init_actions_from_parent_view<T: Action + Clone>(
     ToggleSettingActionPair::add_toggle_setting_action_pairs_as_bindings(
         vec![
             ToggleSettingActionPair::new(
-                "coding agent toolbar",
+                crate::tr!("settings", "coding-agent-toolbar"),
                 builder(SettingsAction::CLIAgents(
                     CLIAgentsPageAction::ToggleCLIAgentToolbar,
                 )),
@@ -369,7 +369,7 @@ pub fn init_actions_from_parent_view<T: Action + Clone>(
     ToggleSettingActionPair::add_toggle_setting_action_pairs_as_bindings(
         vec![
             ToggleSettingActionPair::new(
-                "auto show or hide Rich Input based on agent status",
+                crate::tr!("settings", "auto-show-or-hide-rich-input-based-on-agent-status"),
                 builder(SettingsAction::CLIAgents(
                     CLIAgentsPageAction::ToggleAutoToggleRichInput,
                 )),
@@ -420,7 +420,7 @@ impl SettingsWidget for CLIAgentWidget {
     type View = CLIAgentsPageView;
 
     fn search_terms(&self) -> &str {
-        "third party cli coding agent claude codex gemini toolbar footer quick actions show"
+        crate::tr!("settings", "third-party-cli-coding-agent-claude-codex-gemini-toolbar-f")
     }
 
     fn render(
@@ -494,7 +494,7 @@ impl SettingsWidget for CLIAgentAutoToggleRichInputWidget {
     type View = CLIAgentsPageView;
 
     fn search_terms(&self) -> &str {
-        "third party cli coding agent rich input auto show hide status plugin"
+        crate::tr!("settings", "third-party-cli-coding-agent-rich-input-auto-show-hide-sta")
     }
 
     fn should_render(&self, app: &AppContext) -> bool {
@@ -557,7 +557,7 @@ impl SettingsWidget for CLIAgentAutoOpenRichInputWidget {
     type View = CLIAgentsPageView;
 
     fn search_terms(&self) -> &str {
-        "third party cli coding agent rich input auto open session start"
+        crate::tr!("settings", "third-party-cli-coding-agent-rich-input-auto-open-session")
     }
 
     fn should_render(&self, app: &AppContext) -> bool {
@@ -598,7 +598,7 @@ impl SettingsWidget for CLIAgentAutoDismissRichInputWidget {
     type View = CLIAgentsPageView;
 
     fn search_terms(&self) -> &str {
-        "third party cli coding agent rich input auto dismiss prompt submission"
+        crate::tr!("settings", "third-party-cli-coding-agent-rich-input-auto-dismiss-promp")
     }
 
     fn should_render(&self, app: &AppContext) -> bool {
@@ -639,7 +639,7 @@ impl SettingsWidget for CLIAgentSubmitRichInputWidget {
     type View = CLIAgentsPageView;
 
     fn search_terms(&self) -> &str {
-        "third party cli coding agent rich input submit ctrl enter newline"
+        crate::tr!("settings", "third-party-cli-coding-agent-rich-input-submit-ctrl-enter")
     }
 
     fn should_render(&self, app: &AppContext) -> bool {
@@ -657,7 +657,7 @@ impl SettingsWidget for CLIAgentSubmitRichInputWidget {
         }
 
         render_ai_setting_toggle::<SubmitRichInputOnCtrlEnter>(
-            "Submit Rich Input with Ctrl+Enter",
+            crate::tr!("settings", "submit-rich-input-with-ctrl-enter"),
             CLIAgentsPageAction::ToggleSubmitRichInputOnCtrlEnter,
             *AISettings::as_ref(app).submit_on_ctrl_enter,
             true,
@@ -809,7 +809,7 @@ impl SettingsWidget for CLIAgentToolbarLayoutWidget {
     type View = CLIAgentsPageView;
 
     fn search_terms(&self) -> &str {
-        "third party cli coding agent toolbar layout chip chips rearrange re-arrange"
+        crate::tr!("settings", "third-party-cli-coding-agent-toolbar-layout-chip-chips-rea")
     }
 
     fn should_render(&self, app: &AppContext) -> bool {

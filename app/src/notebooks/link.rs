@@ -166,7 +166,7 @@ impl NotebookLinks {
             Some(session) if session.launch_data().is_some() => {
                 let launch_data = session
                     .launch_data()
-                    .expect("Session launch data should exist");
+                    .expect(crate::tr!("notebooks", "session-launch-data-should-exist"));
                 let clean_path = CleanPathResult::with_line_and_column_number(link);
                 let path = match self.session_source.base_directory(ctx) {
                     Some(base_directory) => {

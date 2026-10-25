@@ -15,7 +15,7 @@ pub use crate::util::openable_file_type::EditorLayout;
     settings_value::SettingsValue,
 )]
 #[schemars(
-    description = "Which editor to use when opening files.",
+    description = crate::tr!("common", "which-editor-to-use-when-opening-files"),
     rename_all = "snake_case"
 )]
 pub enum EditorChoice {
@@ -144,7 +144,7 @@ define_settings_group!(EditorSettings, settings: [
     settings_value::SettingsValue,
 )]
 #[schemars(
-    description = "How to open agent conversations.",
+    description = crate::tr!("common", "how-to-open-agent-conversations"),
     rename_all = "snake_case"
 )]
 pub enum OpenConversationPreference {

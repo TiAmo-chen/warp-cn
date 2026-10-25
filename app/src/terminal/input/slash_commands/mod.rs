@@ -634,7 +634,7 @@ impl Input {
                     .filter(|name| !name.is_empty())
                 else {
                     show_error_toast(
-                        "Please provide a tab name after /rename-tab".to_owned(),
+                        crate::tr!("terminal", "please-provide-a-tab-name-after-rename-tab").to_owned(),
                         ctx,
                     );
                     return true;
@@ -720,14 +720,14 @@ impl Input {
             SlashCommandKind::CreateNewProject => {
                 if argument.is_none_or(|args| args.is_empty()) {
                     show_error_toast(
-                        "Please describe the project you want to create after /create-new-project"
+                        crate::tr!("terminal", "please-describe-the-project-you-want-to-create-after-creat")
                             .to_owned(),
                         ctx,
                     );
                     return true;
                 }
 
-                let args = argument.expect("args are Some()");
+                let args = argument.expect(crate::tr!("terminal", "args-are-some"));
                 self.initiate_create_new_project(args.to_owned(), ctx);
             }
             SlashCommandKind::Edit => {
@@ -747,7 +747,7 @@ impl Input {
                             ToastStack::handle(ctx).update(ctx, |toast_stack, ctx| {
                                 toast_stack.add_ephemeral_toast(
                                     DismissibleToast::error(
-                                        "The /open-file command is only available for local sessions"
+                                        crate::tr!("terminal", "the-open-file-command-is-only-available-for-local-sessions")
                                             .to_owned(),
                                     ),
                                     window_id,
@@ -782,7 +782,7 @@ impl Input {
                             }
                             Ok(_) => {
                                 show_error_toast(
-                                    "The /open-file command only works for files, not directories"
+                                    crate::tr!("terminal", "the-open-file-command-only-works-for-files-not-directories")
                                         .to_owned(),
                                     ctx,
                                 );
@@ -808,7 +808,7 @@ impl Input {
                 #[cfg(not(feature = "local_fs"))]
                 {
                     show_error_toast(
-                        "The /open-file command is not supported in this build".to_owned(),
+                        crate::tr!("terminal", "the-open-file-command-is-not-supported-in-this-build").to_owned(),
                         ctx,
                     );
                     return true;
@@ -838,7 +838,7 @@ impl Input {
                 let window_id = ctx.window_id();
                 ToastStack::handle(ctx).update(ctx, |toast_stack, ctx| {
                     let toast = DismissibleToast::default(String::from(
-                        "Conversation exported to clipboard",
+                        crate::tr!("terminal", "conversation-exported-to-clipboard"),
                     ));
                     toast_stack.add_ephemeral_toast(toast, window_id, ctx);
                 });
@@ -862,7 +862,7 @@ impl Input {
                         ToastStack::handle(ctx).update(ctx, |toast_stack, ctx| {
                             toast_stack.add_ephemeral_toast(
                                 DismissibleToast::default(
-                                    "Debugging information copied to clipboard".to_owned(),
+                                    crate::tr!("terminal", "debugging-information-copied-to-clipboard").to_owned(),
                                 ),
                                 window_id,
                                 ctx,
@@ -870,7 +870,7 @@ impl Input {
                         });
                     }
                     None => show_error_toast(
-                        "No debugging ID available for this conversation yet.".to_owned(),
+                        crate::tr!("terminal", "no-debugging-id-available-for-this-conversation-yet").to_owned(),
                         ctx,
                     ),
                 }
@@ -886,7 +886,7 @@ impl Input {
                 #[cfg(target_family = "wasm")]
                 {
                     show_error_toast(
-                        "Export conversation to file unsupported in web".to_owned(),
+                        crate::tr!("terminal", "export-conversation-to-file-unsupported-in-web").to_owned(),
                         ctx,
                     );
                     return true;
@@ -1051,7 +1051,7 @@ impl Input {
                     .shared_session_status()
                     .is_sharer_or_viewer()
                 {
-                    show_error_toast("Session is already being shared".to_owned(), ctx);
+                    show_error_toast(crate::tr!("terminal", "session-is-already-being-shared").to_owned(), ctx);
                     return true;
                 }
                 ctx.emit(Event::StartRemoteControl);
@@ -1240,7 +1240,7 @@ impl Input {
             SlashCommandKind::CompactAnd => {
                 let conversation_id = if is_queued_prompt {
                     let Some(conversation_id) = queued_conversation_id else {
-                        report_error!("Queued /compact-and missing conversation id");
+                        report_error!(crate::tr!("terminal", "queued-compact-and-missing-conversation-id"));
                         return true;
                     };
                     conversation_id
@@ -1261,7 +1261,7 @@ impl Input {
 
                 if is_queued_prompt {
                     let Some(queued_query_id) = queued_query_id else {
-                        report_error!("Queued /compact-and missing queued query id");
+                        report_error!(crate::tr!("terminal", "queued-compact-and-missing-queued-query-id"));
                         return true;
                     };
                     self.execute_queued_compact_and(

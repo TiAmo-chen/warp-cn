@@ -606,7 +606,7 @@ impl LocalDiffStateModel {
                 let err_msg = err.to_string();
                 // If there are no local changes to stash, git stash will fail
                 // In this case, we can safely ignore the error
-                if err_msg.contains("No local changes to save") {
+                if err_msg.contains(crate::tr!("code_review", "no-local-changes-to-save"))) {
                     Ok(())
                 } else {
                     let context = if relative_paths.len() == 1 {
@@ -685,7 +685,7 @@ impl LocalDiffStateModel {
                         log::warn!("Failed to clean untracked files: {err}");
                     }
                     Ok(())
-                } else if err_msg.contains("did not match any file(s) known to git") {
+                } else if err_msg.contains(crate::tr!("code_review", "did-not-match-any-file-s-known-to-git"))) {
                     // If some files don't exist in the branch, we need to remove them
                     for file_path in relative_paths {
                         log::debug!(
@@ -697,7 +697,7 @@ impl LocalDiffStateModel {
 
                         if let Err(rm_err) = rm_res {
                             let rm_err_msg = rm_err.to_string();
-                            if rm_err_msg.contains("did not match any files") {
+                            if rm_err_msg.contains(crate::tr!("code_review", "did-not-match-any-files"))) {
                                 // if the file was staged but it isn't in the working directory,
                                 // e.g. it was locally deleted
                                 log::debug!(
@@ -1282,7 +1282,7 @@ impl LocalDiffStateModel {
     ) {
         let Some(repo_path) = self.active_repository_path(ctx) else {
             ctx.emit(DiffStateModelEvent::GitOpCompleted(
-                GitOpResult::CommitChainCompleted(Err("no active repository".to_string())),
+                GitOpResult::CommitChainCompleted(Err(crate::tr!("code_review", "no-active-repository")).to_string())),
             ));
             return;
         };
@@ -1329,7 +1329,7 @@ impl LocalDiffStateModel {
     pub fn git_push(&self, branch: String, ctx: &mut ModelContext<Self>) {
         let Some(repo_path) = self.active_repository_path(ctx) else {
             ctx.emit(DiffStateModelEvent::GitOpCompleted(
-                GitOpResult::PushCompleted(Err("no active repository".to_string())),
+                GitOpResult::PushCompleted(Err(crate::tr!("code_review", "no-active-repository")).to_string())),
             ));
             return;
         };
@@ -1365,7 +1365,7 @@ impl LocalDiffStateModel {
     ) {
         let Some(repo_path) = self.active_repository_path(ctx) else {
             ctx.emit(DiffStateModelEvent::GitOpCompleted(GitOpResult::PrCreated(
-                Err("no active repository".to_string()),
+                Err(crate::tr!("code_review", "no-active-repository")).to_string()),
             )));
             return;
         };
@@ -1400,7 +1400,7 @@ impl LocalDiffStateModel {
     ) {
         let Some(repo_path) = self.active_repository_path(ctx) else {
             ctx.emit(DiffStateModelEvent::CommitMessageGenerated(Err(
-                "no active repository".to_string(),
+                crate::tr!("code_review", "no-active-repository")).to_string(),
             )));
             return;
         };
@@ -1496,7 +1496,7 @@ impl LocalDiffStateModel {
             DiffMode::MainBranch => detect_main_branch(repo_path).await?,
             DiffMode::OtherBranch(branch) => branch.clone(),
             DiffMode::Head => {
-                anyhow::bail!("merge base is not applicable for Head mode")
+                anyhow::bail!(crate::tr!("code_review", "merge-base-is-not-applicable-for-head-mode")))
             }
         };
         Self::get_merge_base(repo_path, &branch).await
@@ -1939,7 +1939,7 @@ impl LocalDiffStateModel {
             .strip_prefix(repo_path)
             .unwrap_or(file)
             .to_str()
-            .ok_or_else(|| anyhow!("non-UTF-8 path"))?
+            .ok_or_else(|| anyhow!(crate::tr!("code_review", "non-utf-8-path"))))?
             .to_owned();
 
         let Some((file_path, status)) =
@@ -2580,7 +2580,7 @@ impl LocalDiffStateModel {
         // Git outputs "Binary files a/file and b/file differ" for binary files
         if diff_output
             .lines()
-            .any(|line| line.starts_with("Binary files ") && line.contains(" differ"))
+            .any(|line| line.starts_with(crate::tr!("code_review", "binary-files"))) && line.contains(" differ"))
         {
             return Ok(FileDiff {
                 file_path: file_path.to_owned(),
@@ -2653,7 +2653,7 @@ impl LocalDiffStateModel {
 
                 while i < lines.len()
                     && !lines[i].starts_with("@@")
-                    && !lines[i].starts_with("diff ")
+                    && !lines[i].starts_with(crate::tr!("code_review", "diff")))
                 {
                     let content_line = lines[i];
 

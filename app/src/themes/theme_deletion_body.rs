@@ -89,7 +89,7 @@ impl ThemeDeletionBody {
                     }
                     _ => {
                         log::warn!(
-                            "Attempted to delete a custom theme image with an unexpected image source"
+                            crate::tr!("appearance", "attempted-to-delete-a-custom-theme-image-with-an-unexpecte")
                         );
                     }
                 }

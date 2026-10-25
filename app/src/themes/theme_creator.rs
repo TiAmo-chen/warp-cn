@@ -30,7 +30,7 @@ pub fn top_colors_for_image(image_path: PathBuf) -> Result<Vec<ColorU>> {
                     Err(e) => {
                         report_error!(
                             anyhow::Error::new(e)
-                                .context("kmeans algorithm did not produce valid hex strings")
+                                .context(crate::tr!("appearance", "kmeans-algorithm-did-not-produce-valid-hex-strings"))
                         );
                         ColorU::black()
                     }

@@ -80,7 +80,7 @@ impl InstallationModalBody {
             })
         });
 
-        let enter_keystroke = Keystroke::parse("enter").expect("valid keystroke");
+        let enter_keystroke = Keystroke::parse("enter").expect(crate::tr!("settings", "valid-keystroke"));
         let install_button = ctx.add_typed_action_view(|ctx| {
             ActionButton::new(crate::tr!("common", "install-label"), PrimaryTheme)
                 .with_keybinding(KeystrokeSource::Fixed(enter_keystroke), ctx)

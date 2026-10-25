@@ -68,9 +68,9 @@ impl AcceptAutosuggestionKeybinding {
                     .with_border_color(blended_colors::neutral_4(Appearance::as_ref(ctx).theme())),
             )
         });
-        let right_arrow = Keystroke::parse("right").expect("can parse keystroke");
-        let tab = Keystroke::parse("tab").expect("can parse keystroke");
-        let shift_right_arrow = Keystroke::parse("shift-right").expect("can parse keystroke");
+        let right_arrow = Keystroke::parse("right").expect(crate::tr!("editor", "can-parse-keystroke"));
+        let tab = Keystroke::parse("tab").expect(crate::tr!("editor", "can-parse-keystroke"));
+        let shift_right_arrow = Keystroke::parse("shift-right").expect(crate::tr!("editor", "can-parse-keystroke"));
         let menu_items: Vec<crate::menu::MenuItem<AcceptAutosuggestionKeybindingAction>> = vec![
             MenuItemFields::new(right_arrow.displayed())
                 .with_on_select_action(
@@ -157,7 +157,7 @@ impl AcceptAutosuggestionKeybinding {
                 // If the keybinding is not set, we show right arrow which always works.
                 menu.set_selected_by_action(
                     &AcceptAutosuggestionKeybindingAction::SetAcceptAutosuggestionKeybinding {
-                        keystroke: Keystroke::parse("right").expect("can parse keystroke"),
+                        keystroke: Keystroke::parse("right").expect(crate::tr!("editor", "can-parse-keystroke")),
                     },
                     ctx,
                 );
@@ -250,7 +250,7 @@ impl View for AcceptAutosuggestionKeybinding {
         let keystroke = self
             .accept_autosuggestion_keybinding
             .clone()
-            .unwrap_or(Keystroke::parse("right").expect("can parse keystroke"));
+            .unwrap_or(Keystroke::parse("right").expect(crate::tr!("editor", "can-parse-keystroke")));
         let border_width = 1.;
 
         // The stack contains the editable keybinding, tooltip that shows upon mouse hover,

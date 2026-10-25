@@ -36,7 +36,7 @@ impl Element for TerminalSizeElement {
     fn after_layout(&mut self, ctx: &mut AfterLayoutContext, app: &AppContext) {
         self.child.after_layout(ctx, app);
 
-        let terminal_size = self.size().expect("Size should be present");
+        let terminal_size = self.size().expect(crate::tr!("terminal", "size-should-be-present"));
         // It's possible that the underlying shell session has been terminated
         // but we're showing a read-only terminal view, in which case, the
         // channel will be closed.  If we're unable to send a resize through

@@ -1189,7 +1189,7 @@ impl TerminalManager<TerminalView> {
 
                 terminal_view.update(ctx, |view, ctx| {
                     view.show_persistent_toast(
-                        "Something went wrong. Please try sharing again.".to_string(),
+                        crate::tr!("terminal", "something-went-wrong-please-try-sharing-again").to_string(),
                         ToastFlavor::Error,
                         ctx,
                     );

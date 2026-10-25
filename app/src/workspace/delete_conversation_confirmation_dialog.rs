@@ -58,7 +58,7 @@ impl DeleteConversationConfirmationDialog {
             })
         });
 
-        let enter_keystroke = Keystroke::parse("enter").expect("Valid keystroke");
+        let enter_keystroke = Keystroke::parse("enter").expect(crate::tr!("workspace", "valid-keystroke"));
         let delete_button = ctx.add_typed_action_view(|ctx| {
             ActionButton::new(crate::tr!("common", "delete-label"), DangerPrimaryTheme)
                 .with_keybinding(KeystrokeSource::Fixed(enter_keystroke), ctx)
@@ -160,7 +160,7 @@ impl TypedActionView for DeleteConversationConfirmationDialog {
         match action {
             DeleteConversationConfirmationAction::Confirm => {
                 let Some(source) = self.source.clone() else {
-                    report_error!("Delete confirm button pressed with no source");
+                    report_error!(crate::tr!("workspace", "delete-confirm-button-pressed-with-no-source"));
                     return;
                 };
                 ctx.emit(DeleteConversationConfirmationEvent::Confirm { source });

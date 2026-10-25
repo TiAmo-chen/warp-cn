@@ -127,52 +127,52 @@ fn should_send_git_ops_ai_request(app: &AppContext) -> bool {
 /// message (the raw error is always logged separately at the call site).
 fn user_facing_git_error(raw: &str) -> &'static str {
     let lower = raw.to_lowercase();
-    if lower.contains("no changes added to commit") {
+    if lower.contains(crate::tr!("code_review", "no-changes-added-to-commit"))) {
         // Distinct from a clean tree: changes exist but nothing is staged
         // (e.g. "include unstaged" off with an empty index).
-        "No staged changes to commit."
-    } else if lower.contains("nothing to commit") {
+        crate::tr!("code_review", "no-staged-changes-to-commit"))
+    } else if lower.contains(crate::tr!("code_review", "nothing-to-commit"))) {
         crate::tr!("code_editor", "code-review-no-changes-to-commit")
-    } else if lower.contains("please tell me who you are")
-        || lower.contains("author identity unknown")
+    } else if lower.contains(crate::tr!("code_review", "please-tell-me-who-you-are")))
+        || lower.contains(crate::tr!("code_review", "author-identity-unknown")))
     {
         crate::tr!("code_editor", "code-review-git-identity-not-configured")
-    } else if lower.contains("updates were rejected")
+    } else if lower.contains(crate::tr!("code_review", "updates-were-rejected")))
         || lower.contains("non-fast-forward")
-        || lower.contains("fetch first")
+        || lower.contains(crate::tr!("code_review", "fetch-first")))
     {
         "Remote has new changes \u{2014} pull before pushing."
-    } else if lower.contains("does not appear to be a git repository")
-        || lower.contains("no configured push destination")
+    } else if lower.contains(crate::tr!("code_review", "does-not-appear-to-be-a-git-repository")))
+        || lower.contains(crate::tr!("code_review", "no-configured-push-destination")))
         || lower.contains("no such remote")
     {
         crate::tr!("code_editor", "code-review-no-remote-configured")
-    } else if lower.contains("authentication failed")
-        || lower.contains("permission denied (publickey)")
+    } else if lower.contains(crate::tr!("code_review", "authentication-failed")))
+        || lower.contains(crate::tr!("code_review", "permission-denied-publickey")))
     {
         crate::tr!("code_editor", "code-review-authentication-failed")
     } else if lower.contains("could not resolve host")
-        || lower.contains("network is unreachable")
-        || lower.contains("connection timed out")
+        || lower.contains(crate::tr!("code_review", "network-is-unreachable")))
+        || lower.contains(crate::tr!("code_review", "connection-timed-out")))
     {
         crate::tr!("code_editor", "code-review-network-error")
-    } else if lower.contains("repository not found") {
+    } else if lower.contains(crate::tr!("code_review", "repository-not-found"))) {
         crate::tr!("code_editor", "code-review-remote-repository-not-found")
     } else if lower.contains("failed to execute gh command") {
         // `run_gh_command` wraps spawn failures with this prefix, which is
         // the reliable "gh binary missing" signal.
         crate::tr!("code_editor", "code-review-gh-cli-not-installed")
     } else if lower.contains(crate::tr!("settings", "not-logged-in"))
-        || lower.contains("authentication required")
-        || lower.contains("gh auth login")
+        || lower.contains(crate::tr!("code_review", "authentication-required")))
+        || lower.contains(crate::tr!("code_review", "gh-auth-login")))
     {
         // Phrases mirror `context_chips::current_prompt::is_gh_auth_error`,
         // which has been vetted against real `gh` failure output.
         "GitHub CLI not authenticated. Run `gh auth login`."
-    } else if lower.contains("another git operation is in progress") {
+    } else if lower.contains(crate::tr!("code_review", "another-git-operation-is-in-progress"))) {
         // Daemon-side guard for a repo mid-merge/rebase/cherry-pick or with a
         // held index lock (see `git_operation_in_progress`).
-        "Another git operation is in progress. Finish or abort it first."
+        crate::tr!("code_review", "another-git-operation-is-in-progress-finish-or-abort-it-fi"))
     } else {
         crate::tr!("code_editor", "code-review-git-operation-failed")
     }

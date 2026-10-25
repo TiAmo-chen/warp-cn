@@ -198,14 +198,14 @@ impl TelemetryEvent for LifecycleTelemetryEvent {
 impl TelemetryEventDesc for LifecycleTelemetryEventDiscriminants {
     fn name(&self) -> &'static str {
         match self {
-            LifecycleTelemetryEventDiscriminants::Recovery => "Terminal Lifecycle Recovery",
+            LifecycleTelemetryEventDiscriminants::Recovery => crate::tr!("terminal", "terminal-lifecycle-recovery"),
         }
     }
 
     fn description(&self) -> &'static str {
         match self {
             LifecycleTelemetryEventDiscriminants::Recovery => {
-                "A terminal lifecycle transition required conservative handling or recovery"
+                crate::tr!("terminal", "a-terminal-lifecycle-transition-required-conservative-hand")
             }
         }
     }

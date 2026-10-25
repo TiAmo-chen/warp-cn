@@ -601,7 +601,7 @@ impl GitBranchTrackingStatus {
                 "Ahead {}, behind {}; upstream name is unavailable",
                 self.ahead, self.behind
             ),
-            None => "No upstream configured".to_string(),
+            None => crate::tr!("context_chips", "no-upstream-configured")).to_string(),
         }
     }
 }
@@ -717,7 +717,7 @@ impl GitBranch {
 
         if branch.is_linked_worktree {
             return PromptChipShellCommand::Echo {
-                message: "The branch is already checked out in another worktree, but Warp couldn't find its path.",
+                message: crate::tr!("context_chips", "the-branch-is-already-checked-out-in-another-worktree-but")),
             };
         }
 

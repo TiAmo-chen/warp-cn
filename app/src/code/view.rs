@@ -118,14 +118,14 @@ pub fn init(app: &mut AppContext) {
             CodeViewAction::CloseAll,
         )
         .with_context_predicate(id!("CodeEditorView"))
-        .with_key_binding("cmdorctrl-r w"),
+        .with_key_binding(crate::tr!("code", "cmdorctrl-r-w")),
         EditableBinding::new(
             "code_view:close_saved_tabs",
             crate::tr!("code", "close-saved-tabs"),
             CodeViewAction::CloseSaved,
         )
         .with_context_predicate(id!("CodeEditorView"))
-        .with_key_binding("cmdorctrl-r u"),
+        .with_key_binding(crate::tr!("code", "cmdorctrl-r-u")),
         #[cfg(feature = "local_fs")]
         EditableBinding::new(
             TOGGLE_MARKDOWN_DISPLAY_MODE_BINDING_NAME,
@@ -2373,7 +2373,7 @@ impl TypedActionView for CodeView {
                     ctx.open_file_path_in_explorer(&path);
                 } else {
                     log::warn!(
-                        "Reveal in Finder requested, but the active code tab has no local file path"
+                        crate::tr!("code", "reveal-in-finder-requested-but-the-active-code-tab-has-no")
                     );
                 }
             }

@@ -295,7 +295,7 @@ pub fn init_actions_from_parent_view<T: Action + Clone>(
                 flags::AUTO_OPEN_CODE_REVIEW_PANE_FLAG,
             ),
             ToggleSettingActionPair::new(
-                "code review button",
+                crate::tr!("settings", "code-review-button"),
                 builder(SettingsAction::EditorAndCodeReview(
                     EditorAndCodeReviewPageAction::ToggleCodeReviewPanel,
                 )),
@@ -303,7 +303,7 @@ pub fn init_actions_from_parent_view<T: Action + Clone>(
                 flags::SHOW_CODE_REVIEW_BUTTON_FLAG,
             ),
             ToggleSettingActionPair::new(
-                "diff stats on code review button",
+                crate::tr!("settings", "diff-stats-on-code-review-button"),
                 builder(SettingsAction::EditorAndCodeReview(
                     EditorAndCodeReviewPageAction::ToggleShowCodeReviewDiffStats,
                 )),
@@ -311,7 +311,7 @@ pub fn init_actions_from_parent_view<T: Action + Clone>(
                 flags::SHOW_CODE_REVIEW_DIFF_STATS_FLAG,
             ),
             ToggleSettingActionPair::new(
-                "project explorer",
+                crate::tr!("settings", "project-explorer-876b61"),
                 builder(SettingsAction::EditorAndCodeReview(
                     EditorAndCodeReviewPageAction::ToggleProjectExplorer,
                 )),
@@ -347,7 +347,7 @@ impl SettingsWidget for ExternalEditorCodeWidget {
     type View = EditorAndCodeReviewPageView;
 
     fn search_terms(&self) -> &str {
-        "code editor open files markdown AI conversations layout pane tab"
+        crate::tr!("settings", "code-editor-open-files-markdown-ai-conversations-layout-pa")
     }
 
     fn render(
@@ -373,7 +373,7 @@ impl SettingsWidget for AutoOpenCodeReviewPaneCodeWidget {
     type View = EditorAndCodeReviewPageView;
 
     fn search_terms(&self) -> &str {
-        "oz auto open code review pane panel agent mode change first time accepted diff view conversation"
+        crate::tr!("settings", "oz-auto-open-code-review-pane-panel-agent-mode-change-firs")
     }
 
     fn render(
@@ -414,7 +414,7 @@ impl SettingsWidget for CodeReviewPanelToggleWidget {
     type View = EditorAndCodeReviewPageView;
 
     fn search_terms(&self) -> &str {
-        "code review panel right side diff git"
+        crate::tr!("settings", "code-review-panel-right-side-diff-git")
     }
 
     fn render(
@@ -460,7 +460,7 @@ impl SettingsWidget for CodeReviewDiffStatsToggleWidget {
     type View = EditorAndCodeReviewPageView;
 
     fn search_terms(&self) -> &str {
-        "code review diff stats lines added removed counts"
+        crate::tr!("settings", "code-review-diff-stats-lines-added-removed-counts")
     }
 
     fn render(
@@ -508,7 +508,7 @@ impl SettingsWidget for ProjectExplorerToggleWidget {
     type View = EditorAndCodeReviewPageView;
 
     fn search_terms(&self) -> &str {
-        "project explorer file tree left panel tools"
+        crate::tr!("settings", "project-explorer-file-tree-left-panel-tools")
     }
 
     fn render(
@@ -554,7 +554,7 @@ impl SettingsWidget for GlobalSearchToggleWidget {
     type View = EditorAndCodeReviewPageView;
 
     fn search_terms(&self) -> &str {
-        "global search file search left panel tools"
+        crate::tr!("settings", "global-search-file-search-left-panel-tools")
     }
 
     fn render(
@@ -600,7 +600,7 @@ impl SettingsWidget for ShowHiddenFilesToggleWidget {
     type View = EditorAndCodeReviewPageView;
 
     fn search_terms(&self) -> &str {
-        "show hidden files dotfiles project explorer file tree"
+        crate::tr!("settings", "show-hidden-files-dotfiles-project-explorer-file-tree")
     }
 
     fn render(
@@ -646,7 +646,7 @@ impl SettingsWidget for FormatOnSaveToggleWidget {
     type View = EditorAndCodeReviewPageView;
 
     fn search_terms(&self) -> &str {
-        "format on save lsp language server formatting reformat editor"
+        crate::tr!("settings", "format-on-save-lsp-language-server-formatting-reformat-edi")
     }
 
     fn render(
@@ -689,7 +689,7 @@ impl SettingsWidget for AutoSaveToggleWidget {
     type View = EditorAndCodeReviewPageView;
 
     fn search_terms(&self) -> &str {
-        "auto save autosave automatically save editor files on type focus"
+        crate::tr!("settings", "auto-save-autosave-automatically-save-editor-files-on-type")
     }
 
     fn render(
@@ -730,7 +730,7 @@ impl SettingsWidget for CodeEditorLineNumberModeWidget {
     type View = EditorAndCodeReviewPageView;
 
     fn search_terms(&self) -> &str {
-        "line number numbers relative line vim gutter code editor"
+        crate::tr!("settings", "line-number-numbers-relative-line-vim-gutter-code-editor")
     }
 
     fn render(

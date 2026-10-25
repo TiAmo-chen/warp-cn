@@ -484,7 +484,7 @@ impl SettingsWidget for PlatformPageWidget {
     type View = PlatformPageView;
 
     fn search_terms(&self) -> &str {
-        "cloud agents platform api keys authentication"
+        crate::tr!("settings", "cloud-agents-platform-api-keys-authentication")
     }
 
     fn render(

@@ -156,15 +156,15 @@ impl Body {
             > max_session_size.as_u64();
 
         let scrollback_from_active_block_message = if model.is_alt_screen_active() {
-            "Share from current screen"
+            crate::tr!("terminal", "share-from-current-screen")
         } else if model
             .block_list()
             .active_block()
             .is_active_and_long_running()
         {
-            "Share from current block"
+            crate::tr!("terminal", "share-from-current-block")
         } else {
-            "Share without scrollback"
+            crate::tr!("terminal", "share-without-scrollback")
         };
 
         let mut options = vec![
@@ -175,7 +175,7 @@ impl Body {
                 is_disabled: is_scrollback_from_active_block_disabled,
             },
             ScrollbackOption {
-                label: "Share from start of session",
+                label: crate::tr!("terminal", "share-from-start-of-session"),
                 scrollback_type: SharedSessionScrollbackType::All,
                 mouse_state_handle: Default::default(),
                 is_disabled: is_all_scrollback_disabled,
@@ -208,7 +208,7 @@ impl Body {
             options.insert(
                 0,
                 ScrollbackOption {
-                    label: "Share from selected block and onwards",
+                    label: crate::tr!("terminal", "share-from-selected-block-and-onwards"),
                     scrollback_type,
                     mouse_state_handle: Default::default(),
                     is_disabled,
@@ -335,19 +335,19 @@ impl View for Body {
             // Multiple options disabled - mention both reasons if agent conversations exist
             if self.has_agent_conversations {
                 Some(
-                    "Some options are disabled due to sharing size limits and the presence of agent conversations in the session",
+                    crate::tr!("terminal", "some-options-are-disabled-due-to-sharing-size-limits-and-t"),
                 )
             } else {
-                Some("Some options are disabled due to sharing size limits")
+                Some(crate::tr!("terminal", "some-options-are-disabled-due-to-sharing-size-limits"))
             }
         } else {
             // Only one option disabled - use specific message if it's due to agent conversations
             if self.has_agent_conversations {
                 Some(
-                    "Sharing without scrollback is disabled because this session has agent conversations",
+                    crate::tr!("terminal", "sharing-without-scrollback-is-disabled-because-this-sessio"),
                 )
             } else {
-                Some("Some options are disabled due to sharing size limits")
+                Some(crate::tr!("terminal", "some-options-are-disabled-due-to-sharing-size-limits"))
             }
         };
 

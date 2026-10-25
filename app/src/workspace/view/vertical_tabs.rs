@@ -494,7 +494,7 @@ fn render_pane_row_element(
         let mut overlay_state = detail_hover_state
             .overlay_state
             .lock()
-            .expect("vertical tabs detail overlay lock poisoned");
+            .expect(crate::tr!("workspace", "vertical-tabs-detail-overlay-lock-poisoned"));
         if !show_details_on_hover {
             if overlay_state.active_target.is_some() {
                 overlay_state.active_target = None;
@@ -510,7 +510,7 @@ fn render_pane_row_element(
         let sidecar_hovered = detail_hover_state
             .sidecar_mouse_state
             .lock()
-            .expect("detail sidecar hover state lock poisoned")
+            .expect(crate::tr!("workspace", "detail-sidecar-hover-state-lock-poisoned"))
             .is_mouse_over_element();
         overlay_state.safe_triangle.set_target_rect(sidecar_rect);
 
@@ -655,7 +655,7 @@ impl VerticalTabsDetailHoverState {
         let mut overlay_state = self
             .overlay_state
             .lock()
-            .expect("vertical tabs detail overlay lock poisoned");
+            .expect(crate::tr!("workspace", "vertical-tabs-detail-overlay-lock-poisoned"));
         let Some(active_target) = overlay_state.active_target else {
             return false;
         };
@@ -2135,7 +2135,7 @@ fn render_tab_group_internal(
         .clone();
     let action_buttons_mouse_over = action_buttons_mouse_state
         .lock()
-        .expect("action buttons hover state lock poisoned")
+        .expect(crate::tr!("workspace", "action-buttons-hover-state-lock-poisoned"))
         .is_mouse_over_element();
     let row_mouse_states: Vec<(PaneId, MouseStateHandle)> = pane_ids_to_render
         .iter()
@@ -2282,7 +2282,7 @@ fn render_tab_group_internal(
                     pane_props,
                     summary
                         .as_ref()
-                        .expect("summary data must exist in summary mode"),
+                        .expect(crate::tr!("workspace", "summary-data-must-exist-in-summary-mode")),
                     summary_pane_kind_icons,
                     &pr_badge_mouse_states,
                     app,
@@ -4444,11 +4444,11 @@ impl PaneGroup {
         match pane_id.pane_type() {
             IPaneType::Terminal => TypedPane::Terminal(
                 self.downcast_pane_by_id::<TerminalPane>(pane_id)
-                    .expect("IPaneType::Terminal must correspond to a TerminalPane"),
+                    .expect(crate::tr!("workspace", "ipanetype-terminal-must-correspond-to-a-terminalpane")),
             ),
             IPaneType::Code => TypedPane::Code(
                 self.downcast_pane_by_id::<CodePane>(pane_id)
-                    .expect("IPaneType::Code must correspond to a CodePane"),
+                    .expect(crate::tr!("workspace", "ipanetype-code-must-correspond-to-a-codepane")),
             ),
             IPaneType::CodeDiff => TypedPane::CodeDiff,
             IPaneType::File => TypedPane::File,
@@ -7345,7 +7345,7 @@ pub(super) fn render_detail_sidecar(
     .on_hover(move |is_hovered, ctx, app, position| {
         let mut overlay_state = detail_overlay_state
             .lock()
-            .expect("vertical tabs detail overlay lock poisoned");
+            .expect(crate::tr!("workspace", "vertical-tabs-detail-overlay-lock-poisoned"));
         overlay_state
             .safe_triangle
             .set_target_rect(app.element_position_by_id_at_last_frame(
@@ -7358,7 +7358,7 @@ pub(super) fn render_detail_sidecar(
             let row_hovered = source_row_mouse_state.as_ref().is_some_and(|mouse_state| {
                 mouse_state
                     .lock()
-                    .expect("vertical tabs source row hover lock poisoned")
+                    .expect(crate::tr!("workspace", "vertical-tabs-source-row-hover-lock-poisoned"))
                     .is_mouse_over_element()
             });
             if !row_hovered && overlay_state.active_target == Some(active_target) {

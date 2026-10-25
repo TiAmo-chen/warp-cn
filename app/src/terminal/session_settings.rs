@@ -32,7 +32,7 @@ lazy_static! {
     settings_value::SettingsValue,
 )]
 #[schemars(
-    description = "Whether the user has enabled or disabled notifications.",
+    description = crate::tr!("terminal", "whether-the-user-has-enabled-or-disabled-notifications"),
     rename_all = "snake_case"
 )]
 pub enum NotificationsMode {
@@ -69,7 +69,7 @@ pub enum NotificationsMode {
 #[schemars(description = "Notification preferences for terminal events.")]
 pub struct NotificationsSettings {
     #[schemars(
-        description = "Whether notifications are enabled, disabled, or not yet configured."
+        description = crate::tr!("terminal", "whether-notifications-are-enabled-disabled-or-not-yet-conf")
     )]
     pub mode: NotificationsMode,
 
@@ -77,7 +77,7 @@ pub struct NotificationsSettings {
     pub is_long_running_enabled: bool,
     #[schemars(
         with = "u64",
-        description = "Threshold in seconds for long-running command notifications."
+        description = crate::tr!("terminal", "threshold-in-seconds-for-long-running-command-notification")
     )]
     pub long_running_threshold: Duration,
 
@@ -186,7 +186,7 @@ pub trait ToolbarChipSelection {
     settings_value::SettingsValue,
 )]
 #[schemars(
-    description = "Agent toolbar layout configuration.",
+    description = crate::tr!("terminal", "agent-toolbar-layout-configuration"),
     rename_all = "snake_case"
 )]
 pub enum AgentToolbarChipSelection {
@@ -236,7 +236,7 @@ impl ToolbarChipSelection for AgentToolbarChipSelection {
     settings_value::SettingsValue,
 )]
 #[schemars(
-    description = "CLI agent toolbar layout configuration.",
+    description = crate::tr!("terminal", "cli-agent-toolbar-layout-configuration"),
     rename_all = "snake_case"
 )]
 pub enum CLIAgentToolbarChipSelection {

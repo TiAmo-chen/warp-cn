@@ -1327,7 +1327,7 @@ impl TerminalModel {
         // (as opposed to completely failing and skipping the send).
         if response_initiator.is_none() {
             report_error!(anyhow::anyhow!(
-                "No response initiator tracked for agent response event."
+                crate::tr!("terminal", "no-response-initiator-tracked-for-agent-response-event")
             ));
         }
 
@@ -2311,7 +2311,7 @@ impl TerminalModel {
     ) {
         if !self.shared_session_status.is_sharer() {
             log::warn!(
-                "Tried to disable secret obfuscation without being a shared session creator."
+                crate::tr!("terminal", "tried-to-disable-secret-obfuscation-without-being-a-shared")
             );
             return;
         }
@@ -3135,7 +3135,7 @@ impl ansi::Handler for TerminalModel {
                 // Not being able to read the value should not cause a full-app crash. Instead,
                 // bootstrapping should fail in the same way that it would if the DCS message
                 // were otherwise corrupted.
-                report_error!("Received bootstrap message with no pending session info.");
+                report_error!(crate::tr!("terminal", "received-bootstrap-message-with-no-pending-session-info"));
                 return;
             }
         };
@@ -3311,7 +3311,7 @@ impl ansi::Handler for TerminalModel {
                 }
                 None => {
                     report_error!(
-                        "Received invalid shell name in SourcedRCFileForWarpValue",
+                        crate::tr!("terminal", "received-invalid-shell-name-in-sourcedrcfileforwarpvalue"),
                         extra: { "shell" => %data.shell }
                     );
                 }
@@ -3365,7 +3365,7 @@ impl ansi::Handler for TerminalModel {
             }
             IsReceivingInBandCommandOutput::No if from_osc_sequence => {
                 log::warn!(
-                    "Received an in-band command output end OSC while not expecting in-band command output."
+                    crate::tr!("terminal", "received-an-in-band-command-output-end-osc-while-not-expec")
                 );
             }
             IsReceivingInBandCommandOutput::No => {}
@@ -3478,7 +3478,7 @@ impl ansi::Handler for TerminalModel {
                     last_item.update(completion_update);
                 } else {
                     log::warn!(
-                        "Received update last completion result OSC before any completion results have been received"
+                        crate::tr!("terminal", "received-update-last-completion-result-osc-before-any-comp")
                     );
                 }
             }

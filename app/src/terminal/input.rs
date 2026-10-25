@@ -452,26 +452,26 @@ const AGENT_MODE_AI_DISABLED_AUTODETECTION_DISABLED_HINT_TEXT: &str = "Run comma
 
 // Rotating hint text options for new Agent Mode conversations
 const AGENT_MODE_HINT_OPTIONS: &[&str] = &[
-    "Warp anything e.g. Deploy my React app to Vercel and set up environment variables",
-    "Warp anything e.g. Help me debug why my Python tests are failing in CI",
-    "Warp anything e.g. Set up a new microservice with Docker and create the deployment pipeline",
-    "Warp anything e.g. Find and fix the memory leak in my Node.js application",
-    "Warp anything e.g. Create a backup script for my PostgreSQL database and schedule it",
-    "Warp anything e.g. Help me migrate my data from MySQL to PostgreSQL",
-    "Warp anything e.g. Set up monitoring and alerts for my AWS infrastructure",
-    "Warp anything e.g. Build a REST API for my mobile app using FastAPI",
-    "Warp anything e.g. Help me optimize my SQL queries that are running slowly",
-    "Warp anything e.g. Create a GitHub Actions workflow to automatically deploy on merge",
-    "Warp anything e.g. Set up Redis caching for my web application",
-    "Warp anything e.g. Help me troubleshoot why my Kubernetes pods keep crashing",
-    "Warp anything e.g. Build a data pipeline to process CSV files and load them into BigQuery",
-    "Warp anything e.g. Set up SSL certificates and configure HTTPS for my domain",
-    "Warp anything e.g. Help me refactor this legacy code to use modern design patterns",
-    "Warp anything e.g. Create unit tests for my authentication service",
-    "Warp anything e.g. Set up log aggregation with ELK stack for my distributed system",
-    "Warp anything e.g. Help me implement OAuth2 authentication in my Express.js app",
-    "Warp anything e.g. Optimize my Docker images to reduce build times and size",
-    "Warp anything e.g. Set up A/B testing infrastructure for my web application",
+    crate::tr!("terminal", "warp-anything-e-g-deploy-my-react-app-to-vercel-and-set-up"),
+    crate::tr!("terminal", "warp-anything-e-g-help-me-debug-why-my-python-tests-are-fa"),
+    crate::tr!("terminal", "warp-anything-e-g-set-up-a-new-microservice-with-docker-an"),
+    crate::tr!("terminal", "warp-anything-e-g-find-and-fix-the-memory-leak-in-my-node"),
+    crate::tr!("terminal", "warp-anything-e-g-create-a-backup-script-for-my-postgresql"),
+    crate::tr!("terminal", "warp-anything-e-g-help-me-migrate-my-data-from-mysql-to-po"),
+    crate::tr!("terminal", "warp-anything-e-g-set-up-monitoring-and-alerts-for-my-aws"),
+    crate::tr!("terminal", "warp-anything-e-g-build-a-rest-api-for-my-mobile-app-using"),
+    crate::tr!("terminal", "warp-anything-e-g-help-me-optimize-my-sql-queries-that-are"),
+    crate::tr!("terminal", "warp-anything-e-g-create-a-github-actions-workflow-to-auto"),
+    crate::tr!("terminal", "warp-anything-e-g-set-up-redis-caching-for-my-web-applicat"),
+    crate::tr!("terminal", "warp-anything-e-g-help-me-troubleshoot-why-my-kubernetes-p"),
+    crate::tr!("terminal", "warp-anything-e-g-build-a-data-pipeline-to-process-csv-fil"),
+    crate::tr!("terminal", "warp-anything-e-g-set-up-ssl-certificates-and-configure-ht"),
+    crate::tr!("terminal", "warp-anything-e-g-help-me-refactor-this-legacy-code-to-use"),
+    crate::tr!("terminal", "warp-anything-e-g-create-unit-tests-for-my-authentication"),
+    crate::tr!("terminal", "warp-anything-e-g-set-up-log-aggregation-with-elk-stack-fo"),
+    crate::tr!("terminal", "warp-anything-e-g-help-me-implement-oauth2-authentication"),
+    crate::tr!("terminal", "warp-anything-e-g-optimize-my-docker-images-to-reduce-buil"),
+    crate::tr!("terminal", "warp-anything-e-g-set-up-a-b-testing-infrastructure-for-my"),
 ];
 
 fn get_agent_mode_new_conversation_hint_text() -> &'static str {
@@ -497,7 +497,7 @@ const AGENT_MODE_AI_ENABLED_STEER_HINT_TEXT_CLASSIC: &str =
     "Steer the running agent, or backspace to exit";
 const AGENT_MODE_AI_ENABLED_QUEUE_HINT_TEXT_UDI: &str = "Queue a follow up for the running agent";
 const AGENT_MODE_AI_ENABLED_QUEUE_HINT_TEXT_CLASSIC: &str =
-    "Queue a follow up for the running agent, or backspace to exit";
+    crate::tr!("terminal", "queue-a-follow-up-for-the-running-agent-or-backspace-to-ex");
 const AGENT_MODE_AI_ENABLED_FOLLOW_UP_HINT_TEXT_UDI: &str = "Ask a follow up";
 const AGENT_MODE_AI_ENABLED_FOLLOW_UP_HINT_TEXT_CLASSIC: &str =
     "Ask a follow up, or backspace to exit";
@@ -1013,10 +1013,10 @@ pub enum HistoryUpMode {
 impl HistoryUpMode {
     pub fn as_str(&self) -> &'static str {
         match self {
-            HistoryUpMode::Prefixed => "prefixed history up",
-            HistoryUpMode::RegularNoQuery => "regular history up (no query)",
-            HistoryUpMode::RegularWithQuery => "regular history up (with query)",
-            HistoryUpMode::NotApplicable => "history up",
+            HistoryUpMode::Prefixed => crate::tr!("terminal", "prefixed-history-up"),
+            HistoryUpMode::RegularNoQuery => crate::tr!("terminal", "regular-history-up-no-query"),
+            HistoryUpMode::RegularWithQuery => crate::tr!("terminal", "regular-history-up-with-query"),
+            HistoryUpMode::NotApplicable => crate::tr!("terminal", "history-up"),
         }
     }
 }
@@ -2136,7 +2136,7 @@ pub fn init(app: &mut AppContext) {
         FixedBinding::custom(
             CustomAction::History,
             InputAction::Up,
-            "Show History",
+            crate::tr!("terminal", "show-history"),
             // We need to ensure the workflow info box is not open as the "up" arrow
             // key is used to navigate the environment variables dropdown.
             // Same goes with the LLM menu.
@@ -2250,7 +2250,7 @@ pub fn init(app: &mut AppContext) {
         .with_key_binding("tab"),
         EditableBinding::new(
             "workspace:trigger_external_ctrl_t_file_search",
-            "External File Search",
+            crate::tr!("terminal", "external-file-search"),
             WorkspaceAction::TriggerExternalCtrlTFileSearch,
         )
         .with_enabled(|| FeatureFlag::ShellWidgetHandoff.is_enabled())
@@ -2258,7 +2258,7 @@ pub fn init(app: &mut AppContext) {
         .with_key_binding("ctrl-t"),
         EditableBinding::new(
             "workspace:trigger_external_alt_c_directory_search",
-            "External Directory Search",
+            crate::tr!("terminal", "external-directory-search"),
             WorkspaceAction::TriggerExternalAltCDirectorySearch,
         )
         .with_enabled(|| FeatureFlag::ShellWidgetHandoff.is_enabled())
@@ -4533,7 +4533,7 @@ impl Input {
                     // TODO: instead of blocking, connect to the live shared session
                     // and submit the prompt to the running remote VM. Or, auto close and reopen the link.
                     self.show_ephemeral_error_toast(
-                        "This pane is out of date. Reopen the Oz session link in a new pane and try submitting again.",
+                        crate::tr!("terminal", "this-pane-is-out-of-date-reopen-the-oz-session-link-in-a-n"),
                         ctx,
                     );
                 }
@@ -4566,7 +4566,7 @@ impl Input {
                 } else {
                     // Cloud-to-cloud follow-up is unavailable; block rather than run locally.
                     self.show_ephemeral_error_toast(
-                        "This cloud conversation can't continue on your local machine.",
+                        crate::tr!("terminal", "this-cloud-conversation-can-t-continue-on-your-local-machi"),
                         ctx,
                     );
                 }
@@ -4574,7 +4574,7 @@ impl Input {
             }
             AIQueryRouting::UnconnectedReadOnly => {
                 self.show_ephemeral_error_toast(
-                    "This cloud conversation can't continue on your local machine.",
+                    crate::tr!("terminal", "this-cloud-conversation-can-t-continue-on-your-local-machi"),
                     ctx,
                 );
                 true
@@ -4983,7 +4983,7 @@ impl Input {
         ToastStack::handle(ctx).update(ctx, |ts, ctx| {
             ts.add_ephemeral_toast(
                 DismissibleToast::error(
-                    "Custom models can't run in the cloud. Switch to a Warp model to hand off."
+                    crate::tr!("terminal", "custom-models-can-t-run-in-the-cloud-switch-to-a-warp-mode")
                         .to_owned(),
                 ),
                 window_id,
@@ -6715,15 +6715,15 @@ impl Input {
         ctx: &mut ViewContext<Self>,
     ) -> Result<(), String> {
         let Some(session_id) = self.active_block_session_id() else {
-            return Err("Tried to open file in code editor without a session id".to_string());
+            return Err(crate::tr!("terminal", "tried-to-open-file-in-code-editor-without-a-session-id").to_string());
         };
 
         let Some(session) = self.sessions.as_ref(ctx).get(session_id) else {
-            return Err("Tried to open file in code editor without a session".to_string());
+            return Err(crate::tr!("terminal", "tried-to-open-file-in-code-editor-without-a-session").to_string());
         };
 
         if !session.is_local() {
-            return Err("Tried to open file in code editor for a remote session".to_string());
+            return Err(crate::tr!("terminal", "tried-to-open-file-in-code-editor-for-a-remote-session").to_string());
         }
 
         #[cfg(feature = "local_fs")]
@@ -7449,7 +7449,7 @@ impl Input {
                     .selected_environment_id()
                     .and_then(|id| CloudAmbientAgentEnvironment::get_by_id(id, ctx))
                     .map(|env| format!("Hand off to {}", env.model().string_model.display_name()))
-                    .unwrap_or_else(|| "Handoff to cloud".to_owned())
+                    .unwrap_or_else(|| crate::tr!("terminal", "handoff-to-cloud").to_owned())
             };
             self.editor.update(ctx, |editor, ctx| {
                 editor.set_placeholder_text(&hint, ctx);
@@ -8730,7 +8730,7 @@ impl Input {
         }
         ctx.emit_a11y_content(AccessibilityContent::new(
             accessibility_text,
-            "Press shift-tab to select the next workflow argument",
+            crate::tr!("terminal", "press-shift-tab-to-select-the-next-workflow-argument"),
             WarpA11yRole::UserAction,
         ));
 
@@ -12169,9 +12169,9 @@ impl Input {
         // Show toast for excess images if any
         if excess_images > 0 {
             let (limit_name, limit_value) = if available_per_query < available_per_conversation {
-                ("per query", MAX_IMAGE_COUNT_FOR_QUERY)
+                (crate::tr!("terminal", "per-query"), MAX_IMAGE_COUNT_FOR_QUERY)
             } else {
-                ("per conversation", MAX_IMAGES_PER_CONVERSATION)
+                (crate::tr!("terminal", "per-conversation"), MAX_IMAGES_PER_CONVERSATION)
             };
 
             let message = if excess_images == 1 {
@@ -13416,7 +13416,7 @@ impl Input {
         // If we aren't in a workflow, return
         let Some(workflow_state) = &self.workflows_state.selected_workflow_state else {
             report_error!(anyhow::anyhow!(
-                "Tried to get the current argument when no workflow is loaded into the input",
+                crate::tr!("terminal", "tried-to-get-the-current-argument-when-no-workflow-is-load"),
             ));
             return (None, Vec::new());
         };
@@ -14188,7 +14188,7 @@ impl Input {
                             Some(cloud_agent_team_required_toast_message(ctx).to_string())
                         }
                         Some(CloudAgentStartBlocker::NoEnabledHarnesses) => Some(
-                            "No agent harnesses are available. Contact your team admin."
+                            crate::tr!("terminal", "no-agent-harnesses-are-available-contact-your-team-admin")
                                 .to_string(),
                         ),
                         None => None,
@@ -15513,7 +15513,7 @@ impl Input {
                         ToastStack::handle(ctx).update(ctx, |toast_stack, ctx| {
                             toast_stack.add_ephemeral_toast(
                                 DismissibleToast::error(
-                                    "Too many attachments for this conversation.".to_string(),
+                                    crate::tr!("terminal", "too-many-attachments-for-this-conversation").to_string(),
                                 ),
                                 window_id,
                                 ctx,
@@ -16602,7 +16602,7 @@ impl Input {
 
                     let input_rect = ctx
                         .element_position_by_id(input_editor_save_position_id.clone())
-                        .expect("input editor position id should be saved");
+                        .expect(crate::tr!("terminal", "input-editor-position-id-should-be-saved"));
                     let offset_position = position - input_rect.origin();
                     ctx.dispatch_typed_action(TerminalAction::OpenInputContextMenu {
                         position: offset_position,

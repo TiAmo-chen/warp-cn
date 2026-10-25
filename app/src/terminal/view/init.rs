@@ -427,7 +427,7 @@ pub fn init(app: &mut AppContext) {
         .with_context_predicate(id!("Terminal") & !id!("IMEOpen")),
         EditableBinding::new(
             "terminal:jump_to_latest_agent_message",
-            "Jump to latest agent message",
+            crate::tr!("terminal", "jump-to-latest-agent-message"),
             TerminalAction::JumpToLatestAgentMessage,
         )
         // Available from the terminal (enters the latest conversation's agent view)
@@ -988,7 +988,7 @@ pub fn init(app: &mut AppContext) {
     app.register_editable_bindings([
         EditableBinding::new(
             ATTACH_FILE_KEYBINDING,
-            "Attach file to agent conversation",
+            crate::tr!("terminal", "attach-file-to-agent-conversation"),
             TerminalAction::AttachFile,
         )
         .with_group(bindings::BindingGroup::WarpAi.as_str())
@@ -1084,7 +1084,7 @@ pub fn init(app: &mut AppContext) {
     app.register_editable_bindings([
         EditableBinding::new(
             CYCLE_NEXT_ORCHESTRATION_CHILD_AGENT_KEYBINDING,
-            "Cycle to next orchestration session",
+            crate::tr!("terminal", "cycle-to-next-orchestration-session"),
             TerminalAction::CycleNextOrchestrationChildAgent,
         )
         .with_group(bindings::BindingGroup::WarpAi.as_str())
@@ -1095,7 +1095,7 @@ pub fn init(app: &mut AppContext) {
         .with_linux_or_windows_key_binding("ctrl-alt-]"),
         EditableBinding::new(
             CYCLE_PREVIOUS_ORCHESTRATION_CHILD_AGENT_KEYBINDING,
-            "Cycle to previous orchestration session",
+            crate::tr!("terminal", "cycle-to-previous-orchestration-session"),
             TerminalAction::CyclePreviousOrchestrationChildAgent,
         )
         .with_group(bindings::BindingGroup::WarpAi.as_str())

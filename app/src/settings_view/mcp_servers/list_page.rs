@@ -657,15 +657,15 @@ impl MCPServersListPageView {
                     self.share_templatable_mcp_server_installation(*installation_uuid, ctx);
                 }
                 ServerCardItemId::GalleryMCP(_) => {
-                    report_error!("Share is not implemented for gallery MCP items.")
+                    report_error!(crate::tr!("settings", "share-is-not-implemented-for-gallery-mcp-items"))
                 }
                 ServerCardItemId::FileBasedMCP(_) => {
-                    report_error!("Share is not implemented for file-based MCP servers.")
+                    report_error!(crate::tr!("settings", "share-is-not-implemented-for-file-based-mcp-servers"))
                 }
             },
             ServerCardEvent::ViewLogs(item_id) => match item_id {
                 ServerCardItemId::TemplatableMCP(_) => {
-                    report_error!("Viewing logs is not implemented for templatable MCP.");
+                    report_error!(crate::tr!("settings", "viewing-logs-is-not-implemented-for-templatable-mcp"));
                 }
                 ServerCardItemId::TemplatableMCPInstallation(installation_uuid) => {
                     if let Some(template_uuid) = TemplatableMCPServerManager::as_ref(ctx)
@@ -694,12 +694,12 @@ impl MCPServersListPageView {
                     }
                 }
                 ServerCardItemId::GalleryMCP(_) => {
-                    report_error!("Viewing logs is not implemented for gallery MCP items.")
+                    report_error!(crate::tr!("settings", "viewing-logs-is-not-implemented-for-gallery-mcp-items"))
                 }
             },
             ServerCardEvent::ToggleRunningSwitch(item_id, switch_state) => match item_id {
                 ServerCardItemId::TemplatableMCP(_) => {
-                    report_error!("Running a server is not implemented for templatable MCP.");
+                    report_error!(crate::tr!("settings", "running-a-server-is-not-implemented-for-templatable-mcp"));
                 }
                 ServerCardItemId::TemplatableMCPInstallation(uuid) => {
                     self.toggle_server_running_templatable(*uuid, *switch_state, ctx);
@@ -708,7 +708,7 @@ impl MCPServersListPageView {
                     self.toggle_server_running_file_based(*uuid, *switch_state, ctx);
                 }
                 ServerCardItemId::GalleryMCP(_) => {
-                    report_error!("Running a server is not implemented for gallery MCP items.")
+                    report_error!(crate::tr!("settings", "running-a-server-is-not-implemented-for-gallery-mcp-items"))
                 }
             },
             ServerCardEvent::Install(item_id) => match item_id {
@@ -749,7 +749,7 @@ impl MCPServersListPageView {
                 let ServerCardItemId::TemplatableMCPInstallation(installation_uuid) = item_id
                 else {
                     report_error!(
-                        "Install server update is only supported for templatable MCP installations"
+                        crate::tr!("settings", "install-server-update-is-only-supported-for-templatable-mc")
                     );
                     return;
                 };
@@ -1158,7 +1158,7 @@ impl MCPServersListPageView {
                     "Automatically detect and spawn MCP servers from globally-scoped third-party AI agent configuration files (e.g. in your home directory). Servers detected inside a repository are never spawned automatically and must be enabled individually in the \"Detected from\" sections below. ",
                 ),
                 FormattedTextFragment::hyperlink(
-                    "See supported providers.",
+                    crate::tr!("settings", "see-supported-providers-9949c8"),
                     "https://docs.warp.dev/agents/capabilities/mcp#file-based-mcp-servers",
                 ),
             ]
@@ -1196,7 +1196,7 @@ impl MCPServersListPageView {
         let description_fragments = vec![
             FormattedTextFragment::plain_text(DESCRIPTION_TEXT),
             FormattedTextFragment::hyperlink(
-                "Learn more.",
+                crate::tr!("settings", "learn-more-f990e5"),
                 "https://docs.warp.dev/agents/capabilities/mcp",
             ),
         ];
@@ -1280,7 +1280,7 @@ impl MCPServersListPageView {
 
                 if !owned_server_cards.is_empty() {
                     page.add_child(self.render_server_cards_section(
-                        "My MCPs",
+                        crate::tr!("settings", "my-mcps"),
                         &owned_server_cards,
                         appearance,
                         app,
@@ -1367,7 +1367,7 @@ impl MCPServersListPageView {
                 }
                 ServerCardItemId::GalleryMCP(_) => {
                     log::warn!(
-                        "Received an unexpected gallery server card when separating server cards by installed."
+                        crate::tr!("settings", "received-an-unexpected-gallery-server-card-when-separating")
                     );
                 }
             }

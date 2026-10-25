@@ -39,7 +39,7 @@ impl MSYS2CommandExecutor {
     ) -> Result<CommandOutput> {
         // Currently, we use PowerShell for this.
         let Some(windows_native_shell_path) = self.windows_native_shell_path.as_ref() else {
-            return Err(anyhow!("Windows native shell path not found"));
+            return Err(anyhow!(crate::tr!("terminal", "windows-native-shell-path-not-found")));
         };
         let mut command_process = Command::new(windows_native_shell_path);
         command_process.arg(POWERSHELL_CONFIG_FLAG);

@@ -463,7 +463,7 @@ impl RightPanelView {
         {
             Some(handle) => handle,
             None => {
-                report_error!("Couldn't retrieve Right panel resizable state handle.");
+                report_error!(crate::tr!("workspace", "couldn-t-retrieve-right-panel-resizable-state-handle"));
                 resizable_state_handle(600.0)
             }
         };
@@ -1521,7 +1521,7 @@ impl RightPanelView {
             Self::log_code_review_debug_state(debug_state);
         } else {
             log::info!(
-                "No active code review view is associated with the current tab/repo selection"
+                crate::tr!("workspace", "no-active-code-review-view-is-associated-with-the-current")
             );
         }
 

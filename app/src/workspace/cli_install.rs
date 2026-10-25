@@ -32,7 +32,7 @@ fn warpctrl_bundle_source_path() -> Result<PathBuf> {
         .parent()
         .and_then(|p| p.parent())
         .and_then(|p| p.parent())
-        .ok_or_else(|| anyhow!("Current executable is not inside a bundled app"))?;
+        .ok_or_else(|| anyhow!(crate::tr!("workspace", "current-executable-is-not-inside-a-bundled-app")))?;
     Ok(bundle_root
         .join("Contents/Resources/bin")
         .join(ChannelState::channel().warpctrl_command_name()))
@@ -85,8 +85,8 @@ fn create_symlink_with_admin(source: &Path, target: &Path) -> Result<()> {
 
     if !output.status.success() {
         let stderr = String::from_utf8_lossy(&output.stderr);
-        if stderr.contains("User canceled") || stderr.contains("cancelled") {
-            return Err(anyhow!("Installation cancelled by user."));
+        if stderr.contains(crate::tr!("workspace", "user-canceled")) || stderr.contains("cancelled") {
+            return Err(anyhow!(crate::tr!("workspace", "installation-cancelled-by-user")));
         }
         return Err(anyhow!(
             "Failed to create symlink with admin privileges: {stderr}"
@@ -121,8 +121,8 @@ fn remove_file_with_admin(target: &Path) -> Result<()> {
 
     if !output.status.success() {
         let stderr = String::from_utf8_lossy(&output.stderr);
-        if stderr.contains("User canceled") || stderr.contains("cancelled") {
-            return Err(anyhow!("Uninstallation cancelled by user."));
+        if stderr.contains(crate::tr!("workspace", "user-canceled")) || stderr.contains("cancelled") {
+            return Err(anyhow!(crate::tr!("workspace", "uninstallation-cancelled-by-user")));
         }
         return Err(anyhow!(
             "Failed to remove file with admin privileges: {stderr}"
@@ -205,12 +205,12 @@ pub fn install_oz() -> Result<()> {
     let oz_path = oz_install_target_path();
     let current_binary =
         std::env::current_exe().context("Failed to get current executable path")?;
-    install_symlink(&current_binary, &oz_path, "Oz CLI")
+    install_symlink(&current_binary, &oz_path, crate::tr!("workspace", "oz-cli"))
 }
 
 /// Uninstall the Oz CLI by removing the symlink from /usr/local/bin
 pub fn uninstall_oz() -> Result<()> {
-    uninstall_symlink(&oz_install_target_path(), "Oz command")
+    uninstall_symlink(&oz_install_target_path(), crate::tr!("workspace", "oz-command"))
 }
 
 /// Install Warp Control by symlinking its bundled wrapper into /usr/local/bin.
@@ -230,12 +230,12 @@ pub fn install_warpctrl() -> Result<()> {
         ));
     }
 
-    install_symlink(&warpctrl_source, &warpctrl_path, "Warp Control CLI")
+    install_symlink(&warpctrl_source, &warpctrl_path, crate::tr!("workspace", "warp-control-cli"))
 }
 
 /// Uninstall the Warp Control CLI by removing the symlink from /usr/local/bin
 pub fn uninstall_warpctrl() -> Result<()> {
-    uninstall_symlink(&warpctrl_install_target_path(), "Warp Control command")
+    uninstall_symlink(&warpctrl_install_target_path(), crate::tr!("workspace", "warp-control-command"))
 }
 
 #[cfg(test)]

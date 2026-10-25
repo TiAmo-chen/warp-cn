@@ -105,7 +105,7 @@ impl View for DeleteAuthSecretConfirmationDialog {
         );
 
         let dialog = Dialog::new(
-            "Delete secret".to_string(),
+            crate::tr!("terminal", "delete-secret").to_string(),
             Some(description),
             dialog_styles(appearance),
         )

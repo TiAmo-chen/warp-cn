@@ -152,7 +152,7 @@ impl<P: BackingView> PaneHeader<P> {
 
         let toolbelt_feature_popup = ctx.add_view(|_| {
             FeaturePopup::new_feature(NewFeaturePopupLabel::FromString(
-                "Open files and review code diffs".to_string(),
+                crate::tr!("pane_group", "open-files-and-review-code-diffs")).to_string(),
             ))
         });
         ctx.subscribe_to_view(&toolbelt_feature_popup, move |me, _, event, ctx| {
@@ -963,7 +963,7 @@ impl<P: BackingView> TypedActionView for PaneHeader<P> {
                         }
                     } else {
                         report_error!(
-                            "Attempting to move to pane that does not exist",
+                            crate::tr!("pane_group", "attempting-to-move-to-pane-that-does-not-exist")),
                             extra: { "target_id" => ?target_id }
                         );
                     }

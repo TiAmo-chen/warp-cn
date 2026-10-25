@@ -110,7 +110,7 @@ fn replace_template_chars_with_arguments(
         } else {
             debug_assert!(
                 false,
-                "Number of arguments does not match number of template chars (%) in hardcoded subshell block bytes."
+                crate::tr!("terminal", "number-of-arguments-does-not-match-number-of-template-char")
             );
         }
     }

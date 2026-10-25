@@ -951,7 +951,7 @@ impl WorkingDirectoriesModel {
             }),
             _ => {
                 report_error!(
-                    "WorkingDirectoriesModel did not find CodeReviewView for repo path",
+                    crate::tr!("pane_group", "workingdirectoriesmodel-did-not-find-codereviewview-for-re")),
                     extra: { "repo_path" => ?repo_path }
                 );
             }

@@ -305,7 +305,7 @@ fn init_platform_native_preferences() -> user_preferences::Model {
         } else if #[cfg(target_family = "wasm")] {
             Box::<user_preferences::local_storage::LocalStoragePreferences>::default()
         } else {
-            unreachable!("Unspecified user preferences implementation for current platform!");
+            unreachable!(crate::tr!("settings", "unspecified-user-preferences-implementation-for-current-pl"));
         }
     }
 }

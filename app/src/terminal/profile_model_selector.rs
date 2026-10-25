@@ -96,7 +96,7 @@ const PROFILE_SELECTOR_POSITION_ID: &str = "profile_selector";
 const PROFILE_PICKER_TOOLTIP: &str = "Choose an AI execution profile";
 const MODEL_PICKER_TOOLTIP: &str = "Choose an agent model";
 const MODEL_USES_CHATGPT_SUBSCRIPTION_TOOLTIP: &str =
-    "Requests for this model use your ChatGPT plan";
+    crate::tr!("terminal", "requests-for-this-model-use-your-chatgpt-plan");
 const MODEL_LOCKED_FOR_FOLLOWUP_TOOLTIP: &str = "Follow-ups use the original run's model";
 const MODEL_REQUIRES_EDIT_ACCESS_TOOLTIP: &str = "Request edit access to change model";
 const HARNESS_DEFAULT_MODEL_LABEL: &str = "default";
@@ -575,7 +575,7 @@ impl ProfileModelSelector {
         let manage_chatgpt_usage_button = ctx.add_typed_action_view(|_ctx| {
             let source = ByoKeySource::ChatGPTSubscription;
             ActionButton::new(source.manage_button_label(), SecondaryTheme)
-                .with_tooltip("Manage ChatGPT usage")
+                .with_tooltip(crate::tr!("terminal", "manage-chatgpt-usage"))
                 .with_size(ButtonSize::XSmall)
                 .on_click(move |ctx| {
                     if let Some(url) = source.manage_url() {
@@ -1152,7 +1152,7 @@ impl ProfileModelSelector {
                 items.push(MenuItem::Separator);
             }
             items.push(MenuItem::Header {
-                fields: MenuItemFields::new("Custom models").with_override_text_color(
+                fields: MenuItemFields::new(crate::tr!("terminal", "custom-models")).with_override_text_color(
                     appearance
                         .theme()
                         .sub_text_color(appearance.theme().background())
@@ -1230,12 +1230,12 @@ impl ProfileModelSelector {
                 .map(|llm| {
                     let is_selected = llm.id == active_llm_id;
 
-                    let label = if llm.display_name.starts_with("auto (") {
+                    let label = if llm.display_name.starts_with(crate::tr!("terminal", "auto")) {
                         // Auto display names are formatted like "auto (<sub-variant>)"
                         // We extract the sub-variant and capitalize it for use in the sidecar menu.
                         let trimmed = llm
                             .display_name
-                            .trim_start_matches("auto (")
+                            .trim_start_matches(crate::tr!("terminal", "auto"))
                             .trim_end_matches(")");
 
                         // Capitalize the first letter of the auto sub-variant.

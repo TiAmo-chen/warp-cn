@@ -220,7 +220,7 @@ impl Input {
                 .on_end_resizing(move |ctx, _| {
                     let new_width = width_handle_for_end
                         .lock()
-                        .expect("width handle lock poisoned")
+                        .expect(crate::tr!("terminal", "width-handle-lock-poisoned"))
                         .size();
                     ctx.dispatch_typed_action(InputAction::UpdateCompletionsMenuWidth(new_width));
                 })
@@ -253,7 +253,7 @@ impl Input {
                 .on_end_resizing(move |ctx, _| {
                     let new_height = height_handle_for_end
                         .lock()
-                        .expect("height handle lock poisoned")
+                        .expect(crate::tr!("terminal", "height-handle-lock-poisoned"))
                         .size();
                     ctx.dispatch_typed_action(InputAction::UpdateCompletionsMenuHeight(new_height));
                 })

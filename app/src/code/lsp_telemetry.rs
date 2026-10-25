@@ -182,16 +182,16 @@ impl TelemetryEventDesc for LspTelemetryEventDiscriminants {
 
     fn description(&self) -> &'static str {
         match self {
-            Self::ServerEnabled => "User enabled an LSP server for a workspace",
-            Self::ServerEnablementSkipped => "User skipped LSP enablement during /init",
-            Self::ServerInstallCompleted => "An LSP server installation finished",
-            Self::ServerRemoved => "User removed an LSP server",
-            Self::HoverShown => "Hover tooltip displayed with LSP content or diagnostics",
-            Self::GotoDefinition => "User triggered goto definition via LSP",
-            Self::FindReferencesShown => "Find references card displayed via LSP",
-            Self::ControlAction => "User performed an LSP control action from the footer menu",
-            Self::ServerStarted => "LSP server successfully started and is available",
-            Self::ServerFailed => "LSP server failed to start",
+            Self::ServerEnabled => crate::tr!("code", "user-enabled-an-lsp-server-for-a-workspace"),
+            Self::ServerEnablementSkipped => crate::tr!("code", "user-skipped-lsp-enablement-during-init"),
+            Self::ServerInstallCompleted => crate::tr!("code", "an-lsp-server-installation-finished"),
+            Self::ServerRemoved => crate::tr!("code", "user-removed-an-lsp-server"),
+            Self::HoverShown => crate::tr!("code", "hover-tooltip-displayed-with-lsp-content-or-diagnostics"),
+            Self::GotoDefinition => crate::tr!("code", "user-triggered-goto-definition-via-lsp"),
+            Self::FindReferencesShown => crate::tr!("code", "find-references-card-displayed-via-lsp"),
+            Self::ControlAction => crate::tr!("code", "user-performed-an-lsp-control-action-from-the-footer-menu"),
+            Self::ServerStarted => crate::tr!("code", "lsp-server-successfully-started-and-is-available"),
+            Self::ServerFailed => crate::tr!("code", "lsp-server-failed-to-start"),
         }
     }
 

@@ -79,7 +79,7 @@ impl CommandExecutor for RemoteCommandExecutor {
                 "ControlPath={}",
                 self.control_socket_path
                     .to_str()
-                    .ok_or_else(|| anyhow!("socket path must exist"))?
+                    .ok_or_else(|| anyhow!(crate::tr!("terminal", "socket-path-must-exist")))?
             ),
             "placeholder@placeholder",
             command_str.as_str(),

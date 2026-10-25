@@ -256,16 +256,16 @@ impl LeftPanelView {
     ) -> Box<dyn Element> {
         let (title, description) = match (view, availability) {
             (ToolPanelView::WarpDrive, ToolPanelAvailability::RequiresAccount) => (
-                "Sign in to access Warp Drive",
-                "Create an account to save and share workflows, notebooks, prompts, and more.",
+                crate::tr!("workspace", "sign-in-to-access-warp-drive"),
+                crate::tr!("workspace", "create-an-account-to-save-and-share-workflows-notebooks-pr"),
             ),
             (ToolPanelView::ConversationListView, ToolPanelAvailability::RequiresAccount) => (
-                "Sign in to access Agent conversations",
-                "Create an account and enable AI to access your conversation history.",
+                crate::tr!("workspace", "sign-in-to-access-agent-conversations"),
+                crate::tr!("workspace", "create-an-account-and-enable-ai-to-access-your-conversatio"),
             ),
             (ToolPanelView::ConversationListView, ToolPanelAvailability::RequiresAi) => (
-                "Turn on AI to access Agent conversations",
-                "Enable Warp AI to access your conversation history.",
+                crate::tr!("workspace", "turn-on-ai-to-access-agent-conversations"),
+                crate::tr!("workspace", "enable-warp-ai-to-access-your-conversation-history"),
             ),
             (
                 ToolPanelView::ProjectExplorer
@@ -280,8 +280,8 @@ impl LeftPanelView {
             | (_, ToolPanelAvailability::Available) => {
                 debug_assert!(false, "unexpected locked tool-panel state");
                 (
-                    "Feature unavailable",
-                    "This feature is currently unavailable.",
+                    crate::tr!("workspace", "feature-unavailable"),
+                    crate::tr!("workspace", "this-feature-is-currently-unavailable"),
                 )
             }
         };
@@ -347,7 +347,7 @@ impl LeftPanelView {
         {
             Some(handle) => handle,
             None => {
-                report_error!("Couldn't retrieve left panel resizable state handle.");
+                report_error!(crate::tr!("workspace", "couldn-t-retrieve-left-panel-resizable-state-handle"));
                 resizable_state_handle(600.0)
             }
         };

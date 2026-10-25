@@ -413,7 +413,7 @@ impl SettingsSection {
             Self::Warpify => "Warpify",
             Self::WarpAgent => crate::tr!("settings", "warp-agent-tab"),
             Self::AgentProfiles => "Profiles",
-            Self::AgentMCPServers => "MCP servers",
+            Self::AgentMCPServers => crate::tr!("settings", "mcp-servers-42a854"),
             Self::Knowledge => "Knowledge",
             Self::ThirdPartyCLIAgents => crate::tr!("settings", "third-party-cli-agents"),
             Self::CodeIndexing => crate::tr!("settings", "code-indexing"),
@@ -452,7 +452,7 @@ impl SettingsSection {
             "Profiles" | "AgentProfiles" => Self::AgentProfiles,
             // "MCP Servers" named the standalone page before it moved under the
             // Agents umbrella; it differs from the current slug only by casing.
-            "MCP servers" | "MCP Servers" | "AgentMCPServers" => Self::AgentMCPServers,
+            crate::tr!("settings", "mcp-servers-42a854") | "MCP Servers" | "AgentMCPServers" => Self::AgentMCPServers,
             "Knowledge" => Self::Knowledge,
             "Third party CLI agents" | "ThirdPartyCLIAgents" => Self::ThirdPartyCLIAgents,
             // crate::tr!("settings", "code-tab") named the combined page before it split in two.

@@ -142,7 +142,7 @@ fn prompt_chip_log_file_path(log_path: &Path) -> anyhow::Result<PathBuf> {
     let channel_logfile_name = log_path
         .file_name()
         .and_then(|name| name.to_str())
-        .ok_or_else(|| anyhow::anyhow!("Resolved log path has no filename"))?;
+        .ok_or_else(|| anyhow::anyhow!(crate::tr!("context_chips", "resolved-log-path-has-no-filename"))))?;
     Ok(log_path.with_file_name(prompt_chip_log_filename(channel_logfile_name)))
 }
 

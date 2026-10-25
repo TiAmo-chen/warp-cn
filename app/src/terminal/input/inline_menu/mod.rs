@@ -32,7 +32,7 @@ use super::{InputSuggestionsMode, UserQueryMenuAction};
     settings_value::SettingsValue,
 )]
 #[schemars(
-    description = "Identifies a specific inline menu.",
+    description = crate::tr!("terminal", "identifies-a-specific-inline-menu"),
     rename_all = "snake_case"
 )]
 pub enum InlineMenuType {

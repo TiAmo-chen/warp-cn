@@ -220,7 +220,7 @@ impl AutoCloudHandoffController {
         log::info!("auto handoff: showing success toast in window {window_id:?}");
         ToastStack::handle(ctx).update(ctx, |toast_stack, ctx| {
             toast_stack.add_ephemeral_toast(
-                DismissibleToast::success("Handed session off to the cloud".to_owned()),
+                DismissibleToast::success(crate::tr!("workspace", "handed-session-off-to-the-cloud").to_owned()),
                 window_id,
                 ctx,
             );
@@ -261,14 +261,14 @@ impl AutoCloudHandoffController {
     fn maybe_show_sleep_prompt(&mut self, ctx: &mut ModelContext<Self>) {
         if !std::mem::take(&mut self.pending_sleep_prompt) {
             log::info!(
-                "auto-handoff sleep prompt: nothing to show on wake, no pending prompt was recorded at sleep"
+                crate::tr!("workspace", "auto-handoff-sleep-prompt-nothing-to-show-on-wake-no-pendi")
             );
             return;
         }
 
         if AISettings::as_ref(ctx).is_auto_handoff_on_sleep_enabled(ctx) {
             log::info!(
-                "auto-handoff sleep prompt: not showing on wake, auto-handoff-on-sleep was enabled in the meantime"
+                crate::tr!("workspace", "auto-handoff-sleep-prompt-not-showing-on-wake-auto-handoff")
             );
             return;
         }
@@ -281,7 +281,7 @@ impl AutoCloudHandoffController {
             send_telemetry_from_ctx!(CloudAgentTelemetryEvent::SleepPromptShown, ctx);
         } else {
             log::info!(
-                "auto-handoff sleep prompt: not showing on wake, modal was already shown once"
+                crate::tr!("workspace", "auto-handoff-sleep-prompt-not-showing-on-wake-modal-was-al")
             );
         }
     }

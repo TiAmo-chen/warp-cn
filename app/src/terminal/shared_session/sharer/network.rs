@@ -132,12 +132,12 @@ async fn confirm_reconnection<S: Sink, T: Stream>(
         if buffered_messages.len() >= MAX_PRE_RECONNECT_MESSAGES
             || text.len() > MAX_PRE_RECONNECT_BYTES - buffered_bytes
         {
-            anyhow::bail!("Too many messages before shared session reconnect confirmation");
+            anyhow::bail!(crate::tr!("terminal", "too-many-messages-before-shared-session-reconnect-confirma"));
         }
         buffered_bytes += text.len();
         buffered_messages.push(message);
     }
-    anyhow::bail!("Websocket closed before shared session reconnect confirmation")
+    anyhow::bail!(crate::tr!("terminal", "websocket-closed-before-shared-session-reconnect-confirmat"))
 }
 
 async fn retry_reconnection<F, Fut, T>(
@@ -156,7 +156,7 @@ where
             let result = attempt()
                 .with_timeout(attempt_timeout)
                 .await
-                .context("Timed out waiting for shared session reconnect confirmation")
+                .context(crate::tr!("terminal", "timed-out-waiting-for-shared-session-reconnect-confirmatio"))
                 .and_then(|result| result);
             match result {
                 Ok(connection) => return Ok(connection),
@@ -171,7 +171,7 @@ where
     }
     .with_timeout(cycle_timeout)
     .await
-    .context("Shared session reconnect deadline exceeded")?
+    .context(crate::tr!("terminal", "shared-session-reconnect-deadline-exceeded"))?
 }
 
 macro_rules! sharer_info {
@@ -314,11 +314,11 @@ impl StartupFailure {
             Self::ServerRejected(reason) => reason.clone(),
             Self::WebsocketClosedBeforeStarted => {
                 FailedToInitializeSessionReason::InternalServerError {
-                    details: "Websocket closed before starting session".to_string(),
+                    details: crate::tr!("terminal", "websocket-closed-before-starting-session").to_string(),
                 }
             }
             Self::Timeout => FailedToInitializeSessionReason::InternalServerError {
-                details: "Timed out creating shared session".to_string(),
+                details: crate::tr!("terminal", "timed-out-creating-shared-session").to_string(),
             },
             Self::Transport
             | Self::InitializeSend
@@ -931,7 +931,7 @@ impl Network {
         let connect_handle = ctx.spawn(
             async move {
                 let Some(create_endpoint) = connect_endpoint("/sessions/create".to_owned()) else {
-                    anyhow::bail!("This channel does not support session-sharing.");
+                    anyhow::bail!(crate::tr!("terminal", "this-channel-does-not-support-session-sharing"));
                 };
                 let user_id = UserID {
                     anonymous_id,
@@ -990,7 +990,7 @@ impl Network {
                         network.handle_startup_failure(StartupFailure::InitializeSend, ctx);
                         return;
                     }
-                    sharer_info!(network, "Sent session sharing initialization message");
+                    sharer_info!(network, crate::tr!("terminal", "sent-session-sharing-initialization-message"));
                     network.on_websocket_connected(
                         Some(attempt),
                         ws_proxy_rx.clone(),
@@ -1204,7 +1204,7 @@ impl Network {
         };
         let Some(reconnect_endpoint) = connect_endpoint(format!("/sessions/{session_id}/resume"))
         else {
-            sharer_error!(self, "This channel does not support session-sharing.");
+            sharer_error!(self, crate::tr!("terminal", "this-channel-does-not-support-session-sharing"));
             return;
         };
 
@@ -1423,7 +1423,7 @@ impl Network {
                 // The connection may have timed out or the server restarted.
                 // We don't emit this event if we haven't started successfully to avoid an infinite retry loop.
                 if matches!(network.stage, Stage::StartedSuccessfully { .. }) {
-                    sharer_info!(network, "Sharer reconnecting: websocket closed by server");
+                    sharer_info!(network, crate::tr!("terminal", "sharer-reconnecting-websocket-closed-by-server"));
                     network.reconnect_websocket(ctx);
                 } else if matches!(network.stage, Stage::BeforeStarted { .. }) {
                     // If the websocket is closed while we were waiting for it to start, emit an error.
@@ -1525,7 +1525,7 @@ impl Network {
         let Some(downstream_message) = DownstreamMessage::from_json(text).ok() else {
             sharer_warn!(
                 self,
-                "Received unexpected message from shared session websocket as sharer"
+                crate::tr!("terminal", "received-unexpected-message-from-shared-session-websocket")
             );
             return;
         };
@@ -1540,7 +1540,7 @@ impl Network {
                 let Stage::BeforeStarted { startup_retry } = &self.stage else {
                     sharer_warn!(
                         self,
-                        "Received unexpected SessionInitialized message when we weren't in BeforeStarted stage"
+                        crate::tr!("terminal", "received-unexpected-sessioninitialized-message-when-we-wer")
                     );
                     return;
                 };
@@ -1582,7 +1582,7 @@ impl Network {
                 if !matches!(self.stage, Stage::Reconnecting { .. }) {
                     sharer_warn!(
                         self,
-                        "Received unexpected SessionReconnected message when we weren't reconnecting"
+                        crate::tr!("terminal", "received-unexpected-sessionreconnected-message-when-we-wer")
                     );
                     return;
                 }
@@ -1594,7 +1594,7 @@ impl Network {
                 }
                 sharer_info!(
                     self,
-                    "Successfully reconnected to shared session server as sharer."
+                    crate::tr!("terminal", "successfully-reconnected-to-shared-session-server-as-share")
                 );
                 if let Stage::Reconnecting { abort_handle } = &self.stage {
                     abort_handle.abort();
@@ -1818,7 +1818,7 @@ impl Network {
                         // Calculate how much time we should be batching for.
                         let next_send_time = last_sent_at
                             .checked_add(PTY_READS_BATCH_THRESHOLD)
-                            .expect("Can add durations");
+                            .expect(crate::tr!("terminal", "can-add-durations"));
                         let wait_time = next_send_time.saturating_duration_since(Instant::now());
                         let spawn_handle = ctx.spawn(
                             async move {
@@ -1899,7 +1899,7 @@ impl Network {
         let num_bytes = event_type.num_bytes();
         self.num_bytes_shared = self.num_bytes_shared.add(num_bytes).unwrap_or(Byte::MAX);
         if self.num_bytes_shared > self.max_session_size {
-            sharer_info!(self, "Stopping shared session because max bytes exceeded.");
+            sharer_info!(self, crate::tr!("terminal", "stopping-shared-session-because-max-bytes-exceeded"));
             self.end_session(SessionEndedReason::ExceededSizeLimit);
             return;
         }
@@ -2046,16 +2046,16 @@ pub fn session_terminated_reason_string(
 pub fn failed_to_initialize_session_user_error(reason: &FailedToInitializeSessionReason) -> String {
     match reason {
         FailedToInitializeSessionReason::InternalServerError { .. } => {
-            "An internal error occurred. Please try sharing again."
+            crate::tr!("terminal", "an-internal-error-occurred-please-try-sharing-again")
         }
         FailedToInitializeSessionReason::ScrollbackTooLarge {} => {
-            "Scrollback exceeds limit. Try sharing again without scrollback."
+            crate::tr!("terminal", "scrollback-exceeds-limit-try-sharing-again-without-scrollb")
         }
         FailedToInitializeSessionReason::NoUserQuotaRemaining { .. } => {
             // TODO: we should pass down the next refresh time to tell the user.
             NO_QUOTA_REMAINING_MESSAGE
         }
-        FailedToInitializeSessionReason::UserNotFound => "You must be logged in to share sessions.",
+        FailedToInitializeSessionReason::UserNotFound => crate::tr!("terminal", "you-must-be-logged-in-to-share-sessions"),
     }
     .to_string()
 }
@@ -2064,10 +2064,10 @@ pub fn failed_to_add_guests_user_error(reason: &FailedToAddGuestsReason) -> Stri
     match reason {
         FailedToAddGuestsReason::Invalid => crate::tr!("ai_assistant", "ai-chat-error-label"),
         FailedToAddGuestsReason::NotWarpUsers => {
-            "One or more emails were not associated with Warp accounts."
+            crate::tr!("terminal", "one-or-more-emails-were-not-associated-with-warp-accounts")
         }
         FailedToAddGuestsReason::GuestAlreadyAdded => {
-            "One or more emails have already been added to the session."
+            crate::tr!("terminal", "one-or-more-emails-have-already-been-added-to-the-session")
         }
     }
     .to_string()

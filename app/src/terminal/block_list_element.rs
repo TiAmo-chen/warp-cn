@@ -1038,7 +1038,7 @@ impl BlockListElement {
         self.snackbar_header_state
             .state_handle
             .lock()
-            .expect("locking snackbar header state")
+            .expect(crate::tr!("terminal", "locking-snackbar-header-state"))
     }
 
     pub fn with_filtered_blocks(mut self, filtered_blocks: HashSet<BlockIndex>) -> Self {
@@ -1584,7 +1584,7 @@ impl BlockListElement {
                             // to the terminal bounds.
                             let bounds = self
                                 .bounds
-                                .expect("Bounds should be set before event dispatching");
+                                .expect(crate::tr!("terminal", "bounds-should-be-set-before-event-dispatching"));
                             let side = self.size_info.get_mouse_side(position - bounds.origin());
                             let selection_type = if FeatureFlag::RectSelection.is_enabled() {
                                 SelectionType::from_mouse_event(*modifiers, click_count)
@@ -1679,7 +1679,7 @@ impl BlockListElement {
                         Some(BlockHeightItem::RichContent(RichContentItem { view_id, .. })) => {
                             let bounds = self
                                 .bounds
-                                .expect("Bounds should be set before event dispatching");
+                                .expect(crate::tr!("terminal", "bounds-should-be-set-before-event-dispatching"));
                             let side = self.size_info.get_mouse_side(position - bounds.origin());
                             let selection_type = if FeatureFlag::RectSelection.is_enabled() {
                                 SelectionType::from_mouse_event(*modifiers, click_count)
@@ -1922,7 +1922,7 @@ impl BlockListElement {
         let is_covered = ctx.is_covered(Point::from_vec2f(
             mouse_position,
             self.child_max_z_index
-                .expect("child z index should be set before dispatching"),
+                .expect(crate::tr!("terminal", "child-z-index-should-be-set-before-dispatching")),
         ));
 
         is_hovering && !is_covered
@@ -2104,7 +2104,7 @@ impl BlockListElement {
             viewport.scroll_top_in_lines(),
             origin,
             self.bounds
-                .expect("Bounds should be set before rendering selection"),
+                .expect(crate::tr!("terminal", "bounds-should-be-set-before-rendering-selection")),
             color,
             ctx,
         );
@@ -2863,7 +2863,7 @@ impl BlockListElement {
     fn position_in_terminal_view(&self, position: Vector2F) -> Vector2F {
         let bounds_offset = self
             .bounds
-            .expect("Bounds should be defined before mouse clicks")
+            .expect(crate::tr!("terminal", "bounds-should-be-defined-before-mouse-clicks"))
             .origin();
         let horizontal_scroll_offset = self.horizontal_clipped_scroll_state.scroll_start().as_f32();
         position - bounds_offset - vec2f(horizontal_scroll_offset, 0.)
@@ -2875,7 +2875,7 @@ impl BlockListElement {
     fn is_mouse_position_within_bounds(&self, position: Vector2F) -> bool {
         let bounds = self
             .bounds
-            .expect("Bounds should be set before event dispatching");
+            .expect(crate::tr!("terminal", "bounds-should-be-set-before-event-dispatching"));
         // The block list element's bounds go beyond what is actually visible in the pane if there is a horizontal scroll bar.
         // Check if the mouse position is within the actually visible bounds.
         let visible_bounds_min_x =
@@ -2919,12 +2919,12 @@ impl BlockListElement {
                     .calculate_scroll_top_for_selection(
                         &self.size_info,
                         viewport.scroll_top_in_lines(),
-                        self.origin.expect("Origin should be defined before mouse clicks").xy(),
+                        self.origin.expect(crate::tr!("terminal", "origin-should-be-defined-before-mouse-clicks")).xy(),
                         self.bounds
-                            .expect("Bounds should be set before selection render"),
+                            .expect(crate::tr!("terminal", "bounds-should-be-set-before-selection-render")),
                     )
                     .expect(
-                        "Snackbar header should be exist if the mouse is within snackbar bounds",
+                        crate::tr!("terminal", "snackbar-header-should-be-exist-if-the-mouse-is-within-sna"),
                     )
                 } else {
                     viewport.scroll_top_in_lines()
@@ -3338,7 +3338,7 @@ impl Element for BlockListElement {
             match viewport_item.block_height_item {
                 BlockHeightItem::Block(height) => {
                     if height.as_f64() > 0. {
-                        let block_index = viewport_item.block_index.expect("block index defined");
+                        let block_index = viewport_item.block_index.expect(crate::tr!("terminal", "block-index-defined"));
                         let mut subshell_session_id = None;
 
                         if let Some(block) = model.block_list().block_at(block_index) {
@@ -3733,7 +3733,7 @@ impl Element for BlockListElement {
                 self.size().unwrap(),
             )));
         let element_bounds =
-            RectF::new(origin, self.size.expect("Size should be set before paint"));
+            RectF::new(origin, self.size.expect(crate::tr!("terminal", "size-should-be-set-before-paint")));
         self.bounds = Some(element_bounds);
         self.origin = Some(Point::from_vec2f(origin, ctx.scene.z_index()));
 
@@ -3823,7 +3823,7 @@ impl Element for BlockListElement {
         let items = self
             .visible_items
             .as_ref()
-            .expect("visible items should not be None");
+            .expect(crate::tr!("terminal", "visible-items-should-not-be-none"));
         let mut items_iter = items.iter().enumerate().peekable();
         while let Some((visible_idx, block_entry)) = items_iter.next() {
             let mut snackbar_header = None;
@@ -3902,7 +3902,7 @@ impl Element for BlockListElement {
                                 header_origin,
                                 Vector2F::new(
                                     self.bounds
-                                        .expect("bounds must be set at paint time")
+                                        .expect(crate::tr!("terminal", "bounds-must-be-set-at-paint-time"))
                                         .width(),
                                     selection_height,
                                 ),
@@ -3968,7 +3968,7 @@ impl Element for BlockListElement {
                                     header_origin,
                                     Vector2F::new(
                                         self.bounds
-                                            .expect("bounds must be set at paint time")
+                                            .expect(crate::tr!("terminal", "bounds-must-be-set-at-paint-time"))
                                             .width(),
                                         selection_height,
                                     ),
@@ -4013,7 +4013,7 @@ impl Element for BlockListElement {
                             );
                         } else {
                             log::warn!(
-                                "Should show avatar for shared session participant at selected block but avatar element was not found"
+                                crate::tr!("terminal", "should-show-avatar-for-shared-session-participant-at-selec")
                             )
                         }
                     }
@@ -4051,7 +4051,7 @@ impl Element for BlockListElement {
                                     let max_y = grid_origin.y() + block_pixel_height
                                         - flag_element
                                             .size()
-                                            .expect("block must be laid out before paint")
+                                            .expect(crate::tr!("terminal", "block-must-be-laid-out-before-paint"))
                                             .y();
                                     if flag_origin.y() > max_y {
                                         flag_origin.set_y(max_y);
@@ -4284,7 +4284,7 @@ impl Element for BlockListElement {
                 VisibleItem::RestoredBlockSeparator {
                     height_px: height, ..
                 } => {
-                    let bounds = self.bounds.expect("Bound should exist");
+                    let bounds = self.bounds.expect(crate::tr!("terminal", "bound-should-exist"));
 
                     // Paint the border between blocks and the separator.
                     let border = ctx.scene.draw_rect_with_hit_recording(RectF::new(
@@ -4438,7 +4438,7 @@ impl Element for BlockListElement {
                     ctx.scene.start_layer(if should_clip_view {
                         ClipBounds::BoundedBy(
                             self.bounds
-                                .expect("Bounds were set at beginning of paint()"),
+                                .expect(crate::tr!("terminal", "bounds-were-set-at-beginning-of-paint")),
                         )
                     } else {
                         ClipBounds::None
@@ -4463,7 +4463,7 @@ impl Element for BlockListElement {
         ctx: &mut EventContext,
         app: &AppContext,
     ) -> bool {
-        let z_index = self.child_max_z_index.expect("Z-index should exist.");
+        let z_index = self.child_max_z_index.expect(crate::tr!("terminal", "z-index-should-exist"));
 
         // During an active text selection, bypass the z-index coverage check for
         // drag events. The input/footer area below the block list is painted at a

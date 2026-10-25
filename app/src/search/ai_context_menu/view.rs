@@ -1388,7 +1388,7 @@ impl AIContextMenu {
         let theme = appearance.theme();
         Container::new(
             Text::new(
-                "Loading results...",
+                crate::tr!("search", "loading-results"),
                 appearance.ui_font_family(),
                 appearance.monospace_font_size(),
             )
@@ -1428,7 +1428,7 @@ impl AIContextMenu {
         let build_items = move |range: Range<usize>, app: &AppContext| {
             let context_menu = view_handle
                 .upgrade(app)
-                .expect("View handle should be upgradeable.");
+                .expect(crate::tr!("search", "view-handle-should-be-upgradeable"));
             let context_menu_ref = context_menu.as_ref(app);
             let query_result_renderers = context_menu_ref
                 .search_bar_state

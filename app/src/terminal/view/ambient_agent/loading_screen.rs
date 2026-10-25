@@ -349,10 +349,10 @@ pub fn render_cloud_mode_github_auth_required_screen(
     // Create the authenticate button
     let auth_url = presentation
         .primary_url
-        .expect("GitHub authentication presentation has a URL");
+        .expect(crate::tr!("terminal", "github-authentication-presentation-has-a-url"));
     let action_label = presentation
         .action_label
-        .expect("GitHub authentication presentation has an action label");
+        .expect(crate::tr!("terminal", "github-authentication-presentation-has-an-action-label"));
     let auth_button = appearance
         .ui_builder()
         .button(ButtonVariant::Accent, auth_button_mouse_state.clone())

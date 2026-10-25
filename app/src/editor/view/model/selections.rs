@@ -121,11 +121,11 @@ impl Selection {
         let start = self
             .head()
             .to_char_offset(buffer)
-            .expect("Should be able to convert selection head to offset.");
+            .expect(crate::tr!("editor", "should-be-able-to-convert-selection-head-to-offset"));
         let end = self
             .tail()
             .to_char_offset(buffer)
-            .expect("Should be able to convert selection tail to offset.");
+            .expect(crate::tr!("editor", "should-be-able-to-convert-selection-tail-to-offset"));
         start..end
     }
 
@@ -133,24 +133,24 @@ impl Selection {
         let start = self
             .head()
             .to_byte_offset(buffer)
-            .expect("Should be able to convert selection head to offset.");
+            .expect(crate::tr!("editor", "should-be-able-to-convert-selection-head-to-offset"));
         let end = self
             .tail()
             .to_byte_offset(buffer)
-            .expect("Should be able to convert selection tail to offset.");
+            .expect(crate::tr!("editor", "should-be-able-to-convert-selection-tail-to-offset"));
         start..end
     }
 
     pub fn start_to_point(&self, buffer: &Buffer) -> Point {
         self.start
             .to_point(buffer)
-            .expect("Selection start should be valid Point")
+            .expect(crate::tr!("editor", "selection-start-should-be-valid-point"))
     }
 
     pub fn end_to_point(&self, buffer: &Buffer) -> Point {
         self.end
             .to_point(buffer)
-            .expect("Selection end should be valid Point")
+            .expect(crate::tr!("editor", "selection-end-should-be-valid-point"))
     }
 
     /// Returns the selections display range iff it intersects the provided `range`.
@@ -281,7 +281,7 @@ impl LocalSelection {
     pub fn set_head(&mut self, buffer: &Buffer, cursor: Anchor) {
         if cursor
             .cmp(self.tail(), buffer)
-            .expect("Anchors should be comparable")
+            .expect(crate::tr!("editor", "anchors-should-be-comparable"))
             < Ordering::Equal
         {
             if !self.selection.reversed {
@@ -301,7 +301,7 @@ impl LocalSelection {
     pub fn set_tail(&mut self, buffer: &Buffer, cursor: Anchor) {
         if cursor
             .cmp(self.head(), buffer)
-            .expect("Anchors should be comparable")
+            .expect(crate::tr!("editor", "anchors-should-be-comparable"))
             > Ordering::Equal
         {
             if !self.selection.reversed {

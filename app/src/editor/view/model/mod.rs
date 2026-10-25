@@ -1018,14 +1018,14 @@ impl EditorModel {
                 let start = selection
                     .start()
                     .to_char_offset(buffer)
-                    .expect("Start character in selection buffer should exist");
+                    .expect(crate::tr!("editor", "start-character-in-selection-buffer-should-exist"));
                 let end = selection
                     .end()
                     .to_char_offset(buffer)
-                    .expect("End character in selection buffer should exist");
+                    .expect(crate::tr!("editor", "end-character-in-selection-buffer-should-exist"));
                 buffer
                     .chars_at(start)
-                    .expect("Buffer should contain character at start index of selection")
+                    .expect(crate::tr!("editor", "buffer-should-contain-character-at-start-index-of-selectio"))
                     .take(end.as_usize().saturating_sub(start.as_usize()))
                     .collect()
             })
@@ -1114,7 +1114,7 @@ impl EditorModel {
             && self.all_cursors_next_character_matches_char(
                 text.chars()
                     .next()
-                    .expect("Autocompleted symbol should have at least one character"),
+                    .expect(crate::tr!("editor", "autocompleted-symbol-should-have-at-least-one-character")),
                 ctx,
             )
         {
@@ -1127,11 +1127,11 @@ impl EditorModel {
                 let cursor = map
                     .anchor_before(
                         movement::right(map, end, ctx, false)
-                            .expect("moving right should return a valid DisplayPoint"),
+                            .expect(crate::tr!("editor", "moving-right-should-return-a-valid-displaypoint")),
                         Bias::Right,
                         ctx,
                     )
-                    .expect("DisplayPoint should convert to an Anchor");
+                    .expect(crate::tr!("editor", "displaypoint-should-convert-to-an-anchor"));
 
                 selection.set_start(cursor.clone());
                 selection.set_end(cursor);
@@ -1156,7 +1156,7 @@ impl EditorModel {
                 let position = selection
                     .start()
                     .to_point(buffer)
-                    .expect("Start of selection should exist");
+                    .expect(crate::tr!("editor", "start-of-selection-should-exist"));
 
                 let right_not_alphanumeric = buffer
                     .chars_at(position)
@@ -1622,13 +1622,13 @@ impl EditorModel {
                 let offset = selection
                     .head()
                     .to_char_offset(buffer)
-                    .expect("selection must be a valid CharOffset");
+                    .expect(crate::tr!("editor", "selection-must-be-a-valid-charoffset"));
 
                 // Create an iterator to determine the starting point for the search. Vim will only
                 // consider starting points on the current line.
                 let mut iter = buffer
                     .chars_at(offset)
-                    .expect("infallible with a valid CharOffset")
+                    .expect(crate::tr!("editor", "infallible-with-a-valid-charoffset"))
                     .take_while(|c| *c != '\n');
 
                 // Start by checking the char under the current cursor position.
@@ -1668,7 +1668,7 @@ impl EditorModel {
                 let offset = selection
                     .head()
                     .to_char_offset(buffer)
-                    .expect("selection must be a valid CharOffset");
+                    .expect(crate::tr!("editor", "selection-must-be-a-valid-charoffset"));
 
                 vim_find_matching_bracket(buffer, bracket, offset).unwrap_or(offset)
             },
@@ -1748,12 +1748,12 @@ impl EditorModel {
                 let head = selection
                     .head()
                     .to_char_offset(buffer)
-                    .expect("Selection head must be valid CharOffset");
+                    .expect(crate::tr!("editor", "selection-head-must-be-valid-charoffset"));
 
                 let offset_change = if stop_at_line_boundary {
                     let head_point = head
                         .to_point(buffer)
-                        .expect("Selection head must be valid Point");
+                        .expect(crate::tr!("editor", "selection-head-must-be-valid-point"));
                     match direction {
                         // When moving left, there are <current column> characters
                         // between the current position and the start of the line.
@@ -1763,7 +1763,7 @@ impl EditorModel {
                         Direction::Forward => {
                             let line_len = buffer
                                 .line_len(head_point.row)
-                                .expect("Selection head row should have a length");
+                                .expect(crate::tr!("editor", "selection-head-row-should-have-a-length"));
                             // When moving right, there are (line_len - <current column>)
                             // characters between the current position and the end of the
                             // line. Respect the line boundary by moving at most that
@@ -1808,13 +1808,13 @@ impl EditorModel {
                 let head = selection
                     .head()
                     .to_char_offset(buffer)
-                    .expect("Selection head must be valid CharOffset");
+                    .expect(crate::tr!("editor", "selection-head-must-be-valid-charoffset"));
 
                 match direction {
                     Direction::Backward => {
                         let offset_change = buffer
                             .chars_rev_at(head)
-                            .expect("Buffer must have characters at the current head.")
+                            .expect(crate::tr!("editor", "buffer-must-have-characters-at-the-current-head"))
                             .enumerate()
                             .fold_while(0, |chars_so_far, (rev_index, c)| {
                                 if chars_so_far < char_count {
@@ -1833,7 +1833,7 @@ impl EditorModel {
                     Direction::Forward => {
                         let offset_change = buffer
                             .chars_at(head)
-                            .expect("Buffer must have characters at the current selection head.")
+                            .expect(crate::tr!("editor", "buffer-must-have-characters-at-the-current-selection-head"))
                             .enumerate()
                             .fold_while(0, |chars_so_far, (index, c)| {
                                 if chars_so_far < char_count {
@@ -1880,7 +1880,7 @@ impl EditorModel {
             let mut point = selection
                 .head()
                 .to_point(buffer)
-                .expect("Selection head must be a valid Point");
+                .expect(crate::tr!("editor", "selection-head-must-be-a-valid-point"));
             point.row = point.row.saturating_sub(count);
             let goal_column = match selection.goal_end_column {
                 Some(goal_column) => cmp::max(goal_column, point.column),
@@ -1922,7 +1922,7 @@ impl EditorModel {
             let mut point = selection
                 .head()
                 .to_point(buffer)
-                .expect("Selection head must be a valid Point");
+                .expect(crate::tr!("editor", "selection-head-must-be-a-valid-point"));
             point.row = cmp::min(point.row + count, max_point.row);
             let goal_column = match selection.goal_end_column {
                 Some(goal_column) => cmp::max(goal_column, point.column),
@@ -1957,7 +1957,7 @@ impl EditorModel {
                 let point = selection
                     .head()
                     .to_point(buffer)
-                    .expect("selection head must be a valid Point");
+                    .expect(crate::tr!("editor", "selection-head-must-be-a-valid-point-993714"));
                 let Ok(line) = buffer.line(point.row) else {
                     return point;
                 };
@@ -1990,7 +1990,7 @@ impl EditorModel {
         };
         let new_chars = buffer
             .chars_at(selection.start().to_owned())
-            .expect("buffer should have characters at the Selection start")
+            .expect(crate::tr!("editor", "buffer-should-have-characters-at-the-selection-start"))
             .take(selection_len)
             .map(|char_at_cursor| match char_at_cursor {
                 c if c.is_lowercase() => c.to_uppercase().next().unwrap_or(c),
@@ -2010,7 +2010,7 @@ impl EditorModel {
         let selection = self.first_selection(ctx);
         let uppercased = buffer
             .text_for_range(selection.range(buffer))
-            .expect("buffer should have text in the selection")
+            .expect(crate::tr!("editor", "buffer-should-have-text-in-the-selection"))
             .to_uppercase();
 
         self.insert_internal(uppercased.as_str(), None, SelectionInsertion::No, ctx);
@@ -2024,7 +2024,7 @@ impl EditorModel {
         let selection = self.first_selection(ctx);
         let lowercased = buffer
             .text_for_range(selection.range(buffer))
-            .expect("buffer should have text in the selection")
+            .expect(crate::tr!("editor", "buffer-should-have-text-in-the-selection"))
             .to_lowercase();
 
         self.insert_internal(lowercased.as_str(), None, SelectionInsertion::No, ctx);
@@ -2126,7 +2126,7 @@ impl EditorModel {
             .sorted_by(|a, b| {
                 a.start()
                     .cmp(b.start(), buffer)
-                    .expect("anchors should be comparable")
+                    .expect(crate::tr!("editor", "anchors-should-be-comparable-b11b1f"))
             })
             .collect();
 
@@ -2212,7 +2212,7 @@ impl EditorModel {
         let map = self.display_map(ctx);
         let position = position
             .to_buffer_point(map, Bias::Left, ctx)
-            .expect("Should be able to get point");
+            .expect(crate::tr!("editor", "should-be-able-to-get-point"));
 
         // Get the previous word start, including the current position if applicable
         let word_start = buffer
@@ -2224,11 +2224,11 @@ impl EditorModel {
         map.anchor_before(
             word_start
                 .to_display_point(map, app)
-                .expect("Should be able to get start point of word"),
+                .expect(crate::tr!("editor", "should-be-able-to-get-start-point-of-word")),
             Bias::Left,
             app,
         )
-        .expect("Should be able to get anchor")
+        .expect(crate::tr!("editor", "should-be-able-to-get-anchor"))
     }
 
     /// Helper method to get an anchor at the end of the word closest to the given position
@@ -2243,7 +2243,7 @@ impl EditorModel {
         let map = self.display_map(ctx);
         let position = position
             .to_buffer_point(map, Bias::Left, ctx)
-            .expect("Should be able to get point");
+            .expect(crate::tr!("editor", "should-be-able-to-get-point"));
 
         // Get the next word ending, including the current position if applicable
         let word_end = match buffer
@@ -2258,11 +2258,11 @@ impl EditorModel {
         map.anchor_before(
             word_end
                 .to_display_point(map, app)
-                .expect("Should be able to get start point of word"),
+                .expect(crate::tr!("editor", "should-be-able-to-get-start-point-of-word")),
             Bias::Left,
             app,
         )
-        .expect("Should be able to get anchor")
+        .expect(crate::tr!("editor", "should-be-able-to-get-anchor"))
     }
 
     pub fn max_point(&self, app: &AppContext) -> DisplayPoint {
@@ -2280,14 +2280,14 @@ impl EditorModel {
                 let head = selection
                     .head()
                     .to_char_offset(buffer)
-                    .expect("Selection head should exist");
+                    .expect(crate::tr!("editor", "selection-head-should-exist"));
                 let cursor = buffer
                     .anchor_before(
                         head.saturating_sub(&1.into())
                             .to_point(buffer)
-                            .expect("Delete offset should exist"),
+                            .expect(crate::tr!("editor", "delete-offset-should-exist")),
                     )
-                    .expect("Offset should be in range");
+                    .expect(crate::tr!("editor", "offset-should-be-in-range"));
                 selection.set_head(buffer, cursor);
             }
         }
@@ -2339,13 +2339,13 @@ impl EditorModel {
                     selection.set_end(
                         buffer
                             .anchor_before(head.saturating_sub(&1.into()).to_point(buffer).unwrap())
-                            .expect("Selection offset should be in range"),
+                            .expect(crate::tr!("editor", "selection-offset-should-be-in-range")),
                     );
                 } else {
                     selection.set_start(
                         buffer
                             .anchor_before(head.saturating_sub(&1.into()).to_point(buffer).unwrap())
-                            .expect("Selection offset should be in range"),
+                            .expect(crate::tr!("editor", "selection-offset-should-be-in-range")),
                     );
                 }
 
@@ -2703,7 +2703,7 @@ impl EditorModel {
                                 .saturating_sub(&1.into()),
                         )
                         .expect(
-                            "Selection start - 1 (checked subtraction) should be a valid Anchor",
+                            crate::tr!("editor", "selection-start-1-checked-subtraction-should-be-a-valid-an"),
                         ),
                 );
             }
@@ -2717,7 +2717,7 @@ impl EditorModel {
                                 .unwrap_or_default()
                                 .saturating_sub(&1.into()),
                         )
-                        .expect("Selection end - 1 (checked subtraction) should be a valid Anchor"),
+                        .expect(crate::tr!("editor", "selection-end-1-checked-subtraction-should-be-a-valid-anch")),
                 );
             }
         });
@@ -2876,7 +2876,7 @@ impl EditorModel {
                 selection
                     .end()
                     .to_point(buffer)
-                    .expect("Selection end must be valid Point")
+                    .expect(crate::tr!("editor", "selection-end-must-be-valid-point"))
                     == max_point
             });
             if selection_at_end {
@@ -3151,7 +3151,7 @@ impl EditorModel {
             let position = selection
                 .start()
                 .to_point(buffer)
-                .expect("Start of selection should exist");
+                .expect(crate::tr!("editor", "start-of-selection-should-exist"));
 
             buffer
                 .chars_at(position)
@@ -3172,12 +3172,12 @@ impl EditorModel {
             let start = selection
                 .start()
                 .to_char_offset(buffer)
-                .expect("current selection start should have valid char offset");
+                .expect(crate::tr!("editor", "current-selection-start-should-have-valid-char-offset"));
 
             let end = selection
                 .end()
                 .to_char_offset(buffer)
-                .expect("current selection end should have valid char offset");
+                .expect(crate::tr!("editor", "current-selection-end-should-have-valid-char-offset"));
 
             let start_newline = start.as_usize() > 0
                 && buffer
@@ -3193,7 +3193,7 @@ impl EditorModel {
                     selection.set_end(
                         buffer
                             .anchor_before(point)
-                            .expect("valid point should be valid anchor"),
+                            .expect(crate::tr!("editor", "valid-point-should-be-valid-anchor")),
                     );
                 }
 
@@ -3204,7 +3204,7 @@ impl EditorModel {
                 selection.set_start(
                     buffer
                         .anchor_before(point)
-                        .expect("valid point should be valid anchor"),
+                        .expect(crate::tr!("editor", "valid-point-should-be-valid-anchor")),
                 );
             }
         });

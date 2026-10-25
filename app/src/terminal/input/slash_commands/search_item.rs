@@ -43,7 +43,7 @@ impl SearchItem for InlineItem {
         let icon_size = inline_styles::font_size(appearance);
         let icon_path = self
             .icon_path
-            .expect("items rendered in the GUI slash command menu must have an icon");
+            .expect(crate::tr!("terminal", "items-rendered-in-the-gui-slash-command-menu-must-have-an"));
 
         Container::new(
             ConstrainedBox::new(Icon::new(icon_path, icon_color.into_solid()).finish())

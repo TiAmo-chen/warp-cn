@@ -78,16 +78,16 @@ impl SettingType {
     pub fn get_name(&self) -> &'static str {
         match self {
             SettingType::Theme => "Theme",
-            SettingType::OptionAsMeta => "Option as Meta",
-            SettingType::MouseAndScrollReporting => "Mouse/Scroll Reporting",
+            SettingType::OptionAsMeta => crate::tr!("settings", "option-as-meta"),
+            SettingType::MouseAndScrollReporting => crate::tr!("settings", "mouse-scroll-reporting"),
             SettingType::Font => "Font",
             SettingType::DefaultShell => crate::tr!("settings", "default-shell-label"),
             SettingType::WorkingDirectory => crate::tr!("common", "working-directory"),
-            SettingType::HotkeyMode => "Global hotkey",
-            SettingType::WindowSize => "Window Dimensions",
-            SettingType::CopyOnSelect => "Copy On Select",
+            SettingType::HotkeyMode => crate::tr!("settings", "global-hotkey-9f2815"),
+            SettingType::WindowSize => crate::tr!("settings", "window-dimensions"),
+            SettingType::CopyOnSelect => crate::tr!("settings", "copy-on-select-fc84a5"),
             SettingType::Opacity => crate::tr!("settings", "window-opacity"),
-            SettingType::CursorBlinking => "Cursor Blinking",
+            SettingType::CursorBlinking => crate::tr!("settings", "cursor-blinking"),
         }
     }
 }

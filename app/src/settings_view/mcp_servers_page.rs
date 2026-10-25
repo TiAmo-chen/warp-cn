@@ -576,7 +576,7 @@ impl SettingsWidget for MCPServersSettingsWidget {
     type View = MCPServersSettingsPageView;
 
     fn search_terms(&self) -> &str {
-        "mcp servers"
+        crate::tr!("settings", "mcp-servers-e06dff")
     }
 
     fn render(

@@ -56,7 +56,7 @@ impl EmbeddedItem for EmbeddedCommentSpace {
         let comment_editor = self.get_comment_editor(app);
         if comment_editor.is_none() {
             report_error!(
-                "EmbeddedComment can't layout missing comment editor",
+                crate::tr!("code", "embeddedcomment-can-t-layout-missing-comment-editor"),
                 extra: { "comment_id" => ?self.id_string }
             );
         };
@@ -65,7 +65,7 @@ impl EmbeddedItem for EmbeddedCommentSpace {
             .and_then(|editor| editor.read(app, |editor, _ctx| editor.get_laid_out_size()))
             .unwrap_or_else(|| {
                 report_error!(
-                    "Didn't find laid out size for editor",
+                    crate::tr!("code", "didn-t-find-laid-out-size-for-editor"),
                     extra: { "editor_id" => ?self.id_string }
                 );
                 Vector2F::new(100.0, 24.0)

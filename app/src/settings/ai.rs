@@ -113,7 +113,7 @@ impl SingletonEntity for FocusedTerminalInfo {}
     settings_value::SettingsValue,
 )]
 #[schemars(
-    description = "Physical key used to toggle voice input.",
+    description = crate::tr!("settings", "physical-key-used-to-toggle-voice-input"),
     rename_all = "snake_case"
 )]
 pub enum VoiceInputToggleKey {
@@ -194,16 +194,16 @@ impl VoiceInputToggleKey {
             VoiceInputToggleKey::AltRight => {
                 Box::leak(format!("{alt_key_name} (Right)").into_boxed_str())
             }
-            VoiceInputToggleKey::ControlLeft => "Control (Left)",
-            VoiceInputToggleKey::ControlRight => "Control (Right)",
+            VoiceInputToggleKey::ControlLeft => crate::tr!("settings", "control-left"),
+            VoiceInputToggleKey::ControlRight => crate::tr!("settings", "control-right"),
             VoiceInputToggleKey::SuperLeft => {
                 Box::leak(format!("{super_key_name} (Left)").into_boxed_str())
             }
             VoiceInputToggleKey::SuperRight => {
                 Box::leak(format!("{super_key_name} (Right)").into_boxed_str())
             }
-            VoiceInputToggleKey::ShiftLeft => "Shift (Left)",
-            VoiceInputToggleKey::ShiftRight => "Shift (Right)",
+            VoiceInputToggleKey::ShiftLeft => crate::tr!("settings", "shift-left"),
+            VoiceInputToggleKey::ShiftRight => crate::tr!("settings", "shift-right"),
         }
     }
 
@@ -348,12 +348,12 @@ pub const VOICE_INPUT_LANGUAGES: &[(&str, &str)] = &[
     ("el", "Greek"),
     ("gn", "Guarani"),
     ("gu", "Gujarati"),
-    ("ht", "Haitian Creole"),
+    ("ht", crate::tr!("settings", "haitian-creole")),
     ("ha", "Hausa"),
     ("he", "Hebrew"),
     ("hz", "Herero"),
     ("hi", "Hindi"),
-    ("ho", "Hiri Motu"),
+    ("ho", crate::tr!("settings", "hiri-motu")),
     ("hu", "Hungarian"),
     ("is", "Icelandic"),
     ("io", "Ido"),
@@ -403,15 +403,15 @@ pub const VOICE_INPUT_LANGUAGES: &[(&str, &str)] = &[
     ("nv", "Navajo"),
     ("ng", "Ndonga"),
     ("ne", "Nepali"),
-    ("nd", "North Ndebele"),
-    ("se", "Northern Sami"),
+    ("nd", crate::tr!("settings", "north-ndebele")),
+    ("se", crate::tr!("settings", "northern-sami")),
     ("no", "Norwegian"),
-    ("nb", "Norwegian Bokmal"),
-    ("nn", "Norwegian Nynorsk"),
+    ("nb", crate::tr!("settings", "norwegian-bokmal")),
+    ("nn", crate::tr!("settings", "norwegian-nynorsk")),
     ("ii", "Nuosu"),
     ("oc", "Occitan"),
     ("oj", "Ojibwe"),
-    ("cu", "Old Church Slavonic"),
+    ("cu", crate::tr!("settings", "old-church-slavonic")),
     ("or", "Oriya"),
     ("om", "Oromo"),
     ("os", "Ossetian"),
@@ -430,7 +430,7 @@ pub const VOICE_INPUT_LANGUAGES: &[(&str, &str)] = &[
     ("sg", "Sango"),
     ("sa", "Sanskrit"),
     ("sc", "Sardinian"),
-    ("gd", "Scottish Gaelic"),
+    ("gd", crate::tr!("settings", "scottish-gaelic")),
     ("sr", "Serbian"),
     ("sn", "Shona"),
     ("sd", "Sindhi"),
@@ -438,8 +438,8 @@ pub const VOICE_INPUT_LANGUAGES: &[(&str, &str)] = &[
     ("sk", "Slovak"),
     ("sl", "Slovenian"),
     ("so", "Somali"),
-    ("nr", "South Ndebele"),
-    ("st", "Southern Sotho"),
+    ("nr", crate::tr!("settings", "south-ndebele")),
+    ("st", crate::tr!("settings", "southern-sotho")),
     ("es", "Spanish"),
     ("su", "Sundanese"),
     ("sw", "Swahili"),
@@ -469,7 +469,7 @@ pub const VOICE_INPUT_LANGUAGES: &[(&str, &str)] = &[
     ("vo", "Volapuk"),
     ("wa", "Walloon"),
     ("cy", "Welsh"),
-    ("fy", "Western Frisian"),
+    ("fy", crate::tr!("settings", "western-frisian")),
     ("wo", "Wolof"),
     ("xh", "Xhosa"),
     ("yi", "Yiddish"),
@@ -492,7 +492,7 @@ pub const VOICE_INPUT_LANGUAGES: &[(&str, &str)] = &[
     settings_value::SettingsValue,
 )]
 #[schemars(
-    description = "Default mode for new sessions.",
+    description = crate::tr!("settings", "default-mode-for-new-sessions-ef3e1d"),
     rename_all = "snake_case"
 )]
 pub enum DefaultSessionMode {
@@ -549,7 +549,7 @@ impl DefaultSessionMode {
     settings_value::SettingsValue,
 )]
 #[schemars(
-    description = "Controls how agent thinking is displayed after streaming.",
+    description = crate::tr!("settings", "controls-how-agent-thinking-is-displayed-after-streaming"),
     rename_all = "snake_case"
 )]
 pub enum ThinkingDisplayMode {
@@ -614,7 +614,7 @@ impl ThinkingDisplayMode {
     settings_value::SettingsValue,
 )]
 #[schemars(
-    description = "Controls how child-agent messages are displayed.",
+    description = crate::tr!("settings", "controls-how-child-agent-messages-are-displayed"),
     rename_all = "snake_case"
 )]
 pub enum OrchestrationMessageDisplayMode {
@@ -652,7 +652,7 @@ settings::macros::implement_setting_for_enum!(
     settings_value::SettingsValue,
 )]
 #[schemars(
-    description = "Which unit the usage entry displays in Warp Agent CLI.",
+    description = crate::tr!("settings", "which-unit-the-usage-entry-displays-in-warp-agent-cli"),
     rename_all = "snake_case"
 )]
 pub enum TuiUsageDisplayMode {
@@ -688,7 +688,7 @@ settings::macros::implement_setting_for_enum!(
     settings_value::SettingsValue,
 )]
 #[schemars(
-    description = "Which unit the GUI's usage/spend displays show: credits or dollars.",
+    description = crate::tr!("settings", "which-unit-the-gui-s-usage-spend-displays-show-credits-or"),
     rename_all = "snake_case"
 )]
 pub enum UsageDisplayUnit {
@@ -731,7 +731,7 @@ impl UsageDisplayUnit {
     settings_value::SettingsValue,
 )]
 #[schemars(
-    description = "A configurable item in the Warp Agent CLI statusline.",
+    description = crate::tr!("settings", "a-configurable-item-in-the-warp-agent-cli-statusline"),
     rename_all = "snake_case"
 )]
 #[serde(rename_all = "snake_case")]
@@ -779,21 +779,21 @@ impl TuiStatuslineItem {
 
     pub fn label(self) -> &'static str {
         match self {
-            Self::AutoApprove => "Auto-approve indicator",
-            Self::VimModeIndicator => "Vim mode indicator",
+            Self::AutoApprove => crate::tr!("settings", "auto-approve-indicator"),
+            Self::VimModeIndicator => crate::tr!("settings", "vim-mode-indicator"),
             Self::Model => "Model",
             Self::Team => "Team",
             Self::WorkingDirectory => crate::tr!("settings", "working-directory-label"),
             Self::GitBranch => crate::tr!("context_chips", "git-branch"),
-            Self::GitBranchStatus => "Git branch status",
-            Self::GitDiffStatus => "Git diff status",
+            Self::GitBranchStatus => crate::tr!("settings", "git-branch-status"),
+            Self::GitDiffStatus => crate::tr!("settings", "git-diff-status"),
             Self::GitHubPullRequest => crate::tr!("context_chips", "github-pull-request"),
-            Self::CreditUsage => "Credit usage",
+            Self::CreditUsage => crate::tr!("settings", "credit-usage"),
             Self::ContextWindowUsage => crate::tr!("ai_assistant", "ai-context-window-usage-tooltip"),
             Self::Date => "Date",
             Self::Time12Hour => crate::tr!("context_chips", "time-12"),
             Self::Time24Hour => crate::tr!("context_chips", "time-24"),
-            Self::AgentTodoList => "Agent to-do list",
+            Self::AgentTodoList => crate::tr!("settings", "agent-to-do-list"),
             Self::VoiceInput => crate::tr!("ai_assistant", "ai-voice-input-tooltip"),
         }
     }
@@ -876,20 +876,20 @@ impl OrchestrationMessageDisplayMode {
         match self {
             OrchestrationMessageDisplayMode::ShowAndCollapse => crate::tr!("settings", "thinking-show-and-collapse"),
             OrchestrationMessageDisplayMode::AlwaysShow => crate::tr!("settings", "thinking-always-show"),
-            OrchestrationMessageDisplayMode::AlwaysCollapse => "Always collapse",
+            OrchestrationMessageDisplayMode::AlwaysCollapse => crate::tr!("settings", "always-collapse"),
         }
     }
 
     pub fn command_palette_description(&self) -> &'static str {
         match self {
             OrchestrationMessageDisplayMode::ShowAndCollapse => {
-                "Set child-agent message display: show & collapse"
+                crate::tr!("settings", "set-child-agent-message-display-show-collapse")
             }
             OrchestrationMessageDisplayMode::AlwaysShow => {
-                "Set child-agent message display: always show"
+                crate::tr!("settings", "set-child-agent-message-display-always-show")
             }
             OrchestrationMessageDisplayMode::AlwaysCollapse => {
-                "Set child-agent message display: always collapse"
+                crate::tr!("settings", "set-child-agent-message-display-always-collapse")
             }
         }
     }
@@ -928,7 +928,7 @@ impl OrchestrationMessageDisplayMode {
     settings_value::SettingsValue,
 )]
 #[schemars(
-    description = "Default behavior when submitting a new prompt while the agent is still responding.",
+    description = crate::tr!("settings", "default-behavior-when-submitting-a-new-prompt-while-the-ag"),
     rename_all = "snake_case"
 )]
 pub enum PromptSubmissionMode {
@@ -959,18 +959,18 @@ impl PromptSubmissionMode {
     /// Display name for the settings dropdown.
     pub fn display_name(&self) -> &'static str {
         match self {
-            PromptSubmissionMode::Interrupt => "Interrupt response",
-            PromptSubmissionMode::Steer => "Steer at next turn",
-            PromptSubmissionMode::Queue => "Queue until response finishes",
+            PromptSubmissionMode::Interrupt => crate::tr!("settings", "interrupt-response"),
+            PromptSubmissionMode::Steer => crate::tr!("settings", "steer-at-next-turn"),
+            PromptSubmissionMode::Queue => crate::tr!("settings", "queue-until-response-finishes"),
         }
     }
 
     pub fn command_palette_description(&self) -> &'static str {
         match self {
-            PromptSubmissionMode::Interrupt => "Set default prompt submission: interrupt response",
-            PromptSubmissionMode::Steer => "Set default prompt submission: steer at next turn",
+            PromptSubmissionMode::Interrupt => crate::tr!("settings", "set-default-prompt-submission-interrupt-response"),
+            PromptSubmissionMode::Steer => crate::tr!("settings", "set-default-prompt-submission-steer-at-next-turn"),
             PromptSubmissionMode::Queue => {
-                "Set default prompt submission: queue until response finishes"
+                crate::tr!("settings", "set-default-prompt-submission-queue-until-response-finishe")
             }
         }
     }
@@ -1002,7 +1002,7 @@ impl PromptSubmissionMode {
     settings_value::SettingsValue,
 )]
 #[schemars(
-    description = "What happens when a prompt is submitted while an agent controls an agent-requested long-running command.",
+    description = crate::tr!("settings", "what-happens-when-a-prompt-is-submitted-while-an-agent-con"),
     rename_all = "snake_case"
 )]
 pub enum LongRunningCommandSubmissionMode {
@@ -1030,9 +1030,9 @@ impl LongRunningCommandSubmissionMode {
     /// Display name for the settings dropdown.
     pub fn display_name(&self) -> &'static str {
         match self {
-            LongRunningCommandSubmissionMode::SendImmediately => "Send immediately",
+            LongRunningCommandSubmissionMode::SendImmediately => crate::tr!("settings", "send-immediately"),
             LongRunningCommandSubmissionMode::QueueUntilCommandCompletes => {
-                "Queue until command finishes"
+                crate::tr!("settings", "queue-until-command-finishes")
             }
         }
     }
@@ -1040,10 +1040,10 @@ impl LongRunningCommandSubmissionMode {
     pub fn command_palette_description(&self) -> &'static str {
         match self {
             LongRunningCommandSubmissionMode::SendImmediately => {
-                "Set long-running command submission: send immediately"
+                crate::tr!("settings", "set-long-running-command-submission-send-immediately")
             }
             LongRunningCommandSubmissionMode::QueueUntilCommandCompletes => {
-                "Set long-running command submission: queue until command finishes"
+                crate::tr!("settings", "set-long-running-command-submission-queue-until-command-fi")
             }
         }
     }
@@ -1123,7 +1123,7 @@ pub struct AIRequestQuotaInfo {
     settings_value::SettingsValue,
 )]
 #[schemars(
-    description = "File read permission level for the agent.",
+    description = crate::tr!("settings", "file-read-permission-level-for-the-agent"),
     rename_all = "snake_case"
 )]
 pub enum AgentModeCodingPermissionsType {

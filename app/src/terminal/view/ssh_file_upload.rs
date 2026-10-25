@@ -98,7 +98,7 @@ impl TypedActionView for FileUpload {
 
 impl View for FileUpload {
     fn ui_name() -> &'static str {
-        "SSH File Upload"
+        crate::tr!("terminal", "ssh-file-upload")
     }
 
     fn render(&self, app: &warpui::AppContext) -> Box<dyn warpui::Element> {
@@ -190,7 +190,7 @@ impl FileUpload {
     /// Creates an sftp command that copies a given local file into the PWD of the warpified ssh session, if any.
     fn transfer_file_sftp_command(&self, file_upload: &FileUploadInfo) -> String {
         // "sftp "
-        let mut command = String::from("sftp ");
+        let mut command = String::from(crate::tr!("terminal", "sftp"));
 
         // "sftp -P 2222"
         if let Some(port) = &file_upload.remote_port {
@@ -371,7 +371,7 @@ impl FileUpload {
         };
 
         let mut file_iter = file.local_file_paths.iter().peekable();
-        let first_file = file_iter.next().expect("at least one local file path");
+        let first_file = file_iter.next().expect(crate::tr!("terminal", "at-least-one-local-file-path"));
         let mut lines = vec![FormattedTextLine::Line(vec![
             FormattedTextFragment::plain_text(status_string),
             FormattedTextFragment::plain_text(" "),

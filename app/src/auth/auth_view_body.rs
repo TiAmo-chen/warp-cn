@@ -922,7 +922,7 @@ impl TypedActionView for AuthViewBody {
                     }
                     AuthViewVariant::Initial => {
                         report_error!(anyhow!(
-                            "Anonymous user initiated sign-up from unexpected AuthView variant"
+                            crate::tr!("auth", "anonymous-user-initiated-sign-up-from-unexpected-authview")
                         ));
                         AnonymousUserSignupEntrypoint::Unknown
                     }

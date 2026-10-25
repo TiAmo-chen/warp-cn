@@ -37,3 +37,12 @@ appearance-theme-warp-referral = Warp 推荐
 appearance-theme-solar-flare = 太阳耀斑
 appearance-theme-adeberry = Adeberry
 appearance-theme-received-referral-reward = 已获得推荐奖励
+
+## zh: auto-extracted entries
+appearance-referred-to-warp = Referred to Warp
+appearance-dir = dir   
+appearance-executable = executable   
+appearance-theme-chooser-unfortunately-theme-chooser-window-isn-t-com = Theme chooser. Unfortunately, theme chooser window isn't compatible with screen readers yet.
+appearance-press-escape-to-close = Press escape to close.
+appearance-kmeans-algorithm-did-not-produce-valid-hex-strings = kmeans algorithm did not produce valid hex strings
+appearance-attempted-to-delete-a-custom-theme-image-with-an-unexpecte = Attempted to delete a custom theme image with an unexpected image source

@@ -162,7 +162,7 @@ impl View for NativeModal {
                         },
                         self.modal_button_mouse_states
                             .get(i)
-                            .expect("Modal button mouse state should be set")
+                            .expect(crate::tr!("workspace", "modal-button-mouse-state-should-be-set"))
                             .clone(),
                     )
                     .with_centered_text_label(modal_button.title.clone())

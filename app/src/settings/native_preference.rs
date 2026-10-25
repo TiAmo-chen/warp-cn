@@ -15,7 +15,7 @@ use settings::{SupportedPlatforms, SyncToCloud};
     settings_value::SettingsValue,
 )]
 #[schemars(
-    description = "Preference for using the native desktop app or the web app.",
+    description = crate::tr!("settings", "preference-for-using-the-native-desktop-app-or-the-web-app"),
     rename_all = "snake_case"
 )]
 pub enum UserNativePreference {

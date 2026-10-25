@@ -480,7 +480,7 @@ impl BillingCycleUsageSectionView {
         let theme = appearance.theme();
         let reset_str = AIRequestUsageModel::as_ref(app)
             .next_refresh_time_local()
-            .format("Resets %b %d, %-I:%M %p")
+            .format(crate::tr!("settings", "resets-b-d-i-m-p"))
             .to_string();
         Some(
             Text::new_inline(
@@ -725,8 +725,8 @@ impl BillingCycleUsageSectionView {
 }
 
 const NATIVE_WORKSPACES_CTA: (&str, &str, BillingCycleUsageAction, Icon) = (
-    "Open the admin panel",
-    "to manage workspace settings and spend limits.",
+    crate::tr!("settings", "open-the-admin-panel"),
+    crate::tr!("settings", "to-manage-workspace-settings-and-spend-limits"),
     BillingCycleUsageAction::OpenWorkspaceAdminPanel,
     Icon::Users,
 );
@@ -739,27 +739,27 @@ fn visibility_cta_for(
     match granularity {
         UsageVisibilityGranularity::OwnOnly => Some((
             crate::tr!("ai_assistant", "ai-upgrade-to-build-text"),
-            "to see team-level credit usage.",
+            crate::tr!("settings", "to-see-team-level-credit-usage"),
             BillingCycleUsageAction::OpenUpgrade,
             Icon::ArrowCircleBrokenUp,
         )),
         UsageVisibilityGranularity::TeamAggregate => Some((
             crate::tr!("settings", "upgrade-to-business"),
-            "to see per-user credit attribution.",
+            crate::tr!("settings", "to-see-per-user-credit-attribution"),
             BillingCycleUsageAction::OpenUpgrade,
             Icon::ArrowCircleBrokenUp,
         )),
         UsageVisibilityGranularity::PerUserTotals => Some((
             crate::tr!("settings", "upgrade-to-enterprise"),
-            "to see fine-grained credit attribution and set per-user spend limits.",
+            crate::tr!("settings", "to-see-fine-grained-credit-attribution-and-set-per-user-sp"),
             BillingCycleUsageAction::OpenUpgrade,
             Icon::ArrowCircleBrokenUp,
         )),
         // FullBreakdown viewers already have full visibility; nudge them to
         // the admin panel where per-user spend limits actually get configured.
         UsageVisibilityGranularity::FullBreakdown => Some((
-            "Open the admin panel",
-            "to set per-user spend limits.",
+            crate::tr!("settings", "open-the-admin-panel"),
+            crate::tr!("settings", "to-set-per-user-spend-limits"),
             BillingCycleUsageAction::OpenTeamAdminPanel,
             Icon::Users,
         )),
@@ -780,7 +780,7 @@ fn legend_style_for(cost_type: AiCreditsUsageAndCostType) -> (ColorU, &'static s
 fn render_aggregate_legend_tooltip(appearance: &Appearance) -> Box<dyn Element> {
     let theme = appearance.theme();
     let text = Text::new_inline(
-        "Other team members' usage across add-on, pay-as-you-go, and cloud-only credits."
+        crate::tr!("settings", "other-team-members-usage-across-add-on-pay-as-you-go-and-c")
             .to_string(),
         appearance.ui_font_family(),
         12.,

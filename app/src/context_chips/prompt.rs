@@ -114,7 +114,7 @@ pub struct PromptConfiguration {
     settings_value::SettingsValue,
 )]
 #[schemars(
-    description = "Whether using the default or a custom prompt layout.",
+    description = crate::tr!("context_chips", "whether-using-the-default-or-a-custom-prompt-layout")),
     rename_all = "snake_case"
 )]
 pub enum PromptSelection {
