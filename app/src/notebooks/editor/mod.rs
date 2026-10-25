@@ -139,7 +139,7 @@ impl BlockType {
             BlockType::UnorderedList => "Bulleted list",
             BlockType::OrderedList => "Numbered list",
             BlockType::Code => "Code",
-            BlockType::TaskList => crate::tr!("notebooks", "block-to-do-list"),
+            BlockType::TaskList => "To-do list",
         }
     }
 }

@@ -152,7 +152,7 @@ impl WorkflowViewType {
             WorkflowViewType::All => "All",
             WorkflowViewType::LocalPersonal => &crate::tr!("workflows", "category-my-workflows"),
             WorkflowViewType::Project => &crate::tr!("workflows", "category-repository-workflows"),
-            WorkflowViewType::Team => crate::tr!("workflows", "category-team-workflows"),
+            WorkflowViewType::Team => &crate::tr!("workflows", "category-team-workflows"),
             WorkflowViewType::Category { category_index, .. } => &category_names[*category_index],
         }
     }

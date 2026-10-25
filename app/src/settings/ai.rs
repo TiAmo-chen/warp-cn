@@ -530,7 +530,7 @@ impl DefaultSessionMode {
             DefaultSessionMode::Agent => "Agent",
             DefaultSessionMode::CloudAgent => "Cloud agent",
             DefaultSessionMode::TabConfig => "Tab Config",
-            DefaultSessionMode::DockerSandbox => crate::tr!("settings", "default-session-docker-sandbox"),
+            DefaultSessionMode::DockerSandbox => "Local Docker Sandbox",
         }
     }
 }
@@ -579,7 +579,7 @@ impl ThinkingDisplayMode {
         match self {
             ThinkingDisplayMode::ShowAndCollapse => "Show & collapse",
             ThinkingDisplayMode::AlwaysShow => "Always show",
-            ThinkingDisplayMode::NeverShow => crate::tr!("settings", "thinking-never-show"),
+            ThinkingDisplayMode::NeverShow => "Never show",
         }
     }
 
@@ -587,7 +587,7 @@ impl ThinkingDisplayMode {
         match self {
             ThinkingDisplayMode::ShowAndCollapse => "Set agent thinking display: show & collapse",
             ThinkingDisplayMode::AlwaysShow => "Set agent thinking display: always show",
-            ThinkingDisplayMode::NeverShow => crate::tr!("settings", "thinking-cmd-never-show"),
+            ThinkingDisplayMode::NeverShow => "Set agent thinking display: never show",
         }
     }
 
@@ -794,7 +794,7 @@ impl TuiStatuslineItem {
             Self::Time12Hour => "Time (12 hour format)",
             Self::Time24Hour => "Time (24 hour format)",
             Self::AgentTodoList => "Agent to-do list",
-            Self::VoiceInput => crate::tr!("ai_assistant", "ai-voice-input-tooltip"),
+            Self::VoiceInput => "Voice input",
         }
     }
 }

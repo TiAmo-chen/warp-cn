@@ -79,7 +79,7 @@ impl ZeroStatePromptSuggestionType {
             Self::Deploy => {
                 "Help me deploy my project. What information do I need to provide to you to do this?"
             }
-            Self::SomethingElse => crate::tr!("terminal", "suggestion-something-else"),
+            Self::SomethingElse => "Something else?",
         }
     }
 

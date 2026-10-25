@@ -5855,7 +5855,7 @@ impl TelemetryEventDesc for TelemetryEventDiscriminants {
             Self::DeleteCustomTheme => "Delete Custom Theme",
             Self::UnableToAutoUpdateToNewVersion => "Unable to Update To New Version",
             Self::AutoupdateRelaunchAttempt => "Attempting to Relaunch for Update",
-            Self::SplitPane => crate::tr!("common", "split-pane"),
+            Self::SplitPane => "Split Pane",
             Self::SkipOnboardingSurvey => "Skip Onboarding Survey",
             Self::ToggleRestoreSession => "Toggle Restore Session",
             Self::DatabaseStartUpError => "Database Startup Error",
@@ -5998,7 +5998,7 @@ impl TelemetryEventDesc for TelemetryEventDiscriminants {
             Self::InitiateReauth => "Initiate Reauth",
             Self::NeedsReauth => "Needs Reauth",
             Self::WarpDriveOpened => "Warp Drive Opened",
-            Self::ToggleWarpAI => crate::tr!("workspace", "toggle-warp-ai"),
+            Self::ToggleWarpAI => "Toggle Warp AI",
             Self::ToggleSecretRedaction => "Toggle Secret Redaction",
             Self::CustomSecretRegexAdded => "Custom Secret Regex Added",
             Self::ToggleObfuscateSecret => "Toggle Obfuscate Secret",
@@ -6025,7 +6025,7 @@ impl TelemetryEventDesc for TelemetryEventDiscriminants {
             Self::WebSessionOpenedOnDesktop { .. } => "Web session opened on desktop",
             Self::WebCloudObjectOpenedOnDesktop { .. } => "Warp Drive object opened on desktop",
             Self::DriveSharingOnboardingBlockShown => "Warp Drive Sharing onboarding block shown",
-            Self::UnsupportedShell => crate::tr!("terminal", "ssh-unsupported-shell-title"),
+            Self::UnsupportedShell => "Unsupported Shell",
             Self::SettingsImportInitiated => "Settings Import Initiated",
             Self::InviteTeammates => "Invited Teammates",
             Self::CopyObjectToClipboard => "Copy Object To Clipboard",
@@ -6042,7 +6042,7 @@ impl TelemetryEventDesc for TelemetryEventDiscriminants {
             Self::UpdateBlockFilterQueryContextLines => {
                 "Update Block Filter Query With Context Lines"
             }
-            Self::ToggleSnackbarInActivePane => crate::tr!("terminal", "toggle-sticky-command-header-in-active-pane"),
+            Self::ToggleSnackbarInActivePane => "Toggle Sticky Command Header in Active Pane",
             Self::PaneDragInitiated => "Pane Drag Inititiated",
             Self::PaneDropped => "Pane Drag Ended",
             Self::AgentModeCreatedAIBlock => "AgentMode.CreatedAIBlock",

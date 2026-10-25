@@ -123,7 +123,7 @@ impl TabBehavior {
         match self {
             TabBehavior::Completions => "Open completions menu",
             TabBehavior::Autosuggestions => "Accept autosuggestion",
-            TabBehavior::UserDefined => crate::tr!("settings", "tab-user-defined"),
+            TabBehavior::UserDefined => "User defined",
         }
     }
 }

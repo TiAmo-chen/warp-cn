@@ -409,19 +409,19 @@ impl SettingsSection {
             Self::Scripting => "Scripting",
             Self::SharedBlocks => "Shared blocks",
             Self::Teams => "Teams",
-            Self::WarpDrive => crate::tr!("drive", "warp-drive"),
+            Self::WarpDrive => "Warp Drive",
             Self::Warpify => "Warpify",
-            Self::WarpAgent => crate::tr!("settings", "warp-agent-tab"),
+            Self::WarpAgent => "Warp Agent",
             Self::AgentProfiles => "Profiles",
             Self::AgentMCPServers => "MCP servers",
             Self::Knowledge => "Knowledge",
-            Self::ThirdPartyCLIAgents => crate::tr!("settings", "third-party-cli-agents"),
-            Self::CodeIndexing => crate::tr!("settings", "code-indexing"),
-            Self::EditorAndCodeReview => crate::tr!("settings", "editor-code-review"),
+            Self::ThirdPartyCLIAgents => "Third party CLI agents",
+            Self::CodeIndexing => "Indexing and projects",
+            Self::EditorAndCodeReview => "Editor and Code Review",
             Self::CloudEnvironments => "Environments",
             // Keeps the "Oz" spelling the slug was seeded from; only the
             // Display label above dropped it.
-            Self::WarpCloudAgentAPIKeys => crate::tr!("settings", "oz-cloud-api-keys"),
+            Self::WarpCloudAgentAPIKeys => "Oz Cloud API Keys",
         }
     }
 

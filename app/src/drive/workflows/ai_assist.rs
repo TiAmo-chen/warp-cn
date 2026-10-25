@@ -69,7 +69,7 @@ impl GeneratedCommandMetadataError {
             }
             Self::AiProviderError => &crate::tr!("ai_assistant", "ai-chat-error-label"),
             Self::RateLimited => &crate::tr!("drive", "workflow-rate-limited"),
-            Self::Other => crate::tr!("ai_assistant", "ai-chat-error-label"),
+            Self::Other => &crate::tr!("ai_assistant", "ai-chat-error-label"),
         }
         .to_string()
     }

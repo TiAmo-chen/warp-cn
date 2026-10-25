@@ -534,7 +534,7 @@ impl BillingAndUsagePageView {
             UserWorkspacesEvent::PurchaseAddonCreditsSuccess => {
                 self.purchase_addon_credits_loading = false;
                 let message = match usage_display_unit(ctx) {
-                    UsageDisplayUnit::Credits => crate::tr!("settings", "successfully-purchased-add-on-credits"),
+                    UsageDisplayUnit::Credits => "Successfully purchased add-on credits",
                     UsageDisplayUnit::Dollars => "Successfully purchased usage",
                 };
                 self.show_toast(message, ToastFlavor::Success, ctx);
@@ -1181,7 +1181,7 @@ impl From<&BillingAndUsagePageAction> for LoginGatedFeature {
         match val {
             Upgrade { .. } => "Upgrade Plan",
             GenerateStripeBillingPortalLink { .. } => "Generate Stripe Billing Portal Link",
-            _ => crate::tr!("settings", "unknown-reason"),
+            _ => "Unknown reason",
         }
     }
 }

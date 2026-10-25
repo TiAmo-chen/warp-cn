@@ -306,8 +306,8 @@ impl DisableReason {
             DisableReason::ProviderOutage => {
                 "This model is temporarily unavailable due to a provider outage."
             }
-            DisableReason::RequiresUpgrade => crate::tr!("ai_assistant", "ai-model-requires-upgrade"),
-            DisableReason::Unavailable => crate::tr!("ai_assistant", "ai-model-unavailable"),
+            DisableReason::RequiresUpgrade => "Please upgrade your plan to access this model.",
+            DisableReason::Unavailable => "This model is unavailable.",
         }
     }
 

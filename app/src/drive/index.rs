@@ -428,7 +428,7 @@ impl From<&DriveIndexAction> for LoginGatedFeature {
             OpenTeamSettingsPage => "Open Team Settings",
             ViewPlans { .. } => "View Plans",
             ManageBilling { .. } => "Manage Billing",
-            _ => crate::tr!("settings", "unknown-reason"),
+            _ => "Unknown reason",
         }
     }
 }
@@ -4190,7 +4190,7 @@ impl DriveIndex {
             DriveObjectType::EnvVarCollection => &crate::tr!("drive", "env-vars-type"),
             DriveObjectType::Folder => "Folders",
             DriveObjectType::AgentModeWorkflow => &crate::tr!("drive", "agent-workflows-type"),
-            DriveObjectType::AIFact => crate::tr!("drive", "ai-fact-type"),
+            DriveObjectType::AIFact => &crate::tr!("drive", "ai-fact-type"),
             DriveObjectType::AIFactCollection => "Rules",
             DriveObjectType::MCPServer => crate::tr!("drive", "mcp-server-type"),
             DriveObjectType::MCPServerCollection => crate::tr!("drive", "mcp-servers-type"),

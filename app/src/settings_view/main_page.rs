@@ -147,8 +147,8 @@ impl From<&MainPageAction> for LoginGatedFeature {
         match val {
             Upgrade { .. } => "Upgrade Plan",
             GenerateStripeBillingPortalLink { .. } => "Generate Stripe Billing Portal Link",
-            ToggleSettingsSync => crate::tr!("settings", "toggle-settings-sync"),
-            _ => crate::tr!("settings", "unknown-reason"),
+            ToggleSettingsSync => "Toggle Settings Sync",
+            _ => "Unknown reason",
         }
     }
 }

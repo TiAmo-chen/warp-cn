@@ -151,7 +151,7 @@ impl GridHighlightedLink {
             #[cfg(feature = "local_fs")]
             GridHighlightedLink::File(_) => "Open file",
             GridHighlightedLink::Url(_) => "Open link",
-            GridHighlightedLink::Hyperlink { .. } => crate::tr!("terminal", "open-link"),
+            GridHighlightedLink::Hyperlink { .. } => "Open link",
         }
     }
 }

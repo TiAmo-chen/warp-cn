@@ -74,7 +74,7 @@ impl std::fmt::Display for AppIcon {
             AppIcon::Aurora => "Aurora",
             AppIcon::Classic1 => &crate::tr!("settings", "appearance-input-classic-1"),
             AppIcon::Classic2 => &crate::tr!("settings", "appearance-input-classic-2"),
-            AppIcon::Classic3 => crate::tr!("settings", "appearance-input-classic-3"),
+            AppIcon::Classic3 => &crate::tr!("settings", "appearance-input-classic-3"),
             AppIcon::Comets => "Comets",
             AppIcon::GlassSky => crate::tr!("settings", "appearance-theme-glass-sky"),
             AppIcon::Glitch => "Glitch",

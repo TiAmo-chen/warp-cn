@@ -38,8 +38,8 @@ impl FeatureSection {
         match self {
             FeatureSection::WhatsNew => "What's New?",
             FeatureSection::GettingStarted => "Getting Started",
-            FeatureSection::MaximizeWarp => crate::tr!("resource_center", "maximize-warp"),
-            FeatureSection::AdvancedSetup => crate::tr!("resource_center", "advanced-setup"),
+            FeatureSection::MaximizeWarp => "Maximize Warp",
+            FeatureSection::AdvancedSetup => "Advanced Setup",
         }
     }
 }

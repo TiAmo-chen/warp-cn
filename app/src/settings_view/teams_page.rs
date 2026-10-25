@@ -310,25 +310,25 @@ impl From<&TeamsPageAction> for LoginGatedFeature {
         match val {
             LeaveTeam => "Leave Team",
             ShowDeleteTeamConfirmationDialog => "Delete Team",
-            CreateTeam => crate::tr!("settings", "create-team"),
-            DeletePendingEmailInvitation { .. } => crate::tr!("settings", "delete-pending-email-invitation"),
-            RemoveUserFromTeam { .. } => crate::tr!("settings", "remove-user-from-team"),
-            RemoveUserFromWorkspace { .. } => crate::tr!("settings", "remove-user-from-workspace"),
-            AddDomainRestrictions { .. } => crate::tr!("settings", "add-domain-restrictions"),
-            DeleteDomainRestriction { .. } => crate::tr!("settings", "delete-domain-restriction"),
-            SendEmailInvites { .. } => crate::tr!("settings", "send-email-invites"),
-            GenerateUpgradeLink { .. } => crate::tr!("settings", "generate-upgrade-link"),
-            GenerateStripeBillingPortalLink { .. } => crate::tr!("settings", "generate-stripe-billing-portal-link"),
+            CreateTeam => "Create Team",
+            DeletePendingEmailInvitation { .. } => "Delete Pending Email Invitation",
+            RemoveUserFromTeam { .. } => "Remove User From Team",
+            RemoveUserFromWorkspace { .. } => "Remove User From Workspace",
+            AddDomainRestrictions { .. } => "Add Domain Restrictions",
+            DeleteDomainRestriction { .. } => "Delete Domain Restriction",
+            SendEmailInvites { .. } => "Send Email Invites",
+            GenerateUpgradeLink { .. } => "Generate Upgrade Link",
+            GenerateStripeBillingPortalLink { .. } => "Generate Stripe Billing Portal Link",
             OpenAdminPanel { .. } | OpenWorkspaceAdminPanel => "Open Admin Panel",
-            ContactSupport => crate::tr!("settings", "contact-support"),
-            ContactSales => crate::tr!("settings", "contact-sales"),
+            ContactSupport => "Contact support",
+            ContactSales => "Contact Sales",
             ToggleTeamDiscoverability { .. } | ToggleTeamDiscoverabilityBeforeCreation => {
                 "Toggle Team Discoverability"
             }
-            JoinTeamWithTeamDiscovery { .. } => crate::tr!("settings", "join-team-with-team-discovery"),
-            ShowWorkspaceTeams { .. } => crate::tr!("settings", "show-workspace-teams"),
-            JoinWorkspaceFromDiscovery { .. } => crate::tr!("settings", "join-workspace-from-discovery"),
-            _ => crate::tr!("settings", "unknown-reason"),
+            JoinTeamWithTeamDiscovery { .. } => "Join Team With Team Discovery",
+            ShowWorkspaceTeams { .. } => "Show Workspace Teams",
+            JoinWorkspaceFromDiscovery { .. } => "Join Workspace From Discovery",
+            _ => "Unknown reason",
         }
     }
 }
@@ -2729,8 +2729,8 @@ impl TeamsWidget {
         .finish();
 
         let title = match warning {
-            GrowTeamWarning::SeatCapReached => crate::tr!("settings", "your-team-is-full"),
-            GrowTeamWarning::SeatCapExceeded => crate::tr!("settings", "youve-exceeded-your-member-limit"),
+            GrowTeamWarning::SeatCapReached => "Your team is full",
+            GrowTeamWarning::SeatCapExceeded => "You've exceeded your member limit",
             GrowTeamWarning::PaymentPastDue => "Payment past due",
             GrowTeamWarning::PaymentUnpaid => "Subscription unpaid",
         };
@@ -3420,7 +3420,7 @@ impl TeamsWidget {
                     match team.billing_metadata.customer_type {
                         CustomerType::Prosumer => &crate::tr!("settings", "upgrade-to-turbo-plan"),
                         CustomerType::Turbo => "Upgrade to Lightspeed plan",
-                        _ => crate::tr!("settings", "compare-plans"),
+                        _ => &crate::tr!("settings", "compare-plans"),
                     }
                 };
                 billing_links.add_child(

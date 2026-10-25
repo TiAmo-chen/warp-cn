@@ -60,7 +60,7 @@ impl Slide for OzLaunchSlide {
         Some(match self {
             OzLaunchSlide::CloudAgents => &crate::tr!("workspace", "cloud-agents"),
             OzLaunchSlide::AgentAutomations => &crate::tr!("workspace", "agent-automations"),
-            OzLaunchSlide::AgentManagement => crate::tr!("workspace", "agent-management"),
+            OzLaunchSlide::AgentManagement => &crate::tr!("workspace", "agent-management"),
             OzLaunchSlide::LaunchCredits => crate::tr!("workspace", "a-little-gift"),
         })
     }
@@ -69,8 +69,8 @@ impl Slide for OzLaunchSlide {
         match self {
             OzLaunchSlide::CloudAgents => "Cloud agents",
             OzLaunchSlide::AgentAutomations => "Agent automations",
-            OzLaunchSlide::AgentManagement => crate::tr!("workspace", "agent-management"),
-            OzLaunchSlide::LaunchCredits => crate::tr!("workspace", "launch-credits"),
+            OzLaunchSlide::AgentManagement => "Agent management",
+            OzLaunchSlide::LaunchCredits => "Launch credits",
         }
     }
 

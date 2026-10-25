@@ -20860,8 +20860,8 @@ impl Workspace {
                         .copied()
                         .unwrap_or(ToolPanelView::WarpDrive)
                     {
-                        ToolPanelView::ProjectExplorer => crate::tr!("settings", "project-explorer"),
-                        ToolPanelView::GlobalSearch { .. } => crate::tr!("settings", "global-search"),
+                        ToolPanelView::ProjectExplorer => "Adds an IDE-style project explorer / file tree to the left side tools panel.",
+                        ToolPanelView::GlobalSearch { .. } => "Adds global file search to the left side tools panel.",
                         ToolPanelView::WarpDrive => "Warp Drive",
                         ToolPanelView::ConversationListView => "Agent conversations",
                     }
@@ -20914,9 +20914,9 @@ impl Workspace {
                 .copied()
                 .unwrap_or(ToolPanelView::WarpDrive)
             {
-                ToolPanelView::ProjectExplorer => crate::tr!("settings", "project-explorer"),
-                ToolPanelView::GlobalSearch { .. } => crate::tr!("settings", "global-search"),
-                ToolPanelView::WarpDrive => crate::tr!("drive", "warp-drive"),
+                ToolPanelView::ProjectExplorer => "Adds an IDE-style project explorer / file tree to the left side tools panel.",
+                ToolPanelView::GlobalSearch { .. } => "Adds global file search to the left side tools panel.",
+                ToolPanelView::WarpDrive => "Warp Drive",
                 ToolPanelView::ConversationListView => "Agent conversations",
             }
         } else {

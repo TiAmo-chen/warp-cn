@@ -892,12 +892,12 @@ impl From<&WorkspaceAction> for LoginGatedFeature {
         match val {
             ImportToTeamDrive => "Importing to a team drive",
             CreateTeamNotebook => "Creating a team notebook",
-            CreateTeamWorkflow => crate::tr!("workspace", "creating-team-workflow"),
-            CreateTeamFolder => crate::tr!("workspace", "creating-team-folder"),
-            CreateTeamEnvVarCollection => crate::tr!("workspace", "creating-team-env-var-collection"),
-            CreateTeamAIPrompt => crate::tr!("workspace", "creating-team-prompt"),
-            OpenShareSessionModal(_) => crate::tr!("workspace", "sharing-session"),
-            _ => crate::tr!("settings", "unknown-reason"),
+            CreateTeamWorkflow => "Creating a team workflow",
+            CreateTeamFolder => "Creating a team folder",
+            CreateTeamEnvVarCollection => "Creating a team environment variable collection",
+            CreateTeamAIPrompt => "Creating a team prompt",
+            OpenShareSessionModal(_) => "Sharing a session",
+            _ => "Unknown reason",
         }
     }
 }

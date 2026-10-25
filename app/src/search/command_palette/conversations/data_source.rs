@@ -31,7 +31,7 @@ impl ConversationSection {
         match self {
             ConversationSection::ActivePane => "Active pane conversations",
             ConversationSection::OtherActive => "Other active conversations",
-            ConversationSection::Past => crate::tr!("search", "section-past"),
+            ConversationSection::Past => "Past conversations",
         }
     }
 

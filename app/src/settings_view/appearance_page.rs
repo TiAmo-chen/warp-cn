@@ -1657,7 +1657,7 @@ impl AppearanceSettingsPageView {
         match val {
             InputMode::PinnedToBottom => "Pin to the bottom (Warp mode)",
             InputMode::PinnedToTop => "Pin to the top (Reverse mode)",
-            InputMode::Waterfall => crate::tr!("settings", "input-mode-waterfall"),
+            InputMode::Waterfall => "Start at the top (Classic mode)",
         }
     }
 
@@ -1667,9 +1667,9 @@ impl AppearanceSettingsPageView {
             AppIcon::Default => "Default",
             AppIcon::Classic1 => "Classic 1",
             AppIcon::Classic2 => "Classic 2",
-            AppIcon::Classic3 => crate::tr!("settings", "appearance-input-classic-3"),
+            AppIcon::Classic3 => "Classic 3",
             AppIcon::Comets => "Comets",
-            AppIcon::GlassSky => crate::tr!("settings", "appearance-theme-glass-sky"),
+            AppIcon::GlassSky => "Glass Sky",
             AppIcon::Glitch => "Glitch",
             AppIcon::Cow => "Cow",
             AppIcon::Glow => "Glow",
@@ -1679,7 +1679,7 @@ impl AppearanceSettingsPageView {
             AppIcon::Original => "Original",
             AppIcon::Starburst => "Starburst",
             AppIcon::Sticker => "Sticker",
-            AppIcon::WarpOne => crate::tr!("settings", "icon-warp-1"),
+            AppIcon::WarpOne => "Warp 1",
         }
     }
 

@@ -523,7 +523,7 @@ impl BillingAndUsagePageV2View {
             UserWorkspacesEvent::PurchaseAddonCreditsSuccess => {
                 self.addon_credits.purchase_loading = false;
                 let message = match usage_display_unit(ctx) {
-                    UsageDisplayUnit::Credits => crate::tr!("settings", "successfully-purchased-add-on-credits"),
+                    UsageDisplayUnit::Credits => "Successfully purchased add-on credits",
                     UsageDisplayUnit::Dollars => "Successfully purchased usage",
                 };
                 self.show_toast(message, ToastFlavor::Success, ctx);

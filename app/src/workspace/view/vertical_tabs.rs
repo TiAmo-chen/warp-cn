@@ -3710,7 +3710,7 @@ impl TypedPane<'_> {
             TypedPane::EnvironmentManagement => "Environments",
             TypedPane::AIFact => "Rules",
             TypedPane::AIDocument => "Plan",
-            TypedPane::ExecutionProfileEditor => crate::tr!("workspace", "pane-execution-profile"),
+            TypedPane::ExecutionProfileEditor => "Execution Profile",
             TypedPane::Other => "Other",
         }
     }

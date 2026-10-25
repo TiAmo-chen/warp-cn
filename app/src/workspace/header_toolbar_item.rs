@@ -38,8 +38,8 @@ impl HeaderToolbarItemKind {
         match self {
             Self::TabsPanel => "Tabs Panel",
             Self::ToolsPanel => "Tools Panel",
-            Self::AgentManagement => crate::tr!("workspace", "toolbar-agent-management"),
-            Self::CodeReview => crate::tr!("workspace", "toolbar-code-review"),
+            Self::AgentManagement => "Agent Management",
+            Self::CodeReview => "Code Review",
             Self::NotificationsMailbox => "Notifications",
         }
     }

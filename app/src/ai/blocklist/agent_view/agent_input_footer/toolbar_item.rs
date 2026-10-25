@@ -126,16 +126,16 @@ impl AgentToolbarItemKind {
             Self::ContextChip(_) => "Context Chip",
             Self::ModelSelector => "Model Selector",
             Self::NLDToggle => "Autodetection",
-            Self::VoiceInput => crate::tr!("ai_assistant", "ai-voice-input"),
-            Self::FileAttach => crate::tr!("ai_assistant", "ai-attach-file"),
-            Self::ContextWindowUsage => crate::tr!("ai_assistant", "ai-context-usage"),
+            Self::VoiceInput => "Voice Input",
+            Self::FileAttach => "Attach File",
+            Self::ContextWindowUsage => "Context Usage",
             Self::UsageSummary => "Conversation Usage",
-            Self::FileExplorer => crate::tr!("ai", "file-explorer"),
-            Self::RichInput => crate::tr!("ai_assistant", "ai-rich-input-label"),
+            Self::FileExplorer => "File Explorer",
+            Self::RichInput => "Rich Input",
             Self::ShareSession => "/remote-control",
             Self::Settings => "Settings",
-            Self::FastForwardToggle => crate::tr!("ai_assistant", "ai-fast-forward"),
-            Self::HandoffToCloud => crate::tr!("ai_assistant", "ai-hand-off-to-cloud-tooltip"),
+            Self::FastForwardToggle => "Fast Forward",
+            Self::HandoffToCloud => "Hand off to cloud",
         }
     }
 
