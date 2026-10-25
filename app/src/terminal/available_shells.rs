@@ -125,29 +125,29 @@ impl AvailableShell {
                 "zsh" => Cow::from("Zsh"),
                 "fish" => Cow::from("Fish"),
                 "pwsh" | "pwsh.exe" => Cow::from("PowerShell"),
-                "powershell" | "powershell.exe" => Cow::from("Windows PowerShell"),
+                "powershell" | "powershell.exe" => Cow::from(crate::tr!("terminal", "shell-windows-powershell")),
                 _ => Cow::from(command),
             },
             Config::Wsl { distro } => Cow::from(distro),
             Config::Custom(_) => Cow::from("Custom"),
-            Config::DockerSandbox { .. } => Cow::from("Docker Sandbox"),
+            Config::DockerSandbox { .. } => Cow::from(crate::tr!("terminal", "docker-sandbox")),
         }
     }
 
     pub fn details(&self) -> Cow<'_, str> {
         match self.state.as_ref() {
-            Config::SystemDefault => Cow::from("System default shell"),
+            Config::SystemDefault => Cow::from(crate::tr!("terminal", "system-default-shell")),
             Config::KnownLocal(LocalConfig {
                 executable_path, ..
             })
             | Config::MSYS2(LocalConfig {
                 executable_path, ..
             }) => Cow::from(format!("{}", executable_path.display())),
-            Config::Wsl { .. } => Cow::from("Windows Subsystem for Linux"),
+            Config::Wsl { .. } => Cow::from(crate::tr!("terminal", "wsl-details")),
             Config::Custom(LocalConfig {
                 executable_path, ..
             }) => Cow::from(format!("Custom: {}", executable_path.display())),
-            Config::DockerSandbox { .. } => Cow::from("Docker Sandbox"),
+            Config::DockerSandbox { .. } => Cow::from(crate::tr!("terminal", "docker-sandbox")),
         }
     }
 

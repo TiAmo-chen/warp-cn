@@ -39,7 +39,7 @@ pub struct PrState {
 }
 
 pub(super) fn confirm_label_for() -> &'static str {
-    "Create PR"
+    crate::tr!("code_editor", "code-review-create-pr")
 }
 
 pub(super) fn confirm_icon_for() -> Icon {

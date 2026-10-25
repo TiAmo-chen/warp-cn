@@ -873,7 +873,7 @@ pub static EXPORT_TO_FILE: LazyLock<StaticCommand> = LazyLock::new(|| StaticComm
 
 pub const VIM_MODE: StaticCommand = StaticCommand {
     name: "/vim-mode",
-    description: "Toggle Vim mode",
+    description: "ToggleVimMode",
     kind: SlashCommandKind::VimMode,
     supported_surfaces: SlashCommandSurfaces::TuiOnly,
     availability: Availability::ALWAYS,

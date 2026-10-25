@@ -285,7 +285,7 @@ impl View {
             SearchBar::new(
                 mixer.clone(),
                 search_bar_state.clone(),
-                "Search for a command",
+                crate::tr!("search", "palette-placeholder"),
                 Self::create_query_result_renderer,
                 ctx,
             )

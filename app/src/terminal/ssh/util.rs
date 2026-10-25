@@ -66,7 +66,7 @@ pub fn check_ssh_login_state(block_output: &str) -> SshLoginState {
             || line.contains("'yes'")
             || line.contains("Confirm user presence")
             || line.starts_with("Enter ")
-            || line.starts_with("Allow ")
+            || line.starts_with(crate::tr!("ai_assistant", "ai-allow-btn"))
         {
             SshLoginState::Authenticating
         } else if PROMPT_REGEX.is_match(line) {

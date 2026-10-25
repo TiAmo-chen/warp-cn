@@ -116,7 +116,7 @@ pub fn init(app: &mut AppContext) {
     .with_key_binding("cmdorctrl-s")]);
 
     app.register_editable_bindings([EditableBinding::new(
-        "Close Workflow",
+        crate::tr!("workflows", "close-workflow"),
         crate::tr!("common", "close-label"),
         WorkflowAction::Close,
     )
@@ -2708,10 +2708,10 @@ impl WorkflowView {
 
         let window_id = ctx.window_id();
         let toast_link = if self.auth_state.is_anonymous_or_logged_out() {
-            ToastLink::new("Upgrade for more credits.".into())
+            ToastLink::new(crate::tr!("workspace", "upgrade-for-more-credits").into())
                 .with_onclick_action(WorkspaceAction::AttemptLoginGatedAIUpgrade)
         } else {
-            ToastLink::new("Upgrade for more credits.".into()).with_href(upgrade_link)
+            ToastLink::new(crate::tr!("workspace", "upgrade-for-more-credits").into()).with_href(upgrade_link)
         };
 
         crate::workspace::ToastStack::handle(ctx).update(ctx, |stack, ctx| {

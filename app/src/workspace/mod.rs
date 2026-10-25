@@ -771,7 +771,7 @@ pub fn init(app: &mut AppContext) {
         EditableBinding::new(
             TOGGLE_RIGHT_PANEL_BINDING_NAME,
             BindingDescription::new(crate::tr!("workspace", "toggle-code-review"))
-                .with_custom_description(bindings::MAC_MENUS_CONTEXT, "Toggle Code Review"),
+                .with_custom_description(bindings::MAC_MENUS_CONTEXT, crate::tr!("workspace", "toggle-code-review")),
             WorkspaceAction::ToggleRightPanel,
         )
         .with_enabled(|| cfg!(feature = "local_fs"))
@@ -781,7 +781,7 @@ pub fn init(app: &mut AppContext) {
         EditableBinding::new(
             TOGGLE_VERTICAL_TABS_PANEL_BINDING_NAME,
             BindingDescription::new(crate::tr!("workspace", "toggle-vertical-tabs-panel"))
-                .with_custom_description(bindings::MAC_MENUS_CONTEXT, "Toggle Vertical Tabs Panel"),
+                .with_custom_description(bindings::MAC_MENUS_CONTEXT, crate::tr!("workspace", "toggle-vertical-tabs-panel")),
             WorkspaceAction::ToggleVerticalTabsPanel,
         )
         .with_context_predicate(id!("Workspace") & id!(flags::USE_VERTICAL_TABS_FLAG))
@@ -1612,7 +1612,7 @@ fn add_open_setting_pages_as_editable_binding(app: &mut AppContext) {
             BindingDescription::new(crate::tr!("workspace", "open-settings-keyboard-shortcuts"))
                 .with_custom_description(
                     bindings::MAC_MENUS_CONTEXT,
-                    "Configure Keyboard Shortcuts...",
+                    crate::tr!("settings", "configure-keyboard-shortcuts"),
                 ),
             WorkspaceAction::ShowSettingsPage(SettingsSection::Keybindings),
         )

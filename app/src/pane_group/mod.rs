@@ -2625,7 +2625,7 @@ impl PaneGroup {
         {
             AuthManager::handle(ctx).update(ctx, |auth_manager, ctx| {
                 auth_manager.attempt_login_gated_feature(
-                    "Share Session",
+                    crate::tr!("pane_group", "share-session"),
                     AuthViewVariant::ShareRequirementCloseable,
                     ctx,
                 )
@@ -3100,7 +3100,7 @@ impl PaneGroup {
             Banner::<PaneGroupAction>::new_permanently_dismissible(
                 BannerTextContent::formatted_text(vec![
                     FormattedTextFragment::plain_text(
-                        "Warp doesn't currently support your default shell, falling back to zsh.  ",
+                        crate::tr!("pane_group", "unsupported-shell-fallback"),
                     ),
                     FormattedTextFragment::hyperlink(
                         crate::tr!("common", "learn-more-label"),

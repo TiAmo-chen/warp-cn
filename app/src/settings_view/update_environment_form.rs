@@ -265,13 +265,13 @@ impl EnvironmentFormCopy {
     pub fn orchestration_modal() -> Self {
         Self {
             name_placeholder: "e.g., dev-env",
-            repos_placeholder_authed: "Browse GitHub repos...",
+            repos_placeholder_authed: crate::tr!("settings", "browse-github-repos"),
             repos_placeholder_unauthed: REPOS_PLACEHOLDER_UNAUTHED,
-            docker_image_label: "Docker image",
+            docker_image_label: crate::tr!("settings", "docker-image"),
             docker_image_placeholder: "e.g., node:20-alpine",
             description_placeholder: DESCRIPTION_PLACEHOLDER,
             setup_commands_placeholder: "e.g., node start",
-            setup_commands_helper: "Press Enter or click the submit button to add each command.",
+            setup_commands_helper: crate::tr!("settings", "press-enter-or-click-the-submit-button-to-add-each-command"),
             show_description_character_count: false,
         }
     }
@@ -280,10 +280,10 @@ impl EnvironmentFormCopy {
 impl Default for EnvironmentFormCopy {
     fn default() -> Self {
         Self {
-            name_placeholder: "Environment name",
+            name_placeholder: crate::tr!("settings", "environment-name"),
             repos_placeholder_authed: REPOS_PLACEHOLDER_AUTHED,
             repos_placeholder_unauthed: REPOS_PLACEHOLDER_UNAUTHED,
-            docker_image_label: "Docker image reference",
+            docker_image_label: crate::tr!("settings", "docker-image-reference"),
             docker_image_placeholder: "e.g. python:3.11, node:20-alpine",
             description_placeholder: DESCRIPTION_PLACEHOLDER,
             setup_commands_placeholder: "e.g. cd my-repo && pip install -r requirements.txt",
@@ -845,9 +845,9 @@ impl UpdateEnvironmentForm {
     fn update_submit_button_label(&mut self, ctx: &mut ViewContext<Self>) {
         let button_text = match (&self.mode, self.show_header) {
             (EnvironmentFormMode::Create, true) => "Create",
-            (EnvironmentFormMode::Create, false) => &"Create environment",
+            (EnvironmentFormMode::Create, false) => &crate::tr!("settings", "create-environment"),
             (EnvironmentFormMode::Edit { .. }, true) => "Save",
-            (EnvironmentFormMode::Edit { .. }, false) => &"Save environment",
+            (EnvironmentFormMode::Edit { .. }, false) => &crate::tr!("settings", "save-environment"),
         };
         self.submit_button.update(ctx, |button, ctx| {
             button.set_label(button_text, ctx);
@@ -1257,7 +1257,7 @@ impl UpdateEnvironmentForm {
                     AUTH_URL_REFRESH_THRESHOLD.as_secs_f64()
                 );
             } else {
-                debug!("Refreshing GitHub auth URL (no previous fetch timestamp)");
+                debug!(crate::tr!("settings", "refreshing-github-auth-url-no-previous-fetch-timestamp"));
             }
             self.fetch_github_repos_for_auth(ctx);
         } else {
@@ -1756,8 +1756,8 @@ impl UpdateEnvironmentForm {
 
     fn render_header(&self, appearance: &Appearance, app: &AppContext) -> Box<dyn Element> {
         let (title, button_handle) = match &self.mode {
-            EnvironmentFormMode::Create => ("Create environment", &self.submit_button),
-            EnvironmentFormMode::Edit { .. } => ("Edit environment", &self.submit_button),
+            EnvironmentFormMode::Create => (crate::tr!("settings", "create-environment"), &self.submit_button),
+            EnvironmentFormMode::Edit { .. } => (crate::tr!("settings", "edit-environment"), &self.submit_button),
         };
 
         let submit_actions = || self.render_submit_actions(appearance, app, button_handle);
@@ -1883,7 +1883,7 @@ impl UpdateEnvironmentForm {
             .with_spacing(FORM_LABEL_SPACING);
 
         field.add_child(Self::render_form_label(
-            "Setup command(s)",
+            crate::tr!("settings", "setup-commands"),
             false,
             appearance,
         ));
@@ -3124,7 +3124,7 @@ impl UpdateEnvironmentForm {
         let button_text = if is_loading {
             "Generating…"
         } else {
-            "Suggest image"
+            crate::tr!("settings", "suggest-image")
         };
 
         let tooltip_text = crate::tr!(

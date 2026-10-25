@@ -81,7 +81,7 @@ const AUTO_INDEX_DESCRIPTION: &str = "When set to true, Warp will automatically 
 const INDEXING_DISABLED_ADMIN_TEXT: &str = "Team admins have disabled codebase indexing.";
 const INDEXING_WORKSPACE_ENABLED_ADMIN_TEXT: &str = "Team admins have enabled codebase indexing.";
 const INDEXING_DISABLED_GLOBAL_AI_TEXT: &str =
-    "AI Features must be enabled to use codebase indexing.";
+    crate::tr!("settings", "ai-features-must-be-enabled-to-use-codebase-indexing");
 const CODEBASE_INDEX_LIMIT_REACHED: &str = "You have reached the maximum number of codebase indices for your plan. Delete existing indices to auto-index new codebases.";
 #[cfg(not(target_family = "wasm"))]
 const REMOTE_CODEBASE_INDEX_LIMIT_REACHED_FAILURE: &str =
@@ -1501,7 +1501,7 @@ impl CodePageWidget {
             )) = index_state.last_sync_result()
             {
                 (
-                    "Codebase too large",
+                    crate::tr!("settings", "codebase-too-large"),
                     theme.ui_warning_color(),
                     Icon::AlertTriangle,
                 )
@@ -1554,7 +1554,7 @@ impl CodePageWidget {
                 let limit_reached = remote_codebase_index_limit_reached(status);
                 IndexingStatusPresentation {
                     text: Cow::from(if limit_reached {
-                        "Index limit reached"
+                        crate::tr!("settings", "index-limit-reached")
                     } else {
                         "Unavailable"
                     }),
@@ -1886,7 +1886,7 @@ impl CodePageWidget {
             Some(LspRepoStatus::DisabledAndInstalled { .. }) => ("Installed", false),
             Some(LspRepoStatus::Installing { .. }) => ("Installing...", true),
             Some(LspRepoStatus::CheckingForInstallation) => ("Checking...", true),
-            _ => ("Available for download", false),
+            _ => (crate::tr!("settings", "available-for-download"), false),
         };
 
         name_desc_column.add_child(
@@ -2172,7 +2172,7 @@ impl CodePageWidget {
                     }
                 }
             }
-            None => (theme.disabled_ui_text_color().into_solid(), "Not running"),
+            None => (theme.disabled_ui_text_color().into_solid(), crate::tr!("settings", "not-running")),
         }
     }
 }

@@ -437,7 +437,7 @@ impl SearchItem for ConversationSearchItem {
             ConversationAction::Fork { .. } => {
                 Some(crate::tr!("search", "a11y-fork-conversation").into())
             }
-            ConversationAction::New => Some("Press enter to create a new conversation.".into()),
+            ConversationAction::New => Some(crate::tr!("search", "a11y-new-conversation").into()),
         }
     }
 }

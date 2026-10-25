@@ -81,12 +81,12 @@ impl SettingType {
             SettingType::OptionAsMeta => "Option as Meta",
             SettingType::MouseAndScrollReporting => "Mouse/Scroll Reporting",
             SettingType::Font => "Font",
-            SettingType::DefaultShell => "Default Shell",
-            SettingType::WorkingDirectory => "Working Directory",
+            SettingType::DefaultShell => crate::tr!("settings", "default-shell-label"),
+            SettingType::WorkingDirectory => crate::tr!("common", "working-directory"),
             SettingType::HotkeyMode => "Global hotkey",
             SettingType::WindowSize => "Window Dimensions",
             SettingType::CopyOnSelect => "Copy On Select",
-            SettingType::Opacity => "Window Opacity",
+            SettingType::Opacity => crate::tr!("settings", "window-opacity"),
             SettingType::CursorBlinking => "Cursor Blinking",
         }
     }

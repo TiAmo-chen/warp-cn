@@ -951,7 +951,7 @@ impl TypedActionView for CommandSearchView {
             AttemptLoginGatedUpgrade => {
                 AuthManager::handle(ctx).update(ctx, |auth_manager, ctx| {
                     auth_manager.attempt_login_gated_feature(
-                        "Upgrade AI Usage",
+                        crate::tr!("search", "upgrade-ai-usage"),
                         AuthViewVariant::RequireLoginCloseable,
                         ctx,
                     )

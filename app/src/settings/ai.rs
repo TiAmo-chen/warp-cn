@@ -528,9 +528,9 @@ impl DefaultSessionMode {
         match self {
             DefaultSessionMode::Terminal => "Terminal",
             DefaultSessionMode::Agent => "Agent",
-            DefaultSessionMode::CloudAgent => "Cloud agent",
-            DefaultSessionMode::TabConfig => "Tab Config",
-            DefaultSessionMode::DockerSandbox => "Local Docker Sandbox",
+            DefaultSessionMode::CloudAgent => crate::tr!("ai_assistant", "ai-cloud-agent"),
+            DefaultSessionMode::TabConfig => crate::tr!("settings", "default-session-tab-config"),
+            DefaultSessionMode::DockerSandbox => crate::tr!("settings", "default-session-docker-sandbox"),
         }
     }
 }
@@ -577,17 +577,17 @@ impl ThinkingDisplayMode {
     /// Display name for the settings dropdown.
     pub fn display_name(&self) -> &'static str {
         match self {
-            ThinkingDisplayMode::ShowAndCollapse => "Show & collapse",
-            ThinkingDisplayMode::AlwaysShow => "Always show",
-            ThinkingDisplayMode::NeverShow => "Never show",
+            ThinkingDisplayMode::ShowAndCollapse => crate::tr!("settings", "thinking-show-and-collapse"),
+            ThinkingDisplayMode::AlwaysShow => crate::tr!("settings", "thinking-always-show"),
+            ThinkingDisplayMode::NeverShow => crate::tr!("settings", "thinking-never-show"),
         }
     }
 
     pub fn command_palette_description(&self) -> &'static str {
         match self {
-            ThinkingDisplayMode::ShowAndCollapse => "Set agent thinking display: show & collapse",
-            ThinkingDisplayMode::AlwaysShow => "Set agent thinking display: always show",
-            ThinkingDisplayMode::NeverShow => "Set agent thinking display: never show",
+            ThinkingDisplayMode::ShowAndCollapse => crate::tr!("settings", "thinking-cmd-show-and-collapse"),
+            ThinkingDisplayMode::AlwaysShow => crate::tr!("settings", "thinking-cmd-always-show"),
+            ThinkingDisplayMode::NeverShow => crate::tr!("settings", "thinking-cmd-never-show"),
         }
     }
 
@@ -783,18 +783,18 @@ impl TuiStatuslineItem {
             Self::VimModeIndicator => "Vim mode indicator",
             Self::Model => "Model",
             Self::Team => "Team",
-            Self::WorkingDirectory => "Working directory",
-            Self::GitBranch => "Git branch",
+            Self::WorkingDirectory => crate::tr!("settings", "working-directory-label"),
+            Self::GitBranch => crate::tr!("context_chips", "git-branch"),
             Self::GitBranchStatus => "Git branch status",
             Self::GitDiffStatus => "Git diff status",
-            Self::GitHubPullRequest => "GitHub pull request",
+            Self::GitHubPullRequest => crate::tr!("context_chips", "github-pull-request"),
             Self::CreditUsage => "Credit usage",
-            Self::ContextWindowUsage => "Context window usage",
+            Self::ContextWindowUsage => crate::tr!("ai_assistant", "ai-context-window-usage-tooltip"),
             Self::Date => "Date",
-            Self::Time12Hour => "Time (12 hour format)",
-            Self::Time24Hour => "Time (24 hour format)",
+            Self::Time12Hour => crate::tr!("context_chips", "time-12"),
+            Self::Time24Hour => crate::tr!("context_chips", "time-24"),
             Self::AgentTodoList => "Agent to-do list",
-            Self::VoiceInput => "Voice input",
+            Self::VoiceInput => crate::tr!("ai_assistant", "ai-voice-input-tooltip"),
         }
     }
 }
@@ -874,8 +874,8 @@ impl OrchestrationMessageDisplayMode {
     /// Display name for the settings dropdown.
     pub fn display_name(&self) -> &'static str {
         match self {
-            OrchestrationMessageDisplayMode::ShowAndCollapse => "Show & collapse",
-            OrchestrationMessageDisplayMode::AlwaysShow => "Always show",
+            OrchestrationMessageDisplayMode::ShowAndCollapse => crate::tr!("settings", "thinking-show-and-collapse"),
+            OrchestrationMessageDisplayMode::AlwaysShow => crate::tr!("settings", "thinking-always-show"),
             OrchestrationMessageDisplayMode::AlwaysCollapse => "Always collapse",
         }
     }

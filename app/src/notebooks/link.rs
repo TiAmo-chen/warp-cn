@@ -429,7 +429,7 @@ impl From<std::io::Error> for ResolveError {
 impl fmt::Display for ResolveError {
     fn fmt(&self, f: &mut fmt::Formatter) -> fmt::Result {
         match self {
-            ResolveError::FileNotFound => f.write_str("File not found"),
+            ResolveError::FileNotFound => f.write_str(crate::tr!("notebooks", "file-not-found")),
             ResolveError::MissingContext => {
                 f.write_str(&crate::tr!("notebooks", "no-base-directory"))
             }

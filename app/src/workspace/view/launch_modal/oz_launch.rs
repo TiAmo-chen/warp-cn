@@ -58,29 +58,29 @@ impl Slide for OzLaunchSlide {
 
     fn display_text(&self) -> Option<&'static str> {
         Some(match self {
-            OzLaunchSlide::CloudAgents => &"Cloud agents",
-            OzLaunchSlide::AgentAutomations => &"Agent automations",
-            OzLaunchSlide::AgentManagement => &"Agent management",
-            OzLaunchSlide::LaunchCredits => &"A little gift",
+            OzLaunchSlide::CloudAgents => &crate::tr!("workspace", "cloud-agents"),
+            OzLaunchSlide::AgentAutomations => &crate::tr!("workspace", "agent-automations"),
+            OzLaunchSlide::AgentManagement => &crate::tr!("workspace", "agent-management"),
+            OzLaunchSlide::LaunchCredits => &crate::tr!("workspace", "a-little-gift"),
         })
     }
 
     fn short_label(&self) -> &'static str {
         match self {
-            OzLaunchSlide::CloudAgents => "Cloud agents",
-            OzLaunchSlide::AgentAutomations => "Agent automations",
-            OzLaunchSlide::AgentManagement => "Agent management",
-            OzLaunchSlide::LaunchCredits => "Launch credits",
+            OzLaunchSlide::CloudAgents => crate::tr!("workspace", "cloud-agents"),
+            OzLaunchSlide::AgentAutomations => crate::tr!("workspace", "agent-automations"),
+            OzLaunchSlide::AgentManagement => crate::tr!("workspace", "agent-management"),
+            OzLaunchSlide::LaunchCredits => crate::tr!("workspace", "launch-credits"),
         }
     }
 
     fn title(&self) -> &'static str {
         match self {
-            OzLaunchSlide::CloudAgents => "Break out of your laptop with cloud agents",
+            OzLaunchSlide::CloudAgents => crate::tr!("workspace", "break-out-of-your-laptop"),
             OzLaunchSlide::AgentAutomations => {
-                "Orchestrate agents, turning Skills into automations"
+                crate::tr!("workspace", "orchestrate-agents")
             }
-            OzLaunchSlide::AgentManagement => "Track local and cloud agents seamlessly",
+            OzLaunchSlide::AgentManagement => crate::tr!("workspace", "track-local-and-cloud"),
             OzLaunchSlide::LaunchCredits => {
                 "1,000 free cloud agent credits when you upgrade to Warp Build"
             }
@@ -143,7 +143,7 @@ impl Slide for OzLaunchSlide {
                 let next = self.next().expect("Non-final slides should have a next");
                 CTAButton::next_slide(next, format!("Next: {}", next.short_label()))
             }
-            OzLaunchSlide::LaunchCredits => CTAButton::custom("Try it out", |ctx| {
+            OzLaunchSlide::LaunchCredits => CTAButton::custom(crate::tr!("workspace", "try-it-out"), |ctx| {
                 send_telemetry_from_ctx!(
                     CloudAgentTelemetryEvent::EnteredCloudMode {
                         entry_point: CloudModeEntryPoint::OzLaunchModal,
@@ -163,7 +163,7 @@ impl Slide for OzLaunchSlide {
 
     fn secondary_cta_button(&self) -> Option<CTAButton<Self>> {
         match self {
-            OzLaunchSlide::LaunchCredits => Some(CTAButton::close("Skip for now")),
+            OzLaunchSlide::LaunchCredits => Some(CTAButton::close(crate::tr!("auth", "skip-button"))),
             OzLaunchSlide::CloudAgents
             | OzLaunchSlide::AgentAutomations
             | OzLaunchSlide::AgentManagement => None,
@@ -172,7 +172,7 @@ impl Slide for OzLaunchSlide {
 
     fn checkbox_config(&self) -> Option<CheckboxConfig> {
         Some(CheckboxConfig {
-            label: "Sync conversations to cloud",
+            label: crate::tr!("workspace", "sync-conversations-to-cloud"),
             description: "Agent conversations stored in the cloud can be shared with anyone with one click, and allow conversations to be continued across devices and on logout.",
         })
     }

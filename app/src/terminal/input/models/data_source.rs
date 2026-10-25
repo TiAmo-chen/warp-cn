@@ -634,7 +634,7 @@ impl SearchItem for ModelSearchItem {
             let search_query = if self.is_using_bedrock {
                 "bedrock"
             } else if self.is_using_gemini_enterprise_agent_platform {
-                "gemini enterprise"
+                crate::tr!("settings", "gemini-enterprise")
             } else {
                 "api"
             }

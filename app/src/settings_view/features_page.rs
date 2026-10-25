@@ -141,7 +141,7 @@ pub fn init_actions_from_parent_view<T: Action + Clone>(
             flags::COPY_ON_SELECT_CONTEXT_FLAG,
         ),
         ToggleSettingActionPair::new(
-            "linux selection clipboard",
+            crate::tr!("settings", "linux_selection_clipboard"),
             builder(SettingsAction::FeaturesPageToggle(
                 FeaturesPageAction::ToggleLinuxClipboardSelection,
             )),
@@ -201,7 +201,7 @@ pub fn init_actions_from_parent_view<T: Action + Clone>(
                 .is_supported_on_current_platform(),
         ),
         ToggleSettingActionPair::new(
-            "scroll reporting",
+            crate::tr!("settings", "scroll_reporting"),
             builder(SettingsAction::FeaturesPageToggle(
                 FeaturesPageAction::ToggleScrollReporting,
             )),
@@ -245,7 +245,7 @@ pub fn init_actions_from_parent_view<T: Action + Clone>(
         )
         .with_enabled(|| FeatureFlag::NativeShellCompletions.is_enabled()),
         ToggleSettingActionPair::new(
-            "command corrections",
+            crate::tr!("settings", "command_corrections"),
             builder(SettingsAction::FeaturesPageToggle(
                 FeaturesPageAction::ToggleCommandCorrections,
             )),
@@ -372,7 +372,7 @@ pub fn init_actions_from_parent_view<T: Action + Clone>(
     );
     toggle_binding_pairs.push(
         ToggleSettingActionPair::new(
-            "needs-attention notifications",
+            crate::tr!("settings", "needs_attention_notifications"),
             builder(SettingsAction::FeaturesPageToggle(
                 FeaturesPageAction::ToggleNeedsAttentionNotifications,
             )),
@@ -415,7 +415,7 @@ pub fn init_actions_from_parent_view<T: Action + Clone>(
 
     toggle_binding_pairs.push(
         ToggleSettingActionPair::new(
-            "quit warning modal",
+            crate::tr!("settings", "quit_warning_modal"),
             builder(SettingsAction::FeaturesPageToggle(
                 FeaturesPageAction::ToggleShowWarningBeforeQuitting,
             )),
@@ -430,7 +430,7 @@ pub fn init_actions_from_parent_view<T: Action + Clone>(
     );
     toggle_binding_pairs.push(
         ToggleSettingActionPair::new(
-            "mouse reporting",
+            crate::tr!("settings", "mouse_reporting"),
             builder(SettingsAction::FeaturesPageToggle(
                 FeaturesPageAction::ToggleMouseReporting,
             )),
@@ -558,7 +558,7 @@ pub fn init_actions_from_parent_view<T: Action + Clone>(
 
     toggle_binding_pairs.push(
         ToggleSettingActionPair::new(
-            "focus reporting",
+            crate::tr!("settings", "focus_reporting"),
             builder(SettingsAction::FeaturesPageToggle(
                 FeaturesPageAction::ToggleFocusReporting,
             )),
@@ -670,7 +670,7 @@ pub fn init_actions_from_parent_view<T: Action + Clone>(
     }
     toggle_binding_pairs.push(
         ToggleSettingActionPair::new(
-            "global workflows in Command Search",
+            crate::tr!("settings", "global_workflows_in_command_search"),
             builder(SettingsAction::FeaturesPageToggle(
                 FeaturesPageAction::ToggleGlobalWorkflowsInUniversalSearch,
             )),
@@ -3125,8 +3125,8 @@ impl FeaturesPageView {
             Category::new("General", general_widgets),
             Category::new("Session", session_widgets),
             Category::new("Keys", keys_widgets),
-            Category::new("Text Editing", text_editing_widgets),
-            Category::new("Terminal Input", editor_widgets),
+            Category::new(crate::tr!("settings", "text-editing"), text_editing_widgets),
+            Category::new(crate::tr!("settings", "section-terminal-input"), editor_widgets),
             Category::new("Terminal", terminal_widgets),
             Category::new("Notifications", notifications_widgets),
             Category::new(
@@ -3705,8 +3705,8 @@ impl FeaturesPageView {
 
     fn new_tab_placement_dropdown_item_label(val: NewTabPlacement) -> &'static str {
         match val {
-            NewTabPlacement::AfterAllTabs => "After all tabs",
-            NewTabPlacement::AfterCurrentTab => "After current tab",
+            NewTabPlacement::AfterAllTabs => crate::tr!("settings", "after-all-tabs"),
+            NewTabPlacement::AfterCurrentTab => crate::tr!("settings", "after-current-tab"),
         }
     }
 
@@ -4620,7 +4620,7 @@ fn init_display_count_dropdown(
         Some(idx) if idx.is_valid_given_display_count(display_count) => {
             dropdown.set_selected_by_name(format!("{idx}"), ctx)
         }
-        _ => dropdown.set_selected_by_name("Active Screen", ctx),
+        _ => dropdown.set_selected_by_name(crate::tr!("settings", "features-active-screen"), ctx),
     };
 }
 
@@ -6864,8 +6864,8 @@ impl TabKeyBehaviorWidget {
             TabBehavior::UserDefined => None,
         };
         let other_keybinding_name = match *view.tab_behavior {
-            TabBehavior::Completions => Some("Accept Autosuggestion"),
-            TabBehavior::Autosuggestions => Some("Open Completions Menu"),
+            TabBehavior::Completions => Some(crate::tr!("settings", "accept-autosuggestion")),
+            TabBehavior::Autosuggestions => Some(crate::tr!("settings", "open-completions-menu")),
             TabBehavior::UserDefined => None,
         };
 
@@ -7009,7 +7009,7 @@ impl SettingsWidget for MouseReportingWidget {
     type View = FeaturesPageView;
 
     fn search_terms(&self) -> &str {
-        "mouse reporting"
+        crate::tr!("settings", "mouse_reporting")
     }
 
     fn render(
@@ -7064,7 +7064,7 @@ impl SettingsWidget for ScrollReportingWidget {
     type View = FeaturesPageView;
 
     fn search_terms(&self) -> &str {
-        "scroll reporting"
+        crate::tr!("settings", "scroll_reporting")
     }
 
     fn render(
@@ -7122,7 +7122,7 @@ impl SettingsWidget for FocusReportingWidget {
     type View = FeaturesPageView;
 
     fn search_terms(&self) -> &str {
-        "focus reporting"
+        crate::tr!("settings", "focus_reporting")
     }
 
     fn render(
@@ -7478,7 +7478,7 @@ impl SettingsWidget for NewTabPlacementWidget {
     type View = FeaturesPageView;
 
     fn search_terms(&self) -> &str {
-        "new tab placement"
+        crate::tr!("settings", "new-tab-placement")
     }
 
     fn render(

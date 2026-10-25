@@ -482,11 +482,11 @@ impl DiscardOperationType {
 
     pub fn description(&self) -> Option<String> {
         match self {
-            DiscardOperationType::AllUncommittedChanges => Some("You're about to discard all local changes that haven't been committed.".to_string()),
-            DiscardOperationType::FileUncommittedChanges => Some("This will restore this file to the last committed version and discard local edits.".to_string()),
-            DiscardOperationType::AllChangesAgainstBranch(None) => Some("You're about to discard all committed and uncommitted changes.".to_string()),
-            DiscardOperationType::FileChangesAgainstBranch(None) => Some("This will restore this file to the main branch version and discard all committed and uncommitted edits.".to_string()),
-            DiscardOperationType::AllChangesAgainstBranch(Some(_)) => Some("You're about to discard all committed and uncommitted changes.".to_string()),
+            DiscardOperationType::AllUncommittedChanges => Some(crate::tr!("code_review", "discard-uncommitted-desc").to_string()),
+            DiscardOperationType::FileUncommittedChanges => Some(crate::tr!("code_review", "discard-file-uncommitted-desc").to_string()),
+            DiscardOperationType::AllChangesAgainstBranch(None) => Some(crate::tr!("code_review", "discard-all-changes-no-branch-desc").to_string()),
+            DiscardOperationType::FileChangesAgainstBranch(None) => Some(crate::tr!("code_review", "discard-file-no-branch-desc").to_string()),
+            DiscardOperationType::AllChangesAgainstBranch(Some(_)) => Some(crate::tr!("code_review", "discard-all-changes-no-branch-desc").to_string()),
             DiscardOperationType::FileChangesAgainstBranch(Some(branch)) => Some(format!("This will reset this file to the {branch} branch version and discard all committed and uncommitted edits.")),
         }
     }
@@ -6614,7 +6614,7 @@ impl CodeReviewView {
                     button.set_disabled(disabled, ctx);
                     button.set_tooltip(
                         Some(if disabled {
-                            "No changes to commit"
+                            crate::tr!("code_review", "no-changes-to-commit")
                         } else {
                             "Commit changes locally"
                         }),
@@ -6676,7 +6676,7 @@ impl CodeReviewView {
                         button.set_disabled(is_pr_info_refreshing, ctx);
                         button.set_tooltip(
                             Some(if is_pr_info_refreshing {
-                                "Refreshing PR info"
+                                crate::tr!("code_review", "refreshing-pr-info")
                             } else {
                                 "View pull request on GitHub"
                             }),

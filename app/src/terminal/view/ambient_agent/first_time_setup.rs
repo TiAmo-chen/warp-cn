@@ -243,7 +243,7 @@ impl FirstTimeCloudAgentSetupView {
         let badge_text = if credits.usage_cents.is_some() {
             "Free usage"
         } else {
-            "Free credits"
+            crate::tr!("terminal", "free-credits")
         };
         // Badge with blue border
         let badge = Container::new(

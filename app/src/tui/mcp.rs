@@ -67,14 +67,14 @@ impl TuiMcpServerSource {
             Self::Installation => "CLI local".to_owned(),
             Self::SyncedTemplate {
                 provenance: TuiMcpSyncedTemplateProvenance::FromAnotherDevice,
-            } => "from another device".to_owned(),
+            } => crate::tr!("settings", "mcp-from-another-device").to_owned(),
             Self::SyncedTemplate {
                 provenance: TuiMcpSyncedTemplateProvenance::Shared { creator },
             } => creator
                 .as_ref()
                 .map(|creator| format!("shared by {creator}"))
-                .unwrap_or_else(|| "shared by a team member".to_owned()),
-            Self::Gallery => "shared by Warp".to_owned(),
+                .unwrap_or_else(|| crate::tr!("settings", "mcp-shared-by-member").to_owned()),
+            Self::Gallery => crate::tr!("settings", "shared-by-warp").to_owned(),
             Self::FileBased { sources } => {
                 let labels = sources
                     .iter()

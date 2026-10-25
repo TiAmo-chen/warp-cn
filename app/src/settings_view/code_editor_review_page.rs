@@ -319,7 +319,7 @@ pub fn init_actions_from_parent_view<T: Action + Clone>(
                 flags::SHOW_PROJECT_EXPLORER,
             ),
             ToggleSettingActionPair::new(
-                "global file search",
+                crate::tr!("settings", "global-file-search"),
                 builder(SettingsAction::EditorAndCodeReview(
                     EditorAndCodeReviewPageAction::ToggleGlobalSearch,
                 )),
@@ -327,7 +327,7 @@ pub fn init_actions_from_parent_view<T: Action + Clone>(
                 flags::SHOW_GLOBAL_SEARCH,
             ),
             ToggleSettingActionPair::new(
-                "show hidden files in project explorer",
+                crate::tr!("settings", "show-hidden-files-in-project-explorer"),
                 builder(SettingsAction::EditorAndCodeReview(
                     EditorAndCodeReviewPageAction::ToggleShowHiddenFiles,
                 )),

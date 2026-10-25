@@ -417,7 +417,7 @@ impl ITermProfile {
         };
 
         let mouse_reporting_enabled = dict
-            .remove("Mouse Reporting")
+            .remove(crate::tr!("settings", "mouse_reporting"))
             .and_then(|reporting| reporting.as_boolean())
             .unwrap_or(true);
 
@@ -509,7 +509,7 @@ impl ITermProfile {
                 .unwrap_or(true),
             font_name: font_family,
             font_size,
-            default_shell: dict.remove("Custom Command").and_then(|custom_command| {
+            default_shell: dict.remove(crate::tr!("terminal", "custom-shell")).and_then(|custom_command| {
                 if custom_command.into_string().is_some_and(|command_pref| {
                     command_pref == "Custom Shell" || command_pref == "Yes"
                 }) {

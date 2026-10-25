@@ -161,9 +161,9 @@ impl EnvVarCollectionView {
             .is_some_and(|handle| handle.split_pane_state(ctx).is_maximized());
         let toggle_maximize_pane = Self::item(
             if is_maximized {
-                "Minimize pane"
+                crate::tr!("common", "minimize-pane")
             } else {
-                "Maximize pane"
+                crate::tr!("common", "maximize-pane")
             },
             EnvVarCollectionAction::EmitPaneEvent(PaneEvent::ToggleMaximized),
             keybinding_name_to_display_string("pane_group:toggle_maximize_pane", ctx),

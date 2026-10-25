@@ -703,7 +703,7 @@ impl AgentProfilesPageView {
             let mut dropdown = FilterableDropdown::new(ctx);
             dropdown.set_top_bar_max_width(AI_SETTINGS_DROPDOWN_WIDTH);
             dropdown.set_menu_width(AI_SETTINGS_DROPDOWN_WIDTH, ctx);
-            dropdown.set_menu_header_to_static("Select MCP servers");
+            dropdown.set_menu_header_to_static(crate::tr!("ai_assistant", "ai-select-mcp-servers"));
             dropdown
         });
         Self::refresh_mcp_allowlist_dropdown(&mcp_allowlist_dropdown, ctx);
@@ -717,7 +717,7 @@ impl AgentProfilesPageView {
             let mut dropdown = FilterableDropdown::new(ctx);
             dropdown.set_top_bar_max_width(AI_SETTINGS_DROPDOWN_WIDTH);
             dropdown.set_menu_width(AI_SETTINGS_DROPDOWN_WIDTH, ctx);
-            dropdown.set_menu_header_to_static("Select MCP servers");
+            dropdown.set_menu_header_to_static(crate::tr!("ai_assistant", "ai-select-mcp-servers"));
             dropdown
         });
         Self::refresh_mcp_denylist_dropdown(&mcp_denylist_dropdown, ctx);
@@ -1349,10 +1349,10 @@ impl AgentProfilesPageView {
                 AgentModeCodingPermissionsType::iter()
                     .map(|t| {
                         let display = match t {
-                            AgentModeCodingPermissionsType::AlwaysAskBeforeReading => "Always ask",
-                            AgentModeCodingPermissionsType::AlwaysAllowReading => "Always allow",
+                            AgentModeCodingPermissionsType::AlwaysAskBeforeReading => crate::tr!("ai_assistant", "ai-profile-always-ask"),
+                            AgentModeCodingPermissionsType::AlwaysAllowReading => crate::tr!("ai_assistant", "ai-profile-always-allow"),
                             AgentModeCodingPermissionsType::AllowReadingSpecificFiles => {
-                                "Allow in specific directories"
+                                crate::tr!("settings", "ai-allow-specific-dirs")
                             }
                         };
                         DropdownItem::new(display, AgentProfilesPageAction::SetCodingPermission(t))
@@ -1529,8 +1529,8 @@ impl From<&AgentProfilesPageAction> for LoginGatedFeature {
     fn from(val: &AgentProfilesPageAction) -> LoginGatedFeature {
         use AgentProfilesPageAction::*;
         match val {
-            AttemptLoginGatedUpgrade => "Upgrade AI Usage",
-            _ => "Unknown reason",
+            AttemptLoginGatedUpgrade => crate::tr!("search", "upgrade-ai-usage"),
+            _ => crate::tr!("settings", "unknown-reason"),
         }
     }
 }

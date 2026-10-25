@@ -93,19 +93,19 @@ impl LoginPurpose {
     fn copy(self) -> (&'static str, &'static str) {
         match self {
             LoginPurpose::WarpDrive => (
-                "Get started with Warp Drive",
-                "Connect your account to save and share notebooks, workflows, and more across devices.",
+                crate::tr!("auth", "get-started-with-warp-drive"),
+                crate::tr!("auth", "connect-drive-description"),
             ),
             LoginPurpose::WarpAgent => (
-                "Get started with AI",
-                "Connect your account to enable AI-powered planning, coding, and automation.",
+                crate::tr!("auth", "get-started-with-ai"),
+                crate::tr!("auth", "connect-ai-description"),
             ),
             LoginPurpose::ThirdParty => (
-                "Create an account",
+                crate::tr!("settings", "create-an-account"),
                 "Create a Warp account to enable AI-powered planning, coding, and automations.",
             ),
             LoginPurpose::AccountFirst => (
-                "Create an account",
+                crate::tr!("settings", "create-an-account"),
                 "Access AI, run cloud agents, collaborate with teammates, and sync settings across devices.",
             ),
         }
@@ -585,9 +585,9 @@ impl LoginSlideView {
     /// Terminal+Drive), since there are no AI features to opt out of there.
     fn privacy_disclaimer_prefix(&self) -> &'static str {
         if self.ai_enabled {
-            "If you'd like to opt out of analytics and AI features, you can adjust your "
+            crate::tr!("auth", "opt-out-analytics-and-ai")
         } else {
-            "If you'd like to opt out of analytics, you can adjust your "
+            crate::tr!("auth", "opt-out-analytics")
         }
     }
 
@@ -641,7 +641,7 @@ impl LoginSlideView {
         let tos_line = Flex::row()
             .with_child(
                 ui_builder
-                    .span("By continuing, you agree to Warp's ")
+                    .span(crate::tr!("auth", "by-continuing"))
                     .with_style(disclaimer_styles)
                     .build()
                     .finish(),
@@ -796,9 +796,9 @@ impl LoginSlideView {
 
         let cmd_enter = Keystroke::parse("cmdorctrl-enter").unwrap_or_default();
         let skip_label = match self.login_purpose() {
-            LoginPurpose::WarpDrive => "Disable Warp Drive",
-            LoginPurpose::WarpAgent => "Skip for now",
-            LoginPurpose::ThirdParty => "Skip for now",
+            LoginPurpose::WarpDrive => crate::tr!("auth", "disable-warp-drive"),
+            LoginPurpose::WarpAgent => crate::tr!("auth", "skip-button"),
+            LoginPurpose::ThirdParty => crate::tr!("auth", "skip-button"),
             LoginPurpose::AccountFirst => "Skip",
         };
         let skip_keystroke = if matches!(self.login_purpose(), LoginPurpose::AccountFirst) {
@@ -892,7 +892,7 @@ impl LoginSlideView {
                 Flex::row()
                     .with_child(
                         ui_builder
-                            .span("If your browser hasn't launched, ")
+                            .span(crate::tr!("auth", "browser-hasnt-launched"))
                             .with_style(sub_text_styles)
                             .build()
                             .finish(),
@@ -1110,16 +1110,16 @@ impl LoginSlideView {
             &'static str,
         ) = match self.login_purpose() {
             LoginPurpose::WarpDrive => (
-                "Are you sure you want to disable Warp Drive?",
+                crate::tr!("auth", "sure-disable-warp-drive"),
                 "Warp Drive lets you save workflows and knowledge across devices and share them with your team. By continuing, you won't have access to the following features:",
                 WARP_DRIVE_FEATURES,
-                "Enable Warp Drive",
+                crate::tr!("auth", "enable-warp-drive"),
             ),
             LoginPurpose::WarpAgent | LoginPurpose::ThirdParty | LoginPurpose::AccountFirst => (
                 "Continue without signing in?",
                 "Without an account, you won't have access to Warp's AI features. Sign in anytime to unlock agents and other AI features.",
                 &[],
-                "Sign in",
+                crate::tr!("workspace", "sign-in"),
             ),
         };
 

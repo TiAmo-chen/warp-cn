@@ -2376,7 +2376,7 @@ impl FileTreeView {
                     items.push(MenuItem::Separator);
                     if self.has_terminal_session {
                         items.push(
-                            MenuItemFields::new("cd to directory")
+                            MenuItemFields::new(crate::tr!("code", "cd-to-directory"))
                                 .with_on_select_action(FileTreeAction::CDToDirectory {
                                     id: id.clone(),
                                 })
@@ -2392,11 +2392,11 @@ impl FileTreeView {
             };
 
             let open_text = if cfg!(target_os = "macos") {
-                "Reveal in Finder"
+                crate::tr!("code", "reveal-in-finder")
             } else if cfg!(target_os = "windows") {
-                "Reveal in Explorer"
+                crate::tr!("code", "reveal-in-explorer")
             } else {
-                "Reveal in file manager"
+                crate::tr!("code", "reveal-in-file-manager")
             };
             items.push(
                 MenuItemFields::new(open_text)
@@ -2426,7 +2426,7 @@ impl FileTreeView {
                 items.push(MenuItem::Separator);
             }
             items.push(
-                MenuItemFields::new("Attach as context")
+                MenuItemFields::new(crate::tr!("code", "attach-as-context"))
                     .with_on_select_action(FileTreeAction::AttachAsContext { id: id.clone() })
                     .into_item(),
             );
@@ -2439,7 +2439,7 @@ impl FileTreeView {
             MenuItemFields::new(crate::tr!("terminal", "menu-copy-path"))
                 .with_on_select_action(FileTreeAction::CopyPath { id: id.clone() })
                 .into_item(),
-            MenuItemFields::new("Copy relative path")
+            MenuItemFields::new(crate::tr!("code", "copy-relative-path"))
                 .with_on_select_action(FileTreeAction::CopyRelativePath { id: id.clone() })
                 .into_item(),
         ]);

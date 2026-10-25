@@ -957,7 +957,7 @@ fn is_repository_lookup_not_applicable_error(error_msg: &str) -> bool {
 /// Heuristic check for `gh` CLI authentication errors in an error message.
 pub fn is_gh_auth_error(error_msg: &str) -> bool {
     let lower = error_msg.to_lowercase();
-    lower.contains("not logged in")
+    lower.contains(crate::tr!("settings", "not-logged-in"))
         || lower.contains("authentication required")
         || lower.contains("gh auth login")
 }
@@ -967,7 +967,7 @@ pub fn is_gh_missing_error(error_msg: &str) -> bool {
     let lower = error_msg.to_lowercase();
     lower.contains("failed to execute gh command")
         && (lower.contains("no such file or directory")
-            || lower.contains("not found")
+            || lower.contains(crate::tr!("errors", "not-found-title"))
             || lower.contains("cannot find")
             || lower.contains("could not find"))
 }

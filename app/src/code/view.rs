@@ -1177,7 +1177,7 @@ impl CodeView {
                                     ButtonVariant::Outlined,
                                     tab.mouse_state_handles.accept_mouse_state.clone(),
                                 )
-                                .with_text_label("Accept and save".to_string())
+                                .with_text_label(crate::tr!("code", "accept-and-save").to_string())
                                 .build()
                                 .on_click(|ctx, _, _| {
                                     ctx.dispatch_typed_action(
@@ -2173,11 +2173,11 @@ impl CodeView {
 
             if local_path.is_some() {
                 let reveal_label = if cfg!(target_os = "macos") {
-                    "Reveal in Finder"
+                    crate::tr!("code", "reveal-in-finder")
                 } else if cfg!(target_os = "windows") {
-                    "Reveal in Explorer"
+                    crate::tr!("code", "reveal-in-explorer")
                 } else {
-                    "Reveal in file manager"
+                    crate::tr!("code", "reveal-in-file-manager")
                 };
                 items.push(
                     MenuItemFields::new(reveal_label)
@@ -2200,7 +2200,7 @@ impl CodeView {
                 });
             if renders_in_notebook_viewer {
                 items.push(
-                    MenuItemFields::new("View Markdown preview")
+                    MenuItemFields::new(crate::tr!("code", "view-markdown-preview"))
                         .with_on_select_action(CodeViewAction::RenderMarkdown)
                         .into_item(),
                 );

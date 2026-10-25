@@ -49,13 +49,13 @@ impl ApiKeyType {
     fn description(&self) -> &'static str {
         match self {
             ApiKeyType::Personal => {
-                "This API key is tied to your user and can make requests against your Warp account."
+                crate::tr!("settings", "api-key-personal-desc")
             }
             ApiKeyType::Team => {
-                "This API key is tied to your team and can make requests on behalf of your team."
+                crate::tr!("settings", "api-key-team-desc")
             }
             ApiKeyType::Agent => {
-                "This API key is tied to an agent and can make requests on behalf of the agent."
+                crate::tr!("settings", "api-key-agent-desc")
             }
         }
     }

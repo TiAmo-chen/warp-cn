@@ -132,11 +132,11 @@ fn user_facing_git_error(raw: &str) -> &'static str {
         // (e.g. "include unstaged" off with an empty index).
         "No staged changes to commit."
     } else if lower.contains("nothing to commit") {
-        "No changes to commit."
+        crate::tr!("code_editor", "code-review-no-changes-to-commit")
     } else if lower.contains("please tell me who you are")
         || lower.contains("author identity unknown")
     {
-        "Git identity not configured. Set user.name and user.email."
+        crate::tr!("code_editor", "code-review-git-identity-not-configured")
     } else if lower.contains("updates were rejected")
         || lower.contains("non-fast-forward")
         || lower.contains("fetch first")
@@ -146,23 +146,23 @@ fn user_facing_git_error(raw: &str) -> &'static str {
         || lower.contains("no configured push destination")
         || lower.contains("no such remote")
     {
-        "No remote configured for this branch."
+        crate::tr!("code_editor", "code-review-no-remote-configured")
     } else if lower.contains("authentication failed")
         || lower.contains("permission denied (publickey)")
     {
-        "Authentication failed. Check your Git credentials."
+        crate::tr!("code_editor", "code-review-authentication-failed")
     } else if lower.contains("could not resolve host")
         || lower.contains("network is unreachable")
         || lower.contains("connection timed out")
     {
-        "Network error. Check your connection."
+        crate::tr!("code_editor", "code-review-network-error")
     } else if lower.contains("repository not found") {
-        "Remote repository not found."
+        crate::tr!("code_editor", "code-review-remote-repository-not-found")
     } else if lower.contains("failed to execute gh command") {
         // `run_gh_command` wraps spawn failures with this prefix, which is
         // the reliable "gh binary missing" signal.
-        "GitHub CLI (gh) not installed. See https://cli.github.com/."
-    } else if lower.contains("not logged in")
+        crate::tr!("code_editor", "code-review-gh-cli-not-installed")
+    } else if lower.contains(crate::tr!("settings", "not-logged-in"))
         || lower.contains("authentication required")
         || lower.contains("gh auth login")
     {
@@ -174,7 +174,7 @@ fn user_facing_git_error(raw: &str) -> &'static str {
         // held index lock (see `git_operation_in_progress`).
         "Another git operation is in progress. Finish or abort it first."
     } else {
-        "Git operation failed."
+        crate::tr!("code_editor", "code-review-git-operation-failed")
     }
 }
 
@@ -738,15 +738,15 @@ impl GitDialog {
 
     fn title(&self) -> &'static str {
         match &self.mode {
-            GitDialogMode::Commit(_) => "Commit your changes",
+            GitDialogMode::Commit(_) => crate::tr!("code_editor", "code-review-commit-your-changes"),
             GitDialogMode::Push(state) => {
                 if state.publish {
-                    "Publish branch"
+                    crate::tr!("code_editor", "code-review-publish-branch")
                 } else {
-                    "Push changes"
+                    crate::tr!("code_editor", "code-review-push-changes")
                 }
             }
-            GitDialogMode::CreatePr(_) => "Create pull request",
+            GitDialogMode::CreatePr(_) => crate::tr!("code_editor", "code-review-create-pull-request"),
         }
     }
 

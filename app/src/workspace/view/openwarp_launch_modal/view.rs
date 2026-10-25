@@ -54,7 +54,7 @@ const FEATURE_ITEMS: &[FeatureItem] = &[
     },
     FeatureItem {
         icon: Icon::Oz,
-        title: "Open Automated Development",
+        title: crate::tr!("workspace", "openwarp-automated-title"),
         description: "The Warp repo is managed by an agent-first workflow powered by Oz, our cloud agent orchestration platform.",
         inline_link: Some(InlineLink {
             text: "Oz",
@@ -63,7 +63,7 @@ const FEATURE_ITEMS: &[FeatureItem] = &[
     },
     FeatureItem {
         icon: Icon::MessageChatSquare,
-        title: "Introducing 'auto (open-weights)'",
+        title: crate::tr!("workspace", "openwarp-auto-weights-title"),
         description: "We've added a new auto model that picks the best open weight model for a task, like Kimi or MiniMax.",
         inline_link: None,
     },

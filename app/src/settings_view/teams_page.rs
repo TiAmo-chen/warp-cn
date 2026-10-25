@@ -98,12 +98,12 @@ const JOIN_TEAM_HEADER: &str = "Join an existing team within your company";
 const BROWSE_TEAMS_BUTTON_LABEL: &str = "Browse teams";
 const SWITCH_TEAM_BUTTON_LABEL: &str = "Switch team";
 const JOIN_WORKSPACE_OR_TEAM_HEADER: &str =
-    "Join an existing workspace or team within your company";
+    crate::tr!("settings", "join-an-existing-workspace-or-team-within-your-company");
 const OR_JOIN_WORKSPACE_OR_TEAM_HEADER: &str =
-    "Or, join an existing workspace or team within your company";
+    crate::tr!("settings", "or-join-an-existing-workspace-or-team-within-your-company");
 const NO_JOINABLE_TEAMS_HEADER: &str = "There are currently no joinable teams.";
 const NO_TEAMS_TO_JOIN_DESCRIPTION: &str =
-    "Contact an admin to join a team to gain access to more features.";
+    crate::tr!("settings", "contact-an-admin-to-join-a-team-to-gain-access-to-more-features");
 const ADMIN_PANEL_CTA_LINK_TEXT: &str = "Visit the admin panel";
 const ADMIN_PANEL_CTA_TRAILING_COPY: &str = "to manage and create new teams.";
 
@@ -129,7 +129,7 @@ const SUBSUBSECTION_HEADER_FONT_SIZE: f32 = 14.;
 const OWNER_STATE_CHIP_ACCENT_OPACITY: u8 = 30;
 
 const INVALID_DOMAINS_INSTRUCTIONS: &str =
-    "Some of the provided domains are invalid, or have already been added.";
+    crate::tr!("settings", "some-of-the-provided-domains-are-invalid-or-have-already-been-added");
 
 const INVITE_LINK_TOGGLE_INSTRUCTIONS: &str = "As an admin, you can choose whether to enable or disable the ability for team members to invite others by invitation link.";
 const INVITE_LINK_UNAVAILABLE_INSTRUCTIONS: &str =
@@ -138,7 +138,7 @@ const INVITE_LINK_DOMAIN_RESTRICTIONS_INSTRUCTIONS: &str = "Restrict by domain â
 
 const INVITE_BY_EMAIL_EXPIRY_INSTRUCTIONS: &str = "Email invitations are valid for 7 days.";
 const INVALID_EMAILS_INSTRUCTIONS: &str =
-    "Some of the provided email addresses are invalid, already invited, or members of the team.";
+    crate::tr!("settings", "some-of-the-provided-email-addresses-are-invalid-already-invited-or-members-of-the-team");
 
 const OFFLINE_TEXT: &str = "You are offline.";
 
@@ -308,27 +308,27 @@ impl From<&TeamsPageAction> for LoginGatedFeature {
     fn from(val: &TeamsPageAction) -> LoginGatedFeature {
         use TeamsPageAction::*;
         match val {
-            LeaveTeam => "Leave Team",
-            ShowDeleteTeamConfirmationDialog => "Delete Team",
-            CreateTeam => "Create Team",
-            DeletePendingEmailInvitation { .. } => "Delete Pending Email Invitation",
-            RemoveUserFromTeam { .. } => "Remove User From Team",
-            RemoveUserFromWorkspace { .. } => "Remove User From Workspace",
-            AddDomainRestrictions { .. } => "Add Domain Restrictions",
-            DeleteDomainRestriction { .. } => "Delete Domain Restriction",
-            SendEmailInvites { .. } => "Send Email Invites",
-            GenerateUpgradeLink { .. } => "Generate Upgrade Link",
-            GenerateStripeBillingPortalLink { .. } => "Generate Stripe Billing Portal Link",
-            OpenAdminPanel { .. } | OpenWorkspaceAdminPanel => "Open Admin Panel",
-            ContactSupport => "Contact support",
-            ContactSales => "Contact Sales",
+            LeaveTeam => crate::tr!("settings", "leave-team"),
+            ShowDeleteTeamConfirmationDialog => crate::tr!("settings", "delete-team"),
+            CreateTeam => crate::tr!("settings", "create-team"),
+            DeletePendingEmailInvitation { .. } => crate::tr!("settings", "delete-pending-email-invitation"),
+            RemoveUserFromTeam { .. } => crate::tr!("settings", "remove-user-from-team"),
+            RemoveUserFromWorkspace { .. } => crate::tr!("settings", "remove-user-from-workspace"),
+            AddDomainRestrictions { .. } => crate::tr!("settings", "add-domain-restrictions"),
+            DeleteDomainRestriction { .. } => crate::tr!("settings", "delete-domain-restriction"),
+            SendEmailInvites { .. } => crate::tr!("settings", "send-email-invites"),
+            GenerateUpgradeLink { .. } => crate::tr!("settings", "generate-upgrade-link"),
+            GenerateStripeBillingPortalLink { .. } => crate::tr!("settings", "generate-stripe-billing-portal-link"),
+            OpenAdminPanel { .. } | OpenWorkspaceAdminPanel => crate::tr!("settings", "open-admin-panel"),
+            ContactSupport => crate::tr!("ai_assistant", "ai-contact-support-text"),
+            ContactSales => crate::tr!("settings", "contact-sales"),
             ToggleTeamDiscoverability { .. } | ToggleTeamDiscoverabilityBeforeCreation => {
-                "Toggle Team Discoverability"
+                crate::tr!("settings", "toggle-team-discoverability")
             }
-            JoinTeamWithTeamDiscovery { .. } => "Join Team With Team Discovery",
-            ShowWorkspaceTeams { .. } => "Show Workspace Teams",
-            JoinWorkspaceFromDiscovery { .. } => "Join Workspace From Discovery",
-            _ => "Unknown reason",
+            JoinTeamWithTeamDiscovery { .. } => crate::tr!("settings", "join-team-with-team-discovery"),
+            ShowWorkspaceTeams { .. } => crate::tr!("settings", "show-workspace-teams"),
+            JoinWorkspaceFromDiscovery { .. } => crate::tr!("settings", "join-workspace-from-discovery"),
+            _ => crate::tr!("settings", "unknown-reason"),
         }
     }
 }
@@ -2729,10 +2729,10 @@ impl TeamsWidget {
         .finish();
 
         let title = match warning {
-            GrowTeamWarning::SeatCapReached => "Your team is full",
-            GrowTeamWarning::SeatCapExceeded => "You've exceeded your member limit",
-            GrowTeamWarning::PaymentPastDue => "Payment past due",
-            GrowTeamWarning::PaymentUnpaid => "Subscription unpaid",
+            GrowTeamWarning::SeatCapReached => crate::tr!("settings", "your-team-is-full"),
+            GrowTeamWarning::SeatCapExceeded => crate::tr!("settings", "youve-exceeded-your-member-limit"),
+            GrowTeamWarning::PaymentPastDue => crate::tr!("settings", "payment-past-due"),
+            GrowTeamWarning::PaymentUnpaid => crate::tr!("settings", "subscription-unpaid"),
         };
         let title_element = self.render_subsection_header(title.to_owned(), appearance);
 
@@ -2744,7 +2744,7 @@ impl TeamsWidget {
         );
 
         let body_prefix = match warning {
-            GrowTeamWarning::SeatCapReached => "You've reached your plan's member limit.",
+            GrowTeamWarning::SeatCapReached => crate::tr!("settings", "youve-reached-your-plans-member-limit"),
             GrowTeamWarning::SeatCapExceeded => {
                 "You've exceeded your plan's member limit. Existing team members keep their access, but you won't be able to add new members."
             }
@@ -2753,7 +2753,7 @@ impl TeamsWidget {
                 "team-invites-have-been-restricted-due-to-a-past-due-payment"
             ),
             GrowTeamWarning::PaymentUnpaid => {
-                "Team invites have been restricted due to an unpaid subscription."
+                crate::tr!("settings", "team-invites-have-been-restricted-due-to-an-unpaid-subscription")
             }
         };
 
@@ -2763,22 +2763,22 @@ impl TeamsWidget {
         );
         let cta_sentence = if !has_admin_permissions {
             if is_delinquency {
-                "Contact a team admin to restore access."
+                crate::tr!("settings", "contact-a-team-admin-to-restore-access")
             } else {
-                "Contact a team admin to grow the team."
+                crate::tr!("settings", "contact-a-team-admin-to-grow-the-team")
             }
         } else {
             match cta {
-                GrowTeamWarningCta::Upgrade => "Upgrade to grow your team.",
+                GrowTeamWarningCta::Upgrade => crate::tr!("settings", "upgrade-to-grow-your-team"),
                 GrowTeamWarningCta::UpdateBilling => {
-                    "Update your payment information to restore access."
+                    crate::tr!("settings", "update-your-payment-information-to-restore-access")
                 }
-                GrowTeamWarningCta::ContactSupport => "Contact support to restore access.",
+                GrowTeamWarningCta::ContactSupport => crate::tr!("settings", "contact-support-to-restore-access"),
                 GrowTeamWarningCta::None => {
                     if is_delinquency {
-                        "Contact support to restore access."
+                        crate::tr!("settings", "contact-support-to-restore-access")
                     } else {
-                        "Contact sales to grow your team."
+                        crate::tr!("settings", "contact-sales-to-grow-your-team")
                     }
                 }
             }
@@ -2877,11 +2877,11 @@ impl TeamsWidget {
     ) -> (&'static str, &'static str) {
         if billing_metadata.customer_type == CustomerType::Business {
             (
-                "Upgrade to Enterprise",
+                crate::tr!("settings", "upgrade-to-enterprise"),
                 " for an unlimited team member limit.",
             )
         } else {
-            ("Upgrade to Business", " for a higher team member limit.")
+            (crate::tr!("settings", "upgrade-to-business"), " for a higher team member limit.")
         }
     }
 
@@ -3415,11 +3415,11 @@ impl TeamsWidget {
             // If the team is upgradeable to self-serve tier, show them the upgrade link.
             if team.billing_metadata.can_upgrade_to_higher_tier_plan() {
                 let description = if team.billing_metadata.can_upgrade_to_build_plan() {
-                    "Upgrade to Build"
+                    crate::tr!("ai_assistant", "ai-upgrade-to-build-text")
                 } else {
                     match team.billing_metadata.customer_type {
                         CustomerType::Prosumer => &crate::tr!("settings", "upgrade-to-turbo-plan"),
-                        CustomerType::Turbo => "Upgrade to Lightspeed plan",
+                        CustomerType::Turbo => crate::tr!("settings", "upgrade-lightspeed-plan"),
                         _ => &crate::tr!("settings", "compare-plans"),
                     }
                 };

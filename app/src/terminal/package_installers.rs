@@ -62,7 +62,7 @@ fn is_at_context_package_installer_prefix(buffer_text: &str) -> bool {
         "bunx ",
         "deno ",
         "astro add ",
-        "turbo ",
+        crate::tr!("workspace", "plan-turbo"),
         // Python installers
         "pip ",
         "pip3 ",

@@ -2115,10 +2115,10 @@ impl LocalCodeEditorView {
     /// Creates menu items for the context menu
     fn context_menu_items(&self) -> Vec<MenuItem<LocalCodeEditorAction>> {
         vec![
-            MenuItemFields::new("Go to definition")
+            MenuItemFields::new(crate::tr!("code", "go-to-definition"))
                 .with_on_select_action(LocalCodeEditorAction::GotoDefinition)
                 .into_item(),
-            MenuItemFields::new("Find references")
+            MenuItemFields::new(crate::tr!("code", "find-references"))
                 .with_on_select_action(LocalCodeEditorAction::FindReferences)
                 .into_item(),
         ]
@@ -2518,7 +2518,7 @@ pub fn render_unsaved_changes_banner(
             appearance
                 .ui_builder()
                 .button(ButtonVariant::Text, discard_mouse_state)
-                .with_text_label("Discard this version".into())
+                .with_text_label(crate::tr!("code", "discard-this-version").into())
                 .with_style(UiComponentStyles {
                     height: Some(24.),
                     padding: Some(Coords {

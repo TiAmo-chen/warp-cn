@@ -100,7 +100,7 @@ impl BillingAndUsageDispatchView {
             }
         });
 
-        let page = PageType::new_monolith(BillingAndUsageWidget, Some("Billing and Usage"), true);
+        let page = PageType::new_monolith(BillingAndUsageWidget, Some(crate::tr!("settings", "billing-and-usage")), true);
 
         Self {
             page,
@@ -167,7 +167,7 @@ impl TypedActionView for BillingAndUsageDispatchView {
 
 impl View for BillingAndUsageDispatchView {
     fn ui_name() -> &'static str {
-        "Billing and usage"
+        crate::tr!("settings", "billing-tab")
     }
 
     fn render(&self, app: &AppContext) -> Box<dyn Element> {

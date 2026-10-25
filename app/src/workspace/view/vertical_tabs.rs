@@ -3701,16 +3701,16 @@ impl TypedPane<'_> {
         match self {
             TypedPane::Terminal(_) => "Terminal",
             TypedPane::Code(_) => "Code",
-            TypedPane::CodeDiff => "Code Diff",
+            TypedPane::CodeDiff => crate::tr!("code_editor", "code-diff-title"),
             TypedPane::File => "File",
             TypedPane::Notebook { .. } => "Notebook",
             TypedPane::Workflow { .. } => "Workflow",
             TypedPane::Settings => "Settings",
-            TypedPane::EnvVarCollection => "Environment Variables",
+            TypedPane::EnvVarCollection => crate::tr!("drive", "env-vars-type"),
             TypedPane::EnvironmentManagement => "Environments",
             TypedPane::AIFact => "Rules",
             TypedPane::AIDocument => "Plan",
-            TypedPane::ExecutionProfileEditor => "Execution Profile",
+            TypedPane::ExecutionProfileEditor => crate::tr!("workspace", "pane-execution-profile"),
             TypedPane::Other => "Other",
         }
     }
@@ -5883,24 +5883,24 @@ fn subtitle_options_for_primary(
             (VerticalTabsCompactSubtitle::Branch, "Branch"),
             (
                 VerticalTabsCompactSubtitle::WorkingDirectory,
-                "Working Directory",
+                crate::tr!("common", "working-directory"),
             ),
         ],
         VerticalTabsPrimaryInfo::WorkingDirectory => [
             (VerticalTabsCompactSubtitle::Branch, "Branch"),
             (
                 VerticalTabsCompactSubtitle::Command,
-                "Command / Conversation",
+                crate::tr!("workspace", "command-conversation"),
             ),
         ],
         VerticalTabsPrimaryInfo::Branch => [
             (
                 VerticalTabsCompactSubtitle::Command,
-                "Command / Conversation",
+                crate::tr!("workspace", "command-conversation"),
             ),
             (
                 VerticalTabsCompactSubtitle::WorkingDirectory,
-                "Working Directory",
+                crate::tr!("common", "working-directory"),
             ),
         ],
     }
@@ -6239,7 +6239,7 @@ pub(super) fn render_settings_popup(
             let pr_link_info_tooltip = if show_pr_link && pr_validation_suppressed {
                 Some(ShowToggleInfoTooltip {
                     mouse_state: state.show_pr_link_info_tooltip_mouse_state.clone(),
-                    tooltip_text: "Requires the GitHub CLI to be installed and authenticated",
+                    tooltip_text: crate::tr!("workspace", "requires-github-cli"),
                 })
             } else {
                 None

@@ -969,20 +969,20 @@ impl CommentListView {
     ) -> Cow<'static, str> {
         if let ReviewDestination::Cli(agent) = destination {
             if !has_sendable_comments {
-                Cow::Borrowed("No non-outdated comments to send")
+                Cow::Borrowed(crate::tr!("code_review", "no-non-outdated-comments"))
             } else {
                 Cow::Owned(format!("Send diff comments to {}", agent.display_name()))
             }
         } else if !ai_enabled {
-            Cow::Borrowed("AI must be enabled to send comments to Agent")
+            Cow::Borrowed(crate::tr!("code_review", "ai-must-be-enabled"))
         } else if !ai_available {
-            Cow::Borrowed("Agent code review requires AI credits")
+            Cow::Borrowed(crate::tr!("code_review", "agent-requires-credits"))
         } else if matches!(destination, ReviewDestination::None) {
-            Cow::Borrowed("All terminals are busy")
+            Cow::Borrowed(crate::tr!("code_review", "all-terminals-busy"))
         } else if !has_sendable_comments {
-            Cow::Borrowed("No non-outdated comments to send")
+            Cow::Borrowed(crate::tr!("code_review", "no-non-outdated-comments"))
         } else {
-            Cow::Borrowed("Send diff comments to Agent")
+            Cow::Borrowed(crate::tr!("code_review", "send-comments-to-agent"))
         }
     }
 

@@ -2013,7 +2013,7 @@ impl Network {
 }
 
 const NO_QUOTA_REMAINING_MESSAGE: &str =
-    "Session sharing usage exceeded for the day. Please try again later.";
+    crate::tr!("terminal", "sharing-usage-exceeded");
 fn session_terminated_reason_diagnostic_label(reason: &SessionTerminatedReason) -> &'static str {
     match reason {
         SessionTerminatedReason::NoUserQuotaRemaining {} => "no_user_quota_remaining",
@@ -2062,7 +2062,7 @@ pub fn failed_to_initialize_session_user_error(reason: &FailedToInitializeSessio
 
 pub fn failed_to_add_guests_user_error(reason: &FailedToAddGuestsReason) -> String {
     match reason {
-        FailedToAddGuestsReason::Invalid => "Something went wrong. Please try again.",
+        FailedToAddGuestsReason::Invalid => crate::tr!("ai_assistant", "ai-chat-error-label"),
         FailedToAddGuestsReason::NotWarpUsers => {
             "One or more emails were not associated with Warp accounts."
         }

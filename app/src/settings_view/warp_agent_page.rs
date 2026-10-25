@@ -122,11 +122,11 @@ const NEXT_COMMAND_DESCRIPTION: &str = "Let AI suggest the next command to run b
 const PROMPT_SUGGESTIONS_DESCRIPTION: &str = "Let AI suggest natural language prompts, as inline banners in the input, based on recent commands and their outputs.";
 const SUGGESTED_CODE_BANNERS_DESCRIPTION: &str = "Let AI suggest code diffs and queries as inline banners in the blocklist, based on recent commands and their outputs.";
 const NATURAL_LANGUAGE_AUTOSUGGESTIONS: &str =
-    "Let AI suggest natural language autosuggestions, based on recent commands and their outputs.";
+    crate::tr!("settings", "ai-nl-autosuggestions-description");
 const SHARED_BLOCK_TITLE_GENERATION_DESCRIPTION: &str =
-    "Let AI generate a title for your shared block based on the command and output.";
+    crate::tr!("settings", "ai-shared-block-title-description");
 const GIT_OPERATIONS_AUTOGEN_DESCRIPTION: &str =
-    "Let AI generate commit messages and pull request titles and descriptions.";
+    crate::tr!("settings", "ai-git-operations-description");
 const WISPR_FLOW_URL: &str = "https://wisprflow.ai/";
 const CUSTOM_INFERENCE_LEARN_MORE_URL: &str =
     "https://docs.warp.dev/agents/inference/custom-inference-endpoint/";
@@ -247,7 +247,7 @@ pub fn init_actions_from_parent_view<T: Action + Clone>(
     ToggleSettingActionPair::add_toggle_setting_action_pairs_as_bindings(
         vec![
             ToggleSettingActionPair::new(
-                "code suggestions",
+                crate::tr!("settings", "code_suggestions"),
                 builder(SettingsAction::WarpAgent(
                     WarpAgentPageAction::ToggleCodeSuggestions,
                 )),
@@ -265,7 +265,7 @@ pub fn init_actions_from_parent_view<T: Action + Clone>(
             ToggleSettingActionPair::custom(
                 SettingActionPairDescriptions::new(
                     &crate::tr!("settings", "show-agent-tips"),
-                    "Hide agent tips",
+                    crate::tr!("settings", "hide-agent-tips"),
                 ),
                 builder(SettingsAction::WarpAgent(
                     WarpAgentPageAction::ToggleShowAgentTips,
@@ -1958,7 +1958,7 @@ impl WarpAgentPageView {
                         editor.clear_buffer(ctx);
                     });
                     safe_error!(
-                        safe: ("Grok OAuth loopback callback failed"),
+                        safe: (crate::tr!("settings", "grok-oauth-loopback-callback-failed")),
                         full: ("Grok OAuth loopback callback failed: {err:#}")
                     );
                     send_telemetry_from_ctx!(
@@ -2283,7 +2283,7 @@ impl WarpAgentPageView {
                     Err(err) => {
                         // Keep the row open so the user can correct the code.
                         safe_error!(
-                            safe: ("Grok manual code exchange failed"),
+                            safe: (crate::tr!("settings", "grok-manual-code-exchange-failed")),
                             full: ("Grok manual code exchange failed: {err:#}")
                         );
                         send_telemetry_from_ctx!(
@@ -2344,7 +2344,7 @@ impl WarpAgentPageView {
             ];
             let active_ai_toggle = SwitchStateHandle::default();
             categories.push(Category::with_header(
-                CategoryHeader::new("Active AI").with_trailing_element(
+                CategoryHeader::new(crate::tr!("settings", "ai-active-ai")).with_trailing_element(
                     move |_view, _appearance, app| render_active_ai_toggle(&active_ai_toggle, app),
                 ),
                 active_ai_widgets,
@@ -2376,7 +2376,7 @@ impl WarpAgentPageView {
         }
 
         categories.push(Category::new(
-            "Cloud Handoff",
+            crate::tr!("settings", "cloud-handoff"),
             vec![
                 Box::new(CloudHandoffWidget::default()),
                 Box::new(AutoHandoffOnSleepWidget::default()),
@@ -2386,7 +2386,7 @@ impl WarpAgentPageView {
 
         let page_view_handle = ctx.handle();
         categories.push(Category::with_header(
-            CategoryHeader::new("Custom Inference").with_trailing_element(
+            CategoryHeader::new(crate::tr!("settings", "custom-inference")).with_trailing_element(
                 move |view: &Self, _appearance, app| {
                     let workspaces = UserWorkspaces::as_ref(app);
                     let team_scope = workspaces.team_context(&page_view_handle, app);
@@ -2403,12 +2403,12 @@ impl WarpAgentPageView {
         ));
 
         categories.push(Category::new(
-            "AWS Bedrock",
+            crate::tr!("settings", "ai-aws-bedrock"),
             vec![Box::new(AwsBedrockWidget::new(ctx))],
         ));
 
         categories.push(Category::new(
-            "Gemini Enterprise",
+            crate::tr!("settings", "gemini-enterprise"),
             vec![Box::new(GeminiEnterpriseWidget::new(ctx))],
         ));
 
@@ -2421,11 +2421,11 @@ impl WarpAgentPageView {
                 widgets.push(Box::new(CustomModelRoutersWidget));
                 widgets
             };
-            categories.push(Category::new("Custom Routers", custom_router_widgets));
+            categories.push(Category::new(crate::tr!("settings", "custom-routers"), custom_router_widgets));
         }
 
         categories.push(Category::new(
-            "Agent Attribution",
+            crate::tr!("settings", "ai-agent-attribution-header"),
             vec![Box::new(AgentAttributionWidget::default())],
         ));
 
@@ -2453,7 +2453,7 @@ impl WarpAgentPageView {
         let global_ai_sign_up_button = MouseStateHandle::default();
         PageType::new_categorized(
             categories,
-            Some(PageTitle::new("Warp Agent").with_trailing_element(
+            Some(PageTitle::new(crate::tr!("settings", "warp-agent-tab")).with_trailing_element(
                 move |_view, appearance, app| {
                     render_global_ai_toggle(
                         &global_ai_switch_state,
@@ -4865,7 +4865,7 @@ impl SettingsWidget for CloudHandoffWidget {
         let is_force_disabled = !is_any_ai_enabled || cloud_convos_off;
 
         let tooltip_text = if cloud_convos_off {
-            "Cloud handoff requires cloud conversations to be enabled."
+            crate::tr!("settings", "cloud-handoff-requires-cloud-conversations-to-be-enabled")
         } else {
             ""
         };
@@ -6584,14 +6584,14 @@ impl AwsBedrockWidget {
         );
         column.add_child(render_input(
             appearance,
-            "Login Command",
+            crate::tr!("settings", "login-command"),
             self.aws_auth_refresh_command_editor.clone(),
             is_usage_enabled,
             app,
         ));
         column.add_child(render_input(
             appearance,
-            "AWS Profile",
+            crate::tr!("settings", "aws-profile"),
             self.aws_auth_refresh_profile_editor.clone(),
             is_usage_enabled,
             app,

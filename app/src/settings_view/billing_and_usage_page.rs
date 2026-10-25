@@ -79,7 +79,7 @@ const OVERAGE_TOGGLE_USER_HEADER_ENABLED: &str = "Premium model usage overages a
 const OVERAGE_TOGGLE_USER_HEADER_DISABLED: &str = "Premium model usage overages are not enabled";
 const OVERAGE_TOGGLE_DESCRIPTION: &str = "Continue using premium models beyond your plan's limits. Usage is charged in $20 increments up to your spending limit, with any remaining balance charged on your scheduled billing date.";
 const OVERAGE_TOGGLE_USER_DESCRIPTION: &str =
-    "Ask a team admin to enable overages for more AI usage.";
+    crate::tr!("settings", "ask-a-team-admin-to-enable-overages-for-more-ai-usage");
 
 const SORT_MENU_ITEM_DISPLAY_NAME_A_Z_LABEL: &str = "A to Z";
 const SORT_MENU_ITEM_DISPLAY_NAME_Z_A_LABEL: &str = "Z to A";
@@ -88,9 +88,9 @@ const SORT_MENU_ITEM_REQUEST_USAGE_DESCENDING_LABEL: &str = "Usage descending";
 
 const AUTO_RELOAD_EXCEED_LIMIT_WARNING_STRING: &str = "Auto reload is disabled, as the next reload would exceed your monthly spend limit. Increase your limit to use auto reload.";
 const AUTO_RELOAD_DELINQUENT_WARNING_STRING: &str =
-    "Restricted due to billing issue. Update your payment method to purchase add-on credits.";
+    crate::tr!("settings", "restricted-due-to-billing-issue-update-your-payment-method-to-purchase-add-on-credits");
 const AUTO_RELOAD_USAGE_DELINQUENT_WARNING_STRING: &str =
-    "Restricted due to billing issue. Update your payment method to purchase usage.";
+    crate::tr!("settings", "restricted-due-to-billing-issue-update-your-payment-method-to-purchase-usage");
 const RESTRICTED_BILLING_USAGE_WARNING_STRING: &str = "Auto reload is disabled due to recent failed reload. Please update your payment method and try again.";
 
 const OVERVIEW_TAB_TEXT: &str = "Overview";
@@ -103,10 +103,10 @@ const ENTERPRISE_USAGE_CALLOUT_BODY_ADMIN_SUFFIX: &str = ".";
 const ENTERPRISE_USAGE_CALLOUT_BODY_NON_ADMIN: &str = "Enterprise credit usage isn't fully available in this view yet. Contact a team admin for detailed usage reporting.";
 
 const ADDITIONAL_ADDON_CREDITS_DESCRIPTION_FOR_TEAM: &str =
-    "Purchased add-on credits are shared across your team.";
+    crate::tr!("settings", "purchased-add-on-credits-are-shared-across-your-team");
 const ADDON_USAGE_DESCRIPTION: &str = "Usage rolls over each billing cycle and expires after one year. Once your base plan usage is depleted, any additional purchased usage will be consumed.";
 const ADDITIONAL_ADDON_USAGE_DESCRIPTION_FOR_TEAM: &str =
-    "Purchased usage is shared across your team.";
+    crate::tr!("settings", "purchased-usage-is-shared-across-your-team");
 
 // Cloud agent trial widget constants.
 const AMBIENT_AGENT_TRIAL_TITLE: &str = "Cloud agent trial";
@@ -534,8 +534,8 @@ impl BillingAndUsagePageView {
             UserWorkspacesEvent::PurchaseAddonCreditsSuccess => {
                 self.purchase_addon_credits_loading = false;
                 let message = match usage_display_unit(ctx) {
-                    UsageDisplayUnit::Credits => "Successfully purchased add-on credits",
-                    UsageDisplayUnit::Dollars => "Successfully purchased usage",
+                    UsageDisplayUnit::Credits => crate::tr!("settings", "successfully-purchased-add-on-credits"),
+                    UsageDisplayUnit::Dollars => crate::tr!("settings", "successfully-purchased-usage"),
                 };
                 self.show_toast(message, ToastFlavor::Success, ctx);
                 AIRequestUsageModel::handle(ctx).update(ctx, |ai_request_usage_model, ctx| {
@@ -845,7 +845,7 @@ impl Entity for BillingAndUsagePageView {
 
 impl View for BillingAndUsagePageView {
     fn ui_name() -> &'static str {
-        "Billing and usage"
+        crate::tr!("settings", "billing-tab")
     }
 
     fn render(&self, app: &AppContext) -> Box<dyn Element> {
@@ -1179,9 +1179,9 @@ impl From<&BillingAndUsagePageAction> for LoginGatedFeature {
     fn from(val: &BillingAndUsagePageAction) -> LoginGatedFeature {
         use BillingAndUsagePageAction::*;
         match val {
-            Upgrade { .. } => "Upgrade Plan",
-            GenerateStripeBillingPortalLink { .. } => "Generate Stripe Billing Portal Link",
-            _ => "Unknown reason",
+            Upgrade { .. } => crate::tr!("settings", "upgrade-plan"),
+            GenerateStripeBillingPortalLink { .. } => crate::tr!("settings", "generate-stripe-billing-portal-link"),
+            _ => crate::tr!("settings", "unknown-reason"),
         }
     }
 }
@@ -1932,9 +1932,9 @@ impl BillingAndUsagePageView {
             (false, false, true) => {
                 let paragraph_text = match unit {
                     UsageDisplayUnit::Credits => {
-                        "Contact your Account Executive for more add-on credits."
+                        crate::tr!("settings", "contact-your-account-executive-for-more-add-on-credits")
                     }
-                    UsageDisplayUnit::Dollars => "Contact your Account Executive for more usage.",
+                    UsageDisplayUnit::Dollars => crate::tr!("settings", "contact-your-account-executive-for-more-usage"),
                 };
                 Some(
                     ui_builder
@@ -2556,7 +2556,7 @@ impl BillingAndUsagePageView {
                     secondary_text: None,
                     tooltip_override_text: match info.is_current_user {
                         true => Some(crate::tr!("settings", "your-credit-limit-is-prorated-because-you-joined-midway-through-the-billing-cycle").to_string()),
-                        false => Some("This credit limit is prorated because this user joined midway through the billing cycle.".to_string()),
+                        false => Some(crate::tr!("settings", "this-credit-limit-is-prorated-because-this-user-joined-midway-through-the-billing-cycle").to_string()),
                     },
                 },
             ))
@@ -3464,8 +3464,8 @@ impl BillingAndUsagePageView {
                         }
                     } else {
                         let upgrade_text = match billing_metadata.customer_type {
-                            CustomerType::Prosumer => "Upgrade to Turbo",
-                            CustomerType::Turbo => "Upgrade to Lightspeed plan",
+                            CustomerType::Prosumer => crate::tr!("settings", "upgrade-to-turbo-plan"),
+                            CustomerType::Turbo => crate::tr!("settings", "upgrade-lightspeed-plan"),
                             _ => "Upgrade",
                         };
                         vec![

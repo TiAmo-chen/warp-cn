@@ -494,13 +494,13 @@ fn get_stable_agent_mode_hint_text(cached_hint: &mut Option<&'static str>) -> &'
 
 const AGENT_MODE_AI_ENABLED_STEER_HINT_TEXT_UDI: &str = "Steer the running agent";
 const AGENT_MODE_AI_ENABLED_STEER_HINT_TEXT_CLASSIC: &str =
-    "Steer the running agent, or backspace to exit";
+    crate::tr!("terminal", "steer-agent-classic");
 const AGENT_MODE_AI_ENABLED_QUEUE_HINT_TEXT_UDI: &str = "Queue a follow up for the running agent";
 const AGENT_MODE_AI_ENABLED_QUEUE_HINT_TEXT_CLASSIC: &str =
     "Queue a follow up for the running agent, or backspace to exit";
 const AGENT_MODE_AI_ENABLED_FOLLOW_UP_HINT_TEXT_UDI: &str = "Ask a follow up";
 const AGENT_MODE_AI_ENABLED_FOLLOW_UP_HINT_TEXT_CLASSIC: &str =
-    "Ask a follow up, or backspace to exit";
+    crate::tr!("terminal", "ask-follow-up-classic");
 
 /// Action name for setting input mode to agent mode
 pub const SET_INPUT_MODE_AGENT_ACTION_NAME: &str = "input:set_mode_agent";
@@ -822,21 +822,21 @@ impl InputSuggestionsMode {
             InputSuggestionsMode::UserQueryMenu {
                 action: UserQueryMenuAction::ForkFrom,
                 ..
-            } => Some("Search queries"),
+            } => Some(crate::tr!("terminal", "search-queries")),
             InputSuggestionsMode::UserQueryMenu {
                 action: UserQueryMenuAction::Rewind,
                 ..
-            } => Some("Search queries to rewind to"),
-            InputSuggestionsMode::ConversationMenu => Some("Search conversations"),
-            InputSuggestionsMode::SkillMenu => Some("Search skills"),
-            InputSuggestionsMode::ModelSelector => Some("Search models"),
-            InputSuggestionsMode::ProfileSelector => Some("Search profiles"),
+            } => Some(crate::tr!("terminal", "search-queries-rewind")),
+            InputSuggestionsMode::ConversationMenu => Some(crate::tr!("search", "placeholder-conversations")),
+            InputSuggestionsMode::SkillMenu => Some(crate::tr!("search", "placeholder-skills")),
+            InputSuggestionsMode::ModelSelector => Some(crate::tr!("agent_cloud", "search-models")),
+            InputSuggestionsMode::ProfileSelector => Some(crate::tr!("terminal", "search-profiles")),
             InputSuggestionsMode::SlashCommands if FeatureFlag::AgentView.is_enabled() => {
-                Some("Search commands")
+                Some(crate::tr!("search", "placeholder-commands"))
             }
-            InputSuggestionsMode::PromptsMenu => Some("Search prompts"),
-            InputSuggestionsMode::IndexedReposMenu => Some("Search indexed repos"),
-            InputSuggestionsMode::PlanMenu { .. } => Some("Search plans"),
+            InputSuggestionsMode::PromptsMenu => Some(crate::tr!("search", "placeholder-prompts")),
+            InputSuggestionsMode::IndexedReposMenu => Some(crate::tr!("terminal", "search-indexed-repos")),
+            InputSuggestionsMode::PlanMenu { .. } => Some(crate::tr!("search", "placeholder-plans")),
             _ => None,
         }
     }

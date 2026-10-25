@@ -35,7 +35,7 @@ pub enum NotificationFilter {
 impl NotificationFilter {
     pub(crate) fn label(&self) -> &'static str {
         match self {
-            NotificationFilter::All => "All tabs",
+            NotificationFilter::All => crate::tr!("ai_assistant", "ai-notif-filter-all"),
             NotificationFilter::Unread => "Unread",
             NotificationFilter::Errors => "Errors",
         }

@@ -51,7 +51,7 @@ impl SyncDataSource for ProfileSelectorDataSource {
                 ProfileSearchItem::new_manage_profiles_item(),
             ));
         } else if let Some(match_result) =
-            match_indices_case_insensitive("manage profiles", &query_text)
+            match_indices_case_insensitive(crate::tr!("terminal", "manage-profiles"), &query_text)
         {
             let score = match_result.score;
             results.push(QueryResult::from(

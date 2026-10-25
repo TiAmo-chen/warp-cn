@@ -842,16 +842,16 @@ impl NotificationsTrigger {
     pub fn discovery_banner_copy(&self) -> &'static str {
         match self {
             NotificationsTrigger::LongRunningCommand(..) => {
-                "Warp can notify you when long-running commands finish."
+                crate::tr!("terminal", "notifications-long-running")
             }
             NotificationsTrigger::AgentTaskCompleted(..) => {
-                "Warp can notify you when an agent finishes responding."
+                crate::tr!("terminal", "notifications-agent-task")
             }
             NotificationsTrigger::NeedsAttention => {
-                "Warp can notify you when a command or agent needs your attention."
+                crate::tr!("terminal", "notifications-needs-attention")
             }
             NotificationsTrigger::PasswordPrompt => {
-                "Warp can notify you when you're prompted to enter a password."
+                crate::tr!("terminal", "notifications-password-prompt")
             }
         }
     }
@@ -894,12 +894,12 @@ impl NotificationsTrigger {
 
                 (
                     format!(" {status} after {duration_seconds}s"),
-                    "Latest output: ".to_string(),
+                    crate::tr!("terminal", "latest-output").to_string(),
                 )
             }
             AgentTaskCompleted(command_succeeded) => {
                 if *command_succeeded {
-                    (" finished".to_string(), "Latest output: ".to_string())
+                    (" finished".to_string(), crate::tr!("terminal", "latest-output").to_string())
                 } else {
                     (" failed".to_string(), "Error: ".to_string())
                 }
@@ -907,7 +907,7 @@ impl NotificationsTrigger {
             NotificationsTrigger::NeedsAttention => (" blocked".to_string(), "".to_string()),
             PasswordPrompt => (
                 " is waiting for a password".to_string(),
-                "Latest output: ".to_string(),
+                crate::tr!("terminal", "latest-output").to_string(),
             ),
         };
 
@@ -3973,7 +3973,7 @@ impl TerminalView {
             Banner::<TerminalAction>::new_with_buttons(
                 BannerTextContent::formatted_text(vec![
                     FormattedTextFragment::plain_text(
-                        "Seems like your shell is taking a while to start...  ",
+                        crate::tr!("terminal", "slow-bootstrap-msg"),
                     ),
                     FormattedTextFragment::hyperlink(
                         crate::tr!("terminal", "more-info"),
@@ -4035,7 +4035,7 @@ impl TerminalView {
         let emacs_bindings_banner = ctx.add_typed_action_view(|_| {
             Banner::new_with_buttons(
                 BannerTextContent::formatted_text(vec![
-                    FormattedTextFragment::plain_text("Did you intend "),
+                    FormattedTextFragment::plain_text(crate::tr!("terminal", "did-you-intend")),
                     FormattedTextFragment::inline_code("ctrl-a"),
                     FormattedTextFragment::plain_text("/"),
                     FormattedTextFragment::inline_code("ctrl-e"),
@@ -17799,7 +17799,7 @@ impl TerminalView {
                 let share_block_label = if FeatureFlag::CreatingSharedSessions.is_enabled()
                     && ContextFlag::CreateSharedSession.is_enabled()
                 {
-                    "Share block..."
+                    crate::tr!("terminal", "menu-share-block")
                 } else {
                     "Share..."
                 };
@@ -20588,7 +20588,7 @@ impl TerminalView {
             }
 
             AskAIType::FromAICommandSearch { query } => {
-                let query_prefix = "What is the command to: ";
+                let query_prefix = crate::tr!("terminal", "what-is-the-command-to");
                 (Some(format!("{}{}", query_prefix, query.trim())), None)
             }
         };
@@ -28507,7 +28507,7 @@ impl TypedActionView for TerminalView {
             AttemptLoginGatedFeature => {
                 AuthManager::handle(ctx).update(ctx, |auth_manager, ctx| {
                     auth_manager.attempt_login_gated_feature(
-                        "Upgrade AI Usage",
+                        crate::tr!("search", "upgrade-ai-usage"),
                         AuthViewVariant::RequireLoginCloseable,
                         ctx,
                     )

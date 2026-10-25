@@ -226,7 +226,7 @@ impl EnableAutoReloadModalBody {
     fn render_content(&self, appearance: &Appearance) -> Box<dyn Element> {
         let theme = appearance.theme();
         let explanation_fragments = vec![
-            FormattedTextFragment::plain_text("When enabled, "),
+            FormattedTextFragment::plain_text(crate::tr!("terminal", "when-enabled")),
             FormattedTextFragment::bold("auto-reload"),
             FormattedTextFragment::plain_text(
                 " will automatically purchase your selected package when you run out. ",

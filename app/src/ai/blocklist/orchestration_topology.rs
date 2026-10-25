@@ -29,7 +29,7 @@ impl OrchestrationParticipantKind {
         match self {
             Self::Orchestrator => "Orchestrator",
             Self::Agent { name } => name,
-            Self::Unknown => "Unknown agent",
+            Self::Unknown => crate::tr!("ai_assistant", "ai-unknown-agent"),
         }
     }
 }

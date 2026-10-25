@@ -184,10 +184,10 @@ impl AmbientAgentEntryBlock {
     fn detail_text(&self, app: &AppContext) -> Option<&'static str> {
         match self.ambient_agent_view_model(app)?.status() {
             Status::Setup | Status::Composing => None,
-            Status::WaitingForSession { .. } => Some("Starting environment..."),
-            Status::AgentRunning => Some("Agent is working on task"),
-            Status::Failed { .. } => Some("Agent failed"),
-            Status::NeedsGithubAuth { .. } => Some("Authentication required"),
+            Status::WaitingForSession { .. } => Some(crate::tr!("agent_cloud", "starting-environment")),
+            Status::AgentRunning => Some(crate::tr!("agent_cloud", "agent-working-on-task")),
+            Status::Failed { .. } => Some(crate::tr!("agent_cloud", "agent-failed")),
+            Status::NeedsGithubAuth { .. } => Some(crate::tr!("agent_cloud", "authentication-required")),
             Status::Cancelled { .. } => Some("Cancelled"),
         }
     }
@@ -200,7 +200,7 @@ impl AmbientAgentEntryBlock {
             }
             Status::Failed { .. } => Some(ConversationStatus::Error),
             Status::NeedsGithubAuth { .. } => Some(ConversationStatus::Blocked {
-                blocked_action: "GitHub authentication required".to_owned(),
+                blocked_action: crate::tr!("agent_cloud", "github-auth-title").to_owned(),
             }),
             Status::Cancelled { .. } => Some(ConversationStatus::Cancelled),
         }

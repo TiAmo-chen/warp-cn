@@ -104,8 +104,8 @@ pub enum AIContextMenuCategory {
 impl AIContextMenuCategory {
     pub fn name(&self) -> &'static str {
         match self {
-            AIContextMenuCategory::CurrentFolderFiles => "Files and folders",
-            AIContextMenuCategory::RepoFiles => "Files and folders",
+            AIContextMenuCategory::CurrentFolderFiles => crate::tr!("search", "category-files"),
+            AIContextMenuCategory::RepoFiles => crate::tr!("search", "category-files"),
             AIContextMenuCategory::Commands => "Commands",
             AIContextMenuCategory::Blocks => "Blocks",
             AIContextMenuCategory::Workflows => "Workflows",
@@ -113,15 +113,15 @@ impl AIContextMenuCategory {
             AIContextMenuCategory::Plans => "Plans",
             AIContextMenuCategory::Diffs => "Diffs",
             AIContextMenuCategory::Docs => "Docs",
-            AIContextMenuCategory::Tasks => "Past tasks",
+            AIContextMenuCategory::Tasks => crate::tr!("search", "source-tasks"),
             AIContextMenuCategory::Rules => "Rules",
-            AIContextMenuCategory::Servers => "Servers and integrations",
+            AIContextMenuCategory::Servers => crate::tr!("search", "source-servers"),
             AIContextMenuCategory::Terminal => "Terminal",
             AIContextMenuCategory::Web => "Web",
-            AIContextMenuCategory::RecentDiff => "Most recent diff",
-            AIContextMenuCategory::RecentBlock => "Most recent block",
+            AIContextMenuCategory::RecentDiff => crate::tr!("search", "source-recent-diff"),
+            AIContextMenuCategory::RecentBlock => crate::tr!("search", "source-recent-block"),
             AIContextMenuCategory::Code => "Code",
-            AIContextMenuCategory::DiffSet => "Diff sets",
+            AIContextMenuCategory::DiffSet => crate::tr!("search", "category-diff-sets"),
             AIContextMenuCategory::Conversations => "Conversations",
             AIContextMenuCategory::Skills => "Skills",
         }

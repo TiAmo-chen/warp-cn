@@ -329,7 +329,7 @@ impl AuthViewBody {
             Flex::row()
                 .with_child(
                     ui_builder
-                        .span("By continuing, you agree to Warp's ")
+                        .span(crate::tr!("auth", "by-continuing"))
                         .with_style(disclaimer_styles)
                         .build()
                         .finish(),
@@ -387,7 +387,7 @@ impl AuthViewBody {
                     Flex::row()
                         .with_child(
                             ui_builder
-                                .paragraph("you can adjust your ")
+                                .paragraph(crate::tr!("auth", "opt-out-analytics-2"))
                                 .with_style(disclaimer_styles)
                                 .build()
                                 .finish(),
@@ -515,7 +515,7 @@ impl AuthViewBody {
             Flex::row()
                 .with_child(
                     ui_builder
-                        .span("Don't want to sign in right now? ")
+                        .span(crate::tr!("auth", "dont-want-sign-in"))
                         .build()
                         .finish(),
                 )
@@ -560,7 +560,7 @@ impl AuthViewBody {
                     Flex::row()
                         .with_child(
                             ui_builder
-                                .span("are only available to logged-in users. ")
+                                .span(crate::tr!("auth", "skip-login-warning-2"))
                                 .build()
                                 .finish(),
                         )
@@ -608,10 +608,10 @@ impl AuthViewBody {
                 "In order to use Warp’s AI features or collaborate with others, please create an account."
             }
             AuthViewVariant::HitDriveObjectLimitCloseable => {
-                "In order to create more objects in Warp Drive, please create an account."
+                crate::tr!("auth", "hit-drive-limit-closeable")
             }
             AuthViewVariant::ShareRequirementCloseable => {
-                "In order to share, please create an account."
+                crate::tr!("auth", "share-requirement-closeable")
             }
             _ => "",
         };
@@ -770,7 +770,7 @@ impl AuthViewBody {
                     Flex::row()
                         .with_child(
                             ui_builder
-                                .span("If your browser hasn't launched, ")
+                                .span(crate::tr!("auth", "browser-hasnt-launched"))
                                 .build()
                                 .finish(),
                         )

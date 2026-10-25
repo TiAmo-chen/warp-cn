@@ -425,10 +425,10 @@ impl From<&DriveIndexAction> for LoginGatedFeature {
     fn from(val: &DriveIndexAction) -> LoginGatedFeature {
         use DriveIndexAction::*;
         match val {
-            OpenTeamSettingsPage => "Open Team Settings",
-            ViewPlans { .. } => "View Plans",
+            OpenTeamSettingsPage => crate::tr!("drive", "open-team-settings"),
+            ViewPlans { .. } => crate::tr!("billing", "view-plans"),
             ManageBilling { .. } => "Manage Billing",
-            _ => "Unknown reason",
+            _ => crate::tr!("settings", "unknown-reason"),
         }
     }
 }

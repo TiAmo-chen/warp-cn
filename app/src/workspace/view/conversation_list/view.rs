@@ -1237,7 +1237,7 @@ impl TypedActionView for ConversationListView {
                 self.view_all = !self.view_all;
 
                 let label = if self.view_all {
-                    "Show less"
+                    crate::tr!("workspace", "show-less")
                 } else {
                     VIEW_ALL_LABEL
                 };

@@ -145,7 +145,7 @@ impl View for SharerGrantBody {
                     self.dont_show_again_mouse_state.clone(),
                     Some(TEXT_FONT_SIZE),
                 )
-                .with_label(Span::new("Don't show again.", Default::default()))
+                .with_label(Span::new(crate::tr!("ai_assistant", "ai-dont-show-again"), Default::default()))
                 .check(self.dont_show_again)
                 .build()
                 .with_cursor(Cursor::PointingHand)

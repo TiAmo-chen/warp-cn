@@ -96,13 +96,13 @@ impl TeamDeleteDisabledReason {
     pub fn user_facing_message(&self) -> &str {
         match self {
             TeamDeleteDisabledReason::ActivePaidSubscription => {
-                "Your team cannot be deleted with an active subscription."
+                crate::tr!("workspace", "team-delete-active-sub")
             }
             TeamDeleteDisabledReason::RemainingBonusCredits => {
-                "Your team cannot be deleted with unused add-on credits."
+                crate::tr!("workspace", "team-delete-unused-credits")
             }
             TeamDeleteDisabledReason::OtherMembers => {
-                "Your team cannot be deleted with other team members."
+                crate::tr!("workspace", "team-delete-members")
             }
         }
     }

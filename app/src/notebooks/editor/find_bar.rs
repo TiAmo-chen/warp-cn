@@ -544,7 +544,7 @@ impl TypedActionView for FindBar {
                 if self.searcher.as_ref(ctx).is_case_sensitive() {
                     &crate::tr!("notebooks", "enable-case-sensitive-search")
                 } else {
-                    "Disable case-sensitive search"
+                    crate::tr!("notebooks", "disable-case-sensitive-search")
                 }
             }
             FindBarAction::FocusNextMatch => &crate::tr!("notebooks", "focus-next-match"),

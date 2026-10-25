@@ -111,7 +111,7 @@ pub fn human_readable_approx_duration(duration: Duration, sentence_case: bool) -
     if sentence_case {
         crate::tr!("search", "just-now").to_owned()
     } else {
-        "just now".to_owned()
+        crate::tr!("search", "just-now").to_owned()
     }
 }
 

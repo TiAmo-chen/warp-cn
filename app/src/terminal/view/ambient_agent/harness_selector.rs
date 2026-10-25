@@ -223,7 +223,7 @@ impl HarnessSelector {
             button.set_disabled(is_locked_to_oz, ctx);
             button.set_tooltip(
                 Some(if is_locked_to_oz {
-                    "This conversation is with the Warp Agent, so the cloud handoff will also use Warp"
+                    crate::tr!("agent_cloud", "warp-handoff-tooltip")
                 } else {
                     BUTTON_TOOLTIP
                 }),

@@ -8206,13 +8206,13 @@ impl Workspace {
         let pane_name_target = match target {
             VerticalTabsPaneContextMenuTarget::ClickedPane(locator) => PaneNameMenuTarget {
                 locator,
-                rename_label: "Rename pane",
-                reset_label: "Reset pane name",
+                rename_label: crate::tr!("workspace", "rename-pane"),
+                reset_label: crate::tr!("workspace", "reset-pane-name"),
             },
             VerticalTabsPaneContextMenuTarget::ActivePane(locator) => PaneNameMenuTarget {
                 locator,
-                rename_label: "Rename active pane",
-                reset_label: "Reset active pane name",
+                rename_label: crate::tr!("workspace", "rename-active-pane"),
+                reset_label: crate::tr!("workspace", "reset-active-pane-name"),
             },
         };
         let can_move_left = self.can_move_tab(tab_index, TabMovement::Left);
@@ -11526,7 +11526,7 @@ impl Workspace {
                     let new_toast =
                         DismissibleToast::error(crate::tr!("workflows", "out-of-credits").into())
                             .with_link(
-                                ToastLink::new("Upgrade for more credits.".into())
+                                ToastLink::new(crate::tr!("workspace", "upgrade-for-more-credits").into())
                                     .with_href(upgrade_link),
                             );
                     view.add_ephemeral_toast(new_toast, ctx);
@@ -14157,7 +14157,7 @@ impl Workspace {
         let mut forked_conversation = match fork_result {
             Ok(forked_conversation) => forked_conversation,
             Err(e) => {
-                report_error!(e.context("Conversation forking failed"));
+                report_error!(e.context(crate::tr!("workspace", "conversation-forking-failed")));
                 WorkspaceToastStack::handle(ctx).update(ctx, |toast_stack, ctx| {
                     let toast = DismissibleToast::error(
                         crate::tr!("workspace", "conversation-forking-failed").to_owned(),
@@ -18259,7 +18259,7 @@ impl Workspace {
         {
             AuthManager::handle(ctx).update(ctx, |auth_manager, ctx| {
                 auth_manager.attempt_login_gated_feature(
-                    "Run Agent Mode Workflow",
+                    crate::tr!("workspace", "run-agent-mode-workflow"),
                     AuthViewVariant::RequireLoginCloseable,
                     ctx,
                 )
@@ -20847,7 +20847,7 @@ impl Workspace {
             if vertical_tabs_active {
                 (
                     self.vertical_tabs_panel_open,
-                    "Tabs panel",
+                    crate::tr!("workspace", "toolbar-tabs-panel"),
                     WorkspaceAction::ToggleVerticalTabsPanel,
                     "workspace:toggle_vertical_tabs_panel",
                     "workspace:toggle_vertical_tabs_panel",
@@ -20860,13 +20860,13 @@ impl Workspace {
                         .copied()
                         .unwrap_or(ToolPanelView::WarpDrive)
                     {
-                        ToolPanelView::ProjectExplorer => "Adds an IDE-style project explorer / file tree to the left side tools panel.",
-                        ToolPanelView::GlobalSearch { .. } => "Adds global file search to the left side tools panel.",
-                        ToolPanelView::WarpDrive => "Warp Drive",
-                        ToolPanelView::ConversationListView => "Agent conversations",
+                        ToolPanelView::ProjectExplorer => crate::tr!("settings", "adds-an-ide-style-project-explorer--file-tree-to-the-left-side-tools-panel"),
+                        ToolPanelView::GlobalSearch { .. } => crate::tr!("settings", "adds-global-file-search-to-the-left-side-tools-panel"),
+                        ToolPanelView::WarpDrive => crate::tr!("drive", "warp-drive"),
+                        ToolPanelView::ConversationListView => crate::tr!("settings", "agent-conversations"),
                     }
                 } else {
-                    "Tools panel"
+                    crate::tr!("settings", "tools-panel")
                 };
                 (
                     self.active_tab_pane_group().as_ref(ctx).left_panel_open,
@@ -20914,13 +20914,13 @@ impl Workspace {
                 .copied()
                 .unwrap_or(ToolPanelView::WarpDrive)
             {
-                ToolPanelView::ProjectExplorer => "Adds an IDE-style project explorer / file tree to the left side tools panel.",
-                ToolPanelView::GlobalSearch { .. } => "Adds global file search to the left side tools panel.",
-                ToolPanelView::WarpDrive => "Warp Drive",
-                ToolPanelView::ConversationListView => "Agent conversations",
+                ToolPanelView::ProjectExplorer => crate::tr!("settings", "adds-an-ide-style-project-explorer--file-tree-to-the-left-side-tools-panel"),
+                ToolPanelView::GlobalSearch { .. } => crate::tr!("settings", "adds-global-file-search-to-the-left-side-tools-panel"),
+                ToolPanelView::WarpDrive => crate::tr!("drive", "warp-drive"),
+                ToolPanelView::ConversationListView => crate::tr!("settings", "agent-conversations"),
             }
         } else {
-            "Tools panel"
+            crate::tr!("settings", "tools-panel")
         };
 
         SavePosition::new(
@@ -25681,7 +25681,7 @@ impl TypedActionView for Workspace {
             AttemptLoginGatedAIUpgrade => {
                 AuthManager::handle(ctx).update(ctx, |auth_manager, ctx| {
                     auth_manager.attempt_login_gated_feature(
-                        "Upgrade AI Usage",
+                        crate::tr!("search", "upgrade-ai-usage"),
                         AuthViewVariant::RequireLoginCloseable,
                         ctx,
                     )

@@ -339,8 +339,8 @@ impl EnvironmentSetupModeSelector {
         let remote_github_option = self.render_option(
             0,
             Icon::Github,
-            "Quick setup",
-            "Select the GitHub repositories you'd like to work with and we'll suggest a base image and config",
+            crate::tr!("settings", "quick-setup"),
+            crate::tr!("terminal", "quick-setup-desc"),
             true,
             self.remote_github_mouse_state.clone(),
             EnvironmentSetupModeSelectorAction::SelectRemoteGitHub,
@@ -350,8 +350,8 @@ impl EnvironmentSetupModeSelector {
         let local_repos_option = self.render_option(
             1,
             Icon::Terminal,
-            "Use the agent",
-            "Choose a locally set up project and we'll help you set up an environment based on it",
+            crate::tr!("settings", "use-the-agent"),
+            crate::tr!("terminal", "use-agent-desc"),
             false,
             self.local_repos_mouse_state.clone(),
             EnvironmentSetupModeSelectorAction::SelectLocalRepositories,

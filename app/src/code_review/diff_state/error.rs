@@ -95,7 +95,7 @@ impl DiffStateErrorKind {
         } else if message.contains("this operation must be run in a work tree") {
             Some(Self::NotWorkTree)
         } else if message.contains("Operation not permitted")
-            || message.contains("Permission denied")
+            || message.contains(crate::tr!("errors", "permission-title"))
         {
             Some(Self::RepositoryPathNotAccessible)
         } else if message.contains("non-UTF-8 path") {

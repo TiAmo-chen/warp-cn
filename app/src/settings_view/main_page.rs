@@ -145,10 +145,10 @@ impl From<&MainPageAction> for LoginGatedFeature {
     fn from(val: &MainPageAction) -> LoginGatedFeature {
         use MainPageAction::*;
         match val {
-            Upgrade { .. } => "Upgrade Plan",
-            GenerateStripeBillingPortalLink { .. } => "Generate Stripe Billing Portal Link",
-            ToggleSettingsSync => "Toggle Settings Sync",
-            _ => "Unknown reason",
+            Upgrade { .. } => crate::tr!("settings", "upgrade-plan"),
+            GenerateStripeBillingPortalLink { .. } => crate::tr!("settings", "generate-stripe-billing-portal-link"),
+            ToggleSettingsSync => crate::tr!("settings", "toggle-settings-sync"),
+            _ => crate::tr!("settings", "unknown-reason"),
         }
     }
 }
@@ -859,11 +859,11 @@ impl VersionInfoWidget {
                 match autoupdate::get_update_state(app) {
                     AutoupdateStage::NoUpdateAvailable => (
                         Some(StatusContent {
-                            text: "Up to date",
+                            text: crate::tr!("settings", "up-to-date"),
                             color: faded_text_color,
                         }),
                         Some(CallToActionContent {
-                            text: "Check for updates",
+                            text: crate::tr!("settings", "check-for-updates"),
                             action: MainPageAction::CheckForUpdate,
                         }),
                     ),
@@ -883,11 +883,11 @@ impl VersionInfoWidget {
                     ),
                     AutoupdateStage::UpdateReady { .. } => (
                         Some(StatusContent {
-                            text: "Update available",
+                            text: crate::tr!("settings", "update-available"),
                             color: ansi_red,
                         }),
                         Some(CallToActionContent {
-                            text: "Relaunch Warp",
+                            text: crate::tr!("settings", "relaunch-warp"),
                             action: MainPageAction::Relaunch,
                         }),
                     ),
@@ -900,32 +900,32 @@ impl VersionInfoWidget {
                     ),
                     AutoupdateStage::UpdatedPendingRestart { .. } => (
                         Some(StatusContent {
-                            text: "Installed update",
+                            text: crate::tr!("settings", "installed-update"),
                             color: faded_text_color,
                         }),
                         Some(CallToActionContent {
-                            text: "Relaunch Warp",
+                            text: crate::tr!("settings", "relaunch-warp"),
                             action: MainPageAction::Relaunch,
                         }),
                     ),
                     AutoupdateStage::UnableToUpdateToNewVersion { .. } => (
                         Some(StatusContent {
-                            text: "A new version of Warp is available but can't be installed",
+                            text: crate::tr!("settings", "a-new-version-of-warp-is-available-but-cant-be-installed"),
                             color: ansi_red,
                         }),
                         Some(CallToActionContent {
-                            text: "Update Warp manually",
+                            text: crate::tr!("settings", "update-warp-manually"),
                             // note: the handler for this action is a no-op
                             action: MainPageAction::DownloadUpdate,
                         }),
                     ),
                     AutoupdateStage::UnableToLaunchNewVersion { .. } => (
                         Some(StatusContent {
-                            text: "A new version of Warp is installed but can't be launched.",
+                            text: crate::tr!("settings", "a-new-version-of-warp-is-installed-but-cant-be-launched"),
                             color: ansi_red,
                         }),
                         Some(CallToActionContent {
-                            text: "Update Warp manually",
+                            text: crate::tr!("settings", "update-warp-manually"),
                             // note: the handler for this action is a no-op
                             action: MainPageAction::DownloadUpdate,
                         }),
