@@ -90,6 +90,33 @@ pub fn resolve(domain: &str, id: &str, args: Option<&FluentArgs>) -> String {
     }
 }
 
+/// Interned resolution for messages without arguments.
+///
+/// Most call sites only need a `&str` for the UI. Returning an interned
+/// `&'static str` avoids a fresh allocation per frame and lets call sites that
+/// expect `&'static str` (fixed bindings, struct fields, ...) accept translated
+/// text directly. Strings are interned by resolved value, so switching language
+/// keeps working; the previous values simply stay allocated for the process.
+pub fn resolve_static(domain: &str, id: &str) -> &'static str {
+    static INTERNED: OnceLock<std::sync::Mutex<std::collections::HashMap<String, &'static str>>> =
+        OnceLock::new();
+
+    let resolved = resolve(domain, id, None);
+    let table = INTERNED.get_or_init(|| std::sync::Mutex::new(std::collections::HashMap::new()));
+
+    let mut guard = match table.lock() {
+        Ok(guard) => guard,
+        // A poisoned mutex must not take down the UI: fall back to leaking.
+        Err(_) => return Box::leak(resolved.into_boxed_str()),
+    };
+    if let Some(existing) = guard.get(&resolved) {
+        return existing;
+    }
+    let leaked: &'static str = Box::leak(resolved.clone().into_boxed_str());
+    guard.insert(resolved, leaked);
+    leaked
+}
+
 // ---------------------------------------------------------------------------
 // Convenience trait for converting values to FluentValue
 // ---------------------------------------------------------------------------
@@ -172,9 +199,9 @@ impl ToFluentValue for &String {
 /// at runtime all domains are merged into one bundle per locale).
 #[macro_export]
 macro_rules! tr {
-    // No args: simple lookup
+    // No args: interned lookup returning `&'static str`
     ($domain:expr, $id:expr) => {
-        $crate::resolve($domain, $id, None)
+        $crate::resolve_static($domain, $id)
     };
 
     // With args: variable interpolation via FluentArgs
