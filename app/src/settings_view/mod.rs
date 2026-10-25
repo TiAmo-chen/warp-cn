@@ -1424,11 +1424,11 @@ impl SettingsView {
 
         // Build sidebar nav items. Umbrellas group their subpages here and
         // nowhere else, so this list is the only place membership is declared.
-        static AGENTS_UMBRELLA_LABEL: std::sync::LazyLock<String> =
+        static AGENTS_UMBRELLA_LABEL: std::sync::LazyLock<&'static str> =
             std::sync::LazyLock::new(|| crate::tr!("settings", "agents-umbrella"));
-        static CODE_UMBRELLA_LABEL: std::sync::LazyLock<String> =
+        static CODE_UMBRELLA_LABEL: std::sync::LazyLock<&'static str> =
             std::sync::LazyLock::new(|| crate::tr!("settings", "code-umbrella"));
-        static CLOUD_UMBRELLA_LABEL: std::sync::LazyLock<String> =
+        static CLOUD_UMBRELLA_LABEL: std::sync::LazyLock<&'static str> =
             std::sync::LazyLock::new(|| crate::tr!("settings", "cloud-platform-umbrella"));
         let mut nav_items = vec![
             SettingsNavItem::Page(SettingsSection::Account),
