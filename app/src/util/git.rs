@@ -18,7 +18,7 @@ mod tests;
 #[cfg(feature = "local_fs")]
 pub fn list_local_branches_sync(repo_path: &Path) -> HashSet<String> {
     let output = command::blocking::Command::new("git")
-        .args(["branch", "--list", "--format=%(refname:short)"])
+        .args([crate::tr!("context_chips", "branch"), "--list", "--format=%(refname:short)"])
         .current_dir(repo_path)
         .stdout(command::Stdio::piped())
         .stderr(command::Stdio::null())
@@ -54,7 +54,7 @@ pub async fn detect_current_branch(repo_path: &Path) -> Result<String> {
 
     if result.is_err() {
         log::debug!("[GIT OPERATION] git.rs detect_current_branch git branch --show-current");
-        run_git_command(repo_path, &["branch", "--show-current"]).await
+        run_git_command(repo_path, &[crate::tr!("context_chips", "branch"), "--show-current"]).await
     } else {
         result
     }
@@ -126,7 +126,7 @@ pub async fn detect_main_branch(repo_path: &Path) -> Result<String> {
 
     // Final fallback if all else fails.
     log::debug!("[GIT OPERATION] git.rs detect_main_branch git branch --show-current");
-    run_git_command(repo_path, &["branch", "--show-current"]).await
+    run_git_command(repo_path, &[crate::tr!("context_chips", "branch"), "--show-current"]).await
 }
 
 /// Returns the SHA where `HEAD` forked from any other ref. Use
@@ -215,7 +215,7 @@ pub async fn get_repo_git_summary(repo_root: &Path) -> Option<RepoGitSummary> {
 
     // Tracked file changes (git diff --shortstat HEAD doesn't include untracked files).
     log::debug!("[GIT OPERATION] git.rs get_repo_git_summary git diff --shortstat HEAD");
-    let stats = run_git_command(repo_root, &["diff", "--shortstat", "HEAD"])
+    let stats = run_git_command(repo_root, &[crate::tr!("code_review", "diff"), "--shortstat", "HEAD"])
         .await
         .ok()
         .and_then(|o| GitLineChanges::parse_from_git_output(&o));
@@ -273,9 +273,9 @@ pub async fn get_file_change_entries(
     include_unstaged: bool,
 ) -> Result<Vec<FileChangeEntry>> {
     let args: &[&str] = if include_unstaged {
-        &["diff", "--numstat", "HEAD"]
+        &[crate::tr!("code_review", "diff"), "--numstat", "HEAD"]
     } else {
-        &["diff", "--cached", "--numstat"]
+        &[crate::tr!("code_review", "diff"), "--cached", "--numstat"]
     };
     let output = run_git_command(repo_path, args).await.unwrap_or_default();
     let mut entries = Vec::new();
@@ -346,7 +346,7 @@ pub async fn get_committed_branch_file_entries(repo_path: &Path) -> Result<Vec<F
 
     // `git diff --numstat <merge_base> HEAD` is the committed-only diff
     // (equivalent to `main...HEAD`): no working-tree edits, no untracked files.
-    let output = run_git_command(repo_path, &["diff", "--numstat", &merge_base, "HEAD"])
+    let output = run_git_command(repo_path, &[crate::tr!("code_review", "diff"), "--numstat", &merge_base, "HEAD"])
         .await
         .unwrap_or_default();
     let mut entries = Vec::new();
@@ -567,17 +567,17 @@ pub async fn get_diff_for_commit_message(
     include_unstaged: bool,
 ) -> Result<String> {
     let mut diff = if !include_unstaged {
-        run_git_command(repo_path, &["diff", "--cached"]).await?
+        run_git_command(repo_path, &[crate::tr!("code_review", "diff"), "--cached"]).await?
     } else if run_git_command(repo_path, &["rev-parse", "--verify", "HEAD"])
         .await
         .is_ok()
     {
-        run_git_command(repo_path, &["diff", "HEAD"]).await?
+        run_git_command(repo_path, &[crate::tr!("code_review", "diff"), "HEAD"]).await?
     } else {
         // No HEAD before the first commit. Include staged changes plus
         // unstaged edits to staged files; untracked files are added below.
-        let mut diff = run_git_command(repo_path, &["diff", "--cached"]).await?;
-        diff.push_str(&run_git_command(repo_path, &["diff"]).await?);
+        let mut diff = run_git_command(repo_path, &[crate::tr!("code_review", "diff"), "--cached"]).await?;
+        diff.push_str(&run_git_command(repo_path, &[crate::tr!("code_review", "diff")]).await?);
         diff
     };
 
@@ -679,7 +679,7 @@ pub async fn run_commit(
     // longer pre-gates on a synced staged-changes bit.
     let staged = run_git_command_with_env(
         repo_path,
-        &["--no-optional-locks", "diff", "--cached", "--name-only"],
+        &["--no-optional-locks", crate::tr!("code_review", "diff"), "--cached", "--name-only"],
         path_env,
     )
     .await?;
@@ -687,7 +687,7 @@ pub async fn run_commit(
         if include_unstaged {
             anyhow::bail!(crate::tr!("common", "nothing-to-commit-working-tree-clean"));
         }
-        anyhow::bail!(crate::tr!("code", "review-no-changes-added-to-commit")));
+        anyhow::bail!(crate::tr!("code_review", "no-changes-added-to-commit"));
     }
     run_git_command_with_env(repo_path, &["commit", "-m", message], path_env).await
 }
@@ -958,8 +958,8 @@ fn is_repository_lookup_not_applicable_error(error_msg: &str) -> bool {
 pub fn is_gh_auth_error(error_msg: &str) -> bool {
     let lower = error_msg.to_lowercase();
     lower.contains(crate::tr!("settings", "not-logged-in"))
-        || lower.contains(crate::tr!("code", "review-authentication-required")))
-        || lower.contains(crate::tr!("code", "review-gh-auth-login")))
+        || lower.contains(crate::tr!("code_review", "authentication-required"))
+        || lower.contains(crate::tr!("code_review", "gh-auth-login"))
 }
 
 /// Heuristic check for errors caused by `gh` not being executable from `PATH`.
@@ -991,7 +991,7 @@ pub async fn get_diff_for_pr(repo_path: &Path) -> Result<String> {
     };
 
     let range = format!("{base}..{end_ref}");
-    let mut diff = run_git_command(repo_path, &["diff", &range]).await?;
+    let mut diff = run_git_command(repo_path, &[crate::tr!("code_review", "diff"), &range]).await?;
     if diff.len() > MAX_DIFF_CHARS_FOR_AI {
         diff = format!(
             "{}\n... (diff truncated)",

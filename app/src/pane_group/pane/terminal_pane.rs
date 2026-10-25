@@ -256,7 +256,7 @@ impl TerminalPane {
     pub fn terminal_pane_id(&self) -> TerminalPaneId {
         self.id()
             .as_terminal_pane_id()
-            .expect(crate::tr!("pane_group", "should-be-able-to-derive-a-terminalpaneid-from-terminalpan")))
+            .expect(crate::tr!("pane_group", "should-be-able-to-derive-a-terminalpaneid-from-terminalpan"))
     }
 }
 
@@ -941,7 +941,7 @@ fn handle_terminal_view_event(
                 let result = group
                     .terminal_session_by_id(pane_id)
                     .and_then(|pane| pane.terminal_manager_for_view(terminal_view, ctx))
-                    .ok_or_else(|| anyhow::anyhow!(crate::tr!("pane_group", "terminal-manager-is-unavailable"))))
+                    .ok_or_else(|| anyhow::anyhow!(crate::tr!("pane_group", "terminal-manager-is-unavailable")))
                     .and_then(|manager| {
                         manager.update(ctx, |manager, ctx| {
                             manager.replace_shell(request.clone(), ctx)
@@ -970,7 +970,7 @@ fn handle_terminal_view_event(
                     terminal_view.update(ctx, |view, ctx| {
                         view.fail_cloud_shell_recovery(
                             CloudAgentShellRecoveryFailureClass::Unsupported,
-                            anyhow::anyhow!(crate::tr!("pane_group", "this-shell-cannot-be-respawned"))),
+                            anyhow::anyhow!(crate::tr!("pane_group", "this-shell-cannot-be-respawned")),
                             ctx,
                         );
                     });
@@ -1292,7 +1292,7 @@ fn handle_terminal_view_event(
 
                 let new_terminal_view = group
                     .active_session_view(ctx)
-                    .expect(crate::tr!("pane_group", "should-have-new-terminal-view")));
+                    .expect(crate::tr!("pane_group", "should-have-new-terminal-view"));
                 new_terminal_view.update(ctx, |terminal_view, ctx| {
                     terminal_view.set_pending_command(command, ctx);
                     terminal_view.set_is_ssh_uploader(true);
@@ -1621,7 +1621,7 @@ fn dispatch_start_agent_conversation(
                     parent_conversation_id: request.parent_conversation_id,
                     request_id: Some(request.id),
                     orchestration_harness: None,
-                    error_message: crate::tr!("pane_group", "local-child-agents-are-not-supported-in-wasm-builds"))
+                    error_message: crate::tr!("pane_group", "local-child-agents-are-not-supported-in-wasm-builds")
                         .to_string(),
                 },
                 ctx,
@@ -2057,7 +2057,7 @@ fn launch_remote_child(
                 model.spawn_agent_with_request(prepared.spawn_request, team_scope, ctx);
             });
         } else {
-            report_error!(crate::tr!("pane_group", "remote-startagent-child-pane-missing-ambient-agent-view-mo")));
+            report_error!(crate::tr!("pane_group", "remote-startagent-child-pane-missing-ambient-agent-view-mo"));
         }
     });
 

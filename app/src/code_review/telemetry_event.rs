@@ -580,38 +580,38 @@ impl TelemetryEventDesc for CodeReviewTelemetryEventDiscriminants {
 
     fn description(&self) -> &'static str {
         match self {
-            Self::PaneOpened => crate::tr!("code_review", "code-review-pane-opened")),
-            Self::AddToContext => crate::tr!("code_review", "content-added-to-ai-context-from-code-review")),
-            Self::RevertHunkClicked => crate::tr!("code_review", "revert-hunk-button-clicked")),
-            Self::FileSaved => crate::tr!("code_review", "file-saved-in-code-review-pane")),
-            Self::PaneStateChanged => crate::tr!("code_review", "code-review-pane-minimized-or-maximized")),
-            Self::BaseChanged => crate::tr!("code_review", "diff-base-changed-in-code-review")),
-            Self::LoadMetadataFailed => crate::tr!("code_review", "failure-when-calculating-diff-metadata")),
-            Self::LoadDiffFailed => crate::tr!("code_review", "failure-when-loading-diff-content")),
-            Self::DiffLoadCompleted => crate::tr!("code_review", "diff-content-loaded-successfully")),
-            Self::FindBarToggled => crate::tr!("code_review", "code-review-find-bar-opened-or-closed")),
-            Self::FindBarModeChanged => crate::tr!("code_review", "search-mode-changed-in-code-review-find-bar")),
-            Self::FindNavigated => crate::tr!("code_review", "navigated-to-next-or-previous-match-in-code-review-find-ba")),
-            Self::CommentEditorOpened => crate::tr!("code_review", "inline-code-review-comment-editor-opened")),
-            Self::CommentAdded => crate::tr!("code_review", "inline-code-review-comment-added")),
-            Self::CommentEdited => crate::tr!("code_review", "inline-code-review-comment-edited")),
-            Self::CommentDeleted => crate::tr!("code_review", "inline-code-review-comment-deleted")),
-            Self::CommentListExpanded => crate::tr!("code_review", "inline-code-review-comment-list-expanded")),
-            Self::ReviewSubmitted => crate::tr!("code_review", "inline-code-review-submitted-to-agent")),
-            Self::CommentListItemClicked => crate::tr!("code_review", "inline-code-review-comment-list-item-clicked")),
+            Self::PaneOpened => crate::tr!("code_review", "code-review-pane-opened"),
+            Self::AddToContext => crate::tr!("code_review", "content-added-to-ai-context-from-code-review"),
+            Self::RevertHunkClicked => crate::tr!("code_review", "revert-hunk-button-clicked"),
+            Self::FileSaved => crate::tr!("code_review", "file-saved-in-code-review-pane"),
+            Self::PaneStateChanged => crate::tr!("code_review", "code-review-pane-minimized-or-maximized"),
+            Self::BaseChanged => crate::tr!("code_review", "diff-base-changed-in-code-review"),
+            Self::LoadMetadataFailed => crate::tr!("code_review", "failure-when-calculating-diff-metadata"),
+            Self::LoadDiffFailed => crate::tr!("code_review", "failure-when-loading-diff-content"),
+            Self::DiffLoadCompleted => crate::tr!("code_review", "diff-content-loaded-successfully"),
+            Self::FindBarToggled => crate::tr!("code_review", "code-review-find-bar-opened-or-closed"),
+            Self::FindBarModeChanged => crate::tr!("code_review", "search-mode-changed-in-code-review-find-bar"),
+            Self::FindNavigated => crate::tr!("code_review", "navigated-to-next-or-previous-match-in-code-review-find-ba"),
+            Self::CommentEditorOpened => crate::tr!("code_review", "inline-code-review-comment-editor-opened"),
+            Self::CommentAdded => crate::tr!("code_review", "inline-code-review-comment-added"),
+            Self::CommentEdited => crate::tr!("code_review", "inline-code-review-comment-edited"),
+            Self::CommentDeleted => crate::tr!("code_review", "inline-code-review-comment-deleted"),
+            Self::CommentListExpanded => crate::tr!("code_review", "inline-code-review-comment-list-expanded"),
+            Self::ReviewSubmitted => crate::tr!("code_review", "inline-code-review-submitted-to-agent"),
+            Self::CommentListItemClicked => crate::tr!("code_review", "inline-code-review-comment-list-item-clicked"),
             Self::CommentRelocationFailed => {
-                crate::tr!("code_review", "inline-code-review-comment-relocation-fell-back-to-approxi"))
+                crate::tr!("code_review", "inline-code-review-comment-relocation-fell-back-to-approxi")
             }
-            Self::CommentResolved => crate::tr!("code_review", "inline-code-review-comment-resolved")),
+            Self::CommentResolved => crate::tr!("code_review", "inline-code-review-comment-resolved"),
             Self::CommentsReceived => {
                 "Agent insert_code_review_comments tool call received and processed"
             }
-            Self::CommentsAttached => crate::tr!("code_review", "newly-imported-comments-relocated-against-editor-lines")),
+            Self::CommentsAttached => crate::tr!("code_review", "newly-imported-comments-relocated-against-editor-lines"),
             Self::GitButtonTriggered => {
-                crate::tr!("code_review", "user-clicked-a-git-operation-button-in-the-code-review-hea"))
+                crate::tr!("code_review", "user-clicked-a-git-operation-button-in-the-code-review-hea")
             }
             Self::GitDialogCompleted => {
-                crate::tr!("code_review", "git-operation-dialog-reached-a-terminal-state-succeeded-fa"))
+                crate::tr!("code_review", "git-operation-dialog-reached-a-terminal-state-succeeded-fa")
             }
         }
     }

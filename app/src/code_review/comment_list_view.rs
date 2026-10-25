@@ -462,7 +462,7 @@ impl CommentListView {
             let comment_id = self
                 .pending_scroll_to_comment
                 .take()
-                .expect(crate::tr!("code_review", "pending-scroll-target-was-verified-as-present")));
+                .expect(crate::tr!("code_review", "pending-scroll-target-was-verified-as-present"));
             self.ensure_outdated_section_expanded(comment_id, ctx);
             self.view_state
                 .scroll_state
@@ -903,7 +903,7 @@ impl CommentListView {
                     ButtonVariant::Text,
                     self.view_state.cancel_button_mouse_state.clone(),
                 )
-                .with_text_label("Cancel".to_string())
+                .with_text_label(crate::tr!("ai_assistant", "ai-cancel").to_string())
                 .build()
                 .finish(),
         )
@@ -1071,7 +1071,7 @@ impl CommentListView {
                 .into_item(),
         ];
 
-        let mut edit_item = MenuItemFields::new("Edit")
+        let mut edit_item = MenuItemFields::new(crate::tr!("ai_assistant", "ai-edit-command"))
             .with_icon(Icon::Pencil)
             .with_on_select_action(CommentListAction::EditComment);
         if is_file_level || is_outdated {
@@ -1096,7 +1096,7 @@ impl CommentListView {
         }
 
         items.push(
-            MenuItemFields::new("Remove")
+            MenuItemFields::new(crate::tr!("code_editor", "code-review-remove"))
                 .with_icon(Icon::Trash)
                 .with_override_text_color(Fill::Solid(appearance.theme().ansi_fg_red()))
                 .with_override_icon_color(Fill::Solid(appearance.theme().ansi_fg_red()))

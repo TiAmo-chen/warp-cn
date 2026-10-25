@@ -269,7 +269,7 @@ impl PaneData {
 
         // Remove the pane from the tree
         if !self.remove(id) {
-            report_error!(crate::tr!("pane_group", "pane-not-found")));
+            report_error!(crate::tr!("pane_group", "pane-not-found"));
             return false;
         }
 
@@ -298,7 +298,7 @@ impl PaneData {
         {
             self.hidden_panes.remove(pos);
         } else {
-            report_error!(crate::tr!("pane_group", "attempted-to-show-pane-for-the-job-but-couldn-t-find-it")))
+            report_error!(crate::tr!("pane_group", "attempted-to-show-pane-for-the-job-but-couldn-t-find-it"))
         }
     }
 
@@ -316,7 +316,7 @@ impl PaneData {
         {
             self.hidden_panes.remove(pos);
         } else {
-            report_error!(crate::tr!("pane_group", "attempted-to-show-child-agent-pane-but-couldn-t-find-it")))
+            report_error!(crate::tr!("pane_group", "attempted-to-show-child-agent-pane-but-couldn-t-find-it"))
         }
     }
 
@@ -807,13 +807,13 @@ impl PaneNode {
                         Direction::Left | Direction::Up => branch
                             .nodes
                             .last()
-                            .expect(crate::tr!("pane_group", "panegroup-has-no-nodes-when-moving-focus")))
+                            .expect(crate::tr!("pane_group", "panegroup-has-no-nodes-when-moving-focus"))
                             .1
                             .first_panes_in_direction(direction),
                         Direction::Right | Direction::Down => branch
                             .nodes
                             .first()
-                            .expect(crate::tr!("pane_group", "panebranch-has-no-nodes-when-moving-focus")))
+                            .expect(crate::tr!("pane_group", "panebranch-has-no-nodes-when-moving-focus"))
                             .1
                             .first_panes_in_direction(direction),
                     }
@@ -1005,7 +1005,7 @@ impl PaneBranch {
                     if *pane == pane_id_to_remove {
                         self.nodes.remove(idx);
                         if self.dividers.is_empty() {
-                            report_error!(crate::tr!("pane_group", "attempted-to-remove-a-pane-when-there-are-no-dividers")));
+                            report_error!(crate::tr!("pane_group", "attempted-to-remove-a-pane-when-there-are-no-dividers"));
                         } else {
                             self.dividers.remove(idx.min(self.dividers.len() - 1));
                         }

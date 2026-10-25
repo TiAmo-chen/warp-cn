@@ -184,7 +184,7 @@ pub(super) fn render_body(
     let base_branch = state
         .base_branch_name
         .as_deref()
-        .unwrap_or(crate::tr!("code_review", "default-branch")));
+        .unwrap_or(crate::tr!("code_review", "default-branch"));
     let branch_name = format!("{branch_name} \u{2192} {base_branch}");
     Flex::column()
         .with_child(

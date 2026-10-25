@@ -75,36 +75,36 @@ pub(crate) enum DiffStateErrorKind {
 
 impl DiffStateErrorKind {
     fn classify(message: &str) -> Option<Self> {
-        if message.contains(crate::tr!("code_review", "detected-dubious-ownership-in-repository"))) {
+        if message.contains(crate::tr!("code_review", "detected-dubious-ownership-in-repository")) {
             Some(Self::GitRejectedRepositoryOwnership)
         } else if message.contains("No such file or directory")
-            || message.contains(crate::tr!("code_review", "program-not-found")))
-            || message.contains(crate::tr!("code_review", "no-developer-tools-were-found")))
+            || message.contains(crate::tr!("code_review", "program-not-found"))
+            || message.contains(crate::tr!("code_review", "no-developer-tools-were-found"))
         {
             Some(Self::GitUnavailable)
-        } else if message.contains(crate::tr!("code_review", "git-lfs-command-not-found"))) {
+        } else if message.contains(crate::tr!("code_review", "git-lfs-command-not-found")) {
             Some(Self::GitLfsUnavailable)
-        } else if message.contains(crate::tr!("code_review", "xcode-license-agreements"))) {
+        } else if message.contains(crate::tr!("code_review", "xcode-license-agreements")) {
             Some(Self::XcodeLicenseNotAccepted)
-        } else if message.contains(crate::tr!("code_review", "empty-string-is-not-a-valid-pathspec"))) {
+        } else if message.contains(crate::tr!("code_review", "empty-string-is-not-a-valid-pathspec")) {
             Some(Self::InvalidEmptyPathspec)
-        } else if message.contains(crate::tr!("code_review", "outside-repository"))) {
+        } else if message.contains(crate::tr!("code_review", "outside-repository")) {
             Some(Self::PathOutsideRepository)
-        } else if message.contains(crate::tr!("code_review", "not-a-git-repository"))) {
+        } else if message.contains(crate::tr!("code_review", "not-a-git-repository")) {
             Some(Self::NotGitRepository)
-        } else if message.contains(crate::tr!("code_review", "this-operation-must-be-run-in-a-work-tree"))) {
+        } else if message.contains(crate::tr!("code_review", "this-operation-must-be-run-in-a-work-tree")) {
             Some(Self::NotWorkTree)
-        } else if message.contains(crate::tr!("code_review", "operation-not-permitted")))
+        } else if message.contains(crate::tr!("code_review", "operation-not-permitted"))
             || message.contains(crate::tr!("errors", "permission-title"))
         {
             Some(Self::RepositoryPathNotAccessible)
-        } else if message.contains(crate::tr!("code_review", "non-utf-8-path"))) {
+        } else if message.contains(crate::tr!("code_review", "non-utf-8-path")) {
             Some(Self::NonUtf8Path)
-        } else if message.contains(crate::tr!("code_review", "bad-revision"))) || message.contains(crate::tr!("code_review", "unknown-revision"))) {
+        } else if message.contains(crate::tr!("code_review", "bad-revision")) || message.contains(crate::tr!("code_review", "unknown-revision")) {
             Some(Self::GitRevisionUnavailable)
-        } else if message.contains(crate::tr!("code_review", "bad-tree-object-head"))) {
+        } else if message.contains(crate::tr!("code_review", "bad-tree-object-head")) {
             Some(Self::GitHeadTreeInvalid)
-        } else if message.contains(crate::tr!("code_review", "os-error-267"))) {
+        } else if message.contains(crate::tr!("code_review", "os-error-267")) {
             Some(Self::RepositoryPathInvalid)
         } else if message.contains("Invalid status code") {
             Some(Self::InvalidGitStatusOutput)

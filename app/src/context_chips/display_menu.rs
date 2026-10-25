@@ -320,7 +320,7 @@ impl DisplayChipMenu {
                         ChipMenuType::Branches => crate::tr!("context_chips", "search-branches"),
                         ChipMenuType::Environments => crate::tr!("context_chips", "search-environments"),
                         ChipMenuType::CodeReview => {
-                            unreachable!(crate::tr!("context_chips", "search-input-should-not-be-constructed")))
+                            unreachable!(crate::tr!("context_chips", "search-input-should-not-be-constructed"))
                         }
                     };
                     editor.set_placeholder_text(placeholder_text, ctx);
@@ -654,7 +654,7 @@ impl DisplayChipMenu {
             .map(|repo| repo.repo.clone())
             .collect::<Vec<_>>();
         let repos_text = if repo_names.is_empty() {
-            "(none)".to_string()
+            crate::tr!("context_chips", "sidecar-none").to_string()
         } else {
             repo_names.join(", ")
         };
@@ -879,15 +879,15 @@ impl DisplayChipMenu {
             .with_cross_axis_alignment(CrossAxisAlignment::Start)
             .with_child(row(
                 Icon::Globe4,
-                "Name:",
+                crate::tr!("context_chips", "sidecar-name"),
                 value_text(data.name.clone()),
                 false,
             ))
             .with_child(row(Icon::Hash, "ID:", id_value, false))
-            .with_child(row(Icon::Docker, "Image:", image_value, false))
+            .with_child(row(Icon::Docker, crate::tr!("context_chips", "sidecar-image"), image_value, false))
             .with_child(row(
                 Icon::Github,
-                "Repos:",
+                crate::tr!("context_chips", "sidecar-repos"),
                 value_text(data.repos_text.clone()),
                 true,
             ))

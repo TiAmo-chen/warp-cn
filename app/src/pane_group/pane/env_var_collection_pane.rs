@@ -57,7 +57,7 @@ impl EnvVarCollectionPane {
                 title: None,
                 owner: UserWorkspaces::as_ref(ctx)
                     .personal_drive(ctx)
-                    .context(crate::tr!("pane_group", "personal-drive-unavailable")))?,
+                    .context(crate::tr!("pane_group", "personal-drive-unavailable"))?,
                 initial_folder_id: None,
             },
         };

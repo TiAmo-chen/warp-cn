@@ -400,7 +400,7 @@ impl GitLineChanges {
             if let Ok(num) = word.parse::<u32>()
                 && let Some(next_word) = words.get(i + 1)
             {
-                if next_word.starts_with("file") {
+                if next_word.starts_with(crate::tr!("ai_assistant", "ai-file-suffix")) {
                     files_changed = num;
                 } else if next_word.starts_with("insertion") {
                     lines_added = num;
@@ -601,7 +601,7 @@ impl GitBranchTrackingStatus {
                 "Ahead {}, behind {}; upstream name is unavailable",
                 self.ahead, self.behind
             ),
-            None => crate::tr!("context_chips", "no-upstream-configured")).to_string(),
+            None => crate::tr!("context_chips", "no-upstream-configured").to_string(),
         }
     }
 }
@@ -717,7 +717,7 @@ impl GitBranch {
 
         if branch.is_linked_worktree {
             return PromptChipShellCommand::Echo {
-                message: crate::tr!("context_chips", "the-branch-is-already-checked-out-in-another-worktree-but")),
+                message: crate::tr!("context_chips", "the-branch-is-already-checked-out-in-another-worktree-but"),
             };
         }
 
@@ -952,7 +952,7 @@ impl DisplayChip {
                     DisplayChipMenu::new(
                         Vec::<DirectoryItem>::new(),
                         Some(FixedFooter::new(Arc::new(DirectoryItem {
-                            name: ".. (Parent Directory)".to_string(),
+                            name: crate::tr!("context_chips", "parent-directory").to_string(),
                             directory_type: DirectoryType::NavigateToParent,
                         }))), // Show parent directory option
                         ChipMenuType::Directories,

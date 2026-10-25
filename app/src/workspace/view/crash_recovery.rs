@@ -21,7 +21,7 @@ pub fn banner_metadata(ctx: &AppContext) -> Option<WorkspaceBannerFields> {
                 .to_owned(),
             secondary_button: None,
             button: Some(super::WorkspaceBannerButtonDetails {
-                text: crate::tr!("terminal", "learn-more")).to_owned(),
+                text: crate::tr!("terminal", "learn-more").to_owned(),
                 action: super::WorkspaceAction::DismissWaylandCrashRecoveryBannerAndOpenLink,
                 variant: super::BannerButtonVariant::Outlined,
                 icon: None,

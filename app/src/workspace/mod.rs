@@ -166,7 +166,7 @@ pub fn init(app: &mut AppContext) {
             .with_context_predicate(id!("Workspace")),
         ]);
         app.register_fixed_bindings([FixedBinding::empty(
-            "[Debug] View first-time user experience",
+            crate::tr!("workspace", "debug-view-ftux"),
             WorkspaceAction::AddGetStartedTab,
             id!("Workspace"),
         )]);
@@ -188,7 +188,7 @@ pub fn init(app: &mut AppContext) {
                 .with_context_predicate(id!("Workspace")),
                 EditableBinding::new(
                     "workspace:debug_reset_aws_bedrock_login_banner_dismissed",
-                    "[Debug] Un-dismiss AWS login banner",
+                    crate::tr!("workspace", "debug-un-dismiss-aws-login-banner"),
                     WorkspaceAction::DebugResetAwsBedrockLoginBannerDismissed,
                 )
                 .with_context_predicate(id!("Workspace")),
@@ -964,14 +964,14 @@ pub fn init(app: &mut AppContext) {
         app.register_editable_bindings([
             EditableBinding::new(
                 "workspace:set_a11y_concise_verbosity_level",
-                "[a11y] Set concise accessibility announcements",
+                crate::tr!("workspace", "a11y-concise"),
                 WorkspaceAction::SetA11yVerbosityLevel(AccessibilityVerbosity::Concise),
             )
             .with_context_predicate(id!("Workspace"))
             .with_key_binding("cmdorctrl-alt-c"),
             EditableBinding::new(
                 "workspace:set_a11y_verbose_verbosity_level",
-                "[a11y] Set verbose accessibility announcements",
+                crate::tr!("workspace", "a11y-verbose"),
                 WorkspaceAction::SetA11yVerbosityLevel(AccessibilityVerbosity::Verbose),
             )
             .with_context_predicate(id!("Workspace"))
@@ -1568,7 +1568,7 @@ fn add_open_setting_pages_as_editable_binding(app: &mut AppContext) {
         EditableBinding::new(
             "workspace:show_settings",
             BindingDescription::new(crate::tr!("workspace", "menu-open-settings"))
-                .with_custom_description(bindings::MAC_MENUS_CONTEXT, "Settings"),
+                .with_custom_description(bindings::MAC_MENUS_CONTEXT, crate::tr!("common", "settings-label")),
             WorkspaceAction::ShowSettings,
         )
         .with_context_predicate(id!("Workspace"))

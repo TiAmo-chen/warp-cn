@@ -63,7 +63,7 @@ impl fmt::Display for UnrenderableReason {
     fn fmt(&self, f: &mut fmt::Formatter<'_>) -> fmt::Result {
         match self {
             Self::DiffTooLarge => write!(f, "{}", crate::tr!("code_review", "diff-too-large")),
-            Self::FileTooLarge => write!(f, crate::tr!("code_review", "file-is-too-large-to-render"))),
+            Self::FileTooLarge => write!(f, crate::tr!("code_review", "file-is-too-large-to-render")),
         }
     }
 }

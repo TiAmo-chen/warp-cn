@@ -78,7 +78,7 @@ pub(super) fn validate_local_harness_shell(shell_type: Option<ShellType>) -> Res
                 .to_string(),
         ),
         None => Err(
-            crate::tr!("pane_group", "local-child-harnesses-currently-require-a-detected-bash-zs"))
+            crate::tr!("pane_group", "local-child-harnesses-currently-require-a-detected-bash-zs")
                 .to_string(),
         ),
     }
@@ -178,7 +178,7 @@ pub(super) async fn prepare_local_harness_child_launch(
     let Some(harness) = normalize_local_child_harness(&harness_type) else {
         let harness_name = harness_type.trim();
         return Err(if harness_name.is_empty() {
-            crate::tr!("pane_group", "local-child-harness-type-is-missing")).to_string()
+            crate::tr!("pane_group", "local-child-harness-type-is-missing").to_string()
         } else {
             format!("Unsupported local child harness '{harness_name}'.")
         });
@@ -203,7 +203,7 @@ pub(super) async fn prepare_local_harness_child_launch(
                 harness_kind(harness, HarnessTransport::Pty)
                     .map_err(|error: AgentDriverError| error.to_string())?
             else {
-                unreachable!(crate::tr!("pane_group", "claude-resolves-to-a-third-party-harness")))
+                unreachable!(crate::tr!("pane_group", "claude-resolves-to-a-third-party-harness"))
             };
             third_party_harness
                 .validate()
@@ -232,7 +232,7 @@ pub(super) async fn prepare_local_harness_child_launch(
                 harness_kind(harness, HarnessTransport::Pty)
                     .map_err(|error: AgentDriverError| error.to_string())?
             else {
-                unreachable!(crate::tr!("pane_group", "codex-resolves-to-a-third-party-harness")))
+                unreachable!(crate::tr!("pane_group", "codex-resolves-to-a-third-party-harness"))
             };
             third_party_harness
                 .validate()

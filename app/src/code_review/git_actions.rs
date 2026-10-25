@@ -89,7 +89,7 @@ pub async fn generate_commit_message(
     let diff = git::get_diff_for_commit_message(repo_path, include_unstaged).await?;
     // Skip the AI round trip when there's nothing to summarize.
     if diff.trim().is_empty() {
-        anyhow::bail!(crate::tr!("code_review", "no-changes-to-generate-a-commit-message-from")));
+        anyhow::bail!(crate::tr!("code_review", "no-changes-to-generate-a-commit-message-from"));
     }
     let generated = ai_client
         .generate_code_review_content(GenerateCodeReviewContentRequest {
@@ -102,7 +102,7 @@ pub async fn generate_commit_message(
         .content;
     let trimmed = generated.trim();
     if trimmed.is_empty() {
-        anyhow::bail!(crate::tr!("code_review", "ai-returned-an-empty-commit-message")));
+        anyhow::bail!(crate::tr!("code_review", "ai-returned-an-empty-commit-message"));
     }
     Ok(trimmed.to_string())
 }
@@ -153,7 +153,7 @@ async fn create_pr_with_ai_content(
         Ok(_) => {
             // Empty title/body would make `gh pr create` fail; fall back to --fill.
             log::warn!(
-                crate::tr!("code_review", "ai-pr-content-generation-returned-empty-title-body-falling"))
+                crate::tr!("code_review", "ai-pr-content-generation-returned-empty-title-body-falling")
             );
             git::create_pr(repo_path, None, None, path_env).await
         }

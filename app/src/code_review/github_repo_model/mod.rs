@@ -116,7 +116,7 @@ impl GitHubRepoModel {
         match self {
             #[cfg(feature = "local_fs")]
             Self::Local(m) => m.update(ctx, |m, ctx| m.set_pr_info_for_test(pr_info, ctx)),
-            Self::Remote(_) => unreachable!(crate::tr!("code_review", "remote-test-models-are-not-used"))),
+            Self::Remote(_) => unreachable!(crate::tr!("code_review", "remote-test-models-are-not-used")),
         }
     }
 
@@ -130,7 +130,7 @@ impl GitHubRepoModel {
             Self::Local(m) => m.update(ctx, |m, ctx| {
                 m.set_repository_info_for_test(repository_info, ctx)
             }),
-            Self::Remote(_) => unreachable!(crate::tr!("code_review", "remote-test-models-are-not-used"))),
+            Self::Remote(_) => unreachable!(crate::tr!("code_review", "remote-test-models-are-not-used")),
         }
     }
 }

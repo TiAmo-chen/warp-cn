@@ -606,7 +606,7 @@ impl LocalDiffStateModel {
                 let err_msg = err.to_string();
                 // If there are no local changes to stash, git stash will fail
                 // In this case, we can safely ignore the error
-                if err_msg.contains(crate::tr!("code_review", "no-local-changes-to-save"))) {
+                if err_msg.contains(crate::tr!("code_review", "no-local-changes-to-save")) {
                     Ok(())
                 } else {
                     let context = if relative_paths.len() == 1 {
@@ -685,7 +685,7 @@ impl LocalDiffStateModel {
                         log::warn!("Failed to clean untracked files: {err}");
                     }
                     Ok(())
-                } else if err_msg.contains(crate::tr!("code_review", "did-not-match-any-file-s-known-to-git"))) {
+                } else if err_msg.contains(crate::tr!("code_review", "did-not-match-any-file-s-known-to-git")) {
                     // If some files don't exist in the branch, we need to remove them
                     for file_path in relative_paths {
                         log::debug!(
@@ -697,7 +697,7 @@ impl LocalDiffStateModel {
 
                         if let Err(rm_err) = rm_res {
                             let rm_err_msg = rm_err.to_string();
-                            if rm_err_msg.contains(crate::tr!("code_review", "did-not-match-any-files"))) {
+                            if rm_err_msg.contains(crate::tr!("code_review", "did-not-match-any-files")) {
                                 // if the file was staged but it isn't in the working directory,
                                 // e.g. it was locally deleted
                                 log::debug!(
@@ -808,7 +808,7 @@ impl LocalDiffStateModel {
                         {
                             report_error!(
                                 e.context("Failed to restore old file from branch"),
-                                extra: { "old_path" => %old_path, "branch" => %branch }
+                                extra: { "old_path" => %old_path, crate::tr!("context_chips", "branch") => %branch }
                             );
                         }
                     }
@@ -1282,7 +1282,7 @@ impl LocalDiffStateModel {
     ) {
         let Some(repo_path) = self.active_repository_path(ctx) else {
             ctx.emit(DiffStateModelEvent::GitOpCompleted(
-                GitOpResult::CommitChainCompleted(Err(crate::tr!("code_review", "no-active-repository")).to_string())),
+                GitOpResult::CommitChainCompleted(Err(crate::tr!("code_review", "no-active-repository").to_string())),
             ));
             return;
         };
@@ -1329,7 +1329,7 @@ impl LocalDiffStateModel {
     pub fn git_push(&self, branch: String, ctx: &mut ModelContext<Self>) {
         let Some(repo_path) = self.active_repository_path(ctx) else {
             ctx.emit(DiffStateModelEvent::GitOpCompleted(
-                GitOpResult::PushCompleted(Err(crate::tr!("code_review", "no-active-repository")).to_string())),
+                GitOpResult::PushCompleted(Err(crate::tr!("code_review", "no-active-repository").to_string())),
             ));
             return;
         };
@@ -1365,7 +1365,7 @@ impl LocalDiffStateModel {
     ) {
         let Some(repo_path) = self.active_repository_path(ctx) else {
             ctx.emit(DiffStateModelEvent::GitOpCompleted(GitOpResult::PrCreated(
-                Err(crate::tr!("code_review", "no-active-repository")).to_string()),
+                Err(crate::tr!("code_review", "no-active-repository").to_string()),
             )));
             return;
         };
@@ -1400,7 +1400,7 @@ impl LocalDiffStateModel {
     ) {
         let Some(repo_path) = self.active_repository_path(ctx) else {
             ctx.emit(DiffStateModelEvent::CommitMessageGenerated(Err(
-                crate::tr!("code_review", "no-active-repository")).to_string(),
+                crate::tr!("code_review", "no-active-repository").to_string(),
             )));
             return;
         };
@@ -1496,7 +1496,7 @@ impl LocalDiffStateModel {
             DiffMode::MainBranch => detect_main_branch(repo_path).await?,
             DiffMode::OtherBranch(branch) => branch.clone(),
             DiffMode::Head => {
-                anyhow::bail!(crate::tr!("code_review", "merge-base-is-not-applicable-for-head-mode")))
+                anyhow::bail!(crate::tr!("code_review", "merge-base-is-not-applicable-for-head-mode"))
             }
         };
         Self::get_merge_base(repo_path, &branch).await
@@ -1871,7 +1871,7 @@ impl LocalDiffStateModel {
                 );
                 let diff_output = run_git_command(
                     repo_path,
-                    &["diff", "--name-status", "-z", base, "--", relative],
+                    &[crate::tr!("code_review", "diff"), "--name-status", "-z", base, "--", relative],
                 )
                 .await?;
 
@@ -1909,7 +1909,7 @@ impl LocalDiffStateModel {
         );
         let output = match run_git_command(
             repo_path,
-            &["diff", "--numstat", commit, "--", relative],
+            &[crate::tr!("code_review", "diff"), "--numstat", commit, "--", relative],
         )
         .await
         {
@@ -1939,7 +1939,7 @@ impl LocalDiffStateModel {
             .strip_prefix(repo_path)
             .unwrap_or(file)
             .to_str()
-            .ok_or_else(|| anyhow!(crate::tr!("code_review", "non-utf-8-path"))))?
+            .ok_or_else(|| anyhow!(crate::tr!("code_review", "non-utf-8-path")))?
             .to_owned();
 
         let Some((file_path, status)) =
@@ -2023,7 +2023,7 @@ impl LocalDiffStateModel {
             "[GIT OPERATION] local.rs file_statuses_against_base git diff --name-status -z {merge_base}"
         );
         let diff_output =
-            run_git_command(repo_path, &["diff", "--name-status", "-z", merge_base]).await?;
+            run_git_command(repo_path, &[crate::tr!("code_review", "diff"), "--name-status", "-z", merge_base]).await?;
 
         let mut changed_files = if diff_output.trim().is_empty() {
             // No tracked changes, but we might have untracked files
@@ -2143,7 +2143,7 @@ impl LocalDiffStateModel {
             "[GIT OPERATION] local.rs diff_metadata_against_specific_branch git diff --name-status -z {merge_base}"
         );
         let diff_output =
-            run_git_command(repo_path, &["diff", "--name-status", "-z", &merge_base]).await?;
+            run_git_command(repo_path, &[crate::tr!("code_review", "diff"), "--name-status", "-z", &merge_base]).await?;
 
         let mut changed_files = if diff_output.trim().is_empty() {
             // No tracked changes, but we might have untracked files
@@ -2446,7 +2446,7 @@ impl LocalDiffStateModel {
                 GitFileStatus::Untracked => {
                     // Untracked files don't exist in commit history, compare against empty
                     vec![
-                        "diff",
+                        crate::tr!("code_review", "diff"),
                         "--no-ext-diff",
                         "--patch-with-raw",
                         "-z",
@@ -2460,7 +2460,7 @@ impl LocalDiffStateModel {
                 // For renamed files, we compare the old file path to the new file path.
                 GitFileStatus::Renamed { old_path } => {
                     vec![
-                        "diff",
+                        crate::tr!("code_review", "diff"),
                         "--no-ext-diff",
                         "--patch-with-raw",
                         "-z",
@@ -2474,7 +2474,7 @@ impl LocalDiffStateModel {
                 _ => {
                     // For all other statuses, diff against the specified commit
                     vec![
-                        "diff",
+                        crate::tr!("code_review", "diff"),
                         "--no-ext-diff",
                         "--patch-with-raw",
                         "-z",
@@ -2491,7 +2491,7 @@ impl LocalDiffStateModel {
                 GitFileStatus::New | GitFileStatus::Untracked => {
                     // For new/untracked files - compare against empty file
                     vec![
-                        "diff",
+                        crate::tr!("code_review", "diff"),
                         "--no-ext-diff",
                         "--patch-with-raw",
                         "-z",
@@ -2510,7 +2510,7 @@ impl LocalDiffStateModel {
                     // an empty diff whenever the rename and edit were both staged, since
                     // the working tree then matched the index exactly.
                     vec![
-                        "diff",
+                        crate::tr!("code_review", "diff"),
                         "--no-ext-diff",
                         "--patch-with-raw",
                         "-z",
@@ -2524,7 +2524,7 @@ impl LocalDiffStateModel {
                 _ => {
                     // For existing files - compare against HEAD
                     vec![
-                        "diff",
+                        crate::tr!("code_review", "diff"),
                         "--no-ext-diff",
                         "--patch-with-raw",
                         "-z",
@@ -2580,7 +2580,7 @@ impl LocalDiffStateModel {
         // Git outputs "Binary files a/file and b/file differ" for binary files
         if diff_output
             .lines()
-            .any(|line| line.starts_with(crate::tr!("code_review", "binary-files"))) && line.contains(" differ"))
+            .any(|line| line.starts_with("Binary files ") && line.contains(" differ"))
         {
             return Ok(FileDiff {
                 file_path: file_path.to_owned(),
@@ -2653,7 +2653,7 @@ impl LocalDiffStateModel {
 
                 while i < lines.len()
                     && !lines[i].starts_with("@@")
-                    && !lines[i].starts_with(crate::tr!("code_review", "diff")))
+                    && !lines[i].starts_with("diff ")
                 {
                     let content_line = lines[i];
 
@@ -2810,7 +2810,7 @@ impl LocalDiffStateModel {
         log::debug!(
             "[GIT OPERATION] local.rs get_diff_metadata_using_numstat git diff --numstat {commit}"
         );
-        let numstat_output = match run_git_command(repo_path, &["diff", "--numstat", commit]).await
+        let numstat_output = match run_git_command(repo_path, &[crate::tr!("code_review", "diff"), "--numstat", commit]).await
         {
             Ok(output) => output,
             Err(_) => {

@@ -136,7 +136,7 @@ impl ChatGPTPlanModal {
         });
 
         let manage_usage_button = ctx.add_view(|_ctx| {
-            ActionButton::new(crate::tr!("settings", "manage-usage")), ManageUsageButtonTheme)
+            ActionButton::new(crate::tr!("settings", "manage-usage"), ManageUsageButtonTheme)
                 .with_icon(Icon::LinkExternal)
                 .with_full_width(true)
                 .on_click(|ctx| ctx.dispatch_typed_action(ChatGPTPlanModalAction::ManageUsage))

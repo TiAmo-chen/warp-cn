@@ -880,9 +880,9 @@ impl NotificationsTrigger {
         let (title_suffix, body_prefix) = match self {
             LongRunningCommand(command_succeeded, block_duration) => {
                 let status = if *command_succeeded {
-                    "finished"
+                    crate::tr!("terminal", "notification-finished")
                 } else {
-                    "failed"
+                    crate::tr!("terminal", "notification-failed")
                 };
 
                 let duration_seconds = block_duration.as_secs_f32();
@@ -1585,7 +1585,7 @@ impl fmt::Debug for InputContextMenuAction {
             CutSelectedText => f.write_str("CutSelectedText"),
             CopySelectedText => f.write_str("CopySelectedText"),
             SelectAll => f.write_str("SelectAll"),
-            Paste => f.write_str("Paste"),
+            Paste => f.write_str(crate::tr!("common", "paste-label")),
             ShowCommandSearch => f.write_str("CommandSearch"),
             ShowAICommandSearch => f.write_str("AICommandSearch"),
             AskWarpAI => f.write_str("AskWarpAI"),
@@ -2217,8 +2217,8 @@ pub enum BlockEntity {
 impl BlockEntity {
     pub fn as_str(&self) -> &'static str {
         match self {
-            BlockEntity::Command => "Command",
-            BlockEntity::Output => "Output",
+            BlockEntity::Command => crate::tr!("env_vars", "command-placeholder"),
+            BlockEntity::Output => crate::tr!("terminal", "a11y-block-output-label"),
             BlockEntity::CommandAndOutput => "Both",
             BlockEntity::FilteredOutput => "FilteredOutput",
         }
@@ -4019,7 +4019,7 @@ impl TerminalView {
         let incompatible_configuration_banner = ctx.add_typed_action_view(|_| {
             Banner::new(BannerTextContent::formatted_text(vec![
                 FormattedTextFragment::plain_text(
-                    crate::tr!("terminal", "your-shell-configuration-is-incompatible-with-warp"),
+                    "Your shell configuration is incompatible with Warp...  ",
                 ),
                 FormattedTextFragment::hyperlink(
                     crate::tr!("terminal", "more-info"),
@@ -4080,7 +4080,7 @@ impl TerminalView {
                 ),
                 vec![
                     BannerTextButton::new(
-                        "Allow".to_string(),
+                        crate::tr!("ai_assistant", "ai-allow-btn").to_string(),
                         Rc::new(|event_ctx, _ctx, _position| {
                             event_ctx.dispatch_typed_action(BannerAction::<TerminalAction>::Action(
                                 TerminalAction::Osc52AllowBlockedClipboardOperation,
@@ -4361,7 +4361,7 @@ impl TerminalView {
         // Conversation details panel (cloud Oz runs and any active local AI conversation).
         let conversation_details_panel = ctx.add_typed_action_view(|ctx| {
             crate::ai::conversation_details_panel::ConversationDetailsPanel::new(
-                false, // don't show "Open" button since we're already viewing the conversation
+                false, // don't show crate::tr!("common", "open-label") button since we're already viewing the conversation
                 320.0, // initial width
                 ctx,
             )
@@ -8164,7 +8164,7 @@ impl TerminalView {
                     _ => Some(AIBlockNotificationSummary {
                         success: false,
                         title,
-                        description: "An unknown error occurred".to_string(),
+                        description: crate::tr!("terminal", "an-unknown-error-occurred").to_string(),
                     }),
                 }
             }
@@ -10802,11 +10802,11 @@ impl TerminalView {
         let trigger_block_id = trigger.as_ref().and_then(|t| t.block_id());
         log::debug!(
             "[passive-suggestions] accepting prompt suggestion: trigger={}, trigger_block_id={}",
-            if trigger.is_some() { "Some" } else { "None" },
+            if trigger.is_some() { "Some" } else { crate::tr!("ai_assistant", "ai-filter-none") },
             if trigger_block_id.is_some() {
                 "Some"
             } else {
-                "None"
+                crate::tr!("ai_assistant", "ai-filter-none")
             },
         );
 
@@ -13924,15 +13924,15 @@ impl TerminalView {
                     .as_ref(app)
                     .remote_server_setup_state(sid)
                     .map(|state| match state {
-                        RemoteServerSetupState::Checking => "Checking...".to_string(),
+                        RemoteServerSetupState::Checking => crate::tr!("settings", "checking").to_string(),
                         RemoteServerSetupState::Installing {
                             progress_percent: Some(p),
                         } => format!("Installing... ({p}%)"),
                         RemoteServerSetupState::Installing {
                             progress_percent: None,
-                        } => "Installing...".to_string(),
-                        RemoteServerSetupState::Updating => "Updating...".to_string(),
-                        RemoteServerSetupState::Initializing => "Initializing...".to_string(),
+                        } => crate::tr!("settings", "installing").to_string(),
+                        RemoteServerSetupState::Updating => crate::tr!("settings", "updating").to_string(),
+                        RemoteServerSetupState::Initializing => crate::tr!("terminal", "initializing").to_string(),
                         _ => crate::tr!("ai_assistant", "ai-starting-shell").to_string(),
                     })
             })
@@ -17699,7 +17699,7 @@ impl TerminalView {
                 true,
             ) => {
                 let mut fields = vec![
-                    MenuItemFields::new("Copy")
+                    MenuItemFields::new(crate::tr!("common", "copy-label"))
                         .with_on_select_action(TerminalAction::ContextMenu(
                             ContextMenuAction::CopySelectedText,
                         ))
@@ -17768,7 +17768,7 @@ impl TerminalView {
                 } else {
                     crate::tr!("terminal", "menu-copy-commands")
                 };
-                let copy_str = "Copy";
+                let copy_str = crate::tr!("common", "copy-label");
                 let find_str = if is_single_selection {
                     crate::tr!("terminal", "menu-find-within-block")
                 } else {
@@ -17801,7 +17801,7 @@ impl TerminalView {
                 {
                     crate::tr!("terminal", "menu-share-block")
                 } else {
-                    "Share..."
+                    crate::tr!("terminal", "menu-share")
                 };
 
                 // Only right-click sources offer general terminal actions like "Paste";
@@ -18245,7 +18245,7 @@ impl TerminalView {
 
     fn paste_menu_item(&self, ctx: &mut ViewContext<Self>) -> MenuItem<TerminalAction> {
         let is_clipboard_empty = ctx.clipboard().read().is_empty();
-        MenuItemFields::new("Paste")
+        MenuItemFields::new(crate::tr!("common", "paste-label"))
             .with_on_select_action(TerminalAction::Paste)
             .with_key_shortcut_label(keybinding_name_to_display_string("terminal:paste", ctx))
             .with_disabled(is_clipboard_empty)
@@ -18537,7 +18537,7 @@ impl TerminalView {
                         InputContextMenuAction::CutSelectedText,
                     ))
                     .into_item(),
-                MenuItemFields::new("Copy")
+                MenuItemFields::new(crate::tr!("common", "copy-label"))
                     .with_on_select_action(TerminalAction::InputContextMenuItem(
                         InputContextMenuAction::CopySelectedText,
                     ))
@@ -18565,7 +18565,7 @@ impl TerminalView {
         }
 
         items.push(
-            MenuItemFields::new("Paste")
+            MenuItemFields::new(crate::tr!("common", "paste-label"))
                 .with_on_select_action(TerminalAction::InputContextMenuItem(
                     InputContextMenuAction::Paste,
                 ))
@@ -18638,9 +18638,9 @@ impl TerminalView {
         if !is_editor_disabled {
             let input_settings = InputSettings::as_ref(ctx);
             let inverse_action = if *input_settings.show_hint_text {
-                "Hide"
+                crate::tr!("common", "hide-label")
             } else {
-                "Show"
+                crate::tr!("common", "show-label")
             };
             items.push(MenuItem::Separator);
             items.push(
@@ -18790,7 +18790,7 @@ impl TerminalView {
             model.selection_to_string(semantic_selection, self.is_inverted_blocklist(ctx), ctx);
         if selection_string.is_some() {
             menu_items.push(
-                MenuItemFields::new("Copy")
+                MenuItemFields::new(crate::tr!("common", "copy-label"))
                     .with_on_select_action(TerminalAction::ContextMenu(
                         ContextMenuAction::CopySelectedText,
                     ))
@@ -20337,7 +20337,7 @@ impl TerminalView {
         send_telemetry_from_ctx!(
             // We purposely keep the FeaturesPageAction event, even though we have moved the setting to AI settings.
             TelemetryEvent::FeaturesPageAction {
-                action: "ToggleShowInputHintText".to_string(),
+                action: crate::tr!("settings", "toggleshowinputhinttext").to_string(),
                 value: new_val.to_string()
             },
             ctx
@@ -23632,9 +23632,9 @@ impl TerminalView {
         let show_banner = if honor_ps1 {
             let banner_content = if shell_plugins.contains("p10k_unsupported") {
                 Some(BannerTextContent::formatted_text(vec![
-                    FormattedTextFragment::bold(crate::tr!("terminal", "powerlevel10k-now-supports-warp")),
+                    FormattedTextFragment::bold("Powerlevel10k now supports Warp!  "),
                     FormattedTextFragment::plain_text(
-                        crate::tr!("terminal", "you-seem-to-be-running-an-older-unsupported-version-please"),
+                        "You seem to be running an older (unsupported) version, please follow ",
                     ),
                     FormattedTextFragment::hyperlink(
                         crate::tr!("terminal", "these-instructions"),
@@ -26523,9 +26523,9 @@ impl TerminalView {
             let status = if block.has_failed() {
                 format!("failed, status code {}", block.exit_code().value())
             } else if block.is_background() {
-                "background".to_string()
+                crate::tr!("terminal", "a11y-status-background").to_string()
             } else if block.is_done() {
-                "succeeded".to_string()
+                crate::tr!("terminal", "a11y-status-succeeded").to_string()
             } else {
                 crate::tr!("terminal", "a11y-status-in-progress").to_string()
             };
@@ -26963,7 +26963,7 @@ impl TerminalView {
                 env_var_collection
                     .title
                     .clone()
-                    .unwrap_or("Untitled".to_owned()),
+                    .unwrap_or(crate::tr!("ai_assistant", "ai-untitled").to_owned()),
                 env_var_collection
                     .vars
                     .iter()
@@ -27018,7 +27018,7 @@ impl TerminalView {
         // subshell start
         self.env_vars = env_var_collection.vars;
         self.model.lock().set_env_var_collection_name(Some(
-            env_var_collection.title.unwrap_or("Untitled".to_owned()),
+            env_var_collection.title.unwrap_or(crate::tr!("ai_assistant", "ai-untitled").to_owned()),
         ));
         self.set_and_execute_subshell_command(&shell_path_string, shell_type, ctx);
 
@@ -28313,7 +28313,7 @@ impl TypedActionView for TerminalView {
                 self.show_warpify_banner(
                     command.to_owned(),
                     "Subshell",
-                    "subshell",
+                    crate::tr!("context_chips", "subshell"),
                     warpify_keybinding,
                     TelemetryEvent::ShowSubshellBanner,
                     ctx,
@@ -29135,7 +29135,7 @@ impl TypedActionView for TerminalView {
 
 impl View for TerminalView {
     fn ui_name() -> &'static str {
-        "Terminal"
+        crate::tr!("ai_assistant", "ai-agent-mode-terminal")
     }
 
     fn render(&self, app: &AppContext) -> Box<dyn Element> {

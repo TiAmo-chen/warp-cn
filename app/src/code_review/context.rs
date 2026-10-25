@@ -76,7 +76,7 @@ pub fn create_attachment_reference_and_key(
     match scope {
         DiffSetScope::All => {
             let diff_set_description = match diff_mode {
-                DiffMode::Head => crate::tr!("code_review", "uncommitted-changes")).to_string(),
+                DiffMode::Head => crate::tr!("code_review", "uncommitted-changes").to_string(),
                 DiffMode::MainBranch => {
                     let main_branch = main_branch_name.unwrap_or("main");
                     format!("diffset against {main_branch}")

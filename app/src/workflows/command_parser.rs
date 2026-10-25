@@ -503,7 +503,7 @@ fn parse_argument_values_from_command(
             if i != end_of_last_matched_segment {
                 argument_values.push(history_command[end_of_last_matched_segment..i].to_owned());
             }
-            for _ in 0..matched_segment.expect(crate::tr!("terminal", "should-exist"))).chars().count() {
+            for _ in 0..matched_segment.expect(crate::tr!("terminal", "should-exist")).chars().count() {
                 char_iter.next();
             }
             if let Some(i) = char_iter.peek().copied() {

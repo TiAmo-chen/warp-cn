@@ -127,52 +127,52 @@ fn should_send_git_ops_ai_request(app: &AppContext) -> bool {
 /// message (the raw error is always logged separately at the call site).
 fn user_facing_git_error(raw: &str) -> &'static str {
     let lower = raw.to_lowercase();
-    if lower.contains(crate::tr!("code_review", "no-changes-added-to-commit"))) {
+    if lower.contains(crate::tr!("code_review", "no-changes-added-to-commit")) {
         // Distinct from a clean tree: changes exist but nothing is staged
         // (e.g. "include unstaged" off with an empty index).
-        crate::tr!("code_review", "no-staged-changes-to-commit"))
-    } else if lower.contains(crate::tr!("code_review", "nothing-to-commit"))) {
+        crate::tr!("code_review", "no-staged-changes-to-commit")
+    } else if lower.contains(crate::tr!("code_review", "nothing-to-commit")) {
         crate::tr!("code_editor", "code-review-no-changes-to-commit")
-    } else if lower.contains(crate::tr!("code_review", "please-tell-me-who-you-are")))
-        || lower.contains(crate::tr!("code_review", "author-identity-unknown")))
+    } else if lower.contains(crate::tr!("code_review", "please-tell-me-who-you-are"))
+        || lower.contains(crate::tr!("code_review", "author-identity-unknown"))
     {
         crate::tr!("code_editor", "code-review-git-identity-not-configured")
-    } else if lower.contains(crate::tr!("code_review", "updates-were-rejected")))
+    } else if lower.contains(crate::tr!("code_review", "updates-were-rejected"))
         || lower.contains("non-fast-forward")
-        || lower.contains(crate::tr!("code_review", "fetch-first")))
+        || lower.contains(crate::tr!("code_review", "fetch-first"))
     {
         "Remote has new changes \u{2014} pull before pushing."
-    } else if lower.contains(crate::tr!("code_review", "does-not-appear-to-be-a-git-repository")))
-        || lower.contains(crate::tr!("code_review", "no-configured-push-destination")))
+    } else if lower.contains(crate::tr!("code_review", "does-not-appear-to-be-a-git-repository"))
+        || lower.contains(crate::tr!("code_review", "no-configured-push-destination"))
         || lower.contains("no such remote")
     {
         crate::tr!("code_editor", "code-review-no-remote-configured")
-    } else if lower.contains(crate::tr!("code_review", "authentication-failed")))
-        || lower.contains(crate::tr!("code_review", "permission-denied-publickey")))
+    } else if lower.contains(crate::tr!("code_review", "authentication-failed"))
+        || lower.contains(crate::tr!("code_review", "permission-denied-publickey"))
     {
         crate::tr!("code_editor", "code-review-authentication-failed")
     } else if lower.contains("could not resolve host")
-        || lower.contains(crate::tr!("code_review", "network-is-unreachable")))
-        || lower.contains(crate::tr!("code_review", "connection-timed-out")))
+        || lower.contains(crate::tr!("code_review", "network-is-unreachable"))
+        || lower.contains(crate::tr!("code_review", "connection-timed-out"))
     {
         crate::tr!("code_editor", "code-review-network-error")
-    } else if lower.contains(crate::tr!("code_review", "repository-not-found"))) {
+    } else if lower.contains(crate::tr!("code_review", "repository-not-found")) {
         crate::tr!("code_editor", "code-review-remote-repository-not-found")
     } else if lower.contains("failed to execute gh command") {
         // `run_gh_command` wraps spawn failures with this prefix, which is
         // the reliable "gh binary missing" signal.
         crate::tr!("code_editor", "code-review-gh-cli-not-installed")
     } else if lower.contains(crate::tr!("settings", "not-logged-in"))
-        || lower.contains(crate::tr!("code_review", "authentication-required")))
-        || lower.contains(crate::tr!("code_review", "gh-auth-login")))
+        || lower.contains(crate::tr!("code_review", "authentication-required"))
+        || lower.contains(crate::tr!("code_review", "gh-auth-login"))
     {
         // Phrases mirror `context_chips::current_prompt::is_gh_auth_error`,
         // which has been vetted against real `gh` failure output.
-        "GitHub CLI not authenticated. Run `gh auth login`."
-    } else if lower.contains(crate::tr!("code_review", "another-git-operation-is-in-progress"))) {
+        crate::tr!("code_editor", "code-review-gh-cli-not-authenticated")
+    } else if lower.contains(crate::tr!("code_review", "another-git-operation-is-in-progress")) {
         // Daemon-side guard for a repo mid-merge/rebase/cherry-pick or with a
         // held index lock (see `git_operation_in_progress`).
-        crate::tr!("code_review", "another-git-operation-is-in-progress-finish-or-abort-it-fi"))
+        crate::tr!("code_review", "another-git-operation-is-in-progress-finish-or-abort-it-fi")
     } else {
         crate::tr!("code_editor", "code-review-git-operation-failed")
     }
@@ -195,7 +195,7 @@ fn render_branch_section(
     let sub_color = theme.sub_text_color(theme.surface_1()).into_solid();
 
     let label = Text::new(
-        "Branch",
+        crate::tr!("code_editor", "code-review-branch"),
         appearance.ui_font_family(),
         appearance.ui_font_size(),
     )
@@ -282,7 +282,7 @@ fn render_file_changes_box(
     let files_text = Text::new(
         format!(
             "{total_files} {}",
-            if total_files == 1 { "file" } else { "files" }
+            if total_files == 1 { crate::tr!("ai_assistant", "ai-file-suffix") } else { crate::tr!("search", "source-files") }
         ),
         appearance.ui_font_family(),
         appearance.ui_font_size(),
@@ -490,7 +490,7 @@ impl GitDialog {
         // communicates which of commit / commit-and-push / commit-and-create-PR
         // will actually run on click.
         let (confirm_button, cancel_button, close_button) =
-            Self::build_dialog_buttons("Confirm", None, ctx);
+            Self::build_dialog_buttons(crate::tr!("code_editor", "code-review-confirm"), None, ctx);
         ctx.subscribe_to_model(&diff_state_model, Self::handle_diff_state_event);
         let state = commit::new_state(
             repo_location.to_local_path(),
@@ -594,7 +594,7 @@ impl GitDialog {
             button.on_click(|ctx| ctx.dispatch_typed_action(GitDialogAction::Confirm))
         });
         let cancel_button = ctx.add_typed_action_view(|_ctx| {
-            ActionButton::new("Cancel", NakedTheme)
+            ActionButton::new(crate::tr!("ai_assistant", "ai-cancel"), NakedTheme)
                 .with_size(ButtonSize::Small)
                 .with_height(32.)
                 .on_click(|ctx| ctx.dispatch_typed_action(GitDialogAction::Cancel))

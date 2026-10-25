@@ -287,7 +287,7 @@ impl RemoteDiffStateModel {
             Err(error) => {
                 self.tracked_diff_load_start_time = None;
                 warp_core::safe_error!(
-                    safe: (crate::tr!("code_review", "remotediffstatemodel-failed-to-decode-diff-state-snapshot"))),
+                    safe: (crate::tr!("code_review", "remotediffstatemodel-failed-to-decode-diff-state-snapshot")),
                     full: ("RemoteDiffStateModel: failed to decode diff state snapshot: {error}")
                 );
             }
@@ -309,7 +309,7 @@ impl RemoteDiffStateModel {
             Ok(None) => {}
             Err(error) => {
                 warp_core::safe_error!(
-                    safe: (crate::tr!("code_review", "remotediffstatemodel-failed-to-decode-diff-state-metadata"))),
+                    safe: (crate::tr!("code_review", "remotediffstatemodel-failed-to-decode-diff-state-metadata")),
                     full: ("RemoteDiffStateModel: failed to decode diff state metadata update: {error}")
                 );
             }
@@ -327,7 +327,7 @@ impl RemoteDiffStateModel {
             }
             Err(error) => {
                 warp_core::safe_error!(
-                    safe: (crate::tr!("code_review", "remotediffstatemodel-failed-to-decode-diff-state-file-delt"))),
+                    safe: (crate::tr!("code_review", "remotediffstatemodel-failed-to-decode-diff-state-file-delt")),
                     full: ("RemoteDiffStateModel: failed to decode diff state file delta: {error}")
                 );
             }

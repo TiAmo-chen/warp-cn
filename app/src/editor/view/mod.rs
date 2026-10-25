@@ -236,7 +236,7 @@ pub fn init(ctx: &mut AppContext) {
         FixedBinding::custom(
             CustomAction::Copy,
             EditorAction::Copy,
-            "Copy",
+            crate::tr!("common", "copy-label"),
             id!("EditorView") & !id!("IMEOpen"),
         ),
         FixedBinding::custom(
@@ -249,7 +249,7 @@ pub fn init(ctx: &mut AppContext) {
         FixedBinding::custom(
             CustomAction::Paste,
             EditorAction::Paste,
-            "Paste",
+            crate::tr!("common", "paste-label"),
             id!("EditorView") & !id!("IMEOpen"),
         ),
         FixedBinding::standard(
@@ -261,7 +261,7 @@ pub fn init(ctx: &mut AppContext) {
         FixedBinding::custom(
             CustomAction::WindowsPaste,
             EditorAction::Paste,
-            "Paste",
+            crate::tr!("common", "paste-label"),
             id!("EditorView") & !id!("IMEOpen"),
         ),
         FixedBinding::new(
@@ -395,13 +395,13 @@ pub fn init(ctx: &mut AppContext) {
         FixedBinding::custom(
             CustomAction::Undo,
             EditorAction::Undo,
-            "Undo",
+            crate::tr!("code_editor", "undo-label"),
             id!("EditorView") & !id!("IMEOpen"),
         ),
         FixedBinding::custom(
             CustomAction::Redo,
             EditorAction::Redo,
-            "Redo",
+            crate::tr!("code_editor", "redo-label"),
             id!("EditorView") & !id!("IMEOpen"),
         ),
         // This might seem like a no-op since `ctrl-right` changes desktops on Mac by default.
@@ -1740,7 +1740,7 @@ impl ImageContextOptions {
             }
 
             if *is_processing_attached_images {
-                return "Loading...".into();
+                return crate::tr!("auth", "loading").into();
             }
 
             if *num_images_attached >= MAX_IMAGE_COUNT_FOR_QUERY {
@@ -5272,7 +5272,7 @@ impl EditorView {
                     let message = if num_unsupported_images == 1 && num_images_user_attached == 1 {
                         crate::tr!("editor", "image-unsupported-single").into()
                     } else if num_unsupported_images == 1 {
-                        "1 image wasn't attached - supported types are PNG, JPG, GIF, WEBP.".into()
+                        crate::tr!("editor", "image-unsupported-one").into()
                     } else {
                         format!("{num_unsupported_images} images weren't attached - supported types are PNG, JPG, GIF, WEBP.")
                     };
@@ -5290,7 +5290,7 @@ impl EditorView {
                     let message = if num_read_errors == 1 && num_images_user_attached == 1 {
                         crate::tr!("editor", "image-read-error-single").into()
                     } else if num_read_errors == 1 {
-                        "1 image wasn't attached - failed to read file.".into()
+                        crate::tr!("editor", "image-read-error-one").into()
                     } else {
                         format!("{num_read_errors} images weren't attached - failed to read files.")
                     };
@@ -5398,7 +5398,7 @@ impl EditorView {
                     let message = if num_oversized_images == 1 && num_images_user_attached == 1 {
                         crate::tr!("editor", "image-too-large-single").into()
                     } else if num_oversized_images == 1 {
-                        "1 image wasn't attached — file is too large.".into()
+                        crate::tr!("editor", "image-too-large-one").into()
                     } else {
                         format!(
                             "{num_oversized_images} images weren't attached — files are too large."
@@ -5418,7 +5418,7 @@ impl EditorView {
                     let message = if num_unprocessed_images == 1 && num_images_user_attached == 1 {
                         crate::tr!("editor", "image-processing-error-single").into()
                     } else if num_unprocessed_images == 1 {
-                        "1 image wasn't attached - error processing.".into()
+                        crate::tr!("editor", "image-processing-error-one").into()
                     } else {
                         format!(
                             "{num_unprocessed_images} images weren't attached - error processing."
@@ -7825,7 +7825,7 @@ impl EditorView {
 
     /// Send the 'escape' keystroke to the VimFSA.
     fn vim_escape(&mut self, ctx: &mut ViewContext<Self>) {
-        self.vim_keystroke(&Keystroke::parse("escape").expect(crate::tr!("code", "escape-parses"))), ctx)
+        self.vim_keystroke(&Keystroke::parse("escape").expect(crate::tr!("code", "escape-parses")), ctx)
     }
 
     fn vim_apply_insert_position(
@@ -8725,7 +8725,7 @@ impl TypedActionView for EditorView {
             InsertAutosuggestion => self.insert_autosuggestion_from_action(ctx),
             VimUserInsert(text) => self.vim_user_insert(text.as_ref(), ctx),
             VimBackspace => self.vim_keystroke(
-                &Keystroke::parse("backspace").expect(crate::tr!("code", "backspace-parses"))),
+                &Keystroke::parse("backspace").expect(crate::tr!("code", "backspace-parses")),
                 ctx,
             ),
             VimEscape => self.vim_escape(ctx),

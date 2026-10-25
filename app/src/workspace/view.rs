@@ -10073,7 +10073,7 @@ impl Workspace {
             MenuItemFields::new(crate::tr!("workspace", "whats-new"))
                 .with_on_select_action(WorkspaceAction::ViewLatestChangelog)
                 .into_item(),
-            MenuItemFields::new("Settings")
+            MenuItemFields::new(crate::tr!("common", "settings-label"))
                 .with_on_select_action(WorkspaceAction::ShowSettings)
                 .into_item(),
             MenuItemFields::new(crate::tr!("common", "keyboard-shortcuts"))
@@ -10126,7 +10126,7 @@ impl Workspace {
             );
         } else {
             items.push(
-                MenuItemFields::new("Upgrade")
+                MenuItemFields::new(crate::tr!("agent_cloud", "upgrade-label"))
                     .with_on_select_action(WorkspaceAction::ShowUpgrade)
                     .into_item(),
             );
@@ -10934,7 +10934,7 @@ impl Workspace {
         };
 
         match label.as_str() {
-            "New worktree config" => {
+            crate::tr!("workspace", "new-worktree-config") => {
                 self.tab_config_action_sidecar_item = None;
                 let auto_select_first_repo = self.new_session_dropdown_menu.read(ctx, |menu, _| {
                     menu.last_selection_source() != Some(MenuSelectionSource::Pointer)
@@ -10946,7 +10946,7 @@ impl Workspace {
                 );
             }
             // Items that don't get any sidecar.
-            "New tab config" => {
+            crate::tr!("workspace", "new-tab-config") => {
                 self.tab_config_action_sidecar_item = None;
                 if self.show_new_session_sidecar {
                     self.show_new_session_sidecar = false;
@@ -14406,7 +14406,7 @@ impl Workspace {
             .conversation(&conversation_id)
             .and_then(|c| c.title())
             .map(|s| s.to_string())
-            .unwrap_or_else(|| "Conversation".to_string());
+            .unwrap_or_else(|| crate::tr!("ai_assistant", "ai-conversation-fallback-title").to_string());
 
         let title = if source_title.chars().count() > MAX_FORK_TOAST_TITLE_LENGTH {
             let truncated: String = source_title
@@ -14696,7 +14696,7 @@ impl Workspace {
                     RequestPermissionsOutcome::OtherError { error_message } => {
                         report_error!(
                             anyhow::anyhow!("{error_message}")
-                                .context(crate::tr!("terminal", "unknown-error-when-requesting-notification-permissions")))
+                                .context(crate::tr!("terminal", "unknown-error-when-requesting-notification-permissions"))
                         );
                     }
                 }
@@ -16257,7 +16257,7 @@ impl Workspace {
                 crate::tr!("workspace", "your-conversation-hasn-t-synced-to-the-cloud-yet-try-sendi")
             }
             HandoffPrepareError::InvalidModel => {
-                crate::tr!("terminal", "custom-models-can-t-run-in-the-cloud-switch-to-a-warp-mode"))
+                crate::tr!("terminal", "custom-models-can-t-run-in-the-cloud-switch-to-a-warp-mode")
             }
             HandoffPrepareError::EmptySourceAndPrompt => {
                 "Nothing to hand off — start a conversation first."
@@ -18611,7 +18611,7 @@ impl Workspace {
                                     )
                                     .with_object_id(object_id_clone)
                                     .with_link(
-                                        ToastLink::new("View".to_string()).with_onclick_action(
+                                        ToastLink::new(crate::tr!("app_menus", "view").to_string()).with_onclick_action(
                                             WorkspaceAction::ViewObjectInWarpDrive(
                                                 WarpDriveItemId::Object(
                                                     CloudObjectTypeAndId::Notebook(notebook.id),
@@ -18629,7 +18629,7 @@ impl Workspace {
                                     || result.operation == ObjectOperation::Update)
                             {
                                 new_toast = new_toast.with_link(
-                                    ToastLink::new("View".to_string()).with_onclick_action(
+                                    ToastLink::new(crate::tr!("app_menus", "view").to_string()).with_onclick_action(
                                         WorkspaceAction::ViewObjectInWarpDrive(
                                             WarpDriveItemId::Object(
                                                 CloudObjectTypeAndId::Workflow(workflow.id),
@@ -18641,7 +18641,7 @@ impl Workspace {
 
                             if result.operation == ObjectOperation::Trash {
                                 new_toast = new_toast.with_link(
-                                    ToastLink::new("Undo".to_string()).with_onclick_action(
+                                    ToastLink::new(crate::tr!("code_editor", "undo-label").to_string()).with_onclick_action(
                                         WorkspaceAction::UndoTrash(cloud_object_type_and_id),
                                     ),
                                 )
@@ -18762,7 +18762,7 @@ impl Workspace {
         {
             let cloud_model = CloudModel::as_ref(ctx);
             let updated_object = cloud_model
-                .get_by_uid(&result.server_id.expect(crate::tr!("notebooks", "expect-server-id-on-success"))).uid());
+                .get_by_uid(&result.server_id.expect(crate::tr!("notebooks", "expect-server-id-on-success")).uid());
             if let Some(CloudObjectTypeAndId::Workflow(workflow_id)) =
                 updated_object.map(|o| o.cloud_object_type_and_id())
             {
@@ -19212,9 +19212,9 @@ impl Workspace {
             });
 
         let verb = if prev_mouse_reporting_enabled {
-            "disabled"
+            crate::tr!("terminal", "disabled-label")
         } else {
-            "enabled"
+            crate::tr!("workspace", "enabled")
         };
         let mut message = format!("You {verb} mouse reporting.");
         if let Some(keystroke) =
@@ -21611,7 +21611,7 @@ impl Workspace {
                 WorkspaceAction::ToggleNotificationMailbox {
                     select_first: false,
                 },
-                "Notifications".to_string(),
+                crate::tr!("ai_assistant", "ai-notifications-title").to_string(),
                 keybinding_name_to_display_string(TOGGLE_NOTIFICATION_MAILBOX_BINDING_NAME, ctx),
                 is_inbox_active,
                 false,
@@ -22144,7 +22144,7 @@ impl Workspace {
                 icons::Icon::Gear,
                 &self.mouse_states.settings_icon,
                 WorkspaceAction::ShowSettings,
-                "Settings".to_string(),
+                crate::tr!("common", "settings-label").to_string(),
                 self.cached_keybindings[SHOW_SETTINGS_KEYBINDING_NAME].clone(),
                 false,
                 false,
@@ -22556,7 +22556,7 @@ impl Workspace {
             banner_type: WorkspaceBanner::Reauth,
             severity: BannerSeverity::Warning,
             heading: Some(crate::tr!("workspace", "login-expired").into()),
-            description: "Please sign in again to restore access to cloud-based features.".into(),
+            description: crate::tr!("workspace", "sign-in-again").into(),
             secondary_button: None,
             button: Some(WorkspaceBannerButtonDetails {
                 text: crate::tr!("workspace", "sign-in").into(),
@@ -22645,7 +22645,7 @@ impl Workspace {
                                     banner_type: WorkspaceBanner::VersionDeprecated,
                                     severity: BannerSeverity::Warning,
                                     heading: None,
-                                    description: "Your app is out of date and needs to update."
+                                    description: crate::tr!("workspace", "your-app-is-out-of-date-and-needs-to-update")
                                         .to_string(),
                                     secondary_button: None,
                                     button: Some(WorkspaceBannerButtonDetails {
@@ -25472,7 +25472,7 @@ impl TypedActionView for Workspace {
 
                     status.is_syncing_all_inputs(window_id)
                 });
-                let verb = if enabled { "enabled" } else { "disabled" };
+                let verb = if enabled { crate::tr!("workspace", "enabled") } else { crate::tr!("terminal", "disabled-label") };
                 let mut message = format!("You {verb} synchronized inputs in all tabs.");
                 if let Some(keystroke) = keybinding_name_to_keystroke(
                     "workspace:toggle_sync_all_terminal_inputs_in_all_tabs",
@@ -25505,7 +25505,7 @@ impl TypedActionView for Workspace {
 
                     status.should_sync_this_pane_group(current_pane_group_id, window_id)
                 });
-                let verb = if enabled { "enabled" } else { "disabled" };
+                let verb = if enabled { crate::tr!("workspace", "enabled") } else { crate::tr!("terminal", "disabled-label") };
                 let mut message = format!("You {verb} synchronized inputs in this tab.");
                 if let Some(keystroke) = keybinding_name_to_keystroke(
                     "workspace:toggle_sync_terminal_inputs_in_tab",
@@ -26753,7 +26753,7 @@ impl TypedActionView for Workspace {
 
 impl View for Workspace {
     fn ui_name() -> &'static str {
-        "Workspace"
+        crate::tr!("settings", "workspace")
     }
 
     fn self_or_child_interacted_with(&self, ctx: &mut ViewContext<Self>) {
@@ -26894,7 +26894,7 @@ impl View for Workspace {
         }
 
         if self.auth_state.is_anonymous_or_logged_out() {
-            context.set.insert("IsAnonymousUser");
+            context.set.insert(crate::tr!("settings", "isanonymoususer"));
         }
 
         self.add_toggle_setting_context_flags(app, &mut context);

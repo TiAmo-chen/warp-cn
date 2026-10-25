@@ -128,7 +128,7 @@ impl GitRepoStatusModel {
         match self {
             #[cfg(feature = "local_fs")]
             Self::Local(m) => m.update(ctx, |m, ctx| m.set_metadata_for_test(metadata, ctx)),
-            Self::Remote(_) => unreachable!(crate::tr!("code_review", "remote-test-models-are-not-used"))),
+            Self::Remote(_) => unreachable!(crate::tr!("code_review", "remote-test-models-are-not-used")),
         }
     }
 }

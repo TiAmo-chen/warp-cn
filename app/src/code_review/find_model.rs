@@ -400,7 +400,7 @@ impl CodeReviewFindModel {
         _editor_handles: impl Iterator<Item = ViewHandle<LocalCodeEditorView>>,
         _ctx: &mut ModelContext<Self>,
     ) {
-        unreachable!(crate::tr!("code_review", "code-review-is-not-available-on-wasm")))
+        unreachable!(crate::tr!("code_review", "code-review-is-not-available-on-wasm"))
     }
 
     pub fn matches_by_editor(&self) -> HashMap<EntityId, Vec<Range<CharOffset>>> {

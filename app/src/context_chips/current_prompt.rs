@@ -686,7 +686,7 @@ impl CurrentPrompt {
         ctx: &mut ModelContext<Self>,
     ) {
         let Some(chip) = chip_kind.to_chip() else {
-            report_error!(crate::tr!("context_chips", "undefined-chip")), extra: { "chip_kind" => ?chip_kind });
+            report_error!(crate::tr!("context_chips", "undefined-chip"), extra: { "chip_kind" => ?chip_kind });
             return;
         };
 
@@ -987,7 +987,7 @@ impl CurrentPrompt {
         }
 
         let Some(chip) = chip_kind.to_chip() else {
-            report_error!(crate::tr!("context_chips", "undefined-chip")), extra: { "chip_kind" => ?chip_kind });
+            report_error!(crate::tr!("context_chips", "undefined-chip"), extra: { "chip_kind" => ?chip_kind });
             return;
         };
         if let RefreshConfig::Periodically { interval } = chip.refresh_config() {
@@ -1027,7 +1027,7 @@ impl CurrentPrompt {
 
         chips.iter().for_each(|chip_kind| {
             let Some(chip) = chip_kind.to_chip() else {
-                report_error!(crate::tr!("context_chips", "undefined-chip")), extra: { "chip_kind" => ?chip_kind });
+                report_error!(crate::tr!("context_chips", "undefined-chip"), extra: { "chip_kind" => ?chip_kind });
                 return;
             };
             // Add states of new chips

@@ -114,7 +114,7 @@ pub fn subshell(ctx: &GeneratorContext) -> Option<ChipValue> {
             .spawning_command
             .split_whitespace()
             .next()
-            .unwrap_or("subshell")
+            .unwrap_or(crate::tr!("context_chips", "subshell"))
             .to_string()
     };
     Some(ChipValue::Text(session_type))
@@ -248,7 +248,7 @@ pub fn shell_git_line_changes() -> ShellCommandGenerator {
 
 pub fn kubernetes_current_context() -> ShellCommandGenerator {
     ShellCommandGenerator::new(
-        ShellCommand::portable(crate::tr!("context_chips", "kubectl-config-current-context"))),
+        ShellCommand::portable(crate::tr!("context_chips", "kubectl-config-current-context")),
         Some(vec!["kubectl".to_owned()]),
     )
 }

@@ -73,7 +73,7 @@ impl RemoteGitRepoStatusModel {
             }
             Err(error) => {
                 warp_core::safe_error!(
-                    safe: (crate::tr!("code_review", "remotegitrepostatusmodel-failed-to-decode-git-status-push"))),
+                    safe: (crate::tr!("code_review", "remotegitrepostatusmodel-failed-to-decode-git-status-push")),
                     full: ("RemoteGitRepoStatusModel: failed to decode git status push: {error}")
                 );
             }

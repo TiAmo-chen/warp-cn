@@ -218,9 +218,9 @@ impl CloudModelType for CloudWorkflowModel {
 
     fn model_type_name(&self) -> &'static str {
         if self.data.is_agent_mode_workflow() {
-            "Prompt"
+            crate::tr!("ai_assistant", "ai-prompt-label")
         } else {
-            "Workflow"
+            crate::tr!("drive", "type-workflow")
         }
     }
 
