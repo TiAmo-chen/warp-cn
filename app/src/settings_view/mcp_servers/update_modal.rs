@@ -257,7 +257,7 @@ impl UpdateModalBody {
                 ..
             } => {
                 let publisher_string = match publisher {
-                    Author::CurrentUser => crate::tr!("settings", "mcp-publisher-another-device"),
+                    Author::CurrentUser => "another device",
                     Author::OtherUser { name } => name,
                     Author::Unknown => "a team member",
                 };

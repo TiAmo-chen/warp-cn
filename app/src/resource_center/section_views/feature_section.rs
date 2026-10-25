@@ -37,7 +37,7 @@ impl FeatureSection {
     pub fn section_name_string(&self) -> &'static str {
         match self {
             FeatureSection::WhatsNew => "What's New?",
-            FeatureSection::GettingStarted => crate::tr!("resource_center", "getting-started"),
+            FeatureSection::GettingStarted => "Getting Started",
             FeatureSection::MaximizeWarp => crate::tr!("resource_center", "maximize-warp"),
             FeatureSection::AdvancedSetup => crate::tr!("resource_center", "advanced-setup"),
         }

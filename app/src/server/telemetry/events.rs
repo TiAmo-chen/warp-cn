@@ -5851,7 +5851,7 @@ impl TelemetryEventDesc for TelemetryEventDiscriminants {
             Self::AppIconSelection => "Select App Icon",
             Self::CursorDisplayType => "Select Cursor Type",
             Self::OpenThemeCreatorModal => "Open Theme Creator Modal",
-            Self::CreateCustomTheme => crate::tr!("appearance", "create-custom-theme"),
+            Self::CreateCustomTheme => "Create Custom Theme",
             Self::DeleteCustomTheme => "Delete Custom Theme",
             Self::UnableToAutoUpdateToNewVersion => "Unable to Update To New Version",
             Self::AutoupdateRelaunchAttempt => "Attempting to Relaunch for Update",

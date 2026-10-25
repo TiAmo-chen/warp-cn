@@ -309,7 +309,7 @@ impl From<&TeamsPageAction> for LoginGatedFeature {
         use TeamsPageAction::*;
         match val {
             LeaveTeam => "Leave Team",
-            ShowDeleteTeamConfirmationDialog => crate::tr!("settings", "delete-team"),
+            ShowDeleteTeamConfirmationDialog => "Delete Team",
             CreateTeam => crate::tr!("settings", "create-team"),
             DeletePendingEmailInvitation { .. } => crate::tr!("settings", "delete-pending-email-invitation"),
             RemoveUserFromTeam { .. } => crate::tr!("settings", "remove-user-from-team"),
@@ -2731,7 +2731,7 @@ impl TeamsWidget {
         let title = match warning {
             GrowTeamWarning::SeatCapReached => crate::tr!("settings", "your-team-is-full"),
             GrowTeamWarning::SeatCapExceeded => crate::tr!("settings", "youve-exceeded-your-member-limit"),
-            GrowTeamWarning::PaymentPastDue => crate::tr!("settings", "payment-past-due"),
+            GrowTeamWarning::PaymentPastDue => "Payment past due",
             GrowTeamWarning::PaymentUnpaid => "Subscription unpaid",
         };
         let title_element = self.render_subsection_header(title.to_owned(), appearance);
@@ -2769,7 +2769,7 @@ impl TeamsWidget {
             }
         } else {
             match cta {
-                GrowTeamWarningCta::Upgrade => crate::tr!("settings", "upgrade-to-grow-your-team"),
+                GrowTeamWarningCta::Upgrade => "Upgrade to grow your team.",
                 GrowTeamWarningCta::UpdateBilling => {
                     "Update your payment information to restore access."
                 }
@@ -3419,7 +3419,7 @@ impl TeamsWidget {
                 } else {
                     match team.billing_metadata.customer_type {
                         CustomerType::Prosumer => &crate::tr!("settings", "upgrade-to-turbo-plan"),
-                        CustomerType::Turbo => crate::tr!("settings", "upgrade-lightspeed-plan"),
+                        CustomerType::Turbo => "Upgrade to Lightspeed plan",
                         _ => crate::tr!("settings", "compare-plans"),
                     }
                 };

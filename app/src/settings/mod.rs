@@ -239,7 +239,7 @@ impl CtrlTabBehavior {
     pub fn as_dropdown_label(&self) -> &str {
         match self {
             Self::ActivatePrevNextTab => &crate::tr!("settings", "ctrl-tab-activate-prev-next"),
-            Self::CycleMostRecentSession => crate::tr!("settings", "ctrl-tab-cycle-recent-session"),
+            Self::CycleMostRecentSession => &crate::tr!("settings", "ctrl-tab-cycle-recent-session"),
             Self::CycleMostRecentTab => crate::tr!("settings", "ctrl-tab-cycle-recent-tab"),
         }
     }
@@ -290,7 +290,7 @@ impl GlobalHotkeyMode {
         match self {
             Self::Disabled => "Disabled",
             Self::QuakeMode => &crate::tr!("settings", "global-hotkey-quake-mode"),
-            Self::ActivationHotkey => crate::tr!("settings", "global-hotkey-activation"),
+            Self::ActivationHotkey => &crate::tr!("settings", "global-hotkey-activation"),
         }
     }
 }

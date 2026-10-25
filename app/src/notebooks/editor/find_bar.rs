@@ -548,7 +548,7 @@ impl TypedActionView for FindBar {
                 }
             }
             FindBarAction::FocusNextMatch => &crate::tr!("notebooks", "focus-next-match"),
-            FindBarAction::FocusPreviousMatch => crate::tr!("notebooks", "focus-previous-match"),
+            FindBarAction::FocusPreviousMatch => &crate::tr!("notebooks", "focus-previous-match"),
             FindBarAction::Close => crate::tr!("notebooks", "close-find-bar"),
         };
         Some(AccessibilityContent::new_without_help(

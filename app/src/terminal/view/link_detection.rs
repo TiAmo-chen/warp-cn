@@ -150,7 +150,7 @@ impl GridHighlightedLink {
             }
             #[cfg(feature = "local_fs")]
             GridHighlightedLink::File(_) => "Open file",
-            GridHighlightedLink::Url(_) => crate::tr!("terminal", "open-link"),
+            GridHighlightedLink::Url(_) => "Open link",
             GridHighlightedLink::Hyperlink { .. } => crate::tr!("terminal", "open-link"),
         }
     }
@@ -249,7 +249,7 @@ impl RichContentLink {
             }
             #[cfg(feature = "local_fs")]
             RichContentLink::FilePath { .. } => "Open file",
-            RichContentLink::Url(_) => crate::tr!("terminal", "open-link"),
+            RichContentLink::Url(_) => "Open link",
         }
     }
 }

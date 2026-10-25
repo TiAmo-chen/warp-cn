@@ -122,7 +122,7 @@ impl TabBehavior {
     pub fn dropdown_item_label(&self) -> &'static str {
         match self {
             TabBehavior::Completions => "Open completions menu",
-            TabBehavior::Autosuggestions => crate::tr!("editor", "accept-autosuggestion"),
+            TabBehavior::Autosuggestions => "Accept autosuggestion",
             TabBehavior::UserDefined => crate::tr!("settings", "tab-user-defined"),
         }
     }

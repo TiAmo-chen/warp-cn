@@ -95,7 +95,7 @@ impl ReviewTerminalUnavailableReason {
     fn label(&self) -> &'static str {
         match self {
             Self::NoSelectedRepo => "no repo is selected for code review",
-            Self::SessionPathUnavailable => crate::tr!("workspace", "session-cwd-unavailable"),
+            Self::SessionPathUnavailable => "session cwd is unavailable or not local",
             Self::SessionOutsideSelectedRepo => crate::tr!("workspace", "session-outside-repo"),
             Self::AIDisabled => crate::tr!("workspace", "ai-disabled-review"),
             Self::TerminalExecuting => crate::tr!("workspace", "terminal-executing"),

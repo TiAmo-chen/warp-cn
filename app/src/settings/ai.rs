@@ -529,7 +529,7 @@ impl DefaultSessionMode {
             DefaultSessionMode::Terminal => "Terminal",
             DefaultSessionMode::Agent => "Agent",
             DefaultSessionMode::CloudAgent => "Cloud agent",
-            DefaultSessionMode::TabConfig => crate::tr!("settings", "default-session-tab-config"),
+            DefaultSessionMode::TabConfig => "Tab Config",
             DefaultSessionMode::DockerSandbox => crate::tr!("settings", "default-session-docker-sandbox"),
         }
     }
@@ -578,7 +578,7 @@ impl ThinkingDisplayMode {
     pub fn display_name(&self) -> &'static str {
         match self {
             ThinkingDisplayMode::ShowAndCollapse => "Show & collapse",
-            ThinkingDisplayMode::AlwaysShow => crate::tr!("settings", "thinking-always-show"),
+            ThinkingDisplayMode::AlwaysShow => "Always show",
             ThinkingDisplayMode::NeverShow => crate::tr!("settings", "thinking-never-show"),
         }
     }
@@ -586,7 +586,7 @@ impl ThinkingDisplayMode {
     pub fn command_palette_description(&self) -> &'static str {
         match self {
             ThinkingDisplayMode::ShowAndCollapse => "Set agent thinking display: show & collapse",
-            ThinkingDisplayMode::AlwaysShow => crate::tr!("settings", "thinking-cmd-always-show"),
+            ThinkingDisplayMode::AlwaysShow => "Set agent thinking display: always show",
             ThinkingDisplayMode::NeverShow => crate::tr!("settings", "thinking-cmd-never-show"),
         }
     }
@@ -789,7 +789,7 @@ impl TuiStatuslineItem {
             Self::GitDiffStatus => "Git diff status",
             Self::GitHubPullRequest => "GitHub pull request",
             Self::CreditUsage => "Credit usage",
-            Self::ContextWindowUsage => crate::tr!("ai_assistant", "ai-context-window-usage-tooltip"),
+            Self::ContextWindowUsage => "Context window usage",
             Self::Date => "Date",
             Self::Time12Hour => "Time (12 hour format)",
             Self::Time24Hour => "Time (24 hour format)",
@@ -875,7 +875,7 @@ impl OrchestrationMessageDisplayMode {
     pub fn display_name(&self) -> &'static str {
         match self {
             OrchestrationMessageDisplayMode::ShowAndCollapse => "Show & collapse",
-            OrchestrationMessageDisplayMode::AlwaysShow => crate::tr!("settings", "thinking-always-show"),
+            OrchestrationMessageDisplayMode::AlwaysShow => "Always show",
             OrchestrationMessageDisplayMode::AlwaysCollapse => "Always collapse",
         }
     }

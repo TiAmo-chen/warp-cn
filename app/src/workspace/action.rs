@@ -891,7 +891,7 @@ impl From<&WorkspaceAction> for LoginGatedFeature {
         use WorkspaceAction::*;
         match val {
             ImportToTeamDrive => "Importing to a team drive",
-            CreateTeamNotebook => crate::tr!("workspace", "creating-team-notebook"),
+            CreateTeamNotebook => "Creating a team notebook",
             CreateTeamWorkflow => crate::tr!("workspace", "creating-team-workflow"),
             CreateTeamFolder => crate::tr!("workspace", "creating-team-folder"),
             CreateTeamEnvVarCollection => crate::tr!("workspace", "creating-team-env-var-collection"),

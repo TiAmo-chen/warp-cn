@@ -438,7 +438,7 @@ pub fn usage_label(
         (
             UsageLabelKind::LastResponse | UsageLabelKind::Total | UsageLabelKind::Plain,
             UsageDisplayUnit::Credits,
-        ) => crate::tr!("ai_assistant", "ai-credits-spent"),
+        ) => &crate::tr!("ai_assistant", "ai-credits-spent"),
         (
             UsageLabelKind::LastResponse | UsageLabelKind::Total | UsageLabelKind::Plain,
             UsageDisplayUnit::Dollars,

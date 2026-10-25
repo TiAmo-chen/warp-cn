@@ -847,7 +847,7 @@ impl UpdateEnvironmentForm {
             (EnvironmentFormMode::Create, true) => "Create",
             (EnvironmentFormMode::Create, false) => &crate::tr!("settings", "create-environment"),
             (EnvironmentFormMode::Edit { .. }, true) => "Save",
-            (EnvironmentFormMode::Edit { .. }, false) => crate::tr!("settings", "save-environment"),
+            (EnvironmentFormMode::Edit { .. }, false) => &crate::tr!("settings", "save-environment"),
         };
         self.submit_button.update(ctx, |button, ctx| {
             button.set_label(button_text, ctx);

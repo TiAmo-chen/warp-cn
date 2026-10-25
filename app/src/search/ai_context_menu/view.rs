@@ -105,7 +105,7 @@ impl AIContextMenuCategory {
     pub fn name(&self) -> &'static str {
         match self {
             AIContextMenuCategory::CurrentFolderFiles => "Files and folders",
-            AIContextMenuCategory::RepoFiles => crate::tr!("search", "category-files"),
+            AIContextMenuCategory::RepoFiles => "Files and folders",
             AIContextMenuCategory::Commands => "Commands",
             AIContextMenuCategory::Blocks => "Blocks",
             AIContextMenuCategory::Workflows => "Workflows",

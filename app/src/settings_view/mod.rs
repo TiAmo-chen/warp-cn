@@ -407,7 +407,7 @@ impl SettingsSection {
             Self::Privacy => "Privacy",
             Self::Referrals => "Referrals",
             Self::Scripting => "Scripting",
-            Self::SharedBlocks => crate::tr!("settings", "shared-blocks-tab"),
+            Self::SharedBlocks => "Shared blocks",
             Self::Teams => "Teams",
             Self::WarpDrive => crate::tr!("drive", "warp-drive"),
             Self::Warpify => "Warpify",

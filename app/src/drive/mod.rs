@@ -216,7 +216,7 @@ impl DriveSortOrder {
     pub fn menu_text(&self, index_variant: DriveIndexVariant) -> &str {
         match (self, index_variant) {
             (DriveSortOrder::ByTimestamp, DriveIndexVariant::MainIndex) => &crate::tr!("drive", "sort-last-updated"),
-            (DriveSortOrder::ByTimestamp, DriveIndexVariant::Trash) => crate::tr!("drive", "sort-last-trashed"),
+            (DriveSortOrder::ByTimestamp, DriveIndexVariant::Trash) => &crate::tr!("drive", "sort-last-trashed"),
             (DriveSortOrder::AlphabeticalDescending, _) => crate::tr!("drive", "sort-a-to-z"),
             (DriveSortOrder::AlphabeticalAscending, _) => crate::tr!("drive", "sort-z-to-a"),
             (DriveSortOrder::ByObjectType, _) => "Type",

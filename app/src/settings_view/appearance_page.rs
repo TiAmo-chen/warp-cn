@@ -1656,7 +1656,7 @@ impl AppearanceSettingsPageView {
     fn input_mode_dropdown_item_label(val: InputMode) -> &'static str {
         match val {
             InputMode::PinnedToBottom => "Pin to the bottom (Warp mode)",
-            InputMode::PinnedToTop => crate::tr!("settings", "input-mode-pinned-top"),
+            InputMode::PinnedToTop => "Pin to the top (Reverse mode)",
             InputMode::Waterfall => crate::tr!("settings", "input-mode-waterfall"),
         }
     }
@@ -1666,7 +1666,7 @@ impl AppearanceSettingsPageView {
             AppIcon::Aurora => "Aurora",
             AppIcon::Default => "Default",
             AppIcon::Classic1 => "Classic 1",
-            AppIcon::Classic2 => crate::tr!("settings", "appearance-input-classic-2"),
+            AppIcon::Classic2 => "Classic 2",
             AppIcon::Classic3 => crate::tr!("settings", "appearance-input-classic-3"),
             AppIcon::Comets => "Comets",
             AppIcon::GlassSky => crate::tr!("settings", "appearance-theme-glass-sky"),
@@ -1687,7 +1687,7 @@ impl AppearanceSettingsPageView {
         match val {
             ThinStrokes::Never => "Never",
             ThinStrokes::OnLowDpiDisplays => "On low-DPI displays",
-            ThinStrokes::OnHighDpiDisplays => crate::tr!("settings", "on-high-dpi-displays"),
+            ThinStrokes::OnHighDpiDisplays => "On high-DPI displays",
             ThinStrokes::Always => "Always",
         }
     }
@@ -1706,7 +1706,7 @@ impl AppearanceSettingsPageView {
         match value {
             WorkspaceDecorationVisibility::AlwaysShow => "Always",
             WorkspaceDecorationVisibility::HideFullscreen => "When windowed",
-            WorkspaceDecorationVisibility::OnHover => crate::tr!("settings", "only-on-hover"),
+            WorkspaceDecorationVisibility::OnHover => "Only on hover",
         }
     }
 
@@ -2603,7 +2603,7 @@ impl AppearanceSettingsPageView {
             WindowBackdrop::None => "No material",
             WindowBackdrop::Mica => "Mica",
             WindowBackdrop::Acrylic => "Acrylic",
-            WindowBackdrop::MicaAlt => crate::tr!("settings", "mica-alt"),
+            WindowBackdrop::MicaAlt => "Mica Alt",
         }
     }
     fn build_workspace_decoration_visibility_dropdown(

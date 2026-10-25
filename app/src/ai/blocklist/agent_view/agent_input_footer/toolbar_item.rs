@@ -124,7 +124,7 @@ impl AgentToolbarItemKind {
     pub fn display_label(&self) -> &'static str {
         match self {
             Self::ContextChip(_) => "Context Chip",
-            Self::ModelSelector => crate::tr!("ai_assistant", "ai-model-selector"),
+            Self::ModelSelector => "Model Selector",
             Self::NLDToggle => "Autodetection",
             Self::VoiceInput => crate::tr!("ai_assistant", "ai-voice-input"),
             Self::FileAttach => crate::tr!("ai_assistant", "ai-attach-file"),

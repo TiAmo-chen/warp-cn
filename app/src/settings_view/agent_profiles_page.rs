@@ -1350,7 +1350,7 @@ impl AgentProfilesPageView {
                     .map(|t| {
                         let display = match t {
                             AgentModeCodingPermissionsType::AlwaysAskBeforeReading => crate::tr!("ai_assistant", "ai-profile-always-ask"),
-                            AgentModeCodingPermissionsType::AlwaysAllowReading => crate::tr!("ai_assistant", "ai-profile-always-allow"),
+                            AgentModeCodingPermissionsType::AlwaysAllowReading => "Always allow",
                             AgentModeCodingPermissionsType::AllowReadingSpecificFiles => {
                                 "Allow in specific directories"
                             }
@@ -1530,7 +1530,7 @@ impl From<&AgentProfilesPageAction> for LoginGatedFeature {
         use AgentProfilesPageAction::*;
         match val {
             AttemptLoginGatedUpgrade => "Upgrade AI Usage",
-            _ => crate::tr!("settings", "unknown-reason"),
+            _ => "Unknown reason",
         }
     }
 }

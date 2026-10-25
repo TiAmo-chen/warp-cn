@@ -20862,7 +20862,7 @@ impl Workspace {
                     {
                         ToolPanelView::ProjectExplorer => crate::tr!("settings", "project-explorer"),
                         ToolPanelView::GlobalSearch { .. } => crate::tr!("settings", "global-search"),
-                        ToolPanelView::WarpDrive => crate::tr!("drive", "warp-drive"),
+                        ToolPanelView::WarpDrive => "Warp Drive",
                         ToolPanelView::ConversationListView => "Agent conversations",
                     }
                 } else {
@@ -20917,7 +20917,7 @@ impl Workspace {
                 ToolPanelView::ProjectExplorer => crate::tr!("settings", "project-explorer"),
                 ToolPanelView::GlobalSearch { .. } => crate::tr!("settings", "global-search"),
                 ToolPanelView::WarpDrive => crate::tr!("drive", "warp-drive"),
-                ToolPanelView::ConversationListView => crate::tr!("settings", "agent-conversations"),
+                ToolPanelView::ConversationListView => "Agent conversations",
             }
         } else {
             "Tools panel"

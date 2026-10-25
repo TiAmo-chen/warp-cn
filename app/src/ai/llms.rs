@@ -302,7 +302,7 @@ impl DisableReason {
     pub fn tooltip_text(&self) -> &'static str {
         match self {
             DisableReason::AdminDisabled => "This model has been disabled by your team admin.",
-            DisableReason::OutOfRequests => crate::tr!("ai_assistant", "ai-model-out-of-requests"),
+            DisableReason::OutOfRequests => "Please upgrade your plan to make more requests.",
             DisableReason::ProviderOutage => {
                 "This model is temporarily unavailable due to a provider outage."
             }

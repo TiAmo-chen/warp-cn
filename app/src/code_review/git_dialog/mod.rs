@@ -746,7 +746,7 @@ impl GitDialog {
                     "Push changes"
                 }
             }
-            GitDialogMode::CreatePr(_) => crate::tr!("code_editor", "code-review-create-pull-request"),
+            GitDialogMode::CreatePr(_) => "Create pull request",
         }
     }
 

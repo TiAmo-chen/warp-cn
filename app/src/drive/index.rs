@@ -426,7 +426,7 @@ impl From<&DriveIndexAction> for LoginGatedFeature {
         use DriveIndexAction::*;
         match val {
             OpenTeamSettingsPage => "Open Team Settings",
-            ViewPlans { .. } => crate::tr!("billing", "view-plans"),
+            ViewPlans { .. } => "View Plans",
             ManageBilling { .. } => "Manage Billing",
             _ => crate::tr!("settings", "unknown-reason"),
         }
@@ -4189,7 +4189,7 @@ impl DriveIndex {
             DriveObjectType::Workflow => "Workflows",
             DriveObjectType::EnvVarCollection => &crate::tr!("drive", "env-vars-type"),
             DriveObjectType::Folder => "Folders",
-            DriveObjectType::AgentModeWorkflow => crate::tr!("drive", "agent-workflows-type"),
+            DriveObjectType::AgentModeWorkflow => &crate::tr!("drive", "agent-workflows-type"),
             DriveObjectType::AIFact => crate::tr!("drive", "ai-fact-type"),
             DriveObjectType::AIFactCollection => "Rules",
             DriveObjectType::MCPServer => crate::tr!("drive", "mcp-server-type"),

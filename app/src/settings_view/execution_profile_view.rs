@@ -722,7 +722,7 @@ fn render_action_permission_line_with_icon(
 ) -> Box<dyn Element> {
     let permission_text = match permission {
         ActionPermission::AgentDecides => crate::tr!("ai_assistant", "ai-profile-agent-decides"),
-        ActionPermission::AlwaysAllow => crate::tr!("ai_assistant", "ai-profile-always-allow"),
+        ActionPermission::AlwaysAllow => "Always allow",
         ActionPermission::AlwaysAsk => "Always ask",
         ActionPermission::Unknown => "Unknown",
     };
@@ -738,7 +738,7 @@ fn render_write_to_pty_permission_line_with_icon(
 ) -> Box<dyn Element> {
     let permission_text = match permission {
         WriteToPtyPermission::AlwaysAllow => crate::tr!("ai_assistant", "ai-profile-always-allow"),
-        WriteToPtyPermission::AlwaysAsk => crate::tr!("ai_assistant", "ai-profile-always-ask"),
+        WriteToPtyPermission::AlwaysAsk => "Always ask",
         WriteToPtyPermission::AskOnFirstWrite => "Ask on first write",
         WriteToPtyPermission::Unknown => "Unknown",
     };
@@ -756,7 +756,7 @@ fn render_computer_use_permission_line_with_icon(
         crate::ai::execution_profiles::ComputerUsePermission::Never
         | crate::ai::execution_profiles::ComputerUsePermission::Unknown => "Never",
         crate::ai::execution_profiles::ComputerUsePermission::AlwaysAsk => &crate::tr!("ai_assistant", "ai-profile-always-ask"),
-        crate::ai::execution_profiles::ComputerUsePermission::AlwaysAllow => crate::tr!("ai_assistant", "ai-profile-always-allow"),
+        crate::ai::execution_profiles::ComputerUsePermission::AlwaysAllow => &crate::tr!("ai_assistant", "ai-profile-always-allow"),
     };
     render_permission_line_with_icon(icon, label, permission_text, appearance, is_ai_enabled)
 }
@@ -773,7 +773,7 @@ fn render_ask_user_question_permission_line_with_icon(
         AskUserQuestionPermission::AskExceptInAutoApprove | AskUserQuestionPermission::Unknown => {
             "Ask unless auto-approve"
         }
-        AskUserQuestionPermission::AlwaysAsk => crate::tr!("ai_assistant", "ai-profile-always-ask"),
+        AskUserQuestionPermission::AlwaysAsk => "Always ask",
     };
     render_permission_line_with_icon(icon, label, permission_text, appearance, is_ai_enabled)
 }
@@ -788,7 +788,7 @@ fn render_run_agents_permission_line_with_icon(
     let permission_text = match permission {
         RunAgentsPermission::NeverAllow | RunAgentsPermission::Unknown => "Never",
         RunAgentsPermission::AlwaysAllow => &crate::tr!("ai_assistant", "ai-profile-always-allow"),
-        RunAgentsPermission::AlwaysAsk => crate::tr!("ai_assistant", "ai-profile-always-ask"),
+        RunAgentsPermission::AlwaysAsk => &crate::tr!("ai_assistant", "ai-profile-always-ask"),
     };
     render_permission_line_with_icon(icon, label, permission_text, appearance, is_ai_enabled)
 }
