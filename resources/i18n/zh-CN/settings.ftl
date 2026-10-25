@@ -882,7 +882,7 @@ settings-add-all = Add all
 # Add custom endpoint
 settings-add-custom-endpoint = 添加自定义端点
 # Add custom endpoints to use third-party models. Custom endpoints must support OpenAI Chat Completions, OpenAI Responses, or Anthropic Messages.
-settings-add-custom-endpoints-to-use-third-party-models-custom-endpoints-must-support-openai-chat-completions-openai-responses-or-anthropic-messages = Add custom endpoints to use third-party models. Custom endpoints must support OpenAI Chat Completions, OpenAI Responses, or Anthropic Messages.
+settings-add-custom-endpoints-to-use-third-party-models-custom-endpoints-must-support-openai-chat-completions-openai-responses-or-anthropic-messages = 添加自定义端点以使用第三方模型。自定义端点必须支持 OpenAI Chat Completions、OpenAI Responses 或 Anthropic Messages。
 # Add directory color
 settings-add-directory-color = 添加目录颜色
 # Add endpoint
@@ -1042,11 +1042,11 @@ settings-automatically-color-tabs-based-on-the-directory-or-repo-youre-working-i
 # Automatically open links in desktop app whenever possible.
 settings-automatically-open-links-in-desktop-app-whenever-possible = 尽可能自动在桌面应用中打开链接。
 # Automatically route tasks to specific models based on task complexity or custom rules. Custom routers will appear in your model selector menu.
-settings-automatically-route-tasks-to-specific-models-based-on-task-complexity-or-custom-rules-custom-routers-will-appear-in-your-model-selector-menu = Automatically route tasks to specific models based on task complexity or custom rules. Custom routers will appear in your model selector menu.
+settings-automatically-route-tasks-to-specific-models-based-on-task-complexity-or-custom-rules-custom-routers-will-appear-in-your-model-selector-menu = 根据任务复杂程度或自定义规则自动将任务路由到特定模型。自定义路由器会出现在模型选择菜单中。
 # Automatically run login command
 settings-automatically-run-login-command = 自动执行登录命令
 # Automatically saves changes in the Warp text editor as you type and when the editor loses focus.
-settings-automatically-saves-changes-in-the-warp-text-editor-as-you-type-and-when-the-editor-loses-focus = Automatically saves changes in the Warp text editor as you type and when the editor loses focus.
+settings-automatically-saves-changes-in-the-warp-text-editor-as-you-type-and-when-the-editor-loses-focus = 在 Warp 文本编辑器中边输入边自动保存，编辑器失去焦点时也会保存。
 # Automatically switch between light and dark themes when your system does.
 settings-automatically-switch-between-light-and-dark-themes-when-your-system-does = 系统切换浅色/深色主题时自动跟随。
 # Available
@@ -1114,7 +1114,7 @@ settings-change-keybinding = 更改键绑定
 # Change your default model?
 settings-change-your-default-model = 要更改你的默认模型吗？
 # Changes will apply to new windows.
-settings-changes-will-apply-to-new-windows = Changes will apply to new windows.
+settings-changes-will-apply-to-new-windows = 更改将在新窗口中生效。
 # Changing the app icon requires the app to be bundled.
 settings-changing-the-app-icon-requires-the-app-to-be-bundled = 更换应用图标需要以安装包形式运行。
 # Characters considered part of a word
@@ -1124,7 +1124,7 @@ settings-check-for-updates = Check for updates
 # Checking...
 settings-checking = Checking...
 # Choose how secrets are visually presented in the block list while keeping them searchable. This setting only affects what you see in the block list.
-settings-choose-how-secrets-are-visually-presented-in-the-block-list-while-keeping-them-searchable-this-setting-only-affects-what-you-see-in-the-block-list = Choose how secrets are visually presented in the block list while keeping them searchable. This setting only affects what you see in the block list.
+settings-choose-how-secrets-are-visually-presented-in-the-block-list-while-keeping-them-searchable-this-setting-only-affects-what-you-see-in-the-block-list = 选择敏感信息在区块列表中如何呈现（仍可搜索）。此设置只影响你在区块列表中看到的内容。
 # Classic 1
 settings-classic-1 = 经典 1
 # Classic 2
@@ -1450,7 +1450,7 @@ settings-enable-slash-commands-in-terminal-mode = 在终端模式下启用斜杠
 # EnableWarpDrive
 settings-enablewarpdrive = EnableWarpDrive
 # Enabled by your organization.
-settings-enabled-by-your-organization = Enabled by your organization.
+settings-enabled-by-your-organization = 已由你的组织启用。
 # Enables the use of Wayland
 settings-enables-the-use-of-wayland = 启用 Wayland 的使用
 # Enabling natural language detection will detect when natural language is written in the terminal input, and then automatically switch to Agent Mode for AI queries.
@@ -1478,7 +1478,7 @@ settings-enterprise-credit-usage-isnt-fully-available-in-this-view-yet-contact-a
 # Enterprise credit usage isn't fully available in this view yet. For the most accurate spend tracking, 
 settings-enterprise-credit-usage-isnt-fully-available-in-this-view-yet-for-the-most-accurate-spend-tracking- = 此视图暂未完整提供企业额度用量。如需最准确的消费统计，
 # Enterprise secret redaction cannot be modified.
-settings-enterprise-secret-redaction-cannot-be-modified = Enterprise secret redaction cannot be modified.
+settings-enterprise-secret-redaction-cannot-be-modified = 企业级敏感信息打码无法修改。
 # Environment deleted successfully
 settings-environment-deleted-successfully = 成功删除环境
 # Environment name
@@ -2104,7 +2104,7 @@ settings-prefer_low_power_gpu = Prefer_Low_Power_GPU
 # Preferred graphics backend
 settings-preferred-graphics-backend = Preferred graphics backend
 # Preferred layout when opening existing agent conversations
-settings-preferred-layout-when-opening-existing-agent-conversations = Preferred layout when opening existing agent conversations
+settings-preferred-layout-when-opening-existing-agent-conversations = 打开已有 Agent 会话时的首选布局
 # Premium Hydro Flask
 settings-premium-hydro-flask = 高级 Hydro Flask 水壶
 # Premium model usage overages are enabled
@@ -2258,11 +2258,11 @@ settings-restore_sessions = Restore_Sessions
 # Restricted due to billing issue
 settings-restricted-due-to-billing-issue = 因账单问题受限
 # Restricted due to billing issue. Contact your team admin to update their payment method.
-settings-restricted-due-to-billing-issue-contact-your-team-admin-to-update-their-payment-method = Restricted due to billing issue. Contact your team admin to update their payment method.
+settings-restricted-due-to-billing-issue-contact-your-team-admin-to-update-their-payment-method = 因账单问题受限。请联系团队管理员更新付款方式。
 # Restricted due to billing issue. Update your payment method to purchase add-on credits.
 settings-restricted-due-to-billing-issue-update-your-payment-method-to-purchase-add-on-credits = 因账单问题受限。请更新支付方式以购买附加额度。
 # Restricted due to billing issue. Update your payment method to purchase usage.
-settings-restricted-due-to-billing-issue-update-your-payment-method-to-purchase-usage = Restricted due to billing issue. Update your payment method to purchase usage.
+settings-restricted-due-to-billing-issue-update-your-payment-method-to-purchase-usage = 因账单问题受限。请更新付款方式以购买用量。
 # Reuse existing SSH ControlMaster
 settings-reuse-existing-ssh-controlmaster = Reuse existing SSH ControlMaster
 # Right
@@ -2922,7 +2922,7 @@ settings-use-gemini-enterprise-credentials = 使用 Gemini Enterprise 凭据
 # Use Wayland for window management
 settings-use-wayland-for-window-management = 使用 Wayland 进行窗口管理
 # Use an improved implementation of find to keep the UI responsive while searching for matches on large outputs.
-settings-use-an-improved-implementation-of-find-to-keep-the-ui-responsive-while-searching-for-matches-on-large-outputs = Use an improved implementation of find to keep the UI responsive while searching for matches on large outputs.
+settings-use-an-improved-implementation-of-find-to-keep-the-ui-responsive-while-searching-for-matches-on-large-outputs = 使用改进的查找实现，在大量输出中搜索时保持界面响应。
 # Use custom padding in alt-screen
 settings-use-custom-padding-in-alt-screen = 在备用屏幕中使用自定义填充
 # Use latest user prompt as conversation title in tab names
@@ -3176,33 +3176,33 @@ settings-queue-until-command-finishes = Queue until command finishes
 settings-set-long-running-command-submission-send-immediately = 长命令提交方式：立即发送
 settings-set-long-running-command-submission-queue-until-command-fi = 长命令提交方式：排队等待命令完成
 settings-file-read-permission-level-for-the-agent = File read permission level for the agent.
-settings-preferred-spoken-language-for-voice-input-transcription = Preferred spoken language for voice input transcription.
+settings-preferred-spoken-language-for-voice-input-transcription = 语音输入转写的首选语言。
 settings-ai-execution-profiles-and-their-permissions = AI 执行配置及其权限。
 settings-custom-inference-endpoint-definitions = Custom inference endpoint definitions.
 settings-controls-the-order-and-visibility-of-warp-agent-cli-status = 控制 Warp Agent CLI 状态栏条目的顺序与可见性。
-settings-whether-warp-should-route-eligible-requests-through-your-w = Whether Warp should route eligible requests through your workspace's Gemini Enterprise Google Cloud project.
-settings-whether-warp-credits-can-be-used-as-a-fallback-for-user-pr = Whether Warp credits can be used as a fallback for user-provided models.
+settings-whether-warp-should-route-eligible-requests-through-your-w = Warp 是否应通过你工作区的 Gemini Enterprise Google Cloud 项目路由符合条件的请求。
+settings-whether-warp-credits-can-be-used-as-a-fallback-for-user-pr = Warp 点数是否可作为用户自备模型的备用额度。
 settings-when-enabled-the-rich-input-editor-submits-on-ctrl-enter-i = When enabled, the Rich Input editor submits on Ctrl+Enter instead of Enter. Enter inserts a newline.
 settings-whether-auto-approve-bypasses-the-command-denylist = 自动批准是否绕过命令黑名单。
-settings-whether-to-force-disable-local-to-cloud-handoff = Whether to force-disable local-to-cloud handoff.
-settings-whether-to-force-disable-the-prefix-for-cloud-handoff-comp = Whether to force-disable the & prefix for cloud handoff compose mode.
-settings-whether-warp-automatically-hands-off-local-agent-conversat = Whether Warp automatically hands off local agent conversations to cloud when the computer is about to sleep.
+settings-whether-to-force-disable-local-to-cloud-handoff = 是否强制禁用本地到云端的移交。
+settings-whether-to-force-disable-the-prefix-for-cloud-handoff-comp = 是否强制禁用云端移交撰写模式的 & 前缀。
+settings-whether-warp-automatically-hands-off-local-agent-conversat = 电脑即将休眠时，Warp 是否自动把本地 Agent 会话移交给云端。
 settings-whether-shell-alias-expansion-is-enabled-in-the-input = 是否在输入框中启用 shell 别名展开。
 settings-the-app-icon-displayed-in-the-dock = The app icon displayed in the dock.
-settings-whether-warp-is-shown-in-the-macos-dock-and-cmd-tab-switch = Whether Warp is shown in the macOS Dock and Cmd-Tab switcher.
+settings-whether-warp-is-shown-in-the-macos-dock-and-cmd-tab-switch = Warp 是否显示在 macOS 程序坞和 Cmd-Tab 切换器中。
 settings-whether-the-desktop-app-installation-has-been-detected = 是否检测到桌面应用安装。
 settings-whether-the-bootstrap-block-is-visible-in-the-terminal = 是否在终端中显示引导块。
 settings-whether-in-band-command-blocks-are-visible-in-the-terminal = 是否在终端中显示内联命令块。
 settings-whether-the-ssh-connection-block-is-visible-in-the-termina = 终端中是否显示 SSH 连接块。
 settings-whether-the-changelog-is-shown-after-an-update = 更新后是否显示更新日志。
 settings-whether-settings-are-synced-across-devices-via-the-cloud = 设置是否通过云端在多设备间同步。
-settings-whether-warp-is-used-as-the-default-code-editor = Whether Warp is used as the default code editor.
+settings-whether-warp-is-used-as-the-default-code-editor = 是否将 Warp 用作默认代码编辑器。
 settings-whether-codebase-context-is-provided-to-the-ai-agent = 是否向 AI Agent 提供代码库上下文。
 settings-whether-automatic-codebase-indexing-is-enabled = Whether automatic codebase indexing is enabled.
 settings-whether-the-project-explorer-is-shown-in-the-tools-panel = 是否在工具面板中显示项目浏览器。
 settings-whether-global-file-search-is-shown-in-the-tools-panel = 是否在工具面板中显示全局文件搜索。
 settings-whether-hidden-files-dotfiles-are-shown-in-the-project-exp = 是否在项目浏览器中显示隐藏文件（点文件）。
-settings-whether-the-warp-text-editor-automatically-saves-changes-a = Whether the Warp text editor automatically saves changes as you type and when the editor loses focus.
+settings-whether-the-warp-text-editor-automatically-saves-changes-a = Warp 文本编辑器是否在输入时和失去焦点时自动保存更改。
 settings-cursor-display-type-not-found-in-sequence = Cursor display type not found in Sequence!
 settings-how-line-numbers-are-displayed-in-code-editors = How line numbers are displayed in code editors.
 settings-trailing-separator-character-displayed-at-the-end-of-the-p = Trailing separator character displayed at the end of the prompt.
@@ -3223,16 +3223,16 @@ settings-the-font-used-for-ai-generated-content = The font used for AI-generated
 settings-whether-the-ai-font-automatically-matches-the-terminal-fon = AI 字体是否自动与终端字体一致。
 settings-the-font-size-used-in-notebooks = The font size used in notebooks.
 settings-whether-the-notebook-font-size-matches-the-terminal-font-s = 笔记本字号是否与终端字号一致。
-settings-whether-to-enforce-minimum-contrast-for-text-readability = Whether to enforce minimum contrast for text readability.
-settings-whether-to-use-thin-font-strokes-on-macos = Whether to use thin font strokes on macOS.
-settings-whether-to-prefer-the-integrated-low-power-gpu = Whether to prefer the integrated (low-power) GPU.
+settings-whether-to-enforce-minimum-contrast-for-text-readability = 是否强制最小对比度以保证文字可读性。
+settings-whether-to-use-thin-font-strokes-on-macos = 在 macOS 上是否使用细字体笔画。
+settings-whether-to-prefer-the-integrated-low-power-gpu = 是否优先使用集成（低功耗）显卡。
 settings-the-preferred-graphics-backend-on-windows = The preferred graphics backend on Windows.
 settings-unspecified-user-preferences-implementation-for-current-pl = Unspecified user preferences implementation for current platform!
 settings-whether-hint-text-is-shown-in-the-terminal-input = 是否在终端输入框中显示提示文本。
 settings-whether-classic-completions-mode-is-enabled = 是否启用经典补全模式。
 settings-whether-the-completions-menu-opens-automatically-while-typ = 输入时补全菜单是否自动弹出。
-settings-whether-warp-s-built-in-completions-are-shown-for-shell-co = Whether Warp's built-in completions are shown for shell commands.
-settings-whether-your-shell-s-own-completions-are-used-for-shell-co = Whether your shell's own completions are used for shell commands.
+settings-whether-warp-s-built-in-completions-are-shown-for-shell-co = 是否为 shell 命令显示 Warp 内置补全。
+settings-whether-your-shell-s-own-completions-are-used-for-shell-co = 是否使用 shell 自身的补全来处理 shell 命令。
 settings-whether-command-errors-are-underlined-in-the-input = 是否在输入框中为命令错误加下划线。
 settings-whether-syntax-highlighting-is-enabled-in-the-terminal-inp = 终端输入框中是否启用语法高亮。
 settings-whether-command-corrections-are-suggested-for-mistyped-com = 是否为拼错的命令提供更正建议。
@@ -3241,13 +3241,13 @@ settings-whether-slash-commands-are-available-in-the-terminal-input = 终端输�
 settings-whether-agent-tips-are-displayed-in-the-input = 是否在输入框中显示 Agent 提示。
 settings-whether-the-terminal-input-message-bar-is-shown = 是否显示终端输入框的消息栏。
 settings-the-position-of-the-terminal-input = The position of the terminal input.
-settings-whether-to-force-x11-instead-of-wayland-on-linux = Whether to force X11 instead of Wayland on Linux.
+settings-whether-to-force-x11-instead-of-wayland-on-linux = 在 Linux 上是否强制使用 X11 而非 Wayland。
 settings-whether-local-control-is-enabled = 是否启用本地控制。
 settings-couldn-t-parse-due-to-invalid-syntax = Couldn't parse due to invalid syntax
 settings-default-should-have-every-pin-position = Default should have every pin position
 settings-when-to-adjust-foreground-color-to-ensure-readability-agai = 何时调整前景色以保证在背景上的可读性。
-settings-preference-for-using-the-native-desktop-app-or-the-web-app = Preference for using the native desktop app or the web app.
-settings-whether-to-prefer-the-native-desktop-app-or-the-web-app = Whether to prefer the native desktop app or the web app.
+settings-preference-for-using-the-native-desktop-app-or-the-web-app = 偏好使用原生桌面应用还是网页版。
+settings-whether-to-prefer-the-native-desktop-app-or-the-web-app = 是否优先使用原生桌面应用而非网页版。
 settings-whether-inactive-panes-are-visually-dimmed = 未激活的窗格是否变暗显示。
 settings-whether-panes-are-focused-when-hovered-over = 鼠标悬停时是否聚焦窗格。
 settings-whether-anonymous-usage-telemetry-is-collected = 是否收集匿名用量遥测数据。
@@ -3265,7 +3265,7 @@ settings-whether-text-is-automatically-copied-to-the-clipboard-when = 选中文�
 settings-whether-the-linux-primary-selection-clipboard-is-used = 是否使用 Linux 的主选区剪贴板。
 settings-whether-middle-click-pastes-from-the-clipboard = 鼠标中键是否从剪贴板粘贴。
 settings-the-color-theme = The color theme.
-settings-whether-to-match-the-system-light-dark-theme = Whether to match the system light/dark theme.
+settings-whether-to-match-the-system-light-dark-theme = 是否跟随系统的浅色/深色主题。
 settings-the-themes-to-use-for-system-light-and-dark-modes = The themes to use for system light and dark modes.
 settings-whether-warp-agent-cli-checks-for-updates-and-automaticall = Whether Warp Agent CLI checks for updates and automatically installs them when supported by the installation method.
 settings-the-color-theme-used-by-warp-agent-cli = The color theme used by Warp Agent CLI.
@@ -3274,10 +3274,10 @@ settings-rotation-period = rotation period
 settings-extrusion-depth = extrusion depth
 settings-seconds-per-warp-agent-cli-zero-state-object-rotation-from = Seconds per Warp Agent CLI zero-state object rotation, from 1 through 60.
 settings-normalized-half-depth-of-the-extruded-warp-agent-cli-zero = Normalized half-depth of the extruded Warp Agent CLI zero-state object, from 0.02 through 0.5.
-settings-whether-the-warp-agent-cli-zero-state-shows-the-signed-in = Whether the Warp Agent CLI zero state shows the signed-in account line.
-settings-whether-the-warp-agent-cli-zero-state-shows-the-project-pa = Whether the Warp Agent CLI zero state shows the project path and its discovered rules and skills.
+settings-whether-the-warp-agent-cli-zero-state-shows-the-signed-in = Warp Agent CLI 零状态是否显示已登录账号行。
+settings-whether-the-warp-agent-cli-zero-state-shows-the-project-pa = Warp Agent CLI 零状态是否显示项目路径及其发现的规则与技能。
 settings-whether-the-warp-agent-cli-zero-state-shows-the-mcp-sectio = Warp Agent CLI 的零状态是否显示 MCP 区域。
-settings-whether-the-warp-agent-cli-zero-state-shows-the-rotating-o = Whether the Warp Agent CLI zero state shows the rotating object and its starfield.
+settings-whether-the-warp-agent-cli-zero-state-shows-the-rotating-o = Warp Agent CLI 零状态是否显示旋转物体及其星场。
 settings-whether-the-warp-agent-cli-zero-state-animation-stops-repa = Whether the Warp Agent CLI zero-state animation stops repainting while the terminal is unfocused.
 settings-imported-alacritty-theme = Imported Alacritty Theme
 settings-option-as-meta = Option as Meta
@@ -3579,8 +3579,8 @@ settings-view-and-manage-your-chatgpt-usage = View and manage your ChatGPT usage
 settings-mouse-state-is-required-to-render-usage-history-entry-head = Mouse state is required to render usage history entry header
 settings-default-app-6292b3 = Default App
 settings-choose-an-editor-to-open-file-links = 选择用于打开文件链接的编辑器
-settings-choose-an-editor-to-open-files-from-the-code-review-panel = Choose an editor to open files from the code review panel, project explorer, and global search
-settings-choose-a-layout-to-open-files-in-warp = Choose a layout to open files in Warp
+settings-choose-an-editor-to-open-files-from-the-code-review-panel = 选择用于从代码审查面板、项目浏览器和全局搜索中打开文件的编辑器
+settings-choose-a-layout-to-open-files-in-warp = 选择在 Warp 中打开文件时的布局
 settings-open-markdown-files-in-warp-s-markdown-viewer-by-default = 默认用 Warp 的 Markdown 查看器打开 Markdown 文件
 settings-new-window-e5dc8e = New window
 settings-split-pane-50e333 = Split pane
