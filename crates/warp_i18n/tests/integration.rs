@@ -319,3 +319,56 @@ fn test_empty_bundle_returns_raw_key() {
 }
 
 
+
+// ---------------------------------------------------------------------------
+// Interned static resolution (`tr!` without arguments)
+// ---------------------------------------------------------------------------
+
+#[test]
+fn test_resolve_static_returns_translated_value() {
+    let bundle = I18nBundle::from_dir(I18N_RESOURCES_DIR, &langid("en-US"))
+        .expect("should load en-US without errors");
+    warp_i18n::set_bundle(bundle);
+
+    assert_eq!(warp_i18n::resolve_static("common", "cancel-label"), "Cancel");
+}
+
+#[test]
+fn test_resolve_static_interns_repeated_lookups() {
+    let bundle = I18nBundle::from_dir(I18N_RESOURCES_DIR, &langid("en-US"))
+        .expect("should load en-US without errors");
+    warp_i18n::set_bundle(bundle);
+
+    let first = warp_i18n::resolve_static("common", "save-label");
+    let second = warp_i18n::resolve_static("common", "save-label");
+
+    assert_eq!(first, "Save");
+    assert!(
+        std::ptr::eq(first, second),
+        "repeated lookups of the same message must return the same interned pointer"
+    );
+}
+
+#[test]
+fn test_resolve_static_falls_back_to_raw_key() {
+    let bundle = I18nBundle::from_dir(I18N_RESOURCES_DIR, &langid("en-US"))
+        .expect("should load en-US without errors");
+    warp_i18n::set_bundle(bundle);
+
+    assert_eq!(
+        warp_i18n::resolve_static("common", "definitely-not-a-real-key"),
+        "common-definitely-not-a-real-key"
+    );
+}
+
+#[test]
+fn test_tr_macro_yields_static_str() {
+    let bundle = I18nBundle::from_dir(I18N_RESOURCES_DIR, &langid("en-US"))
+        .expect("should load en-US without errors");
+    warp_i18n::set_bundle(bundle);
+
+    // The no-argument form must produce a `&'static str` so that call sites
+    // expecting `&str` (fixed bindings, `&'static str` fields, ...) compile.
+    let value: &'static str = warp_i18n::tr!("common", "save-label");
+    assert_eq!(value, "Save");
+}
