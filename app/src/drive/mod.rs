@@ -90,12 +90,12 @@ impl fmt::Display for DriveObjectType {
             DriveObjectType::Notebook { .. } => write!(f, "notebook"),
             DriveObjectType::Workflow => write!(f, "workflow"),
             DriveObjectType::Folder => write!(f, "folder"),
-            DriveObjectType::EnvVarCollection => write!(f, "env var collection"),
+            DriveObjectType::EnvVarCollection => write!(f, "{}", crate::tr!("drive", "object-env-var-collection")),
             DriveObjectType::AgentModeWorkflow => write!(f, "prompt"),
-            DriveObjectType::AIFact => write!(f, "ai fact"),
-            DriveObjectType::AIFactCollection => write!(f, "ai fact collection"),
-            DriveObjectType::MCPServer => write!(f, "mcp server"),
-            DriveObjectType::MCPServerCollection => write!(f, "mcp server collection"),
+            DriveObjectType::AIFact => write!(f, "{}", crate::tr!("drive", "object-ai-fact")),
+            DriveObjectType::AIFactCollection => write!(f, "{}", crate::tr!("drive", "object-ai-fact-collection")),
+            DriveObjectType::MCPServer => write!(f, "{}", crate::tr!("drive", "object-mcp-server")),
+            DriveObjectType::MCPServerCollection => write!(f, "{}", crate::tr!("drive", "object-mcp-server-collection")),
         }
     }
 }
@@ -215,10 +215,10 @@ impl DriveSortOrder {
     /// Returns the text that is used to display the sorting option in the KnowledgeIndex's sorting menu
     pub fn menu_text(&self, index_variant: DriveIndexVariant) -> &str {
         match (self, index_variant) {
-            (DriveSortOrder::ByTimestamp, DriveIndexVariant::MainIndex) => "Last updated",
-            (DriveSortOrder::ByTimestamp, DriveIndexVariant::Trash) => "Last trashed",
-            (DriveSortOrder::AlphabeticalDescending, _) => "A to Z",
-            (DriveSortOrder::AlphabeticalAscending, _) => "Z to A",
+            (DriveSortOrder::ByTimestamp, DriveIndexVariant::MainIndex) => crate::tr!("drive", "sort-last-updated"),
+            (DriveSortOrder::ByTimestamp, DriveIndexVariant::Trash) => crate::tr!("drive", "sort-last-trashed"),
+            (DriveSortOrder::AlphabeticalDescending, _) => crate::tr!("drive", "sort-a-to-z"),
+            (DriveSortOrder::AlphabeticalAscending, _) => crate::tr!("drive", "sort-z-to-a"),
             (DriveSortOrder::ByObjectType, _) => "Type",
         }
     }

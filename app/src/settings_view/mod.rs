@@ -400,28 +400,28 @@ impl SettingsSection {
         match self {
             Self::About => "About",
             Self::Account => "Account",
-            Self::BillingAndUsage => "Billing and usage",
+            Self::BillingAndUsage => crate::tr!("settings", "billing-tab"),
             Self::Appearance => "Appearance",
             Self::Features => "Features",
             Self::Keybindings => "Keyboard shortcuts",
             Self::Privacy => "Privacy",
             Self::Referrals => "Referrals",
             Self::Scripting => "Scripting",
-            Self::SharedBlocks => "Shared blocks",
+            Self::SharedBlocks => crate::tr!("settings", "shared-blocks-tab"),
             Self::Teams => "Teams",
-            Self::WarpDrive => "Warp Drive",
+            Self::WarpDrive => crate::tr!("drive", "warp-drive"),
             Self::Warpify => "Warpify",
-            Self::WarpAgent => "Warp Agent",
+            Self::WarpAgent => crate::tr!("settings", "warp-agent-tab"),
             Self::AgentProfiles => "Profiles",
             Self::AgentMCPServers => "MCP servers",
             Self::Knowledge => "Knowledge",
-            Self::ThirdPartyCLIAgents => "Third party CLI agents",
-            Self::CodeIndexing => "Indexing and projects",
-            Self::EditorAndCodeReview => "Editor and Code Review",
+            Self::ThirdPartyCLIAgents => crate::tr!("settings", "third-party-cli-agents"),
+            Self::CodeIndexing => crate::tr!("settings", "code-indexing"),
+            Self::EditorAndCodeReview => crate::tr!("settings", "editor-code-review"),
             Self::CloudEnvironments => "Environments",
             // Keeps the "Oz" spelling the slug was seeded from; only the
             // Display label above dropped it.
-            Self::WarpCloudAgentAPIKeys => "Oz Cloud API Keys",
+            Self::WarpCloudAgentAPIKeys => crate::tr!("settings", "oz-cloud-api-keys"),
         }
     }
 

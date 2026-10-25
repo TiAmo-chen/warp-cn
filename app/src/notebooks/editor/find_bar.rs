@@ -547,9 +547,9 @@ impl TypedActionView for FindBar {
                     "Disable case-sensitive search"
                 }
             }
-            FindBarAction::FocusNextMatch => "Focus next match",
-            FindBarAction::FocusPreviousMatch => "Focus previous match",
-            FindBarAction::Close => "Close find bar",
+            FindBarAction::FocusNextMatch => crate::tr!("notebooks", "focus-next-match"),
+            FindBarAction::FocusPreviousMatch => crate::tr!("notebooks", "focus-previous-match"),
+            FindBarAction::Close => crate::tr!("notebooks", "close-find-bar"),
         };
         Some(AccessibilityContent::new_without_help(
             text,

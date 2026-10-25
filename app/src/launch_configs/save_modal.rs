@@ -567,7 +567,7 @@ impl LaunchConfigSaveModal {
                         FailureType::FileAlreadyExists => {
                             crate::tr!("launch_configs", "duplicate-name").to_string()
                         }
-                        FailureType::Other => "An issue was encountered while saving.".to_string(),
+                        FailureType::Other => crate::tr!("launch_configs", "save-error").to_string(),
                     },
                 )
                 .with_padding_bottom(24.)

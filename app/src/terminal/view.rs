@@ -13933,7 +13933,7 @@ impl TerminalView {
                         } => "Installing...".to_string(),
                         RemoteServerSetupState::Updating => "Updating...".to_string(),
                         RemoteServerSetupState::Initializing => "Initializing...".to_string(),
-                        _ => "Starting shell...".to_string(),
+                        _ => crate::tr!("ai_assistant", "ai-starting-shell").to_string(),
                     })
             })
             .unwrap_or_else(|| crate::tr!("ai_assistant", "ai-starting-shell").to_string());

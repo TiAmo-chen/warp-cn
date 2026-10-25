@@ -58,29 +58,29 @@ impl Slide for OzLaunchSlide {
 
     fn display_text(&self) -> Option<&'static str> {
         Some(match self {
-            OzLaunchSlide::CloudAgents => "Cloud agents",
-            OzLaunchSlide::AgentAutomations => "Agent automations",
-            OzLaunchSlide::AgentManagement => "Agent management",
-            OzLaunchSlide::LaunchCredits => "A little gift",
+            OzLaunchSlide::CloudAgents => crate::tr!("workspace", "cloud-agents"),
+            OzLaunchSlide::AgentAutomations => crate::tr!("workspace", "agent-automations"),
+            OzLaunchSlide::AgentManagement => crate::tr!("workspace", "agent-management"),
+            OzLaunchSlide::LaunchCredits => crate::tr!("workspace", "a-little-gift"),
         })
     }
 
     fn short_label(&self) -> &'static str {
         match self {
-            OzLaunchSlide::CloudAgents => "Cloud agents",
-            OzLaunchSlide::AgentAutomations => "Agent automations",
-            OzLaunchSlide::AgentManagement => "Agent management",
-            OzLaunchSlide::LaunchCredits => "Launch credits",
+            OzLaunchSlide::CloudAgents => crate::tr!("workspace", "cloud-agents"),
+            OzLaunchSlide::AgentAutomations => crate::tr!("workspace", "agent-automations"),
+            OzLaunchSlide::AgentManagement => crate::tr!("workspace", "agent-management"),
+            OzLaunchSlide::LaunchCredits => crate::tr!("workspace", "launch-credits"),
         }
     }
 
     fn title(&self) -> &'static str {
         match self {
-            OzLaunchSlide::CloudAgents => "Break out of your laptop with cloud agents",
+            OzLaunchSlide::CloudAgents => crate::tr!("workspace", "break-out-of-your-laptop"),
             OzLaunchSlide::AgentAutomations => {
                 "Orchestrate agents, turning Skills into automations"
             }
-            OzLaunchSlide::AgentManagement => "Track local and cloud agents seamlessly",
+            OzLaunchSlide::AgentManagement => crate::tr!("workspace", "track-local-and-cloud"),
             OzLaunchSlide::LaunchCredits => {
                 "1,000 free cloud agent credits when you upgrade to Warp Build"
             }

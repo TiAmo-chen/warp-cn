@@ -1452,7 +1452,7 @@ impl TerminalManager {
                             session_sharing_protocol::common::FailedToAddGuestsReason::GuestAlreadyAdded => {
                                 "One or more of the guests has already been added.".to_owned()
                             }
-                            _ => "Something went wrong. Please try again.".to_owned(),
+                            _ => crate::tr!("ai_assistant", "ai-chat-error-label").to_owned(),
                         };
                         terminal_view.show_persistent_toast(reason_string, ToastFlavor::Error, ctx);
                     });

@@ -433,12 +433,12 @@ pub fn usage_label(
         }
     };
     let base = match (kind, unit) {
-        (UsageLabelKind::DetailsPanel, UsageDisplayUnit::Credits) => "Credits used",
+        (UsageLabelKind::DetailsPanel, UsageDisplayUnit::Credits) => crate::tr!("ai_assistant", "ai-credits-used"),
         (UsageLabelKind::DetailsPanel, UsageDisplayUnit::Dollars) => "Usage",
         (
             UsageLabelKind::LastResponse | UsageLabelKind::Total | UsageLabelKind::Plain,
             UsageDisplayUnit::Credits,
-        ) => "Credits spent",
+        ) => crate::tr!("ai_assistant", "ai-credits-spent"),
         (
             UsageLabelKind::LastResponse | UsageLabelKind::Total | UsageLabelKind::Plain,
             UsageDisplayUnit::Dollars,

@@ -424,7 +424,7 @@ impl SearchItem for ConversationSearchItem {
             ConversationAction::Fork { title, .. } => {
                 format!("Fork current conversation ({title})")
             }
-            ConversationAction::New => "New conversation".to_string(),
+            ConversationAction::New => crate::tr!("ai_assistant", "ai-chat-new-conversation").to_string(),
         }
     }
 

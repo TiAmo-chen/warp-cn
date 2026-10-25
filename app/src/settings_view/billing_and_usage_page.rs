@@ -534,8 +534,8 @@ impl BillingAndUsagePageView {
             UserWorkspacesEvent::PurchaseAddonCreditsSuccess => {
                 self.purchase_addon_credits_loading = false;
                 let message = match usage_display_unit(ctx) {
-                    UsageDisplayUnit::Credits => "Successfully purchased add-on credits",
-                    UsageDisplayUnit::Dollars => "Successfully purchased usage",
+                    UsageDisplayUnit::Credits => crate::tr!("settings", "successfully-purchased-add-on-credits"),
+                    UsageDisplayUnit::Dollars => crate::tr!("settings", "successfully-purchased-usage"),
                 };
                 self.show_toast(message, ToastFlavor::Success, ctx);
                 AIRequestUsageModel::handle(ctx).update(ctx, |ai_request_usage_model, ctx| {
@@ -1179,9 +1179,9 @@ impl From<&BillingAndUsagePageAction> for LoginGatedFeature {
     fn from(val: &BillingAndUsagePageAction) -> LoginGatedFeature {
         use BillingAndUsagePageAction::*;
         match val {
-            Upgrade { .. } => "Upgrade Plan",
-            GenerateStripeBillingPortalLink { .. } => "Generate Stripe Billing Portal Link",
-            _ => "Unknown reason",
+            Upgrade { .. } => crate::tr!("settings", "upgrade-plan"),
+            GenerateStripeBillingPortalLink { .. } => crate::tr!("settings", "generate-stripe-billing-portal-link"),
+            _ => crate::tr!("settings", "unknown-reason"),
         }
     }
 }
@@ -1818,8 +1818,8 @@ impl BillingAndUsagePageView {
         let unit = usage_display_unit(app);
 
         let header_text = match unit {
-            UsageDisplayUnit::Credits => "Add-on credits",
-            UsageDisplayUnit::Dollars => "Add-on usage",
+            UsageDisplayUnit::Credits => crate::tr!("settings", "add-on-credits"),
+            UsageDisplayUnit::Dollars => crate::tr!("settings", "add-on-usage"),
         };
         let header = Text::new_inline(header_text, appearance.ui_font_family(), 16.)
             .with_color(fg.into())
@@ -1934,7 +1934,7 @@ impl BillingAndUsagePageView {
                     UsageDisplayUnit::Credits => {
                         "Contact your Account Executive for more add-on credits."
                     }
-                    UsageDisplayUnit::Dollars => "Contact your Account Executive for more usage.",
+                    UsageDisplayUnit::Dollars => crate::tr!("settings", "contact-your-account-executive-for-more-usage"),
                 };
                 Some(
                     ui_builder
@@ -1951,8 +1951,8 @@ impl BillingAndUsagePageView {
             // a generic message telling you to talk to them.
             (_, _, false) => {
                 let paragraph_text = match unit {
-                    UsageDisplayUnit::Credits => "Contact a team admin to purchase add-on credits.",
-                    UsageDisplayUnit::Dollars => "Contact a team admin to purchase usage.",
+                    UsageDisplayUnit::Credits => crate::tr!("settings", "contact-a-team-admin-to-purchase-add-on-credits"),
+                    UsageDisplayUnit::Dollars => crate::tr!("settings", "contact-a-team-admin-to-purchase-usage"),
                 };
                 Some(
                     ui_builder
@@ -3464,8 +3464,8 @@ impl BillingAndUsagePageView {
                         }
                     } else {
                         let upgrade_text = match billing_metadata.customer_type {
-                            CustomerType::Prosumer => "Upgrade to Turbo",
-                            CustomerType::Turbo => "Upgrade to Lightspeed plan",
+                            CustomerType::Prosumer => crate::tr!("settings", "upgrade-to-turbo-plan"),
+                            CustomerType::Turbo => crate::tr!("settings", "upgrade-lightspeed-plan"),
                             _ => "Upgrade",
                         };
                         vec![

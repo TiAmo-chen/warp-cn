@@ -257,9 +257,9 @@ impl UpdateModalBody {
                 ..
             } => {
                 let publisher_string = match publisher {
-                    Author::CurrentUser => "another device",
+                    Author::CurrentUser => crate::tr!("settings", "mcp-publisher-another-device"),
                     Author::OtherUser { name } => name,
-                    Author::Unknown => "a team member",
+                    Author::Unknown => crate::tr!("settings", "mcp-publisher-team-member"),
                 };
                 let datetime = Local
                     .timestamp_opt(*new_version_ts, 0)

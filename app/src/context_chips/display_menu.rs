@@ -316,9 +316,9 @@ impl DisplayChipMenu {
                     };
                     let mut editor = EditorView::new(options, ctx);
                     let placeholder_text = match chip_menu_type {
-                        ChipMenuType::Directories => "Search directories...",
-                        ChipMenuType::Branches => "Search branches...",
-                        ChipMenuType::Environments => "Search environments...",
+                        ChipMenuType::Directories => crate::tr!("context_chips", "search-directories"),
+                        ChipMenuType::Branches => crate::tr!("context_chips", "search-branches"),
+                        ChipMenuType::Environments => crate::tr!("context_chips", "search-environments"),
                         ChipMenuType::CodeReview => {
                             unreachable!("search input should not be constructed")
                         }

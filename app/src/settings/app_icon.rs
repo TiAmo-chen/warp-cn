@@ -72,11 +72,11 @@ impl std::fmt::Display for AppIcon {
         let value = match &self {
             AppIcon::Default => "Default",
             AppIcon::Aurora => "Aurora",
-            AppIcon::Classic1 => "Classic 1",
-            AppIcon::Classic2 => "Classic 2",
-            AppIcon::Classic3 => "Classic 3",
+            AppIcon::Classic1 => crate::tr!("settings", "appearance-input-classic-1"),
+            AppIcon::Classic2 => crate::tr!("settings", "appearance-input-classic-2"),
+            AppIcon::Classic3 => crate::tr!("settings", "appearance-input-classic-3"),
             AppIcon::Comets => "Comets",
-            AppIcon::GlassSky => "Glass Sky",
+            AppIcon::GlassSky => crate::tr!("settings", "appearance-theme-glass-sky"),
             AppIcon::Glitch => "Glitch",
             AppIcon::Cow => "Cow",
             AppIcon::Glow => "Glow",
@@ -86,7 +86,7 @@ impl std::fmt::Display for AppIcon {
             AppIcon::Original => "Original",
             AppIcon::Starburst => "Starburst",
             AppIcon::Sticker => "Sticker",
-            AppIcon::WarpOne => "Warp 1",
+            AppIcon::WarpOne => crate::tr!("settings", "icon-warp-1"),
         };
         write!(f, "{value}")
     }

@@ -845,9 +845,9 @@ impl UpdateEnvironmentForm {
     fn update_submit_button_label(&mut self, ctx: &mut ViewContext<Self>) {
         let button_text = match (&self.mode, self.show_header) {
             (EnvironmentFormMode::Create, true) => "Create",
-            (EnvironmentFormMode::Create, false) => "Create environment",
+            (EnvironmentFormMode::Create, false) => crate::tr!("settings", "create-environment"),
             (EnvironmentFormMode::Edit { .. }, true) => "Save",
-            (EnvironmentFormMode::Edit { .. }, false) => "Save environment",
+            (EnvironmentFormMode::Edit { .. }, false) => crate::tr!("settings", "save-environment"),
         };
         self.submit_button.update(ctx, |button, ctx| {
             button.set_label(button_text, ctx);

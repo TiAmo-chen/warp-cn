@@ -82,7 +82,7 @@ impl SettingType {
             SettingType::MouseAndScrollReporting => "Mouse/Scroll Reporting",
             SettingType::Font => "Font",
             SettingType::DefaultShell => "Default Shell",
-            SettingType::WorkingDirectory => "Working Directory",
+            SettingType::WorkingDirectory => crate::tr!("common", "working-directory"),
             SettingType::HotkeyMode => "Global hotkey",
             SettingType::WindowSize => "Window Dimensions",
             SettingType::CopyOnSelect => "Copy On Select",

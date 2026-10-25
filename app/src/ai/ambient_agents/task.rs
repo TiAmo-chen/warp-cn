@@ -641,7 +641,7 @@ impl std::fmt::Display for AmbientAgentTaskState {
             AmbientAgentTaskState::Queued => write!(f, "Queued"),
             AmbientAgentTaskState::Pending => write!(f, "Pending"),
             AmbientAgentTaskState::Claimed => write!(f, "Claimed"),
-            AmbientAgentTaskState::InProgress => write!(f, "In progress"),
+            AmbientAgentTaskState::InProgress => write!(f, "{}", crate::tr!("common", "status-in-progress")),
             AmbientAgentTaskState::Succeeded => write!(f, "Done"),
             AmbientAgentTaskState::Failed => write!(f, "Failed"),
             AmbientAgentTaskState::Error => write!(f, "Error"),

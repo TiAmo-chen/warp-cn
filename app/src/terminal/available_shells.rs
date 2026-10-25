@@ -190,7 +190,7 @@ impl AvailableShell {
             Config::MSYS2(LocalConfig {
                 executable_path, ..
             }) => format!("{} ({})", self.short_name(), executable_path.display()),
-            Config::DockerSandbox { .. } => "Docker Sandbox".to_string(),
+            Config::DockerSandbox { .. } => crate::tr!("terminal", "docker-sandbox").to_string(),
         }
     }
 

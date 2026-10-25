@@ -94,12 +94,12 @@ enum ReviewTerminalUnavailableReason {
 impl ReviewTerminalUnavailableReason {
     fn label(&self) -> &'static str {
         match self {
-            Self::NoSelectedRepo => "no repo is selected for code review",
-            Self::SessionPathUnavailable => "session cwd is unavailable or not local",
-            Self::SessionOutsideSelectedRepo => "session cwd is not inside selected repo",
-            Self::AIDisabled => "AI is disabled for Warp review destinations",
-            Self::TerminalExecuting => "terminal is currently executing a command",
-            Self::InputBoxNotVisible => "terminal input box is not visible",
+            Self::NoSelectedRepo => crate::tr!("workspace", "no-repo-selected"),
+            Self::SessionPathUnavailable => crate::tr!("workspace", "session-cwd-unavailable"),
+            Self::SessionOutsideSelectedRepo => crate::tr!("workspace", "session-outside-repo"),
+            Self::AIDisabled => crate::tr!("workspace", "ai-disabled-review"),
+            Self::TerminalExecuting => crate::tr!("workspace", "terminal-executing"),
+            Self::InputBoxNotVisible => crate::tr!("workspace", "input-box-not-visible"),
         }
     }
 }

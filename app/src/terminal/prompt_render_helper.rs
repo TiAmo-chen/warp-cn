@@ -249,21 +249,21 @@ impl PromptRenderHelper {
             && let Some(state) = sessions.remote_server_setup_state(pending_session_id)
         {
             return match state {
-                RemoteServerSetupState::Checking => "Starting shell...".to_string(),
+                RemoteServerSetupState::Checking => crate::tr!("ai_assistant", "ai-starting-shell").to_string(),
                 RemoteServerSetupState::Installing {
                     progress_percent: Some(p),
                 } => format!("Installing Warp SSH Extension... ({p}%)"),
                 RemoteServerSetupState::Installing {
                     progress_percent: None,
-                } => "Installing Warp SSH Extension...".to_string(),
-                RemoteServerSetupState::Updating => "Updating Warp SSH Extension...".to_string(),
+                } => crate::tr!("terminal", "installing-ssh").to_string(),
+                RemoteServerSetupState::Updating => crate::tr!("terminal", "updating-ssh").to_string(),
                 RemoteServerSetupState::Initializing => "Initializing...".to_string(),
-                RemoteServerSetupState::Ready => "Starting shell...".to_string(),
+                RemoteServerSetupState::Ready => crate::tr!("ai_assistant", "ai-starting-shell").to_string(),
                 // Failed and Unsupported both fall back to the wrapper-only SSH
                 // flow, so we render the same generic prompt as a normal
                 // SSH session that doesn't have the remote-server extension.
                 RemoteServerSetupState::Failed { .. }
-                | RemoteServerSetupState::Unsupported { .. } => "Starting shell...".to_string(),
+                | RemoteServerSetupState::Unsupported { .. } => crate::tr!("ai_assistant", "ai-starting-shell").to_string(),
             };
         }
 

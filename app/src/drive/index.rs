@@ -425,10 +425,10 @@ impl From<&DriveIndexAction> for LoginGatedFeature {
     fn from(val: &DriveIndexAction) -> LoginGatedFeature {
         use DriveIndexAction::*;
         match val {
-            OpenTeamSettingsPage => "Open Team Settings",
-            ViewPlans { .. } => "View Plans",
+            OpenTeamSettingsPage => crate::tr!("drive", "open-team-settings"),
+            ViewPlans { .. } => crate::tr!("billing", "view-plans"),
             ManageBilling { .. } => "Manage Billing",
-            _ => "Unknown reason",
+            _ => crate::tr!("settings", "unknown-reason"),
         }
     }
 }
@@ -4187,13 +4187,13 @@ impl DriveIndex {
         let name = match object_type {
             DriveObjectType::Notebook { .. } => "Notebooks",
             DriveObjectType::Workflow => "Workflows",
-            DriveObjectType::EnvVarCollection => "Environment Variables",
+            DriveObjectType::EnvVarCollection => crate::tr!("drive", "env-vars-type"),
             DriveObjectType::Folder => "Folders",
-            DriveObjectType::AgentModeWorkflow => "Agent Workflows",
-            DriveObjectType::AIFact => "AI Fact",
+            DriveObjectType::AgentModeWorkflow => crate::tr!("drive", "agent-workflows-type"),
+            DriveObjectType::AIFact => crate::tr!("drive", "ai-fact-type"),
             DriveObjectType::AIFactCollection => "Rules",
-            DriveObjectType::MCPServer => "MCP Server",
-            DriveObjectType::MCPServerCollection => "MCP Servers",
+            DriveObjectType::MCPServer => crate::tr!("drive", "mcp-server-type"),
+            DriveObjectType::MCPServerCollection => crate::tr!("drive", "mcp-servers-type"),
         };
         let name_styles = UiComponentStyles {
             font_family_id: Some(appearance.ui_font_family()),

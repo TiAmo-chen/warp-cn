@@ -4408,7 +4408,7 @@ fn conversation_search_phase(task: &crate::ai::agent::task::Task) -> Conversatio
 
 fn format_conversation_search_phase(phase: &ConversationSearchPhase) -> String {
     match phase {
-        ConversationSearchPhase::ListingMessages => "Listing messages".to_string(),
+        ConversationSearchPhase::ListingMessages => crate::tr!("ai_assistant", "ai-listing-messages").to_string(),
         ConversationSearchPhase::Grepping { patterns } => {
             if patterns.is_empty() {
                 return crate::tr!("ai_assistant", "ai-grepping-for-patterns").to_string();

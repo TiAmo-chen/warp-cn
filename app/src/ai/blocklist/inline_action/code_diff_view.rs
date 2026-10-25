@@ -1824,7 +1824,7 @@ impl CodeDiffView {
                         file_name
                     }
                 }
-                None => "No file name".to_string(),
+                None => crate::tr!("ai_assistant", "ai-no-file-name").to_string(),
             };
 
             // Get the full path for the tooltip

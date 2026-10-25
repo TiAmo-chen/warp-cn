@@ -576,7 +576,7 @@ impl std::fmt::Display for AgentRunDisplayStatus {
             AgentRunDisplayStatus::TaskPending => write!(f, "Pending"),
             AgentRunDisplayStatus::TaskClaimed => write!(f, "Claimed"),
             AgentRunDisplayStatus::TaskInProgress
-            | AgentRunDisplayStatus::ConversationInProgress => write!(f, "In progress"),
+            | AgentRunDisplayStatus::ConversationInProgress => write!(f, "{}", crate::tr!("common", "status-in-progress")),
             AgentRunDisplayStatus::TaskSucceeded | AgentRunDisplayStatus::ConversationSucceeded => {
                 write!(f, "Done")
             }

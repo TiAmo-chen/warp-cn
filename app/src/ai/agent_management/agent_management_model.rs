@@ -159,8 +159,8 @@ impl AgentNotificationsModel {
                         .display_title()
                         .unwrap_or_else(|| format!("{} completed", agent.display_name()));
                     let message = match agent {
-                        CLIAgent::Codex => "Notification from Codex",
-                        _ => "Task completed.",
+                        CLIAgent::Codex => crate::tr!("ai_assistant", "ai-notification-from-codex"),
+                        _ => crate::tr!("ai_assistant", "ai-task-completed"),
                     };
                     let metadata = TerminalViewMetadata::lookup(*terminal_view_id, ctx);
                     self.add_notification(

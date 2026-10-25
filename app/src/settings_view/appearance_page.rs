@@ -1655,9 +1655,9 @@ impl AppearanceSettingsPageView {
 
     fn input_mode_dropdown_item_label(val: InputMode) -> &'static str {
         match val {
-            InputMode::PinnedToBottom => "Pin to the bottom (Warp mode)",
-            InputMode::PinnedToTop => "Pin to the top (Reverse mode)",
-            InputMode::Waterfall => "Start at the top (Classic mode)",
+            InputMode::PinnedToBottom => crate::tr!("settings", "input-mode-pinned-bottom"),
+            InputMode::PinnedToTop => crate::tr!("settings", "input-mode-pinned-top"),
+            InputMode::Waterfall => crate::tr!("settings", "input-mode-waterfall"),
         }
     }
 
@@ -1665,11 +1665,11 @@ impl AppearanceSettingsPageView {
         match val {
             AppIcon::Aurora => "Aurora",
             AppIcon::Default => "Default",
-            AppIcon::Classic1 => "Classic 1",
-            AppIcon::Classic2 => "Classic 2",
-            AppIcon::Classic3 => "Classic 3",
+            AppIcon::Classic1 => crate::tr!("settings", "appearance-input-classic-1"),
+            AppIcon::Classic2 => crate::tr!("settings", "appearance-input-classic-2"),
+            AppIcon::Classic3 => crate::tr!("settings", "appearance-input-classic-3"),
             AppIcon::Comets => "Comets",
-            AppIcon::GlassSky => "Glass Sky",
+            AppIcon::GlassSky => crate::tr!("settings", "appearance-theme-glass-sky"),
             AppIcon::Glitch => "Glitch",
             AppIcon::Cow => "Cow",
             AppIcon::Glow => "Glow",
@@ -1679,15 +1679,15 @@ impl AppearanceSettingsPageView {
             AppIcon::Original => "Original",
             AppIcon::Starburst => "Starburst",
             AppIcon::Sticker => "Sticker",
-            AppIcon::WarpOne => "Warp 1",
+            AppIcon::WarpOne => crate::tr!("settings", "icon-warp-1"),
         }
     }
 
     fn thin_strokes_dropdown_item_label(val: ThinStrokes) -> &'static str {
         match val {
             ThinStrokes::Never => "Never",
-            ThinStrokes::OnLowDpiDisplays => "On low-DPI displays",
-            ThinStrokes::OnHighDpiDisplays => "On high-DPI displays",
+            ThinStrokes::OnLowDpiDisplays => crate::tr!("settings", "on-low-dpi-displays"),
+            ThinStrokes::OnHighDpiDisplays => crate::tr!("settings", "on-high-dpi-displays"),
             ThinStrokes::Always => "Always",
         }
     }
@@ -1695,7 +1695,7 @@ impl AppearanceSettingsPageView {
     fn enforce_minimum_contrast_dropdown_item_label(val: EnforceMinimumContrast) -> &'static str {
         match val {
             EnforceMinimumContrast::Always => "Always",
-            EnforceMinimumContrast::OnlyNamedColors => "Only for named colors",
+            EnforceMinimumContrast::OnlyNamedColors => crate::tr!("settings", "only-for-named-colors"),
             EnforceMinimumContrast::Never => "Never",
         }
     }
@@ -1705,8 +1705,8 @@ impl AppearanceSettingsPageView {
     ) -> &'static str {
         match value {
             WorkspaceDecorationVisibility::AlwaysShow => "Always",
-            WorkspaceDecorationVisibility::HideFullscreen => "When windowed",
-            WorkspaceDecorationVisibility::OnHover => "Only on hover",
+            WorkspaceDecorationVisibility::HideFullscreen => crate::tr!("settings", "when-windowed"),
+            WorkspaceDecorationVisibility::OnHover => crate::tr!("settings", "only-on-hover"),
         }
     }
 
@@ -2600,10 +2600,10 @@ impl AppearanceSettingsPageView {
 
     fn window_backdrop_dropdown_item_label(backdrop: WindowBackdrop) -> &'static str {
         match backdrop {
-            WindowBackdrop::None => "No material",
+            WindowBackdrop::None => crate::tr!("settings", "no-material"),
             WindowBackdrop::Mica => "Mica",
             WindowBackdrop::Acrylic => "Acrylic",
-            WindowBackdrop::MicaAlt => "Mica Alt",
+            WindowBackdrop::MicaAlt => crate::tr!("settings", "mica-alt"),
         }
     }
     fn build_workspace_decoration_visibility_dropdown(
@@ -2867,7 +2867,7 @@ impl ThemeSelectWidget {
         let mode_ui_label = match theme_chooser_mode {
             ThemeChooserMode::SystemLight => "Light",
             ThemeChooserMode::SystemDark => "Dark",
-            ThemeChooserMode::SystemAgnostic => "Current theme",
+            ThemeChooserMode::SystemAgnostic => crate::tr!("settings", "appearance-current-theme"),
         };
 
         ConstrainedBox::new(

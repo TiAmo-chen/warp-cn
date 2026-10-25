@@ -1118,7 +1118,7 @@ fn render_fallback_explanation<V: View>(
         Some(primary) => {
             format!("The primary model ({primary}) failed. Retrying with the fallback model.")
         }
-        None => "The primary model failed. Retrying with the fallback model.".to_owned(),
+        None => crate::tr!("ai_assistant", "ai-primary-model-failed").to_owned(),
     };
     let appearance = Appearance::as_ref(app);
     Text::new_inline(

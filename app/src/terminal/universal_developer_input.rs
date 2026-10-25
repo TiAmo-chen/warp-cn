@@ -92,9 +92,9 @@ impl AtContextMenuDisabledReason {
                 "Not supported in SSH sessions without remote server".to_string()
             }
             #[cfg(not(target_family = "wasm"))]
-            AtContextMenuDisabledReason::Subshell => "Not supported in subshells".to_string(),
+            AtContextMenuDisabledReason::Subshell => crate::tr!("terminal", "udi-no-subshell").to_string(),
             #[cfg(target_family = "wasm")]
-            AtContextMenuDisabledReason::Wasm => "Requires a filesystem".to_string(),
+            AtContextMenuDisabledReason::Wasm => crate::tr!("terminal", "udi-no-fs").to_string(),
             #[cfg(not(target_family = "wasm"))]
             AtContextMenuDisabledReason::DisabledInTerminalMode => {
                 crate::tr!("terminal", "udi-disabled-terminal-mode").to_string()

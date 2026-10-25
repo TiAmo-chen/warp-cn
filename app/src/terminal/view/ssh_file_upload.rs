@@ -367,7 +367,7 @@ impl FileUpload {
         let status_string = match file.status {
             FileUploadStatus::Started | FileUploadStatus::AwaitingPassword => "Uploading",
             FileUploadStatus::Completed { successful: true } => "Uploaded",
-            FileUploadStatus::Completed { successful: false } => "Failed to upload",
+            FileUploadStatus::Completed { successful: false } => crate::tr!("terminal", "failed-to-upload"),
         };
 
         let mut file_iter = file.local_file_paths.iter().peekable();

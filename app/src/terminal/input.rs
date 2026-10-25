@@ -991,7 +991,7 @@ fn render_prompt_chip_shell_command(
         PromptChipShellCommand::NvmUse { version } => {
             format!("nvm use {}", shell_quote_arg(version, shell_type))
         }
-        PromptChipShellCommand::NvmInstallLatestNode => "nvm install node".to_string(),
+        PromptChipShellCommand::NvmInstallLatestNode => crate::tr!("common", "nvm-install-node").to_string(),
         PromptChipShellCommand::Echo { message } => {
             format!("echo {}", shell_quote_arg(message, shell_type))
         }

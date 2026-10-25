@@ -145,10 +145,10 @@ impl From<&MainPageAction> for LoginGatedFeature {
     fn from(val: &MainPageAction) -> LoginGatedFeature {
         use MainPageAction::*;
         match val {
-            Upgrade { .. } => "Upgrade Plan",
-            GenerateStripeBillingPortalLink { .. } => "Generate Stripe Billing Portal Link",
-            ToggleSettingsSync => "Toggle Settings Sync",
-            _ => "Unknown reason",
+            Upgrade { .. } => crate::tr!("settings", "upgrade-plan"),
+            GenerateStripeBillingPortalLink { .. } => crate::tr!("settings", "generate-stripe-billing-portal-link"),
+            ToggleSettingsSync => crate::tr!("settings", "toggle-settings-sync"),
+            _ => crate::tr!("settings", "unknown-reason"),
         }
     }
 }
@@ -566,9 +566,9 @@ impl AccountWidget {
                         .filter(|metadata| metadata.can_upgrade_to_higher_tier_plan())
                     {
                         let description = match billing_metadata.customer_type {
-                            CustomerType::Prosumer => "Upgrade to Turbo",
-                            CustomerType::Turbo => "Upgrade to Lightspeed plan",
-                            _ => "Compare Plans",
+                            CustomerType::Prosumer => crate::tr!("settings", "upgrade-to-turbo-plan"),
+                            CustomerType::Turbo => crate::tr!("settings", "upgrade-lightspeed-plan"),
+                            _ => crate::tr!("settings", "compare-plans"),
                         };
                         let team_uid = team.uid;
                         plan_info.add_child(

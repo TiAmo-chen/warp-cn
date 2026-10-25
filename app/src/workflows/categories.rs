@@ -150,9 +150,9 @@ impl WorkflowViewType {
     fn as_str<'a>(&self, category_names: &'a [String]) -> &'a str {
         match self {
             WorkflowViewType::All => "All",
-            WorkflowViewType::LocalPersonal => "My Workflows",
-            WorkflowViewType::Project => "Repository Workflows",
-            WorkflowViewType::Team => "Team Workflows",
+            WorkflowViewType::LocalPersonal => crate::tr!("workflows", "category-my-workflows"),
+            WorkflowViewType::Project => crate::tr!("workflows", "category-repository-workflows"),
+            WorkflowViewType::Team => crate::tr!("workflows", "category-team-workflows"),
             WorkflowViewType::Category { category_index, .. } => &category_names[*category_index],
         }
     }
@@ -165,10 +165,10 @@ impl WorkflowViewType {
                     self.as_str(category_names)
                 )
             }
-            WorkflowViewType::All => "Showing all workflows".into(),
-            WorkflowViewType::LocalPersonal => "Showing my workflows".into(),
-            WorkflowViewType::Project => "Showing project workflows".into(),
-            WorkflowViewType::Team => "Showing team workflows".into(),
+            WorkflowViewType::All => crate::tr!("workflows", "showing-all").into(),
+            WorkflowViewType::LocalPersonal => crate::tr!("workflows", "showing-my").into(),
+            WorkflowViewType::Project => crate::tr!("workflows", "showing-project").into(),
+            WorkflowViewType::Team => crate::tr!("workflows", "showing-team").into(),
         };
 
         AccessibilityContent::new_without_help(a11y_content, WarpA11yRole::UserAction)

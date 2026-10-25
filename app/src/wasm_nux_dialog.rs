@@ -228,9 +228,9 @@ impl View for WasmNUXDialog {
                 ))
         } else {
             let object_kind = match web_intent_parser::current_web_intent() {
-                Some(WebIntent::DriveObject(_)) => "Warp Drive objects",
-                Some(WebIntent::SessionView(_)) => "shared sessions",
-                _ => "Warp links",
+                Some(WebIntent::DriveObject(_)) => crate::tr!("workspace", "warp-drive-objects"),
+                Some(WebIntent::SessionView(_)) => crate::tr!("workspace", "shared-sessions"),
+                _ => crate::tr!("workspace", "warp-links"),
             };
 
             Dialog::new(

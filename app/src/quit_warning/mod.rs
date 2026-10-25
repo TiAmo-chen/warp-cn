@@ -506,8 +506,8 @@ impl<'a> QuitWarningDialog<'a> {
 
         if let Some(callback) = on_confirm {
             let confirm_title = match state.scope {
-                QuitScope::Window(_) | QuitScope::Tabs(_) | QuitScope::Pane { .. } => "Yes, close",
-                QuitScope::App => "Yes, quit",
+                QuitScope::Window(_) | QuitScope::Tabs(_) | QuitScope::Pane { .. } => crate::tr!("workspace", "quit-yes-close"),
+                QuitScope::App => crate::tr!("workspace", "quit-yes-quit"),
                 _ => "",
             };
             buttons.push(ModalButton::for_app(confirm_title.to_string(), callback));
@@ -540,12 +540,12 @@ impl<'a> QuitWarningDialog<'a> {
         }
 
         let title = match &state.scope {
-            QuitScope::Pane { .. } => "Close pane?",
-            QuitScope::Tabs(tabs) if tabs.len() == 1 => "Close tab?",
-            QuitScope::Tabs(_) => "Close tabs?",
-            QuitScope::Window(_) => "Close window?",
-            QuitScope::App => "Quit Warp?",
-            QuitScope::EditorTab { .. } => "Save changes?",
+            QuitScope::Pane { .. } => crate::tr!("workspace", "quit-close-pane"),
+            QuitScope::Tabs(tabs) if tabs.len() == 1 => crate::tr!("workspace", "quit-close-tab"),
+            QuitScope::Tabs(_) => crate::tr!("workspace", "quit-close-tabs"),
+            QuitScope::Window(_) => crate::tr!("workspace", "quit-close-window"),
+            QuitScope::App => crate::tr!("workspace", "quit-warp"),
+            QuitScope::EditorTab { .. } => crate::tr!("workspace", "quit-save-changes"),
         };
 
         AlertDialogWithCallbacks::for_app(

@@ -20860,10 +20860,10 @@ impl Workspace {
                         .copied()
                         .unwrap_or(ToolPanelView::WarpDrive)
                     {
-                        ToolPanelView::ProjectExplorer => "Project explorer",
-                        ToolPanelView::GlobalSearch { .. } => "Global search",
-                        ToolPanelView::WarpDrive => "Warp Drive",
-                        ToolPanelView::ConversationListView => "Agent conversations",
+                        ToolPanelView::ProjectExplorer => crate::tr!("settings", "project-explorer"),
+                        ToolPanelView::GlobalSearch { .. } => crate::tr!("settings", "global-search"),
+                        ToolPanelView::WarpDrive => crate::tr!("drive", "warp-drive"),
+                        ToolPanelView::ConversationListView => crate::tr!("settings", "agent-conversations"),
                     }
                 } else {
                     "Tools panel"
@@ -20914,10 +20914,10 @@ impl Workspace {
                 .copied()
                 .unwrap_or(ToolPanelView::WarpDrive)
             {
-                ToolPanelView::ProjectExplorer => "Project explorer",
-                ToolPanelView::GlobalSearch { .. } => "Global search",
-                ToolPanelView::WarpDrive => "Warp Drive",
-                ToolPanelView::ConversationListView => "Agent conversations",
+                ToolPanelView::ProjectExplorer => crate::tr!("settings", "project-explorer"),
+                ToolPanelView::GlobalSearch { .. } => crate::tr!("settings", "global-search"),
+                ToolPanelView::WarpDrive => crate::tr!("drive", "warp-drive"),
+                ToolPanelView::ConversationListView => crate::tr!("settings", "agent-conversations"),
             }
         } else {
             &crate::tr!("settings", "tools-panel")
@@ -26356,7 +26356,7 @@ impl TypedActionView for Workspace {
                         let entry = format!("file://{}", plugin_path.display());
                         set_opencode_warp_plugin(&entry)
                     }
-                    None => "Failed to determine home directory".to_string(),
+                    None => crate::tr!("workspace", "failed-to-determine-home-directory").to_string(),
                 };
                 self.toast_stack.update(ctx, |view, ctx| {
                     view.add_ephemeral_toast(DismissibleToast::default(message), ctx);

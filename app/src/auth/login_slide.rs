@@ -796,9 +796,9 @@ impl LoginSlideView {
 
         let cmd_enter = Keystroke::parse("cmdorctrl-enter").unwrap_or_default();
         let skip_label = match self.login_purpose() {
-            LoginPurpose::WarpDrive => "Disable Warp Drive",
-            LoginPurpose::WarpAgent => "Skip for now",
-            LoginPurpose::ThirdParty => "Skip for now",
+            LoginPurpose::WarpDrive => crate::tr!("auth", "disable-warp-drive"),
+            LoginPurpose::WarpAgent => crate::tr!("auth", "skip-button"),
+            LoginPurpose::ThirdParty => crate::tr!("auth", "skip-button"),
             LoginPurpose::AccountFirst => "Skip",
         };
         let skip_keystroke = if matches!(self.login_purpose(), LoginPurpose::AccountFirst) {

@@ -86,7 +86,7 @@ fn user_facing_aws_credentials_error_message(err: &CredentialsError, profile: &s
         CredentialsError::Unhandled(_) => {
             crate::tr!("ai_assistant", "ai-aws-credentials-unexpected-error").to_string()
         }
-        _ => "Unable to load AWS credentials. Refresh your AWS login and try again.".to_string(),
+        _ => crate::tr!("ai_assistant", "ai-aws-credentials-unable-to-load").to_string(),
     }
 }
 

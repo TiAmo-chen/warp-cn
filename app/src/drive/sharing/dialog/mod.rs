@@ -1927,8 +1927,8 @@ impl SharingDialog {
         let owner = self.owner(app)?;
 
         let tooltip_text = match owner {
-            Subject::Team(_) => "Team objects automatically grant full permissions to team members",
-            _ => "Owners always have full permissions on their objects",
+            Subject::Team(_) => crate::tr!("drive", "sharing-team-auto-permissions"),
+            _ => crate::tr!("drive", "sharing-owner-full-permissions"),
         };
         let owner_access_label = render_with_detail_tooltip(
             tooltip_text,

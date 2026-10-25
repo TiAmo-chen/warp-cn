@@ -981,7 +981,7 @@ pub(crate) fn color_picker_menu_items(
                         Some(id) => id.to_ansi_color(&terminal_colors).into(),
                     };
                     let tooltip = match ansi_id {
-                        None => "Default (no color)".to_string(),
+                        None => crate::tr!("settings", "appearance-default-no-color").to_string(),
                         Some(id) => id.to_string(),
                     };
 

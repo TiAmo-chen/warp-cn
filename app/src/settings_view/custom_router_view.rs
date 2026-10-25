@@ -178,8 +178,8 @@ impl View for CustomRouterView {
 
         // Type label row
         let type_label = match &self.router.routing {
-            CustomModelRouting::Complexity(_) => "Complexity-based routing",
-            CustomModelRouting::Prompt(_) => "Prompt-based routing",
+            CustomModelRouting::Complexity(_) => crate::tr!("settings", "complexity-based-routing"),
+            CustomModelRouting::Prompt(_) => crate::tr!("settings", "prompt-based-routing"),
         };
         let type_row = Flex::row()
             .with_cross_axis_alignment(CrossAxisAlignment::Center)

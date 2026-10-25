@@ -1293,7 +1293,7 @@ impl MCPServersListPageView {
                         .map(|team| team.name.clone());
                     let shared_by_text = match team_name {
                         Some(name) => format!("Shared by Warp and {name}"),
-                        None => "Shared by Warp and from other devices".to_string(),
+                        None => crate::tr!("settings", "mcp-shared-by-warp").to_string(),
                     };
 
                     page.add_child(self.render_server_cards_section(

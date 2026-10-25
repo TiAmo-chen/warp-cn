@@ -1027,12 +1027,12 @@ fn find_secret_type(
 
 fn format_secret_type(type_: &ManagedSecretType) -> String {
     match type_ {
-        ManagedSecretType::RawValue => "Raw Value".to_string(),
+        ManagedSecretType::RawValue => crate::tr!("ai_assistant", "ai-secret-raw-value").to_string(),
         ManagedSecretType::Dotenvx => "dotenvx".to_string(),
-        ManagedSecretType::AnthropicApiKey => "Anthropic API Key".to_string(),
-        ManagedSecretType::AnthropicBedrockAccessKey => "Anthropic Bedrock Access Key".to_string(),
-        ManagedSecretType::AnthropicBedrockApiKey => "Anthropic Bedrock API Key".to_string(),
-        ManagedSecretType::OpenaiApiKey => "OpenAI API Key".to_string(),
+        ManagedSecretType::AnthropicApiKey => crate::tr!("ai_assistant", "ai-secret-anthropic-key").to_string(),
+        ManagedSecretType::AnthropicBedrockAccessKey => crate::tr!("ai_assistant", "ai-secret-anthropic-bedrock-access").to_string(),
+        ManagedSecretType::AnthropicBedrockApiKey => crate::tr!("ai_assistant", "ai-secret-anthropic-bedrock-key").to_string(),
+        ManagedSecretType::OpenaiApiKey => crate::tr!("ai_assistant", "ai-secret-openai-key").to_string(),
         ManagedSecretType::DockerRegistry => "Container Registry Credential".to_string(),
         ManagedSecretType::AwsEcrCredential => "AWS ECR Credential".to_string(),
     }

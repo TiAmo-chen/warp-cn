@@ -59,7 +59,7 @@ fn file_title_text(openable_path: &OpenablePath) -> String {
                         Some(display_name) => {
                             format!("Did you know that Warp can directly edit {display_name} files?")
                         }
-                        None => "Did you know that Warp can directly edit code?".to_string(),
+                        None => crate::tr!("terminal", "open-code-title-fallback").to_string(),
                     }
                 } else {
                     // The `languages` crate is not available on WASM, so use a fallback message.
@@ -76,8 +76,8 @@ pub fn render_open_in_warp_banner(
     appearance: &Appearance,
 ) -> Box<dyn Element> {
     let button_text = match state.target.file_type {
-        OpenableFileType::Markdown => "View in Warp",
-        OpenableFileType::Code | OpenableFileType::Text => "Edit in Warp",
+        OpenableFileType::Markdown => crate::tr!("terminal", "view-in-warp"),
+        OpenableFileType::Code | OpenableFileType::Text => crate::tr!("terminal", "edit-in-warp"),
     };
 
     let open_button = InlineBannerTextButton {

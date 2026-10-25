@@ -373,7 +373,7 @@ impl ExportManager {
         ToastStack::handle(ctx).update(ctx, |toast_stack, ctx| {
             let message = match id.display_name(ctx) {
                 Some(name) => format!("Failed to export {name}"),
-                None => "Export failed".to_string(),
+                None => crate::tr!("drive", "export-failed-fallback").to_string(),
             };
             toast_stack.add_persistent_toast(DismissibleToast::error(message), window_id, ctx);
         });
@@ -394,7 +394,7 @@ impl ExportManager {
             ToastStack::handle(ctx).update(ctx, |toast_stack, ctx| {
                 let message = match export.key().display_name(ctx) {
                     Some(name) => format!("Exported {name}"),
-                    None => "Exported object".to_string(),
+                    None => crate::tr!("drive", "exported-fallback").to_string(),
                 };
 
                 let link_label = if cfg!(target_os = "macos") {

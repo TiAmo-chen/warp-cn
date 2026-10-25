@@ -1015,7 +1015,7 @@ impl Space {
                     "Team".to_string()
                 }
             }
-            Space::Shared => "Shared with me".to_string(),
+            Space::Shared => crate::tr!("cloud_object", "space-shared").to_string(),
         }
     }
 }

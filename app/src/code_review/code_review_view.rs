@@ -473,7 +473,7 @@ impl DiscardOperationType {
             DiscardOperationType::FileUncommittedChanges => {
                 crate::tr!("code_review", "discard-file-uncommitted-changes-title").to_string()
             }
-            DiscardOperationType::AllChangesAgainstBranch(_) => "Discard all changes?".to_string(),
+            DiscardOperationType::AllChangesAgainstBranch(_) => crate::tr!("code_review", "discard-all-changes-title").to_string(),
             DiscardOperationType::FileChangesAgainstBranch(_) => {
                 crate::tr!("code_review", "discard-file-all-changes-title").to_string()
             }

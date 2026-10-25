@@ -3701,16 +3701,16 @@ impl TypedPane<'_> {
         match self {
             TypedPane::Terminal(_) => "Terminal",
             TypedPane::Code(_) => "Code",
-            TypedPane::CodeDiff => "Code Diff",
+            TypedPane::CodeDiff => crate::tr!("code_editor", "code-diff-title"),
             TypedPane::File => "File",
             TypedPane::Notebook { .. } => "Notebook",
             TypedPane::Workflow { .. } => "Workflow",
             TypedPane::Settings => "Settings",
-            TypedPane::EnvVarCollection => "Environment Variables",
+            TypedPane::EnvVarCollection => crate::tr!("drive", "env-vars-type"),
             TypedPane::EnvironmentManagement => "Environments",
             TypedPane::AIFact => "Rules",
             TypedPane::AIDocument => "Plan",
-            TypedPane::ExecutionProfileEditor => "Execution Profile",
+            TypedPane::ExecutionProfileEditor => crate::tr!("workspace", "pane-execution-profile"),
             TypedPane::Other => "Other",
         }
     }

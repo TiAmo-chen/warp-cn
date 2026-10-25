@@ -308,27 +308,27 @@ impl From<&TeamsPageAction> for LoginGatedFeature {
     fn from(val: &TeamsPageAction) -> LoginGatedFeature {
         use TeamsPageAction::*;
         match val {
-            LeaveTeam => "Leave Team",
-            ShowDeleteTeamConfirmationDialog => "Delete Team",
-            CreateTeam => "Create Team",
-            DeletePendingEmailInvitation { .. } => "Delete Pending Email Invitation",
-            RemoveUserFromTeam { .. } => "Remove User From Team",
-            RemoveUserFromWorkspace { .. } => "Remove User From Workspace",
-            AddDomainRestrictions { .. } => "Add Domain Restrictions",
-            DeleteDomainRestriction { .. } => "Delete Domain Restriction",
-            SendEmailInvites { .. } => "Send Email Invites",
-            GenerateUpgradeLink { .. } => "Generate Upgrade Link",
-            GenerateStripeBillingPortalLink { .. } => "Generate Stripe Billing Portal Link",
+            LeaveTeam => crate::tr!("settings", "leave-team"),
+            ShowDeleteTeamConfirmationDialog => crate::tr!("settings", "delete-team"),
+            CreateTeam => crate::tr!("settings", "create-team"),
+            DeletePendingEmailInvitation { .. } => crate::tr!("settings", "delete-pending-email-invitation"),
+            RemoveUserFromTeam { .. } => crate::tr!("settings", "remove-user-from-team"),
+            RemoveUserFromWorkspace { .. } => crate::tr!("settings", "remove-user-from-workspace"),
+            AddDomainRestrictions { .. } => crate::tr!("settings", "add-domain-restrictions"),
+            DeleteDomainRestriction { .. } => crate::tr!("settings", "delete-domain-restriction"),
+            SendEmailInvites { .. } => crate::tr!("settings", "send-email-invites"),
+            GenerateUpgradeLink { .. } => crate::tr!("settings", "generate-upgrade-link"),
+            GenerateStripeBillingPortalLink { .. } => crate::tr!("settings", "generate-stripe-billing-portal-link"),
             OpenAdminPanel { .. } | OpenWorkspaceAdminPanel => "Open Admin Panel",
-            ContactSupport => "Contact Support",
-            ContactSales => "Contact Sales",
+            ContactSupport => crate::tr!("settings", "contact-support"),
+            ContactSales => crate::tr!("settings", "contact-sales"),
             ToggleTeamDiscoverability { .. } | ToggleTeamDiscoverabilityBeforeCreation => {
                 "Toggle Team Discoverability"
             }
-            JoinTeamWithTeamDiscovery { .. } => "Join Team With Team Discovery",
-            ShowWorkspaceTeams { .. } => "Show Workspace Teams",
-            JoinWorkspaceFromDiscovery { .. } => "Join Workspace From Discovery",
-            _ => "Unknown reason",
+            JoinTeamWithTeamDiscovery { .. } => crate::tr!("settings", "join-team-with-team-discovery"),
+            ShowWorkspaceTeams { .. } => crate::tr!("settings", "show-workspace-teams"),
+            JoinWorkspaceFromDiscovery { .. } => crate::tr!("settings", "join-workspace-from-discovery"),
+            _ => crate::tr!("settings", "unknown-reason"),
         }
     }
 }
@@ -2729,9 +2729,9 @@ impl TeamsWidget {
         .finish();
 
         let title = match warning {
-            GrowTeamWarning::SeatCapReached => "Your team is full",
-            GrowTeamWarning::SeatCapExceeded => "You've exceeded your member limit",
-            GrowTeamWarning::PaymentPastDue => "Payment past due",
+            GrowTeamWarning::SeatCapReached => crate::tr!("settings", "your-team-is-full"),
+            GrowTeamWarning::SeatCapExceeded => crate::tr!("settings", "youve-exceeded-your-member-limit"),
+            GrowTeamWarning::PaymentPastDue => crate::tr!("settings", "payment-past-due"),
             GrowTeamWarning::PaymentUnpaid => &crate::tr!("settings", "subscription-unpaid"),
         };
         let title_element = self.render_subsection_header(title.to_owned(), appearance);
@@ -2744,7 +2744,7 @@ impl TeamsWidget {
         );
 
         let body_prefix = match warning {
-            GrowTeamWarning::SeatCapReached => "You've reached your plan's member limit.",
+            GrowTeamWarning::SeatCapReached => crate::tr!("settings", "youve-reached-your-plans-member-limit"),
             GrowTeamWarning::SeatCapExceeded => {
                 "You've exceeded your plan's member limit. Existing team members keep their access, but you won't be able to add new members."
             }
@@ -2769,11 +2769,11 @@ impl TeamsWidget {
             }
         } else {
             match cta {
-                GrowTeamWarningCta::Upgrade => "Upgrade to grow your team.",
+                GrowTeamWarningCta::Upgrade => crate::tr!("settings", "upgrade-to-grow-your-team"),
                 GrowTeamWarningCta::UpdateBilling => {
                     "Update your payment information to restore access."
                 }
-                GrowTeamWarningCta::ContactSupport => "Contact support to restore access.",
+                GrowTeamWarningCta::ContactSupport => crate::tr!("settings", "contact-support-to-restore-access"),
                 GrowTeamWarningCta::None => {
                     if is_delinquency {
                         "Contact support to restore access."
@@ -3418,9 +3418,9 @@ impl TeamsWidget {
                     "Upgrade to Build"
                 } else {
                     match team.billing_metadata.customer_type {
-                        CustomerType::Prosumer => "Upgrade to Turbo",
-                        CustomerType::Turbo => "Upgrade to Lightspeed plan",
-                        _ => "Compare Plans",
+                        CustomerType::Prosumer => crate::tr!("settings", "upgrade-to-turbo-plan"),
+                        CustomerType::Turbo => crate::tr!("settings", "upgrade-lightspeed-plan"),
+                        _ => crate::tr!("settings", "compare-plans"),
                     }
                 };
                 billing_links.add_child(
@@ -3465,8 +3465,8 @@ impl TeamsWidget {
     ) -> Box<dyn Element> {
         let mut section = Flex::column();
         let sub_header_text = match team.billing_metadata.customer_type {
-            CustomerType::Free => "Free plan usage limits",
-            _ => "Plan usage limits",
+            CustomerType::Free => crate::tr!("settings", "free-plan-usage-limits"),
+            _ => crate::tr!("settings", "plan-usage-limits"),
         };
         section.add_child(self.render_subsection_header(sub_header_text.into(), appearance));
 
