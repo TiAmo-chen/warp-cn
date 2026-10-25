@@ -540,7 +540,7 @@ macro_rules! lazy_block_field {
                 Some(block) => $body(block),
                 None => {
                     report_error!(
-                        crate::tr!("terminal", "tried-to-lazily-compute-a-userblockcompleted-field-for-a-b"),
+                        "Tried to lazily compute a UserBlockCompleted field for a block that no longer exists",
                         extra: {
                             "block_id" => ?id,
                             "compute_call" => stringify!($body),

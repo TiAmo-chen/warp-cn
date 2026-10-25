@@ -26445,7 +26445,7 @@ impl TypedActionView for Workspace {
                                 let stderr = String::from_utf8_lossy(&output.stderr);
                                 log::error!("sample command failed with stderr: {stderr}");
                                 report_error!(
-                                    crate::tr!("workspace", "sample-command-failed"),
+                                    "sample command failed",
                                     extra: { "status" => %output.status }
                                 );
                                 crate::tr!("workspace", "failed-to-sample-process").to_string()

@@ -673,7 +673,7 @@ impl TypedActionView for ConversationEndedTombstoneView {
                         log::warn!("No server conversation token available for conversation");
                     }
                 } else {
-                    warp_errors::report_error!(crate::tr!("terminal", "conversation-not-found-in-history-model"));
+                    warp_errors::report_error!("Conversation not found in history model");
                 }
             }
         }
