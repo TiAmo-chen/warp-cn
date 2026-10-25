@@ -837,9 +837,9 @@ settings-ep-read-files = 读取文件：
 settings-ep-unknown = 未知
 
 # A new version of Warp is available but can't be installed
-settings-a-new-version-of-warp-is-available-but-cant-be-installed = A new version of Warp is available but can't be installed
+settings-a-new-version-of-warp-is-available-but-cant-be-installed = 有新版本可用，但无法安装
 # A new version of Warp is installed but can't be launched.
-settings-a-new-version-of-warp-is-installed-but-cant-be-launched = A new version of Warp is installed but can't be launched.
+settings-a-new-version-of-warp-is-installed-but-cant-be-launched = 新版本已安装，但无法启动。
 # A to Z
 settings-a-to-z = A 到 Z
 # AI Features must be enabled to use codebase indexing.
@@ -851,7 +851,7 @@ settings-ai_input_autodetection = AI_Input_Autodetection
 # AI_Rules
 settings-ai_rules = AI_Rules
 # API key
-settings-api-key = API key
+settings-api-key = API 密钥
 # API key deleted
 settings-api-key-deleted = API key deleted
 # API key header width handle should lock
@@ -859,11 +859,11 @@ settings-api-key-header-width-handle-should-lock = API key header width handle s
 # API key table column width handle should lock
 settings-api-key-table-column-width-handle-should-lock = API key table column width handle should lock
 # API keys
-settings-api-keys = API keys
+settings-api-keys = API 密钥
 # API keys added here are stored only on this device, not on Warp's servers.
 settings-api-keys-added-here-are-stored-only-on-this-device-not-on-warps-servers = API keys added here are stored only on this device, not on Warp's servers.
 # API schema
-settings-api-schema = API schema
+settings-api-schema = API 模式
 # API-key providers have input placeholders
 settings-api-key-providers-have-input-placeholders = API-key providers have input placeholders
 # AWS Bedrock
@@ -873,9 +873,9 @@ settings-aws-profile = AWS Profile
 # About
 settings-about = 关于
 # Accept Autosuggestion
-settings-accept-autosuggestion = Accept Autosuggestion
+settings-accept-autosuggestion = 接受自动建议
 # Accept autosuggestions
-settings-accept-autosuggestions = Accept autosuggestions
+settings-accept-autosuggestions = 接受自动建议
 # Account
 settings-account = Account
 # Acrylic
@@ -885,19 +885,19 @@ settings-active-ai = 启用 AI
 # Active Screen
 settings-active-screen = Active Screen
 # Add Domain Restrictions
-settings-add-domain-restrictions = Add Domain Restrictions
+settings-add-domain-restrictions = 添加域名限制
 # Add a server
 settings-add-a-server = 添加服务器
 # Add all
 settings-add-all = Add all
 # Add custom endpoint
-settings-add-custom-endpoint = Add custom endpoint
+settings-add-custom-endpoint = 添加自定义端点
 # Add custom endpoints to use third-party models. Custom endpoints must support OpenAI Chat Completions, OpenAI Responses, or Anthropic Messages.
 settings-add-custom-endpoints-to-use-third-party-models-custom-endpoints-must-support-openai-chat-completions-openai-responses-or-anthropic-messages = Add custom endpoints to use third-party models. Custom endpoints must support OpenAI Chat Completions, OpenAI Responses, or Anthropic Messages.
 # Add directory color
 settings-add-directory-color = 添加目录颜色
 # Add endpoint
-settings-add-endpoint = Add endpoint
+settings-add-endpoint = 添加端点
 # Add regex
 settings-add-regex = Add regex
 # Add regex pattern
@@ -905,11 +905,11 @@ settings-add-regex-pattern = Add regex pattern
 # Add regex patterns to show the coding agent toolbar for matching commands.
 settings-add-regex-patterns-to-show-the-coding-agent-toolbar-for-matching-commands = 添加正则表达式，匹配到的命令会显示编码代理工具栏。
 # Add your own custom keybindings to existing actions below.
-settings-add-your-own-custom-keybindings-to-existing-actions-below = Add your own custom keybindings to existing actions below.
+settings-add-your-own-custom-keybindings-to-existing-actions-below = 在下方为现有操作添加自定义快捷键。
 # Add-on credits
 settings-add-on-credits = 附加额度
 # Add-on usage
-settings-add-on-usage = Add-on usage
+settings-add-on-usage = 附加用量
 # Added commands
 settings-added-commands = Added commands
 # Adds an IDE-style project explorer / file tree to the left side tools panel.
@@ -933,7 +933,7 @@ settings-agent-decides = 代理决定
 # Agent font
 settings-agent-font = 代理字体
 # Agent thinking display
-settings-agent-thinking-display = Agent thinking display
+settings-agent-thinking-display = Agent 思考过程显示
 # AgentProfilesPage
 settings-agentprofilespage = AgentProfilesPage
 # Agent_In_App_Notifications
@@ -947,15 +947,15 @@ settings-all-locally-indexed-repos-are-already-selected = 所有本地已索引�
 # Allow Warp users with the same email domain as you to find and join the team.
 settings-allow-warp-users-with-the-same-email-domain-as-you-to-find-and-join-the-team = Allow Warp users with the same email domain as you to find and join the team.
 # Allow auto-approve to bypass command denylist
-settings-allow-auto-approve-to-bypass-command-denylist = Allow auto-approve to bypass command denylist
+settings-allow-auto-approve-to-bypass-command-denylist = 允许自动批准绕过命令黑名单
 # Allow in specific directories
 settings-allow-in-specific-directories = 仅在指定目录中允许
 # Allow the Warp Agent to call these MCP servers.
-settings-allow-the-warp-agent-to-call-these-mcp-servers = Allow the Warp Agent to call these MCP servers.
+settings-allow-the-warp-agent-to-call-these-mcp-servers = 允许 Warp Agent 调用这些 MCP 服务器。
 # Allow the Warp Agent to generate an outline of your codebase that can be used for context. No code is ever stored on our servers. 
 settings-allow-the-warp-agent-to-generate-an-outline-of-your-codebase-that-can-be-used-for-context-no-code-is-ever-stored-on-our-servers- = 允许 Warp 代理生成可用于上下文的代码库大纲。任何代码都不会存储在我们的服务器上。
 # Allowed Values: 1-20
-settings-allowed-values-1-20 = Allowed Values: 1-20
+settings-allowed-values-1-20 = 允许的值：1-20
 # Alt_Screen_Padding
 settings-alt_screen_padding = Alt_Screen_Padding
 # Always
@@ -985,7 +985,7 @@ settings-ask-unless-auto-approve = 除非自动批准否则询问
 # Ask your team's admin to upgrade to the Build plan to use your own API keys.
 settings-ask-your-teams-admin-to-upgrade-to-the-build-plan-to-use-your-own-api-keys = Ask your team's admin to upgrade to the Build plan to use your own API keys.
 # Asynchronous find
-settings-asynchronous-find = Asynchronous find
+settings-asynchronous-find = 异步查找
 # At_Context_Menu_In_Terminal
 settings-at_context_menu_in_terminal = At_Context_Menu_In_Terminal
 # Attach to a live SSH ControlMaster you already have configured for the destination host instead of creating a Warp-owned one. Takes effect in new tabs.
@@ -1015,15 +1015,15 @@ settings-auto-reload-is-disabled-due-to-recent-failed-reload-please-update-your-
 # Auto reload is disabled, as the next reload would exceed your monthly spend limit. Increase your limit to use auto reload.
 settings-auto-reload-is-disabled-as-the-next-reload-would-exceed-your-monthly-spend-limit-increase-your-limit-to-use-auto-reload = 自动充值已禁用，因为下次充值会超出你的每月消费上限。请提高上限后再使用自动充值。
 # Auto save
-settings-auto-save = Auto save
+settings-auto-save = 自动保存
 # Auto show/hide Rich Input based on agent status
 settings-auto-showhide-rich-input-based-on-agent-status = 根据代理状态自动显示/隐藏富输入框
 # Auto-handoff before sleep
-settings-auto-handoff-before-sleep = Auto-handoff before sleep
+settings-auto-handoff-before-sleep = 休眠前自动移交
 # Auto-reload disabled.
-settings-auto-reload-disabled = Auto-reload disabled.
+settings-auto-reload-disabled = 自动重载已禁用。
 # Auto-reload is enabled
-settings-auto-reload-is-enabled = Auto-reload is enabled
+settings-auto-reload-is-enabled = 自动重载已启用
 # Auto-reload is paused because the next reload would exceed your monthly spend limit. Increase your limit to continue using auto-reload.
 settings-auto-reload-is-paused-because-the-next-reload-would-exceed-your-monthly-spend-limit-increase-your-limit-to-continue-using-auto-reload = Auto-reload is paused because the next reload would exceed your monthly spend limit. Increase your limit to continue using auto-reload.
 # Auto-spawn servers from third-party agents
@@ -1063,7 +1063,7 @@ settings-automatically-switch-between-light-and-dark-themes-when-your-system-doe
 # Available
 settings-available = Available
 # Available for download
-settings-available-for-download = Available for download
+settings-available-for-download = 可下载
 # Available indexed repos
 settings-available-indexed-repos = Available indexed repos
 # Background opacity
@@ -1071,7 +1071,7 @@ settings-background-opacity = 背景不透明度
 # Backpack
 settings-backpack = 双肩包
 # Balance
-settings-balance = Balance
+settings-balance = 余额
 # Base model
 settings-base-model = 基础模型
 # Baseball cap
@@ -3164,13 +3164,13 @@ settings-which-unit-the-usage-entry-displays-in-warp-agent-cli = Which unit the 
 settings-which-unit-the-usage-entry-displays-in-warp-agent-cli-cred = Which unit the usage entry displays in Warp Agent CLI: credits or dollars.
 settings-which-unit-the-gui-s-usage-spend-displays-show-credits-or = Which unit the GUI's usage/spend displays show: credits or dollars.
 settings-a-configurable-item-in-the-warp-agent-cli-statusline = A configurable item in the Warp Agent CLI statusline.
-settings-auto-approve-indicator = Auto-approve indicator
+settings-auto-approve-indicator = 自动批准指示器
 settings-vim-mode-indicator = Vim mode indicator
 settings-git-branch-status = Git branch status
 settings-git-diff-status = Git diff status
 settings-credit-usage = Credit usage
-settings-agent-to-do-list = Agent to-do list
-settings-always-collapse = Always collapse
+settings-agent-to-do-list = Agent 待办列表
+settings-always-collapse = 始终折叠
 settings-set-child-agent-message-display-show-collapse = Set child-agent message display: show & collapse
 settings-set-child-agent-message-display-always-show = Set child-agent message display: always show
 settings-set-child-agent-message-display-always-collapse = Set child-agent message display: always collapse
@@ -3188,7 +3188,7 @@ settings-set-long-running-command-submission-send-immediately = Set long-running
 settings-set-long-running-command-submission-queue-until-command-fi = Set long-running command submission: queue until command finishes
 settings-file-read-permission-level-for-the-agent = File read permission level for the agent.
 settings-preferred-spoken-language-for-voice-input-transcription = Preferred spoken language for voice input transcription.
-settings-ai-execution-profiles-and-their-permissions = AI execution profiles and their permissions.
+settings-ai-execution-profiles-and-their-permissions = AI 执行配置及其权限。
 settings-custom-inference-endpoint-definitions = Custom inference endpoint definitions.
 settings-controls-the-order-and-visibility-of-warp-agent-cli-status = Controls the order and visibility of Warp Agent CLI statusline items.
 settings-whether-warp-should-route-eligible-requests-through-your-w = Whether Warp should route eligible requests through your workspace's Gemini Enterprise Google Cloud project.
@@ -3300,7 +3300,7 @@ settings-cursor-blinking = Cursor Blinking
 settings-red-component = Red Component
 settings-green-component = Green Component
 settings-blue-component = Blue Component
-settings-alpha-component = Alpha Component
+settings-alpha-component = 试验性组件
 settings-hotkey-characters-ignoring-modifiers = HotKey Characters Ignoring Modifiers
 settings-hotkey-modifier-flags = HotKey Modifier Flags
 settings-hotkey-window-autohides = HotKey Window AutoHides
@@ -3415,7 +3415,7 @@ settings-completions-while-typing = completions while typing
 settings-warp-completions-407abb = warp completions
 settings-native-shell-completions-d3260e = native shell completions
 settings-syntax-highlighting = syntax highlighting
-settings-audible-terminal-bell = audible terminal bell
+settings-audible-terminal-bell = 终端响铃
 settings-autosuggestion-keybinding-hint = autosuggestion keybinding hint
 settings-autosuggestion-ignore-button = autosuggestion ignore button
 settings-reuse-existing-ssh-controlmaster-in-the-warp-ssh-wrapper = reuse existing SSH ControlMaster in the Warp SSH wrapper
@@ -3472,7 +3472,7 @@ settings-preserve-input-focus-block-selection-navigate-arrow-keys = preserve inp
 settings-autosuggestion-ignore-button-hide = autosuggestion ignore button hide
 settings-completions-autosuggestions-tab-keybinding-arrow-accept = completions autosuggestions tab keybinding arrow accept
 settings-ctrl-tab-behavior-pane-switch-session-recent = ctrl tab behavior pane switch session recent
-settings-audible-bell = audible bell
+settings-audible-bell = 声音提示
 settings-word-smart-select-semantic-separator = word smart select semantic separator
 settings-zero-state-new-conversation-terminal-block-welcome-output = zero state new conversation terminal block welcome output first
 settings-copy-on-select-a5604f = copy on select
