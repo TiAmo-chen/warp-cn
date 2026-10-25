@@ -301,7 +301,7 @@ impl DisableReason {
     /// Returns a user-facing tooltip explaining why the model is disabled.
     pub fn tooltip_text(&self) -> &'static str {
         match self {
-            DisableReason::AdminDisabled => crate::tr!("ai_assistant", "ai-model-disabled-admin"),
+            DisableReason::AdminDisabled => "This model has been disabled by your team admin.",
             DisableReason::OutOfRequests => crate::tr!("ai_assistant", "ai-model-out-of-requests"),
             DisableReason::ProviderOutage => {
                 "This model is temporarily unavailable due to a provider outage."

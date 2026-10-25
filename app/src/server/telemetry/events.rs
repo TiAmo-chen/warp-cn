@@ -5780,7 +5780,7 @@ impl TelemetryEventDesc for TelemetryEventDiscriminants {
             Self::AgentModeRewindDialogOpened { .. } => "Opened Rewind Confirmation Dialog",
             Self::AgentModeRewindExecuted { .. } => "Executed Conversation Rewind",
             Self::ReinputCommands => "Context Menu: Reinput Commands",
-            Self::ToggleSettingsSync => crate::tr!("settings", "toggle-settings-sync"),
+            Self::ToggleSettingsSync => "Toggle Settings Sync",
             Self::ToggleFocusPaneOnHover => "Toggle Focus Pane On Hover",
             Self::LoginLaterButtonClicked => "Login Later Button Clicked",
             Self::LoginLaterConfirmationButtonClicked => "Login Later Confirmation Button Clicked",
@@ -6363,7 +6363,7 @@ impl TelemetryEventDesc for TelemetryEventDiscriminants {
             Self::AISuggestedRuleContentChanged { .. } => {
                 "Content changed by the user in the suggested rule dialog"
             }
-            Self::ToggleSettingsSync => crate::tr!("settings", "toggle-settings-sync"),
+            Self::ToggleSettingsSync => "Toggle Settings Sync",
             Self::Login => "Login is successful",
             Self::LoginLaterButtonClicked => "Clicked \"Login later\" button",
             Self::LoginLaterConfirmationButtonClicked => {

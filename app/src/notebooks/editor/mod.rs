@@ -136,7 +136,7 @@ impl BlockType {
             BlockType::Text => "Text",
             BlockType::Header(size) => size.label(),
             BlockType::RunnableCommand => "Command",
-            BlockType::UnorderedList => crate::tr!("notebooks", "block-bulleted-list"),
+            BlockType::UnorderedList => "Bulleted list",
             BlockType::OrderedList => crate::tr!("notebooks", "block-numbered-list"),
             BlockType::Code => "Code",
             BlockType::TaskList => crate::tr!("notebooks", "block-to-do-list"),

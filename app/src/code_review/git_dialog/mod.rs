@@ -738,7 +738,7 @@ impl GitDialog {
 
     fn title(&self) -> &'static str {
         match &self.mode {
-            GitDialogMode::Commit(_) => crate::tr!("code_editor", "code-review-commit-your-changes"),
+            GitDialogMode::Commit(_) => "Commit your changes",
             GitDialogMode::Push(state) => {
                 if state.publish {
                     "Publish branch"

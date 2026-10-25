@@ -104,7 +104,7 @@ pub enum AIContextMenuCategory {
 impl AIContextMenuCategory {
     pub fn name(&self) -> &'static str {
         match self {
-            AIContextMenuCategory::CurrentFolderFiles => crate::tr!("search", "category-files"),
+            AIContextMenuCategory::CurrentFolderFiles => "Files and folders",
             AIContextMenuCategory::RepoFiles => crate::tr!("search", "category-files"),
             AIContextMenuCategory::Commands => "Commands",
             AIContextMenuCategory::Blocks => "Blocks",

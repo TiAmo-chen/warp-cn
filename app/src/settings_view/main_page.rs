@@ -145,7 +145,7 @@ impl From<&MainPageAction> for LoginGatedFeature {
     fn from(val: &MainPageAction) -> LoginGatedFeature {
         use MainPageAction::*;
         match val {
-            Upgrade { .. } => crate::tr!("settings", "upgrade-plan"),
+            Upgrade { .. } => "Upgrade Plan",
             GenerateStripeBillingPortalLink { .. } => crate::tr!("settings", "generate-stripe-billing-portal-link"),
             ToggleSettingsSync => crate::tr!("settings", "toggle-settings-sync"),
             _ => crate::tr!("settings", "unknown-reason"),

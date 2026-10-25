@@ -235,7 +235,7 @@ fn build_harness_snapshot(
                 match local_setup_state {
                     Some(LocalHarnessSetupState::MissingHarness { tooltip }) => tooltip,
                     Some(LocalHarnessSetupState::ProductDisabled { message }) => message,
-                    Some(LocalHarnessSetupState::Ready) | None => crate::tr!("agent_cloud", "disabled-by-admin"),
+                    Some(LocalHarnessSetupState::Ready) | None => &crate::tr!("agent_cloud", "disabled-by-admin"),
                 }
                 .to_string(),
             )

@@ -308,7 +308,7 @@ impl From<&TeamsPageAction> for LoginGatedFeature {
     fn from(val: &TeamsPageAction) -> LoginGatedFeature {
         use TeamsPageAction::*;
         match val {
-            LeaveTeam => crate::tr!("settings", "leave-team"),
+            LeaveTeam => "Leave Team",
             ShowDeleteTeamConfirmationDialog => crate::tr!("settings", "delete-team"),
             CreateTeam => crate::tr!("settings", "create-team"),
             DeletePendingEmailInvitation { .. } => crate::tr!("settings", "delete-pending-email-invitation"),
@@ -2732,7 +2732,7 @@ impl TeamsWidget {
             GrowTeamWarning::SeatCapReached => crate::tr!("settings", "your-team-is-full"),
             GrowTeamWarning::SeatCapExceeded => crate::tr!("settings", "youve-exceeded-your-member-limit"),
             GrowTeamWarning::PaymentPastDue => crate::tr!("settings", "payment-past-due"),
-            GrowTeamWarning::PaymentUnpaid => &crate::tr!("settings", "subscription-unpaid"),
+            GrowTeamWarning::PaymentUnpaid => "Subscription unpaid",
         };
         let title_element = self.render_subsection_header(title.to_owned(), appearance);
 
@@ -2744,7 +2744,7 @@ impl TeamsWidget {
         );
 
         let body_prefix = match warning {
-            GrowTeamWarning::SeatCapReached => crate::tr!("settings", "youve-reached-your-plans-member-limit"),
+            GrowTeamWarning::SeatCapReached => "You've reached your plan's member limit.",
             GrowTeamWarning::SeatCapExceeded => {
                 "You've exceeded your plan's member limit. Existing team members keep their access, but you won't be able to add new members."
             }
@@ -2773,7 +2773,7 @@ impl TeamsWidget {
                 GrowTeamWarningCta::UpdateBilling => {
                     "Update your payment information to restore access."
                 }
-                GrowTeamWarningCta::ContactSupport => crate::tr!("settings", "contact-support-to-restore-access"),
+                GrowTeamWarningCta::ContactSupport => "Contact support to restore access.",
                 GrowTeamWarningCta::None => {
                     if is_delinquency {
                         "Contact support to restore access."
@@ -3418,7 +3418,7 @@ impl TeamsWidget {
                     "Upgrade to Build"
                 } else {
                     match team.billing_metadata.customer_type {
-                        CustomerType::Prosumer => crate::tr!("settings", "upgrade-to-turbo-plan"),
+                        CustomerType::Prosumer => &crate::tr!("settings", "upgrade-to-turbo-plan"),
                         CustomerType::Turbo => crate::tr!("settings", "upgrade-lightspeed-plan"),
                         _ => crate::tr!("settings", "compare-plans"),
                     }

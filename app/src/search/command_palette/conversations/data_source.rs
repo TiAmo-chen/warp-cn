@@ -29,7 +29,7 @@ enum ConversationSection {
 impl ConversationSection {
     fn title(&self) -> &'static str {
         match self {
-            ConversationSection::ActivePane => crate::tr!("search", "section-active-pane"),
+            ConversationSection::ActivePane => "Active pane conversations",
             ConversationSection::OtherActive => crate::tr!("search", "section-other-active"),
             ConversationSection::Past => crate::tr!("search", "section-past"),
         }

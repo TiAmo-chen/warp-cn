@@ -1352,7 +1352,7 @@ impl AgentProfilesPageView {
                             AgentModeCodingPermissionsType::AlwaysAskBeforeReading => crate::tr!("ai_assistant", "ai-profile-always-ask"),
                             AgentModeCodingPermissionsType::AlwaysAllowReading => crate::tr!("ai_assistant", "ai-profile-always-allow"),
                             AgentModeCodingPermissionsType::AllowReadingSpecificFiles => {
-                                &crate::tr!("settings", "ai-allow-specific-dirs")
+                                "Allow in specific directories"
                             }
                         };
                         DropdownItem::new(display, AgentProfilesPageAction::SetCodingPermission(t))
@@ -1529,7 +1529,7 @@ impl From<&AgentProfilesPageAction> for LoginGatedFeature {
     fn from(val: &AgentProfilesPageAction) -> LoginGatedFeature {
         use AgentProfilesPageAction::*;
         match val {
-            AttemptLoginGatedUpgrade => crate::tr!("search", "upgrade-ai-usage"),
+            AttemptLoginGatedUpgrade => "Upgrade AI Usage",
             _ => crate::tr!("settings", "unknown-reason"),
         }
     }

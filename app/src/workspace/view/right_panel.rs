@@ -94,7 +94,7 @@ enum ReviewTerminalUnavailableReason {
 impl ReviewTerminalUnavailableReason {
     fn label(&self) -> &'static str {
         match self {
-            Self::NoSelectedRepo => crate::tr!("workspace", "no-repo-selected"),
+            Self::NoSelectedRepo => "no repo is selected for code review",
             Self::SessionPathUnavailable => crate::tr!("workspace", "session-cwd-unavailable"),
             Self::SessionOutsideSelectedRepo => crate::tr!("workspace", "session-outside-repo"),
             Self::AIDisabled => crate::tr!("workspace", "ai-disabled-review"),

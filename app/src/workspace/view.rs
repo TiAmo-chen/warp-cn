@@ -20863,7 +20863,7 @@ impl Workspace {
                         ToolPanelView::ProjectExplorer => crate::tr!("settings", "project-explorer"),
                         ToolPanelView::GlobalSearch { .. } => crate::tr!("settings", "global-search"),
                         ToolPanelView::WarpDrive => crate::tr!("drive", "warp-drive"),
-                        ToolPanelView::ConversationListView => crate::tr!("settings", "agent-conversations"),
+                        ToolPanelView::ConversationListView => "Agent conversations",
                     }
                 } else {
                     "Tools panel"
@@ -20920,7 +20920,7 @@ impl Workspace {
                 ToolPanelView::ConversationListView => crate::tr!("settings", "agent-conversations"),
             }
         } else {
-            &crate::tr!("settings", "tools-panel")
+            "Tools panel"
         };
 
         SavePosition::new(

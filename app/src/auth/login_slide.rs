@@ -798,7 +798,7 @@ impl LoginSlideView {
         let skip_label = match self.login_purpose() {
             LoginPurpose::WarpDrive => crate::tr!("auth", "disable-warp-drive"),
             LoginPurpose::WarpAgent => crate::tr!("auth", "skip-button"),
-            LoginPurpose::ThirdParty => crate::tr!("auth", "skip-button"),
+            LoginPurpose::ThirdParty => "Skip for now",
             LoginPurpose::AccountFirst => "Skip",
         };
         let skip_keystroke = if matches!(self.login_purpose(), LoginPurpose::AccountFirst) {

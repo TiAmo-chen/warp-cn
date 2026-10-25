@@ -425,7 +425,7 @@ impl From<&DriveIndexAction> for LoginGatedFeature {
     fn from(val: &DriveIndexAction) -> LoginGatedFeature {
         use DriveIndexAction::*;
         match val {
-            OpenTeamSettingsPage => crate::tr!("drive", "open-team-settings"),
+            OpenTeamSettingsPage => "Open Team Settings",
             ViewPlans { .. } => crate::tr!("billing", "view-plans"),
             ManageBilling { .. } => "Manage Billing",
             _ => crate::tr!("settings", "unknown-reason"),
@@ -4187,7 +4187,7 @@ impl DriveIndex {
         let name = match object_type {
             DriveObjectType::Notebook { .. } => "Notebooks",
             DriveObjectType::Workflow => "Workflows",
-            DriveObjectType::EnvVarCollection => crate::tr!("drive", "env-vars-type"),
+            DriveObjectType::EnvVarCollection => &crate::tr!("drive", "env-vars-type"),
             DriveObjectType::Folder => "Folders",
             DriveObjectType::AgentModeWorkflow => crate::tr!("drive", "agent-workflows-type"),
             DriveObjectType::AIFact => crate::tr!("drive", "ai-fact-type"),

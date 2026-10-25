@@ -68,7 +68,7 @@ impl ZeroStatePromptSuggestionType {
 
     pub fn query(&self) -> &'static str {
         match self {
-            Self::Explain => crate::tr!("terminal", "suggestion-explain"),
+            Self::Explain => "Explain this to me.",
             Self::Fix => crate::tr!("terminal", "suggestion-fix"),
             Self::Install => {
                 "Help me install a binary/dependency. What information do I need to provide to you to do this?"

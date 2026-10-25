@@ -3701,7 +3701,7 @@ impl TypedPane<'_> {
         match self {
             TypedPane::Terminal(_) => "Terminal",
             TypedPane::Code(_) => "Code",
-            TypedPane::CodeDiff => crate::tr!("code_editor", "code-diff-title"),
+            TypedPane::CodeDiff => "Code Diff",
             TypedPane::File => "File",
             TypedPane::Notebook { .. } => "Notebook",
             TypedPane::Workflow { .. } => "Workflow",

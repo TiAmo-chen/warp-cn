@@ -72,7 +72,7 @@ impl std::fmt::Display for AppIcon {
         let value = match &self {
             AppIcon::Default => "Default",
             AppIcon::Aurora => "Aurora",
-            AppIcon::Classic1 => crate::tr!("settings", "appearance-input-classic-1"),
+            AppIcon::Classic1 => &crate::tr!("settings", "appearance-input-classic-1"),
             AppIcon::Classic2 => crate::tr!("settings", "appearance-input-classic-2"),
             AppIcon::Classic3 => crate::tr!("settings", "appearance-input-classic-3"),
             AppIcon::Comets => "Comets",

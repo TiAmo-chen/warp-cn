@@ -3705,7 +3705,7 @@ impl FeaturesPageView {
 
     fn new_tab_placement_dropdown_item_label(val: NewTabPlacement) -> &'static str {
         match val {
-            NewTabPlacement::AfterAllTabs => crate::tr!("settings", "after-all-tabs"),
+            NewTabPlacement::AfterAllTabs => "After all tabs",
             NewTabPlacement::AfterCurrentTab => crate::tr!("settings", "after-current-tab"),
         }
     }

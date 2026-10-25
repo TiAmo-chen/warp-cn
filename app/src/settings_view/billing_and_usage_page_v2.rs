@@ -157,7 +157,7 @@ struct AddonCreditsState {
 
 fn buy_header(unit: UsageDisplayUnit) -> &'static str {
     match unit {
-        UsageDisplayUnit::Credits => crate::tr!("settings", "buy-credits"),
+        UsageDisplayUnit::Credits => "Buy credits",
         UsageDisplayUnit::Dollars => crate::tr!("settings", "buy-usage"),
     }
 }
@@ -524,7 +524,7 @@ impl BillingAndUsagePageV2View {
                 self.addon_credits.purchase_loading = false;
                 let message = match usage_display_unit(ctx) {
                     UsageDisplayUnit::Credits => crate::tr!("settings", "successfully-purchased-add-on-credits"),
-                    UsageDisplayUnit::Dollars => crate::tr!("settings", "successfully-purchased-usage"),
+                    UsageDisplayUnit::Dollars => &crate::tr!("settings", "successfully-purchased-usage"),
                 };
                 self.show_toast(message, ToastFlavor::Success, ctx);
                 AIRequestUsageModel::handle(ctx)

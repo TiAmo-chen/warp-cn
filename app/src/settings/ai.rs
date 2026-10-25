@@ -528,7 +528,7 @@ impl DefaultSessionMode {
         match self {
             DefaultSessionMode::Terminal => "Terminal",
             DefaultSessionMode::Agent => "Agent",
-            DefaultSessionMode::CloudAgent => crate::tr!("ai_assistant", "ai-cloud-agent"),
+            DefaultSessionMode::CloudAgent => "Cloud agent",
             DefaultSessionMode::TabConfig => crate::tr!("settings", "default-session-tab-config"),
             DefaultSessionMode::DockerSandbox => crate::tr!("settings", "default-session-docker-sandbox"),
         }
@@ -577,7 +577,7 @@ impl ThinkingDisplayMode {
     /// Display name for the settings dropdown.
     pub fn display_name(&self) -> &'static str {
         match self {
-            ThinkingDisplayMode::ShowAndCollapse => crate::tr!("settings", "thinking-show-and-collapse"),
+            ThinkingDisplayMode::ShowAndCollapse => "Show & collapse",
             ThinkingDisplayMode::AlwaysShow => crate::tr!("settings", "thinking-always-show"),
             ThinkingDisplayMode::NeverShow => crate::tr!("settings", "thinking-never-show"),
         }
@@ -585,7 +585,7 @@ impl ThinkingDisplayMode {
 
     pub fn command_palette_description(&self) -> &'static str {
         match self {
-            ThinkingDisplayMode::ShowAndCollapse => crate::tr!("settings", "thinking-cmd-show-and-collapse"),
+            ThinkingDisplayMode::ShowAndCollapse => "Set agent thinking display: show & collapse",
             ThinkingDisplayMode::AlwaysShow => crate::tr!("settings", "thinking-cmd-always-show"),
             ThinkingDisplayMode::NeverShow => crate::tr!("settings", "thinking-cmd-never-show"),
         }
@@ -783,7 +783,7 @@ impl TuiStatuslineItem {
             Self::VimModeIndicator => "Vim mode indicator",
             Self::Model => "Model",
             Self::Team => "Team",
-            Self::WorkingDirectory => crate::tr!("settings", "working-directory-label"),
+            Self::WorkingDirectory => "Working directory",
             Self::GitBranch => "Git branch",
             Self::GitBranchStatus => "Git branch status",
             Self::GitDiffStatus => "Git diff status",
@@ -874,7 +874,7 @@ impl OrchestrationMessageDisplayMode {
     /// Display name for the settings dropdown.
     pub fn display_name(&self) -> &'static str {
         match self {
-            OrchestrationMessageDisplayMode::ShowAndCollapse => crate::tr!("settings", "thinking-show-and-collapse"),
+            OrchestrationMessageDisplayMode::ShowAndCollapse => "Show & collapse",
             OrchestrationMessageDisplayMode::AlwaysShow => crate::tr!("settings", "thinking-always-show"),
             OrchestrationMessageDisplayMode::AlwaysCollapse => "Always collapse",
         }

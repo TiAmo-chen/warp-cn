@@ -58,7 +58,7 @@ impl Slide for OzLaunchSlide {
 
     fn display_text(&self) -> Option<&'static str> {
         Some(match self {
-            OzLaunchSlide::CloudAgents => crate::tr!("workspace", "cloud-agents"),
+            OzLaunchSlide::CloudAgents => &crate::tr!("workspace", "cloud-agents"),
             OzLaunchSlide::AgentAutomations => crate::tr!("workspace", "agent-automations"),
             OzLaunchSlide::AgentManagement => crate::tr!("workspace", "agent-management"),
             OzLaunchSlide::LaunchCredits => crate::tr!("workspace", "a-little-gift"),
@@ -67,7 +67,7 @@ impl Slide for OzLaunchSlide {
 
     fn short_label(&self) -> &'static str {
         match self {
-            OzLaunchSlide::CloudAgents => crate::tr!("workspace", "cloud-agents"),
+            OzLaunchSlide::CloudAgents => "Cloud agents",
             OzLaunchSlide::AgentAutomations => crate::tr!("workspace", "agent-automations"),
             OzLaunchSlide::AgentManagement => crate::tr!("workspace", "agent-management"),
             OzLaunchSlide::LaunchCredits => crate::tr!("workspace", "launch-credits"),
@@ -76,7 +76,7 @@ impl Slide for OzLaunchSlide {
 
     fn title(&self) -> &'static str {
         match self {
-            OzLaunchSlide::CloudAgents => crate::tr!("workspace", "break-out-of-your-laptop"),
+            OzLaunchSlide::CloudAgents => "Break out of your laptop with cloud agents",
             OzLaunchSlide::AgentAutomations => {
                 "Orchestrate agents, turning Skills into automations"
             }
