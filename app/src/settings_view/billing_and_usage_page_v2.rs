@@ -67,18 +67,18 @@ use crate::workspaces::workspace::{CustomerType, Workspace, WorkspaceUid};
 use crate::{WorkspaceAction, send_telemetry_from_ctx};
 
 const ADDITIONAL_ADDON_CREDITS_DESCRIPTION_FOR_TEAM: &str =
-    crate::tr!("settings", "purchased-add-on-credits-are-added-to-your-teams-shared-credit-pool");
+    "Purchased add-on credits are added to your team's shared credit pool.";
 const ADDON_USAGE_DESCRIPTION: &str = "Usage rolls over each billing cycle and expires after one year. Once your base plan usage is depleted, any additional purchased usage will be consumed.";
 const ADDITIONAL_ADDON_USAGE_DESCRIPTION_FOR_TEAM: &str =
-    crate::tr!("settings", "purchased-usage-is-added-to-your-teams-shared-pool");
+    "Purchased usage is added to your team's shared pool.";
 const MANAGED_AUTO_RELOAD_HEADER: &str = "Auto-reload is enabled";
 
 const ADDON_CREDITS_DELINQUENT_WARNING_STRING: &str =
-    crate::tr!("settings", "restricted-due-to-billing-issue-update-your-payment-method-to-purchase-add-on-credits");
+    "Restricted due to billing issue. Update your payment method to purchase add-on credits.";
 const ADDON_USAGE_DELINQUENT_WARNING_STRING: &str =
-    crate::tr!("settings", "restricted-due-to-billing-issue-update-your-payment-method-to-purchase-usage");
+    "Restricted due to billing issue. Update your payment method to purchase usage.";
 const ADDON_CREDITS_NON_ADMIN_DELINQUENT_WARNING_STRING: &str =
-    crate::tr!("settings", "restricted-due-to-billing-issue-contact-your-team-admin-to-update-their-payment-method");
+    "Restricted due to billing issue. Contact your team admin to update their payment method.";
 const RESTRICTED_BILLING_USAGE_WARNING_STRING: &str = "Auto reload is disabled due to recent failed reload. Please update your payment method and try again.";
 const RESTRICTED_BILLING_USAGE_NON_ADMIN_WARNING_STRING: &str = "Auto reload is disabled due to recent failed reload. Contact your team admin to update their payment method.";
 

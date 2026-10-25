@@ -310,7 +310,7 @@ static NATIVE_INSTALL_INSTRUCTIONS: LazyLock<PluginInstructions> = LazyLock::new
                 link: None,
             },
         ],
-        post_install_notes: &[crate::tr!("terminal", "plugin-restart-codex")],
+        post_install_notes: &["Restart Codex to apply the changes."],
     }
 });
 

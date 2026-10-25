@@ -48,7 +48,7 @@ static INSTALL_INSTRUCTIONS: LazyLock<PluginInstructions> = LazyLock::new(|| Plu
             link: None,
         },
     ],
-    post_install_notes: &[crate::tr!("terminal", "plugin-opencode-restart-activate")],
+    post_install_notes: &["Restart OpenCode to activate the plugin."],
 });
 
 static UPDATE_INSTRUCTIONS: LazyLock<PluginInstructions> = LazyLock::new(|| PluginInstructions {
@@ -68,7 +68,7 @@ static UPDATE_INSTRUCTIONS: LazyLock<PluginInstructions> = LazyLock::new(|| Plug
             link: None,
         },
     ],
-    post_install_notes: &[crate::tr!("terminal", "plugin-opencode-restart-update")],
+    post_install_notes: &["Restart OpenCode to load the updated plugin."],
 });
 
 #[cfg(test)]

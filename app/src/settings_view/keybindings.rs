@@ -665,7 +665,7 @@ impl KeybindingsView {
                     ctx.notify();
                 }
                 None => {
-                    report_error!(crate::tr!("settings", "modifying-row-should-exist"));
+                    report_error!("Modifying row should exist");
                 }
             }
         }
@@ -697,7 +697,7 @@ impl KeybindingsView {
                     ctx.notify();
                 }
                 None => {
-                    report_error!(crate::tr!("settings", "modifying-row-should-exist"));
+                    report_error!("Modifying row should exist");
                 }
             }
         }
@@ -715,7 +715,7 @@ impl KeybindingsView {
                     keybinding_state.unsaved_binding = Some(key.clone());
                 }
                 None => {
-                    report_error!(crate::tr!("settings", "modifying-row-does-not-exist-when-it-should"));
+                    report_error!("Modifying row does not exist when it should");
                 }
             }
 

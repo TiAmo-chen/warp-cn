@@ -79,7 +79,7 @@ const NEW_BUTTON_HORIZONTAL_PADDING: f32 = 10.;
 const NEW_COPY_BUTTON_WIDTH: f32 = 80.;
 
 const COMMAND_AND_OUTPUT_OPTION: (&str, DisplaySetting) =
-    (crate::tr!("terminal", "command-and-output"), DisplaySetting::CommandAndOutput);
+    ("Command and Output", DisplaySetting::CommandAndOutput);
 const COMMAND_OPTION: (&str, DisplaySetting) = ("Command", DisplaySetting::Command);
 const OUTPUT_OPTION: (&str, DisplaySetting) = ("Output", DisplaySetting::Output);
 

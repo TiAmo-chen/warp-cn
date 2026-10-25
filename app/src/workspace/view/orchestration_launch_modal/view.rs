@@ -66,21 +66,21 @@ struct FeatureItem {
 const FEATURE_ITEMS: &[FeatureItem] = &[
     FeatureItem {
         icon: Icon::Cloud,
-        title: crate::tr!("workspace", "run-any-agent-harness"),
+        title: "Run any agent harness in the cloud",
         description: "Use Oz to spin up Claude Code or Codex agents in the cloud; Oz will help you track and steer the agents.",
         badge: None,
     },
     FeatureItem {
         icon: Icon::Atom,
-        title: crate::tr!("workspace", "multi-agent-orchestration"),
+        title: "Multi-agent orchestration",
         description: "Warp Agents will now orchestrate swarms of subagents, allowing you to parallelize tasks.",
         badge: None,
     },
     FeatureItem {
         icon: Icon::Cognition,
-        title: crate::tr!("workspace", "agent-memory"),
+        title: "Agent Memory",
         description: "Agents will now store and access long-term memories, enabling self-improvement over time.",
-        badge: Some(crate::tr!("workspace", "research-preview")),
+        badge: Some("Research preview"),
     },
 ];
 

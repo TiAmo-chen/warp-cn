@@ -131,7 +131,7 @@ static INSTALL_INSTRUCTIONS: LazyLock<PluginInstructions> = LazyLock::new(|| Plu
         executable: true,
         link: None,
     }],
-    post_install_notes: &[crate::tr!("terminal", "plugin-restart-gemini-plugin")],
+    post_install_notes: &["Restart Gemini CLI to activate the plugin."],
 });
 
 static UPDATE_INSTRUCTIONS: LazyLock<PluginInstructions> = LazyLock::new(|| PluginInstructions {
@@ -143,7 +143,7 @@ static UPDATE_INSTRUCTIONS: LazyLock<PluginInstructions> = LazyLock::new(|| Plug
         executable: true,
         link: None,
     }],
-    post_install_notes: &[crate::tr!("terminal", "plugin-restart-gemini-update-note")],
+    post_install_notes: &["Restart Gemini CLI to activate the update."],
 });
 
 fn check_installed(extensions_dir: &Path) -> bool {

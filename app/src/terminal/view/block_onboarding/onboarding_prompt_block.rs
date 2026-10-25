@@ -64,7 +64,7 @@ impl OnboardingPromptBlock {
         // Copy - https://docs.google.com/document/d/1zttBLI5Mw07kUupvrMQoC5aTwTXSHIUOIFFnxZ8GQEU/edit
         const LINE_ONE: &str = "Next, let’s set up your prompt. Warp has a custom prompt builder or you can select PS1 to honor your pre-existing prompt configuration.";
         const LINE_TWO: &str =
-            crate::tr!("onboarding", "prompt-setup-text-2");
+            "Warp works with many custom prompts like oh-my-zsh, Starship, Powerlevel10K.";
         const LINK_TEXT: &str = "Learn more";
         const LINK_DESTINATION: &str =
             "https://docs.warp.dev/terminal/appearance/prompt#custom-prompt-compatibility-table";

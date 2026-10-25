@@ -122,11 +122,11 @@ const NEXT_COMMAND_DESCRIPTION: &str = "Let AI suggest the next command to run b
 const PROMPT_SUGGESTIONS_DESCRIPTION: &str = "Let AI suggest natural language prompts, as inline banners in the input, based on recent commands and their outputs.";
 const SUGGESTED_CODE_BANNERS_DESCRIPTION: &str = "Let AI suggest code diffs and queries as inline banners in the blocklist, based on recent commands and their outputs.";
 const NATURAL_LANGUAGE_AUTOSUGGESTIONS: &str =
-    crate::tr!("settings", "ai-nl-autosuggestions-description");
+    "Let AI suggest natural language autosuggestions, based on recent commands and their outputs.";
 const SHARED_BLOCK_TITLE_GENERATION_DESCRIPTION: &str =
-    crate::tr!("settings", "ai-shared-block-title-description");
+    "Let AI generate a title for your shared block based on the command and output.";
 const GIT_OPERATIONS_AUTOGEN_DESCRIPTION: &str =
-    crate::tr!("settings", "ai-git-operations-description");
+    "Let AI generate commit messages and pull request titles and descriptions.";
 const WISPR_FLOW_URL: &str = "https://wisprflow.ai/";
 const CUSTOM_INFERENCE_LEARN_MORE_URL: &str =
     "https://docs.warp.dev/agents/inference/custom-inference-endpoint/";
@@ -1958,7 +1958,7 @@ impl WarpAgentPageView {
                         editor.clear_buffer(ctx);
                     });
                     safe_error!(
-                        safe: (crate::tr!("settings", "grok-oauth-loopback-callback-failed")),
+                        safe: ("Grok OAuth loopback callback failed"),
                         full: ("Grok OAuth loopback callback failed: {err:#}")
                     );
                     send_telemetry_from_ctx!(
@@ -2283,7 +2283,7 @@ impl WarpAgentPageView {
                     Err(err) => {
                         // Keep the row open so the user can correct the code.
                         safe_error!(
-                            safe: (crate::tr!("settings", "grok-manual-code-exchange-failed")),
+                            safe: ("Grok manual code exchange failed"),
                             full: ("Grok manual code exchange failed: {err:#}")
                         );
                         send_telemetry_from_ctx!(

@@ -227,7 +227,7 @@ static INSTALL_INSTRUCTIONS: LazyLock<PluginInstructions> = LazyLock::new(|| Plu
         },
     ],
     post_install_notes: &[
-        crate::tr!("terminal", "plugin-restart-activate"),
+        "Restart Claude Code to activate the plugin.",
         "There are some known issues with Claude Code's plugin system. \
              If the plugin is not found after step 1, you can try manually adding an \"extraKnownMarketplaces\" entry to ~/.claude/settings.json.",
     ],
@@ -256,7 +256,7 @@ static UPDATE_INSTRUCTIONS: LazyLock<PluginInstructions> = LazyLock::new(|| Plug
             link: None,
         },
     ],
-    post_install_notes: &[crate::tr!("terminal", "plugin-restart-update")],
+    post_install_notes: &["Restart Claude Code to activate the update."],
 });
 
 fn check_installed(claude_dir: &Path) -> bool {
