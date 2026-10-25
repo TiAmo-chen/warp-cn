@@ -4192,7 +4192,7 @@ impl DriveIndex {
             DriveObjectType::AgentModeWorkflow => &crate::tr!("drive", "agent-workflows-type"),
             DriveObjectType::AIFact => &crate::tr!("drive", "ai-fact-type"),
             DriveObjectType::AIFactCollection => "Rules",
-            DriveObjectType::MCPServer => crate::tr!("drive", "mcp-server-type"),
+            DriveObjectType::MCPServer => &crate::tr!("drive", "mcp-server-type"),
             DriveObjectType::MCPServerCollection => crate::tr!("drive", "mcp-servers-type"),
         };
         let name_styles = UiComponentStyles {

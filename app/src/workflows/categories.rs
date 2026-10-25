@@ -150,9 +150,9 @@ impl WorkflowViewType {
     fn as_str<'a>(&self, category_names: &'a [String]) -> &'a str {
         match self {
             WorkflowViewType::All => "All",
-            WorkflowViewType::LocalPersonal => &crate::tr!("workflows", "category-my-workflows"),
-            WorkflowViewType::Project => &crate::tr!("workflows", "category-repository-workflows"),
-            WorkflowViewType::Team => &crate::tr!("workflows", "category-team-workflows"),
+            WorkflowViewType::LocalPersonal => &"My Workflows",
+            WorkflowViewType::Project => &"Repository Workflows",
+            WorkflowViewType::Team => &"Team Workflows",
             WorkflowViewType::Category { category_index, .. } => &category_names[*category_index],
         }
     }

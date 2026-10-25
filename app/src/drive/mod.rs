@@ -218,7 +218,7 @@ impl DriveSortOrder {
             (DriveSortOrder::ByTimestamp, DriveIndexVariant::MainIndex) => &crate::tr!("drive", "sort-last-updated"),
             (DriveSortOrder::ByTimestamp, DriveIndexVariant::Trash) => &crate::tr!("drive", "sort-last-trashed"),
             (DriveSortOrder::AlphabeticalDescending, _) => &crate::tr!("drive", "sort-a-to-z"),
-            (DriveSortOrder::AlphabeticalAscending, _) => crate::tr!("drive", "sort-z-to-a"),
+            (DriveSortOrder::AlphabeticalAscending, _) => &crate::tr!("drive", "sort-z-to-a"),
             (DriveSortOrder::ByObjectType, _) => "Type",
         }
     }

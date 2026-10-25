@@ -67,9 +67,9 @@ impl GeneratedCommandMetadataError {
             Self::BadCommand => {
                 "Failed to generate metadata. Please try again with a different command."
             }
-            Self::AiProviderError => &crate::tr!("ai_assistant", "ai-chat-error-label"),
-            Self::RateLimited => &crate::tr!("drive", "workflow-rate-limited"),
-            Self::Other => &crate::tr!("ai_assistant", "ai-chat-error-label"),
+            Self::AiProviderError => &"Something went wrong. Please try again.",
+            Self::RateLimited => &"Looks like you're out of AI credits. Please try again later.",
+            Self::Other => &"Something went wrong. Please try again.",
         }
         .to_string()
     }

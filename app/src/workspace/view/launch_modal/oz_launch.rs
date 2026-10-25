@@ -61,7 +61,7 @@ impl Slide for OzLaunchSlide {
             OzLaunchSlide::CloudAgents => &crate::tr!("workspace", "cloud-agents"),
             OzLaunchSlide::AgentAutomations => &crate::tr!("workspace", "agent-automations"),
             OzLaunchSlide::AgentManagement => &crate::tr!("workspace", "agent-management"),
-            OzLaunchSlide::LaunchCredits => crate::tr!("workspace", "a-little-gift"),
+            OzLaunchSlide::LaunchCredits => &crate::tr!("workspace", "a-little-gift"),
         })
     }
 

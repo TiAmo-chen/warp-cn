@@ -116,7 +116,7 @@ impl std::fmt::Display for ThemeKind {
             ThemeKind::SolarizedDark => &crate::tr!("appearance", "theme-solarized-dark"),
             ThemeKind::SolarizedLight => &crate::tr!("appearance", "theme-solarized-light"),
             ThemeKind::GruvboxDark => &crate::tr!("appearance", "theme-gruvbox-dark"),
-            ThemeKind::GruvboxLight => crate::tr!("appearance", "theme-gruvbox-light"),
+            ThemeKind::GruvboxLight => &crate::tr!("appearance", "theme-gruvbox-light"),
             ThemeKind::JellyFish => "Jellyfish",
             ThemeKind::Koi => "Koi",
             ThemeKind::Leafy => "Leafy",
