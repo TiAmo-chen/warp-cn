@@ -8,7 +8,7 @@
 
 ai-assistant-ai-agent-mode-terminal = 终端
 ai-assistant-ai-agent-mode-agent = 代理
-ai-assistant-ai-agent-mode-cloud-agent = Cloud Oz
+ai-assistant-ai-agent-mode-cloud-agent = 云端 Oz
 
 ## -- 聊天/对话 ------------------------------------------------------
 

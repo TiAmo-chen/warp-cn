@@ -41,7 +41,7 @@ agent-cloud-agent-working-on-task = Agent 正在处理任务
 agent-cloud-agent-failed-status = Agent 失败
 agent-cloud-authentication-required = 需要身份验证
 agent-cloud-cancelled = 已取消
-agent-cloud-agent-fallback-name = Agent
+agent-cloud-agent-fallback-name = 代理
 agent-cloud-running-agent = 正在运行 { $cli_name }...
 
 ## -- 已迁移 UI 字符串的主键 --
