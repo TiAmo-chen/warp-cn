@@ -463,7 +463,7 @@ impl RightPanelView {
         {
             Some(handle) => handle,
             None => {
-                report_error!(crate::tr!("workspace", "couldn-t-retrieve-right-panel-resizable-state-handle"));
+                report_error!("Couldn't retrieve Right panel resizable state handle.");
                 resizable_state_handle(600.0)
             }
         };

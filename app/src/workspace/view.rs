@@ -737,7 +737,7 @@ const MAX_WINDOW_TITLE_LENGTH: usize = 80;
 
 #[cfg(all(feature = "local_fs", not(target_family = "wasm")))]
 const AUTO_CLOUD_HANDOFF_PROMPT: &str =
-    crate::tr!("workspace", "continue-this-local-warp-agent-task-in-the-cloud-from-the");
+    "Continue this local Warp Agent task in the cloud from the current conversation state.";
 
 /// The default display name used for the user if they have no associated display name.
 pub const DEFAULT_USER_DISPLAY_NAME: &str = "User";
@@ -8458,7 +8458,7 @@ impl Workspace {
 
     fn trigger_agent_onboarding(&self, ctx: &mut ViewContext<Self>) {
         report_error!(
-            crate::tr!("workspace", "triggering-agent-onboarding-callout-flow-but-not-during-in")
+            "Triggering agent onboarding callout flow but not during initial login. This should not normally happen."
         );
         let version = if FeatureFlag::AgentView.is_enabled() {
             AgentOnboardingVersion::AgentModality {
@@ -10934,7 +10934,7 @@ impl Workspace {
         };
 
         match label.as_str() {
-            crate::tr!("workspace", "new-worktree-config") => {
+            "New worktree config" => {
                 self.tab_config_action_sidecar_item = None;
                 let auto_select_first_repo = self.new_session_dropdown_menu.read(ctx, |menu, _| {
                     menu.last_selection_source() != Some(MenuSelectionSource::Pointer)
@@ -10946,7 +10946,7 @@ impl Workspace {
                 );
             }
             // Items that don't get any sidecar.
-            crate::tr!("workspace", "new-tab-config") => {
+            "New tab config" => {
                 self.tab_config_action_sidecar_item = None;
                 if self.show_new_session_sidecar {
                     self.show_new_session_sidecar = false;
@@ -17694,7 +17694,7 @@ impl Workspace {
             ctx.notify();
             ctx.focus(&self.command_search_view);
         } else {
-            report_error!(crate::tr!("workspace", "command-search-keybinding-triggered-but-no-session-is-acti"));
+            report_error!("Command search keybinding triggered but no session is active!");
         }
     }
 
@@ -18706,7 +18706,7 @@ impl Workspace {
                         OperationSuccessType::FeatureNotAvailable => {
                             if cloned_workflow.is_some() {
                                 report_error!(
-                                    crate::tr!("workspace", "getting-feature-not-available-message-for-workflows")
+                                    "Getting feature not available message for workflows"
                                 );
                             }
                         }
@@ -18744,7 +18744,7 @@ impl Workspace {
                         }
                         OperationSuccessType::FeatureNotAvailable => {
                             report_error!(
-                                crate::tr!("workspace", "should-not-get-deletion-confirmation-message-when-feature"),
+                                "Should not get deletion confirmation message when feature is not available",
                                 extra: { "operation" => ?result.operation }
                             );
                         }
@@ -19655,7 +19655,7 @@ impl Workspace {
                     .as_ref(ctx)
                     .active_session_view(ctx)
                 else {
-                    report_error!(crate::tr!("workspace", "no-active-terminal-view-after-adding-tab-for-codex-session"));
+                    report_error!("No active terminal view after adding tab for Codex session");
                     return;
                 };
 
@@ -19667,7 +19667,7 @@ impl Workspace {
                     .get_preferred_codex_model(&scope, ctx)
                     .map(|info| info.id.clone())
                 else {
-                    report_error!(crate::tr!("workspace", "no-preferred-codex-model-found"));
+                    report_error!("No preferred codex model found");
                     return;
                 };
 
@@ -19805,7 +19805,7 @@ impl Workspace {
             .as_ref(ctx)
             .active_session_view(ctx)
         else {
-            report_error!(crate::tr!("workspace", "no-active-terminal-view-after-adding-tab-for-linear-issue"));
+            report_error!("No active terminal view after adding tab for Linear issue work");
             return;
         };
 

@@ -657,15 +657,15 @@ impl MCPServersListPageView {
                     self.share_templatable_mcp_server_installation(*installation_uuid, ctx);
                 }
                 ServerCardItemId::GalleryMCP(_) => {
-                    report_error!(crate::tr!("settings", "share-is-not-implemented-for-gallery-mcp-items"))
+                    report_error!("Share is not implemented for gallery MCP items.")
                 }
                 ServerCardItemId::FileBasedMCP(_) => {
-                    report_error!(crate::tr!("settings", "share-is-not-implemented-for-file-based-mcp-servers"))
+                    report_error!("Share is not implemented for file-based MCP servers.")
                 }
             },
             ServerCardEvent::ViewLogs(item_id) => match item_id {
                 ServerCardItemId::TemplatableMCP(_) => {
-                    report_error!(crate::tr!("settings", "viewing-logs-is-not-implemented-for-templatable-mcp"));
+                    report_error!("Viewing logs is not implemented for templatable MCP.");
                 }
                 ServerCardItemId::TemplatableMCPInstallation(installation_uuid) => {
                     if let Some(template_uuid) = TemplatableMCPServerManager::as_ref(ctx)
@@ -694,12 +694,12 @@ impl MCPServersListPageView {
                     }
                 }
                 ServerCardItemId::GalleryMCP(_) => {
-                    report_error!(crate::tr!("settings", "viewing-logs-is-not-implemented-for-gallery-mcp-items"))
+                    report_error!("Viewing logs is not implemented for gallery MCP items.")
                 }
             },
             ServerCardEvent::ToggleRunningSwitch(item_id, switch_state) => match item_id {
                 ServerCardItemId::TemplatableMCP(_) => {
-                    report_error!(crate::tr!("settings", "running-a-server-is-not-implemented-for-templatable-mcp"));
+                    report_error!("Running a server is not implemented for templatable MCP.");
                 }
                 ServerCardItemId::TemplatableMCPInstallation(uuid) => {
                     self.toggle_server_running_templatable(*uuid, *switch_state, ctx);
@@ -708,7 +708,7 @@ impl MCPServersListPageView {
                     self.toggle_server_running_file_based(*uuid, *switch_state, ctx);
                 }
                 ServerCardItemId::GalleryMCP(_) => {
-                    report_error!(crate::tr!("settings", "running-a-server-is-not-implemented-for-gallery-mcp-items"))
+                    report_error!("Running a server is not implemented for gallery MCP items.")
                 }
             },
             ServerCardEvent::Install(item_id) => match item_id {
@@ -749,7 +749,7 @@ impl MCPServersListPageView {
                 let ServerCardItemId::TemplatableMCPInstallation(installation_uuid) = item_id
                 else {
                     report_error!(
-                        crate::tr!("settings", "install-server-update-is-only-supported-for-templatable-mc")
+                        "Install server update is only supported for templatable MCP installations"
                     );
                     return;
                 };

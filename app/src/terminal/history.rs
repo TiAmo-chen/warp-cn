@@ -576,7 +576,7 @@ impl History {
             Some(ReadHistoryFileState::Done) => {
                 let Some(history_file_commands) = self.history_file_commands.get(&host) else {
                     report_error!(
-                        crate::tr!("terminal", "history-file-commands-should-exist-if-history-file-has-bee")
+                        "History file commands should exist if history file has been read."
                     );
                     return;
                 };

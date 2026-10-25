@@ -1240,7 +1240,7 @@ impl Input {
             SlashCommandKind::CompactAnd => {
                 let conversation_id = if is_queued_prompt {
                     let Some(conversation_id) = queued_conversation_id else {
-                        report_error!(crate::tr!("terminal", "queued-compact-and-missing-conversation-id"));
+                        report_error!("Queued /compact-and missing conversation id");
                         return true;
                     };
                     conversation_id
@@ -1261,7 +1261,7 @@ impl Input {
 
                 if is_queued_prompt {
                     let Some(queued_query_id) = queued_query_id else {
-                        report_error!(crate::tr!("terminal", "queued-compact-and-missing-queued-query-id"));
+                        report_error!("Queued /compact-and missing queued query id");
                         return true;
                     };
                     self.execute_queued_compact_and(

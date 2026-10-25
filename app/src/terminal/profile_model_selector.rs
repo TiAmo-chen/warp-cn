@@ -96,7 +96,7 @@ const PROFILE_SELECTOR_POSITION_ID: &str = "profile_selector";
 const PROFILE_PICKER_TOOLTIP: &str = "Choose an AI execution profile";
 const MODEL_PICKER_TOOLTIP: &str = "Choose an agent model";
 const MODEL_USES_CHATGPT_SUBSCRIPTION_TOOLTIP: &str =
-    crate::tr!("terminal", "requests-for-this-model-use-your-chatgpt-plan");
+    "Requests for this model use your ChatGPT plan";
 const MODEL_LOCKED_FOR_FOLLOWUP_TOOLTIP: &str = "Follow-ups use the original run's model";
 const MODEL_REQUIRES_EDIT_ACCESS_TOOLTIP: &str = "Request edit access to change model";
 const HARNESS_DEFAULT_MODEL_LABEL: &str = "default";

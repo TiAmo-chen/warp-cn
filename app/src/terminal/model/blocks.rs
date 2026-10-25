@@ -1927,7 +1927,7 @@ impl BlockList {
             block.height(&self.transcript_scope).into()
         } else {
             report_error!(
-                crate::tr!("terminal", "tried-to-update-height-of-block-but-no-such-block-exists"),
+                "Tried to update height of block, but no such block exists",
                 extra: { "block_index" => ?block_index }
             );
             return;
@@ -1986,7 +1986,7 @@ impl BlockList {
 
                 Some(tree_before_gap)
             } else {
-                report_error!(crate::tr!("terminal", "a-gap-is-not-contained-at-the-active-gap-index"));
+                report_error!("a gap is not contained at the active gap index");
                 None
             }
         });

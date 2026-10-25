@@ -347,7 +347,7 @@ impl LeftPanelView {
         {
             Some(handle) => handle,
             None => {
-                report_error!(crate::tr!("workspace", "couldn-t-retrieve-left-panel-resizable-state-handle"));
+                report_error!("Couldn't retrieve left panel resizable state handle.");
                 resizable_state_handle(600.0)
             }
         };

@@ -317,7 +317,7 @@ impl ShareBlockModal {
             let model = match &self.model {
                 Some(model) => model.lock(),
                 None => {
-                    report_error!(crate::tr!("terminal", "opened-share-modal-without-a-model"));
+                    report_error!("Opened share modal without a model");
                     self.request_state = ShareRequestState::Failed;
                     ctx.notify();
                     return;
@@ -436,13 +436,13 @@ impl ShareBlockModal {
 
         // Scope to release the mutex.
         let request = {
-            let model = self.model.as_ref().expect(crate::tr!("terminal", "model-should-be-set")).lock();
+            let model = self.model.as_ref().expect("Model should be set").lock();
             let block = match self
                 .selected_block
                 .and_then(|block_index| model.block_list().block_at(block_index))
             {
                 None => {
-                    report_error!(crate::tr!("terminal", "opened-block-share-modal-without-block"));
+                    report_error!("Opened block share modal without block");
                     return;
                 }
                 Some(block) => block,

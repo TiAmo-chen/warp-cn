@@ -963,7 +963,7 @@ impl<P: BackingView> TypedActionView for PaneHeader<P> {
                         }
                     } else {
                         report_error!(
-                            crate::tr!("pane_group", "attempting-to-move-to-pane-that-does-not-exist"),
+                            "Attempting to move to pane that does not exist",
                             extra: { "target_id" => ?target_id }
                         );
                     }

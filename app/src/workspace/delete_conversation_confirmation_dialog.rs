@@ -160,7 +160,7 @@ impl TypedActionView for DeleteConversationConfirmationDialog {
         match action {
             DeleteConversationConfirmationAction::Confirm => {
                 let Some(source) = self.source.clone() else {
-                    report_error!(crate::tr!("workspace", "delete-confirm-button-pressed-with-no-source"));
+                    report_error!("Delete confirm button pressed with no source");
                     return;
                 };
                 ctx.emit(DeleteConversationConfirmationEvent::Confirm { source });

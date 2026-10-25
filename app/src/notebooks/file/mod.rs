@@ -222,7 +222,7 @@ pub const MARKDOWN_DISPLAY_MODE_TOGGLE_CONTEXT: &str = "MarkdownDisplayModeToggl
 // rebindable entry in settings.
 pub const TOGGLE_MARKDOWN_DISPLAY_MODE_BINDING_NAME: &str = "markdown:toggle_display_mode";
 pub const TOGGLE_MARKDOWN_DISPLAY_MODE_BINDING_DESCRIPTION: &str =
-    crate::tr!("notebooks", "toggle-markdown-rendered-raw-view");
+    "Toggle Markdown rendered/raw view";
 pub const TOGGLE_MARKDOWN_DISPLAY_MODE_KEY_BINDING: &str = "cmdorctrl-e";
 
 pub fn init(app: &mut AppContext) {

@@ -765,7 +765,7 @@ impl SessionInfo {
             Some(value) => {
                 if value != self.shell.shell_type() {
                     report_error!(
-                        crate::tr!("terminal", "received-shelltype-in-bootstrappedvalue-that-conflicts-wit"),
+                        "Received ShellType in BootstrappedValue that conflicts with pending ShellType",
                         extra: { "value" => ?value, "pending" => ?self.shell.shell_type() }
                     );
                 }

@@ -70,14 +70,14 @@ struct FeatureItem {
 const FEATURE_ITEMS: &[FeatureItem] = &[
     FeatureItem {
         icon: Icon::LayoutAlt01,
-        label: crate::tr!("workspace", "what-s-new"),
-        title: crate::tr!("workspace", "use-the-warp-agent-anywhere"),
+        label: "What's new:",
+        title: "Use the Warp Agent anywhere",
         description: "Warp's state of the art agent is now available in any terminal through the CLI.",
     },
     FeatureItem {
         icon: Icon::Inbox,
-        label: crate::tr!("workspace", "what-s-special"),
-        title: crate::tr!("workspace", "built-in-terminal-multiplexer"),
+        label: "What's special:",
+        title: "Built-in terminal multiplexer",
         description: "Each Warp Agent creates its own PTY, enabling better behavior for REPLS, ssh, directory switching, and more.",
     },
 ];

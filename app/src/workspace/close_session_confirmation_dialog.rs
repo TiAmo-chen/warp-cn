@@ -194,7 +194,7 @@ impl TypedActionView for CloseSessionConfirmationDialog {
                 let Some(open_confirmation_source) = self.open_confirmation_source else {
                     // Should not be possible.
                     report_error!(
-                        crate::tr!("workspace", "close-session-button-pressed-with-no-open-confirmation-dia")
+                        "Close session button pressed with no open confirmation dialog source"
                     );
                     return;
                 };

@@ -203,7 +203,7 @@ impl KeysSettings {
 
         if *self.quake_mode_enabled && *self.activation_hotkey_enabled {
             report_error!(
-                crate::tr!("terminal", "both-quake-mode-and-activation-hotkey-enabled-either-one-o")
+                "Both quake mode AND activation hotkey enabled. Either one or the other should be active."
             );
             // Quake mode takes precedence
             selected = GlobalHotkeyMode::QuakeMode;

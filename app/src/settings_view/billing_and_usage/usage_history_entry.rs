@@ -84,7 +84,7 @@ impl UsageHistoryEntry {
         };
         let Some(mouse_state) = &self.mouse_state else {
             // If there is a provided entry, there should always be a mouse state as well.
-            report_error!(crate::tr!("settings", "mouse-state-is-required-to-render-usage-history-entry-head"));
+            report_error!("Mouse state is required to render usage history entry header");
             return Empty::new().finish();
         };
 

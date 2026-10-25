@@ -278,7 +278,7 @@ static PLUGIN_INSTALL_INSTRUCTIONS: LazyLock<PluginInstructions> =
         steps: &[
             PluginInstructionStep {
                 description: "Add the Warp plugin marketplace repository",
-                command: crate::tr!("terminal", "codex-plugin-marketplace-add-warpdotdev-codex-warp"),
+                command: "codex plugin marketplace add warpdotdev/codex-warp",
                 executable: true,
                 link: None,
             },
@@ -289,7 +289,7 @@ static PLUGIN_INSTALL_INSTRUCTIONS: LazyLock<PluginInstructions> =
                 link: None,
             },
         ],
-        post_install_notes: &[crate::tr!("terminal", "restart-codex-to-activate-the-plugin")],
+        post_install_notes: &["Restart Codex to activate the plugin."],
     });
 
 static NATIVE_INSTALL_INSTRUCTIONS: LazyLock<PluginInstructions> = LazyLock::new(|| {
@@ -328,7 +328,7 @@ static PLUGIN_UPDATE_INSTRUCTIONS: LazyLock<PluginInstructions> = LazyLock::new(
         steps: &[
             PluginInstructionStep {
                 description: "Upgrade the marketplace",
-                command: crate::tr!("terminal", "codex-plugin-marketplace-upgrade-codex-warp"),
+                command: "codex plugin marketplace upgrade codex-warp",
                 executable: true,
                 link: None,
             },
@@ -340,8 +340,8 @@ static PLUGIN_UPDATE_INSTRUCTIONS: LazyLock<PluginInstructions> = LazyLock::new(
             },
         ],
         post_install_notes: &[
-            crate::tr!("terminal", "restart-codex-to-activate-the-update"),
-            crate::tr!("terminal", "if-this-fails-because-codex-warp-is-not-configured-as-a-gi"),
+            "Restart Codex to activate the update.",
+            "If this fails because codex-warp is not configured as a Git marketplace, remove and re-add the marketplace.",
         ],
     }
 });

@@ -3977,10 +3977,10 @@ impl EditorView {
                                     Ok(end_col) => {
                                         head = buffer
                                             .anchor_before(Point::new(position.row(), end_col))
-                                            .expect(crate::tr!("editor", "anchor-should-exist"))
+                                            .expect("Anchor should exist")
                                     }
                                     Err(_) => report_error!(
-                                        crate::tr!("editor", "update-selection-is-called-with-invalid-position")
+                                        "Update selection is called with invalid position"
                                     ),
                                 }
                             } else if is_cursor_in_range || ordering == Ordering::Equal {

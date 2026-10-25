@@ -24,7 +24,7 @@ impl FuzzyMatchExternalSecretResult {
         });
 
         if count == 0 {
-            report_error!(crate::tr!("search", "secret-object-doesn-t-have-a-name-match-result"));
+            report_error!("Secret object doesn't have a name match result.");
             OrderedFloat(f64::MIN)
         } else {
             OrderedFloat((sum / (count as i64)) as f64)

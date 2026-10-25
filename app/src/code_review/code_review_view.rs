@@ -1803,7 +1803,7 @@ impl CodeReviewView {
 
     fn handle_edit_comment(&mut self, comment_id: &CommentId, ctx: &mut ViewContext<Self>) {
         let Some(comment) = self.get_comment_by_id(*comment_id, ctx) else {
-            report_error!(crate::tr!("code_review", "couldn-t-find-code-review-comment-by-id"));
+            report_error!("Couldn't find code review comment by ID");
             return;
         };
 
@@ -1827,7 +1827,7 @@ impl CodeReviewView {
 
                 let Some(editor_state) = &file_state.editor_state.as_ref() else {
                     report_error!(
-                        crate::tr!("code_review", "codereviewview-could-not-fetch-editor-for-file"),
+                        "CodeReviewView could not fetch editor for file",
                         extra: { "file_path" => ?file_state.file_diff.file_path }
                     );
                     return;
@@ -3255,7 +3255,7 @@ impl CodeReviewView {
                 // honest.
                 let Some(file_location) = editor.as_ref(ctx).file_location().cloned() else {
                     report_error!(
-                        crate::tr!("code_review", "attempted-to-attach-code-review-comment-to-a-localcodeedit")
+                        "Attempted to attach code review comment to a LocalCodeEditorView without a file path"
                     );
                     return;
                 };
@@ -3296,7 +3296,7 @@ impl CodeReviewView {
                     }
                     AttachedReviewCommentTarget::File { .. }
                     | AttachedReviewCommentTarget::General => {
-                        report_error!(crate::tr!("code_review", "tried-to-reopen-a-non-line-review-comment"));
+                        report_error!("Tried to reopen a non-line review comment.");
                     }
                 }
             }

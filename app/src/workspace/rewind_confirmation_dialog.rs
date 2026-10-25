@@ -264,7 +264,7 @@ impl TypedActionView for RewindConfirmationDialog {
         match action {
             RewindConfirmationAction::Confirm => {
                 let Some(rewind_source) = self.rewind_source.clone() else {
-                    report_error!(crate::tr!("workspace", "rewind-confirm-button-pressed-with-no-rewind-source"));
+                    report_error!("Rewind confirm button pressed with no rewind source");
                     return;
                 };
                 ctx.emit(RewindConfirmationEvent::Confirm { rewind_source });

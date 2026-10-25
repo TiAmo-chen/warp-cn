@@ -85,7 +85,7 @@ const INDEXING_DISABLED_GLOBAL_AI_TEXT: &str =
 const CODEBASE_INDEX_LIMIT_REACHED: &str = "You have reached the maximum number of codebase indices for your plan. Delete existing indices to auto-index new codebases.";
 #[cfg(not(target_family = "wasm"))]
 const REMOTE_CODEBASE_INDEX_LIMIT_REACHED_FAILURE: &str =
-    crate::tr!("settings", "maximum-number-of-codebase-indexes-has-been-reached");
+    "maximum number of codebase indexes has been reached";
 
 const PAGE_TITLE: &str = "Codebase Indexing";
 

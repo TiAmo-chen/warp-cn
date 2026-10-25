@@ -1653,10 +1653,10 @@ impl WorkflowView {
                     self.try_set_view_mode(ctx);
                     ctx.emit(WorkflowViewEvent::CreatedWorkflow(self.workflow_id));
                 } else {
-                    report_error!(crate::tr!("workflows", "attempting-to-create-workflow-but-now-space-found"));
+                    report_error!("Attempting to create workflow but now space found");
                 }
             }
-            _ => report_error!(crate::tr!("workflows", "did-not-match-conditions-to-either-create-or-save-the-work")),
+            _ => report_error!("Did not match conditions to either create or save the workflow"),
         }
     }
 

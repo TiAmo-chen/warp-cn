@@ -1105,7 +1105,7 @@ impl TerminalView {
                 .not()
                 .then_some(content.plain_text))
         else {
-            report_error!(crate::tr!("terminal", "clipboard-contents-are-not-a-conversation-debug-link"));
+            report_error!("Clipboard contents are not a conversation debug link");
             return;
         };
 

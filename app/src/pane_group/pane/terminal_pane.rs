@@ -2057,7 +2057,7 @@ fn launch_remote_child(
                 model.spawn_agent_with_request(prepared.spawn_request, team_scope, ctx);
             });
         } else {
-            report_error!(crate::tr!("pane_group", "remote-startagent-child-pane-missing-ambient-agent-view-mo"));
+            report_error!("Remote StartAgent child pane missing ambient agent view model");
         }
     });
 

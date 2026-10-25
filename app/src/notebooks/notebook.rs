@@ -845,7 +845,7 @@ impl NotebookView {
                 }
             }
             ActiveNotebook::None => {
-                report_error!(crate::tr!("notebooks", "tried-to-save-notebook-but-none-were-active"))
+                report_error!("Tried to save notebook, but none were active")
             }
         }
     }
@@ -1778,7 +1778,7 @@ impl NotebookView {
                 }
             }
             ActiveNotebook::None => {
-                report_error!(crate::tr!("notebooks", "tried-to-save-notebook-but-none-were-active"))
+                report_error!("Tried to save notebook, but none were active")
             }
         }
     }

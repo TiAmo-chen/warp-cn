@@ -1179,11 +1179,11 @@ impl TerminalView {
             .text_selection_range(semantic_selection, input_mode.is_inverted_blocklist())
         {
             let Some(start) = start.to_session_sharing_block_point(model_lock.block_list()) else {
-                report_error!(crate::tr!("terminal", "failed-convert-start-of-selection-range-to-blockpoint"));
+                report_error!("Failed convert start of selection range to BlockPoint");
                 return session_sharing_protocol::common::Selection::None;
             };
             let Some(end) = end.to_session_sharing_block_point(model_lock.block_list()) else {
-                report_error!(crate::tr!("terminal", "failed-convert-end-of-selection-range-to-blockpoint"));
+                report_error!("Failed convert end of selection range to BlockPoint");
                 return session_sharing_protocol::common::Selection::None;
             };
             return session_sharing_protocol::common::Selection::BlockText {

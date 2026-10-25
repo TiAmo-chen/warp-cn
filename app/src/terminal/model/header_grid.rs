@@ -1104,7 +1104,7 @@ impl ansi::Handler for HeaderGrid {
                         }
                     }
                     ansi::PromptKind::Right => {
-                        report_error!(crate::tr!("terminal", "right-prompt-marker-should-be-handled-by-block"));
+                        report_error!("Right prompt marker should be handled by Block.");
                     }
                 };
                 self.receiving_chars_for_prompt = Some(kind);
@@ -1133,7 +1133,7 @@ impl ansi::Handler for HeaderGrid {
                         }
                     }
                     ansi::PromptKind::Right => {
-                        report_error!(crate::tr!("terminal", "right-prompt-marker-should-be-handled-by-block"));
+                        report_error!("Right prompt marker should be handled by Block.");
                     }
                 }
             }

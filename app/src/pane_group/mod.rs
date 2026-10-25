@@ -1069,7 +1069,7 @@ impl InitialFocus {
     fn merge(&mut self, other: InitialFocus) {
         if self.focused_pane.is_some() {
             if other.focused_pane.is_some() {
-                report_error!(crate::tr!("pane_group", "restored-pane-tree-has-more-than-one-focused-pane"));
+                report_error!("Restored pane tree has more than one focused pane");
             }
         } else {
             self.focused_pane = other.focused_pane;
@@ -1077,7 +1077,7 @@ impl InitialFocus {
 
         if self.active_session.is_some() {
             if other.active_session.is_some() {
-                report_error!(crate::tr!("pane_group", "restored-pane-tree-has-more-than-one-active-session"));
+                report_error!("Restored pane tree has more than one active session");
             }
         } else {
             self.active_session = other.active_session;
@@ -2992,7 +2992,7 @@ impl PaneGroup {
 
                 let Some(terminal_view) = self.terminal_view_from_pane_id(*terminal_pane_id, ctx)
                 else {
-                    report_error!(crate::tr!("pane_group", "tried-to-grant-role-for-non-existent-terminal-pane"));
+                    report_error!("Tried to grant role for non existent terminal pane");
                     return;
                 };
 
@@ -3715,7 +3715,7 @@ impl PaneGroup {
     ) {
         // Get the active terminal view
         let Some(terminal_view) = self.active_session_view(ctx) else {
-            report_error!(crate::tr!("pane_group", "no-active-terminal-view-to-load-conversation-into"));
+            report_error!("No active terminal view to load conversation into");
             return;
         };
         self.load_data_into_transcript_viewer(
@@ -4388,7 +4388,7 @@ impl PaneGroup {
         };
 
         if !self.panes.remove(*pane_id) {
-            report_error!(crate::tr!("pane_group", "pane-not-found"));
+            report_error!("Pane not found");
         }
 
         let pane_content = self.pane_contents.remove(pane_id);
@@ -4901,7 +4901,7 @@ impl PaneGroup {
             // We should only remove the session id from the tree after we queried
             // and got the previous session id.
             if !self.panes.remove(pane_id) {
-                report_error!(crate::tr!("pane_group", "pane-not-found"));
+                report_error!("Pane not found");
             }
 
             // Mirror cleanup_closed_pane's transitive-share map cleanup so
@@ -5004,7 +5004,7 @@ impl PaneGroup {
         // Ensure original pane exists before attempting replacement
         if !self.pane_contents.contains_key(&original_pane_id) {
             report_error!(
-                crate::tr!("pane_group", "attempted-to-replace-pane-that-doesn-t-exist-in-contents"),
+                "Attempted to replace pane that doesn't exist in contents",
                 extra: { "original_pane_id" => ?original_pane_id }
             );
             return false;
@@ -5650,7 +5650,7 @@ impl PaneGroup {
         self.clear_hidden_closed_panes(ctx);
 
         if !self.panes.remove(id) {
-            report_error!(crate::tr!("pane_group", "pane-not-found-when-attempting-to-move"));
+            report_error!("Pane not found when attempting to move");
             return;
         }
 

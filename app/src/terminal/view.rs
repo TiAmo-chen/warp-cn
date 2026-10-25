@@ -11921,7 +11921,7 @@ impl TerminalView {
             });
         if has_other_blocks_in_same_conversation {
             report_error!(
-                crate::tr!("terminal", "attempted-to-clean-up-and-delete-conversation-for-block-wi")
+                "Attempted to clean up and delete conversation for block with other blocks in the same conversation"
             );
             return;
         }

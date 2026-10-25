@@ -452,26 +452,26 @@ const AGENT_MODE_AI_DISABLED_AUTODETECTION_DISABLED_HINT_TEXT: &str = "Run comma
 
 // Rotating hint text options for new Agent Mode conversations
 const AGENT_MODE_HINT_OPTIONS: &[&str] = &[
-    crate::tr!("terminal", "warp-anything-e-g-deploy-my-react-app-to-vercel-and-set-up"),
-    crate::tr!("terminal", "warp-anything-e-g-help-me-debug-why-my-python-tests-are-fa"),
-    crate::tr!("terminal", "warp-anything-e-g-set-up-a-new-microservice-with-docker-an"),
-    crate::tr!("terminal", "warp-anything-e-g-find-and-fix-the-memory-leak-in-my-node"),
-    crate::tr!("terminal", "warp-anything-e-g-create-a-backup-script-for-my-postgresql"),
-    crate::tr!("terminal", "warp-anything-e-g-help-me-migrate-my-data-from-mysql-to-po"),
-    crate::tr!("terminal", "warp-anything-e-g-set-up-monitoring-and-alerts-for-my-aws"),
-    crate::tr!("terminal", "warp-anything-e-g-build-a-rest-api-for-my-mobile-app-using"),
-    crate::tr!("terminal", "warp-anything-e-g-help-me-optimize-my-sql-queries-that-are"),
-    crate::tr!("terminal", "warp-anything-e-g-create-a-github-actions-workflow-to-auto"),
-    crate::tr!("terminal", "warp-anything-e-g-set-up-redis-caching-for-my-web-applicat"),
-    crate::tr!("terminal", "warp-anything-e-g-help-me-troubleshoot-why-my-kubernetes-p"),
-    crate::tr!("terminal", "warp-anything-e-g-build-a-data-pipeline-to-process-csv-fil"),
-    crate::tr!("terminal", "warp-anything-e-g-set-up-ssl-certificates-and-configure-ht"),
-    crate::tr!("terminal", "warp-anything-e-g-help-me-refactor-this-legacy-code-to-use"),
-    crate::tr!("terminal", "warp-anything-e-g-create-unit-tests-for-my-authentication"),
-    crate::tr!("terminal", "warp-anything-e-g-set-up-log-aggregation-with-elk-stack-fo"),
-    crate::tr!("terminal", "warp-anything-e-g-help-me-implement-oauth2-authentication"),
-    crate::tr!("terminal", "warp-anything-e-g-optimize-my-docker-images-to-reduce-buil"),
-    crate::tr!("terminal", "warp-anything-e-g-set-up-a-b-testing-infrastructure-for-my"),
+    "Warp anything e.g. Deploy my React app to Vercel and set up environment variables",
+    "Warp anything e.g. Help me debug why my Python tests are failing in CI",
+    "Warp anything e.g. Set up a new microservice with Docker and create the deployment pipeline",
+    "Warp anything e.g. Find and fix the memory leak in my Node.js application",
+    "Warp anything e.g. Create a backup script for my PostgreSQL database and schedule it",
+    "Warp anything e.g. Help me migrate my data from MySQL to PostgreSQL",
+    "Warp anything e.g. Set up monitoring and alerts for my AWS infrastructure",
+    "Warp anything e.g. Build a REST API for my mobile app using FastAPI",
+    "Warp anything e.g. Help me optimize my SQL queries that are running slowly",
+    "Warp anything e.g. Create a GitHub Actions workflow to automatically deploy on merge",
+    "Warp anything e.g. Set up Redis caching for my web application",
+    "Warp anything e.g. Help me troubleshoot why my Kubernetes pods keep crashing",
+    "Warp anything e.g. Build a data pipeline to process CSV files and load them into BigQuery",
+    "Warp anything e.g. Set up SSL certificates and configure HTTPS for my domain",
+    "Warp anything e.g. Help me refactor this legacy code to use modern design patterns",
+    "Warp anything e.g. Create unit tests for my authentication service",
+    "Warp anything e.g. Set up log aggregation with ELK stack for my distributed system",
+    "Warp anything e.g. Help me implement OAuth2 authentication in my Express.js app",
+    "Warp anything e.g. Optimize my Docker images to reduce build times and size",
+    "Warp anything e.g. Set up A/B testing infrastructure for my web application",
 ];
 
 fn get_agent_mode_new_conversation_hint_text() -> &'static str {
@@ -497,7 +497,7 @@ const AGENT_MODE_AI_ENABLED_STEER_HINT_TEXT_CLASSIC: &str =
     "Steer the running agent, or backspace to exit";
 const AGENT_MODE_AI_ENABLED_QUEUE_HINT_TEXT_UDI: &str = "Queue a follow up for the running agent";
 const AGENT_MODE_AI_ENABLED_QUEUE_HINT_TEXT_CLASSIC: &str =
-    crate::tr!("terminal", "queue-a-follow-up-for-the-running-agent-or-backspace-to-ex");
+    "Queue a follow up for the running agent, or backspace to exit";
 const AGENT_MODE_AI_ENABLED_FOLLOW_UP_HINT_TEXT_UDI: &str = "Ask a follow up";
 const AGENT_MODE_AI_ENABLED_FOLLOW_UP_HINT_TEXT_CLASSIC: &str =
     "Ask a follow up, or backspace to exit";
