@@ -263,7 +263,6 @@ drive-anyone-with-link = 任何拥有链接的人
 
 drive-collaborate-with-teammates = 与 { $count } 位已在 Warp 上的队友协作。
 drive-team-space-zero-state = 拖拽或移动个人工作流或笔记本到此处与团队共享。
-drive-create-team = 创建团队
 drive-view-teams-to-join = 查看可加入的团队
 drive-view-team-to-join = 查看可加入的团队
 drive-learn-file-support = 了解文件支持和格式

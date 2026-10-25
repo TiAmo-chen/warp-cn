@@ -672,17 +672,7 @@ terminal-warp-drive = Warp Drive
 ## -- 模型规格和推理级别字符串 -----------------------------------------------
 
 terminal-model-specs-title = 模型规格
-terminal-model-specs-description = Warp 基准测试：线束性能、积分消耗率、任务速度。
 terminal-reasoning-level-title = 推理级别
-terminal-reasoning-level-description = 更高的推理级别会消耗更多积分，延迟更高，但在复杂任务上表现更好。
-
-## -- 初始化项目字符串 -------------------------------------------------------
-
-terminal-init-project-onboarding-text = 很好 — 让我们开始设置这个项目！你愿意授权我索引此代码库吗？这使我能快速理解上下文，在此代码库中工作时提供更具针对性的解决方案。代码不会存储在 Warp 服务器上。
-terminal-init-project-already-setup-text = 此项目似乎已经初始化。你可以点击下方按钮重新生成此代码库的 AGENTS.md 文件。
-
-## -- 初始化环境字符串 -------------------------------------------------------
-
 terminal-init-environment-explanation-text = 你想为此项目创建一个环境以便在其中运行云代理吗？代理将引导你选择 GitHub 仓库、配置 Docker 镜像并指定启动命令。
 terminal-init-environment-no-repos-help-text = 如果你想创建包含仓库的环境，请重新运行此命令并传入文件路径或 GitHub 链接作为参数，例如 "/create-environment <文件路径> <GitHub URL>"。
 
@@ -693,9 +683,7 @@ terminal-shared-session-limit-reached = 已达到会话上限
 terminal-shared-session-denied-subheader = 共享会话是团队或商业版功能
 terminal-view-plans = 查看方案
 terminal-start-sharing = 开始共享
-terminal-stop-sharing = 停止共享
 terminal-continue-sharing = 继续共享
-terminal-make-editor = 设为编辑者
 terminal-deny = 拒绝
 terminal-requested-mode = 你已请求{ $role }模式
 terminal-waiting-for = 正在等待{ $name }...
@@ -705,17 +693,9 @@ terminal-install-and-enable = 安装并启用
 terminal-enable-selected-languages = 启用语言支持
 terminal-are-you-still-there = 你还在吗？
 terminal-sharing-will-end-due-to-inactivity = 由于不活跃，共享将在 { $minutes }:{ $seconds } 后结束。
-terminal-edit-prompt = 编辑提示
 terminal-warp-terminal-prompt = Warp 提示
 terminal-shell-prompt-ps1 = Shell 提示 (PS1)
 terminal-restore-default = 恢复默认
-terminal-cancel-request = 取消请求
-
-## -- Double-prefix aliases for tr!() calls that include domain prefix in message ID --
-
-
-
-## -- Additional terminal strings --
 terminal-regenerate-agents-md = 重新生成 AGENTS.md 文件
 
 ## -- Agent mode setup banner strings --------------------------------------------------
@@ -786,7 +766,6 @@ terminal-share-this-object-type = 共享此 { $object_type }
 
 terminal-file-issue = 提交问题
 terminal-more-info = 更多信息
-terminal-shell-process-exited = Shell 进程已退出
 terminal-shell-could-not-start = Shell 进程无法启动！
 terminal-shell-exited-prematurely = Shell 进程提前退出！
 terminal-warpify-failure-subtext = 启动 { $shell_detail } 并进行 Warpify 时出了点问题，导致进程终止。Warpify 脚本输出显示在此处，可能指向原因。
@@ -799,7 +778,6 @@ terminal-open-link = 打开链接
 
 ## -- 提示工具字符串 --
 
-terminal-open-in-warp = 在 Warp 中打开
 terminal-show-in-finder = 在 Finder 中显示
 terminal-show-containing-folder = 显示包含文件夹
 terminal-reveal-secret = 显示密钥
@@ -844,8 +822,6 @@ terminal-what-happened-here = 这里发生了什么？
 terminal-checking = 检查中...
 terminal-installing = 安装中...
 terminal-updating = 更新中...
-terminal-initializing = 初始化中...
-terminal-starting-shell = 正在启动 Shell...
 terminal-what-is-the-command-to = 执行以下操作的命令是：
 
 ## -- Double-prefix aliases for inline banner strings --
@@ -972,7 +948,6 @@ terminal-ran-setup = 已运行设置命令
 terminal-cloud-agent-failed = 云代理失败
 terminal-quick-setup = 快速设置
 terminal-quick-setup-desc = 选择您想使用的 GitHub 仓库，我们将推荐基础镜像和配置
-terminal-use-agent = 使用代理
 terminal-use-agent-desc = 选择一个本地项目，我们将帮您基于此设置环境
 terminal-env-setup-cancelled = 环境设置已取消
 

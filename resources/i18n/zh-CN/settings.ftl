@@ -166,10 +166,6 @@ settings-appearance-thin-strokes-never = 从不
 settings-appearance-window-header = 窗口
 settings-appearance-notebook-font-size = 笔记本字号
 settings-appearance-terminal-font = 终端字体
-settings-appearance-zoom-level = 缩放级别
-
-## -- AI settings descriptions -------------------------------------------
-
 settings-ai-all-features-desc = 控制是否启用所有 AI 功能。
 settings-ai-proactive-features-desc = 控制是否启用主动 AI 功能（如建议）。
 settings-ai-autodetect-nl-desc = 控制是否自动检测自然语言输入。
@@ -519,14 +515,8 @@ settings-api-key-personal-desc = 此 API 密钥与您的用户绑定，可以对
 settings-api-key-secret-shown-once = 此密钥仅显示一次，请复制并安全存储。
 settings-api-key-team-desc = 此 API 密钥与您的团队绑定，可以代表您的团队发起请求。
 settings-api-keys-description = 创建和管理 API 密钥，以允许其他 Oz 云代理访问您的 Warp 账户。更多信息，请访问
-settings-appearance-blinking-cursor = 闪烁光标
 settings-appearance-columns = 列数
-settings-appearance-compact-mode = 紧凑模式
-settings-appearance-cursor-type = 光标类型
 settings-appearance-custom-padding-alt-screen = 在备用屏幕中使用自定义填充
-settings-appearance-dim-inactive-panes = 变暗非活动窗格
-settings-appearance-focus-follows-mouse = 焦点跟随鼠标
-settings-appearance-input-type = 输入类型
 settings-appearance-open-custom-size = 以自定义尺寸打开新窗口
 settings-appearance-preserve-tab-color = 为新标签页保留活动标签页颜色
 settings-appearance-prompt-as-tab-title = 在标签页名称中使用最新用户提示作为对话标题
@@ -631,7 +621,6 @@ settings-import-reset-defaults = 重置为 Warp 默认值
 
 # === Final missing entries ===
 
-settings-appearance-cursor = 光标
 settings-appearance-default-no-color = 默认（无颜色）
 settings-appearance-fullscreen-apps = 全屏应用
 settings-appearance-header-toolbar-layout = 标题工具栏布局

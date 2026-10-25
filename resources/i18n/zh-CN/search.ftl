@@ -238,15 +238,6 @@ search-file-open-file = 按 Enter 打开此文件
 search-create-file-display = 创建 { $file_name }…
 search-create-file-a11y-label = 创建文件：{ $file_name }
 search-create-file-a11y-help = 按 Enter 在当前目录中创建 { $file_name }
-search-diff-uncommitted = 未提交的更改
-search-diff-vs-main = 相对于 main 分支的更改
-search-diff-vs-branch = 相对于 { $branch } 的更改
-search-diff-uncommitted-desc = 工作目录中所有未提交的更改
-search-diff-vs-main-desc = 相对于 main 分支的所有更改
-search-diff-vs-branch-desc = 相对于 { $branch } 的所有更改
-
-## -- 对话分区标题 ---
-
 search-section-active-pane = 当前面板对话
 search-section-other-active = 其他活跃对话
 search-section-past = 历史对话

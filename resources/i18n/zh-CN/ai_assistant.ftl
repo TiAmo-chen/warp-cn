@@ -504,19 +504,6 @@ ai-assistant-ai-global-scope-tab = 全局
 ai-assistant-ai-project-based-scope-tab = 基于项目
 ai-assistant-ai-rule-name-placeholder = 例如 Rust 规则
 ai-assistant-ai-rule-description-placeholder = 例如 在 Rust 中永远不要使用 unwrap
-ai-assistant-ai-refine = 优化
-ai-assistant-ai-dismiss = 关闭
-ai-assistant-ai-accept-and-continue = 接受并继续由代理执行
-ai-assistant-ai-iterate-with-agent = 与代理迭代
-ai-assistant-ai-file-new = { $file_name }（新建）
-ai-assistant-ai-file-deleted = { $file_name }（已删除）
-ai-assistant-ai-failed-revert = 无法还原 { $file_name } 的更改
-ai-assistant-ai-file-suffix = 文件
-ai-assistant-ai-renamed-suffix = （已重命名）
-ai-assistant-ai-deleted-file-suffix = （已删除文件）
-
-## -- Agent tip strings --
-
 ai-assistant-ai-tip-label = 提示：
 ai-assistant-ai-tip-slash-commands = `/` 打开斜杠命令菜单，访问快速智能体操作。
 ai-assistant-ai-tip-toggle-nl-detection = <keybinding> 切换自然语言检测，在智能体和终端输入之间切换。
@@ -600,7 +587,6 @@ ai-assistant-ai-search-files-match = 搜索匹配的文件
 ai-assistant-ai-finding-files-match = 查找匹配的文件
 ai-assistant-ai-cancelled-search-files = 已取消在 { $path } 中对匹配以下模式的文件的搜索
 ai-assistant-ai-find-files-match = 在 { $path } 中查找匹配以下模式的文件
-ai-assistant-ai-finding-files-match = 正在 { $path } 中查找匹配以下模式的文件
 ai-assistant-ai-comment-addressed = 已处理的评论："{ $content }"
 ai-assistant-ai-ok-read-mcp-resource = 可以读取此 MCP 资源吗？
 ai-assistant-ai-upload-artifact = 上传产物：{ $file_path }
@@ -615,7 +601,6 @@ ai-assistant-ai-suggestions = 建议：
 ai-assistant-ai-good-response = 好评
 ai-assistant-ai-bad-response = 差评
 ai-assistant-ai-continue-conversation = 继续对话
-ai-assistant-ai-fork-conversation = 分支对话
 ai-assistant-ai-show-credit-usage = 显示积分使用详情
 ai-assistant-ai-debug-output = 调试输出
 ai-assistant-ai-listing-messages = 列表中
@@ -718,8 +703,6 @@ ai-assistant-minutes = { $count } 分钟
 
 ## -- 已迁移 UI 字符串的主键 --
 
-ai-assistant-ai-cancel-summarization = 取消摘要
-ai-assistant-ai-continue-summarization = 继续摘要
 ai-assistant-ai-attach-as-agent-context = 附为代理上下文
 ai-assistant-ai-new-agent-pane = 新建代理面板
 ai-assistant-ai-follow-up-with-existing-conversation = 继续已有对话
@@ -808,11 +791,6 @@ ai-assistant-ai-ai-cancel = { ai-cancel }
 ai-assistant-ai-ai-run = { ai-run }
 ## -- Blocklist 代理视图和编排字符串的双前缀别名 --
 
-ai-assistant-ai-one-update = { $count }
-ai-assistant-ai-update-count = { $count }
-## -- Double-prefix aliases for static prompt suggestion strings --
-
-## -- AI 区块加载和状态消息字符串 --
 ai-assistant-ai-agent-waiting-for-instructions = 代理正在等待指令...
 ai-assistant-ai-error-apology-text = 抱歉，我无法完成该请求。
 ai-assistant-ai-internal-warp-error = 内部 Warp 错误。
@@ -845,10 +823,6 @@ ai-assistant-ai-agent-waiting-on-instructions = 代理正在等待指令
 ai-assistant-ai-agent-waiting-for-command-exit = 代理正在等待命令退出
 ai-assistant-ai-agent-blocked = 代理需要您的许可才能继续
 ai-assistant-ai-agent-in-control = 代理正在控制中
-ai-assistant-ai-user-in-control = 用户正在控制
-
-## -- 编排控件字符串 --
-
 ai-assistant-ai-edit-agent-toolbelt = 编辑代理工具栏
 ai-assistant-ai-edit-cli-agent-toolbelt = 编辑 CLI 代理工具栏
 ai-assistant-ai-available-chips = 可用芯片
@@ -859,7 +833,6 @@ ai-assistant-ai-local-label = 本地
 ai-assistant-ai-cloud-label = 云端
 ai-assistant-ai-agent-harness-label = 代理运行方式
 ai-assistant-ai-host-label = 主机
-ai-assistant-ai-environment-label = 环境
 ai-assistant-ai-base-model-label = 基础模型
 ai-assistant-ai-opencode-cloud-disabled-reason = 云端尚不支持 OpenCode。请切换到本地或选择其他运行方式。
 ai-assistant-ai-recommend-select-env = 建议为云端代理选择一个环境。
@@ -1024,8 +997,6 @@ ai-assistant-copied-to-clipboard = 已复制到剪贴板
 
 ai-assistant-ai-conversation-fallback-title = 对话
 ai-assistant-ai-cloud-agent-run = 云端智能体运行
-ai-assistant-ai-copied-branch-name = 已复制分支名称
-ai-assistant-ai-agent-label = 智能体
 ai-assistant-ai-harness-label = 运行环境
 ai-assistant-ai-open-in-oz = 在 Oz 中打开
 ai-assistant-ai-open-in-github = 在 GitHub 中打开
@@ -1041,20 +1012,6 @@ ai-assistant-ai-conversation-id-label = 对话 ID
 ai-assistant-ai-run-id-label = 运行 ID
 ai-assistant-ai-credits-used = 已用额度
 ai-assistant-ai-run-time = 运行时间
-ai-assistant-ai-created-on = 创建于
-
-## -- Double-prefix aliases for agent management notification strings --
-
-## -- Double-prefix aliases for AWS credentials error strings --
-
-## -- Double-prefix aliases for conversation details panel strings --
-
-## -- Double-prefix aliases for conversation usage view strings --
-
-## -- Double-prefix aliases for agent tip strings --
-
-## -- Block view common strings --
-
 ai-assistant-ai-calling-mcp-tool = 正在调用"{$name}" MCP 工具...
 ai-assistant-ai-reading-mcp-resource = 正在读取"{$name}" MCP 资源...
 ai-assistant-ai-take-over = 接管
@@ -1072,7 +1029,6 @@ ai-assistant-ai-check-now = 立即检查
 ai-assistant-ai-check-now-tooltip = 让智能体立即检查此命令，跳过定时器。
 ai-assistant-ai-mermaid-diagram = Mermaid 图表
 ai-assistant-ai-server-overloaded = Warp 当前负载过高，请稍后重试。
-ai-assistant-ai-invalid-api-key = 提供的 API 密钥无效
 ai-assistant-ai-failed-authenticate-provider = 使用 { $model_name } 时无法通过 { $provider } 认证，请检查您的 API 密钥是否正确。
 ai-assistant-ai-credit-limit-reached = 您已达到额度上限。额度将于 { $date } 重置。
 ai-assistant-ai-send-feedback = 发送反馈
@@ -1090,7 +1046,6 @@ ai-assistant-ai-task-blocked = 任务已阻塞
 ai-assistant-ai-not-started = 未开始
 ai-assistant-ai-auth-failed = 认证失败
 ai-assistant-ai-tasks-label = 任务
-ai-assistant-ai-generate-tests = 生成测试
 ai-assistant-ai-orchestrator = 编排器
 ai-assistant-ai-out-of-credits-upgrade = 额度不足。请升级 Warp 套餐以继续运行云端智能体。
 ai-assistant-ai-server-overloaded-short = Warp 当前暂时过载，请稍后重试。
@@ -1125,7 +1080,6 @@ ai-assistant-ai-ai-primary-model-failed-with-name = { ai-assistant-ai-primary-mo
 ai-assistant-ai-ai-primary-model-failed = { ai-assistant-ai-primary-model-failed }
 ai-assistant-ai-ai-warping-with-model = { ai-assistant-ai-warping-with-model }
 ai-assistant-ai-ai-warping-with-another-model = { ai-assistant-ai-warping-with-another-model }
-ai-assistant-ai-default-profile-name = 默认
 ai-assistant-ai-agent-mode-eval-profile-name = 代理模式评估
 ai-assistant-ai-default-cli-profile-name = 默认 (CLI)
 ai-assistant-ai-ai-default-profile-name = { ai-assistant-ai-default-profile-name }
@@ -1176,7 +1130,6 @@ ai-assistant-ai-environment-not-found = 未找到环境 '{$id}'。请验证环�
 ai-assistant-ai-environment-setup-failed-msg = 环境设置失败：{$msg}。请检查您的仓库 URL 和设置命令。
 ai-assistant-ai-invalid-working-directory = 工作目录 '{$path}' 不存在或不是目录。请验证您的环境配置中的路径。
 ai-assistant-ai-task-cancelled-msg = 任务已取消。
-ai-assistant-ai-agent-blocked = 代理在等待用户确认以下操作时被阻塞：{$blocked_action}
 ai-assistant-ai-team-metadata-timeout = 刷新团队元数据超时。请检查您的网络连接后重试。
 ai-assistant-ai-skill-resolution-failed = 技能解析失败：{$msg}
 ai-assistant-ai-config-build-failed = 无法构建代理配置：{$err}
@@ -1202,8 +1155,3 @@ ai-assistant-ai-take-control-btn = 接管控制
 ## -- 代理状态字符串双前缀别名 -----------------------------------------------
 
 ## -- 已迁移 UI 字符串的双前缀别名 --
-
-ai-assistant-ai-invalid-credentials = { $cli } login。
-ai-assistant-ai-one-credit = { $count } 额度
-ai-assistant-ai-credits = { $count } 额度
-ai-assistant-ai-credits-decimal = { $count } 额度

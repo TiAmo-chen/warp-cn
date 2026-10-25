@@ -210,7 +210,6 @@ code-editor-code-find-replace-last = 已成功替换最后一个匹配项。
 
 ## -- 评论编辑器字符串 --
 code-editor-code-review-update-button = 更新
-code-editor-code-review-comment = 评论
 code-editor-code-comment-imported-from-github = 从 GitHub 导入的评论
 
 ## -- 新 code_editor 字符串的双前缀别名 --

@@ -201,9 +201,6 @@ code-go-to-line = 跳转到行
 
 ## -- 代码视图附加绑定 --
 
-code-save-file-as = 另存文件
-code-close-all-tabs = 关闭所有标签页
-code-close-saved-tabs = 关闭已保存的标签页
 code-file-saved-toast = 文件已保存。
 
 code-loading = 加载中...

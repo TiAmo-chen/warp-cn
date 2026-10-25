@@ -174,7 +174,6 @@ code-review-create-a-pull-request = 创建拉取请求
 code-review-view-pull-request-on-github = 在 GitHub 上查看拉取请求
 code-review-publish-branch-to-remote = 将分支发布到远端
 code-review-pending-scroll-target-was-verified-as-present = pending scroll target was verified as present
-code-review-uncommitted-changes = uncommitted changes
 code-review-file-is-too-large-to-render = 文件过大，无法渲染
 code-review-no-changes-to-generate-a-commit-message-from = no changes to generate a commit message from
 code-review-ai-returned-an-empty-commit-message = AI 返回了空的提交信息
