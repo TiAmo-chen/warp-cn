@@ -58,7 +58,7 @@ fn test_from_dir_loads_en_us() {
 
     // ai_assistant.ftl
     assert_eq!(
-        bundle.format("ai", "chat-placeholder", None),
+        bundle.format("ai_assistant", "ai-chat-placeholder", None),
         "Ask anything…"
     );
 }
