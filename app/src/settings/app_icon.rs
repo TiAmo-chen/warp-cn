@@ -86,7 +86,7 @@ impl std::fmt::Display for AppIcon {
             AppIcon::Original => "Original",
             AppIcon::Starburst => "Starburst",
             AppIcon::Sticker => "Sticker",
-            AppIcon::WarpOne => crate::tr!("settings", "icon-warp-1"),
+            AppIcon::WarpOne => &crate::tr!("settings", "icon-warp-1"),
         };
         write!(f, "{value}")
     }

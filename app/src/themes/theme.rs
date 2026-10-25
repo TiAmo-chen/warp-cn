@@ -121,7 +121,7 @@ impl std::fmt::Display for ThemeKind {
             ThemeKind::Koi => "Koi",
             ThemeKind::Leafy => "Leafy",
             ThemeKind::Marble => "Marble",
-            ThemeKind::PinkCity => crate::tr!("appearance", "theme-pink-city"),
+            ThemeKind::PinkCity => &crate::tr!("appearance", "theme-pink-city"),
             ThemeKind::Snowy => "Snowy",
             ThemeKind::DarkCity => crate::tr!("appearance", "theme-dark-city"),
             ThemeKind::RedRock => crate::tr!("appearance", "theme-red-rock"),

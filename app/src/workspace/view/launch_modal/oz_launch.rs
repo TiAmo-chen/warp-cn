@@ -58,10 +58,10 @@ impl Slide for OzLaunchSlide {
 
     fn display_text(&self) -> Option<&'static str> {
         Some(match self {
-            OzLaunchSlide::CloudAgents => &crate::tr!("workspace", "cloud-agents"),
-            OzLaunchSlide::AgentAutomations => &crate::tr!("workspace", "agent-automations"),
-            OzLaunchSlide::AgentManagement => &crate::tr!("workspace", "agent-management"),
-            OzLaunchSlide::LaunchCredits => &crate::tr!("workspace", "a-little-gift"),
+            OzLaunchSlide::CloudAgents => &"Cloud agents",
+            OzLaunchSlide::AgentAutomations => &"Agent automations",
+            OzLaunchSlide::AgentManagement => &"Agent management",
+            OzLaunchSlide::LaunchCredits => &"A little gift",
         })
     }
 
