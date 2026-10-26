@@ -315,9 +315,9 @@ pub enum SettingsViewEvent {
 #[derive(Copy, Clone, Debug, Default, PartialEq, Eq, Hash)]
 pub enum SettingsSection {
     About,
-    #[default]
     Account,
     BillingAndUsage,
+    #[default]
     Appearance,
     Features,
     Keybindings,
@@ -1422,49 +1422,23 @@ impl SettingsView {
             SettingsPage::new(about_page_handle),
         ]);
 
-        // Build sidebar nav items. Umbrellas group their subpages here and
-        // nowhere else, so this list is the only place membership is declared.
-        static AGENTS_UMBRELLA_LABEL: std::sync::LazyLock<&'static str> =
-            std::sync::LazyLock::new(|| crate::tr!("settings", "agents-umbrella"));
-        static CODE_UMBRELLA_LABEL: std::sync::LazyLock<&'static str> =
-            std::sync::LazyLock::new(|| crate::tr!("settings", "code-umbrella"));
-        static CLOUD_UMBRELLA_LABEL: std::sync::LazyLock<&'static str> =
-            std::sync::LazyLock::new(|| crate::tr!("settings", "cloud-platform-umbrella"));
+        // Build sidebar nav items.
+        //
+        // This build drops every section that cannot work without a Warp account or
+        // server-side service (account, teams, billing, cloud environments, Warp Drive,
+        // referrals, shared blocks, cloud agent profiles/knowledge), and flattens the
+        // two umbrellas that used to group them. What remains is local-only:
+        // MCP servers, third-party CLI agents, code indexing (local LSP), editor and
+        // code review, plus the appearance/behaviour/privacy pages.
         let mut nav_items = vec![
-            SettingsNavItem::Page(SettingsSection::Account),
-            SettingsNavItem::Umbrella(SettingsUmbrella::new(
-                &AGENTS_UMBRELLA_LABEL,
-                vec![
-                    SettingsSection::WarpAgent,
-                    SettingsSection::AgentProfiles,
-                    SettingsSection::AgentMCPServers,
-                    SettingsSection::Knowledge,
-                    SettingsSection::ThirdPartyCLIAgents,
-                ],
-            )),
-            SettingsNavItem::Page(SettingsSection::BillingAndUsage),
-            SettingsNavItem::Umbrella(SettingsUmbrella::new(
-                &CODE_UMBRELLA_LABEL,
-                vec![
-                    SettingsSection::CodeIndexing,
-                    SettingsSection::EditorAndCodeReview,
-                ],
-            )),
-            SettingsNavItem::Umbrella(SettingsUmbrella::new(
-                &CLOUD_UMBRELLA_LABEL,
-                vec![
-                    SettingsSection::CloudEnvironments,
-                    SettingsSection::WarpCloudAgentAPIKeys,
-                ],
-            )),
-            SettingsNavItem::Page(SettingsSection::Teams),
+            SettingsNavItem::Page(SettingsSection::AgentMCPServers),
+            SettingsNavItem::Page(SettingsSection::ThirdPartyCLIAgents),
+            SettingsNavItem::Page(SettingsSection::CodeIndexing),
+            SettingsNavItem::Page(SettingsSection::EditorAndCodeReview),
             SettingsNavItem::Page(SettingsSection::Appearance),
             SettingsNavItem::Page(SettingsSection::Features),
             SettingsNavItem::Page(SettingsSection::Keybindings),
             SettingsNavItem::Page(SettingsSection::Warpify),
-            SettingsNavItem::Page(SettingsSection::Referrals),
-            SettingsNavItem::Page(SettingsSection::SharedBlocks),
-            SettingsNavItem::Page(SettingsSection::WarpDrive),
             SettingsNavItem::Page(SettingsSection::Privacy),
             SettingsNavItem::Page(SettingsSection::About),
         ];
@@ -1484,7 +1458,7 @@ impl SettingsView {
 
         let initial_page = match page {
             Some(SettingsSection::Scripting) if !FeatureFlag::WarpControlCli.is_enabled() => {
-                SettingsSection::Account
+                SettingsSection::Appearance
             }
             other => other.unwrap_or_default(),
         };
